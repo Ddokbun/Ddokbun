@@ -1,7 +1,6 @@
-package com.harryporter.ddokbun.order.domain;
+package com.harryporter.ddokbun.domain.order.entity;
 
-import com.harryporter.ddokbun.product.domain.Item;
-import org.springframework.data.annotation.CreatedDate;
+import com.harryporter.ddokbun.domain.product.entity.Item;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

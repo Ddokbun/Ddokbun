@@ -1,4 +1,4 @@
-package com.harryporter.ddokbun.product.domain;
+package com.harryporter.ddokbun.domain.product.entity;
 
 import javax.persistence.*;
 

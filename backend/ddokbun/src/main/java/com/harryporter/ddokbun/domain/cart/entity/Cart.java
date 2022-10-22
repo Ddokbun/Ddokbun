@@ -1,4 +1,4 @@
-package com.harryporter.ddokbun.cart.domain;
+package com.harryporter.ddokbun.domain.cart.entity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

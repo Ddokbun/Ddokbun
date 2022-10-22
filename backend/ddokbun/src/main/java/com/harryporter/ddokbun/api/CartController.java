@@ -1,7 +1,5 @@
-package com.harryporter.ddokbun.controller;
+package com.harryporter.ddokbun.api;
 
-import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
