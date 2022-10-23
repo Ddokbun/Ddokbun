@@ -12,7 +12,7 @@ public class Cart {
 
     @EmbeddedId
     private CartId cartId;
-s
+
     @Column(name = "quantity")
     private Integer quantity;
 }
