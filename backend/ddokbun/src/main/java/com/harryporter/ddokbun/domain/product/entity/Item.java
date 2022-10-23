@@ -1,5 +1,7 @@
 package com.harryporter.ddokbun.domain.product.entity;
 
+import com.harryporter.ddokbun.domain.plant.entity.Plant;
+
 import javax.persistence.*;
 
 @Table(name = "item")
@@ -32,8 +34,12 @@ public class Item {
     @Column(columnDefinition = "VARCHAR(255)",nullable = false)
     private String itemPicture;
 
+    //1이면 식물
+    //2이면 화분 등등의 상품들
     @Column(nullable = true)
     private Integer itemKind;
 
     //plantSeq 참조로 할지 , 키 값만 저장할지?
+    @JoinColumn(name = "plant_seq",nullable = true)
+    private Plant plant;
 }
