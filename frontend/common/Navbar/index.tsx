@@ -6,12 +6,20 @@ import LeftArrow from "../../src/assets/leftArrow.svg";
 const Navbar = () => {
   return (
     <Nav>
-      <div className="m_img_wrap">
-        <LeftArrow className="m_left_arrow " />
+      <div className="img_wrap">
+        <LeftArrow className="left_arrow " />
       </div>
-      <div className="m_logo">Ddokbbun</div>
-      <div className="m_img_wrap">
-        <Bag className="m_bag" />
+      <div className="logo">Ddokbbun</div>
+      <div className="img_wrap">
+        <Bag className="bag" />
+      </div>
+      <div className="menu">
+        <ul>
+          <li>IoT</li>
+          <li>Shopping</li>
+          <li>Search</li>
+          <li>MyPage</li>
+        </ul>
       </div>
     </Nav>
   );
