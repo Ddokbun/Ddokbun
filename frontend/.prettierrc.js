@@ -8,4 +8,4 @@ module.exports = {
   endOfLine: "auto",
   useTabs: false, //탭 대신 스페이스
   arrowParens: "avoid", // 화살표 함수에서 매개변수를 하나만 받을때 괄호 생략
-};
+}
