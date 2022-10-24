@@ -1,18 +1,19 @@
 package com.harryporter.ddokbun.domain.cart.entity;
 
 import com.harryporter.ddokbun.domain.product.entity.Item;
+import com.harryporter.ddokbun.domain.user.entity.User;
 import lombok.Data;
 
 import javax.persistence.Column;
 import javax.persistence.Embeddable;
+import javax.persistence.JoinColumn;
 import java.io.Serializable;
 
-@Embeddable
+
 @Data
 public class CartId  implements Serializable {
 
-    @Column(name = "item_seq",nullable = false)
-    private Item item;
+    private Long item;
 
-    //ID 추가 바람
+    private Long user;
 }
