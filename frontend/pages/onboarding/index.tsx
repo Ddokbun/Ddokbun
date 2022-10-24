@@ -16,6 +16,7 @@ const Home: NextPage = () => {
 
       <Wrapper>
         <h1>온보딩</h1>
+        <h1>Onboarding</h1>
       </Wrapper>
       <MainContents></MainContents>
     </div>
