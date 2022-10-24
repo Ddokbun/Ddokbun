@@ -3,10 +3,6 @@ import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
 
-const Test = styled.div`
-  color: ${props => props.theme.color.test};
-`;
-
 const Home: NextPage = () => {
   return (
     <div>
@@ -16,9 +12,7 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <Test>홈화면입니다</Test>
-      </main>
+      <main></main>
     </div>
   );
 };
