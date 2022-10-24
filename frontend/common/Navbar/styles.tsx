@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Nav = styled.div`
+  position: sticky;
+  top: 0;
   width: 100%;
   height: 30px;
   background-color: ${props => props.theme.color.black};
@@ -15,8 +17,9 @@ export const Nav = styled.div`
     font-size: 20px;
   }
 
-  svg {
+  .nav_svg {
     display: none;
+    cursor: pointer;
   }
 
   .menu {
@@ -26,18 +29,19 @@ export const Nav = styled.div`
       align-items: center;
       color: ${props => props.theme.color.ivory};
       li {
-        margin: 5px;
+        margin: 20px;
         cursor: pointer;
       }
     }
   }
 
   @media screen and (${props => props.theme.mobile}) {
+    position: sticky;
     padding: 0px 0px;
     .menu {
       display: none;
     }
-    svg {
+    .nav_svg {
       display: block;
     }
 
