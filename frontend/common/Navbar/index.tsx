@@ -7,11 +7,11 @@ const Navbar = () => {
   return (
     <Nav>
       <div className="img_wrap">
-        <LeftArrow className="left_arrow " />
+        <LeftArrow className="left_arrow nav_svg " />
       </div>
       <div className="logo">Ddokbbun</div>
       <div className="img_wrap">
-        <Bag className="bag" />
+        <Bag className="bag nav_svg" />
       </div>
       <div className="menu">
         <ul>
