@@ -1,12 +1,8 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import React from "react";
-
-import { TextBtn } from "../../common/Button";
-
 import PageTitle from "../../common/PageTitle";
-
-
+import TextBtn from "../../common/TextBtn";
 import Card from "../../components/manage/CardItem";
 import CardList from "../../components/manage/CardList";
 import { Wrapper } from "./styles";
