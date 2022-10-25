@@ -3,7 +3,7 @@ import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
 import { Wrapper } from "./styles";
-import MainContents from "../../components/Onboarding/MainContents/index";
+import MainContents from "../../components/Onboarding/MainContents";
 
 const Home: NextPage = () => {
   return (
