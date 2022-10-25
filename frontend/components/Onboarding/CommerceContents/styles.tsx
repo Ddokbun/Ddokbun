@@ -1,33 +1,58 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  width: 100%;
-  height: 800px;
   background-color: ${props => props.theme.color.mainGreen};
-  .banner-wrap {
+  color: white;
+  .subcontent-wrap {
     position: relative;
+    width: 100%;
+    height: 800px;
+    .title {
+      position: absolute;
+      top: 80%;
+      left: 70%;
+      transform: translate(-5%, -5%);
+      h2 {
+        text-align: end;
+        font-size: 70px;
+      }
+      h3 {
+        text-align: end;
+        font-size: 25px;
+      }
+    }
+    .pot-img {
+      max-width: 50%;
+      height: 50%;
+      display: flex;
+
+      position: absolute;
+      top: 35%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      .banner-img {
+        max-height: 100px;
+      }
+    }
   }
 
   @media screen and (${props => props.theme.mobile}) {
-    width: 100%;
-    height: 400px;
-    .banner-wrap {
+    .subcontent-wrap {
       position: relative;
-      .banner-img {
-        vertical-align: middle;
-      }
+      width: 100%;
+      height: 400px;
 
       .title {
         position: absolute;
-        top: 30%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        h1 {
-          text-align: center;
-          font-size: 50px;
-        }
+        top: 82%;
+        left: 60%;
+        transform: translate(-5%, -5%);
         h2 {
-          text-align: center;
+          text-align: end;
+          font-size: 30px;
+        }
+        h3 {
+          text-align: end;
           font-size: 10px;
         }
       }
