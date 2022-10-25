@@ -10,13 +10,15 @@ const Navbar = () => {
       <div className="img_wrap">
         <LeftArrow className="left_arrow nav_svg " />
       </div>
-      <div className="logo">Ddokbbun</div>
+      <Link href={"/"}>
+        <div className="logo">Ddokbbun</div>
+      </Link>
       <div className="img_wrap">
         <Bag className="bag nav_svg" />
       </div>
       <div className="menu">
         <ul>
-          <Link href={'manage'}>IoT</Link>
+          <Link href={"/manage"}>IoT</Link>
           <li>Shopping</li>
           <li>Search</li>
           <li>MyPage</li>
