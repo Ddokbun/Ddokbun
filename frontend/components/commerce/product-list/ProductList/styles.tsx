@@ -16,6 +16,6 @@ export const GridWrapper = styled.div`
     grid-template-columns: repeat(1, 1fr);
     grid-template-rows: auto;
     grid-auto-flow: row;
-    grid-gap: 30px;
+    grid-gap: 50px;
   }
 `;

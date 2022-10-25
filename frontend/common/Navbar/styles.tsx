@@ -40,6 +40,7 @@ export const Nav = styled.div`
   @media screen and (${props => props.theme.mobile}) {
     position: sticky;
     padding: 0px 0px;
+
     .menu {
       display: none;
     }
@@ -48,7 +49,7 @@ export const Nav = styled.div`
     }
 
     .logo {
-      font-size: 50px;
+      font-size: 30px;
       order: 0;
     }
 
