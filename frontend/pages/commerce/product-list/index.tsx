@@ -4,6 +4,7 @@ import { NextPage } from "next";
 import { Wrapper } from "./styles";
 import Temp from "../../../assets/temp.jpg";
 import Temp2 from "../../../assets/temp2.png";
+import ProductList from "../../../components/commerce/product-list/ProductList";
 
 const Manage: NextPage = () => {
   return (
@@ -11,17 +12,7 @@ const Manage: NextPage = () => {
       <div className="banner-wrap">
         <Image src={Temp} alt="임시배너이미지입니다" />
       </div>
-      <div className="cards-grid">
-        <div className="card">
-          <Image src={Temp2} alt="임시카드이미지입니다" />
-        </div>
-        <div className="card">
-          <Image src={Temp2} alt="임시카드이미지입니다" />
-        </div>
-        <div className="card">
-          <Image src={Temp2} alt="임시카드이미지입니다" />
-        </div>
-      </div>
+      <ProductList></ProductList>
     </Wrapper>
   );
 };
