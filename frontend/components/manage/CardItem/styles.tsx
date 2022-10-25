@@ -29,11 +29,10 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (${props => props.theme.mobile}) {
-     {
-      width: 90%;
-      /* margin: auto; */
-      display: flex;
-    }
+    width: 90%;
+    /* margin: auto; */
+    display: flex;
+
     .add-btn-container {
       display: flex;
       align-items: flex-end;
