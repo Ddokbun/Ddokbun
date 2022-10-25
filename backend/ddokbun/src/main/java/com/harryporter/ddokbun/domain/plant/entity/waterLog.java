@@ -8,7 +8,7 @@ public class waterLog {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "water_supply_seq", columnDefinition = "UNSIGNED INT NOT NULL")
+    @Column(name = "water_supply_seq", columnDefinition = "INTEGER UNSIGNED NOT NULL")
     private Long waterSupplySeq;
 
     @Column(name = "water_supply_date", nullable = false)

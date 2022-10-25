@@ -1,23 +1,26 @@
 import React from "react";
 import TextBtn from "../../../common/Button";
 import { Theme } from "../../../styles/theme";
-import { CardContainer, PlantImage, Title } from "./styles";
-import plant from "../../../src/assets/plant.png";
+import { Wrapper } from "./styles";
+import plant from "../../../assets/plant.png";
+import Image from "next/image";
 
 const CardItem: React.FC = () => {
   //   식물이름, 식물 pk, 식물 이미지
 
   const potSeq = 1;
   return (
-    <CardContainer>
-      <Title>똑분</Title>
-      <PlantImage src={plant.src} alt="식물이미지" />
+    <Wrapper>
+      <h2>똑분</h2>
+      <div className="plantImg">
+        <Image layout="fill" src={plant.src} alt="식물이미지" />
+      </div>
       <div className="btnContainer">
         <TextBtn color={Theme.color.brown} path={`manage/${potSeq}`}>
           보러 가기
         </TextBtn>
       </div>
-    </CardContainer>
+    </Wrapper>
   );
 };
 
