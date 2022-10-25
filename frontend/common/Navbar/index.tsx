@@ -1,12 +1,12 @@
 import React from "react";
-import { Nav } from "./styles";
+import { Wrapper } from "./styles";
 import Bag from "../../assets/bag.svg";
 import LeftArrow from "../../assets/leftArrow.svg";
 import Link from "next/link";
 
 const Navbar = () => {
   return (
-    <Nav>
+    <Wrapper>
       <div className="img_wrap">
         <LeftArrow className="left_arrow nav_svg " />
       </div>
@@ -24,7 +24,7 @@ const Navbar = () => {
           <li>MyPage</li>
         </ul>
       </div>
-    </Nav>
+    </Wrapper>
   );
 };
 

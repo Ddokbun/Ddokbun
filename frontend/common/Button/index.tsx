@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { Button, PriceButtonStyle } from "./styles";
+import { Button, PriceButtonStyle, PriceTextButtonStyle } from "./styles";
 
 import RightUp from "../../assets/right-up.svg";
 
@@ -16,11 +16,19 @@ export const TextBtn: React.FC<{
   );
 };
 
+export const BuyTextButton: React.FC = () => {
+  return (
+    <PriceTextButtonStyle>
+      <h3>Buy</h3>
+      <RightUp />
+    </PriceTextButtonStyle>
+  );
+};
+
 export const BuyButton: React.FC = () => {
   return (
     <PriceButtonStyle>
-      <h3>Buy</h3>
-      <RightUp />
+      <h3>Buy Now</h3>
     </PriceButtonStyle>
   );
 };
