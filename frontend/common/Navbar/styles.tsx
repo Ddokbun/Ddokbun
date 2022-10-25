@@ -1,20 +1,22 @@
 import styled from "styled-components";
 
 export const Nav = styled.div`
-  position: sticky;
+  position: fixed;
+  z-index: 1;
   top: 0;
   width: 100%;
-  height: 30px;
+  height: 50px;
   background-color: ${props => props.theme.color.black};
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 0px 10px;
-
+  font-family: ${props => props.theme.font.EnglishFont};
+  font-size: 18px;
   .logo {
     order: -1;
     color: ${props => props.theme.color.ivory};
-    font-size: 20px;
+    font-size: 25px;
   }
 
   .nav_svg {
@@ -46,7 +48,7 @@ export const Nav = styled.div`
     }
 
     .logo {
-      font-size: 20px;
+      font-size: 50px;
       order: 0;
     }
 

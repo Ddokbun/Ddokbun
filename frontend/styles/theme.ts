@@ -6,6 +6,14 @@ const deviceSize = {
 
 export const Theme: DefaultTheme = {
   mobile: `(max-width:${deviceSize.mobile})`,
+
+  font: {
+    EnglishFont: "DM Serif Display",
+  },
+  /* font-family: 'Abril Fatface', cursive;
+  font-family: 'Black Han Sans', sans-serif;
+  font-family: 'Prata', serif; */
+
   color: {
     mainGreen: "#43855C",
     darkGreen: "#4E6C50",

@@ -1,5 +1,5 @@
 import React from "react";
-import TextBtn from "../../../common/TextBtn";
+import TextBtn from "../../../common/Button";
 import { Theme } from "../../../styles/theme";
 import { CardContainer, PlantImage, Title } from "./styles";
 import plant from "../../../src/assets/plant.png";
