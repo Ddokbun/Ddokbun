@@ -8,7 +8,7 @@ public class PotLog {
 
     // 화분로그 번호
     @Id
-    @Column(name = "log_seq", columnDefinition = "UNSIGNED INT NOT NULL")
+    @Column(name = "log_seq", columnDefinition = "INTEGER UNSIGNED NOT NULL")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long logSeq;
 
