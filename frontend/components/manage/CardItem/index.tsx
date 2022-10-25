@@ -4,7 +4,7 @@ import { Theme } from "../../../styles/theme";
 import { CardContainer, PlantImage, Title } from "./styles";
 import plant from "../../../src/assets/plant.png";
 
-const Card: React.FC = () => {
+const CardItem: React.FC = () => {
   //   식물이름, 식물 pk, 식물 이미지
 
   const potSeq = 1;
@@ -21,4 +21,4 @@ const Card: React.FC = () => {
   );
 };
 
-export default Card;
+export default CardItem;
