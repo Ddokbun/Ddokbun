@@ -10,7 +10,7 @@ public class Item {
 
     //상품 일련 번호
     @Id
-    @Column(name="item_seq",columnDefinition = "UNSIGNED INT NOT NULL")
+    @Column(name="item_seq",columnDefinition = "INTEGER UNSIGNED")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long itemSeq;
 
@@ -41,5 +41,6 @@ public class Item {
 
     //plantSeq 참조로 할지 , 키 값만 저장할지?
     @JoinColumn(name = "plant_seq",nullable = true)
+    @OneToOne(fetch = FetchType.LAZY)
     private Plant plant;
 }
