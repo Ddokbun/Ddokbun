@@ -26,16 +26,14 @@ export const Wrapper = styled.section<Props>`
   }
 
   @media screen and (${props => props.theme.mobile}) {
-    * {
-      width: 98%;
-      padding-left: 3%;
-      display: flex;
-      justify-content: space-between;
-    }
+    width: 98%;
+    padding-left: 3%;
+    display: flex;
+    justify-content: flex-start;
     .add-btn-container {
-      display: flex;
-      align-items: flex-end;
-      margin: 2%;
+      position: absolute;
+      bottom: 1%;
+      right: 2%;
     }
   }
 `;
