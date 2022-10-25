@@ -2,8 +2,8 @@ import Image from "next/image";
 import React from "react";
 import { NextPage } from "next";
 import { Wrapper } from "./styles";
-import Temp from "../../../src/assets/temp.jpg";
-import Temp2 from "../../../src/assets/temp2.png";
+import Temp from "../../../assets/temp.jpg";
+import Temp2 from "../../../assets/temp2.png";
 
 const Manage: NextPage = () => {
   return (

@@ -1,7 +1,7 @@
 import React from "react";
 import { Nav } from "./styles";
-import Bag from "../../src/assets/bag.svg";
-import LeftArrow from "../../src/assets/leftArrow.svg";
+import Bag from "../../assets/bag.svg";
+import LeftArrow from "../../assets/leftArrow.svg";
 
 const Navbar = () => {
   return (

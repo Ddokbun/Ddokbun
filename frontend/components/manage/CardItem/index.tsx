@@ -2,7 +2,7 @@ import React from "react";
 import TextBtn from "../../../common/TextBtn";
 import { Theme } from "../../../styles/theme";
 import { CardContainer, PlantImage, Title } from "./styles";
-import plant from "../../../src/assets/plant.png";
+import plant from "../../../assets/plant.png";
 
 const CardItem: React.FC = () => {
   //   식물이름, 식물 pk, 식물 이미지
