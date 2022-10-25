@@ -10,7 +10,9 @@ const Navbar = () => {
       <div className="img_wrap">
         <LeftArrow className="left_arrow nav_svg " />
       </div>
-      <div className="logo">Ddokbbun</div>
+      <Link href={"/"}>
+        <div className="logo">Ddokbbun</div>
+      </Link>
       <div className="img_wrap">
         <Bag className="bag nav_svg" />
       </div>
