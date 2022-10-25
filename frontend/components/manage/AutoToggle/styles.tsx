@@ -4,8 +4,11 @@ interface Props {
   toggle: boolean;
 }
 
+// https://velog.io/@whljm1003/React-toggle-switch-%EA%B8%B0%EB%8A%A5
+
 export const Wrapper = styled.div<Props>`
-  width: max-content;
+  /* width: max-content; */
+  width: 50px;
   display: flex;
   flex-direction: "column";
 
@@ -42,6 +45,6 @@ export const Wrapper = styled.div<Props>`
     font-size: 16px;
     color: ${props => props.theme.color.mainGreen};
     transition: all 0.5s ease-in-out;
-    text-align: center;
+    /* text-align: center; */
   }
 `;
