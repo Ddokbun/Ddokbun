@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background-color: red;
-  font-family: "Black Han Sans", sans-serif;
+  margin: 0 auto;
+  max-width: 1240px;
+  width: 100%;
+  background-color: "#fafafa";
 `;
