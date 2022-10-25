@@ -1,28 +1,21 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background-color: ${props => props.theme.color.black};
+  width: 100%;
+  height: 800px;
+  background-color: ${props => props.theme.color.mainGreen};
   .banner-wrap {
     position: relative;
-    .title {
-      position: absolute;
-      top: 30%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      h1 {
-        text-align: center;
-        font-size: 100px;
-      }
-      h2 {
-        text-align: center;
-        font-size: 20px;
-      }
-    }
   }
 
   @media screen and (${props => props.theme.mobile}) {
+    width: 100%;
+    height: 400px;
     .banner-wrap {
       position: relative;
+      .banner-img {
+        vertical-align: middle;
+      }
 
       .title {
         position: absolute;
@@ -35,7 +28,7 @@ export const Wrapper = styled.div`
         }
         h2 {
           text-align: center;
-          font-size: 16px;
+          font-size: 10px;
         }
       }
     }
