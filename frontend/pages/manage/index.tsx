@@ -2,7 +2,7 @@ import { NextPage } from "next";
 import { useRouter } from "next/router";
 import React from "react";
 import TextBtn from "../../common/TextBtn";
-import Card from "../../components/manage/card";
+import Card from "../../components/manage/CardItem";
 
 const Manage: NextPage = () => {
   //
