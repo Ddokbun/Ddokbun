@@ -2,6 +2,7 @@ import React from "react";
 import { Nav } from "./styles";
 import Bag from "../../assets/bag.svg";
 import LeftArrow from "../../assets/leftArrow.svg";
+import Link from "next/link";
 
 const Navbar = () => {
   return (
@@ -15,7 +16,7 @@ const Navbar = () => {
       </div>
       <div className="menu">
         <ul>
-          <li>IoT</li>
+          <Link href={'manage'}>IoT</Link>
           <li>Shopping</li>
           <li>Search</li>
           <li>MyPage</li>

@@ -1,8 +1,11 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import React from "react";
+import PageTitle from "../../common/PageTitle";
 import TextBtn from "../../common/TextBtn";
 import Card from "../../components/manage/CardItem";
+import CardList from "../../components/manage/CardList";
+import { Wrapper } from "./styles";
 
 const Manage: NextPage = () => {
   //
@@ -13,12 +16,14 @@ const Manage: NextPage = () => {
   //   };
 
   return (
-    <div>
-      <TextBtn path="hia" color="#43855C">
-        화분추가
-      </TextBtn>
+    <Wrapper>
+      <PageTitle isLink={true} isBold={true}>
+        나의 식물들
+      </PageTitle>
+
       <Card />
-    </div>
+      {/* <CardList /> */}
+    </Wrapper>
   );
 };
 
