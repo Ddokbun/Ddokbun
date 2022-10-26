@@ -1,12 +1,11 @@
 import Image from "next/image";
 import React from "react";
 import { NextPage } from "next";
-import { Wrapper } from "./styles";
-import Temp from "../../../assets/temp.jpg";
-import Temp2 from "../../../assets/temp2.png";
-import ProductList from "../../../components/commerce/product-list/ProductList";
+import { Wrapper } from "../../../../styles/commerce/products/list/styles";
+import Temp from "../../../../assets/temp.jpg";
+import ProductList from "../../../../components/commerce/product-list/ProductList";
 
-const Manage: NextPage = () => {
+const Index: NextPage = () => {
   return (
     <Wrapper>
       <div className="banner-wrap">
@@ -17,4 +16,4 @@ const Manage: NextPage = () => {
   );
 };
 
-export default Manage;
+export default Index;
