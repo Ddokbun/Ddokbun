@@ -11,7 +11,8 @@ export const Theme: DefaultTheme = {
     EnglishFont: "DM Serif Display",
     TitleFont: "프리텐다드B",
     SubTitleFont: "김포평화",
-    TextFont: "코드라",
+    TextFont1: "코트라",
+    TextFont2: "프리텐다드R",
   },
   /* font-family: 'Abril Fatface', cursive;
   font-family: 'Black Han Sans', sans-serif;

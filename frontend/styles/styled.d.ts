@@ -8,7 +8,8 @@ declare module "styled-components" {
       EnglishFont: string;
       TitleFont: string;
       SubTitleFont: string;
-      TextFont: string;
+      TextFont1: string;
+      TextFont2: string;
     };
     color: {
       mainGreen: string;

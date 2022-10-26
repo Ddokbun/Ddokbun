@@ -1,8 +1,18 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  width: 80%;
+  max-width: 1250px;
+  margin: auto;
   display: flex;
-  flex-direction: row;
-
+  /* align-items: center; */
+  flex-direction: column;
   justify-content: center;
+  gap: 35px;
+  .contents {
+  }
+
+  @media screen and (${props => props.theme.mobile}) {
+    gap: 0px;
+  }
 `;

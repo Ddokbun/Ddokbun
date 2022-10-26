@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   grid-auto-flow: row;
-  grid-gap: 0px;
+  grid-gap: 50px;
   place-items: end;
   .img-wrap {
     place-self: right;
@@ -59,7 +59,7 @@ export const Wrapper = styled.div`
 
   @media screen and (${props => props.theme.mobile}) {
     width: 100%;
-    padding: 0px 20px;
+    padding: 0px 0px;
     display: grid;
     grid-template-columns: 1fr;
     grid-template-rows: auto;
