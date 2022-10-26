@@ -102,5 +102,7 @@ public class Plant {
     @Column(name = "image_path")
     private String imagePath;
 
+    @Column(name = "rec_rate")
+    private String recRate;
 
 }
