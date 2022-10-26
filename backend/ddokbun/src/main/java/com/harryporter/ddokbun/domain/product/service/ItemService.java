@@ -9,4 +9,5 @@ public interface ItemService {
 
     List<ItemSearchDto> searchByTitle(String title);
     List<ItemSimpleSearchDto> simpleSearchByTitle(String title);
+
 }

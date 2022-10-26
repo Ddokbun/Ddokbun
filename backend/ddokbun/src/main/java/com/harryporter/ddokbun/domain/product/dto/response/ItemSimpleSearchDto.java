@@ -1,5 +1,8 @@
 package com.harryporter.ddokbun.domain.product.dto.response;
 
+import lombok.Getter;
+
+@Getter
 public class ItemSimpleSearchDto {
 
     public ItemSimpleSearchDto(Long itemSeq,String itemName,String itemImageUrl){

@@ -37,6 +37,7 @@ public class ProductController {
     @RequestMapping(value = "/simple-search",method = RequestMethod.GET)
     public ResponseEntity<?> productSimpleSearch(@RequestParam(value = "title",required = false) String title){
         List<?> content = itemService.simpleSearchByTitle(title);
+
         ResponseFrame<List<?>> responseFrame = new ResponseFrame<>();
 
         responseFrame.setContent(content);
@@ -45,6 +46,15 @@ public class ProductController {
 
         return new ResponseEntity<>(responseFrame, HttpStatus.OK);
     }
+
+    //상품 상세보기
+    //사용자가 상품에 대한 모든 정보를 요청한다.
+    @RequestMapping(value = "/{itemSeq}",method = RequestMethod.GET)
+    public ResponseEntity<?> getProductDetail(@PathVariable Integer itemSeq){
+
+        return null;
+    }
+
 
 
     //식물(상품) 사진으로 검색
@@ -62,12 +72,6 @@ public class ProductController {
     public ResponseEntity<?> productSimilar(@PathVariable Integer itemSeq){
 
 
-        return null;
-    }
-    //상품 상세보기
-    //사용자가 상품에 대한 모든 정보를 요청한다.
-    @RequestMapping(value = "/{itemSeq}",method = RequestMethod.GET)
-    public ResponseEntity<?> getProductDetail(@PathVariable Integer itemSeq){
         return null;
     }
 
