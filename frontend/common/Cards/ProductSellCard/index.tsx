@@ -29,7 +29,7 @@ const ProductSellCard: React.FC<ProductInfo> = ({ price }) => {
         <h3>₩ {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h3>
         <div className="button-wrap">
           <BuyButton width="60vw" />
-          <BuyListButton width="30vw" />
+          <BuyListButton />
         </div>
       </div>
     </Wrapper>

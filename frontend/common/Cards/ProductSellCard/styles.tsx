@@ -15,6 +15,7 @@ export const Wrapper = styled.div`
     width: 100%;
     position: relative;
     max-width: 400px;
+    min-width: 300px;
     align-items: center;
     text-align: center;
   }
@@ -25,7 +26,6 @@ export const Wrapper = styled.div`
     height: 70%;
     display: flex;
     justify-content: center;
-
     flex-direction: column;
     align-self: start;
 

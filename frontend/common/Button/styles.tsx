@@ -26,7 +26,7 @@ export const PriceTextButtonStyle = styled.div`
 `;
 
 export const PriceButtonStyle = styled.div`
-  width: 60vw;
+  width: 250px;
   height: 50px;
   border-radius: 2px;
   display: flex;
@@ -44,6 +44,7 @@ export const PriceButtonStyle = styled.div`
   }
 
   @media screen and (${props => props.theme.mobile}) {
+    width: 60vw;
     font-size: 36px;
     svg {
       width: 30px;
@@ -53,7 +54,7 @@ export const PriceButtonStyle = styled.div`
 `;
 
 export const BuyListButtonStyle = styled.div`
-  width: 80px;
+  width: 100px;
   height: 50px;
   border-radius: 2px;
   display: flex;
