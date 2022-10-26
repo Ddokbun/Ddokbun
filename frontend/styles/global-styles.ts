@@ -25,6 +25,14 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Black Han Sans', sans-serif;
     font-family: 'Prata', serif; */
   }
+
+  h2 {
+    font-family: 'DM Serif Display', serif;
+  }
+
+  h3 {
+    font-family: 'DM Serif Display', serif;
+  }
 `;
 
 export default GlobalStyle;

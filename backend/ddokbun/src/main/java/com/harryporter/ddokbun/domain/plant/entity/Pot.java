@@ -1,5 +1,7 @@
 package com.harryporter.ddokbun.domain.plant.entity;
 
+import com.harryporter.ddokbun.domain.user.entity.User;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -60,9 +62,12 @@ public class Pot {
     private String isAuto;
 
     // 식물
-    @JoinColumn(name = "plant_seq", nullable = false)
+    @JoinColumn(name = "plant_seq", nullable = true)
     @ManyToOne(fetch = FetchType.LAZY)
     private Plant plant;
 
     //멤버
+    @JoinColumn(name = "user_seq", nullable = true)
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 }
