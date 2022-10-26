@@ -1,8 +1,14 @@
 import Link from "next/link";
 import React from "react";
-import { Button, PriceButtonStyle, PriceTextButtonStyle } from "./styles";
+import {
+  Button,
+  BuyListButtonStyle,
+  PriceButtonStyle,
+  PriceTextButtonStyle,
+} from "./styles";
 
 import RightUp from "../../assets/right-up.svg";
+import Bag from "../../assets/Bag.svg";
 
 export const TextBtn: React.FC<{
   children: string;
@@ -30,5 +36,13 @@ export const BuyButton: React.FC = () => {
     <PriceButtonStyle>
       <h3>Buy Now</h3>
     </PriceButtonStyle>
+  );
+};
+
+export const BuyListButton: React.FC = () => {
+  return (
+    <BuyListButtonStyle>
+      <Bag className="bag" />
+    </BuyListButtonStyle>
   );
 };

@@ -25,11 +25,12 @@ export const Wrapper = styled.div`
     width: 100%;
     height: 70%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
+
     flex-direction: column;
     align-self: start;
 
-    gap: 3px;
+    gap: 20px;
 
     .text-top {
       h2 {
@@ -48,6 +49,11 @@ export const Wrapper = styled.div`
     }
     & > h3 {
       font-size: 2rem;
+    }
+    .button-wrap {
+      display: flex;
+      justify-content: flex-start;
+      gap: 10px;
     }
   }
 `;

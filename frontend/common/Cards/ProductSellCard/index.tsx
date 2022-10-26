@@ -3,7 +3,7 @@ import React from "react";
 import { Wrapper } from "./styles";
 import Temp from "../../../assets/temp2.png";
 import ProductLabel from "../../Labels/ProductsLabel";
-import { BuyButton } from "../../Button";
+import { BuyButton, BuyListButton } from "../../Button";
 
 interface ProductInfo {
   price: number;
@@ -27,7 +27,10 @@ const ProductSellCard: React.FC<ProductInfo> = ({ price }) => {
           <ProductLabel>초보집사</ProductLabel>
         </div>
         <h3>₩ {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h3>
-        <BuyButton />
+        <div className="button-wrap">
+          <BuyButton />
+          <BuyListButton />
+        </div>
       </div>
     </Wrapper>
   );
