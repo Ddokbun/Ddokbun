@@ -2,8 +2,12 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
-import { Wrapper } from "../../styles/onboarding/styles";
-import MainContents from "../../components/Onboarding/MainContents";
+import { Wrapper } from "./styles";
+import MainContents from "../../components/onboarding/MainContents";
+import SubContents from "../../components/onboarding/SubContents";
+import CommerceContents from "../../components/onboarding/CommerceContents";
+import SearchContents from "../../components/onboarding/SearchContents";
+import RecommendContents from "../../components/onboarding/RecommendContents";
 
 const Home: NextPage = () => {
   return (
@@ -15,10 +19,14 @@ const Home: NextPage = () => {
       </Head>
 
       <Wrapper>
-        <h1>온보딩</h1>
-        <h1>Onboarding</h1>
+        {/* <h1>온보딩</h1>
+        <h1>Onboarding</h1> */}
       </Wrapper>
       <MainContents></MainContents>
+      <SubContents></SubContents>
+      <CommerceContents></CommerceContents>
+      <SearchContents></SearchContents>
+      <RecommendContents></RecommendContents>
     </div>
   );
 };

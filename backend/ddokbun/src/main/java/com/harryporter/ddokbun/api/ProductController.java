@@ -35,7 +35,7 @@ public class ProductController {
     }
     //상품 상세보기
     //사용자가 상품에 대한 모든 정보를 요청한다.
-    @RequestMapping(value = "/api/market/product/{itemSeq}",method = RequestMethod.GET)
+    @RequestMapping(value = "/{itemSeq}",method = RequestMethod.GET)
     public ResponseEntity<?> getProductDetail(@PathVariable Integer itemSeq){
         return null;
     }
