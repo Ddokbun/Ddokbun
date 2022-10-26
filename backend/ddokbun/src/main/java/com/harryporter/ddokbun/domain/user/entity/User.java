@@ -2,6 +2,7 @@ package com.harryporter.ddokbun.domain.user.entity;
 
 import com.harryporter.ddokbun.domain.cart.entity.Cart;
 import com.harryporter.ddokbun.domain.order.entity.Order;
+import com.harryporter.ddokbun.domain.plant.entity.Pot;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -40,4 +41,7 @@ public class User {
     //한 유저는 여러개의 장바구니 목록을 가진다.
     @OneToMany(fetch = FetchType.LAZY,mappedBy = "user")
     private List<Cart> carts;
+
+    @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
+    private List<Pot> pots;
 }
