@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const Nav = styled.div`
-  position: fixed;
+export const Wrapper = styled.div`
+  position: sticky;
   z-index: 1;
   top: 0;
   width: 100%;

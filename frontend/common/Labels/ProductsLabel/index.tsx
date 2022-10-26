@@ -1,13 +1,13 @@
 import React from "react";
-import { Label } from "./styles";
+import { Wrapper } from "./styles";
 
 const ProductLabel: React.FC<{
   children: string;
 }> = ({ children }) => {
   return (
-    <Label>
+    <Wrapper>
       <p>{children}</p>
-    </Label>
+    </Wrapper>
   );
 };
 

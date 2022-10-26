@@ -1,9 +1,9 @@
 import React from "react";
-import TextBtn from "../../../common/Button";
 import { Theme } from "../../../styles/theme";
 import { Wrapper } from "./styles";
 import plant from "../../../assets/plant.png";
 import Image from "next/image";
+import { TextBtn } from "../../../common/Button";
 
 const CardItem: React.FC = () => {
   //   식물이름, 식물 pk, 식물 이미지
