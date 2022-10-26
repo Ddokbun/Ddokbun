@@ -1,19 +1,19 @@
 import React from "react";
-import { Card } from "./styles";
+import { Wrapper } from "./styles";
 
 import Temp from "../../../assets/Temp2.png";
 import Image from "next/image";
 import ProductLabel from "../../Labels/ProductsLabel";
 import { PriceButtonStyle } from "../../Button/styles";
-import { BuyButton } from "../../Button";
+import { BuyTextButton } from "../../Button";
 
 interface CardProps {
-  price: string;
+  price: number;
 }
 
 const ProductCard: React.FC<CardProps> = ({ price }) => {
   return (
-    <Card>
+    <Wrapper>
       <div className="img_wrap">
         <Image
           objectFit="contain"
@@ -27,9 +27,9 @@ const ProductCard: React.FC<CardProps> = ({ price }) => {
         <h3>Swiss Chress</h3>
         <ProductLabel>초보집사</ProductLabel>
         <h3>₩ {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h3>
-        <BuyButton />
+        <BuyTextButton />
       </div>
-    </Card>
+    </Wrapper>
   );
 };
 

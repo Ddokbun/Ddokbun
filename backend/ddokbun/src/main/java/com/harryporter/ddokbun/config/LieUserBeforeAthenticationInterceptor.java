@@ -20,7 +20,6 @@ import java.text.SimpleDateFormat;
 @Component
 public class LieUserBeforeAthenticationInterceptor implements HandlerInterceptor {
 
-   private final AuthenticationManager authenticationManager;
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {

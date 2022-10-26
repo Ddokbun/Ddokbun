@@ -30,14 +30,6 @@ public class SpringSecurityConfig {
 
     private static final Logger log = LoggerFactory.getLogger(SpringSecurityConfig.class);
 
-    //시큐리티에서 사용하는 기본 어텐티케이션 매니저
-    @Bean
-    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
-            throws Exception {
-
-        return authenticationConfiguration.getAuthenticationManager();
-    }
-
 
     //WebSecurity를 통해 Spring Security 적용하지 않을 리소스 설정
     @Bean
