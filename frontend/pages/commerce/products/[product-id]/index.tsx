@@ -10,10 +10,8 @@ const Product: NextPage = () => {
   return (
     <Wrapper>
       <ProductSellCard price={18000} />
-      <div className="contents">
-        <ProductSummary></ProductSummary>
-        <ProductCare></ProductCare>
-      </div>
+      <ProductSummary></ProductSummary>
+      <ProductCare></ProductCare>
     </Wrapper>
   );
 };

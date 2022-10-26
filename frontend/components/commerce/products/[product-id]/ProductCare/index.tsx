@@ -1,4 +1,5 @@
 import React from "react";
+import SimpleGraph from "../../../../../common/Graph/SimpleGraph";
 import { Wrapper } from "./styles";
 
 const ProductCare: React.FC = () => {
@@ -15,6 +16,7 @@ const ProductCare: React.FC = () => {
         삽목하여 재배한다. 반음지에서 잘 자라며 겨울철에는 충분히 빛을 받게
         하면서 물은 적게준다.
       </p>
+      <SimpleGraph water="30%" humid="40%" temper="80%"></SimpleGraph>
     </Wrapper>
   );
 };

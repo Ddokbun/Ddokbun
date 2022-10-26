@@ -7,8 +7,8 @@ import {
   PriceTextButtonStyle,
 } from "./styles";
 
-import RightUp from "../../assets/right-up.svg";
-import Bag from "../../assets/Bag.svg";
+import RightUp from "../../assets/commerce/right-up.svg";
+import Bag from "../../assets/commerce/bag.svg";
 
 export const TextBtn: React.FC<{
   children: string;
