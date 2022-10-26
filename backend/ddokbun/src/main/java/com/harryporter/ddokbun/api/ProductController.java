@@ -1,20 +1,36 @@
 package com.harryporter.ddokbun.api;
 
+import com.harryporter.ddokbun.domain.product.service.ItemService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-@RequestMapping("/product")
+@RequestMapping("/market/product")
 @RestController
+@RequiredArgsConstructor
 public class ProductController {
+
+    private final ItemService itemService;
 
     //식물(상품) 검색
     //사용자가 식물(상품) 이름을 통해 검색한다.
     @RequestMapping(value = "/search",method = RequestMethod.GET)
     public ResponseEntity<?> productSearch(@RequestParam(value = "title") String productName){
 
+
+
         return null;
     }
+
+    //트래픽 낮추기 용 검색
+    @RequestMapping(value = "/simple-search",method = RequestMethod.GET)
+    public ResponseEntity<?> productSimpleSearch(@RequestParam(value = "title") String productName){
+
+
+        return null;
+    }
+
 
     //식물(상품) 사진으로 검색
     //사용자가 식물을 사진으로 검색한다.
