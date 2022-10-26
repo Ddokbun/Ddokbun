@@ -24,12 +24,12 @@ const ProductSellCard: React.FC<ProductInfo> = ({ price }) => {
         <div className="text-top">
           <h3>Swiss Chress</h3>
           <h2>임시상품명</h2>
-          <ProductLabel>초보집사</ProductLabel>
         </div>
+        <ProductLabel>초보집사</ProductLabel>
         <h3>₩ {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h3>
         <div className="button-wrap">
-          <BuyButton />
-          <BuyListButton />
+          <BuyButton width="60vw" />
+          <BuyListButton width="30vw" />
         </div>
       </div>
     </Wrapper>

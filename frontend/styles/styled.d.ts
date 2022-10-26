@@ -6,6 +6,9 @@ declare module "styled-components" {
     mobile: string;
     font: {
       EnglishFont: string;
+      TitleFont: string;
+      SubTitleFont: string;
+      TextFont: string;
     };
     color: {
       mainGreen: string;

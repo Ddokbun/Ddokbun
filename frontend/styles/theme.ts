@@ -9,6 +9,9 @@ export const Theme: DefaultTheme = {
 
   font: {
     EnglishFont: "DM Serif Display",
+    TitleFont: "프리텐다드B",
+    SubTitleFont: "김포평화",
+    TextFont: "코드라",
   },
   /* font-family: 'Abril Fatface', cursive;
   font-family: 'Black Han Sans', sans-serif;

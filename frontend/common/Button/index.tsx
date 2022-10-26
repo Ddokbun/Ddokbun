@@ -31,7 +31,7 @@ export const BuyTextButton: React.FC = () => {
   );
 };
 
-export const BuyButton: React.FC = () => {
+export const BuyButton: React.FC<{ width: string }> = ({ width }) => {
   return (
     <PriceButtonStyle>
       <h3>Buy Now</h3>
