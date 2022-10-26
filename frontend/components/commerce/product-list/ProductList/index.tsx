@@ -6,9 +6,9 @@ import ProductCard from "../../../../common/Cards/ProductCard";
 const ProductList: React.FC = () => {
   return (
     <GridWrapper>
-      <ProductCard price={"18000"} />
-      <ProductCard price={"18000"} />
-      <ProductCard price={"18000"} />
+      <ProductCard price={10000} />
+      <ProductCard price={10000} />
+      <ProductCard price={10000} />
     </GridWrapper>
   );
 };
