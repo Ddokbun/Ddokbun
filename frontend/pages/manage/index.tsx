@@ -6,7 +6,7 @@ import PageTitle from "../../common/PageTitle";
 
 import Card from "../../components/manage/CardItem";
 import CardList from "../../components/manage/CardList";
-import { Wrapper } from "./styles";
+import { Wrapper } from "../../styles/manage/styles";
 
 const Manage: NextPage = () => {
   //

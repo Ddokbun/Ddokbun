@@ -1,7 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { NextPage } from "next";
-import { Wrapper } from "./styles";
+import { Wrapper } from "../../../../styles/commerce/products/list/styles";
 import Temp from "../../../../assets/temp.jpg";
 import ProductList from "../../../../components/commerce/product-list/ProductList";
 

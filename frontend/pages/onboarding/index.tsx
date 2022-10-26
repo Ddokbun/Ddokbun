@@ -2,7 +2,7 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import styled from "styled-components";
-import { Wrapper } from "./styles";
+import { Wrapper } from "../../styles/onboarding/styles";
 import MainContents from "../../components/Onboarding/MainContents";
 
 const Home: NextPage = () => {
