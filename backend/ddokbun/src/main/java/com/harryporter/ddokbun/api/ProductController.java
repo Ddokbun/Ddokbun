@@ -1,10 +1,15 @@
 package com.harryporter.ddokbun.api;
 
+import com.harryporter.ddokbun.api.response.ResponseFrame;
+import com.harryporter.ddokbun.domain.product.dto.ItemSearchDto;
 import com.harryporter.ddokbun.domain.product.service.ItemService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 @RequestMapping("/market/product")
 @RestController
@@ -16,19 +21,29 @@ public class ProductController {
     //식물(상품) 검색
     //사용자가 식물(상품) 이름을 통해 검색한다.
     @RequestMapping(value = "/search",method = RequestMethod.GET)
-    public ResponseEntity<?> productSearch(@RequestParam(value = "title") String productName){
+    public ResponseEntity<?> productSearch(@RequestParam(value = "title",required = false) String title){
 
+        List<ItemSearchDto> content = itemService.searchByTitle(title);
+        ResponseFrame<List<ItemSearchDto>> responseFrame = new ResponseFrame<>();
 
+        responseFrame.setContent(content);
+        responseFrame.setMessage( String.format("검색된 상품 리스트를 반환합니다. 발견된 갯수 : %d :: 검색어 : %s",content.size(),title)) ;
+        responseFrame.setState(1);
 
-        return null;
+        return new ResponseEntity<>(responseFrame, HttpStatus.OK);
     }
 
     //트래픽 낮추기 용 검색
     @RequestMapping(value = "/simple-search",method = RequestMethod.GET)
-    public ResponseEntity<?> productSimpleSearch(@RequestParam(value = "title") String productName){
+    public ResponseEntity<?> productSimpleSearch(@RequestParam(value = "title",required = false) String title){
+        List<?> content = itemService.simpleSearchByTitle(title);
+        ResponseFrame<List<?>> responseFrame = new ResponseFrame<>();
 
+        responseFrame.setContent(content);
+        responseFrame.setMessage( String.format("검색된 상품 <간략> 리스트를 반환합니다. 발견된 갯수 : %d :: 검색어 : %s",content.size(),title)) ;
+        responseFrame.setState(1);
 
-        return null;
+        return new ResponseEntity<>(responseFrame, HttpStatus.OK);
     }
 
 
