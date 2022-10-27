@@ -1,7 +1,10 @@
 package com.harryporter.ddokbun.domain.plant.entity;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
+@Getter
 @Entity
 public class Plant {
     //식물 일련 번호

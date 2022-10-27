@@ -1,7 +1,7 @@
 package com.harryporter.ddokbun.domain.product.repository;
 
 import com.harryporter.ddokbun.domain.plant.entity.QPlant;
-import com.harryporter.ddokbun.domain.product.dto.ItemSearchDto;
+import com.harryporter.ddokbun.domain.product.dto.response.ItemSearchDto;
 import com.harryporter.ddokbun.domain.product.entity.QItem;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;

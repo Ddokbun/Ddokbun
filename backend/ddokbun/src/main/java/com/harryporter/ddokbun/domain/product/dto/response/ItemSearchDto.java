@@ -1,4 +1,4 @@
-package com.harryporter.ddokbun.domain.product.dto;
+package com.harryporter.ddokbun.domain.product.dto.response;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
