@@ -3,13 +3,21 @@ package com.harryporter.ddokbun.domain.user.entity;
 import com.harryporter.ddokbun.domain.cart.entity.Cart;
 import com.harryporter.ddokbun.domain.order.entity.Order;
 import com.harryporter.ddokbun.domain.plant.entity.Pot;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Table(name="user")
 @Entity
+@Builder
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name="user")
 public class User {
 
     @Id

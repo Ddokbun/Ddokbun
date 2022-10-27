@@ -1,10 +1,15 @@
 package com.harryporter.ddokbun.domain.product.service;
 
-import com.harryporter.ddokbun.domain.product.dto.ItemSearchDto;
+import com.harryporter.ddokbun.domain.plant.entity.Plant;
+import com.harryporter.ddokbun.domain.plant.entity.dto.PlantDto;
+import com.harryporter.ddokbun.domain.product.dto.ItemDto;
+import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
+import com.harryporter.ddokbun.domain.product.dto.response.ItemSearchDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemSimpleSearchDto;
 import com.harryporter.ddokbun.domain.product.entity.Item;
 import com.harryporter.ddokbun.domain.product.repository.ItemRepository;
 import com.harryporter.ddokbun.domain.product.repository.ItemRepositoryCustom;
+import com.harryporter.ddokbun.exception.ErrorCode;
 import com.harryporter.ddokbun.exception.GeneralException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -46,11 +51,31 @@ public class ItemServiceImple implements ItemService{
     }
 
     @Override
-    public void getOneItemById(Long ItemSeq) {
+    public ItemDetailDto getOneItemById(Long ItemSeq) {
 
         Item item = itemRepository.findById(ItemSeq).orElseThrow(()->{
-           return new GeneralException();
+           return new GeneralException(ErrorCode.NOT_FOUND);
         });
+
+
+        ItemDetailDto idt = new ItemDetailDto();
+        PlantDto plantDto =null;
+        ItemDto itemDto = ItemDto.of(item);
+
+        //kind가 1이면 식물
+        //kind가 2이면 화분
+        if(item.getItemKind().intValue() == 1){
+            Plant plant=item.getPlant();
+            plantDto = PlantDto.of(plant);
+        }else if(item.getItemKind().intValue() == 2){
+            plantDto = null;
+        }
+
+        idt.copy(itemDto);
+        idt.setPlant(plantDto);
+
+        return idt;
+
 
     }
 

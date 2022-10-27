@@ -23,6 +23,8 @@ export const Theme: DefaultTheme = {
     darkGreen: "#4E6C50",
     black: "#395144",
     brown: "#AA8B56",
+    brownHover: "#CEB282",
     ivory: "#F0EBCE",
+    ivoryHover: "#FFFBE7",
   },
 };

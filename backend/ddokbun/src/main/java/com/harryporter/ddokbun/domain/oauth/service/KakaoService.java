@@ -2,10 +2,14 @@ package com.harryporter.ddokbun.domain.oauth.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.harryporter.ddokbun.domain.user.dto.KakaoOAuthToken;
-import com.harryporter.ddokbun.domain.user.dto.KakaoProfile;
-import com.harryporter.ddokbun.domain.user.dto.SocialUserDto;
+import com.harryporter.ddokbun.domain.oauth.dto.KakaoToken;
+import com.harryporter.ddokbun.domain.oauth.dto.KakaoProfile;
+import com.harryporter.ddokbun.domain.user.dto.UserSocialDto;
+import com.harryporter.ddokbun.domain.user.dto.UserDto;
+import com.harryporter.ddokbun.domain.user.service.UserService;
+import com.harryporter.ddokbun.utils.auth.JwtTokenProvider;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -17,17 +21,28 @@ import org.springframework.web.client.RestTemplate;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class KakaoService {
+    private final UserService userService;
 
-    public SocialUserDto kakaoLogin(String code){
-        KakaoOAuthToken accessToken = getKakaoOAuthToken(code);
-        System.out.println(code);
+    public String kakaoLogin(String code){
+        KakaoToken accessToken = getKakaoOAuthToken(code);
+        log.info("code : {}",code);
+
         KakaoProfile kakaoProfile = getKakaoProfile(accessToken);
-        System.out.println("dddd");
-        return new SocialUserDto(kakaoProfile);
+        log.info("accessToken : {}",accessToken);
+
+        UserDto userDto = userService.signup(new UserSocialDto(kakaoProfile));
+        log.info("user nickname : {}",userDto.getUserNickname());
+        log.info("user email : {}",userDto.getUserEmail());
+
+        String jwtToken = JwtTokenProvider.generateJwtToken(userDto);
+
+        log.info("jwtToken : {}",jwtToken);
+        return jwtToken;
     }
 
-    public KakaoOAuthToken getKakaoOAuthToken(String code){
+    private KakaoToken getKakaoOAuthToken(String code){
         try{
             // HTTP Header 생성
             HttpHeaders headers = new HttpHeaders();
@@ -54,7 +69,7 @@ public class KakaoService {
             // HTTP 응답 (JSON) -> 액세스 토큰 파싱
             String responseBody = response.getBody();
             ObjectMapper objectMapper = new ObjectMapper();
-            KakaoOAuthToken kakaoOAuthToken = objectMapper.readValue(responseBody, KakaoOAuthToken.class);
+            KakaoToken kakaoOAuthToken = objectMapper.readValue(responseBody, KakaoToken.class);
 
             return kakaoOAuthToken;
 
@@ -64,7 +79,7 @@ public class KakaoService {
         }
     }
 
-    public KakaoProfile getKakaoProfile(KakaoOAuthToken oAuthToken){
+    private KakaoProfile getKakaoProfile(KakaoToken oAuthToken){
         // HTTP Header 생성
         HttpHeaders headers2 = new HttpHeaders();
         headers2.add("Authorization", "Bearer "+oAuthToken.getAccess_token());
@@ -73,15 +88,12 @@ public class KakaoService {
         // HTTP 요청 보내기 (POST 방식으로)
         HttpEntity<MultiValueMap<String,String>> kakaoProfileRequest = new HttpEntity<>(headers2);
         RestTemplate rt2 = new RestTemplate();
-        System.out.println("1");
         ResponseEntity<String> response2 = rt2.exchange(
                 "https://kapi.kakao.com/v2/user/me",
                 HttpMethod.POST,
                 kakaoProfileRequest,
                 String.class
         );
-
-        System.out.println("2");
 
         ObjectMapper objectMapper = new ObjectMapper();
         KakaoProfile kakaoProfile = null;

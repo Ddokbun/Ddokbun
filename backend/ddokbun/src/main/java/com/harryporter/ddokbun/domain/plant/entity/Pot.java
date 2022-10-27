@@ -1,11 +1,18 @@
 package com.harryporter.ddokbun.domain.plant.entity;
 
+import com.harryporter.ddokbun.domain.order.entity.OrderStatus;
+import com.harryporter.ddokbun.domain.plant.dto.request.RegisterPotRequest;
 import com.harryporter.ddokbun.domain.user.entity.User;
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Getter
+@NoArgsConstructor
 public class Pot {
 
     // 화분 일련번호
@@ -70,4 +77,19 @@ public class Pot {
     @JoinColumn(name = "user_seq", nullable = true)
     @ManyToOne(fetch = FetchType.LAZY)
     private User user;
+
+    @PrePersist
+    public void setting(){
+        this.registeredTime = LocalDateTime.now(); //서버 돌아가는 컴퓨터 시간대의 현재
+    }
+
+    @Builder
+    public Pot(RegisterPotRequest registerPotRequest, User user, Plant plant){
+        this.potSerial = registerPotRequest.getPotSerial();
+        this.plantNickname = registerPotRequest.getPlantNickname();
+        this.isAuto = "Y";
+        this.waterSupply = registerPotRequest.getWaterSupply();
+        this.user = user;
+        this.plant = plant;
+    }
 }
