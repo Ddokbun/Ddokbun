@@ -1,5 +1,6 @@
 package com.harryporter.ddokbun.domain.cart.service;
 
+import com.harryporter.ddokbun.domain.cart.dto.CartDto;
 import com.harryporter.ddokbun.domain.cart.entity.Cart;
 import com.harryporter.ddokbun.domain.cart.entity.CartId;
 import com.harryporter.ddokbun.domain.cart.repository.CartRepository;
@@ -78,5 +79,22 @@ public class CartServiceImpl implements  CartService{
 
         return 1;
 
+    }
+
+    @Transactional
+    @Override
+    public CartDto updateCartItem(CartDto cartDto) {
+
+        CartId cartId = new CartId();
+        cartId.setItem(cartDto.getItemSeq());
+        cartId.setUser(cartDto.getUserSeq());
+
+        Cart test = cartRepository.findById(cartId).orElse(null);
+        Cart cartItem =  cartRepository.findById(cartId).orElseThrow(()-> new GeneralException(ErrorCode.NOT_FOUND,"해당하는 장바구니 아이템을 찾을 수 없습니다."));
+
+        cartItem.setQuantity(cartDto.getQuantity());
+
+        CartDto cartDtoRes = CartDto.of(cartItem);
+        return cartDtoRes;
     }
 }
