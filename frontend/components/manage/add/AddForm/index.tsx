@@ -48,6 +48,7 @@ const AddForm = () => {
           break;
         case "plantSeq":
           inputValues.current.plantSeq = value;
+          break;
         default:
           break;
       }
@@ -116,7 +117,11 @@ const AddForm = () => {
             image={calander}
             value={inputValues.current.waterSupply}
           /> */}
-          <DateInput label='마지막 물 준날' image={calander} saveInput={saveInput} />
+          <DateInput
+            label="마지막 물 준날"
+            image={calander}
+            saveInput={saveInput}
+          />
         </div>
 
         {/* {showCalander && (
