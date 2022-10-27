@@ -11,7 +11,7 @@ const ProductLists: NextPage = () => {
       <div className="banner-wrap">
         <Image src={Temp} alt="임시배너이미지입니다" />
       </div>
-      <ProductList></ProductList>
+      <ProductList />
     </Wrapper>
   );
 };
