@@ -14,7 +14,7 @@ const PageTitle: React.FC<{
       <h1>{children} </h1>
       {isLink && (
         <div className="add-btn-container">
-          <TextBtn path="hia" color={Theme.color.mainGreen}>
+          <TextBtn path="manage/add" color={Theme.color.mainGreen}>
             화분추가
           </TextBtn>
         </div>
