@@ -1,24 +1,20 @@
 package com.harryporter.ddokbun.api;
 
 import com.harryporter.ddokbun.api.response.ResponseFrame;
+import com.harryporter.ddokbun.domain.cart.dto.CartDto;
 import com.harryporter.ddokbun.domain.cart.dto.request.CartEnrollReq;
+import com.harryporter.ddokbun.domain.cart.dto.request.CartItemUpdateReq;
 import com.harryporter.ddokbun.domain.cart.service.CartService;
-import com.harryporter.ddokbun.domain.user.dto.UserAthentication;
 import com.harryporter.ddokbun.domain.user.dto.UserSimpleDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
-
-import java.nio.file.attribute.UserPrincipal;
-import java.security.Principal;
 
 @RequestMapping(name="/cart")
 @RestController
@@ -60,10 +56,23 @@ public class CartController {
 
 
     //장바구니 아이템의 수량을 수정한다.
+    @ApiOperation(value = "장바구니에서 수량 조절")
     @RequestMapping(value="/cart/{itemSeq}",method = RequestMethod.PUT)
-    public ResponseEntity<?> updateCartItemCount(@PathVariable Integer itemSeq){
+    public ResponseEntity<?> updateCartItemCount(@PathVariable Integer itemSeq, @RequestBody CartItemUpdateReq cartItemUpdateReq, @ApiIgnore @AuthenticationPrincipal UserSimpleDto principal){
 
-        return null;
+
+        log.info("장바구니 수량조절 AP 진입 :: userSeq : {}:: itemSeq : {} :: quantity : {}",principal.getUserSeq(),itemSeq,cartItemUpdateReq.getQuantity());
+        CartDto cartDto = CartDto.builder()
+                .itemSeq(itemSeq)
+                .userSeq(principal.getUserSeq())
+                .quantity(cartItemUpdateReq.getQuantity())
+                .build();
+
+        CartDto cartDtoRes = cartService.updateCartItem(cartDto);
+
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("정상적으로 장바구니 아이템 수량이 변경되었습니다.",cartDtoRes);
+
+        return new ResponseEntity(res,HttpStatus.OK);
     }
 
     //장바구니 확인
