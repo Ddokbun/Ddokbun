@@ -1,5 +1,5 @@
 // import { useRouter } from "next/router";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import {
   CancelButton,
   Register,
@@ -7,6 +7,7 @@ import {
 } from "../../../../common/Button";
 import { Input, SearchInput } from "../../../../common/Input";
 import { Wrapper } from "./styles";
+import calander from "../../../../assets/icon/calander.png";
 
 const AddForm = () => {
   // const router = useRouter();
@@ -16,6 +17,8 @@ const AddForm = () => {
     waterSupply: "",
     plantSeq: "",
   });
+
+  const [showCalander, setShowCalander] = useState(false);
 
   const saveInput = (value: string, identifier: string) => {
     switch (identifier) {
@@ -53,6 +56,10 @@ const AddForm = () => {
     // }
   };
 
+  const onShowCalanderHandler = () => {
+    setShowCalander(true);
+  };
+
   return (
     <Wrapper>
       <div className="grid">
@@ -63,6 +70,7 @@ const AddForm = () => {
           placeholder=" Input"
           type="text"
           identifier="potSerial"
+          image={null}
         />
         <Input
           saveInput={saveInput}
@@ -70,14 +78,18 @@ const AddForm = () => {
           placeholder=" Input"
           type="text"
           identifier="plantNickname"
+          image={null}
         />
-        <Input
-          saveInput={saveInput}
-          label="마지막 물준날"
-          placeholder=" Input"
-          type="text"
-          identifier="waterSupply"
-        />
+        <div onClick={onShowCalanderHandler}>
+          <Input
+            saveInput={saveInput}
+            label="마지막 물준날"
+            placeholder=" Input"
+            type="text"
+            identifier="waterSupply"
+            image={calander}
+          />
+        </div>
       </div>
       <div className="button-container">
         <div className="submit-button-container">

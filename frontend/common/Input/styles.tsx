@@ -5,6 +5,15 @@ export const BasicInput = styled.div`
   margin-bottom: 10%;
   /* justify-content: space-between;
   display: flex; */
+  position: relative;
+
+  .icon {
+    top: 10%;
+    position: absolute;
+    right: 2%;
+    width: 30px;
+    height: 30px;
+  }
 
   .label-basic {
     display: flex;

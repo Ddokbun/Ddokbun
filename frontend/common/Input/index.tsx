@@ -1,4 +1,4 @@
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import React from "react";
 import { BasicInput, SearchInputWrapper } from "./styles";
 import search from "../../assets/icon/search.png";
@@ -10,7 +10,8 @@ export const Input: React.FC<{
   label: string;
   saveInput: (value: string, identifier: string) => void;
   identifier: string;
-}> = ({ type, placeholder, label, saveInput, identifier }) => {
+  image: StaticImageData | null;
+}> = ({ type, placeholder, label, saveInput, identifier, image }) => {
   const onInputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     saveInput(event.target.value, identifier);
   };
@@ -25,6 +26,11 @@ export const Input: React.FC<{
           type={type}
           placeholder={placeholder}
         />
+        {image && (
+          <div className="icon">
+            <Image src={image} alt="calander-icon" />
+          </div>
+        )}
       </label>
     </BasicInput>
   );
@@ -35,7 +41,7 @@ export const SearchInput: React.FC<{ placeholder: string }> = ({
 }) => {
   const router = useRouter();
   const onShowSearchHandler = () => {
-    router.push('/search')
+    router.push("/search");
   };
 
   return (
