@@ -21,7 +21,6 @@ const Manage: NextPage = () => {
       <PageTitle isLink={true} isBold={true}>
         나의 식물들
       </PageTitle>
-
       <Card />
       {/* <CardList /> */}
     </Wrapper>
