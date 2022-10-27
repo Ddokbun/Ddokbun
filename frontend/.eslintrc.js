@@ -12,9 +12,9 @@ module.exports = {
     "eslint:recommended",
     "next",
     "plugin:@typescript-eslint/recommended",
-    "airbnb",
-    "airbnb-typescript",
-    "plugin:prettier/recommended",
+    // "airbnb",
+    // "airbnb-typescript",
+    // "plugin:prettier/recommended",
     "prettier",
   ],
   rules: {
