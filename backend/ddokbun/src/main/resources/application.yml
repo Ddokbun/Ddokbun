@@ -1,6 +1,15 @@
+server:
+  port: 8080
+  servlet:
+    context-path: "/api"
+
+
 spring:
   profiles:
     default: local
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
 
 ---
 spring:
@@ -10,9 +19,9 @@ spring:
         - local
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://<host>:<port>/<dbname>
-    username: <username>
-    password: <password>
+    url: jdbc:mysql://k7d208.p.ssafy.io:3208/ddokbun
+    username: ddokbun
+    password: dd123
   jpa:
     properties:
       hibernate:
@@ -23,4 +32,4 @@ spring:
 
 logging:
   level:
-    root: debug
+    root: info

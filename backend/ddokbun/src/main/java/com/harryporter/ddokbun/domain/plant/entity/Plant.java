@@ -96,11 +96,13 @@ public class Plant {
 
     @Column(name = "temperature")
 
-    private Integer teperature;
+    private Integer temperature;
     @Column(name = "temperature_info")
-    private String teperatureInfo;
+    private String temperatureInfo;
     @Column(name = "image_path")
     private String imagePath;
 
+    @Column(name = "rec_rate")
+    private String recRate;
 
 }
