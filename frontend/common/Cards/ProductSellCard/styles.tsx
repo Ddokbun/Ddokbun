@@ -23,7 +23,6 @@ export const Wrapper = styled.div`
   }
 
   .text-wrap {
-
     margin-top: 80px;
     width: 100%;
     height: 70%;
@@ -58,9 +57,9 @@ export const Wrapper = styled.div`
       display: flex;
       justify-content: flex-start;
       gap: 10px;
+      z-index: 0;
     }
   }
-
 
   @media screen and (${props => props.theme.mobile}) {
     width: 100%;
@@ -113,6 +112,7 @@ export const Wrapper = styled.div`
         margin-top: 20px;
       }
       .button-wrap {
+        z-index: 1;
         position: fixed;
         transform: translate(-50%, 0%);
         bottom: 20px;

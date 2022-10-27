@@ -53,7 +53,6 @@ export const PriceButtonStyle = styled.div`
   }
 `;
 
-
 export const BuyListButtonStyle = styled.div`
   width: 100px;
   height: 50px;
@@ -74,7 +73,7 @@ export const BuyListButtonStyle = styled.div`
 
   @media screen and (${props => props.theme.mobile}) {
     font-size: 36px;
-
+    z-index: 2;
     width: 30vw;
   }
 `;
