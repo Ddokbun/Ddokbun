@@ -3,9 +3,9 @@ import React from "react";
 import { NextPage } from "next";
 import { Wrapper } from "../../../../styles/commerce/products/list/styles";
 import Temp from "../../../../assets/temp.jpg";
-import ProductList from "../../../../components/commerce/product-list/ProductList";
+import ProductList from "../../../../components/commerce/products/lists";
 
-const Index: NextPage = () => {
+const ProductLists: NextPage = () => {
   return (
     <Wrapper>
       <div className="banner-wrap">
@@ -16,4 +16,4 @@ const Index: NextPage = () => {
   );
 };
 
-export default Index;
+export default ProductLists;
