@@ -1,9 +1,8 @@
-import react from "react";
 import { Wrapper } from "./styles";
 import Image from "next/image";
 import mainImg from "../../../assets/onboarding/tempAdvice01.jpg";
 
-const SubContents = () => {
+const RecommendItem = () => {
   return (
     <Wrapper>
       <div className="subcontent-wrap">
@@ -17,4 +16,4 @@ const SubContents = () => {
   );
 };
 
-export default SubContents;
+export default RecommendItem;

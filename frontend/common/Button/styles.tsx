@@ -107,3 +107,25 @@ export const CancelButtonStyle = styled.button`
     padding: 2% 0 2%;
   }
 `;
+
+export const SearchButtonStyle = styled.button`
+  background-color: ${props => props.color};
+  font-family: "프리텐다드B";
+  font-size: 20px;
+  color: black;
+  border-radius: 15px;
+  padding: 3% 0 3%;
+  margin: 1%;
+  width: 150px;
+  height: 150px;
+  box-shadow:  0 4px 5px rgba(0, 0, 0, 0.3);;
+
+  @media screen and (${props => props.theme.mobile}) {
+    width: 90px;
+    height: 90px;
+    border-radius: 10px;
+    font-size: 15px;
+    margin: 1%;
+    padding: 2% 0 2%;
+  }
+`;

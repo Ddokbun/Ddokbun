@@ -9,7 +9,7 @@ import { Theme } from "../styles/theme";
 import GlobalStyle from "../styles/global-styles";
 import { wrapper } from "../store";
 import Navbar from "../common/Navbar/index";
-
+import '@fortawesome/fontawesome-svg-core/styles.css'
 
 const DEFAULT_SEO = {
   title: "똑분 - Ddokbun",
@@ -40,7 +40,7 @@ const DEFAULT_SEO = {
 const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
   const { store, props } = wrapper.useWrappedStore(rest);
   const router = useRouter();
-  const isOnboarding = router.route.includes("onboarding");
+  const isOnboarding = router.route.includes("welcome");
   return (
     <>
       <Provider store={store}>
