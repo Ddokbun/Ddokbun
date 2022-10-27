@@ -24,11 +24,11 @@ public class ProductController {
     public ResponseEntity<?> productSearch(@RequestParam(value = "title",required = false) String title){
 
         List<ItemSearchDto> content = itemService.searchByTitle(title);
-        ResponseFrame<List<ItemSearchDto>> responseFrame = new ResponseFrame<>();
+        ResponseFrame<List<ItemSearchDto>> responseFrame =
+                ResponseFrame.ofOKResponse(
+                        String.format("검색된 상품 리스트를 반환합니다. 발견된 갯수 : %d :: 검색어 : %s",content.size(),title),
+                        content);
 
-        responseFrame.setContent(content);
-        responseFrame.setMessage( String.format("검색된 상품 리스트를 반환합니다. 발견된 갯수 : %d :: 검색어 : %s",content.size(),title)) ;
-        responseFrame.setState(1);
 
         return new ResponseEntity<>(responseFrame, HttpStatus.OK);
     }
@@ -38,11 +38,9 @@ public class ProductController {
     public ResponseEntity<?> productSimpleSearch(@RequestParam(value = "title",required = false) String title){
         List<?> content = itemService.simpleSearchByTitle(title);
 
-        ResponseFrame<List<?>> responseFrame = new ResponseFrame<>();
 
-        responseFrame.setContent(content);
-        responseFrame.setMessage( String.format("검색된 상품 <간략> 리스트를 반환합니다. 발견된 갯수 : %d :: 검색어 : %s",content.size(),title)) ;
-        responseFrame.setState(1);
+        ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse(String.format("검색된 상품 <간략> 리스트를 반환합니다. 발견된 갯수 : %d :: 검색어 : %s",content.size(),title),content);
+
 
         return new ResponseEntity<>(responseFrame, HttpStatus.OK);
     }
