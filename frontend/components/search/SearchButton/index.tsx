@@ -1,4 +1,3 @@
-import react from "react";
 import { Wrapper } from "./styles";
 
 const CommerceContents = () => {

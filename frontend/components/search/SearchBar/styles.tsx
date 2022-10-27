@@ -3,12 +3,12 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.color.brown};
   .search {
-  width: 100%;
-  position: relative;
-  display: flex;
+    width: 100%;
+    position: relative;
+    display: flex;
   }
 
-  .searchTerm {
+  .search-term {
     width: 100%;
     border: 3px solid #b9b9b9;
     border-right: none;
@@ -19,7 +19,7 @@ export const Wrapper = styled.div`
     color: #000000;
   }
 
-  .searchButton {
+  .search-button {
     width: 40px;
     height: 36px;
     border: 1px solid #676767;
@@ -31,10 +31,8 @@ export const Wrapper = styled.div`
     font-size: 20px;
   }
 
-
-  .wrap{
+  .wrap {
     width: 30%;
-
   }
 
   @media screen and (${props => props.theme.mobile}) {

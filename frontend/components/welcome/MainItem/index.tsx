@@ -1,9 +1,8 @@
-import react from "react";
 import { Wrapper } from "./styles";
 import Image from "next/image";
 import mainImg from "../../../assets/onboarding/mainImg.jpg";
 
-const MainContents = () => {
+const MainItem = () => {
   return (
     <Wrapper>
       <div className="banner-wrap">
@@ -17,4 +16,4 @@ const MainContents = () => {
   );
 };
 
-export default MainContents;
+export default MainItem;

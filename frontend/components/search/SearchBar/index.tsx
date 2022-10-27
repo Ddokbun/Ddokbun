@@ -10,10 +10,10 @@ function SearchBar() {
           <div className="search">
             <input
               type="text"
-              className="searchTerm"
+              className="search-term"
               placeholder="식물 이름 검색"
             />
-            <button type="submit" className="searchButton">
+            <button type="submit" className="search-button">
               <i className="fa fa-search" />
             </button>
           </div>
