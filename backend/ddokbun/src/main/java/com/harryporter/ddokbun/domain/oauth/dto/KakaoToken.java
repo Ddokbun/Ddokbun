@@ -1,4 +1,4 @@
-package com.harryporter.ddokbun.domain.user.dto;
+package com.harryporter.ddokbun.domain.oauth.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,7 +9,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class KakaoOAuthToken {
+public class KakaoToken {
     private String access_token;
     private String token_type;
     private String refresh_token;
