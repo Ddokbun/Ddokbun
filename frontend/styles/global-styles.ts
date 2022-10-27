@@ -3,6 +3,12 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   body {
     background-color: #fafafa ;
+
+    //드래그 방지 코드
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
   }
 
   * {
