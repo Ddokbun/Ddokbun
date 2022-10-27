@@ -25,8 +25,12 @@ export const PriceTextButtonStyle = styled.div`
   }
 `;
 
-export const PriceButtonStyle = styled.div`
-  width: 250px;
+interface PriceButtonProps {
+  width: string;
+}
+
+export const PriceButtonStyle = styled.div<PriceButtonProps>`
+  width: ${props => props.width || "250px"};
   height: 50px;
   border-radius: 2px;
   display: flex;
@@ -41,6 +45,9 @@ export const PriceButtonStyle = styled.div`
   svg {
     width: 10px;
     height: 20px;
+  }
+  h3 {
+    letter-spacing: 5px;
   }
 
   @media screen and (${props => props.theme.mobile}) {

@@ -1,0 +1,16 @@
+import styled from "styled-components";
+
+export const Wrapper = styled.div`
+  width: 100%;
+  margin: auto;
+  height: 500px;
+  max-width: 1250px;
+  padding: 50px 50px;
+
+  h1 {
+    color: ${props => props.theme.color.mainGreen};
+    font-size: 50px;
+    margin-bottom: 20px;
+    font-weight: 500;
+  }
+`;
