@@ -37,7 +37,7 @@ export const Wrapper = styled.div`
       align-items: center;
       h2 {
         font-size: 1.25rem;
-        font-family: ${props => props.theme.font.TextFont};
+        font-family: ${props => props.theme.font.TextFont1};
         font-weight: 600;
         color: ${props => props.theme.color.darkGreen};
       }
@@ -86,7 +86,7 @@ export const Wrapper = styled.div`
         align-items: flex-start;
         h2 {
           font-size: 2rem;
-          font-family: ${props => props.theme.font.TextFont};
+          font-family: ${props => props.theme.font.TextFont1};
           font-weight: 600;
           color: ${props => props.theme.color.darkGreen};
         }
