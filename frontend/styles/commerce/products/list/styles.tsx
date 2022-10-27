@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   background-color: "#fafafa";
 
   .banner-wrap {
+    z-index: 0;
     margin: 0 auto 20px;
     width: 95%;
     max-width: 1240px;
@@ -14,6 +15,7 @@ export const Wrapper = styled.div`
 
   @media screen and (${props => props.theme.mobile}) {
     .banner-wrap {
+      z-index: 1;
       margin: 0 auto 20px;
       width: 100%;
       max-width: 800px;
