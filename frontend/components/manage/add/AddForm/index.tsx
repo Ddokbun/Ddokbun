@@ -10,7 +10,7 @@ import { Wrapper } from "./styles";
 
 const AddForm = () => {
   const router = useRouter();
-  const inputValues: Register = useRef({
+  const inputValues = useRef({
     potSerial: "",
     plantNickname: "",
     waterSupply: "",

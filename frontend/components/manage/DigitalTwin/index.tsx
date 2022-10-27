@@ -6,11 +6,9 @@ import Water from "../../../assets/icon/Water.svg";
 import Plant from "../../../assets/3d/plant.gltf";
 import * as THREE from "three";
 import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
-import { Canvas } from "@react-three/fiber";
 import Box from "./Box";
 import { createRoot } from "react-dom/client";
 import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import Three from "./Three";
 // import { Model } from "../../../Model";
 
 const DigitalTwin = () => {
@@ -65,11 +63,11 @@ const DigitalTwin = () => {
           <Sun viewBox="-50 -30 200 200" />
           <Water className="water" viewBox="-50 -30 200 200" />
         </div>
-        <Canvas className="" id="twin">
+        {/* <Canvas className="" id="twin">
           <Suspense fallback={null}>
             <Three />
           </Suspense>
-        </Canvas>
+        </Canvas> */}
       </div>
     </Wrapper>
   );
