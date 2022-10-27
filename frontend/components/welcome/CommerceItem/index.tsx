@@ -1,4 +1,3 @@
-import react from "react";
 import { Wrapper } from "./styles";
 import Image from "next/image";
 import commerceImg01 from "../../../assets/onboarding/tempRecommend01.jpg";
@@ -6,7 +5,7 @@ import commerceImg02 from "../../../assets/onboarding/tempRecommend02.jpg";
 import commerceImg03 from "../../../assets/onboarding/tempRecommend03.jpg";
 import commerceImg04 from "../../../assets/onboarding/tempRecommend04.jpg";
 
-const CommerceContents = () => {
+const CommerceItem = () => {
   return (
     <Wrapper>
       <div className="subcontent-wrap">
@@ -47,4 +46,4 @@ const CommerceContents = () => {
   );
 };
 
-export default CommerceContents;
+export default CommerceItem;
