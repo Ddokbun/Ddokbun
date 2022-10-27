@@ -74,3 +74,33 @@ export const BuyListButtonStyle = styled.div`
     font-size: 36px;
   }
 `;
+
+export const SubmitButtonStyle = styled.button`
+  background-color: ${props => props.theme.color.mainGreen};
+  color: #fbfbfb;
+  border-radius: 12px;
+  padding: 3% 0 3%;
+  margin: 1%;
+  width: 40%;
+
+  @media screen and (${props => props.theme.mobile}) {
+    width: 40%;
+    height: 100%;
+    padding: 2% 0 2%;
+  }
+`;
+
+export const CancelButtonStyle = styled.button`
+  background-color: ${props => props.theme.color.darkGreen};
+  color: #7a887a;
+  border-radius: 12px;
+  padding: 3% 0 3%;
+  margin: 1%;
+  width: 40%;
+
+  @media screen and (${props => props.theme.mobile}) {
+    width: 40%;
+    height: 100%;
+    padding: 2% 0 2%;
+  }
+`;
