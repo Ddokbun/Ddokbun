@@ -24,6 +24,7 @@ const ProductSellCard: React.FC<ProductInfo> = ({ price }) => {
         <div className="text-top">
           <h3>Swiss Chress</h3>
           <h2>임시상품명</h2>
+
         </div>
         <ProductLabel>초보집사</ProductLabel>
         <h3>₩ {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h3>

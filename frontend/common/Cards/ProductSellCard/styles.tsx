@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   grid-auto-flow: row;
+
   grid-gap: 50px;
   place-items: end;
   .img-wrap {
@@ -15,12 +16,14 @@ export const Wrapper = styled.div`
     width: 100%;
     position: relative;
     max-width: 400px;
+
     min-width: 300px;
     align-items: center;
     text-align: center;
   }
 
   .text-wrap {
+
     margin-top: 80px;
     width: 100%;
     height: 70%;
@@ -34,6 +37,7 @@ export const Wrapper = styled.div`
     .text-top {
       h2 {
         padding: 0px;
+
         font-size: 60px;
         margin: 0;
         color: ${props => props.theme.color.mainGreen};
@@ -56,6 +60,7 @@ export const Wrapper = styled.div`
       gap: 10px;
     }
   }
+
 
   @media screen and (${props => props.theme.mobile}) {
     width: 100%;

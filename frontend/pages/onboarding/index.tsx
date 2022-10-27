@@ -1,5 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+
 import MainContents from "../../components/Onboarding/MainContents";
 import SubContents from "../../components/Onboarding/SubContents";
 import CommerceContents from "../../components/Onboarding/CommerceContents";

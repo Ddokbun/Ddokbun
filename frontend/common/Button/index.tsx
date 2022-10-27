@@ -9,6 +9,7 @@ import {
   SubmitButtonStyle,
 } from "./styles";
 
+
 import RightUp from "../../assets/commerce/right-up.svg";
 import Bag from "../../assets/commerce/bag.svg";
 
@@ -25,6 +26,7 @@ export const TextBtn: React.FC<{
 };
 
 export const BuyTextButton: React.FC = () => {
+
   return (
     <PriceTextButtonStyle>
       <h3>Buy</h3>

@@ -1,5 +1,6 @@
 import React from "react";
 import { Wrapper } from "./styles";
+
 import Bag from "../../assets/commerce/bag.svg";
 import LeftArrow from "../../assets/commerce/leftArrow.svg";
 import Link from "next/link";
