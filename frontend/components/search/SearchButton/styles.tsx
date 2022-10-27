@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 30px 10px 30px 10px;
+    margin: 70px 10px 30px 10px;
   }
+
 `;
