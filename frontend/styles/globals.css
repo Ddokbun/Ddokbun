@@ -1,3 +1,38 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@font-face {
+  font-family: "김포평화";
+  src: url("../assets/fonts/김포평화B.ttf");
+}
+
+@font-face {
+  font-family: "코트라";
+  src: url("../assets/fonts/KOTRA_SONGEULSSI.ttf");
+}
+
+@font-face {
+  font-family: "프리텐다드B";
+  src: url("../assets/fonts/Pretendard-Bold.ttf");
+}
+
+@font-face {
+  font-family: "프리텐다드L";
+  src: url("../assets/fonts/Pretendard-Light.ttf");
+}
+
+@font-face {
+  font-family: "프리텐다드R";
+  src: url("../assets/fonts/Pretendard-Regular.ttf");
+}
+
+@font-face {
+  font-family: "프리텐다드EL";
+  src: url("../assets/fonts/Pretendard-ExtraLight.ttf");
+}
+
+@font-face {
+  font-family: "프리텐다드SB";
+  src: url("../assets/fonts/Pretendard-SemiBold.ttf");
+}

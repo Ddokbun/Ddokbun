@@ -1,6 +1,7 @@
 import React from "react";
 import { Theme } from "../../styles/theme";
-import TextBtn from "../TextBtn";
+import { TextBtn } from "../Button";
+
 import { Wrapper } from "./styles";
 
 const PageTitle: React.FC<{
