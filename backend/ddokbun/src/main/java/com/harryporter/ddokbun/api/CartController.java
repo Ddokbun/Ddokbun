@@ -4,6 +4,7 @@ import com.harryporter.ddokbun.api.response.ResponseFrame;
 import com.harryporter.ddokbun.domain.cart.dto.CartDto;
 import com.harryporter.ddokbun.domain.cart.dto.request.CartEnrollReq;
 import com.harryporter.ddokbun.domain.cart.dto.request.CartItemUpdateReq;
+import com.harryporter.ddokbun.domain.cart.dto.response.CartItemDetail;
 import com.harryporter.ddokbun.domain.cart.service.CartService;
 import com.harryporter.ddokbun.domain.user.dto.UserSimpleDto;
 import io.swagger.annotations.Api;
@@ -15,6 +16,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
+
+import java.util.List;
 
 @RequestMapping(name="/cart")
 @RestController
@@ -78,9 +81,14 @@ public class CartController {
     //장바구니 확인
     //유저가 자신의 장바구니의 아이템을 확인한다.
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<?> getMyCartItems(){
+    public ResponseEntity<?> getMyCartItems(@ApiIgnore @AuthenticationPrincipal UserSimpleDto userSimpleDto){
 
-        return null;
+        log.info("장바구니에 등록한 아이템 조회 API :: userSeq : {}",userSimpleDto.getUserSeq());
+
+        List<CartItemDetail> cartItemList = cartService.findAllCartItemByUserSeq(userSimpleDto.getUserSeq());
+
+        ResponseFrame<?> res = ResponseFrame.ofOKResponse("장바구니 내역을 정상적으로 반환합니다.",cartItemList);
+        return new ResponseEntity<>(res,HttpStatus.OK);
     }
 
 

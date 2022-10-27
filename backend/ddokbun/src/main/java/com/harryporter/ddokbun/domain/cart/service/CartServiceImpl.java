@@ -1,6 +1,7 @@
 package com.harryporter.ddokbun.domain.cart.service;
 
 import com.harryporter.ddokbun.domain.cart.dto.CartDto;
+import com.harryporter.ddokbun.domain.cart.dto.response.CartItemDetail;
 import com.harryporter.ddokbun.domain.cart.entity.Cart;
 import com.harryporter.ddokbun.domain.cart.entity.CartId;
 import com.harryporter.ddokbun.domain.cart.repository.CartRepository;
@@ -15,7 +16,9 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -72,7 +75,7 @@ public class CartServiceImpl implements  CartService{
         cartId.setUser(userSeq);
 
         cartRepository.findById(cartId).orElseThrow(
-                ()-> new GeneralException(ErrorCode.NOT_FOUND,"유저를 특정할 수 없습니다.")
+                ()-> new GeneralException(ErrorCode.NOT_FOUND,"삭제할 장바구니 아이템을 찾을 수 없습니다.")
         );
 
         cartRepository.deleteById(cartId);
@@ -96,5 +99,19 @@ public class CartServiceImpl implements  CartService{
 
         CartDto cartDtoRes = CartDto.of(cartItem);
         return cartDtoRes;
+    }
+
+    @Override
+    public List<CartItemDetail> findAllCartItemByUserSeq(Long userSeq) {
+
+        List<Cart> carts =  cartRepository.findByUserSeqWithFetch(userSeq);
+
+        List<CartItemDetail> cartList = carts.stream().map((cartItem)->{
+
+            return CartItemDetail.of(cartItem);
+
+        }).collect(Collectors.toList());
+
+        return cartList;
     }
 }
