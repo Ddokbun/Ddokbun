@@ -1,14 +1,19 @@
 package com.harryporter.ddokbun.api;
 
 import com.harryporter.ddokbun.api.response.ResponseFrame;
-import com.harryporter.ddokbun.domain.product.dto.ItemSearchDto;
+import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
+import com.harryporter.ddokbun.domain.product.dto.response.ItemSearchDto;
 import com.harryporter.ddokbun.domain.product.service.ItemService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @RequestMapping("/market/product")
@@ -48,9 +53,12 @@ public class ProductController {
     //상품 상세보기
     //사용자가 상품에 대한 모든 정보를 요청한다.
     @RequestMapping(value = "/{itemSeq}",method = RequestMethod.GET)
-    public ResponseEntity<?> getProductDetail(@PathVariable Integer itemSeq){
+    public ResponseEntity<?> getProductDetail(@PathVariable Long itemSeq){
 
-        return null;
+        ItemDetailDto itemDetailDto = itemService.getOneItemById(itemSeq);
+
+        ResponseFrame<?> res = ResponseFrame.ofOKResponse("상품 상세 정보를 반환합니다.",itemDetailDto);
+        return  new ResponseEntity<>(res,HttpStatus.OK);
     }
 
 
