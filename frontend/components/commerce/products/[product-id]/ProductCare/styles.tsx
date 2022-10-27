@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   margin: 50px 0px 0px;
   padding: 0px 100px;
   width: 100%;
+  margin-bottom: 60px;
 
   h1 {
     font-family: ${props => props.theme.font.TitleFont};
@@ -20,7 +21,7 @@ export const Wrapper = styled.div`
     margin: 50px 0px 0px;
     padding: 0px;
     width: 100%;
-    height: 500px;
+    margin-bottom: 100px;
 
     h1 {
       font-family: ${props => props.theme.font.TitleFont};

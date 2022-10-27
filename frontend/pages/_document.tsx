@@ -19,10 +19,6 @@ const Document = () => (
         src="https://developers.kakao.com/sdk/js/kakao.js"
         async
       ></script>
-      <script
-        src="https://kit.fontawesome.com/379f76556e.js"
-        crossOrigin="anonymous"
-      ></script>
     </Head>
     <body>
       <Main />

@@ -6,7 +6,7 @@ import commerceImg02 from "../../../assets/onboarding/tempRecommend02.jpg";
 import commerceImg03 from "../../../assets/onboarding/tempRecommend03.jpg";
 import commerceImg04 from "../../../assets/onboarding/tempRecommend04.jpg";
 
-const SubContents = () => {
+const CommerceContents = () => {
   return (
     <Wrapper>
       <div className="subcontent-wrap">
@@ -47,4 +47,4 @@ const SubContents = () => {
   );
 };
 
-export default SubContents;
+export default CommerceContents;
