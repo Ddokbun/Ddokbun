@@ -6,6 +6,8 @@ export const BasicInput = styled.div`
   /* justify-content: space-between;
   display: flex; */
   position: relative;
+  font-family: "DM Serif Display", serif;
+  color: ${props => props.theme.color.darkGreen};
 
   .icon {
     top: 10%;
@@ -13,13 +15,12 @@ export const BasicInput = styled.div`
     right: 2%;
     width: 30px;
     height: 30px;
+    z-index: 2;
   }
 
   .label-basic {
     display: flex;
     flex-direction: column;
-    font-family: "DM Serif Display", serif;
-    color: ${props => props.theme.color.darkGreen};
   }
 
   .input-basic {
@@ -69,5 +70,30 @@ export const SearchInputWrapper = styled.div`
       padding: 16px 12px 16px;
       border-radius: 18px;
     }
+  }
+`;
+
+export const DateInputStyle = styled.div`
+  width: 90%;
+  margin-bottom: 10%;
+  /* justify-content: space-between;
+    display: flex; */
+  position: relative;
+  font-family: "DM Serif Display", serif;
+  color: ${props => props.theme.color.darkGreen};
+  .icon {
+  }
+  .label-basic {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .icon {
+    top: 10%;
+    position: absolute;
+    right: 2%;
+    width: 30px;
+    height: 30px;
+    z-index: -1;
   }
 `;
