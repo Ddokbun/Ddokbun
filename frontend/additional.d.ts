@@ -4,3 +4,5 @@
 /// <reference types="next/image-types/global" />
 
 declare module "*.png";
+declare module "*.fbx";
+declare module "*.gltf";

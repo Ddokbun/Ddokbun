@@ -9,6 +9,8 @@ module.exports = {
     node: true,
   },
   extends: [
+    "eslint:recommended",
+    "next",
     "plugin:@typescript-eslint/recommended",
     "airbnb",
     "airbnb-typescript",
