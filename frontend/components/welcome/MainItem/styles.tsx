@@ -19,6 +19,16 @@ export const Wrapper = styled.div`
       }
     }
   }
+  .kakao-btn {
+    background-image: url("../../../assets/kakao_login_large_wide.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    margin: 10px auto;
+    /* padding: -10px; */
+    color: transparent;
+    width: 300px;
+    height: 45px;
+  }
 
   @media screen and (${props => props.theme.mobile}) {
     .banner-wrap {
