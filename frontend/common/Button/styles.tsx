@@ -19,14 +19,14 @@ export const PriceTextButtonStyle = styled.div`
   @media screen and (${props => props.theme.mobile}) {
     font-size: 36px;
     svg {
-      width: 30px;
-      height: 40px;
+      width: 20px;
+      height: 30px;
     }
   }
 `;
 
 export const PriceButtonStyle = styled.div`
-  width: 200px;
+  width: 250px;
   height: 50px;
   border-radius: 2px;
   display: flex;
@@ -44,6 +44,7 @@ export const PriceButtonStyle = styled.div`
   }
 
   @media screen and (${props => props.theme.mobile}) {
+    width: 60vw;
     font-size: 36px;
     svg {
       width: 30px;
@@ -52,8 +53,9 @@ export const PriceButtonStyle = styled.div`
   }
 `;
 
+
 export const BuyListButtonStyle = styled.div`
-  width: 80px;
+  width: 100px;
   height: 50px;
   border-radius: 2px;
   display: flex;
@@ -72,5 +74,7 @@ export const BuyListButtonStyle = styled.div`
 
   @media screen and (${props => props.theme.mobile}) {
     font-size: 36px;
+
+    width: 30vw;
   }
 `;

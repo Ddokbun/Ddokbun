@@ -4,13 +4,18 @@ import { NextPage } from "next";
 import { Wrapper } from "../../../../styles/commerce/products/[product-id]/style";
 import ProductSellCard from "../../../../common/Cards/ProductSellCard";
 
-const Index: NextPage = () => {
+import ProductSummary from "../../../../components/commerce/products/[product-id]/ProductSummary";
+import ProductCare from "../../../../components/commerce/products/[product-id]/ProductCare";
+
+const Product: NextPage = () => {
   return (
     <Wrapper>
       <ProductSellCard price={18000} />
-      <div className="contents"></div>
+      <ProductSummary></ProductSummary>
+      <ProductCare></ProductCare>
     </Wrapper>
   );
 };
 
-export default Index;
+
+export default Product;
