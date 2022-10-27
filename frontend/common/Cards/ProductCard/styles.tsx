@@ -1,7 +1,7 @@
 import Image from "next/image";
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const ResponsiveWrapper = styled.div`
   width: 100%;
   height: 100%;
   display: grid;
@@ -50,6 +50,7 @@ export const Wrapper = styled.div`
       }
     }
   }
+
   @media screen and (${props => props.theme.mobile}) {
     padding: 0px 20px;
     display: grid;
@@ -97,6 +98,57 @@ export const Wrapper = styled.div`
           color: ${props => props.theme.color.ivory};
           font-family: ${props => props.theme.font.EnglishFont};
         }
+      }
+    }
+  }
+`;
+
+export const Wrapper = styled.div`
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 3fr 2fr;
+  place-items: center;
+  .img-wrap {
+    padding: 0px 20px;
+    width: 100%;
+    max-width: 250px;
+    position: relative;
+    align-items: center;
+  }
+
+  .text-wrap {
+    margin-top: 10px;
+    width: 100%;
+    height: 100%;
+    gap: 5px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    h3 {
+      font-family: ${props => props.theme.font.EnglishFont};
+      font-size: 1.2rem;
+    }
+
+    .title {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h2 {
+        font-size: 1.25rem;
+        font-family: ${props => props.theme.font.TextFont1};
+        font-weight: 600;
+        color: ${props => props.theme.color.darkGreen};
+      }
+      h3 {
+        font-size: 1.25rem;
+        line-height: 10px;
+        margin-bottom: 10px;
+        color: ${props => props.theme.color.ivory};
+        font-family: ${props => props.theme.font.EnglishFont};
       }
     }
   }
