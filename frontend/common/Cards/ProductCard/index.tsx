@@ -14,7 +14,7 @@ interface CardProps {
 const ProductCard: React.FC<CardProps> = ({ price }) => {
   return (
     <Wrapper>
-      <div className="img_wrap">
+      <div className="img-wrap">
         <Image
           objectFit="contain"
           src={Temp}
@@ -22,9 +22,11 @@ const ProductCard: React.FC<CardProps> = ({ price }) => {
           alt="임시상품이미지"
         />
       </div>
-      <div className="text_wrap">
-        <h2>임시상품명</h2>
-        <h3>Swiss Chress</h3>
+      <div className="text-wrap">
+        <div className="title">
+          <h2>임시상품명</h2>
+          <h3>Swiss Chress</h3>
+        </div>
         <ProductLabel>초보집사</ProductLabel>
         <h3>₩ {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h3>
         <BuyTextButton />

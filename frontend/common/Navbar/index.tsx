@@ -1,7 +1,7 @@
 import React from "react";
 import { Wrapper } from "./styles";
-import Bag from "../../assets/bag.svg";
-import LeftArrow from "../../assets/leftArrow.svg";
+import Bag from "../../assets/commerce/bag.svg";
+import LeftArrow from "../../assets/commerce/leftArrow.svg";
 import Link from "next/link";
 
 const Navbar = () => {
@@ -18,7 +18,7 @@ const Navbar = () => {
       </div>
       <div className="menu">
         <ul>
-          <Link href={'manage'}>IoT</Link>
+          <Link href={"manage"}>IoT</Link>
           <li>Shopping</li>
           <li>Search</li>
           <li>MyPage</li>
