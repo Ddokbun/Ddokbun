@@ -1,16 +1,15 @@
 import "../styles/globals.css";
 import React, { FC } from "react";
-import Head from "next/head";
 import { Provider } from "react-redux";
 import { AppProps } from "next/app";
-import { wrapper } from "../store";
+import { useRouter } from "next/router";
+import { DefaultSeo } from "next-seo";
 import { ThemeProvider } from "styled-components";
 import { Theme } from "../styles/theme";
 import GlobalStyle from "../styles/global-styles";
+import { wrapper } from "../store";
 import Navbar from "../common/Navbar/index";
-import { useRouter } from "next/router";
-
-import { DefaultSeo } from "next-seo";
+import '@fortawesome/fontawesome-svg-core/styles.css'
 
 const DEFAULT_SEO = {
   title: "똑분 - Ddokbun",
@@ -41,7 +40,7 @@ const DEFAULT_SEO = {
 const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
   const { store, props } = wrapper.useWrappedStore(rest);
   const router = useRouter();
-  const isOnboarding = router.route.includes("onboarding");
+  const isOnboarding = router.route.includes("welcome");
   return (
     <>
       <Provider store={store}>
