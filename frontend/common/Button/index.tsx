@@ -7,6 +7,7 @@ import {
   PriceButtonStyle,
   PriceTextButtonStyle,
   SubmitButtonStyle,
+  SearchButtonStyle
 } from "./styles";
 
 import RightUp from "../../assets/commerce/right-up.svg";
@@ -21,6 +22,18 @@ export const TextBtn: React.FC<{
   return (
     <Link href={path}>
       <Button color={color}>{children}</Button>
+    </Link>
+  );
+};
+
+export const SearchBtn : React.FC<{
+  children: string;
+  color: string;
+  path: string;
+}> = ({ children, color, path }) => {
+  return (
+    <Link href={path}>
+      <SearchButtonStyle color={color}>{children}</SearchButtonStyle>
     </Link>
   );
 };

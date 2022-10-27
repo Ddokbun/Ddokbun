@@ -1,8 +1,11 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background-color: ${props => props.theme.color.mainGreen};  
-
-  @media screen and (${props => props.theme.mobile}) {
+  background-color: #fafafa;
+  .button-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 30px 10px 30px 10px;
   }
 `;
