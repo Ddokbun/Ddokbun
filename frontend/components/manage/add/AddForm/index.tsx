@@ -1,15 +1,15 @@
-import { useRouter } from "next/router";
+// import { useRouter } from "next/router";
 import React, { useRef } from "react";
 import {
   CancelButton,
-  Register,
+  // Register,
   SubmitButton,
 } from "../../../../common/Button";
 import { Input, SearchInput } from "../../../../common/Input";
 import { Wrapper } from "./styles";
 
 const AddForm = () => {
-  const router = useRouter();
+  // const router = useRouter();
   const inputValues = useRef({
     potSerial: "",
     plantNickname: "",

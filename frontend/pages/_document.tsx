@@ -12,8 +12,13 @@ const Document = () => (
         type="text/javascript"
         src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
         charSet="utf-8"
+        async
       ></script>
-      <script defer src="https://developers.kakao.com/sdk/js/kakao.js"></script>
+      <script
+        defer
+        src="https://developers.kakao.com/sdk/js/kakao.js"
+        async
+      ></script>
     </Head>
     <body>
       <Main />

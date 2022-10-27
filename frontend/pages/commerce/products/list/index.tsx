@@ -3,7 +3,6 @@ import React from "react";
 import { NextPage } from "next";
 import { Wrapper } from "../../../../styles/commerce/products/list/styles";
 import Temp from "../../../../assets/temp.jpg";
-
 import ProductList from "../../../../components/commerce/products/lists";
 
 const ProductLists: NextPage = () => {
