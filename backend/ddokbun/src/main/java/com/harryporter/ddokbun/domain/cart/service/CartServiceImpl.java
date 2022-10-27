@@ -114,4 +114,20 @@ public class CartServiceImpl implements  CartService{
 
         return cartList;
     }
+
+    @Override
+    public int isExists(Long itemSeq, Long userSeq) {
+
+        CartId cartId = new CartId();
+        cartId.setUser(userSeq);
+        cartId.setItem(itemSeq);
+
+        Optional<Cart> cartItem =  cartRepository.findById(cartId);
+
+        if(cartItem.isPresent()){
+            return 1;
+        }
+
+        return 0;
+    }
 }

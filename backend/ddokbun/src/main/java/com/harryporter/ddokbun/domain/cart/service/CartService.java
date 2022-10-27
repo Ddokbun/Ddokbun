@@ -13,4 +13,6 @@ public interface CartService {
     CartDto updateCartItem(CartDto cartDto);
 
     List<CartItemDetail> findAllCartItemByUserSeq(Long userSeq);
+
+    int isExists(Long itemSeq, Long userSeq);
 }
