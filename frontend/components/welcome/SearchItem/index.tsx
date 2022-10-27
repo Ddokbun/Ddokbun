@@ -1,10 +1,9 @@
-import react from "react";
 import { Wrapper } from "./styles";
 import Image from "next/image";
 import tempSearch01 from "../../../assets/onboarding/tempSearch01.jpg";
 import tempSearch02 from "../../../assets/onboarding/tempSearch02.jpg";
 
-const SubContents = () => {
+const SearchItem = () => {
   return (
     <Wrapper>
       <div className="subcontent-wrap">
@@ -31,4 +30,4 @@ const SubContents = () => {
   );
 };
 
-export default SubContents;
+export default SearchItem;

@@ -14,6 +14,10 @@ const Document = () => (
         charSet="utf-8"
         async
       ></script>
+      <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
+      />
       <script
         defer
         src="https://developers.kakao.com/sdk/js/kakao.js"

@@ -1,11 +1,10 @@
-import react from "react";
 import { Wrapper } from "./styles";
 import Image from "next/image";
 import temp01 from "../../../assets/onboarding/tempSmartPot.jpg";
 import temp02 from "../../../assets/onboarding/tempSmartPot02.jpg";
 import temp03 from "../../../assets/onboarding/tempSmartPot03.jpg";
 
-const SubContents = () => {
+const SubItem = () => {
   return (
     <Wrapper>
       <div className="subcontent-wrap">
@@ -23,4 +22,4 @@ const SubContents = () => {
   );
 };
 
-export default SubContents;
+export default SubItem;
