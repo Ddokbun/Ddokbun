@@ -1,17 +1,30 @@
 package com.harryporter.ddokbun.domain.cart.entity;
 
-import javax.persistence.Column;
-import javax.persistence.EmbeddedId;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import com.harryporter.ddokbun.domain.product.entity.Item;
+import com.harryporter.ddokbun.domain.user.entity.User;
+
+import javax.persistence.*;
 
 @Table(name="Cart")
 @Entity
+@IdClass(CartId.class)
 public class Cart {
 
 
-    @EmbeddedId
-    private CartId cartId;
+    //EmbeddedId에서 식별관계를 지정하는 방식
+    //item은 CartId의 필드
+    //JoinColumn은 동일
+    @Id
+    @JoinColumn(name="item_seq",columnDefinition = "INTEGER UNSIGNED")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private Item item;
+
+    @Id
+    @JoinColumn(name="user_seq",columnDefinition="INTEGER UNSIGNED")
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
+
 
     @Column(name = "quantity")
     private Integer quantity;
