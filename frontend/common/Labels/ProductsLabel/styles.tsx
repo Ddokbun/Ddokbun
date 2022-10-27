@@ -16,6 +16,6 @@ export const Wrapper = styled.div<Props>`
     line-height: 17px;
     font-size: 20px;
     font-weight: 300;
-    font-family: ${props => props.theme.font.TextFont};
+    font-family: ${props => props.theme.font.TextFont1};
   }
 `;
