@@ -1,4 +1,4 @@
-package com.harryporter.ddokbun.domain.user.dto;
+package com.harryporter.ddokbun.domain.oauth.dto;
 
 import lombok.Data;
 
