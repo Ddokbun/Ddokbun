@@ -1,10 +1,9 @@
 import React from "react";
 import { ResponsiveWrapper, Wrapper } from "./styles";
 
-import Temp from "../../../assets/Temp2.png";
+import Temp from "../../../assets/temp2.png";
 import Image from "next/image";
 import ProductLabel from "../../Labels/ProductsLabel";
-import { PriceButtonStyle } from "../../Button/styles";
 import { BuyTextButton } from "../../Button";
 
 interface CardProps {

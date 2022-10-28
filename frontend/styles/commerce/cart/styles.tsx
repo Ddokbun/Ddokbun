@@ -6,7 +6,12 @@ export const Wrapper = styled.div`
   height: 500px;
   max-width: 1250px;
   padding: 50px 50px;
-
+  .button-wrap {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+  }
   h1 {
     color: ${props => props.theme.color.mainGreen};
     font-size: 50px;
