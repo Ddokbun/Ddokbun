@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 import { BasicInput, DateInputStyle, SearchInputWrapper } from "./styles";
 import search from "../../assets/icon/search.png";
 import { useRouter } from "next/router";
@@ -44,10 +44,22 @@ export const Input: React.FC<{
 export const SearchInput: React.FC<{
   placeholder: string;
   disabled: boolean;
-}> = ({ placeholder, disabled }) => {
+  setSearchInput: React.Dispatch<React.SetStateAction<string>>;
+}> = ({ placeholder, disabled, setSearchInput }) => {
   const router = useRouter();
+  const [isPending, startTransition] = useTransition();
   const onShowSearchHandler = () => {
     router.push("/manage/add/search");
+  };
+
+  const onInputChangeHandler: React.ChangeEventHandler<
+    HTMLInputElement
+  > = event => {
+    //
+    startTransition(() => {
+      // 저장set
+      setSearchInput(event.target.value)
+    });
   };
 
   return (
@@ -60,6 +72,7 @@ export const SearchInput: React.FC<{
         className={"input-search"}
         placeholder={placeholder}
         type="text"
+        onChange={onInputChangeHandler}
       />
     </SearchInputWrapper>
   );

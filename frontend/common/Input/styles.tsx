@@ -70,6 +70,10 @@ export const SearchInputWrapper = styled.div`
       padding: 16px 12px 16px 10%;
       border-radius: 18px;
     }
+
+    .pad {
+      padding-left: 10%;
+    }
   }
 `;
 
