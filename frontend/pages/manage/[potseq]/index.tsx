@@ -4,7 +4,9 @@ import DigitalTwin from "../../../components/manage/DigitalTwin";
 import { Wrapper } from "../../../styles/manage/[posteq]/styles";
 
 const PlantCare = () => {
-  const showDetailHandler = () => {}
+  const showDetailHandler = () => {
+    return
+  }
 
   return (
     <Wrapper>
