@@ -4,8 +4,7 @@ import SearchCardItem from "../SearchCardItem";
 
 const SearchCardList: React.FC<{
   data: SearchPlantType[];
-  onClickHandler: () => void;
-}> = ({ data, onClickHandler }) => {
+}> = ({ data }) => {
   const itemList = data.map(plant => {
     return (
       <SearchCardItem
