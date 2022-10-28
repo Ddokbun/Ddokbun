@@ -81,8 +81,6 @@ public class PlantDto {
     private String recRate;
 
     public static PlantDto of(Plant plant){
-
-
         PlantDto temp = PlantDto.builder()
                 .plantSeq(plant.getPlantSeq()) //식물 seq
                 .plantName(plant.getPlantName()) //식물 이름
@@ -99,7 +97,7 @@ public class PlantDto {
                 .winterTemperature(plant.getWinterTemperature()) //겨울온도
                 .growthHumid(plant.getGrowthHumid())//습도
                 .specManageInfo(plant.getSpecManageInfo())//특관 정보
-                . adviseInfo(plant.getAdviseInfo())//조언 정보
+                .adviseInfo(plant.getAdviseInfo())//조언 정보
                 .functionInfo(plant.getFunctionInfo()) //기능성
                 .manageRequire(plant.getManageRequire())//관리 요구도
                 .plantPlace(plant.getPlantPlace())//배치 장소

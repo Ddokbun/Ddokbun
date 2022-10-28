@@ -2,12 +2,14 @@ package com.harryporter.ddokbun.domain.cart.entity;
 
 import com.harryporter.ddokbun.domain.product.entity.Item;
 import com.harryporter.ddokbun.domain.user.entity.User;
+import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 
 @Table(name="Cart")
 @Entity
+@Getter
 @Setter
 @IdClass(CartId.class)
 public class Cart {

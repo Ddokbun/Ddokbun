@@ -1,9 +1,9 @@
-package com.harryporter.ddokbun.domain.oauth.service;
+package com.harryporter.ddokbun.domain.auth.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.harryporter.ddokbun.domain.oauth.dto.KakaoToken;
-import com.harryporter.ddokbun.domain.oauth.dto.KakaoProfile;
+import com.harryporter.ddokbun.domain.auth.dto.KakaoToken;
+import com.harryporter.ddokbun.domain.auth.dto.KakaoProfile;
 import com.harryporter.ddokbun.domain.user.dto.UserSocialDto;
 import com.harryporter.ddokbun.domain.user.dto.UserDto;
 import com.harryporter.ddokbun.domain.user.service.UserService;
@@ -24,13 +24,10 @@ import org.springframework.web.client.RestTemplate;
 @Slf4j
 public class KakaoService {
     private final UserService userService;
-
     public String kakaoLogin(String code){
-        KakaoToken accessToken = getKakaoOAuthToken(code);
-        log.info("code : {}",code);
-
-        KakaoProfile kakaoProfile = getKakaoProfile(accessToken);
-        log.info("accessToken : {}",accessToken);
+        log.info("Login 파이프라인 진입");
+        KakaoToken accessToken = getKakaoAuthTokenByCode(code);
+        KakaoProfile kakaoProfile = getKakaoProfileByAccessToken(accessToken);
 
         UserDto userDto = userService.signup(new UserSocialDto(kakaoProfile));
         log.info("user nickname : {}",userDto.getUserNickname());
@@ -38,11 +35,10 @@ public class KakaoService {
 
         String jwtToken = JwtTokenProvider.generateJwtToken(userDto);
 
-        log.info("jwtToken : {}",jwtToken);
         return jwtToken;
     }
 
-    private KakaoToken getKakaoOAuthToken(String code){
+    private KakaoToken getKakaoAuthTokenByCode(String code){
         try{
             // HTTP Header 생성
             HttpHeaders headers = new HttpHeaders();
@@ -52,7 +48,7 @@ public class KakaoService {
             MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
             body.add("grant_type","authorization_code");
             body.add("client_id","e7b3aeb0998dc77e6832174667e50b90");
-            body.add("redirect_uri","http://localhost:8080/api/user/login/oauth/kakao");
+            body.add("redirect_uri","https://k7d208.p.ssafy.io/oauth/callback/kakao");
             body.add("client_secret","eVwrpF6JJYcPVSRthjAuuWS5yD0vU4oU");
             body.add("code",code);
 
@@ -79,7 +75,7 @@ public class KakaoService {
         }
     }
 
-    private KakaoProfile getKakaoProfile(KakaoToken oAuthToken){
+    private KakaoProfile getKakaoProfileByAccessToken(KakaoToken oAuthToken){
         // HTTP Header 생성
         HttpHeaders headers2 = new HttpHeaders();
         headers2.add("Authorization", "Bearer "+oAuthToken.getAccess_token());

@@ -1,16 +1,22 @@
 // import { useRouter } from "next/router";
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   CancelButton,
   Register,
   SubmitButton,
 } from "../../../../common/Button";
-import { Input, SearchInput } from "../../../../common/Input";
+import { DateInput, Input, SearchInput } from "../../../../common/Input";
 import { Wrapper } from "./styles";
 import calander from "../../../../assets/icon/calander.png";
+import DatePick from "../../../../common/DatePick";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../store";
 
 const AddForm = () => {
   // const router = useRouter();
+  const plantSeq = useSelector((state: RootState) => state.manage.plantSeq);
+  const name = useSelector((state: RootState) => state.manage.krName);
+
   const inputValues: React.MutableRefObject<Register> = useRef({
     potSerial: "",
     plantNickname: "",
@@ -18,23 +24,43 @@ const AddForm = () => {
     plantSeq: "",
   });
 
+  const [plantName, setPlantName] = useState();
   const [showCalander, setShowCalander] = useState(false);
+  const leftPad = (value: number) => {
+    if (value >= 10) {
+      return value;
+    }
 
-  const saveInput = (value: string, identifier: string) => {
-    switch (identifier) {
-      case "potSerial":
-        inputValues.current.potSerial = value;
-        break;
-      case "plantNickname":
-        inputValues.current.plantNickname = value;
-        break;
-      case "waterSupply":
-        inputValues.current.waterSupply = value;
-        break;
-      case "plantSeq":
-        inputValues.current.plantSeq = value;
-      default:
-        break;
+    return `0${value}`;
+  };
+  const changeDateFormat = (date: Date, delimiter = "-") => {
+    const year = date.getFullYear();
+    const month = leftPad(date.getMonth() + 1);
+    const day = leftPad(date.getDate());
+
+    return [year, month, day].join(delimiter);
+  };
+
+  const saveInput = (value: string | Date, identifier: string) => {
+    setShowCalander(prev => !prev);
+
+    if (typeof value === "string") {
+      switch (identifier) {
+        case "potSerial":
+          inputValues.current.potSerial = value;
+          break;
+        case "plantNickname":
+          inputValues.current.plantNickname = value;
+          break;
+        case "plantSeq":
+          inputValues.current.plantSeq = value;
+          break;
+        default:
+          break;
+      }
+    } else {
+      const date = changeDateFormat(value);
+      inputValues.current.waterSupply = date;
     }
   };
 
@@ -57,13 +83,28 @@ const AddForm = () => {
   };
 
   const onShowCalanderHandler = () => {
-    setShowCalander(true);
+    setShowCalander(prev => !prev);
   };
+
+  useEffect(() => {
+    const date = changeDateFormat(new Date());
+    inputValues.current.waterSupply = date;
+  }, []);
+
+  useEffect(() => {
+    inputValues.current.plantSeq = plantSeq;
+    console.log(name, plantSeq);
+  }, [plantSeq]);
 
   return (
     <Wrapper>
       <div className="grid">
-        <SearchInput placeholder="식물종 검색" />
+        <SearchInput
+          setSearchInput={null}
+          placeholder="식물종 검색"
+          disabled={true}
+          value={name}
+        />
         <Input
           saveInput={saveInput}
           label="Serial Number"
@@ -71,6 +112,7 @@ const AddForm = () => {
           type="text"
           identifier="potSerial"
           image={null}
+          value={inputValues.current.potSerial}
         />
         <Input
           saveInput={saveInput}
@@ -79,17 +121,33 @@ const AddForm = () => {
           type="text"
           identifier="plantNickname"
           image={null}
+          value={inputValues.current.plantNickname}
         />
-        <div onClick={onShowCalanderHandler}>
-          <Input
+        <div onClick={onShowCalanderHandler} className="calander-container">
+          {/* <Input
             saveInput={saveInput}
             label="마지막 물준날"
-            placeholder=" Input"
+            placeholder={inputValues.current.waterSupply}
             type="text"
             identifier="waterSupply"
             image={calander}
+            value={inputValues.current.waterSupply}
+          /> */}
+          <DateInput
+            label="마지막 물 준날"
+            image={calander}
+            saveInput={saveInput}
           />
         </div>
+
+        {/* {showCalander && (
+            <DateInput
+              saveInput={saveInput}
+              onShowCalanderHandler={onShowCalanderHandler}
+            />
+          )} */}
+        {/* <div className="calander-container"> */}
+        {/* </div> */}
       </div>
       <div className="button-container">
         <div className="submit-button-container">

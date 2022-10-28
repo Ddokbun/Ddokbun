@@ -1,9 +1,9 @@
-package com.harryporter.ddokbun.domain.oauth.dto;
+package com.harryporter.ddokbun.domain.auth.dto;
 
 import lombok.Data;
 
 @Data
-public class KakaoProfile {
+public class GoogleProfile {
 
     public Long id;
     public String connected_at;
@@ -30,7 +30,6 @@ public class KakaoProfile {
 
         @Data
         public class Profile {
-
             public String nickname;
             public String thumbnail_image_url;
             public String profile_image_url;
