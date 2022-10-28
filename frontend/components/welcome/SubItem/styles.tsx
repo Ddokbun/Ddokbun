@@ -3,15 +3,12 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.color.black};
   color: white;
+  padding: 40px 20px 60px 20px;
   .subcontent-wrap {
-    position: relative;
     width: 100%;
-    height: 800px;
     .title {
-      position: absolute;
-      top: 4%;
-      left: 5%;
-      transform: translate(-5%, -5%);
+      padding-left: 20px;
+      margin-bottom: 30px;
       h2 {
         text-align: start;
         font-size: 70px;
@@ -19,28 +16,24 @@ export const Wrapper = styled.div`
       h3 {
         text-align: start;
         font-size: 25px;
+        font-family: ${props => props.theme.font.TitleFont};
       }
     }
     .pot-img {
       display: flex;
-      position: absolute;
-      top: 40%;
-
-      /* transform: translate(-50%, -50%); */
+      margin: 40px 0px 60px 0px;
+      .banner-img {
+        max-height: 100px;
+      }
     }
   }
 
   @media screen and (${props => props.theme.mobile}) {
+    padding: 30px 10px 30px 10px;
     .subcontent-wrap {
-      position: relative;
       width: 100%;
-      height: 400px;
 
       .title {
-        position: absolute;
-        top: 4%;
-        left: 5%;
-        transform: translate(-5%, -5%);
         h2 {
           text-align: start;
           font-size: 30px;
@@ -51,11 +44,7 @@ export const Wrapper = styled.div`
         }
       }
       .pot-img {
-        display: flex;
-        position: absolute;
-        top: 40%;
-
-        /* transform: translate(-50%, -50%); */
+        margin: 20px 0px 40px 0px;
       }
     }
   }

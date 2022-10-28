@@ -7,19 +7,28 @@ const SearchItem = () => {
   return (
     <Wrapper>
       <div className="subcontent-wrap">
-        <div className="back-img">
-          <Image
-            src={tempSearch01}
-            alt="임시 메인 이미지"
-            className="banner-img"
-          />
-        </div>
-        <div className="front-img">
-          <Image
-            src={tempSearch02}
-            alt="임시 메인 이미지"
-            className="banner-img"
-          />
+        <div className="img">
+          <div className="img-wrap">
+            <div className="back-wrap">
+              <div className="back-img">
+                <Image
+                  src={tempSearch01}
+                  alt="임시 메인 이미지"
+                  className="banner-img"
+                  layout="fill"
+                />
+              </div>
+            </div>
+            <div className="front-wrap">
+              <div className="front-img">
+                <Image
+                  src={tempSearch02}
+                  alt="임시 메인 이미지"
+                  className="banner-img"
+                />
+              </div>
+            </div>
+          </div>
         </div>
         <div className="title">
           <h2>Plant Search</h2>
