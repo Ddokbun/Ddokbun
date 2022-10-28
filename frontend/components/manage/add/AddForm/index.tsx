@@ -8,7 +8,6 @@ import {
 import { DateInput, Input, SearchInput } from "../../../../common/Input";
 import { Wrapper } from "./styles";
 import calander from "../../../../assets/icon/calander.png";
-import DatePick from "../../../../common/DatePick";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../store";
 
@@ -24,7 +23,6 @@ const AddForm = () => {
     plantSeq: "",
   });
 
-  const [plantName, setPlantName] = useState();
   const [showCalander, setShowCalander] = useState(false);
   const leftPad = (value: number) => {
     if (value >= 10) {
@@ -89,11 +87,12 @@ const AddForm = () => {
   useEffect(() => {
     const date = changeDateFormat(new Date());
     inputValues.current.waterSupply = date;
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
     inputValues.current.plantSeq = plantSeq;
-    console.log(name, plantSeq);
   }, [plantSeq]);
 
   return (
