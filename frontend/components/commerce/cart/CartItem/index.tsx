@@ -2,7 +2,6 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Wrapper } from "./styles";
 import Temp from "../../../../assets/temp.jpg";
 import Image from "next/image";
-import { BuyButton } from "../../../../common/Button";
 
 interface CardProps {
   price: number;
@@ -15,11 +14,21 @@ const CartItem: React.FC<CardProps> = ({ price, setTotal }) => {
   const [nowPrice, setNowPrice] = useState(price * count);
 
   useEffect(() => {
-    setTotal(val => val + count * price);
+    setTotal(val => val + price * count);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  // const fetchSetTotal = useCallback(() => {
+  //   setTotal(val => val + count * price);
+  // }, []);
+
+  // useEffect(() => {
+  //   fetchSetTotal();
+  // }, [fetchSetTotal]);
+
   useEffect(() => {
     setNowPrice(price * count);
-  }, [count, nowPrice]);
+  }, [price, count]);
 
   const onCountHandler = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -33,7 +42,6 @@ const CartItem: React.FC<CardProps> = ({ price, setTotal }) => {
       case "-":
         setCount(val => (count > 1 ? val - 1 : val));
         setTotal(val => val - price);
-
         break;
     }
   };
