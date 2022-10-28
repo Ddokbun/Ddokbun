@@ -47,13 +47,15 @@ export const BasicInput = styled.div`
 
 export const SearchInputWrapper = styled.div`
   width: 90%;
-  margin-bottom: 10%;
+  height: 60px;
   position: relative;
+  font-family: "DM Serif Display", serif;
+  color: ${props => props.theme.color.darkGreen};
 
   .icon {
-    top: 15%;
+    top: 25%;
     position: absolute;
-    left: 2%;
+    left: 3%;
   }
 
   input {
@@ -65,10 +67,17 @@ export const SearchInputWrapper = styled.div`
   }
 
   @media screen and (${props => props.theme.mobile}) {
+    width: 100%;
+    margin-bottom: 10%;
+
     input {
       width: 90%;
-      padding: 16px 12px 16px;
+      padding: 16px 12px 16px 10%;
       border-radius: 18px;
+    }
+
+    .pad {
+      padding-left: 10%;
     }
   }
 `;
