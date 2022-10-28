@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface ProgressProps {
+  level: string;
+}
+
 export const Wrapper = styled.div`
   padding: 35px 40px;
   width: 80%;
@@ -16,14 +20,9 @@ export const Wrapper = styled.div`
   .line {
     display: flex;
     align-items: center;
-
     width: 100%;
   }
 `;
-
-interface ProgressProps {
-  level: string;
-}
 
 export const Progress = styled.div<ProgressProps>`
   width: 100%;
