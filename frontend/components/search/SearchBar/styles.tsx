@@ -7,18 +7,18 @@ export const Wrapper = styled.div`
     margin: 30px;
   }
   h2 {
-    font-family: "프리텐다드B";
+    font-family: ${props => props.theme.font.TitleFont};
     font-size: 40px;
     margin: 30px 0px 10px 0px;
   }
-  .wrap{
+  .wrap {
     display: flex;
     justify-content: center;
-    align-items: center; 
+    align-items: center;
     .search {
       display: flex;
       justify-content: center;
-      align-items: center; 
+      align-items: center;
       width: 50%;
       border: 2px solid #b9b9b9;
       padding: 15px;
@@ -36,18 +36,15 @@ export const Wrapper = styled.div`
     }
   }
 
-
-
-
   @media screen and (${props => props.theme.mobile}) {
-    .wrap{
+    .wrap {
       display: flex;
       justify-content: center;
-      align-items: center; 
+      align-items: center;
       .search {
         display: flex;
         justify-content: center;
-        align-items: center; 
+        align-items: center;
         width: 80%;
         border: 2px solid #b9b9b9;
         padding: 15px;
