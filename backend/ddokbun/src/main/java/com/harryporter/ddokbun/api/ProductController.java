@@ -5,6 +5,7 @@ import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemSearchDto;
 import com.harryporter.ddokbun.domain.product.service.ItemService;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -19,6 +20,7 @@ import java.util.List;
 @RequestMapping("/market/product")
 @RestController
 @RequiredArgsConstructor
+@Slf4j
 public class ProductController {
 
     private final ItemService itemService;
@@ -28,6 +30,7 @@ public class ProductController {
     @RequestMapping(value = "/search",method = RequestMethod.GET)
     public ResponseEntity<?> productSearch(@RequestParam(value = "title",required = false) String title){
 
+        log.info("상품 검색 API 진입 ::검색어 :{}",title);
         List<ItemSearchDto> content = itemService.searchByTitle(title);
         ResponseFrame<List<ItemSearchDto>> responseFrame =
                 ResponseFrame.ofOKResponse(
@@ -35,6 +38,7 @@ public class ProductController {
                         content);
 
 
+        log.info("상품 검색 API 완료 ::반환 갯수 {}",responseFrame.getContent().size());
         return new ResponseEntity<>(responseFrame, HttpStatus.OK);
     }
 
@@ -55,9 +59,11 @@ public class ProductController {
     @RequestMapping(value = "/{itemSeq}",method = RequestMethod.GET)
     public ResponseEntity<?> getProductDetail(@PathVariable Long itemSeq){
 
+        log.info("상품 상세보기 API 진입");
         ItemDetailDto itemDetailDto = itemService.getOneItemById(itemSeq);
 
         ResponseFrame<?> res = ResponseFrame.ofOKResponse("상품 상세 정보를 반환합니다.",itemDetailDto);
+        log.info("상품 상세보기 API 반환 : {}" , res);
         return  new ResponseEntity<>(res,HttpStatus.OK);
     }
 

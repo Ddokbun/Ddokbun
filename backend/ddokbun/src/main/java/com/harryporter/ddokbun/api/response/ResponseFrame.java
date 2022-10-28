@@ -2,9 +2,11 @@ package com.harryporter.ddokbun.api.response;
 
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 @Setter
 @Getter
+@ToString
 public class ResponseFrame<T> {
     String message; //응답을 설명할 메세지
     int state; //응답의 상태
