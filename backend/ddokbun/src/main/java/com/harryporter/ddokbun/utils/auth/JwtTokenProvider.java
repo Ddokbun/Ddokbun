@@ -12,6 +12,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
+import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -19,8 +20,7 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 @Component
 public class JwtTokenProvider {
-
-    private static String secretKey = "ha";
+    private static String secretKey = "happybirthday";
     private static final Long expiredTime = 1000 * 60L * 60L * 3L; // 유효시간 3시간
     private final UserService userService;
 
@@ -93,6 +93,11 @@ public class JwtTokenProvider {
     }
 
     private Long getUserSeq(String token) {
+        return Long.valueOf(String.valueOf(getTokenClaims(token).get("userSeq")));
+    }
+
+    public Long getUserSeq(HttpServletRequest request){
+        String token = request.getHeader("Auth");
         return Long.valueOf(String.valueOf(getTokenClaims(token).get("userSeq")));
     }
 

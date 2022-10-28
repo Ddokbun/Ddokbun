@@ -49,7 +49,7 @@ export const BuyTextButton: React.FC = () => {
 
 export const BuyButton: React.FC<{ width: string }> = ({ width }) => {
   return (
-    <PriceButtonStyle>
+    <PriceButtonStyle width="250px">
       <h3>Buy Now</h3>
     </PriceButtonStyle>
   );
@@ -96,6 +96,8 @@ export const CancelButton: React.FC<{
   };
 
   return (
-    <CancelButtonStyle type="button" onClick={onClickHandler}>{children}</CancelButtonStyle>
+    <CancelButtonStyle type="button" onClick={onClickHandler}>
+      {children}
+    </CancelButtonStyle>
   );
 };
