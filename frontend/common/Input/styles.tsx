@@ -46,9 +46,11 @@ export const BasicInput = styled.div`
 `;
 
 export const SearchInputWrapper = styled.div`
-  width: 50%;
+  width: 90%;
   height: 60px;
   position: relative;
+  font-family: "DM Serif Display", serif;
+  color: ${props => props.theme.color.darkGreen};
 
   .icon {
     top: 25%;
@@ -65,8 +67,9 @@ export const SearchInputWrapper = styled.div`
   }
 
   @media screen and (${props => props.theme.mobile}) {
-    width: 80%;
-    
+    width: 100%;
+    margin-bottom: 10%;
+
     input {
       width: 90%;
       padding: 16px 12px 16px 10%;

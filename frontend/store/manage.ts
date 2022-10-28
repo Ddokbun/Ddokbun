@@ -3,6 +3,7 @@ import { HYDRATE } from "next-redux-wrapper";
 
 const initialState = {
   plantSeq: "",
+  krName: "",
 };
 
 const manageSlice = createSlice({
@@ -14,10 +15,11 @@ const manageSlice = createSlice({
     //   return action.payload;
     // },
 
-    setPlantSeq(state, action) {
-      console.log(action.payload);
-
-      state.plantSeq = action.payload;
+    setPlantInfo(state, action) {
+      return {
+        ...state,
+        ...action.payload,
+      };
     },
   },
   extraReducers: {

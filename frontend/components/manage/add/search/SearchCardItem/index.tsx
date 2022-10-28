@@ -14,7 +14,7 @@ const SearchCardItem: React.FC<{
   const dispatch = useDispatch();
   const router = useRouter();
   const onFetchPlantSeqHandler = () => {
-    dispatch(manageActions.setPlantSeq(plantSeq));
+    dispatch(manageActions.setPlantInfo({ plantSeq, krName }));
     router.back();
   };
 
