@@ -1,5 +1,8 @@
 import Image, { StaticImageData } from "next/image";
+import { useRouter } from "next/router";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { manageActions } from "../../../../../store/manage";
 import { Wrapper } from "./styles";
 
 const SearchCardItem: React.FC<{
@@ -8,8 +11,15 @@ const SearchCardItem: React.FC<{
   egName: string;
   plantSeq: string;
 }> = ({ image, krName, egName, plantSeq }) => {
+  const dispatch = useDispatch();
+  const router = useRouter();
+  const onFetchPlantSeqHandler = () => {
+    dispatch(manageActions.setPlantSeq(plantSeq));
+    router.back();
+  };
+
   return (
-    <Wrapper>
+    <Wrapper onClick={onFetchPlantSeqHandler}>
       <div className="image-container">
         <Image
           width={"100%"}

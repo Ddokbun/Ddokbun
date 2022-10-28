@@ -2,7 +2,10 @@ import React from "react";
 import { SearchPlantType } from "../../../../../pages/manage/add/search";
 import SearchCardItem from "../SearchCardItem";
 
-const SearchCardList: React.FC<{ data: SearchPlantType[] }> = ({ data }) => {
+const SearchCardList: React.FC<{
+  data: SearchPlantType[];
+  onClickHandler: () => void;
+}> = ({ data, onClickHandler }) => {
   const itemList = data.map(plant => {
     return (
       <SearchCardItem

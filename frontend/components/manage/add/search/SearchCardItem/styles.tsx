@@ -2,12 +2,36 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.color.darkGreen};
-  width: 550px;
-  height: 170px;
+  width: 35%;
+  height: 100%;
   border-radius: 16px;
   margin: 3%;
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(1, 100%);
+
+  .image-container {
+    border-radius: 8px;
+    margin: 5% 0 0 5%;
+  }
+  .image {
+    border-radius: 5%;
+  }
+
+  .info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .info > .krName {
+    font-weight: bold;
+  }
+
+  .info > .egName {
+    color: ${props => props.theme.color.ivory};
+  }
 
   @media screen and (${props => props.theme.mobile}) {
     width: 90%;
@@ -18,7 +42,7 @@ export const Wrapper = styled.div`
 
     .image-container {
       border-radius: 8px;
-      margin: 5% 0 0 5%
+      margin: 5% 0 0 5%;
     }
     .image {
       border-radius: 5%;

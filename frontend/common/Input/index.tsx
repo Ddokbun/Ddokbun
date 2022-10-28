@@ -58,7 +58,7 @@ export const SearchInput: React.FC<{
     //
     startTransition(() => {
       // 저장set
-      setSearchInput(event.target.value)
+      setSearchInput(event.target.value);
     });
   };
 
