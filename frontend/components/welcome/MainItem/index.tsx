@@ -1,20 +1,10 @@
+import {} from "react";
 import { Wrapper } from "./styles";
 import Image from "next/image";
 import { Button } from "../../../common/Button/styles";
 import Router from "next/router";
 import mainImg from "../../../assets/onboarding/mainImg.jpg";
 import kakao from "../../../assets/kakaoLogin.png";
-
-// function loginFormWithKakao() {
-//   Kakao.Auth.loginForm({
-//     success(authObj) {
-//       console.log(authObj.access_token);
-//     },
-//     fail(err) {
-//       console.log(err);
-//     },
-//   });
-// }
 
 export const kakaoInit = () => {
   const kakao = (window as any).Kakao;
@@ -40,25 +30,49 @@ const MainItem = () => {
     // 카카오 초기화
     const kakao = kakaoInit();
     // 카카오 로그인 구현
+    // throughTalk: false,
     kakao.Auth.login({
       success: () => {
         kakao.API.request({
           url: "/v2/user/me", // 사용자 정보 가져오기
           success: (res: any) => {
-            // 로그인 성공할 경우 정보 확인 후 /kakao 페이지로 push
-            console.log(res);
-            Router.push("/search");
+            console.log("성공!", res);
           },
           fail: (error: any) => {
-            console.log(error);
+            console.log("호출실패", error);
           },
         });
       },
       fail: (error: any) => {
-        console.log(error);
+        console.log("요청자체가 실패:", error);
       },
     });
   };
+  const loginFormWithKakao = () => {
+    const kakao = kakaoInit();
+    kakao.Auth.login({
+      success(authObj: any) {
+        console.log(authObj.access_token);
+      },
+      fail(err: any) {
+        console.log(err);
+      },
+    });
+  };
+
+  // const login = () => {
+  //   const kakao = (window as any).Kakao;
+  //   kakao.Auth.login({
+  //     throughTalk: false,
+  //     success: function (authObj: any) {
+  //       onSuccess(authObj);
+  //     },
+  //     fail: function (err: any) {
+  //       console.log("카카오에서 인증코드 받아오는 과정에서 오류발생", err);
+  //       alert("카카오에서 인증코드 받아오는 과정에서 오류발생");
+  //     },
+  //   });
+  // };
 
   return (
     <Wrapper>
@@ -70,7 +84,7 @@ const MainItem = () => {
         </div>
       </div>
       {/* <a href={KAKAO_AUTH_URL}> */}
-      <Button onClick={kakaoLogin}>
+      <Button onClick={loginFormWithKakao}>
         <Image src={kakao} alt="" />
       </Button>
       <div className="kakao-btn"></div>
