@@ -1,6 +1,7 @@
 package com.harryporter.ddokbun.utils.auth;
 
 import com.harryporter.ddokbun.domain.user.dto.UserDto;
+import com.harryporter.ddokbun.domain.user.dto.UserSimpleDto;
 import com.harryporter.ddokbun.domain.user.service.UserService;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
@@ -64,6 +65,7 @@ public class JwtTokenProvider {
                         .collect(Collectors.toList());
 
         UserDto user = userService.loadUserByUserSeq(getUserSeq(token));
+
         return new UsernamePasswordAuthenticationToken(user, "", authorities);
     }
 

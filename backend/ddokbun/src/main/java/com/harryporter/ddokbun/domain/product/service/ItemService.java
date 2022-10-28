@@ -12,4 +12,6 @@ public interface ItemService {
     List<ItemSimpleSearchDto> simpleSearchByTitle(String title);
 
     ItemDetailDto getOneItemById(Long ItemSeq);
+
+    List<ItemSearchDto> getTodayRecommendItem();
 }

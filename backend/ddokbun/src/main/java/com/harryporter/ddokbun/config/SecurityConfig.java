@@ -32,6 +32,7 @@ public class SecurityConfig {
     public WebSecurityCustomizer configure() {
         return (web) -> web.ignoring().mvcMatchers(
                 "/swagger-ui/**","/swagger-resources/**", "/v3/api-docs","/user/login/**" // 임시
+
         );
     }
 
@@ -54,7 +55,6 @@ public class SecurityConfig {
 
                 .authorizeRequests()
                 .antMatchers("/user/login/**").permitAll()
-                .anyRequest().authenticated()
                 .and()
 
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
