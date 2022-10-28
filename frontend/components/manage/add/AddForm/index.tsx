@@ -88,7 +88,7 @@ const AddForm = () => {
   return (
     <Wrapper>
       <div className="grid">
-        <SearchInput placeholder="식물종 검색" />
+        <SearchInput placeholder="식물종 검색" disabled={false} />
         <Input
           saveInput={saveInput}
           label="Serial Number"

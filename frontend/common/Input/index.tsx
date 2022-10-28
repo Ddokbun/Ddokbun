@@ -41,20 +41,26 @@ export const Input: React.FC<{
   );
 };
 
-export const SearchInput: React.FC<{ placeholder: string }> = ({
-  placeholder,
-}) => {
+export const SearchInput: React.FC<{
+  placeholder: string;
+  disabled: boolean;
+}> = ({ placeholder, disabled }) => {
   const router = useRouter();
   const onShowSearchHandler = () => {
-    // router.push("/search");
+    router.push("/manage/add/search");
   };
 
   return (
     <SearchInputWrapper onClick={onShowSearchHandler}>
-      <div className="icon">
+      <div className={"icon"}>
         <Image src={search} alt="search-icon" />
       </div>
-      <input className="input-search" placeholder={placeholder} type="text" />
+      <input
+        disabled={disabled}
+        className={"input-search"}
+        placeholder={placeholder}
+        type="text"
+      />
     </SearchInputWrapper>
   );
 };

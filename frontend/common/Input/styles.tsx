@@ -67,7 +67,7 @@ export const SearchInputWrapper = styled.div`
   @media screen and (${props => props.theme.mobile}) {
     input {
       width: 90%;
-      padding: 16px 12px 16px;
+      padding: 16px 12px 16px 10%;
       border-radius: 18px;
     }
   }
