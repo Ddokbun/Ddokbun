@@ -45,9 +45,9 @@ export const InputRow = styled.div<StyleProps>`
     max-width: ${props => props.maxWidth || "100%"};
 
     input {
-      grid-column: 1 / 2;
-      :nth-child(3) {
-        grid-column: 1/3;
+      grid-column: 1 / 3;
+      :nth-child(1) {
+        grid-column: 1/2;
       }
     }
     .toggle-button {
@@ -62,6 +62,30 @@ export const InputRow = styled.div<StyleProps>`
       font-size: 20px;
       letter-spacing: 3px;
       cursor: pointer;
+    }
+  }
+
+  .email {
+    max-width: ${props => props.maxWidth};
+    display: grid;
+    grid-gap: 5px;
+    grid-template-columns: 250px auto 1fr;
+    grid-template-rows: 1fr;
+    span {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  .phone-num {
+    width: 100%;
+    max-width: ${props => props.maxWidth};
+    display: grid;
+    grid-gap: 10px;
+    grid-template-columns: 4fr auto 5fr auto 5fr;
+
+    input {
+      text-align: center;
     }
   }
 `;

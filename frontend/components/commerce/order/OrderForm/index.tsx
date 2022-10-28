@@ -34,20 +34,29 @@ const OrderFormComponent: React.FC = () => {
   return (
     <Wrapper>
       <form className="grid-form">
-        <InputRow maxWidth="300px">
+        <InputRow maxWidth="250px">
           <label htmlFor="name">이름</label>
           <input id="name" onChange={onChangeHandler.name} value={name} />
         </InputRow>
-        <InputRow maxWidth="800px">
+        <InputRow maxWidth="100px">
           <label htmlFor="name">휴대전화</label>
-          <input type="text" />
+          <div className="phone-num">
+            <input type="text" />
+            <span>-</span>
+            <input type="text" />
+            <span>-</span>
+            <input type="text" />
+          </div>
         </InputRow>
-        <InputRow maxWidth={null}>
+        <InputRow maxWidth={"740px"}>
           <label htmlFor="email">이메일</label>
-
-          <input id="email" onChange={onChangeHandler.email} type="text" />
+          <div className="email">
+            <input id="email" onChange={onChangeHandler.email} type="text" />
+            <span>@</span>
+            <input id="email" onChange={onChangeHandler.email} type="text" />
+          </div>
         </InputRow>
-        <InputRow maxWidth={"800px"}>
+        <InputRow maxWidth={"100%"}>
           <label htmlFor="name">주소</label>
           <div className="address">
             <input
