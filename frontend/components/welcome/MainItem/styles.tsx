@@ -20,7 +20,6 @@ export const Wrapper = styled.div`
     }
   }
   .kakao-btn {
-    background-image: url("../../../assets/kakao_login_large_wide.png");
     background-repeat: no-repeat;
     background-size: cover;
     margin: 10px auto;

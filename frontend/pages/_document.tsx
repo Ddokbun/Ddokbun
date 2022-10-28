@@ -1,5 +1,5 @@
 import { Html, Head, Main, NextScript } from "next/document";
-import Script from 'next/script'
+import Script from "next/script";
 
 const Document = () => (
   <Html>
@@ -19,11 +19,7 @@ const Document = () => (
         rel="stylesheet"
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
       />
-      <Script
-        defer
-        src="https://developers.kakao.com/sdk/js/kakao.js"
-        async
-      ></Script>
+      <script src="https://developers.kakao.com/sdk/js/kakao.js" async></script>
     </Head>
     <body>
       <Main />
