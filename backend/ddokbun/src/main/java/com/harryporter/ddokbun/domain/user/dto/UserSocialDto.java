@@ -1,6 +1,6 @@
 package com.harryporter.ddokbun.domain.user.dto;
 
-import com.harryporter.ddokbun.domain.oauth.dto.KakaoProfile;
+import com.harryporter.ddokbun.domain.auth.dto.KakaoProfile;
 import com.harryporter.ddokbun.domain.user.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

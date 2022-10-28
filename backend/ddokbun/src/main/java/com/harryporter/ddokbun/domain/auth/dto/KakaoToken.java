@@ -1,12 +1,11 @@
-package com.harryporter.ddokbun.domain.oauth.dto;
+package com.harryporter.ddokbun.domain.auth.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
+@Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 public class KakaoToken {

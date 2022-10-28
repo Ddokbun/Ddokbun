@@ -8,18 +8,25 @@ export const Wrapper = styled.div`
   grid-template-rows: auto;
   grid-auto-flow: row;
 
+  position: relative;
   grid-gap: 50px;
   place-items: end;
   .img-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
     place-self: right;
-    padding: 0px 60px 0px 0px;
+    padding: 0px 0px 0px 0px;
     width: 100%;
-    position: relative;
     max-width: 400px;
 
     min-width: 300px;
     align-items: center;
     text-align: center;
+    img {
+      vertical-align: middle;
+    }
   }
 
   .text-wrap {
@@ -71,13 +78,9 @@ export const Wrapper = styled.div`
     grid-gap: 0px;
     place-items: end;
     .img-wrap {
-      place-self: center;
-      padding: 0px 70px;
       width: 100%;
       position: relative;
       max-width: 400px;
-      align-items: center;
-      text-align: center;
     }
 
     .text-wrap {
