@@ -27,6 +27,7 @@ const SearchCardItem: React.FC<{
           src={image}
           objectFit="cover"
           className="image"
+          alt="식물 카드 이미지 입니다."
         />
       </div>
       <div className="info">
