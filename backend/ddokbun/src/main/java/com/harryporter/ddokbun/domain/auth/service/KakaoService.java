@@ -48,7 +48,7 @@ public class KakaoService {
             MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
             body.add("grant_type","authorization_code");
             body.add("client_id","e7b3aeb0998dc77e6832174667e50b90");
-            body.add("redirect_uri","https://k7d208.p.ssafy.io/api/user/login/oauth/kakao");
+            body.add("redirect_uri","https://k7d208.p.ssafy.io/oauth/callback/kakao");
             body.add("client_secret","eVwrpF6JJYcPVSRthjAuuWS5yD0vU4oU");
             body.add("code",code);
 
