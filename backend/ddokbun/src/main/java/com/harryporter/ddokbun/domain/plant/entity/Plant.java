@@ -4,7 +4,6 @@ import lombok.Getter;
 
 import javax.persistence.*;
 
-@Getter
 @Entity
 @Getter
 public class Plant {
