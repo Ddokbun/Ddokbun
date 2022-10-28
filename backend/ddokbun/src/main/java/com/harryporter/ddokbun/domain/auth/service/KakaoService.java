@@ -7,7 +7,7 @@ import com.harryporter.ddokbun.domain.auth.dto.KakaoProfile;
 import com.harryporter.ddokbun.domain.user.dto.UserSocialDto;
 import com.harryporter.ddokbun.domain.user.dto.UserDto;
 import com.harryporter.ddokbun.domain.user.service.UserService;
-import com.harryporter.ddokbun.utils.auth.JwtTokenProvider;
+import com.harryporter.ddokbun.utils.auth.JwtTokenUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpEntity;
@@ -33,7 +33,7 @@ public class KakaoService {
         log.info("user nickname : {}",userDto.getUserNickname());
         log.info("user email : {}",userDto.getUserEmail());
 
-        String jwtToken = JwtTokenProvider.generateJwtToken(userDto);
+        String jwtToken = JwtTokenUtils.generateJwtToken(userDto);
 
         return jwtToken;
     }
@@ -48,7 +48,7 @@ public class KakaoService {
             MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
             body.add("grant_type","authorization_code");
             body.add("client_id","e7b3aeb0998dc77e6832174667e50b90");
-            body.add("redirect_uri","https://k7d208.p.ssafy.io/oauth/callback/kakao");
+            body.add("redirect_uri","https://k7d208.p.ssafy.io/");
             body.add("client_secret","eVwrpF6JJYcPVSRthjAuuWS5yD0vU4oU");
             body.add("code",code);
 
@@ -82,7 +82,7 @@ public class KakaoService {
         headers2.add("Content-type","application/x-www-form-urlencoded;charset=utf-8");
 
         // HTTP 요청 보내기 (POST 방식으로)
-        HttpEntity<MultiValueMap<String,String>> kakaoProfileRequest = new HttpEntity<>(headers2);
+        HttpEntity<String> kakaoProfileRequest = new HttpEntity(headers2);
         RestTemplate rt2 = new RestTemplate();
         ResponseEntity<String> response2 = rt2.exchange(
                 "https://kapi.kakao.com/v2/user/me",

@@ -3,7 +3,7 @@ package com.harryporter.ddokbun.config;
 import com.harryporter.ddokbun.config.auth.JwtAuthenticationFilter;
 import com.harryporter.ddokbun.config.auth.RestAuthenticationEntryPoint;
 import com.harryporter.ddokbun.config.auth.TokenAccessDeniedHandler;
-import com.harryporter.ddokbun.utils.auth.JwtTokenProvider;
+import com.harryporter.ddokbun.utils.auth.JwtTokenUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.annotation.Bean;
@@ -25,7 +25,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class SecurityConfig {
 
     private final TokenAccessDeniedHandler tokenAccessDeniedHandler;
-    private final JwtTokenProvider jwtTokenProvider;
+    private final JwtTokenUtils jwtTokenProvider;
 
     //WebSecurity를 통해 Spring Security 적용하지 않을 리소스 설정
     @Bean
@@ -54,7 +54,7 @@ public class SecurityConfig {
 
                 .authorizeRequests()
                 .antMatchers("/user/login/**").permitAll()
-                .anyRequest().authenticated()
+           //     .anyRequest().authenticated()
                 .and()
 
                 .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
