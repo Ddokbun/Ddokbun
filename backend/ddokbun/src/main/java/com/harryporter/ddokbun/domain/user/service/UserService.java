@@ -10,9 +10,9 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
-@Service
 @RequiredArgsConstructor
 @Slf4j
+@Service
 public class UserService {
     private final UserRepository userRepository;
     @Transactional
@@ -21,6 +21,7 @@ public class UserService {
         if(user==null){
             user=userRepository.save(profileDto.toEntity());
         }
+        log.info("userSeq : {}",user.getUserSeq());
         return UserDto.convert(user);
     }
 
@@ -28,30 +29,5 @@ public class UserService {
         User user=userRepository.findByUserSeq(userSeq).orElse(null);
         return UserDto.convert(user);
     }
-
-//    public UserDto getUserInfo(String address){
-//        User user = userRepository.findByWalletAddress(address).orElse(null);
-//        UserDto userDto = UserDto.convert(user);
-//        return userDto;
-//    }
-//
-//    public String withdrawal(String address){
-//        User user = userRepository.findByWalletAddress(address)
-//                .orElseThrow(() -> new UserNotFoundException("삭제할 사용자를 찾을 수 없습니다"));
-//        userRepository.delete(user);
-//        return "Success";
-//    }
-//
-//    public UserDto updateUser(ReqUserUpdateDto userDto) {
-//        setProfile(new ReqProfileDto(userDto.getWalletAddress(), userDto.getTokenId()));
-//
-//        User user = userRepository.findByWalletAddress(userDto.getWalletAddress())
-//                .orElseThrow(() -> new UserNotFoundException("해당 지갑의 사용자를 찾을 수 없습니다"));
-//
-//        user.setUserBio(userDto.getUserBio());
-//        user.setUserNickname(userDto.getUserNickname());
-//        user.setUpdatedTime(new Date());
-//        return UserDto.convert(userRepository.save(user));
-//    }
 
 }
