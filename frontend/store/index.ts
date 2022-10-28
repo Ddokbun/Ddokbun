@@ -3,6 +3,7 @@ import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import { combineReducers } from "redux";
 import auth from "./auth";
 import manage from "./manage";
+
 const rootReducers = combineReducers({
   // 여기에 reducer들 추가
   auth,
