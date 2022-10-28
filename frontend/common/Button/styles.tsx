@@ -110,7 +110,7 @@ export const CancelButtonStyle = styled.button`
 
 export const SearchButtonStyle = styled.button`
   background-color: ${props => props.color};
-  font-family: "프리텐다드B";
+  font-family: ${props => props.theme.font.TitleFont};
   font-size: 20px;
   color: black;
   border-radius: 15px;
@@ -118,7 +118,7 @@ export const SearchButtonStyle = styled.button`
   margin: 1%;
   width: 150px;
   height: 150px;
-  box-shadow:  0 4px 5px rgba(0, 0, 0, 0.3);;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
 
   @media screen and (${props => props.theme.mobile}) {
     width: 90px;
@@ -127,5 +127,25 @@ export const SearchButtonStyle = styled.button`
     font-size: 15px;
     margin: 1%;
     padding: 2% 0 2%;
+  }
+`;
+export const LoginButtonStyle = styled.div`
+  width: 350px;
+  height: 50px;
+  border-radius: 6px;
+  display: flex;
+  background-color: ${props => props.theme.color.brown};
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  gap: 10px;
+
+  font-family: ${props => props.theme.font.TitleFont};
+
+  @media screen and (${props => props.theme.mobile}) {
+    width: 350px;
+    height: 50px;
+    font-size: 15px;
   }
 `;
