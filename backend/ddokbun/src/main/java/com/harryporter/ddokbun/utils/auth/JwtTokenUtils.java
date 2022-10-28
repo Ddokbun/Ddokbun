@@ -2,6 +2,8 @@ package com.harryporter.ddokbun.utils.auth;
 
 import com.harryporter.ddokbun.domain.user.dto.UserDto;
 import com.harryporter.ddokbun.domain.user.service.UserService;
+import com.harryporter.ddokbun.exception.ErrorCode;
+import com.harryporter.ddokbun.exception.GeneralException;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -19,7 +21,7 @@ import java.util.stream.Collectors;
 @Slf4j
 @RequiredArgsConstructor
 @Component
-public class JwtTokenProvider {
+public class JwtTokenUtils {
     private static String secretKey = "happybirthday";
     private static final Long expiredTime = 1000 * 60L * 60L * 3L; // 유효시간 3시간
     private final UserService userService;
@@ -72,24 +74,24 @@ public class JwtTokenProvider {
             return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
         } catch (SecurityException e) {
             log.info("Invalid JWT signature.");
+            throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Invalid JWT signature.");
         } catch (MalformedJwtException e) {
             log.info("Invalid JWT token.");
+            throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Invalid JWT token.");
         } catch (ExpiredJwtException e) {
-            log.info("Expired JWT token.");
+            log.info("Expired JWT token.---------------");
+            throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Expired JWT token.");
         } catch (UnsupportedJwtException e) {
             log.info("Unsupported JWT token.");
+            throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Unsupported JWT token.");
         } catch (IllegalArgumentException e) {
             log.info("JWT token compact of handler are invalid.");
+            throw new GeneralException(ErrorCode.VALIDATION_ERROR,"JWT token compact of handler are invalid.");
         }
-        return null;
     }
 
     public boolean validateToken(String jwtToken) {
-        try {
             return !getTokenClaims(jwtToken).getExpiration().before(new Date());
-        } catch (Exception e) {
-            return false;
-        }
     }
 
     private Long getUserSeq(String token) {
