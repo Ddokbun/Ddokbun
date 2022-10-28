@@ -2,12 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100%;
-  .button-wrap {
-    display: flex;
-    width: 100%;
-    justify-content: center;
-    align-items: center;
-  }
+
   .grid {
     padding: 4px 0px;
     grid-gap: 4px;

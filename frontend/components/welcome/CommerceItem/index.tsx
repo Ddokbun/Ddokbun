@@ -10,31 +10,21 @@ const CommerceItem = () => {
     <Wrapper>
       <div className="subcontent-wrap">
         <div className="pot-img">
-          <div className="banner-img">
-            <Image
-              objectFit="contain"
-              src={commerceImg01}
-              alt="임시 메인 이미지"
-              layout="responsive"
-            />
-            <Image
-              src={commerceImg03}
-              alt="임시 메인 이미지"
-              objectFit="contain"
-            />
+          <div>
+            <div className="img-item">
+              <Image src={commerceImg01} alt="임시 메인 이미지" layout="fill" />
+            </div>
+            <div className="img-item">
+              <Image src={commerceImg03} alt="임시 메인 이미지" layout="fill" />
+            </div>
           </div>
-          <div className="banner-img">
-            <Image
-              src={commerceImg04}
-              alt="임시 메인 이미지"
-              layout="responsive"
-              objectFit="contain"
-            />
-            <Image
-              src={commerceImg02}
-              alt="임시 메인 이미지"
-              objectFit="contain"
-            />
+          <div>
+            <div className="img-item">
+              <Image src={commerceImg04} alt="임시 메인 이미지" layout="fill" />
+            </div>
+            <div className="img-item">
+              <Image src={commerceImg02} alt="임시 메인 이미지" layout="fill" />
+            </div>
           </div>
         </div>
         <div className="title">
