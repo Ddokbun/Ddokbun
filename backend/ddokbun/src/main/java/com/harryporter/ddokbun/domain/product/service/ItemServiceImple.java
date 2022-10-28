@@ -1,7 +1,7 @@
 package com.harryporter.ddokbun.domain.product.service;
 
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
-import com.harryporter.ddokbun.domain.plant.entity.dto.PlantDto;
+import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
 import com.harryporter.ddokbun.domain.product.dto.ItemDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemSearchDto;
