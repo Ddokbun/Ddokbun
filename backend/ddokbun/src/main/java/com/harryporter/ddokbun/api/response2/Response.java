@@ -1,5 +1,6 @@
 package com.harryporter.ddokbun.api.response2;
 
+import com.harryporter.ddokbun.exception.ErrorCode;
 import lombok.AccessLevel;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -12,11 +13,11 @@ public class Response {
     private Result result;
 
     public static Response success(){
-        return new Response("success",ResponseType.SUCCESS.getCode(),null);
+        return new Response("success", ErrorCode.OK.getCode(),null);
     }
 
     public static <T> Response success(T data){
-        return new Response("success",ResponseType.SUCCESS.getCode() ,new Success(data));
+        return new Response("success",ErrorCode.OK.getCode() ,new Success(data));
     }
 
     public static Response failure(int code, String msg) {

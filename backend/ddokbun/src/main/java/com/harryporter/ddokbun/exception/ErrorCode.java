@@ -14,6 +14,7 @@ public enum ErrorCode {
 
     OK(0, HttpStatus.OK, "Ok"),
 
+
     BAD_REQUEST(10000, HttpStatus.BAD_REQUEST, "Bad request"),
     
     SPRING_BAD_REQUEST(10001, HttpStatus.BAD_REQUEST, "Spring-detected bad request"),
