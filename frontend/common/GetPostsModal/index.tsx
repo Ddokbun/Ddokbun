@@ -6,16 +6,23 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 interface PropsType {
   handleSetPostcode: () => void;
+  getPost: (e: string) => void;
+  getDetailPost: (e: string) => void;
 }
 
 interface PostType {
   address: string;
   addressType: string;
   bname: string;
+  zonecode: string;
   buildingName: string;
 }
 
-const GetPost: React.FC<PropsType> = ({ handleSetPostcode }) => {
+const GetPost: React.FC<PropsType> = ({
+  handleSetPostcode,
+  getPost,
+  getDetailPost,
+}) => {
   const onCompletePost = (data: PostType) => {
     let fullAddr = data.address;
     let extraAddr = "";
@@ -33,8 +40,9 @@ const GetPost: React.FC<PropsType> = ({ handleSetPostcode }) => {
     console.log(fullAddr);
     console.log(data.zonecode);
 
+    getPost(data.zonecode);
+    getDetailPost(fullAddr);
     handleSetPostcode();
-
     // setAddress(data.zonecode);
     // setAddressDetail(fullAddress);
     // setIsOpenPost(false);
