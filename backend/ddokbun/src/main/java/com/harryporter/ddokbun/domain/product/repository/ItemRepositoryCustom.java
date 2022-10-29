@@ -41,7 +41,7 @@ public class ItemRepositoryCustom {
                         item.itemName.as("itemName"),
                         item.itemPicture.as("itemImageUrl"),
                         plant.plantZRName.coalesce("Pot").as("itemEnName"),
-                        plant.recRate.coalesce("").as("recRate"),
+                        plant.recRate.coalesce("").as("itemLabels"),
                         item.itemPrice.as("itemPrice")
                 )).leftJoin(plant).where(booleanBuilder).fetch();
 

@@ -12,4 +12,6 @@ public class ItemDetailDto extends ItemDto{
 
 
     private PlantDto plant;
+
+
 }
