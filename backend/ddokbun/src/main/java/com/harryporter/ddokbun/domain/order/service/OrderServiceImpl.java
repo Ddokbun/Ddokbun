@@ -8,6 +8,7 @@ import com.harryporter.ddokbun.domain.order.entity.Order;
 import com.harryporter.ddokbun.domain.order.entity.OrderStatus;
 import com.harryporter.ddokbun.domain.order.repository.OrderRepository;
 import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
+import com.harryporter.ddokbun.domain.product.dto.ItemDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
 import com.harryporter.ddokbun.domain.product.entity.Item;
 import com.harryporter.ddokbun.domain.product.service.ItemService;
@@ -19,7 +20,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -30,6 +30,7 @@ public class OrderServiceImpl implements OrderService{
     private final OrderRepository orderRepository;
     private final UserRepository userRepository;
     private final ItemService itemService;
+
     @Override
     public List<OrderListItemDto> getOrderListByUserSeq(Long userSeq) {
 
@@ -56,8 +57,14 @@ public class OrderServiceImpl implements OrderService{
                 ()->new GeneralException(ErrorCode.NOT_FOUND)
         );
 
+        itemService.decreaseQuantity(orderReq.getItemSeq(),orderReq.getOrderQuantity());
+        //item의 수량을 확인하고 제거하고, order에 올려줘야함
         ItemDetailDto itemDetailDto =  itemService.getOneItemById(orderReq.getItemSeq());
 
+
+
+
+        //Entity 설저 영역, 따로 뺴던가 해야할 듯
         Order order = new Order();
         order.setOrderAddress(orderReq.getOrderAddress());//주소
         order.setOrderEmail(orderReq.getOrderEmail());//이메일
@@ -66,15 +73,16 @@ public class OrderServiceImpl implements OrderService{
         order.setOrderPrice(itemDetailDto.getItemPrice() * orderReq.getOrderPrice()); //총가
         order.setOrderQuantity(order.getOrderQuantity()); // 수량
         order.setUser(user); //유저
-
         Item item = new Item();
         item.setItemSeq(orderReq.getItemSeq()); //아이템
         order.setItem(item);
         order.setOrderReciver(orderReq.getOrderReceiver());
         order.setOrderStatus(OrderStatus.READY);
         order.setOrderMethod(orderReq.getOrderMethod());//결제방식
-        order.setOrderTime(LocalDateTime.now());
+        order.setOrderTime(orderReq.getOrderTime());
         order.setOrderWaybillNumber("111-23-12-31-2-1");
+        order.setOrderQuantity(orderReq.getOrderQuantity());
+        order.setOrderUserName(orderReq.getOrderUserName());
 
 
         orderRepository.save(order);
@@ -93,16 +101,24 @@ public class OrderServiceImpl implements OrderService{
             throw  new GeneralException(ErrorCode.DATA_ACCESS_ERROR,"ACCESS DENIED");
         };
 
+        //주문으로 부터 아이템을 가져온다.
         Item item = order.getItem();
-
+        //Entity 속성을 맵핑되는 DTO에 삽입
         OrderDto orderDto = OrderDto.of(order);
-        ItemDetailDto itemDetailDto = (ItemDetailDto) ItemDetailDto.of(item);
 
+        //너많은 정보를 추가한 DTO 생성
+        ItemDetailDto itemDetailDto = new ItemDetailDto();
+        //ItemDto <- ItemDetailDto 상속관계이기에, 상속 받은 필드들을 설정해준다.
+        itemDetailDto.copy(ItemDto.of(item));
+
+        //아이템이 식물이면 ,식물 속성들을 채워준다.
         if(item.getPlant() != null){
             itemDetailDto.setPlant(PlantDto.of(item.getPlant()));
         }
 
+        //OrderDetailDto를 생성하고
         OrderDetailDto orderDetailDto = new OrderDetailDto();
+        //Order의 속성을 채워주고 , Item속성을 채워주고, 식물이면 Plant속성을 채워준다.
         orderDetailDto.setOrderProperty(orderDto,itemDetailDto);
 
         return orderDetailDto;

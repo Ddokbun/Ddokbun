@@ -14,4 +14,5 @@ public interface ItemService {
     ItemDetailDto getOneItemById(Long ItemSeq);
 
     List<ItemSearchDto> getTodayRecommendItem();
+    int decreaseQuantity(long itemSeq,int quantity);
 }
