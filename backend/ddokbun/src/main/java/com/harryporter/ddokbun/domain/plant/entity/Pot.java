@@ -9,6 +9,7 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Date;
 
 @Entity
 @Getter
@@ -62,7 +63,7 @@ public class Pot {
 
     // 최근 물 준 날짜
     @Column(name = "water_supply", nullable = true)
-    private LocalDateTime waterSupply;
+    private Date waterSupply;
 
     // 물 공급 자동 수동 설정
     @Column(name = "is_auto", columnDefinition = "CHAR(1)")
@@ -80,7 +81,7 @@ public class Pot {
 
     @PrePersist
     public void setting(){
-        this.registeredTime = LocalDateTime.now(); //서버 돌아가는 컴퓨터 시간대의 현재
+        this.createdTime = LocalDateTime.now(); //서버 돌아가는 컴퓨터 시간대의 현재
     }
 
     @Builder

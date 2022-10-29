@@ -16,6 +16,8 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
+
 @Slf4j
 @RequiredArgsConstructor
 @Service
@@ -26,6 +28,7 @@ public class PotService {
     private final UserRepository userRepository;
     private final PlantRepository plantRepository;
 
+    @Transactional
     public RegisterPotResponse registerPot(RegisterPotRequest registerPotRequest, Long userSeq){
         // Plant_seq로 통해서 Plant를 받아오는 logic으로 변경하기
         Plant plant = plantRepository.findByPlantSeq(registerPotRequest.getPlantSeq()).orElseThrow(
@@ -44,6 +47,7 @@ public class PotService {
         return registerPotResponse;
     }
 
+    @Transactional
     public void unregisterPot(String potSerial, Long userSeq){
         // Access_token으로 User을 받아오는 로직으로 변경하기
         User user = userRepository.findById(userSeq).orElseThrow(

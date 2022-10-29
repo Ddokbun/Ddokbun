@@ -3,7 +3,7 @@ import { Progress, Wrapper } from "./styled";
 
 import Temper from "../../../assets/commerce/temper.png";
 import Water from "../../../assets/commerce/water.png";
-import Humid from "../../../assets/commerce/Humid.png";
+import Humid from "../../../assets/commerce/humid.png";
 import Image from "next/image";
 
 interface SimpleGraphProps {

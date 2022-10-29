@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import React, { useState } from "react";
+import React, { useState, useTransition } from "react";
 import { BasicInput, DateInputStyle, SearchInputWrapper } from "./styles";
 import search from "../../assets/icon/search.png";
 import { useRouter } from "next/router";
@@ -41,20 +41,43 @@ export const Input: React.FC<{
   );
 };
 
-export const SearchInput: React.FC<{ placeholder: string }> = ({
-  placeholder,
-}) => {
+export const SearchInput: React.FC<{
+  placeholder: string;
+  disabled: boolean;
+  setSearchInput: React.Dispatch<React.SetStateAction<string>> | null;
+  value: string | undefined;
+}> = ({ placeholder, disabled, setSearchInput, value }) => {
   const router = useRouter();
+  const [isPending, startTransition] = useTransition();
   const onShowSearchHandler = () => {
-    // router.push("/search");
+    router.push("/manage/add/search");
+  };
+
+  const onInputChangeHandler: React.ChangeEventHandler<
+    HTMLInputElement
+  > = event => {
+    //
+    startTransition(() => {
+      // 저장set
+      if (setSearchInput) {
+        setSearchInput(event.target.value);
+      }
+    });
   };
 
   return (
     <SearchInputWrapper onClick={onShowSearchHandler}>
-      <div className="icon">
+      <div className={"icon"}>
         <Image src={search} alt="search-icon" />
       </div>
-      <input className="input-search" placeholder={placeholder} type="text" />
+      <input
+        disabled={disabled}
+        className={"input-search"}
+        placeholder={placeholder}
+        type="text"
+        onChange={onInputChangeHandler}
+        value={value}
+      />
     </SearchInputWrapper>
   );
 };
