@@ -36,7 +36,7 @@ public class UserService {
         return UserDto.convert(user);
     }
 
-    public UserDto updateNickname(Long userSeq,String nickname){
+    public String updateNickname(Long userSeq,String nickname){
         User user=userRepository.findByUserSeq(userSeq).orElseThrow(
                 ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다."));
         log.info("User Seq  :  {}",user.getUserSeq());
@@ -49,7 +49,7 @@ public class UserService {
             throw new GeneralException(ErrorCode.DUPPLICATE_INPUT,"이미 등록된 닉네임입니다.");
         }
         log.info("변경 후 User Nickname  :  {}",user.getUserNickname());
-        return UserDto.convert(user);
+        return user.getUserNickname();
     }
 
     public String randomNickname(){
@@ -65,7 +65,7 @@ public class UserService {
             Collections.shuffle(second);
             nickName= first.get(0)+second.get(0);
         };
-        return nickName;
+        return "Nickname Update Success";
 
     }
 

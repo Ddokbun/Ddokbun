@@ -39,8 +39,8 @@ public class UserController {
     @PutMapping
     public ResponseEntity<?> updateNickname(HttpServletRequest request,String nickname){
         log.info("User Seq  :  {}",jwtTokenUtils.getUserSeq(request));
-        UserDto userDto = userService.updateNickname(jwtTokenUtils.getUserSeq(request),nickname);
-        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("Success",userDto);
+        String result = userService.updateNickname(jwtTokenUtils.getUserSeq(request),nickname);
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("Success",result);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
