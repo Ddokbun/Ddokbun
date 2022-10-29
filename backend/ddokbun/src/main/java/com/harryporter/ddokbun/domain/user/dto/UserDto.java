@@ -1,5 +1,6 @@
 package com.harryporter.ddokbun.domain.user.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.harryporter.ddokbun.domain.user.entity.User;
 import lombok.*;
 
@@ -16,7 +17,9 @@ public class UserDto {
     private String userEmail;
     private String userNickname;
     private String userRole;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private Date createdTime;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
     private Date updatedTime;
 
     public static UserDto convert(User user) {
