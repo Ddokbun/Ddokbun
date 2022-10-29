@@ -1,5 +1,6 @@
 package com.harryporter.ddokbun.domain.product.dto.response;
 
+import com.harryporter.ddokbun.domain.product.entity.Item;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -27,4 +28,26 @@ public class ItemSearchDto {
     private String itemLabels;
 
 
+    public static ItemSearchDto of(Item item) {
+        ItemSearchDto temp = new ItemSearchDto();
+
+        temp.itemSeq = item.getItemSeq();
+        temp.itemName = item.getItemName();
+
+        //식물영명
+
+
+        //이미지경로
+        temp.itemImageUrl =item.getItemPicture();
+        temp.itemPrice = item.getItemPrice();
+
+        if(item.getItemKind() == 1){
+            temp.itemLabels = item.getPlant().getRecRate();
+            temp.itemEnName =item.getPlant().getPlantZRName();
+        }else if(item.getItemKind() == 2){
+            temp.itemLabels ="";
+            temp.itemEnName ="";
+        }
+        return temp;
+    }
 }

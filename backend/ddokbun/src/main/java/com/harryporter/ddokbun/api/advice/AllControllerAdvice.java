@@ -46,11 +46,11 @@ public class AllControllerAdvice {
     @ExceptionHandler(value = MethodArgumentTypeMismatchException.class)
     public ResponseEntity<?> MethodArgumentTypeMismatchHandler(MethodArgumentTypeMismatchException me){
 
-        ResponseFrame<Throwable> responseFrame = new ResponseFrame<>();
+        ResponseFrame<String> responseFrame = new ResponseFrame<>();
         responseFrame.setMessage(ErrorCode.BAD_REQUEST.getMessage()); //메세지
         responseFrame.setState(0); //심플 성공 실패 상태
         responseFrame.setCode(ErrorCode.BAD_REQUEST.getCode()); //우리가 지정한 코드
-        responseFrame.setContent(me.getCause());
+        responseFrame.setContent(me.getMessage());
         return new ResponseEntity<>(responseFrame,ErrorCode.BAD_REQUEST.getHttpStatus());
     }
 
