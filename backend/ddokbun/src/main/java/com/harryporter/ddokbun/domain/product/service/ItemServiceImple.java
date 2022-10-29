@@ -1,5 +1,6 @@
 package com.harryporter.ddokbun.domain.product.service;
 
+import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
 import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
 import com.harryporter.ddokbun.domain.product.dto.ItemDto;
@@ -77,6 +78,13 @@ public class ItemServiceImple implements ItemService{
         return idt;
 
 
+    }
+
+    @Override
+    public List<ItemSearchDto> getTodayRecommendItem() {
+
+       // itemRepository.
+        return null;
     }
 
 

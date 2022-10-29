@@ -26,6 +26,7 @@ public class LieUserBeforeAthenticationInterceptor implements HandlerInterceptor
         log.warn("해당 소스는 개발을 위한 소스가 포함되어있습니다. 실제 서비스 운영 전, auth로직이 구현되면 삭제해주세요");
         UserAthentication lieUser = new UserAthentication();
 
+
         lieUser.setAuthenticated(true);
         lieUser.setUserEmail("test@test.com");
         lieUser.setUserNickname("테스트님");

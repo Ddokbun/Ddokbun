@@ -1,6 +1,7 @@
 package com.harryporter.ddokbun.utils.auth;
 
 import com.harryporter.ddokbun.domain.user.dto.UserDto;
+import com.harryporter.ddokbun.domain.user.dto.UserSimpleDto;
 import com.harryporter.ddokbun.domain.user.service.UserService;
 import com.harryporter.ddokbun.exception.ErrorCode;
 import com.harryporter.ddokbun.exception.GeneralException;
@@ -66,6 +67,7 @@ public class JwtTokenUtils {
                         .collect(Collectors.toList());
 
         UserDto user = userService.loadUserByUserSeq(getUserSeq(token));
+
         return new UsernamePasswordAuthenticationToken(user, "", authorities);
     }
 
