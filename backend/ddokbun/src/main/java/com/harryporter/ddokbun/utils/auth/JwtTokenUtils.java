@@ -76,24 +76,29 @@ public class JwtTokenUtils {
             return Jwts.parser().setSigningKey(secretKey).parseClaimsJws(token).getBody();
         } catch (SecurityException e) {
             log.info("Invalid JWT signature.");
-            throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Invalid JWT signature.");
+     //       throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Invalid JWT signature.");
         } catch (MalformedJwtException e) {
             log.info("Invalid JWT token.");
-            throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Invalid JWT token.");
+     //       throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Invalid JWT token.");
         } catch (ExpiredJwtException e) {
             log.info("Expired JWT token.---------------");
-            throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Expired JWT token.");
+     //       throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Expired JWT token.");
         } catch (UnsupportedJwtException e) {
             log.info("Unsupported JWT token.");
-            throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Unsupported JWT token.");
+       //     throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Unsupported JWT token.");
         } catch (IllegalArgumentException e) {
             log.info("JWT token compact of handler are invalid.");
-            throw new GeneralException(ErrorCode.VALIDATION_ERROR,"JWT token compact of handler are invalid.");
+        //    throw new GeneralException(ErrorCode.VALIDATION_ERROR,"JWT token compact of handler are invalid.");
         }
+        return null;
     }
 
     public boolean validateToken(String jwtToken) {
+        try {
             return !getTokenClaims(jwtToken).getExpiration().before(new Date());
+        }catch (Exception e){
+            return false;
+        }
     }
 
     private Long getUserSeq(String token) {
