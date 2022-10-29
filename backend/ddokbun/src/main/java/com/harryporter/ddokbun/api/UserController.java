@@ -18,8 +18,8 @@ public class UserController {
     private final UserService userService;
 
     @GetMapping
-    public Response getUserInfo(HttpServletRequest request){
-        Long userSeq=jwtTokenProvider.getUserSeq(request);
-        return Response.success(userService.loadUserByUserSeq(userSeq));
+    public Response getUserInfo(){
+      //  Long userSeq=jwtTokenProvider.getUserSeq(request);
+        return Response.success("Success");
     }
 }
