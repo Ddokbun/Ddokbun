@@ -8,7 +8,7 @@ import lombok.Setter;
 @Getter @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class KakaoToken {
+public class KakaoAccessToken {
     private String access_token;
     private String token_type;
     private String refresh_token;
