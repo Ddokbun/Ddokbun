@@ -1,13 +1,11 @@
 package com.harryporter.ddokbun.domain.order.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.harryporter.ddokbun.domain.order.entity.Order;
 import com.harryporter.ddokbun.domain.order.entity.OrderStatus;
-import com.harryporter.ddokbun.domain.plant.entity.Plant;
 import lombok.Getter;
-import org.aspectj.weaver.ast.Or;
 
 import java.time.LocalDateTime;
-import java.util.Optional;
 
 @Getter
 public class OrderListItemDto {
@@ -26,6 +24,8 @@ public class OrderListItemDto {
     private String imageUrl;
 
     private String itemEnName;
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    private LocalDateTime orderTime;
 
     public static OrderListItemDto of(Order order){
 
@@ -37,6 +37,7 @@ public class OrderListItemDto {
         temp.itemSeq = order.getItem().getItemSeq();
         temp.orderStatus = order.getOrderStatus();
         temp.imageUrl = order.getItem().getItemPicture();
+        temp.orderTime = order.getOrderTime();
         if(order.getItem().getItemKind() == 1){
             temp.itemEnName = order.getItem().getPlant().getPlantZRName();
         }else if(order.getItem().getItemKind() == 2){

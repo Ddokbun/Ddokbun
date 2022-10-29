@@ -12,7 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
@@ -62,8 +61,8 @@ public class OrderController {
 
     //주문 내역 상세보기
     //사용자의 주문내역 상세보기
-    @RequestMapping(value = "/{orederSeq}",method = RequestMethod.GET)
-    public ResponseEntity<?> getMyOrderDetail(@PathVariable Long orderSeq, @ApiIgnore @AuthenticationPrincipal UserSimpleDto principal){
+    @RequestMapping(value = "/{orderSeq}",method = RequestMethod.GET)
+    public ResponseEntity<?> getMyOrderDetail(@PathVariable(value = "orderSeq") Long orderSeq, @ApiIgnore @AuthenticationPrincipal UserSimpleDto principal){
 
         OrderDetailDto orderDetailDto =  orderService.getOrderDetail(orderSeq,principal.getUserSeq());
 

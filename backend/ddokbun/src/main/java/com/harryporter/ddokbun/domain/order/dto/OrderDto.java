@@ -1,13 +1,13 @@
 package com.harryporter.ddokbun.domain.order.dto;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.harryporter.ddokbun.domain.order.entity.Order;
 import com.harryporter.ddokbun.domain.order.entity.OrderStatus;
-import com.harryporter.ddokbun.domain.product.entity.Item;
-import com.harryporter.ddokbun.domain.user.entity.User;
+import lombok.Getter;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
+@Getter
 public class OrderDto {
     //주문 일련 번호
     private long orderSeq;
@@ -35,6 +35,7 @@ public class OrderDto {
     //결제수단
     private String orderMethod;
     //결제 시간
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime orderTime;
     //주문 상태
     private OrderStatus orderStatus;
