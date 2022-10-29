@@ -31,8 +31,6 @@ public class UserSocialDto {
                 .userNickname(userNickname)
                 .userEmail(userEmail)
                 .userRole("ROLE_USER")
-                .createdTime(new Date())
-                .updatedTime(new Date())
                 .build();
     }
 }

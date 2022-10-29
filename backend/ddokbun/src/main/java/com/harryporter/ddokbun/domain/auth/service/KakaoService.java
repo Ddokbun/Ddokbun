@@ -69,7 +69,7 @@ public class KakaoService {
                         String.class
                 );
             }catch (HttpClientErrorException e){
-                throw new GeneralException(ErrorCode.DUPPLICATE_INPUT,"이미 사용한 Authorization code입니다");
+                throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Authorization code를 확인하세요.");
             }
 
 
