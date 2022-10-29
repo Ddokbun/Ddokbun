@@ -100,13 +100,17 @@ public class ProductController {
     @RequestMapping(value = "/rec-today",method = RequestMethod.GET)
     public ResponseEntity<?> getTodayRecomendedProduct(){
 
-        return null;
+        List<ItemSearchDto> itemSearchDtoList =  itemService.getTodayRecommendItem();
+
+        ResponseFrame res = ResponseFrame.ofOKResponse("오늘을 식물을 반환합니다.",itemSearchDtoList);
+        return new ResponseEntity<>(res,HttpStatus.OK);
     }
 
     //인기 식물을 조회한다.
     //조회수가 많은 상품을 출력함
     @RequestMapping(value = "/hot",method = RequestMethod.GET)
     public ResponseEntity<?> getHotProduct(){
+
 
         return null;
     }

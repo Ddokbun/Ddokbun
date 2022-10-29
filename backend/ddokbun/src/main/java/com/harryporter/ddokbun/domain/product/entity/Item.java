@@ -2,12 +2,14 @@ package com.harryporter.ddokbun.domain.product.entity;
 
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 
 @Table(name = "item")
 @Entity
 @Getter
+@Setter
 public class Item {
 
     //상품 일련 번호
