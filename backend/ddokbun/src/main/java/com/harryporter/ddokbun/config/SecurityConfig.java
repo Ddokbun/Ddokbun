@@ -25,7 +25,7 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 public class SecurityConfig {
 
     private final TokenAccessDeniedHandler tokenAccessDeniedHandler;
-    private final JwtTokenUtils jwtTokenProvider;
+    private final JwtTokenUtils jwtTokenUtils;
 
     //WebSecurity를 통해 Spring Security 적용하지 않을 리소스 설정
     @Bean
@@ -55,10 +55,12 @@ public class SecurityConfig {
 
                 .authorizeRequests()
                 .antMatchers("/user/login/**").permitAll()
+        //        .anyRequest().permitAll()
+
            //     .anyRequest().authenticated()
                 .and()
 
-                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenProvider), UsernamePasswordAuthenticationFilter.class)
+                .addFilterBefore(new JwtAuthenticationFilter(jwtTokenUtils), UsernamePasswordAuthenticationFilter.class)
                 .exceptionHandling()
                 .authenticationEntryPoint(new RestAuthenticationEntryPoint())
                 .accessDeniedHandler(tokenAccessDeniedHandler);
