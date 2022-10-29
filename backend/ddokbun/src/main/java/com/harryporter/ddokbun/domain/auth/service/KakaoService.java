@@ -7,6 +7,8 @@ import com.harryporter.ddokbun.domain.auth.dto.KakaoProfile;
 import com.harryporter.ddokbun.domain.user.dto.UserSocialDto;
 import com.harryporter.ddokbun.domain.user.dto.UserDto;
 import com.harryporter.ddokbun.domain.user.service.UserService;
+import com.harryporter.ddokbun.exception.ErrorCode;
+import com.harryporter.ddokbun.exception.GeneralException;
 import com.harryporter.ddokbun.utils.auth.JwtTokenUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -17,6 +19,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
+import org.springframework.web.client.HttpClientErrorException;
 import org.springframework.web.client.RestTemplate;
 
 @Service
@@ -55,12 +58,18 @@ public class KakaoService {
             // HTTP 요청 보내기 (POST 방식으로)
             HttpEntity<MultiValueMap<String,String>> kakaoTokenRequest = new HttpEntity<>(body, headers);
             RestTemplate rt1 = new RestTemplate();
-            ResponseEntity<String> response = rt1.exchange(
-                    "https://kauth.kakao.com/oauth/token",
-                    HttpMethod.POST,
-                    kakaoTokenRequest,
-                    String.class
-            );
+            ResponseEntity<String> response;
+            try{
+                response = rt1.exchange(
+                        "https://kauth.kakao.com/oauth/token",
+                        HttpMethod.POST,
+                        kakaoTokenRequest,
+                        String.class
+                );
+            }catch (HttpClientErrorException e){
+                throw new GeneralException(ErrorCode.DUPPLICATE_INPUT,"이미 사용한 Authorization code입니다");
+            }
+
 
             // HTTP 응답 (JSON) -> 액세스 토큰 파싱
             String responseBody = response.getBody();
