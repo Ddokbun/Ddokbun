@@ -1,11 +1,14 @@
 package com.harryporter.ddokbun.domain.plant.entity;
 
-import lombok.Getter;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Plant {
     //식물 일련 번호
     @Id
@@ -108,4 +111,33 @@ public class Plant {
     @Column(name = "rec_rate")
     private String recRate;
 
+    public void changePlant(Plant plant){
+        this.plantName=plant.getPlantName();
+        this.plantNeName=plant.getPlantNeName();
+        this.plantZRName=plant.getPlantZRName();
+        this.distbName=plant.getDistbName();
+        this.originPlace=plant.getOriginPlace();
+        this.growthHeight=plant.getGrowthHeight();
+        this.growthWidth=plant.getGrowthWidth();
+        this.smellDesc=plant.getSmellDesc();
+        this.toxctyInfo=plant.getToxctyInfo();
+        this.manageLevel=plant.getManageLevel();
+        this.growthTemperature=plant.getGrowthTemperature();
+        this.winterTemperature=plant.getWinterTemperature();
+        this.growthHumid=plant.getGrowthHumid();
+        this.specManageInfo=plant.getSpecManageInfo();
+        this.adviseInfo=plant.getAdviseInfo();
+        this.functionInfo=plant.getFunctionInfo();
+        this.manageRequire=plant.getManageRequire();
+        this.plantPlace=plant.getPlantPlace();
+        this.waterCycle=plant.getWaterCycle();
+        this.waterIfno=plant.getWaterIfno();
+        this.light=plant.getLight();
+        this.lightInfo=plant.getLightInfo();
+        this.temperature=plant.getTemperature();
+        this.temperatureInfo=plant.getTemperatureInfo();
+        this.imagePath=plant.getImagePath();
+        this.recRate=plant.getRecRate();
+
+    }
 }
