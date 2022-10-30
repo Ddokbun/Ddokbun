@@ -4,6 +4,8 @@ import com.harryporter.ddokbun.api.response.ResponseFrame;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemSearchDto;
 import com.harryporter.ddokbun.domain.product.service.ItemService;
+import com.harryporter.ddokbun.domain.survey.dto.request.SurveyAnswerRequest;
+import com.harryporter.ddokbun.domain.survey.dto.response.SurveyResponse;
 import com.harryporter.ddokbun.domain.survey.service.SurveyService;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -127,17 +129,26 @@ public class ProductController {
 
     @ApiOperation("설문 내용 조회")
     @RequestMapping(value="/survey",method = RequestMethod.GET)
-    public ResponseEntity<?> getServeyData(){
+    public ResponseEntity<?> getSurveyData(){
 
-        return null;
+        log.info("설문 내용 조회 API 접근");
+        List<SurveyResponse> surveyResponseList =surveyService.getSurveys();
+
+        log.info("설문 내용 반환 :: 설문 문항 갯수 : {}",surveyResponseList.size());
+
+        ResponseFrame res = ResponseFrame.ofOKResponse("설문 문항과 설문 선택지들을 반환합니다.",surveyResponseList);
+
+        return new ResponseEntity<>(res,HttpStatus.OK);
     }
 
     //사용자 설문 결과를 전송받는다.
     //사용자 설문 결과를 받아 계산과정을 거친 후 그에 맞는 상품들을 출력한다.
-    @ApiOperation("설문 결과 전송 후 결과 조회(미완)")
+    @ApiOperation("설문 결과 전송 후 결과 조회")
     @RequestMapping(value="/survey",method = RequestMethod.POST)
-    public ResponseEntity<?> getSurveyThenProcessionEndData(){
-        return null;
+    public ResponseEntity<?> getSurveyThenProcessionEndData(@RequestBody SurveyAnswerRequest surveyAnswerRequest){
+
+        log.info("설문 결과 반환 API 접근 :: {}",surveyAnswerRequest.getAnswerList());
+        return new ResponseEntity<>("qwe",HttpStatus.OK);
     }
 
     //자신의 화분에 맞는 추천 식물들을 반환한다.
