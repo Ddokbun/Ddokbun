@@ -35,4 +35,21 @@ public class PlantService {
         return "Success";
     }
 
+    public String updatePlant(PlantDto plantDto){
+        Plant oldPlant=plantRepository.findByPlantSeq(plantDto.getPlantSeq()).orElseThrow(
+                ()-> new GeneralException(ErrorCode.NOT_FOUND, "식물을 찾을 수 없습니다."));
+        Plant newPlant=plantDto.toEntity();
+        log.info("데이터 update 전 {}",oldPlant.getPlantSeq());
+        oldPlant.changePlant(newPlant);
+        log.info("데이터 update 후 {}",oldPlant.getPlantSeq());
+        try {
+            plantRepository.save(oldPlant);
+        }catch (Exception e){
+            throw new GeneralException(ErrorCode.BAD_REQUEST,"데이터 변경에 실패했습니다.");
+        }
+        return "Success";
+
+    }
+
+
 }
