@@ -42,7 +42,7 @@ export const Wrapper = styled.div`
   }
   li {
     word-break: keep-all;
-    padding: 0px 20px 0px 10px;
+    padding: 0px 0px 0px 10px;
     text-decoration: none;
     font-size: 24px;
     font-family: ${props => props.theme.font.TextFont2};
@@ -55,6 +55,36 @@ export const Wrapper = styled.div`
     .button {
       height: 55px;
       width: 500px;
+    }
+  }
+
+  @media screen and (${props => props.theme.mobile}) {
+    .button-wrap {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 45px;
+      padding: 20px 5px;
+      grid-gap: 50px;
+      margin: 10px 0px 20px;
+      .button {
+        font-family: ${props => props.theme.font.TextFont2};
+        font-size: 20px;
+      }
+    }
+    p {
+      font-size: 20px;
+    }
+
+    li {
+      font-size: 18px;
+    }
+
+    .flex {
+      .button {
+        height: 50px;
+        width: 500px;
+      }
     }
   }
 `;

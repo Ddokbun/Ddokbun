@@ -1,33 +1,71 @@
-import React, { useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import GetPost from "../../../../common/GetPostsModal";
 import { InputRow, Wrapper } from "./styles";
 
-const OrderFormComponent: React.FC = () => {
+interface OrderProps {
+  name: string;
+
+  phoneHead: string;
+  phoneBody: string;
+  phoneTail: string;
+
+  mailHead: string;
+  mailTail: string;
+  post: string;
+  detailPost: string;
+  additionalPost: string;
+
+  nameError: string;
+  phoneError: string;
+  mailError: string;
+  postError: string;
+
+  setName: Dispatch<SetStateAction<string>>;
+  setHeadEmail: Dispatch<SetStateAction<string>>;
+  setTailEmail: Dispatch<SetStateAction<string>>;
+  setPost: Dispatch<SetStateAction<string>>;
+  setDetailPost: Dispatch<SetStateAction<string>>;
+  setAdditionalPost: Dispatch<SetStateAction<string>>;
+  setPhoneHead: Dispatch<SetStateAction<string>>;
+  setPhoneBody: Dispatch<SetStateAction<string>>;
+  setPhoneTail: Dispatch<SetStateAction<string>>;
+}
+
+const OrderFormComponent: React.FC<OrderProps> = props => {
   const [openPostcode, setOpenPostcode] = React.useState<boolean>(false);
   const handleSetPostcode = () => {
     setOpenPostcode(val => !val);
   };
-  const [name, setName] = useState("");
-  const [mail, setEmail] = useState("");
-  const [post, setPost] = useState("");
-  const [detailPost, setDetailPost] = useState("");
-  const [additionalPost, setAdditionalPost] = useState("");
 
+  /** 폼 인풋 검사 */
   const onChangeHandler = {
     name: (e: React.ChangeEvent<HTMLInputElement>) => {
-      setName(e.target.value);
+      props.setName(e.target.value);
     },
-    email: (e: React.ChangeEvent<HTMLInputElement>) => {
-      setEmail(e.target.value);
+    emailHead: (e: React.ChangeEvent<HTMLInputElement>) => {
+      props.setHeadEmail(e.target.value);
     },
+    emailTail: (e: React.ChangeEvent<HTMLInputElement>) => {
+      props.setTailEmail(e.target.value);
+    },
+    phoneHead: (e: React.ChangeEvent<HTMLInputElement>) => {
+      props.setPhoneHead(e.target.value);
+    },
+    phoneBody: (e: React.ChangeEvent<HTMLInputElement>) => {
+      props.setPhoneBody(e.target.value);
+    },
+    phoneTail: (e: React.ChangeEvent<HTMLInputElement>) => {
+      props.setPhoneTail(e.target.value);
+    },
+
     post: (e: string) => {
-      setPost(e);
+      props.setPost(e);
     },
     detailPost: (e: string) => {
-      setDetailPost(e);
+      props.setDetailPost(e);
     },
     additionalPost: (e: React.ChangeEvent<HTMLInputElement>) => {
-      setAdditionalPost(e.target.value);
+      props.setAdditionalPost(e.target.value);
     },
   };
 
@@ -36,38 +74,64 @@ const OrderFormComponent: React.FC = () => {
       <form className="grid-form">
         <InputRow maxWidth="250px">
           <label htmlFor="name">이름</label>
-          <input id="name" onChange={onChangeHandler.name} value={name} />
+          <input id="name" onChange={onChangeHandler.name} value={props.name} />
+          <p>{props.nameError}</p>
         </InputRow>
+
         <InputRow maxWidth="100px">
           <label htmlFor="name">휴대전화</label>
           <div className="phone-num">
-            <input type="text" />
+            <input
+              type="text"
+              onChange={onChangeHandler.phoneHead}
+              value={props.phoneHead}
+            />
             <span>-</span>
-            <input type="text" />
+            <input
+              type="text"
+              onChange={onChangeHandler.phoneBody}
+              value={props.phoneBody}
+            />
             <span>-</span>
-            <input type="text" />
+            <input
+              type="text"
+              onChange={onChangeHandler.phoneTail}
+              value={props.phoneTail}
+            />
           </div>
+          <p>{props.phoneError}</p>
         </InputRow>
         <InputRow maxWidth={"740px"}>
           <label htmlFor="email">이메일</label>
           <div className="email">
-            <input id="email" onChange={onChangeHandler.email} type="text" />
+            <input
+              id="email-1"
+              onChange={onChangeHandler.emailHead}
+              value={props.mailHead}
+              type="text"
+            />
             <span>@</span>
-            <input id="email" onChange={onChangeHandler.email} type="text" />
+            <input
+              id="email-2"
+              onChange={onChangeHandler.emailTail}
+              value={props.mailTail}
+              type="text"
+            />
           </div>
+          <p>{props.mailError}</p>
         </InputRow>
         <InputRow maxWidth={"100%"}>
           <label htmlFor="name">주소</label>
           <div className="address">
             <input
               className="nofocus"
-              value={post}
+              value={props.post}
               onClick={handleSetPostcode}
               type="text"
               readOnly
             />
             <input
-              value={detailPost}
+              value={props.detailPost}
               className="nofocus"
               type="text"
               readOnly
@@ -75,7 +139,7 @@ const OrderFormComponent: React.FC = () => {
             <input
               type="text"
               onChange={onChangeHandler.additionalPost}
-              value={additionalPost}
+              value={props.additionalPost}
               placeholder="상세주소를 입력해주세요"
             />
             <div className="toggle-button" onClick={handleSetPostcode}>
@@ -89,6 +153,7 @@ const OrderFormComponent: React.FC = () => {
               />
             )}
           </div>
+          <p>{props.postError}</p>
         </InputRow>
       </form>
     </Wrapper>

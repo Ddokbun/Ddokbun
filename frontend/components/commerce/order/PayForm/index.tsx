@@ -1,11 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, Dispatch, SetStateAction } from "react";
 import { Wrapper } from "./styles";
 
-const PayFormComponent: React.FC = () => {
+interface PayTypeProps {
+  setPayType: Dispatch<SetStateAction<number>>;
+}
+
+const PayFormComponent: React.FC<PayTypeProps> = ({ setPayType }) => {
   const [nowClick, setNowClick] = useState(0);
   const nowClickHandler = (num: number) => {
+    setPayType(num);
     setNowClick(num);
   };
+
   return (
     <Wrapper>
       <div className="button-wrap">
@@ -39,9 +45,6 @@ const PayFormComponent: React.FC = () => {
           </li>
         </ul>
       </article>
-      <div className="button-wrap flex">
-        <div className="button">PAYMENT</div>
-      </div>
     </Wrapper>
   );
 };
