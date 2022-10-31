@@ -42,9 +42,9 @@ public class UserService {
         log.info("User Seq  :  {}",user.getUserSeq());
 
         log.info("변경 전 User Nickname  :  {}",user.getUserNickname());
-        user.setUserNickname(nickname);
+        user.changeNickName(nickname);
         try {
-            user = userRepository.save(user);
+            userRepository.save(user);
         }catch (Exception e){
             throw new GeneralException(ErrorCode.DUPPLICATE_INPUT,"이미 등록된 닉네임입니다.");
         }
@@ -67,6 +67,16 @@ public class UserService {
         };
         return "Nickname Update Success";
 
+    }
+
+    public boolean areYouAdmin(long userSeq){
+        User user = userRepository.findByUserSeq(userSeq).orElseThrow(
+                ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다."));
+
+        if(user.getUserRole().equals("ROLE_ADMIN"))
+            return true;
+        else
+            return false;
     }
 
 }

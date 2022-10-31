@@ -8,4 +8,6 @@ import java.util.Optional;
 public interface PlantRepository extends JpaRepository<Plant, Long> {
 
     Optional<Plant> findByPlantSeq(long plantSeq);
+
+    Plant findByPlantNameOrPlantNeName(String plantName, String plantNeName);
 }
