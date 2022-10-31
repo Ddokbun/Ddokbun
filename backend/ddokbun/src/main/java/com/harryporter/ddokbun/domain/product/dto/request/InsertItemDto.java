@@ -1,10 +1,8 @@
-package com.harryporter.ddokbun.domain.product.dto;
+package com.harryporter.ddokbun.domain.product.dto.request;
 
 
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
-import com.harryporter.ddokbun.domain.plant.repository.PlantRepository;
 import com.harryporter.ddokbun.domain.product.entity.Item;
-import com.harryporter.ddokbun.domain.user.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;

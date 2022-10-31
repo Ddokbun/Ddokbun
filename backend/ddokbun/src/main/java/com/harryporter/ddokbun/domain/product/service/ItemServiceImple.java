@@ -1,7 +1,8 @@
 package com.harryporter.ddokbun.domain.product.service;
 
 import com.harryporter.ddokbun.domain.plant.repository.PlantRepository;
-import com.harryporter.ddokbun.domain.product.dto.InsertItemDto;
+import com.harryporter.ddokbun.domain.product.dto.request.InsertItemDto;
+import com.harryporter.ddokbun.domain.product.dto.request.UpdateItemDto;
 import com.harryporter.ddokbun.domain.product.entity.TodayItem;
 import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
@@ -14,7 +15,6 @@ import com.harryporter.ddokbun.domain.product.repository.ItemRepository;
 import com.harryporter.ddokbun.domain.product.repository.ItemRepositoryCustom;
 import com.harryporter.ddokbun.exception.ErrorCode;
 import com.harryporter.ddokbun.exception.GeneralException;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -129,9 +129,38 @@ public class ItemServiceImple implements ItemService{
         }catch (Exception e){
             throw new GeneralException(ErrorCode.VALIDATION_ERROR,"상품 DB 등록에 실패하였습니다. ");
         }
+
+        log.info("데이터 update 후 : {}",item.getItemSeq());
         ItemDetailDto idt = new ItemDetailDto();
         idt.copy(ItemDto.of(item));
         idt.setPlant(PlantDto.of(item.getPlant()));
+        return idt;
+    }
+
+    @Override
+    public ItemDetailDto updateItem(UpdateItemDto updateItemDto){
+        Item oldItem=itemRepository.findById(updateItemDto.getItemSeq()).orElseThrow(
+                ()-> new GeneralException(ErrorCode.NOT_FOUND,"상품을 찾을 수 없습니다."));
+
+        Plant plant=null;
+        if(updateItemDto.getItemKind()!=2) {
+            plant = plantRepository.findByPlantSeq(updateItemDto.getPlantSeq()).orElseThrow(
+                    ()-> new GeneralException(ErrorCode.NOT_FOUND,"식물을 찾을 수 없습니다."));
+        }
+        Item newItem = updateItemDto.toEntity(plant);
+
+        log.info("데이터 update 전 : {}",oldItem.getItemSeq());
+        oldItem.changeItem(newItem);
+        try {
+            itemRepository.save(oldItem);
+        }catch (Exception e){
+            throw new GeneralException(ErrorCode.BAD_REQUEST,"상품 변경에 실패했습니다.");
+        }
+        log.info("데이터 update 후 : {}",oldItem.getItemSeq());
+        ItemDetailDto idt = new ItemDetailDto();
+        idt.copy(ItemDto.of(oldItem));
+        idt.setPlant(PlantDto.of(oldItem.getPlant()));
+
         return idt;
     }
 

@@ -3,14 +3,12 @@ package com.harryporter.ddokbun.api;
 import com.harryporter.ddokbun.api.response.ResponseFrame;
 import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
 import com.harryporter.ddokbun.domain.plant.service.PlantService;
-import com.harryporter.ddokbun.domain.product.dto.InsertItemDto;
-import com.harryporter.ddokbun.domain.product.dto.ItemDto;
+import com.harryporter.ddokbun.domain.product.dto.request.InsertItemDto;
+import com.harryporter.ddokbun.domain.product.dto.request.UpdateItemDto;
 import com.harryporter.ddokbun.domain.product.service.ItemService;
 import com.harryporter.ddokbun.domain.user.dto.UserDto;
-import com.harryporter.ddokbun.domain.user.service.UserService;
 import com.harryporter.ddokbun.exception.ErrorCode;
 import com.harryporter.ddokbun.exception.GeneralException;
-import com.harryporter.ddokbun.utils.auth.JwtTokenUtils;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -20,8 +18,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @RequestMapping("/admin")
@@ -75,8 +71,10 @@ public class AdminController {
 
     @ApiOperation(value = "상품 변경")
     @PutMapping("/product")
-    public ResponseEntity<?> updateProduct(@ApiIgnore @AuthenticationPrincipal UserDto userDto){
-        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("Success","상품 변경");
+    public ResponseEntity<?> updateProduct(@RequestBody UpdateItemDto itemDto, @ApiIgnore @AuthenticationPrincipal UserDto userDto){
+        if(!userDto.getUserRole().equals("ROLE_ADMIN"))
+            throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("Success",itemService.updateItem(itemDto));
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
