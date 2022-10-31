@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;
 import org.springframework.format.annotation.DateTimeFormat;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -18,7 +19,7 @@ public class RegisterPotRequest {
     // 마지막 물 준날
     @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd", timezone = "Asia/Seoul")
 //    @DateTimeFormat(pattern = "yyyy-MM-dd kk:mm:ss")
-    private Date waterSupply;
+    private LocalDate waterSupply;
 
     // 식물 번호
     private int plantSeq;

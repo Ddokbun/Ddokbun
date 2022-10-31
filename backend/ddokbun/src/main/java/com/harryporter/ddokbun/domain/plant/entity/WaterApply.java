@@ -1,10 +1,16 @@
 package com.harryporter.ddokbun.domain.plant.entity;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
-public class waterLog {
+@Getter
+@NoArgsConstructor
+public class WaterApply {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -12,9 +18,16 @@ public class waterLog {
     private Long waterSupplySeq;
 
     @Column(name = "water_supply_date", nullable = false)
-    private LocalDateTime waterSupplyDate;
+    private LocalDate waterSupplyDate;
 
     @JoinColumn(name = "pot_serial", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private Pot pot;
+
+
+    public WaterApply(Pot pot) {
+        //현재 시간 들고오기
+        this.waterSupplyDate = LocalDate.now();
+        this.pot = pot;
+    }
 }
