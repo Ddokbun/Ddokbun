@@ -2,24 +2,19 @@ package com.harryporter.ddokbun.domain.product.dto;
 
 
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
+import com.harryporter.ddokbun.domain.plant.repository.PlantRepository;
 import com.harryporter.ddokbun.domain.product.entity.Item;
-import com.harryporter.ddokbun.domain.user.dto.UserDto;
 import com.harryporter.ddokbun.domain.user.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
-
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Getter
-public class ItemDto {
-
-    //상품 일련 번호
-    private long itemSeq;
+public class InsertItemDto {
     //상품명
     private String itemName;
     //가격
@@ -34,11 +29,12 @@ public class ItemDto {
     //2이면 화분 등등의 상품들
     private int itemKind;
 
-    public static ItemDto of(Item item){
-        return ItemDto.builder()
+    private long plantSeq;
+
+    public static InsertItemDto of(Item item){
+        return InsertItemDto.builder()
                 .itemInfo(item.getItemInfo())
                 .itemKind(item.getItemKind())
-                .itemSeq(item.getItemSeq())
                 .itemPrice(item.getItemPrice())
                 .itemStock(item.getItemStock())
                 .itemName(item.getItemName())
@@ -46,15 +42,16 @@ public class ItemDto {
                 .build();
     }
 
-
-    public void copy(ItemDto other){
-        this.itemSeq = other.itemSeq;
-        this.itemName = other.itemName;
-        this.itemInfo =other.itemInfo;
-        this.itemKind = other.itemKind;
-        this.itemPicture = other.itemPicture;
-        this.itemPrice = other.itemPrice;
-        this.itemStock = other.itemStock;
+    public Item toEntity(Plant plant){
+        return Item.builder()
+                .itemName(itemName)
+                .itemPrice(itemPrice)
+                .itemInfo(itemInfo)
+                .itemStock(itemStock)
+                .itemPicture(itemPicture)
+                .itemKind(itemKind)
+                .plant(plant)
+                .build();
     }
 
 

@@ -3,6 +3,9 @@ package com.harryporter.ddokbun.api;
 import com.harryporter.ddokbun.api.response.ResponseFrame;
 import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
 import com.harryporter.ddokbun.domain.plant.service.PlantService;
+import com.harryporter.ddokbun.domain.product.dto.InsertItemDto;
+import com.harryporter.ddokbun.domain.product.dto.ItemDto;
+import com.harryporter.ddokbun.domain.product.service.ItemService;
 import com.harryporter.ddokbun.domain.user.dto.UserDto;
 import com.harryporter.ddokbun.domain.user.service.UserService;
 import com.harryporter.ddokbun.exception.ErrorCode;
@@ -27,9 +30,8 @@ import javax.servlet.http.HttpServletRequest;
 @Api(tags ={" 관리자 API"})
 public class AdminController {
 
-    private final JwtTokenUtils jwtTokenUtils;
     private final PlantService plantService;
-    private final UserService userService;
+    private final ItemService itemService;
 
     @ApiOperation(value = "식물 데이터 조회 (Test용 1번 데이터 조회)")
     @GetMapping ("/plant")
@@ -64,8 +66,10 @@ public class AdminController {
 
     @ApiOperation(value = "상품 등록")
     @PostMapping("/product")
-    public ResponseEntity<?> insertProduct(@ApiIgnore @AuthenticationPrincipal UserDto userDto){
-        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("Success","상품 등록");
+    public ResponseEntity<?> insertProduct(@RequestBody InsertItemDto itemDto, @ApiIgnore @AuthenticationPrincipal UserDto userDto){
+        if(!userDto.getUserRole().equals("ROLE_ADMIN"))
+            throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("Success",itemService.insertItem(itemDto));
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
