@@ -21,7 +21,7 @@ const Navbar = () => {
         <ul>
           <Link href={"manage"}>IoT</Link>
           <li>Shopping</li>
-          <li>Search</li>
+          <Link href={"search"}>Search</Link>
           <li>MyPage</li>
         </ul>
       </div>

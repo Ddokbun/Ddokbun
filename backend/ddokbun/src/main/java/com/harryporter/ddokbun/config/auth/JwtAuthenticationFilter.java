@@ -1,6 +1,6 @@
 package com.harryporter.ddokbun.config.auth;
 
-import com.harryporter.ddokbun.utils.auth.JwtTokenProvider;
+import com.harryporter.ddokbun.utils.auth.JwtTokenUtils;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -15,7 +15,7 @@ import java.io.IOException;
 
 @RequiredArgsConstructor
 public class JwtAuthenticationFilter extends GenericFilterBean {
-    private final JwtTokenProvider jwtTokenProvider;
+    private final JwtTokenUtils jwtTokenUtils;
 
     @Override
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -23,12 +23,13 @@ public class JwtAuthenticationFilter extends GenericFilterBean {
         String token = ((HttpServletRequest)request).getHeader("Auth");
 
         // 토큰 유효성 check
-        if (token != null && jwtTokenProvider.validateToken(token)) {
+        if (token != null && jwtTokenUtils.validateToken(token)) {
             // 토큰이 유효하면 토큰으로부터 유저 정보 받아오기
-            Authentication authentication = jwtTokenProvider.getAuthentication(token);
+            Authentication authentication = jwtTokenUtils.getAuthentication(token);
             // SecurityContext 에 Authentication 객체를 저장
             SecurityContextHolder.getContext().setAuthentication(authentication);
         }
+
         chain.doFilter(request, response);
     }
 }

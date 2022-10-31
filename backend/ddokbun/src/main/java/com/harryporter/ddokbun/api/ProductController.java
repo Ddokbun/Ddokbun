@@ -4,17 +4,17 @@ import com.harryporter.ddokbun.api.response.ResponseFrame;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemSearchDto;
 import com.harryporter.ddokbun.domain.product.service.ItemService;
+import com.harryporter.ddokbun.domain.survey.dto.request.SurveyAnswerRequest;
+import com.harryporter.ddokbun.domain.survey.dto.response.SurveyResponse;
+import com.harryporter.ddokbun.domain.survey.service.SurveyService;
+import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import javax.validation.Valid;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @RequestMapping("/market/product")
@@ -24,9 +24,10 @@ import java.util.List;
 public class ProductController {
 
     private final ItemService itemService;
-
+    private final SurveyService surveyService;
     //식물(상품) 검색
     //사용자가 식물(상품) 이름을 통해 검색한다.
+    @ApiOperation("상품 검색")
     @RequestMapping(value = "/search",method = RequestMethod.GET)
     public ResponseEntity<?> productSearch(@RequestParam(value = "title",required = false) String title){
 
@@ -43,6 +44,7 @@ public class ProductController {
     }
 
     //트래픽 낮추기 용 검색
+    @ApiOperation("상품 심플 검색")
     @RequestMapping(value = "/simple-search",method = RequestMethod.GET)
     public ResponseEntity<?> productSimpleSearch(@RequestParam(value = "title",required = false) String title){
         List<?> content = itemService.simpleSearchByTitle(title);
@@ -56,6 +58,7 @@ public class ProductController {
 
     //상품 상세보기
     //사용자가 상품에 대한 모든 정보를 요청한다.
+    @ApiOperation("상품 디테일 검색")
     @RequestMapping(value = "/{itemSeq}",method = RequestMethod.GET)
     public ResponseEntity<?> getProductDetail(@PathVariable Long itemSeq){
 
@@ -71,6 +74,7 @@ public class ProductController {
 
     //식물(상품) 사진으로 검색
     //사용자가 식물을 사진으로 검색한다.
+    @ApiOperation("상품 사진으로 검색(미완)")
     @RequestMapping(value = "/picture",method = RequestMethod.POST)
     public ResponseEntity<?> productSearch(@RequestPart(value = "picture") MultipartFile picture){
 
@@ -80,6 +84,7 @@ public class ProductController {
 
     //유사 식물 조회
     //해당 상품과 유사한 상품을 추천한다.
+    @ApiOperation("유사 식물 조회 (미완)")
     @RequestMapping(value = "/{itemSeq}/similar",method = RequestMethod.GET)
     public ResponseEntity<?> productSimilar(@PathVariable Integer itemSeq){
 
@@ -89,6 +94,7 @@ public class ProductController {
 
     //유형별 추천 조회
     //유형별 카테고리를 통하여 필터링을 통해 상품을 반환합니다.
+    @ApiOperation("유형별 조회(미완)")
     @RequestMapping(value = "/category/{categoryName}",method = RequestMethod.GET)
     public ResponseEntity<?> getProductWhereCategory(@PathVariable String categoryName){
 
@@ -97,16 +103,22 @@ public class ProductController {
 
     //오늘의 식물 조회
     //서버에서 추산한 오늘의 식물을 반환합니다.
+    @ApiOperation("오늘의 식물 조회")
     @RequestMapping(value = "/rec-today",method = RequestMethod.GET)
     public ResponseEntity<?> getTodayRecomendedProduct(){
 
-        return null;
+        List<ItemSearchDto> itemSearchDtoList =  itemService.getTodayRecommendItem();
+
+        ResponseFrame res = ResponseFrame.ofOKResponse("오늘을 식물을 반환합니다.",itemSearchDtoList);
+        return new ResponseEntity<>(res,HttpStatus.OK);
     }
 
     //인기 식물을 조회한다.
     //조회수가 많은 상품을 출력함
+    @ApiOperation("인기 식물(미완)")
     @RequestMapping(value = "/hot",method = RequestMethod.GET)
     public ResponseEntity<?> getHotProduct(){
+
 
         return null;
     }
@@ -114,19 +126,33 @@ public class ProductController {
 
     //설문 내용을 조회한다.
     //사용자 설문 구성을 위하여 설문 데이터들을 전송한다.
+
+    @ApiOperation("설문 내용 조회")
     @RequestMapping(value="/survey",method = RequestMethod.GET)
-    public ResponseEntity<?> getServeyData(){
-        return null;
+    public ResponseEntity<?> getSurveyData(){
+
+        log.info("설문 내용 조회 API 접근");
+        List<SurveyResponse> surveyResponseList =surveyService.getSurveys();
+
+        log.info("설문 내용 반환 :: 설문 문항 갯수 : {}",surveyResponseList.size());
+
+        ResponseFrame res = ResponseFrame.ofOKResponse("설문 문항과 설문 선택지들을 반환합니다.",surveyResponseList);
+
+        return new ResponseEntity<>(res,HttpStatus.OK);
     }
 
     //사용자 설문 결과를 전송받는다.
     //사용자 설문 결과를 받아 계산과정을 거친 후 그에 맞는 상품들을 출력한다.
+    @ApiOperation("설문 결과 전송 후 결과 조회")
     @RequestMapping(value="/survey",method = RequestMethod.POST)
-    public ResponseEntity<?> getSurveyThenProcessionEndData(){
-        return null;
+    public ResponseEntity<?> getSurveyThenProcessionEndData(@RequestBody SurveyAnswerRequest surveyAnswerRequest){
+
+        log.info("설문 결과 반환 API 접근 :: {}",surveyAnswerRequest.getAnswerList());
+        return new ResponseEntity<>("qwe",HttpStatus.OK);
     }
 
     //자신의 화분에 맞는 추천 식물들을 반환한다.
+    @ApiOperation("자신에게 맞는 화분 조회")
     @RequestMapping(value="/rec-mydata",method = RequestMethod.GET)
     public ResponseEntity<?> getMyPotRelationRecomendProduct(){
 

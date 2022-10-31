@@ -8,10 +8,14 @@ import {
 import { DateInput, Input, SearchInput } from "../../../../common/Input";
 import { Wrapper } from "./styles";
 import calander from "../../../../assets/icon/calander.png";
-import DatePick from "../../../../common/DatePick";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../store";
 
 const AddForm = () => {
   // const router = useRouter();
+  const plantSeq = useSelector((state: RootState) => state.manage.plantSeq);
+  const name = useSelector((state: RootState) => state.manage.krName);
+
   const inputValues: React.MutableRefObject<Register> = useRef({
     potSerial: "",
     plantNickname: "",
@@ -83,12 +87,23 @@ const AddForm = () => {
   useEffect(() => {
     const date = changeDateFormat(new Date());
     inputValues.current.waterSupply = date;
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+
+  useEffect(() => {
+    inputValues.current.plantSeq = plantSeq;
+  }, [plantSeq]);
 
   return (
     <Wrapper>
       <div className="grid">
-        <SearchInput placeholder="식물종 검색" />
+        <SearchInput
+          setSearchInput={null}
+          placeholder="식물종 검색"
+          disabled={true}
+          value={name}
+        />
         <Input
           saveInput={saveInput}
           label="Serial Number"
@@ -96,7 +111,7 @@ const AddForm = () => {
           type="text"
           identifier="potSerial"
           image={null}
-          value={inputValues.current.plantNickname}
+          value={inputValues.current.potSerial}
         />
         <Input
           saveInput={saveInput}

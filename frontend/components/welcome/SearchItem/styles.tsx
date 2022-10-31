@@ -3,15 +3,11 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.color.brown};
   color: white;
+  padding: 20px;
   .subcontent-wrap {
-    position: relative;
     width: 100%;
-    height: 800px;
     .title {
-      position: absolute;
-      top: 80%;
-      left: 50%;
-      transform: translate(-50%, -50%);
+      padding-bottom: 50px;
       h2 {
         text-align: center;
         font-size: 70px;
@@ -19,27 +15,42 @@ export const Wrapper = styled.div`
       h3 {
         text-align: center;
         font-size: 25px;
+        font-family: ${props => props.theme.font.TitleFont};
       }
     }
-    .back-img {
-      max-width: 25%;
-      height: 50%;
+    .img {
+      display: flex;
+      height: 800px;
+      justify-content: center;
+    }
+    .img-wrap {
+      position: relative;
+    }
+    .back-wrap {
       position: absolute;
-      top: 37%;
-      left: 40%;
-      transform: translate(-50%, -50%);
+      top: 30%;
+      left: 90%;
+      transform: translate(-95%, -50%);
+    }
+    .back-img {
+      width: 600px;
+      height: 450px;
+      position: relative;
       .banner-img {
         max-height: 100px;
         opacity: 0.5;
       }
     }
-    .front-img {
-      max-width: 35%;
-      height: 50%;
+    .front-wrap {
       position: absolute;
-      top: 45%;
-      left: 60%;
-      transform: translate(-50%, -50%);
+      top: 60%;
+      left: 80%;
+      transform: translate(-40%, -50%);
+    }
+    .front-img {
+      width: 800px;
+      height: 550px;
+      position: relative;
       .banner-img {
         max-height: 100px;
       }
@@ -48,15 +59,8 @@ export const Wrapper = styled.div`
 
   @media screen and (${props => props.theme.mobile}) {
     .subcontent-wrap {
-      position: relative;
       width: 100%;
-      height: 400px;
-
       .title {
-        position: absolute;
-        top: 80%;
-        left: 50%;
-        transform: translate(-50%, -5%);
         h2 {
           text-align: center;
           font-size: 30px;
@@ -64,6 +68,40 @@ export const Wrapper = styled.div`
         h3 {
           text-align: center;
           font-size: 10px;
+        }
+      }
+
+      .img {
+        height: 300px;
+      }
+
+      .back-wrap {
+        position: absolute;
+        top: 30%;
+        left: 90%;
+        transform: translate(-95%, -50%);
+      }
+      .back-img {
+        width: 200px;
+        height: 150px;
+        position: relative;
+        .banner-img {
+          max-height: 100px;
+          opacity: 0.5;
+        }
+      }
+      .front-wrap {
+        position: absolute;
+        top: 60%;
+        left: 80%;
+        transform: translate(-40%, -50%);
+      }
+      .front-img {
+        width: 330px;
+        height: 250px;
+        position: relative;
+        .banner-img {
+          max-height: 100px;
         }
       }
     }
