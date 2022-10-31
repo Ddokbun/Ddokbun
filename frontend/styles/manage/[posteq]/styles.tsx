@@ -10,4 +10,9 @@ export const Wrapper = styled.section`
   align-items: center;
   flex-direction: column;
   position: relative;
+
+  .title {
+    color: ${props => props.theme.color.mainGreen};
+    margin: 4%;
+  }
 `;
