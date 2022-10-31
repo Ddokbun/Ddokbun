@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   display: grid;
   margin: auto;
-  max-width: 1250px;
   grid-template-columns: 1fr;
   grid-template-rows: auto auto;
   grid-gap: 100px;
+  max-width: 1250px;
   width: 100%;
   height: 500px;
   padding: 50px 50px;
