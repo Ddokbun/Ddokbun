@@ -12,7 +12,7 @@ const manageSlice = createSlice({
   reducers: {
     // 얘는 예시
     // setEnt(state, action) {
-    //   return action.payload;
+    //   return action.payload;++++++++++
     // },
 
     setPlantInfo(state, action) {
