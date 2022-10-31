@@ -18,6 +18,8 @@ import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 
+import java.util.Arrays;
+
 @Slf4j
 @Configuration
 @EnableWebSecurity
@@ -70,7 +72,7 @@ public class SecurityConfig {
     @Bean
     public  CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration config = new CorsConfiguration();
-        config.addAllowedOriginPattern("*");//출처가 어디든지 받는다.
+        config.setAllowedOrigins(Arrays.asList("https://k7d208.p.ssafy.io","http://localhost:3000"));
         config.addAllowedHeader("*");//헤더에 아무거나 넣어도 된다.
         config.addAllowedMethod("*");//메소드 모두 허용한다.
         config.setAllowCredentials(true);//쿠키 보내도 된다.
