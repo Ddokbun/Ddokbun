@@ -33,10 +33,22 @@ public class PotController {
     private final PotService potService;
     private final PlantService plantService;
 
-    //화분 등록
+    // 생산직후 화분 등록
+    @ApiOperation(value = "생산직후 화분 시리얼 정보만 기입")
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<?> producePot(@RequestBody String potSerial){
+        log.info("화분 등록 컨트롤러 진입 :: 화분 시리얼 : {}", potSerial);
+        potService.producePot(potSerial);
+        ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분 등록에 성공했습니다.", null);
+        responseFrame.setState(201);
+        log.info("화분 등록에 완료 ");
+        return new ResponseEntity<>(responseFrame, HttpStatus.OK);
+    }
+
+    //화분 정보수정
     // 유저가 자신의 화분을 등록한다.
     @ApiOperation(value = "화분 등록")
-    @RequestMapping(method = RequestMethod.POST)
+    @RequestMapping(method = RequestMethod.PUT)
     public ResponseEntity<?> registerPot(@RequestBody RegisterPotRequest registerPotRequest,@ApiIgnore @AuthenticationPrincipal UserDto principal) {
         UserDto userDto = principal;
 

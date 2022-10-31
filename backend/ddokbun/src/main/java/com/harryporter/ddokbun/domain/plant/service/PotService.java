@@ -25,6 +25,7 @@ import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -38,6 +39,14 @@ public class PotService {
     private final PlantRepository plantRepository;
     private final WaterApplyRepository waterApplyRepository;
 
+    public void producePot(String potSerial){
+        if (potRepository.existsByPotSerial(potSerial)){
+            throw new GeneralException(ErrorCode.BAD_REQUEST, "이미 존재하는 화분입니다. 화분을 삭제하고 등록해주세요");
+        }
+        Pot potEntity = new Pot();
+        potEntity.setPotSerial(potSerial);
+        potRepository.save(potEntity);
+    }
 
     public RegisterPotResponse registerPot(RegisterPotRequest registerPotRequest, Long userSeq){
         // Plant_seq로 통해서 Plant를 받아오는 logic으로 변경하기
@@ -51,13 +60,19 @@ public class PotService {
         log.info("registerPotInfo :: potSrial : {} :: plantSeq : {} :: userSeq : {}", registerPotRequest.getPotSerial(), registerPotRequest.getPlantSeq(), userSeq);
         // RegisterPotResponse 생성자
 
-        if (potRepository.existsByPotSerial(registerPotRequest.getPotSerial())){
-            throw new GeneralException(ErrorCode.BAD_REQUEST, "이미 존재하는 화분입니다. 화분을 삭제하고 등록해주세요");
+        // 이 화분이 존재하는 화분인지 확인
+        Pot pot = potRepository.findByPotSerial(registerPotRequest.getPotSerial()).orElseThrow(
+                ()-> new GeneralException(ErrorCode.NOT_FOUND, "존재하지 않는 화분입니다. 시리얼 넘버를 확인해주세요")
+        );
+        // 등록된 화분인지 아닌지 확인
+        if (pot.getUser() != null) {
+            throw new GeneralException(ErrorCode.BAD_REQUEST, "이미 등록된 화분입니다. 등록을 해제하고 화분을 등록해주세요.");
         }
+
+        // 문제가 없으면 화분 등록하기
         RegisterPotResponse registerPotResponse = new RegisterPotResponse(registerPotRequest.getPotSerial());
-        Pot potEntity = new Pot();
-        potEntity.potChange(registerPotRequest, user, plant);
-        potRepository.save(potEntity);
+        pot.potChange(registerPotRequest, user, plant);
+        potRepository.save(pot);
 
         return registerPotResponse;
     }
@@ -74,9 +89,18 @@ public class PotService {
         );
 
         log.info("UnregisterPotInfo :: potSrial : {} :: userSeq : {}", potSerial, userSeq);
-        if (pot.getUser().getUserSeq().equals(userSeq)){
-            potRepository.delete(pot);
-        } else {
+        // 등록된 화분인지 아닌지를 확인
+        if (pot.getUser() == null){
+            throw new GeneralException(ErrorCode.BAD_REQUEST, "등록된 화분이 아닙니다.");
+        }
+        // 화분이 존재하면 삭제
+        else if (pot.getUser().getUserSeq().equals(userSeq)){
+            //여기에 유저만 null로 바꾸는게 아니라 log 값들을 다 삭제해야하는 거
+            pot.setUser(null);
+            potRepository.save(pot);
+        }
+        // 그것도 아니면 자신의 화분이 아닌것
+        else {
             throw new GeneralException(ErrorCode.BAD_REQUEST, "당신의 화분이 아닙니다");
         }
     }
@@ -101,9 +125,6 @@ public class PotService {
         } else {
             throw new GeneralException(ErrorCode.BAD_REQUEST, "당신의 화분이 아닙니다");
         }
-
-
-
     }
 
     public void changeWaterApplyMethod(String potSerial, Long userSeq) {
@@ -135,8 +156,8 @@ public class PotService {
                 ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다.")
         );
         List<Pot> pots = user.getPots();
-        List<MyPotReponse> myPotReponses = pots.stream().map(pot -> MyPotReponse.of(pot)).collect(Collectors.toList());
-        return myPotReponses;
+
+        return pots.stream().map(pot -> MyPotReponse.of(pot)).collect(Collectors.toList());
     }
 
 }
