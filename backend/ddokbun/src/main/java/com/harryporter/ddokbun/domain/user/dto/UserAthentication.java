@@ -7,7 +7,8 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import java.util.Collection;
 import java.util.List;
 
-public class UserAthentication extends UserSimpleDto implements Authentication {
+
+public class UserAthentication extends UserDto implements Authentication {
 
     private boolean isAthenticated;
     @Override
