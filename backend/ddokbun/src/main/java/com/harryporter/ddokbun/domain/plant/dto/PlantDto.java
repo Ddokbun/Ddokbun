@@ -80,6 +80,37 @@ public class PlantDto {
     private String imagePath;
     private String recRate;
 
+
+    public Plant toEntity(){
+        return Plant.builder()
+                .plantName(plantName) //식물 이름
+                .plantNeName(plantNeName) //식물 학명
+                .plantZRName(plantZRName) //식물 영명
+                .distbName(distbName) //식물 유통명
+                .originPlace(originPlace) //식물 오리진
+                .growthHeight(growthHeight)//식물 성장 높이
+                .growthWidth(growthWidth) //식물 넓ㅇ
+                .smellDesc(smellDesc) //냄새
+                .toxctyInfo(toxctyInfo) //독성
+                .manageLevel(manageLevel) //관리 수준
+                .growthTemperature(growthTemperature) //생육온도
+                .winterTemperature(winterTemperature) //겨울온도
+                .growthHumid(growthHumid)//습도
+                .specManageInfo(specManageInfo)//특관 정보
+                .adviseInfo(adviseInfo)//조언 정보
+                .functionInfo(functionInfo) //기능성
+                .manageRequire(manageRequire)//관리 요구도
+                .plantPlace(plantPlace)//배치 장소
+                .waterCycle(waterCycle)//물주기
+                .waterIfno(waterIfno)//물 설명
+                .light(light)//광량
+                .lightInfo(lightInfo)//광량 설명
+                .temperature(temperature)//온도
+                .temperatureInfo(temperatureInfo)//온도 설명
+                .imagePath(imagePath)//이미지 저장 경로
+                .recRate(recRate)//추천 유형
+                .build();
+    }
     public static PlantDto of(Plant plant){
         PlantDto temp = PlantDto.builder()
                 .plantSeq(plant.getPlantSeq()) //식물 seq
@@ -112,4 +143,5 @@ public class PlantDto {
                 .build();
         return temp;
     }
+
 }
