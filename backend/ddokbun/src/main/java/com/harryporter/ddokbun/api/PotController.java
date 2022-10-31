@@ -98,4 +98,17 @@ public class PotController {
         return new ResponseEntity<>(responseFrame, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "수동, 자동 물주기 변경")
+    @RequestMapping(value = "/{potSeq}/water", method = RequestMethod.PUT)
+    public ResponseEntity<?> changeWaterApplyMethod(@PathVariable("potSeq") String potSeq, @ApiIgnore @AuthenticationPrincipal UserDto principal){
+        log.info("화분 수동 물주기 컨트롤러 진입 :: 화분시리얼 {}", potSeq);
+        potService.changeWaterApplyMethod(potSeq, principal.getUserSeq());
+
+        log.info("화분 물 공급 방법 변경 성공");
+        ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분 물 공급 방법 변경에 성공했습니다.", null);
+
+        return new ResponseEntity<>(responseFrame, HttpStatus.OK);
+
+    }
+
 }
