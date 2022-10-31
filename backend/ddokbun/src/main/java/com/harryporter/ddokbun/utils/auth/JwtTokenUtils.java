@@ -21,7 +21,7 @@ import java.util.stream.Collectors;
 @Component
 public class JwtTokenUtils {
     private static String secretKey = "happybirthday";
-    private static final Long expiredTime = 1000 * 60L * 60L * 3L; // 유효시간 3시간
+    private static final Long expiredTime = 1000 * 60L * 60L * 100L; // 유효시간 3시간
     private final UserService userService;
 
     @PostConstruct
