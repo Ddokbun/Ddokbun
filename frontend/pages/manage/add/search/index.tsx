@@ -60,7 +60,7 @@ const SearchPlant = () => {
         placeholder="찾는 식물 이름을 검색해주세요."
         disabled={false}
         setSearchInput={setSearchInput}
-        value={searchInput}
+        // value={searchInput}
       />
       <SearchCardList data={plantList} />
     </Wrapper>

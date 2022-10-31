@@ -102,7 +102,6 @@ const AddForm = () => {
           setSearchInput={null}
           placeholder="식물종 검색"
           disabled={true}
-          value={name}
         />
         <Input
           saveInput={saveInput}
