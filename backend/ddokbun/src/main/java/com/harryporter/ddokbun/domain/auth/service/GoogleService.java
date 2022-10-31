@@ -66,7 +66,7 @@ public class GoogleService {
             MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
             body.add("grant_type","authorization_code");
             body.add("client_id","127690755793-5kgtvm8bmt7dhacov2qitf3d90h62reb.apps.googleusercontent.com");
-            body.add("redirect_uri","https://k7d208.p.ssafy.io/");
+            body.add("redirect_uri","http://localhost:3000/");
             body.add("client_secret","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");
             body.add("code",code);
 
