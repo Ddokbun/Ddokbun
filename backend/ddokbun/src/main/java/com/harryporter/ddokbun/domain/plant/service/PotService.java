@@ -4,6 +4,7 @@ package com.harryporter.ddokbun.domain.plant.service;
 import com.harryporter.ddokbun.domain.plant.entity.WaterApply;
 import com.harryporter.ddokbun.domain.plant.repository.WaterApplyRepository;
 import com.harryporter.ddokbun.domain.plant.repository.dto.request.RegisterPotRequest;
+import com.harryporter.ddokbun.domain.plant.repository.dto.response.MyPotReponse;
 import com.harryporter.ddokbun.domain.plant.repository.dto.response.RegisterPotResponse;
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
 import com.harryporter.ddokbun.domain.plant.entity.Pot;
@@ -23,6 +24,8 @@ import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @Slf4j
 @RequiredArgsConstructor
@@ -125,6 +128,15 @@ public class PotService {
             throw new GeneralException(ErrorCode.BAD_REQUEST, "당신의 화분이 아닙니다");
         }
 
+    }
+
+    public List<MyPotReponse> myPot(Long userSeq) {
+        User user = userRepository.findById(userSeq).orElseThrow(
+                ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다.")
+        );
+        List<Pot> pots = user.getPots();
+        List<MyPotReponse> myPotReponses = pots.stream().map(pot -> MyPotReponse.of(pot)).collect(Collectors.toList());
+        return myPotReponses;
     }
 
 }
