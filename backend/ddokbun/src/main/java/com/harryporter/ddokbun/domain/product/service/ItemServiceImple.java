@@ -164,4 +164,14 @@ public class ItemServiceImple implements ItemService{
         return idt;
     }
 
+    @Override
+    public String deleteItem(long itemSeq) {
+        try {
+            itemRepository.deleteById(itemSeq);
+        }catch (Exception e){
+           throw new GeneralException(ErrorCode.NOT_FOUND,"삭제가 불가능하거나, 존재하지 않는 상품입니다.");
+        }
+        return "Delete Success";
+    }
+
 }
