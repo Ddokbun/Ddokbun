@@ -14,7 +14,6 @@ import java.util.List;
 @Entity
 @Builder
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Table(name="user")
@@ -52,4 +51,8 @@ public class User {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Pot> pots;
+
+    public void changeNickName(String nickName){
+        this.userNickname = nickName;
+    }
 }
