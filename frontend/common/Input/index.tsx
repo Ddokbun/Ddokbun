@@ -45,8 +45,8 @@ export const SearchInput: React.FC<{
   placeholder: string;
   disabled: boolean;
   setSearchInput: React.Dispatch<React.SetStateAction<string>> | null;
-  value: string | undefined;
-}> = ({ placeholder, disabled, setSearchInput, value }) => {
+  // value: string | undefined;
+}> = ({ placeholder, disabled, setSearchInput }) => {
   const router = useRouter();
   const [isPending, startTransition] = useTransition();
   const onShowSearchHandler = () => {
@@ -76,7 +76,7 @@ export const SearchInput: React.FC<{
         placeholder={placeholder}
         type="text"
         onChange={onInputChangeHandler}
-        value={value}
+        // value={value}
       />
     </SearchInputWrapper>
   );
