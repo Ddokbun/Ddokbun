@@ -1,6 +1,8 @@
 package com.harryporter.ddokbun.api;
 
 import com.harryporter.ddokbun.api.response.ResponseFrame;
+import com.harryporter.ddokbun.domain.order.dto.request.OrderStatusDto;
+import com.harryporter.ddokbun.domain.order.service.OrderService;
 import com.harryporter.ddokbun.domain.plant.repository.dto.PlantDto;
 import com.harryporter.ddokbun.domain.plant.service.PlantService;
 import com.harryporter.ddokbun.domain.product.dto.request.InsertItemDto;
@@ -28,6 +30,7 @@ public class AdminController {
 
     private final PlantService plantService;
     private final ItemService itemService;
+    private final OrderService orderService;
 
     @ApiOperation(value = "식물 데이터 조회 (Test용 1번 데이터 조회)")
     @GetMapping ("/plant")
@@ -88,9 +91,11 @@ public class AdminController {
     }
 
     @ApiOperation(value = "사용자 주문내역 상태 변경")
-    @PutMapping("/order/{orderSeq}")
-    public ResponseEntity<?> updateOrderStatus(@ApiIgnore @AuthenticationPrincipal UserDto userDto){
-        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("Success","사용자 주문내역 상태 변경");
+    @PutMapping("/order")
+    public ResponseEntity<?> updateOrderStatus(@RequestBody OrderStatusDto orderStatusDto,@ApiIgnore @AuthenticationPrincipal UserDto userDto){
+        if(!userDto.getUserRole().equals("ROLE_ADMIN"))
+            throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("Success",orderService.updateOrderStatus(orderStatusDto));
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 

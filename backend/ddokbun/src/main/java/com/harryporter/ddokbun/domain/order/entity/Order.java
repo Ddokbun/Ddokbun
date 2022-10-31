@@ -85,6 +85,10 @@ public class Order {
         orderStatus = OrderStatus.READY;
     }
 
+    public void updateOrderStatus(OrderStatus orderStatus){
+        this.orderStatus = orderStatus;
+    }
+
 
 
 }
