@@ -1,9 +1,23 @@
 import type { NextPage } from "next";
-import React from "react";
+import React, { useEffect } from "react";
 import Head from "next/head";
+import { useRouter } from "next/router";
+import axios from "axios";
 
 const Home: NextPage = () => {
-  // const code = new URL(window.location.href).searchParams.get("code");
+  const router = useRouter();
+  const login_code = router.query.code;
+  const URL = `https://k7d208.p.ssafy.io/api/user/login/oauth/kakao?code=`;
+  const TEST = `https://k7d208.p.ssafy.io/api/admin/plant`;
+
+  axios
+    .get(URL + login_code)
+    .then(res => {
+      console.log(res.data.content.jwtToken);
+    })
+    .catch(error => {
+      console.log("채리 - 에러남", error);
+    });
 
   return (
     <div>
@@ -13,7 +27,9 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      {/* <main></main> */}
+      <main>
+        <h1>안녕</h1>
+      </main>
     </div>
   );
 };
