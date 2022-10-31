@@ -20,7 +20,7 @@ export const Wrapper = styled.div`
   }
   .grid-top {
     h1 {
-      font-size: 55px;
+      font-size: 45px;
       color: ${props => props.theme.color.mainGreen};
       text-align: center;
       font-family: ${props => props.theme.font.TitleFont};
@@ -55,7 +55,7 @@ export const Wrapper = styled.div`
     width: 100%;
     height: 500px;
     h1 {
-      font-size: 55px;
+      font-size: 45px;
       color: ${props => props.theme.color.mainGreen};
       text-align: center;
       font-family: ${props => props.theme.font.EnglishFont};
