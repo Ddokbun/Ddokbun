@@ -19,9 +19,9 @@ const Navbar = () => {
       </div>
       <div className="menu">
         <ul>
-          <Link href={"manage"}>IoT</Link>
+          <Link href={"/manage"}>IoT</Link>
           <li>Shopping</li>
-          <Link href={"search"}>Search</Link>
+          <Link href={"/search"}>Search</Link>
           <li>MyPage</li>
         </ul>
       </div>
