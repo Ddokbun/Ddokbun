@@ -49,4 +49,15 @@ public class Item {
     @JoinColumn(name = "plant_seq",nullable = true)
     @OneToOne(fetch = FetchType.LAZY)
     private Plant plant;
+
+    public void changeItem(Item item){
+        this.itemName=item.getItemName();
+        this.itemInfo=item.getItemInfo();
+        this.itemPrice=item.getItemPrice();
+        this.itemStock=item.getItemStock();
+        this.itemPicture=item.getItemPicture();
+        this.itemKind=item.getItemKind();
+        this.plant=item.getPlant();
+
+    }
 }
