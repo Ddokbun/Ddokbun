@@ -83,9 +83,7 @@ public class PlantDto {
     private String temperatureInfo;
     private String imagePath;
     private String recRate;
-
-    PlantDto plantdto = new PlantDto();
-    Plant plant = plantdto.toEntity();
+    
     public Plant toEntity(){
         return Plant.builder()
                 .plantName(plantName) //식물 이름
