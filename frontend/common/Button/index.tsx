@@ -9,11 +9,17 @@ import {
   SubmitButtonStyle,
   SearchButtonStyle,
   LoginButtonStyle,
+  StatusButtonStyle,
 } from "./styles";
 
 import RightUp from "../../assets/commerce/right-up.svg";
 import Bag from "../../assets/commerce/bag.svg";
 import { useRouter } from "next/router";
+import humidity from "../../assets/icon/humidity.png";
+import soil from "../../assets/icon/soil.png";
+import illuminance from "../../assets/icon/illuminance.png";
+import temperature from "../../assets/icon/temperature.png";
+import Image from "next/image";
 
 export const TextBtn: React.FC<{
   children: string;
@@ -112,5 +118,39 @@ export const LoginBtn: React.FC<{
     <Link href={path}>
       <LoginButtonStyle>로그인 없이 둘러보기</LoginButtonStyle>
     </Link>
+  );
+};
+
+export const StatusButton: React.FC<{
+  statusCode: number;
+  activeIndex: number;
+  setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
+}> = ({ statusCode, activeIndex, setActiveIndex }) => {
+  const status = [
+    { src: temperature.src, title: "온도" },
+    { src: illuminance.src, title: "조도" },
+    { src: humidity.src, title: "습도" },
+    { src: soil.src, title: "토양습도" },
+  ];
+
+  const onChangeActiveHandler = () => {
+    setActiveIndex(statusCode);
+  };
+
+  return (
+    <StatusButtonStyle
+      onClick={onChangeActiveHandler}
+      isActive={statusCode === activeIndex}
+    >
+      <Image
+        src={status[statusCode].src}
+        // layout="fill"
+        width={"40px"}
+        height={"40px"}
+        alt="상태 아이콘"
+      />
+
+      <span>{status[statusCode].title}</span>
+    </StatusButtonStyle>
   );
 };

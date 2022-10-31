@@ -156,3 +156,30 @@ export const LoginButtonStyle = styled.div`
     font-size: 15px;
   }
 `;
+
+export const StatusButtonStyle = styled.li<{ isActive: boolean }>`
+  width: 120px;
+  height: 60px;
+  border-radius: 16px;
+  font-size: 16px;
+  background-color: ${props =>
+    props.isActive ? props.theme.color.ivoryHover : props.theme.color.ivory};
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+
+  :hover {
+    cursor: pointer;
+    background-color: ${props => props.theme.color.ivoryHover};
+  }
+
+  span {
+    margin: 3%;
+  }
+
+  @media screen and (${props => props.theme.mobile}) {
+    width: 100px;
+    font-size: 12px;
+  }
+`;
