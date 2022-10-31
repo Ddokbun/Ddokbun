@@ -7,7 +7,8 @@ import {
   PriceButtonStyle,
   PriceTextButtonStyle,
   SubmitButtonStyle,
-  SearchButtonStyle
+  SearchButtonStyle,
+  LoginButtonStyle,
 } from "./styles";
 
 import RightUp from "../../assets/commerce/right-up.svg";
@@ -26,7 +27,7 @@ export const TextBtn: React.FC<{
   );
 };
 
-export const SearchBtn : React.FC<{
+export const SearchBtn: React.FC<{
   children: string;
   color: string;
   path: string;
@@ -37,6 +38,8 @@ export const SearchBtn : React.FC<{
     </Link>
   );
 };
+
+// 컨벤션 다름! Btn vs Button 중에 선택해야 할듯
 
 export const BuyTextButton: React.FC = () => {
   return (
@@ -99,5 +102,15 @@ export const CancelButton: React.FC<{
     <CancelButtonStyle type="button" onClick={onClickHandler}>
       {children}
     </CancelButtonStyle>
+  );
+};
+
+export const LoginBtn: React.FC<{
+  path: string;
+}> = ({ path }) => {
+  return (
+    <Link href={path}>
+      <LoginButtonStyle>로그인 없이 둘러보기</LoginButtonStyle>
+    </Link>
   );
 };

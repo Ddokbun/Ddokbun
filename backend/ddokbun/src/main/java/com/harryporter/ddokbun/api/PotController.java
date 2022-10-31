@@ -4,7 +4,7 @@ import com.harryporter.ddokbun.api.response.ResponseFrame;
 import com.harryporter.ddokbun.domain.plant.dto.request.RegisterPotRequest;
 import com.harryporter.ddokbun.domain.plant.dto.response.RegisterPotResponse;
 import com.harryporter.ddokbun.domain.plant.service.PotService;
-import com.harryporter.ddokbun.domain.user.dto.UserSimpleDto;
+import com.harryporter.ddokbun.domain.user.dto.UserDto;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -27,12 +27,12 @@ public class PotController {
     // 유저가 자신의 화분을 등록한다.
     @ApiOperation(value = "화분 등록")
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> registerPot(@RequestBody RegisterPotRequest registerPotRequest,@ApiIgnore @AuthenticationPrincipal UserSimpleDto principal) {
+    public ResponseEntity<?> registerPot(@RequestBody RegisterPotRequest registerPotRequest,@ApiIgnore @AuthenticationPrincipal UserDto principal) {
         // 나중에 실제 유저가 들어오면 삭제할 로직
-        UserSimpleDto userSimpleDto = ((UserSimpleDto)principal);
+        UserDto userDto = ((UserDto)principal);
 
-        log.info("화분 등록 컨트롤러 진입 :: 화분시리얼 : {} :: 사용자 Seq : {}", registerPotRequest.getPotSerial(), userSimpleDto.getUserSeq());
-        RegisterPotResponse registerPotResponse = potService.registerPot(registerPotRequest, userSimpleDto.getUserSeq());
+        log.info("화분 등록 컨트롤러 진입 :: 화분시리얼 : {} :: 사용자 Seq : {}", registerPotRequest.getPotSerial(), userDto.getUserSeq());
+        RegisterPotResponse registerPotResponse = potService.registerPot(registerPotRequest, userDto.getUserSeq());
 
         ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분 등록에 성공했습니다.",registerPotResponse);
         responseFrame.setState(201);
@@ -42,12 +42,12 @@ public class PotController {
 
     @ApiOperation(value = "화분 등록 해제")
     @RequestMapping(value = "/{potSeq}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> unregisterPot(@PathVariable("potSeq") String potSerial,@ApiIgnore @AuthenticationPrincipal UserSimpleDto principal) {
+    public ResponseEntity<?> unregisterPot(@PathVariable("potSeq") String potSerial,@ApiIgnore @AuthenticationPrincipal UserDto principal) {
         // 나중에 실제 유저가 들어오면 삭제할 로직
-        UserSimpleDto userSimpleDto = ((UserSimpleDto)principal);
+        UserDto userDto = ((UserDto)principal);
 
-        log.info("화분 등록 해제 컨트롤러 진입 :: 화분시리얼 : {} :: 사용자 Seq : {}", potSerial, userSimpleDto.getUserSeq());
-        potService.unregisterPot(potSerial, userSimpleDto.getUserSeq());
+        log.info("화분 등록 해제 컨트롤러 진입 :: 화분시리얼 : {} :: 사용자 Seq : {}", potSerial, userDto.getUserSeq());
+        potService.unregisterPot(potSerial, userDto.getUserSeq());
 
         ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분 등록에 성공했습니다.", null);
         responseFrame.setCode(202);

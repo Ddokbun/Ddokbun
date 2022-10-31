@@ -1,6 +1,6 @@
 package com.harryporter.ddokbun.domain.product.dto;
 
-import com.harryporter.ddokbun.domain.plant.entity.Plant;
+
 import com.harryporter.ddokbun.domain.product.entity.Item;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
