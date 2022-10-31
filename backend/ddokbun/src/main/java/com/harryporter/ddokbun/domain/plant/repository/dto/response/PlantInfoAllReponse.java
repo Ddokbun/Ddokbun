@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class PlantInfoAllReponse {
 
     private Long plantSeq;
+    private String plantName;
     private String plantNeName;
     private String plantZRName;
     private String distbName;
@@ -21,6 +22,7 @@ public class PlantInfoAllReponse {
         PlantInfoAllReponse temp = new PlantInfoAllReponse();
 
         temp.plantSeq = plant.getPlantSeq();
+        temp.plantName = plant.getPlantName();
         temp.plantNeName = plant.getPlantNeName();
         temp.plantZRName = plant.getPlantZRName();
         temp.distbName = plant.getDistbName();
