@@ -11,7 +11,7 @@ import java.util.Date;
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
-public class UserDto {
+public class UserDto implements Cloneable {
 
     private Long userSeq;
     private String userEmail;
@@ -32,6 +32,18 @@ public class UserDto {
                     .createdTime(user.getCreatedTime())
                     .updatedTime(user.getUpdatedTime())
                     .build();
+    }
+
+    @Override
+    protected Object clone() throws CloneNotSupportedException {
+        UserDto temp = new UserDto();
+        temp.setUserSeq(this.userSeq); //참조 값임으로 프리미티브로 바꿔서 주소 다르게
+        temp.setUserEmail(new String(this.userEmail));
+        temp.setUserNickname(new String(this.userNickname));
+        temp.setUserRole(new String(this.userRole));
+        temp.setCreatedTime(new Date());
+        temp.setUpdatedTime(new Date());
+        return super.clone();
     }
 
 
