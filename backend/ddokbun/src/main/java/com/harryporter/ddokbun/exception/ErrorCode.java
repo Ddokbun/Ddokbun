@@ -24,7 +24,9 @@ public enum ErrorCode {
     
     INTERNAL_ERROR(20000, HttpStatus.INTERNAL_SERVER_ERROR, "Internal error"),
     SPRING_INTERNAL_ERROR(20001, HttpStatus.INTERNAL_SERVER_ERROR, "Spring-detected internal error"),
-    DATA_ACCESS_ERROR(20002, HttpStatus.INTERNAL_SERVER_ERROR, "Data access error")
+    DATA_ACCESS_ERROR(20002, HttpStatus.INTERNAL_SERVER_ERROR, "Data access error"),
+
+    EXTERNAL_SERVICE_ACCESS_ERROR(30001,HttpStatus.SERVICE_UNAVAILABLE,"Internal Server Error While Using External Service ")
     ;
 
     private final Integer code;
