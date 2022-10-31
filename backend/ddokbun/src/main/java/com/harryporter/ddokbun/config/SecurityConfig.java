@@ -47,8 +47,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception{
         http
-                .cors().configurationSource(corsConfigurationSource())
-                .and()
+             //   .cors().configurationSource(corsConfigurationSource())
+             //   .and()
                 .httpBasic().disable() // Http basic Auth 기반 로그인 인증창->소셜 로그인으로 대체
                 .anonymous().disable()
                 .csrf().disable()// Rest API CSRF 보안 필요 x

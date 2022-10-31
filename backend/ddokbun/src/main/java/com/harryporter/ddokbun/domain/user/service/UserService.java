@@ -49,7 +49,7 @@ public class UserService {
             throw new GeneralException(ErrorCode.DUPPLICATE_INPUT,"이미 등록된 닉네임입니다.");
         }
         log.info("변경 후 User Nickname  :  {}",user.getUserNickname());
-        return user.getUserNickname();
+        return "Nickname Update Success";
     }
 
     public String randomNickname(){
@@ -65,7 +65,7 @@ public class UserService {
             Collections.shuffle(second);
             nickName= first.get(0)+second.get(0);
         };
-        return "Nickname Update Success";
+        return nickName;
 
     }
 }
