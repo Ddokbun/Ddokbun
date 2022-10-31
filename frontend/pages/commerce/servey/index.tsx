@@ -3,6 +3,7 @@ import { Wrapper } from "../../../styles/commerce/servey/styles";
 import BackgroudImage from "../../../assets/onboarding/mainImg.jpg";
 import Image from "next/image";
 import ServeyForm from "../../../components/commerce/servey";
+import Dot from "../../../common/Dot";
 
 const Servey: NextPage = () => {
   return (

@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   height: calc(100vh - 50px);
 
   img {
-    z-index: -1;
+    z-index: -2;
   }
   .gradation {
     opacity: 0.45;
@@ -27,9 +27,24 @@ export const Wrapper = styled.div`
   }
 
   .servey-wrapper {
+    flex-direction: column;
+    align-items: center;
     position: absolute;
     transform: translate(-50%, -50%);
     top: 50%;
     left: 50%;
+    z-index: 1;
+    padding: 20px 60px;
+    border-radius: 10px;
+    color: ${props => props.theme.color.ivoryHover};
+    background-color: rgba(48, 48, 48, 0.8);
+  }
+
+  .dots {
+    top: 10px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
   }
 `;
