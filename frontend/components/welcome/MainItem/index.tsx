@@ -23,7 +23,7 @@ const MainItem = () => {
 
   const CLIENT_ID_GOOGLE =
     "127690755793-5kgtvm8bmt7dhacov2qitf3d90h62reb.apps.googleusercontent.com";
-  const REDIRECT_URI_GOOGLE = "https://k7d208.p.ssafy.io/";
+  const REDIRECT_URI_GOOGLE = "http://localhost:3000/";
   const RESPONSE_TYPE = "email%20profile%20openid";
   const ACCESS_TYPE = "offline";
   const GOOGLE_AUTH_URL = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID_GOOGLE}&redirect_uri=${REDIRECT_URI_GOOGLE}&response_type=code&scope=${RESPONSE_TYPE}&access_type=${ACCESS_TYPE}`;

@@ -7,11 +7,22 @@ import axios from "axios";
 const Home: NextPage = () => {
   const router = useRouter();
   const login_code = router.query.code;
-  const URL = `https://k7d208.p.ssafy.io/api/user/login/oauth/kakao?code=`;
+  const KAKAO_URL = `https://k7d208.p.ssafy.io/api/user/login/oauth/kakao?code=`;
+  const GOOGLE_URL = `https://k7d208.p.ssafy.io/api/user/login/oauth/google?code=`;
   const TEST = `https://k7d208.p.ssafy.io/api/admin/plant`;
 
+  console.log(login_code);
   axios
-    .get(URL + login_code)
+    .get(KAKAO_URL + login_code)
+    .then(res => {
+      console.log(res.data.content.jwtToken);
+    })
+    .catch(error => {
+      console.log("채리 - 에러남", error);
+    });
+
+  axios
+    .get(GOOGLE_URL + login_code)
     .then(res => {
       console.log(res.data.content.jwtToken);
     })
