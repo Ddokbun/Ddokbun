@@ -32,9 +32,9 @@ public class AdminController {
     @ApiOperation(value = "식물 데이터 조회 (Test용 1번 데이터 조회)")
     @GetMapping ("/plant")
     public ResponseEntity<?> getPlant(@ApiIgnore @AuthenticationPrincipal UserDto userDto){
-        if(!userDto.getUserRole().equals("ROLE_ADMIN"))
-            throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
-        log.info("관리자 접속 완료");
+//        if(!userDto.getUserRole().equals("ROLE_ADMIN"))
+//            throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
+//        log.info("관리자 접속 완료");
         ResponseFrame<?> res =  ResponseFrame.ofOKResponse("Success",plantService.getPlant());
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
