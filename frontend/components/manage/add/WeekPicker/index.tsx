@@ -112,10 +112,8 @@ const WeekPicker: React.FC<{
     <Wrapper>
       <div className="calander">
         {renderHeader()}
-        <div>
-          {renderDays()}
-          {renderCells()}
-        </div>
+        {renderDays()}
+        {renderCells()}
       </div>
     </Wrapper>
   );

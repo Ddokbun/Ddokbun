@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 500px;
+  margin: 4%;
 
   .month-container {
     display: flex;
@@ -35,6 +36,10 @@ export const Wrapper = styled.div`
     justify-content: center;
   }
 
+  .selected {
+    color: ${props => props.theme.color.mainGreen};
+  }
+
   .today {
     color: ${props => props.theme.color.mainGreen};
   }
@@ -42,10 +47,14 @@ export const Wrapper = styled.div`
   .day {
     margin: 5%;
     font-size: 24px;
-    width: 13px;
+  }
+
+  .day:hover {
+    cursor: pointer;
   }
 
   @media screen and (${props => props.theme.mobile}) {
     width: 85%;
+    margin: 3%;
   }
 `;
