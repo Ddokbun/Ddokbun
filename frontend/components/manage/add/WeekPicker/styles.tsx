@@ -7,16 +7,19 @@ export const Wrapper = styled.div`
     display: flex;
     /* flex-direction: row; */
     color: #007aff;
-    justify-content: space-around;
+    justify-content: space-between;
   }
 
   .week-container {
     display: flex;
     flex-direction: row;
+    justify-content: center;
   }
 
   .week {
     margin: 5%;
+    font-size: 24px;
+    width: 13px;
   }
 
   .button-container {
@@ -24,5 +27,25 @@ export const Wrapper = styled.div`
 
   .button {
     margin: 0 5%;
+  }
+
+  .day-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .today {
+    color: ${props => props.theme.color.mainGreen};
+  }
+
+  .day {
+    margin: 5%;
+    font-size: 24px;
+    width: 13px;
+  }
+
+  @media screen and (${props => props.theme.mobile}) {
+    width: 85%;
   }
 `;

@@ -56,14 +56,14 @@ const WeekPicker: React.FC<{
     );
   };
   const renderDays = () => {
-    const dateFormat = "EEE";
+    const dateFormat = "eeeee";
     const days = [];
     const startDate = startOfWeek(currentMonth, { weekStartsOn: 1 });
     for (let i = 0; i < 7; i++) {
       days.push(
-        <div className="week" key={i}>
+        <p className="week" key={i}>
           {format(addDays(startDate, i), dateFormat)}
-        </div>,
+        </p>,
       );
     }
     return <div className="week-container">{days}</div>;
@@ -82,7 +82,8 @@ const WeekPicker: React.FC<{
         const cloneDay = day;
         days.push(
           <div
-            className={`col cell ${
+            key={day.toString()}
+            className={`day ${
               isSameDay(day, new Date())
                 ? "today"
                 : isSameDay(day, selectedDate)
@@ -94,25 +95,27 @@ const WeekPicker: React.FC<{
               onDateClickHandle(cloneDay, dayStr);
             }}
           >
-            <span className="number">{formattedDate}</span>
-            <span className="bg">{formattedDate}</span>
+            <p className="day">{formattedDate}</p>
           </div>,
         );
         day = addDays(day, 1);
       }
+      console.log(days);
 
-      rows.push(<div className="row">{days}</div>);
+      rows.push(<div className="day-container">{days}</div>);
       days = [];
     }
-    return <div className="body">{rows}</div>;
+    return <>{rows}</>;
   };
 
   return (
     <Wrapper>
       <div className="calander">
         {renderHeader()}
-        {renderDays()}
-        {renderCells()}
+        <div>
+          {renderDays()}
+          {renderCells()}
+        </div>
       </div>
     </Wrapper>
   );
