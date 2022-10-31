@@ -2,6 +2,7 @@ package com.harryporter.ddokbun.api;
 
 import com.harryporter.ddokbun.api.response.ResponseFrame;
 import com.harryporter.ddokbun.domain.plant.repository.dto.request.RegisterPotRequest;
+import com.harryporter.ddokbun.domain.plant.repository.dto.response.MyPotReponse;
 import com.harryporter.ddokbun.domain.plant.repository.dto.response.PlantInfoAllReponse;
 import com.harryporter.ddokbun.domain.plant.repository.dto.response.RegisterPotResponse;
 import com.harryporter.ddokbun.domain.plant.repository.dto.response.SearchPlantInfoResponse;
@@ -108,7 +109,16 @@ public class PotController {
         ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분 물 공급 방법 변경에 성공했습니다.", null);
 
         return new ResponseEntity<>(responseFrame, HttpStatus.OK);
-
     }
 
+    @ApiOperation(value = "사용자에게 귀속된 화분리스트 조회")
+    @RequestMapping(value = "/my-pot", method = RequestMethod.GET)
+    public ResponseEntity<?> myPot(@ApiIgnore @AuthenticationPrincipal UserDto principal) {
+        log.info("사용자 화분 리스트 검색 컨트롤러 진입");
+
+        log.info("사용자 확분 리스트를 반환 받았습니다.");
+        ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("사용자에게 귀속된 화분리스트 조회에 성공했습니다.", null);
+
+        return new ResponseEntity<>(responseFrame, HttpStatus.OK);
+    }
 }
