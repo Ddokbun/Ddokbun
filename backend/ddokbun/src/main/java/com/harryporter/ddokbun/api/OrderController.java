@@ -6,7 +6,7 @@ import com.harryporter.ddokbun.domain.order.dto.request.OrderReq;
 import com.harryporter.ddokbun.domain.order.dto.response.OrderDetailDto;
 import com.harryporter.ddokbun.domain.order.dto.response.OrderListItemDto;
 import com.harryporter.ddokbun.domain.order.service.OrderService;
-import com.harryporter.ddokbun.domain.user.dto.UserSimpleDto;
+import com.harryporter.ddokbun.domain.user.dto.UserDto;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -29,7 +29,7 @@ public class OrderController {
     //유저가 상품을 주문한다.
     @ApiOperation("상품 내역 저장")
     @RequestMapping(method = RequestMethod.POST)
-    public ResponseEntity<?> doOrder(@RequestBody OrderReq orderReq, @ApiIgnore @AuthenticationPrincipal UserSimpleDto user ){
+    public ResponseEntity<?> doOrder(@RequestBody OrderReq orderReq, @ApiIgnore @AuthenticationPrincipal UserDto user ){
 
         OrderDto orderDto = orderService.enrollOrder(orderReq,user.getUserSeq());
 
@@ -50,9 +50,9 @@ public class OrderController {
     //사용자 주문내역 리스트 보기
     @ApiOperation("주문 내역 리스트")
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<?> getMyOrderList(@ApiIgnore @AuthenticationPrincipal UserSimpleDto userSimpleDto){
+    public ResponseEntity<?> getMyOrderList(@ApiIgnore @AuthenticationPrincipal UserDto userDto){
 
-        List<OrderListItemDto> orderListItemDtoList =  orderService.getOrderListByUserSeq(userSimpleDto.getUserSeq());
+        List<OrderListItemDto> orderListItemDtoList =  orderService.getOrderListByUserSeq(userDto.getUserSeq());
 
         ResponseFrame<?> res = ResponseFrame.ofOKResponse("주문 내역 리스트를 반환합니다.",orderListItemDtoList);
 
@@ -62,7 +62,7 @@ public class OrderController {
     //주문 내역 상세보기
     //사용자의 주문내역 상세보기
     @RequestMapping(value = "/{orderSeq}",method = RequestMethod.GET)
-    public ResponseEntity<?> getMyOrderDetail(@PathVariable(value = "orderSeq") Long orderSeq, @ApiIgnore @AuthenticationPrincipal UserSimpleDto principal){
+    public ResponseEntity<?> getMyOrderDetail(@PathVariable(value = "orderSeq") Long orderSeq, @ApiIgnore @AuthenticationPrincipal UserDto principal){
 
         OrderDetailDto orderDetailDto =  orderService.getOrderDetail(orderSeq,principal.getUserSeq());
 

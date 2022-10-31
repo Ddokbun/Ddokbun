@@ -1,14 +1,11 @@
 package com.harryporter.ddokbun.utils.auth;
 
+import com.harryporter.ddokbun.domain.user.dto.UserAthentication;
 import com.harryporter.ddokbun.domain.user.dto.UserDto;
-import com.harryporter.ddokbun.domain.user.dto.UserSimpleDto;
 import com.harryporter.ddokbun.domain.user.service.UserService;
-import com.harryporter.ddokbun.exception.ErrorCode;
-import com.harryporter.ddokbun.exception.GeneralException;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -66,9 +63,17 @@ public class JwtTokenUtils {
                         .map(SimpleGrantedAuthority::new)
                         .collect(Collectors.toList());
 
-        UserDto user = userService.loadUserByUserSeq(getUserSeq(token));
+        UserDto userDto = userService.loadUserByUserSeq(getUserSeq(token));
+        UserAthentication userAthentication = new UserAthentication();
 
-        return new UsernamePasswordAuthenticationToken(user, "", authorities);
+        userAthentication.setAuthenticated(true);
+        userAthentication.setUserEmail(userDto.getUserEmail());
+        userAthentication.setUserNickname(userDto.getUserNickname());
+        userAthentication.setUserRole(userDto.getUserRole());
+        userAthentication.setUserSeq(userDto.getUserSeq());
+
+
+        return userAthentication;
     }
 
     private Claims getTokenClaims(String token) {
