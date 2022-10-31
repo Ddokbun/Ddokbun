@@ -17,56 +17,16 @@ export const kakaoInit = () => {
 };
 
 const MainItem = () => {
-  const CLIENT_ID = "e7b3aeb0998dc77e6832174667e50b90"; // REST API 부분을 넣어준다
-  const REDIRECT_URI = "https://k7d208.p.ssafy.io/api/user/login/oauth/kakao"; // 설정한 리다이렉트 URL을 넣어준다
-  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}&response_type=code`;
+  const CLIENT_ID_KAKAO = "e7b3aeb0998dc77e6832174667e50b90"; // REST API 부분을 넣어준다
+  const REDIRECT_URI_KAKAO = "http://localhost:3000/"; // 설정한 리다이렉트 URL을 넣어준다
+  const KAKAO_AUTH_URL = `https://kauth.kakao.com/oauth/authorize?client_id=${CLIENT_ID_KAKAO}&redirect_uri=${REDIRECT_URI_KAKAO}&response_type=code`;
 
-  // const kakaoLogin = async () => {
-  //   // 카카오 초기화
-  //   const kakao = kakaoInit();
-  //   // 카카오 로그인 구현
-  //   // throughTalk: false,
-  //   kakao.Auth.login({
-  //     success: () => {
-  //       kakao.API.request({
-  //         url: "/v2/user/me", // 사용자 정보 가져오기
-  //         success: (res: any) => {
-  //           console.log("성공!", res);
-  //         },
-  //         fail: (error: any) => {
-  //           console.log("호출실패", error);
-  //         },
-  //       });
-  //     },
-  //     fail: (error: any) => {
-  //       console.log("요청자체가 실패:", error);
-  //     },
-  //   });
-  // };
-
-  const loginFormWithKakao = () => {
-    const kakao = kakaoInit();
-    kakao.Auth.login({
-      success(authObj: any) {
-        console.log(authObj);
-      },
-      fail(err: any) {
-        console.log(err);
-      },
-    });
-  };
-
-  // const onSuccess = async (res: any) => {
-  //   await axios
-  //     .post(`/api/user/login/oauth/kakao`, {
-  //       access_token: res.access_token,
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //       alert("서버에서 오류발생");
-  //     });
-  //   Router.push("/");
-  // };
+  const CLIENT_ID_GOOGLE =
+    "127690755793-5kgtvm8bmt7dhacov2qitf3d90h62reb.apps.googleusercontent.com";
+  const REDIRECT_URI_GOOGLE = "http://localhost:3000/";
+  const RESPONSE_TYPE = "email%20profile%20openid";
+  const ACCESS_TYPE = "offline";
+  const GOOGLE_AUTH_URL = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${CLIENT_ID_GOOGLE}&redirect_uri=${REDIRECT_URI_GOOGLE}&response_type=code&scope=${RESPONSE_TYPE}&access_type=${ACCESS_TYPE}`;
 
   return (
     <Wrapper>
@@ -98,9 +58,9 @@ const MainItem = () => {
               {/* </Button> */}
             </a>
           </Link>
-          <div>
+          <Link href={GOOGLE_AUTH_URL}>
             <Image src={kakao} alt="구글 로그인 버튼" width={350} height={50} />
-          </div>
+          </Link>
           <div>
             <LoginBtn path={`commerce/products/list`} />
           </div>
