@@ -1,5 +1,7 @@
 package com.harryporter.ddokbun.domain.product.service;
 
+import com.harryporter.ddokbun.domain.plant.repository.PlantRepository;
+import com.harryporter.ddokbun.domain.product.dto.InsertItemDto;
 import com.harryporter.ddokbun.domain.product.entity.TodayItem;
 import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
@@ -12,6 +14,7 @@ import com.harryporter.ddokbun.domain.product.repository.ItemRepository;
 import com.harryporter.ddokbun.domain.product.repository.ItemRepositoryCustom;
 import com.harryporter.ddokbun.exception.ErrorCode;
 import com.harryporter.ddokbun.exception.GeneralException;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -25,9 +28,9 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class ItemServiceImple implements ItemService{
 
-
     private final ItemRepositoryCustom itemRepositoryCustom;
     private final ItemRepository itemRepository;
+    private final PlantRepository plantRepository;
 
     @Override
     public List<ItemSearchDto> searchByTitle(String title) {
@@ -111,6 +114,25 @@ public class ItemServiceImple implements ItemService{
         item.setItemStock(item.getItemStock().intValue() - quantity);
 
         return 0;
+    }
+
+    @Override
+    public ItemDetailDto insertItem(InsertItemDto insertItemDto){
+        Plant plant=null;
+        if(insertItemDto.getItemKind()!=2) {
+            plant = plantRepository.findByPlantSeq(insertItemDto.getPlantSeq()).orElseThrow(
+                    ()-> new GeneralException(ErrorCode.NOT_FOUND,"식물을 찾을 수 없습니다."));
+        }
+        Item item = insertItemDto.toEntity(plant);
+        try {
+            itemRepository.save(item);
+        }catch (Exception e){
+            throw new GeneralException(ErrorCode.VALIDATION_ERROR,"상품 DB 등록에 실패하였습니다. ");
+        }
+        ItemDetailDto idt = new ItemDetailDto();
+        idt.copy(ItemDto.of(item));
+        idt.setPlant(PlantDto.of(item.getPlant()));
+        return idt;
     }
 
 }

@@ -68,15 +68,4 @@ public class UserService {
         return "Nickname Update Success";
 
     }
-
-    public boolean areYouAdmin(long userSeq){
-        User user = userRepository.findByUserSeq(userSeq).orElseThrow(
-                ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다."));
-
-        if(user.getUserRole().equals("ROLE_ADMIN"))
-            return true;
-        else
-            return false;
-    }
-
 }

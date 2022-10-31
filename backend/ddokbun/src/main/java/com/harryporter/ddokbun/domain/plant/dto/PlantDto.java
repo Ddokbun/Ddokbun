@@ -112,6 +112,7 @@ public class PlantDto {
                 .build();
     }
     public static PlantDto of(Plant plant){
+        if(plant==null) return null;
         PlantDto temp = PlantDto.builder()
                 .plantSeq(plant.getPlantSeq()) //식물 seq
                 .plantName(plant.getPlantName()) //식물 이름
