@@ -23,4 +23,7 @@ public interface ItemService {
     ItemDto insertItem(InsertItemDto insertItemDto);
 
     ItemDetailDto updateItem(UpdateItemDto updateItemDto);
+
+
+    String deleteItem(long itemSeq);
 }
