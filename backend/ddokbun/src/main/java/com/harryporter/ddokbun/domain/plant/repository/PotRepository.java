@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface PotRepository extends JpaRepository<Pot, Long> {
     Optional<Pot> findByPotSerial(String potSerial);
+    Boolean existsByPotSerial(String potSerial);
 }
