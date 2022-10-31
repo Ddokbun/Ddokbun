@@ -40,11 +40,15 @@ export const Wrapper = styled.div`
     background-color: rgba(48, 48, 48, 0.8);
   }
 
-  .dots {
-    top: 10px;
+  @media screen and (${props => props.theme.mobile}) {
+    position: relative;
     width: 100%;
-    justify-content: center;
-    display: flex;
-    align-items: center;
+    min-width: 0px;
+
+    .servey-wrapper {
+      min-width: 0px;
+      width: 95%;
+      padding: 20px;
+    }
   }
 `;

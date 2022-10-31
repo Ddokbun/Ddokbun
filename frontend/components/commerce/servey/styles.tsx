@@ -9,12 +9,17 @@ export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
-
+  .dots {
+    top: 10px;
+    width: 100%;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+  }
   .question {
     padding-left: 0;
     h1 {
       font-weight: 600;
-      opacity: 1.2;
       word-break: keep-all;
       font-size: 40px;
       font-family: ${props => props.theme.font.TextFont1};
@@ -35,7 +40,7 @@ export const Wrapper = styled.div`
     align-self: center;
     width: 100%;
     display: flex;
-    justify-content: flex-start;
+    justify-content: space-between;
     gap: 50px;
     .button {
       font-family: ${props => props.theme.font.TextFont1};
@@ -44,6 +49,51 @@ export const Wrapper = styled.div`
       padding: 10px 100px;
       border-radius: 5px;
       border: 3px solid ${props => props.theme.color.ivory};
+    }
+  }
+
+  @media screen and (${props => props.theme.mobile}) {
+    padding: 15px;
+    position: relative;
+    width: 100%;
+    min-width: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+    .question {
+      padding-left: 0;
+      h1 {
+        font-weight: 600;
+        word-break: keep-all;
+        font-size: 32px;
+        font-family: ${props => props.theme.font.TextFont1};
+      }
+    }
+
+    .answers {
+      width: 100%;
+
+      ul li {
+        margin: 50px 0px;
+        font-family: ${props => props.theme.font.TextFont1};
+        font-size: 24px;
+      }
+    }
+    .button-wrap {
+      align-self: center;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: 50px;
+      .button {
+        font-family: ${props => props.theme.font.TextFont1};
+        letter-spacing: 5px;
+        font-size: 20px;
+        padding: 10px 50px;
+        border-radius: 5px;
+        border: 3px solid ${props => props.theme.color.ivory};
+      }
     }
   }
 `;
