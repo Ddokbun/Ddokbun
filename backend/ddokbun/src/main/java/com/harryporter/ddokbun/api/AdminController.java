@@ -1,7 +1,7 @@
 package com.harryporter.ddokbun.api;
 
 import com.harryporter.ddokbun.api.response.ResponseFrame;
-import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
+import com.harryporter.ddokbun.domain.plant.repository.dto.PlantDto;
 import com.harryporter.ddokbun.domain.plant.service.PlantService;
 import com.harryporter.ddokbun.domain.user.dto.UserDto;
 import com.harryporter.ddokbun.domain.user.service.UserService;
@@ -17,8 +17,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
-
-import javax.servlet.http.HttpServletRequest;
 
 @Slf4j
 @RequestMapping("/admin")

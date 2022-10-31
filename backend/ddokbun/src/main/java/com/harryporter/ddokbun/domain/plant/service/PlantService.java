@@ -1,13 +1,19 @@
 package com.harryporter.ddokbun.domain.plant.service;
 
-import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
+import com.harryporter.ddokbun.domain.plant.repository.dto.PlantDto;
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
 import com.harryporter.ddokbun.domain.plant.repository.PlantRepository;
+import com.harryporter.ddokbun.domain.plant.repository.dto.response.PlantInfoAllReponse;
+import com.harryporter.ddokbun.domain.plant.repository.dto.response.SearchPlantInfoResponse;
 import com.harryporter.ddokbun.exception.ErrorCode;
 import com.harryporter.ddokbun.exception.GeneralException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+
+import javax.transaction.Transactional;
+import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Slf4j
@@ -51,5 +57,20 @@ public class PlantService {
 
     }
 
+    @Transactional
+    public List<PlantInfoAllReponse> getPlantInfo(){
+        List<Plant> plants = plantRepository.findAll();
+        List<PlantInfoAllReponse> plantsList = plants.stream().map(plant -> PlantInfoAllReponse.of(plant)).collect(Collectors.toList());
+        return plantsList;
+    }
 
+    @Transactional
+    public SearchPlantInfoResponse searchPlantInfo(Long plantSeq){
+        Plant plant = plantRepository.findByPlantSeq(plantSeq).orElseThrow(
+                () -> new GeneralException(ErrorCode.NOT_FOUND)
+        );
+
+        SearchPlantInfoResponse searchPlantInfoResponse = SearchPlantInfoResponse.of(plant);
+        return searchPlantInfoResponse;
+    }
 }

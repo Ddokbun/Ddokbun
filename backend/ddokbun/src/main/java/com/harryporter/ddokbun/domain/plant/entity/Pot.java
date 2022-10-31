@@ -1,7 +1,6 @@
 package com.harryporter.ddokbun.domain.plant.entity;
 
-import com.harryporter.ddokbun.domain.order.entity.OrderStatus;
-import com.harryporter.ddokbun.domain.plant.dto.request.RegisterPotRequest;
+import com.harryporter.ddokbun.domain.plant.repository.dto.request.RegisterPotRequest;
 import com.harryporter.ddokbun.domain.user.entity.User;
 import lombok.Builder;
 import lombok.Getter;

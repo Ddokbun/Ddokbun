@@ -1,5 +1,6 @@
 package com.harryporter.ddokbun.domain.plant.entity;
 
+import com.harryporter.ddokbun.domain.plant.repository.dto.response.SearchPlantInfoResponse;
 import lombok.*;
 
 import javax.persistence.*;
@@ -100,9 +101,12 @@ public class Plant {
     @Column(name = "light_info")
     private String lightInfo;
 
-    @Column(name = "temperature")
+    @Column(name = "min_temperature")
 
-    private Integer temperature;
+    private Integer minTemperature;
+
+    @Column(name = "max_temperature")
+    private Integer maxTemperature;
     @Column(name = "temperature_info")
     private String temperatureInfo;
     @Column(name = "image_path")
@@ -134,10 +138,12 @@ public class Plant {
         this.waterIfno=plant.getWaterIfno();
         this.light=plant.getLight();
         this.lightInfo=plant.getLightInfo();
-        this.temperature=plant.getTemperature();
+        this.minTemperature=plant.getMinTemperature();
+        this.maxTemperature=plant.getMaxTemperature();
         this.temperatureInfo=plant.getTemperatureInfo();
         this.imagePath=plant.getImagePath();
         this.recRate=plant.getRecRate();
 
     }
+
 }
