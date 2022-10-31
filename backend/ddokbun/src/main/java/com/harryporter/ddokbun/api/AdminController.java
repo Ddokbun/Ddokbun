@@ -79,9 +79,11 @@ public class AdminController {
     }
 
     @ApiOperation(value = "상품 삭제")
-    @DeleteMapping("/product")
-    public ResponseEntity<?> deleteProduct(@ApiIgnore @AuthenticationPrincipal UserDto userDto){
-        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("Success","상품 삭제");
+    @DeleteMapping("/product/{itemSeq}")
+    public ResponseEntity<?> deleteProduct(@PathVariable long itemSeq, @ApiIgnore @AuthenticationPrincipal UserDto userDto){
+        if(!userDto.getUserRole().equals("ROLE_ADMIN"))
+            throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("Success",itemService.deleteItem(itemSeq));
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 

@@ -21,4 +21,5 @@ public interface ItemRepository extends JpaRepository<Item,Long> {
     @Lock(LockModeType.PESSIMISTIC_WRITE)
     @Query("SELECT i FROM Item i WHERE i.itemSeq = :itemSeq")
     Item findByIdWithWriteLock(@Param("itemSeq") long itemSeq);
+
 }
