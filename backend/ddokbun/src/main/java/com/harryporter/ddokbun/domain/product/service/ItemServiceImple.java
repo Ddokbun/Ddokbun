@@ -4,7 +4,7 @@ import com.harryporter.ddokbun.domain.plant.repository.PlantRepository;
 import com.harryporter.ddokbun.domain.product.dto.request.InsertItemDto;
 import com.harryporter.ddokbun.domain.product.dto.request.UpdateItemDto;
 import com.harryporter.ddokbun.domain.product.entity.TodayItem;
-import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
+import com.harryporter.ddokbun.domain.plant.repository.dto.PlantDto;
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
 import com.harryporter.ddokbun.domain.product.dto.ItemDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;

@@ -1,8 +1,8 @@
 package com.harryporter.ddokbun.domain.plant.service;
 
 
-import com.harryporter.ddokbun.domain.plant.dto.request.RegisterPotRequest;
-import com.harryporter.ddokbun.domain.plant.dto.response.RegisterPotResponse;
+import com.harryporter.ddokbun.domain.plant.repository.dto.request.RegisterPotRequest;
+import com.harryporter.ddokbun.domain.plant.repository.dto.response.RegisterPotResponse;
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
 import com.harryporter.ddokbun.domain.plant.entity.Pot;
 import com.harryporter.ddokbun.domain.plant.repository.PlantRepository;
@@ -65,6 +65,7 @@ public class PotService {
             throw new GeneralException(ErrorCode.BAD_REQUEST, "당신의 화분이 아닙니다");
         }
     }
+
 
 
 
