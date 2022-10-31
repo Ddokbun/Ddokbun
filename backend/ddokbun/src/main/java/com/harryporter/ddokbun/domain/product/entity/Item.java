@@ -1,8 +1,7 @@
 package com.harryporter.ddokbun.domain.product.entity;
 
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -10,6 +9,9 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Item {
 
     //상품 일련 번호
