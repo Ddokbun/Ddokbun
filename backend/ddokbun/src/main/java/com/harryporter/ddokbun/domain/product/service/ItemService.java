@@ -26,4 +26,6 @@ public interface ItemService {
 
 
     String deleteItem(long itemSeq);
+
+    List<Long> getProductList();
 }

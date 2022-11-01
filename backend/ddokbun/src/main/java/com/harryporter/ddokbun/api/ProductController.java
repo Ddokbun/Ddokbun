@@ -7,13 +7,16 @@ import com.harryporter.ddokbun.domain.product.service.ItemService;
 import com.harryporter.ddokbun.domain.survey.dto.request.SurveyAnswerRequest;
 import com.harryporter.ddokbun.domain.survey.dto.response.SurveyResponse;
 import com.harryporter.ddokbun.domain.survey.service.SurveyService;
+import com.harryporter.ddokbun.domain.user.dto.UserDto;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
 
@@ -157,6 +160,14 @@ public class ProductController {
     public ResponseEntity<?> getMyPotRelationRecomendProduct(){
 
         return null;
+    }
+
+
+    @ApiOperation(value = "상품 전체 조회 (itemSeq만)")
+    @GetMapping("/list")
+    public ResponseEntity<?> getProductList(){
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("전체 상품 seq를 반환합니다",itemService.getProductList());
+        return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
 
