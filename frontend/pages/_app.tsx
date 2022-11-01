@@ -58,8 +58,8 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
   );
 };
 
-MyApp.getInitialProps = async (ctx: Context) => {
-  console.log(Object.keys(ctx));
-};
+// MyApp.getInitialProps = async (ctx: Context) => {
+//   console.log(Object.keys(ctx));
+// };
 
 export default MyApp;
