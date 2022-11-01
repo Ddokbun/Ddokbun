@@ -43,12 +43,20 @@ export const SearchBtn: React.FC<{
 
 // 컨벤션 다름! Btn vs Button 중에 선택해야 할듯
 
-export const BuyTextButton: React.FC = () => {
+/**
+ * Product List에서 Product Detail로 이동시키는 버튼
+ *
+ * @param {number} id  Product Detail Id
+ * @return {void} Product Detail로 이동시킴
+ */
+export const BuyTextButton: React.FC<{ id: number }> = ({ id }) => {
   return (
-    <PriceTextButtonStyle>
-      <h3>Buy</h3>
-      <RightUp />
-    </PriceTextButtonStyle>
+    <Link href={`/commerce/product/${id}`}>
+      <PriceTextButtonStyle>
+        <h3>Buy</h3>
+        <RightUp />
+      </PriceTextButtonStyle>
+    </Link>
   );
 };
 
