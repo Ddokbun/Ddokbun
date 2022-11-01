@@ -111,7 +111,7 @@ export const CancelButton: React.FC<{
   );
 };
 
-export const LoginBtn: React.FC<{
+export const LoginButton: React.FC<{
   path: string;
 }> = ({ path }) => {
   return (
