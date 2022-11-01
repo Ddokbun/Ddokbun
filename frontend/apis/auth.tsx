@@ -3,15 +3,6 @@ import Router from "next/router";
 import cookies from "react-cookies";
 import AXIOS from "./index";
 
-export interface AxiosResponse<T = any> {
-  data: T;
-  status: number;
-  statusText: string;
-  headers: any;
-  setHeader: any;
-  request?: any;
-}
-
 export const Kakaologin = async (login_code?: string[] | string) => {
   const path = "user/login/oauth/kakao?code=";
   try {
@@ -24,11 +15,9 @@ export const Kakaologin = async (login_code?: string[] | string) => {
     document.cookie = `키이름=${accessToken}`;
 
     console.log("성공", res);
-    cookies.save("refreshToken", res.data.content.jwtToken, {
+    cookies.save("accessToken", accessToken, {
       path: "/",
     });
-
-    // res.setHeader("Set-Cookie", accessToken);
 
     Router.push("/manage");
     return res.data;

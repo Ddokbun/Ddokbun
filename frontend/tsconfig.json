@@ -20,7 +20,8 @@
     "additional.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "_document.js"
+    "_document.js",
+    "pages/_app.tsx"
   ],
   "exclude": ["node_modules"]
 }
