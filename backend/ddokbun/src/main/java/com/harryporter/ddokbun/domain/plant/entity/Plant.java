@@ -95,8 +95,8 @@ public class Plant {
     private String waterIfno;
 
     //광량
-    @Column(name = "light")
-    private Integer light;
+    @Column(name = "light_type")
+    private Integer lightType;
     //광량 설명
     @Column(name = "light_info")
     private String lightInfo;
@@ -136,7 +136,7 @@ public class Plant {
         this.plantPlace=plant.getPlantPlace();
         this.waterCycle=plant.getWaterCycle();
         this.waterIfno=plant.getWaterIfno();
-        this.light=plant.getLight();
+        this.lightType=plant.getLightType();
         this.lightInfo=plant.getLightInfo();
         this.minTemperature=plant.getMinTemperature();
         this.maxTemperature=plant.getMaxTemperature();
