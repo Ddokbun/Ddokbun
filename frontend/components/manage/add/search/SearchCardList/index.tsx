@@ -4,7 +4,8 @@ import SearchCardItem from "../SearchCardItem";
 
 const SearchCardList: React.FC<{
   data: SearchPlantType[];
-}> = ({ data }) => {
+  isDelivery:boolean
+}> = ({ data, isDelivery }) => {
   const itemList = data.map(plant => {
     return (
       <SearchCardItem
@@ -13,6 +14,7 @@ const SearchCardList: React.FC<{
         egName={plant.egName}
         plantSeq={plant.plantSeq}
         key={plant.plantSeq}
+        isDelivery={isDelivery}
       />
     );
   });

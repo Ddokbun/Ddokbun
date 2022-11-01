@@ -15,10 +15,6 @@ import {
 import RightUp from "../../assets/commerce/right-up.svg";
 import Bag from "../../assets/commerce/bag.svg";
 import { useRouter } from "next/router";
-import humidity from "../../assets/icon/humidity.png";
-import soil from "../../assets/icon/soil.png";
-import illuminance from "../../assets/icon/illuminance.png";
-import temperature from "../../assets/icon/temperature.png";
 import Image from "next/image";
 
 export const TextBtn: React.FC<{
@@ -121,36 +117,55 @@ export const LoginBtn: React.FC<{
   );
 };
 
-export const StatusButton: React.FC<{
+export interface StatusType {
   statusCode: number;
+  title: string;
+  src: null | string;
+}
+
+export const StatusButton: React.FC<{
+  status: StatusType;
   activeIndex: number;
   setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
-}> = ({ statusCode, activeIndex, setActiveIndex }) => {
-  const status = [
-    { src: temperature.src, title: "온도" },
-    { src: illuminance.src, title: "조도" },
-    { src: humidity.src, title: "습도" },
-    { src: soil.src, title: "토양습도" },
-  ];
-
+  onClick: (code: number) => void;
+  backgroundColor: string;
+  backgroundHover: string;
+  textColor: string;
+}> = ({
+  status,
+  activeIndex,
+  setActiveIndex,
+  onClick,
+  backgroundColor,
+  backgroundHover,
+  textColor,
+}) => {
   const onChangeActiveHandler = () => {
-    setActiveIndex(statusCode);
+    setActiveIndex(status.statusCode);
+    if (onClick !== null) {
+      onClick(status.statusCode);
+    }
   };
 
   return (
     <StatusButtonStyle
       onClick={onChangeActiveHandler}
-      isActive={statusCode === activeIndex}
+      isActive={status.statusCode === activeIndex}
+      backgroundColor={backgroundColor}
+      backgroundHover={backgroundHover}
+      textColor={textColor}
     >
-      <Image
-        src={status[statusCode].src}
-        // layout="fill"
-        width={"40px"}
-        height={"40px"}
-        alt="상태 아이콘"
-      />
+      {status.src && (
+        <Image
+          src={status.src}
+          // layout="fill"
+          width={"40px"}
+          height={"40px"}
+          alt="상태 아이콘"
+        />
+      )}
 
-      <span>{status[statusCode].title}</span>
+      <span>{status.title}</span>
     </StatusButtonStyle>
   );
 };

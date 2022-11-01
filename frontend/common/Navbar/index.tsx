@@ -6,6 +6,8 @@ import LeftArrow from "../../assets/commerce/leftArrow.svg";
 import Link from "next/link";
 
 const Navbar = () => {
+  const userseq = 1;
+
   return (
     <Wrapper>
       <div className="img_wrap">
@@ -22,7 +24,9 @@ const Navbar = () => {
           <Link href={"/manage"}>IoT</Link>
           <li>Shopping</li>
           <Link href={"/search"}>Search</Link>
-          <li>MyPage</li>
+          <Link href={`/mypage/${userseq}`}>
+            <li>MyPage</li>
+          </Link>
         </ul>
       </div>
     </Wrapper>
