@@ -12,6 +12,11 @@ import { wrapper } from "../store";
 import Navbar from "../common/Navbar/index";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
+interface AppProps {
+  ctx: string;
+  Component: string;
+}
+
 const DEFAULT_SEO = {
   title: "똑분 - Ddokbun",
   description: "똑분 - Ddokbun",
@@ -58,8 +63,19 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
   );
 };
 
-// MyApp.getInitialProps = async (ctx: Context) => {
-//   console.log(Object.keys(ctx));
-// };
+MyApp.getInitialProps = ctx => {
+  const { token } = cookies(ctx);
+  console.log(token);
+
+  if (!token || token === "") {
+    if (ctx.req && ctx.res) {
+      ctx.res.writeHead(302, { Location: "/login" });
+      ctx.res.end();
+    } else {
+    }
+  }
+
+  return { token };
+};
 
 export default MyApp;
