@@ -55,7 +55,7 @@ export const SearchBtn: React.FC<{
  */
 export const BuyTextButton: React.FC<{ id: number }> = ({ id }) => {
   return (
-    <Link href={`${id}`}>
+    <Link href={`/commerce/product/${id}`}>
       <PriceTextButtonStyle>
         <h3>Buy</h3>
         <RightUp />
