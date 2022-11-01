@@ -20,6 +20,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -172,6 +173,16 @@ public class ItemServiceImple implements ItemService{
            throw new GeneralException(ErrorCode.NOT_FOUND,"삭제가 불가능하거나, 존재하지 않는 상품입니다.");
         }
         return "Delete Success";
+    }
+
+    @Override
+    public List<Long> getProductList(){
+        List<Item> productList = itemRepository.findAll();
+        List<Long> itemSeqList =new ArrayList<>();
+        for(Item item : productList){
+            itemSeqList.add(item.getItemSeq());
+        }
+        return itemSeqList;
     }
 
 }
