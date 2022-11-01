@@ -1,5 +1,20 @@
 import AXIOS from ".";
 
+export const getAllProductNumber = async () => {
+  const path = "market/product/list";
+
+  try {
+    const res = await AXIOS({
+      method: "GET",
+      url: path,
+    });
+
+    return res.data.content;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const fetchProductList = async (params: string) => {
   const path = `market/product/category/${params}`;
 
@@ -19,7 +34,6 @@ export const fetchProductList = async (params: string) => {
 
 export const fetchProductDetail = async (id: string) => {
   const path = `market/product/${id}`;
-  console.log("path :", path);
 
   try {
     const res = await AXIOS({
@@ -33,6 +47,20 @@ export const fetchProductDetail = async (id: string) => {
   }
 };
 
-export const putCart = async (id: sting) => {
-  return <div></div>;
+export const putCart = async (id: number) => {
+  console.log(id);
+
+  const data = { itemSeq: id };
+  const path = `market/cart`;
+
+  try {
+    const res = await AXIOS({
+      method: "POST",
+      url: path,
+      data,
+    });
+    return res.data.content;
+  } catch (error) {
+    console.log(error);
+  }
 };

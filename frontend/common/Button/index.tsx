@@ -16,6 +16,7 @@ import RightUp from "../../assets/commerce/right-up.svg";
 import Bag from "../../assets/commerce/bag.svg";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { putCart } from "../../apis/commerce";
 
 export const TextBtn: React.FC<{
   children: string;
@@ -60,17 +61,31 @@ export const BuyTextButton: React.FC<{ id: number }> = ({ id }) => {
   );
 };
 
-export const BuyButton: React.FC<{ width: string }> = ({ width }) => {
+export const BuyButton: React.FC<{ id: number }> = ({ id }) => {
+  const route = useRouter();
+  const putBuyNowHandler = (id: number) => {
+    putCart(id);
+    route.push("/commerce/order/order-form");
+  };
   return (
-    <PriceButtonStyle width="250px">
+    <PriceButtonStyle onClick={() => putBuyNowHandler(id)}>
       <h3>Buy Now</h3>
     </PriceButtonStyle>
   );
 };
 
-export const BuyListButton: React.FC = () => {
+/**
+ * Product Detail에서 장바구니로 이동시키는 버튼
+ *
+ * @params {number} id Product Detail Id
+ * @returns Alert를 활용하여 장바구니로 이동시키거나 확인할 수 있음
+ */
+export const BuyListButton: React.FC<{ id: number }> = ({ id }) => {
+  const putCartHandler = (id: number) => {
+    putCart(id);
+  };
   return (
-    <BuyListButtonStyle>
+    <BuyListButtonStyle onClick={() => putCartHandler(id)}>
       <Bag className="bag" />
     </BuyListButtonStyle>
   );
