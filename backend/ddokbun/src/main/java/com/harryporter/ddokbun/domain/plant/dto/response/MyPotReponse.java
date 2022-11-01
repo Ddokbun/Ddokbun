@@ -1,4 +1,4 @@
-package com.harryporter.ddokbun.domain.plant.repository.dto.response;
+package com.harryporter.ddokbun.domain.plant.dto.response;
 
 import com.harryporter.ddokbun.domain.plant.entity.Pot;
 import lombok.Data;
