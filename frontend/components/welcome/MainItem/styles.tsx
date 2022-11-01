@@ -29,6 +29,11 @@ export const Wrapper = styled.div`
       left: 50%;
       transform: translate(-50%, -50%);
     }
+    .google-button {
+      width: 350px;
+      height: 50px;
+      margin-bottom: 6px;
+    }
   }
   .kakao-btn {
     background-repeat: no-repeat;
