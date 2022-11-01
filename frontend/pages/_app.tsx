@@ -42,7 +42,7 @@ const DEFAULT_SEO = {
 
 const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
   const { store, props } = wrapper.useWrappedStore(rest);
-  const persistor = persistStore(store); // 정의
+  const persistor = persistStore(store);
   const router = useRouter();
   const isOnboarding = router.route.includes("welcome");
   const isAdmin = router.route.includes("admin");
@@ -50,14 +50,14 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
   return (
     <>
       <Provider store={store}>
-        <PersistGate persistor={persistor}>
-          <DefaultSeo {...DEFAULT_SEO} />
-          <ThemeProvider theme={Theme}>
-            {!isOnboarding && !isAdmin && <Navbar />}
-            <GlobalStyle />
-            <Component {...props.pageProps} />
-          </ThemeProvider>
-        </PersistGate>
+        {/* <PersistGate persistor={persistor}> */}
+        <DefaultSeo {...DEFAULT_SEO} />
+        <ThemeProvider theme={Theme}>
+          {!isOnboarding && !isAdmin && <Navbar />}
+          <GlobalStyle />
+          <Component {...props.pageProps} />
+        </ThemeProvider>
+        {/* </PersistGate> */}
       </Provider>
     </>
   );
