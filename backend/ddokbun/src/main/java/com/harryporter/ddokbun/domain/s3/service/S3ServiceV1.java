@@ -3,6 +3,7 @@ package com.harryporter.ddokbun.domain.s3.service;
 import com.amazonaws.services.s3.AmazonS3Client;
 import com.amazonaws.services.s3.model.ObjectMetadata;
 import com.amazonaws.services.s3.model.S3Object;
+import com.harryporter.ddokbun.domain.plant.repository.PlantRepository;
 import com.harryporter.ddokbun.domain.s3.dto.S3ObjectDto;
 import com.harryporter.ddokbun.exception.ErrorCode;
 import com.harryporter.ddokbun.exception.GeneralException;
@@ -21,6 +22,7 @@ import java.io.InputStream;
 @RequiredArgsConstructor
 public class S3ServiceV1 implements S3Service{
     private final AmazonS3Client amazonS3Client;
+    private final PlantRepository plantRepository;
 
     @Value("${cloud.aws.s3.bucket}")
     private String bucketName;
@@ -68,6 +70,25 @@ public class S3ServiceV1 implements S3Service{
 
 
        return S3ObjectDto.of(s3Object);
+    }
+
+    @Override
+    public S3ObjectDto downloadFileV2(long plantSeq) {
+        String resourcePath = plantRepository.findImagePathByPlantSeq(plantSeq);
+
+        if(Strings.isEmpty(resourcePath)){
+            throw new GeneralException(ErrorCode.VALIDATION_ERROR,"파일 컨텐츠를 가지고 오기 위해서는 리소스 경로가 있어야합니다.");
+        }
+
+        if(!amazonS3Client.doesObjectExist(bucketName,resourcePath)){
+            throw new GeneralException(ErrorCode.EXTERNAL_SERVICE_ACCESS_ERROR,"해당하는 파일을 찾을 수 없습니다. :: resourcePath : "+resourcePath);
+        }
+
+        S3Object s3Object = amazonS3Client.getObject(bucketName, resourcePath);
+        // S3ObjectInputStream inputStream = s3Object.getObjectContent();
+
+
+        return S3ObjectDto.of(s3Object);
     }
 
 

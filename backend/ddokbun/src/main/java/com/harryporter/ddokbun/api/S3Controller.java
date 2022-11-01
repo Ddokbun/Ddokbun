@@ -19,7 +19,7 @@ import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 
-@Api(tags = "[이미지(Resource)]")
+@Api(tags = " S3 이미지 API")
 @RequiredArgsConstructor
 @Slf4j
 @RequestMapping("/resources")
@@ -44,17 +44,15 @@ public class S3Controller {
 
     @ApiOperation("파일 펫치")
     @GetMapping("/s3")
-    public void getResources(@RequestParam("uri") String uri, HttpServletResponse res){
-
+    public void getResources2(@RequestParam("plantSeq") long plantSeq, HttpServletResponse res){
         log.info("파일 가져오기 API 진입");
-        S3ObjectDto s3od = s3Service.downloadFileV1(uri);
+
+        S3ObjectDto s3od = s3Service.downloadFileV2(plantSeq);
         log.info("S3 로 부터 스트림 획득");
         BufferedInputStream bis = new BufferedInputStream(s3od.getInputStream());
-
         byte[] bytes = new byte[1024]; //버퍼
         int length; //버퍼용
         int size = 0; //길이 측정
-
         res.setContentType(s3od.getContentType());
         try(OutputStream os =  res.getOutputStream()) {
             while( (length = bis.read(bytes)) >= 0){
@@ -76,7 +74,42 @@ public class S3Controller {
 
             log.info("성공적 스트림 반환 :: 길이 : {}",size);
         }
-
-
     }
+
+    //    @ApiOperation("파일 펫치")
+//    @GetMapping("/s3")
+//    public void getResources1(@RequestParam("uri") String uri, HttpServletResponse res){
+//
+//        log.info("파일 가져오기 API 진입");
+//        S3ObjectDto s3od = s3Service.downloadFileV1(uri);
+//        log.info("S3 로 부터 스트림 획득");
+//        BufferedInputStream bis = new BufferedInputStream(s3od.getInputStream());
+//
+//        byte[] bytes = new byte[1024]; //버퍼
+//        int length; //버퍼용
+//        int size = 0; //길이 측정
+//
+//        res.setContentType(s3od.getContentType());
+//        try(OutputStream os =  res.getOutputStream()) {
+//            while( (length = bis.read(bytes)) >= 0){
+//                size +=length;
+//                os.write(bytes);
+//            }
+//            os.flush();
+//        } catch (IOException e) {
+//            log.info("스트림 전송 중 에러");
+//            e.printStackTrace();
+//        }finally {
+//
+//            try {
+//                bis.close();
+//                s3od.close();
+//            } catch (Exception e) {
+//                e.printStackTrace();
+//            }
+//
+//            log.info("성공적 스트림 반환 :: 길이 : {}",size);
+//        }
+//    }
+
 }
