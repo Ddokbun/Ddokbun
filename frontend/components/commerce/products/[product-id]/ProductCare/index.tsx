@@ -21,7 +21,7 @@ const ProductCare: React.FC = () => {
         water="30%"
         humid="40%"
         temper="80%"
-        soil={null}
+        waterBottle={null}
       ></SimpleGraph>
     </Wrapper>
   );

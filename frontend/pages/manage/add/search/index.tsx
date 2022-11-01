@@ -62,7 +62,7 @@ const SearchPlant = () => {
         setSearchInput={setSearchInput}
         // value={searchInput}
       />
-      <SearchCardList data={plantList} />
+      <SearchCardList data={plantList} isDelivery={false} />
     </Wrapper>
   );
 };
