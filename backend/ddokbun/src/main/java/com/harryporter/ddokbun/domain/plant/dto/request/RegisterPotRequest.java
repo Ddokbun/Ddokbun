@@ -1,4 +1,4 @@
-package com.harryporter.ddokbun.domain.plant.repository.dto.request;
+package com.harryporter.ddokbun.domain.plant.dto.request;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Data;

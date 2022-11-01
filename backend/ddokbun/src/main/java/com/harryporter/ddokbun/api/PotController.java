@@ -1,9 +1,8 @@
 package com.harryporter.ddokbun.api;
 
 import com.harryporter.ddokbun.api.response.ResponseFrame;
-import com.harryporter.ddokbun.domain.plant.entity.Pot;
-import com.harryporter.ddokbun.domain.plant.repository.dto.request.RegisterPotRequest;
-import com.harryporter.ddokbun.domain.plant.repository.dto.response.*;
+import com.harryporter.ddokbun.domain.plant.dto.response.*;
+import com.harryporter.ddokbun.domain.plant.dto.request.RegisterPotRequest;
 import com.harryporter.ddokbun.domain.plant.service.PlantService;
 import com.harryporter.ddokbun.domain.plant.service.PotService;
 import com.harryporter.ddokbun.domain.user.dto.UserDto;
@@ -14,10 +13,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
-import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
+import javax.websocket.server.PathParam;
 import java.time.LocalDate;
 import java.util.List;
 
@@ -134,12 +133,21 @@ public class PotController {
 
     @ApiOperation(value = "사용자 화분 세부정보 확인")
     @RequestMapping(value = "/{potSeq}", method = RequestMethod.GET)
-    public ResponseEntity<?> potDetail(@PathVariable("potSeq") String potSeq,@ApiIgnore @AuthenticationPrincipal UserDto principal) {
+    public ResponseEntity<?> potDetail(@PathVariable("potSeq") String potSeq, @ApiIgnore @AuthenticationPrincipal UserDto principal) {
         log.info("화분 디테일 컨트롤러 진입");
         PotDetailResponse potDetailResponse = potService.potDetail(potSeq, principal.getUserSeq());
         log.info("화분 디테일을 반환 받았습니다.");
         ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분 디테일 조회에 성공했습니다.",potDetailResponse);
         return new ResponseEntity<>(responseFrame, HttpStatus.OK);
    }
+
+    @ApiOperation(value = "화분 물준 로그 확인")
+    @RequestMapping(value = "/{potSeq}/water", method = RequestMethod.GET)
+    public ResponseEntity<?> waterLog(@PathVariable("potSeq") String potSeq, @RequestParam("year") Integer year, @RequestParam("month") Integer month, @ApiIgnore @AuthenticationPrincipal UserDto principal) {
+        log.info("화분 물준 로그 확인 컨트롤러 진입");
+        List<LocalDate> waterList = potService.waterApplies(potSeq, year, month, principal.getUserSeq());
+        ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분 디테일 조회에 성공했습니다.", waterList);
+        return new ResponseEntity<>(responseFrame, HttpStatus.OK);
+    }
 }
 

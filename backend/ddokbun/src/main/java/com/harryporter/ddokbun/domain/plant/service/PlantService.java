@@ -1,10 +1,10 @@
 package com.harryporter.ddokbun.domain.plant.service;
 
-import com.harryporter.ddokbun.domain.plant.repository.dto.PlantDto;
+import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
 import com.harryporter.ddokbun.domain.plant.repository.PlantRepository;
-import com.harryporter.ddokbun.domain.plant.repository.dto.response.PlantInfoAllReponse;
-import com.harryporter.ddokbun.domain.plant.repository.dto.response.SearchPlantInfoResponse;
+import com.harryporter.ddokbun.domain.plant.dto.response.PlantInfoAllReponse;
+import com.harryporter.ddokbun.domain.plant.dto.response.SearchPlantInfoResponse;
 import com.harryporter.ddokbun.exception.ErrorCode;
 import com.harryporter.ddokbun.exception.GeneralException;
 import lombok.RequiredArgsConstructor;

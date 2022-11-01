@@ -1,8 +1,7 @@
 package com.harryporter.ddokbun.domain.plant.entity;
 
-import com.harryporter.ddokbun.domain.plant.repository.dto.request.RegisterPotRequest;
+import com.harryporter.ddokbun.domain.plant.dto.request.RegisterPotRequest;
 import com.harryporter.ddokbun.domain.user.entity.User;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -10,7 +9,6 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Getter

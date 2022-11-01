@@ -8,7 +8,7 @@ import com.harryporter.ddokbun.domain.order.dto.response.OrderListItemDto;
 import com.harryporter.ddokbun.domain.order.entity.Order;
 import com.harryporter.ddokbun.domain.order.entity.OrderStatus;
 import com.harryporter.ddokbun.domain.order.repository.OrderRepository;
-import com.harryporter.ddokbun.domain.plant.repository.dto.PlantDto;
+import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
 import com.harryporter.ddokbun.domain.product.dto.ItemDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
 import com.harryporter.ddokbun.domain.product.entity.Item;
