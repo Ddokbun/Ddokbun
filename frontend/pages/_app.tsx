@@ -2,6 +2,8 @@ import "../styles/globals.css";
 import React, { FC, useEffect } from "react";
 import cookies from "next-cookies";
 import { Provider } from "react-redux";
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { DefaultSeo } from "next-seo";
@@ -40,6 +42,7 @@ const DEFAULT_SEO = {
 
 const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
   const { store, props } = wrapper.useWrappedStore(rest);
+  const persistor = persistStore(store); // 정의
   const router = useRouter();
   const isOnboarding = router.route.includes("welcome");
   const isAdmin = router.route.includes("admin");
@@ -47,12 +50,14 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
   return (
     <>
       <Provider store={store}>
-        <DefaultSeo {...DEFAULT_SEO} />
-        <ThemeProvider theme={Theme}>
-          {!isOnboarding && !isAdmin && <Navbar />}
-          <GlobalStyle />
-          <Component {...props.pageProps} />
-        </ThemeProvider>
+        <PersistGate persistor={persistor}>
+          <DefaultSeo {...DEFAULT_SEO} />
+          <ThemeProvider theme={Theme}>
+            {!isOnboarding && !isAdmin && <Navbar />}
+            <GlobalStyle />
+            <Component {...props.pageProps} />
+          </ThemeProvider>
+        </PersistGate>
       </Provider>
     </>
   );

@@ -1,13 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
-import { persistReducer } from "redux-persist";
-import storageSession from "redux-persist/lib/storage/session";
-
-const persistConfig: any = {
-  key: "root",
-  storage: storageSession, // 사용할 스토리지를 정의해요.
-  whitelist: ["authReducer"], // 유지 할 데이터를 정의해요
-};
 
 const initialState = {};
 
