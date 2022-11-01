@@ -10,15 +10,15 @@ export const Kakaologin = async (login_code?: string[] | string) => {
       method: "GET",
       url: path + login_code,
     });
-    axios.defaults.headers.common[
-      "Authorization"
-    ] = `Bearer ${res.data.content.jwtToken}`;
+    const accessToken = res.data.content.jwtToken;
+    AXIOS.defaults.headers.common["Authorization"] = `${accessToken}`;
+    document.cookie = `키이름=${accessToken}`;
+
     console.log("성공", res);
     cookies.save("refreshToken", res.data.content.jwtToken, {
       path: "/",
     });
     Router.push("/manage");
-    console.log(cookies);
     return res.data;
   } catch (error) {
     console.log(error);
