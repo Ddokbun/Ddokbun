@@ -1,7 +1,8 @@
 package com.harryporter.ddokbun.domain.plant.service;
 
-import com.harryporter.ddokbun.domain.plant.dto.response.PotHumidLogResponse;
+import com.harryporter.ddokbun.domain.plant.dto.response.PotHumidityLogResponse;
 import com.harryporter.ddokbun.domain.plant.dto.response.PotLightLogResponse;
+import com.harryporter.ddokbun.domain.plant.dto.response.PotSoilHumidityLogResponse;
 import com.harryporter.ddokbun.domain.plant.dto.response.PotTemperatureLogResponse;
 import com.harryporter.ddokbun.domain.plant.entity.Pot;
 import com.harryporter.ddokbun.domain.plant.entity.PotLog;
@@ -67,11 +68,11 @@ public class PotLogService {
         }
 
         List<PotLog> potLogList = potLogRepository.findTop30ByPot_PotSerialOrderByCreatedTimeDesc(potSerial);
-        log.info("화분 온도 로그를 받아오는데 성공했습니다.{}", potLogList);
+        log.info("화분 광량 로그를 받아오는데 성공했습니다.{}", potLogList);
         return potLogList.stream().map(PotLightLogResponse::of).collect(Collectors.toList());
     }
 
-    public List<PotHumidLogResponse> potHumidLogService(String potSerial, Long userSeq){
+    public List<PotHumidityLogResponse> potHumidityLogService(String potSerial, Long userSeq){
         User user = userRepository.findById(userSeq).orElseThrow(
                 ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다.")
         );
@@ -84,8 +85,25 @@ public class PotLogService {
         }
 
         List<PotLog> potLogList = potLogRepository.findTop30ByPot_PotSerialOrderByCreatedTimeDesc(potSerial);
-        log.info("화분 온도 로그를 받아오는데 성공했습니다.{}", potLogList);
-        return potLogList.stream().map(PotHumidLogResponse::of).collect(Collectors.toList());
+        log.info("화분 습도 로그를 받아오는데 성공했습니다.{}", potLogList);
+        return potLogList.stream().map(PotHumidityLogResponse::of).collect(Collectors.toList());
+    }
+
+    public List<PotSoilHumidityLogResponse> potSoilHumidityLogService(String potSerial, Long userSeq){
+        User user = userRepository.findById(userSeq).orElseThrow(
+                ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다.")
+        );
+        // potSerial로 통해서 화분 불러오기
+        Pot potEntity = potRepository.findByPotSerial(potSerial).orElseThrow(
+                () -> new GeneralException(ErrorCode.NOT_FOUND)
+        );
+        if (!potEntity.getUser().getUserSeq().equals(userSeq)) {
+            throw new GeneralException(ErrorCode.BAD_REQUEST);
+        }
+
+        List<PotLog> potLogList = potLogRepository.findTop30ByPot_PotSerialOrderByCreatedTimeDesc(potSerial);
+        log.info("화분 토양습도 로그를 받아오는데 성공했습니다.{}", potLogList);
+        return potLogList.stream().map(PotSoilHumidityLogResponse::of).collect(Collectors.toList());
     }
 
 
