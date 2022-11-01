@@ -10,7 +10,8 @@ const SearchCardItem: React.FC<{
   krName: string;
   egName: string;
   plantSeq: string;
-}> = ({ image, krName, egName, plantSeq }) => {
+  isDelivery: boolean
+}> = ({ image, krName, egName, plantSeq, isDelivery }) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const onFetchPlantSeqHandler = () => {
@@ -18,8 +19,13 @@ const SearchCardItem: React.FC<{
     router.back();
   };
 
+  const onShowDeliveryHandler = () => {
+    console.log('배송조회');
+    
+  }
+
   return (
-    <Wrapper onClick={onFetchPlantSeqHandler}>
+    <Wrapper onClick={onFetchPlantSeqHandler} isDelivery={isDelivery}>
       <div className="image-container">
         <Image
           width={"100%"}
@@ -34,6 +40,7 @@ const SearchCardItem: React.FC<{
         <h2 className="krName">{krName}</h2>
         <p className="egName">{egName}</p>
       </div>
+      {isDelivery && <p onClick={onShowDeliveryHandler} className="delivery">배송조회</p>}
     </Wrapper>
   );
 };
