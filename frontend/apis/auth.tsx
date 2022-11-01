@@ -1,5 +1,6 @@
 import axios from "axios";
 import Router from "next/router";
+import cookies from "react-cookies";
 import AXIOS from "./index";
 
 export const Kakaologin = async (login_code?: string[] | string) => {
@@ -11,9 +12,13 @@ export const Kakaologin = async (login_code?: string[] | string) => {
     });
     axios.defaults.headers.common[
       "Authorization"
-    ] = `${res.data.content.jwtToken}`;
+    ] = `Bearer ${res.data.content.jwtToken}`;
     console.log("성공", res);
+    cookies.save("refreshToken", res.data.content.jwtToken, {
+      path: "/",
+    });
     Router.push("/manage");
+    console.log(cookies);
     return res.data;
   } catch (error) {
     console.log(error);

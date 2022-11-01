@@ -1,5 +1,6 @@
 import "../styles/globals.css";
 import React, { FC, useEffect } from "react";
+import cookies from "next-cookies";
 import { Provider } from "react-redux";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
@@ -41,19 +42,24 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
   const { store, props } = wrapper.useWrappedStore(rest);
   const router = useRouter();
   const isOnboarding = router.route.includes("welcome");
+  const isAdmin = router.route.includes("admin");
 
   return (
     <>
       <Provider store={store}>
         <DefaultSeo {...DEFAULT_SEO} />
         <ThemeProvider theme={Theme}>
-          {!isOnboarding && <Navbar />}
+          {!isOnboarding && !isAdmin && <Navbar />}
           <GlobalStyle />
           <Component {...props.pageProps} />
         </ThemeProvider>
       </Provider>
     </>
   );
+};
+
+MyApp.getInitialProps = async (ctx: Context) => {
+  console.log(Object.keys(ctx));
 };
 
 export default MyApp;

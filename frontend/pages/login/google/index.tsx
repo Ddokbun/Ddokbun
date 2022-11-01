@@ -1,6 +1,5 @@
 import type { NextPage } from "next";
 import React, { useEffect } from "react";
-import Head from "next/head";
 import { useRouter } from "next/router";
 import { Googlelogin } from "../../../apis/auth";
 

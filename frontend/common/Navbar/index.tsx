@@ -13,7 +13,7 @@ const Navbar = () => {
       <div className="img_wrap">
         <LeftArrow className="left_arrow nav_svg " />
       </div>
-      <Link href={"/"}>
+      <Link href={"/welcome"}>
         <div className="logo">Ddokbbun</div>
       </Link>
       <div className="img_wrap">
