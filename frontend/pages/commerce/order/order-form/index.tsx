@@ -1,5 +1,6 @@
 import { NextPage } from "next";
 import { useState } from "react";
+import { postKakaoPay } from "../../../../apis/commerce";
 import CartList from "../../../../components/commerce/cart/CartList";
 import OrderFormComponent from "../../../../components/commerce/order/OrderForm";
 import PayFormComponent from "../../../../components/commerce/order/PayForm";
@@ -29,50 +30,51 @@ const OrderForm: NextPage = () => {
   /** 폼 유효성 검사 */
   const onSubmitHandler = () => {
     setFlag(0);
-    if (name) {
-      setNameError("");
-    } else {
-      setNameError("이름을 입력해주세요");
-      setFlag(1);
-      alert("주문 정보를 확인해주세요");
-      return;
-    }
+    // if (name) {
+    //   setNameError("");
+    // } else {
+    //   setNameError("이름을 입력해주세요");
+    //   setFlag(1);
+    //   alert("주문 정보를 확인해주세요");
+    //   return;
+    // }
 
-    if (phoneHead && phoneBody && phoneTail) {
-      const fullPhone = phoneHead + phoneBody + phoneTail;
-      console.log(fullPhone);
+    // if (phoneHead && phoneBody && phoneTail) {
+    //   const fullPhone = phoneHead + phoneBody + phoneTail;
+    //   console.log(fullPhone);
 
-      setPhoneError("");
-    } else {
-      setPhoneError("전화번호를 입력해주세요");
-      setFlag(1);
-      alert("주문 정보를 확인해주세요");
-      return;
-    }
+    //   setPhoneError("");
+    // } else {
+    //   setPhoneError("전화번호를 입력해주세요");
+    //   setFlag(1);
+    //   alert("주문 정보를 확인해주세요");
+    //   return;
+    // }
 
-    if (mailHead && mailTail) {
-      const fullEmail = mailHead + "@" + mailTail;
-      console.log(fullEmail);
-      setMailError("");
-    } else {
-      setMailError("올바른 이메일을 입력해주세요");
-      setFlag(1);
-      alert("주문 정보를 확인해주세요");
-      return;
-    }
+    // if (mailHead && mailTail) {
+    //   const fullEmail = mailHead + "@" + mailTail;
+    //   console.log(fullEmail);
+    //   setMailError("");
+    // } else {
+    //   setMailError("올바른 이메일을 입력해주세요");
+    //   setFlag(1);
+    //   alert("주문 정보를 확인해주세요");
+    //   return;
+    // }
 
-    if (post && detailPost && additionalPost) {
-      setPostError("");
-    } else {
-      setPostError("올바른 주소를 입력해주세요");
-      setFlag(1);
-      alert("주문 정보를 확인해주세요");
-      return;
-    }
+    // if (post && detailPost && additionalPost) {
+    //   setPostError("");
+    // } else {
+    //   setPostError("올바른 주소를 입력해주세요");
+    //   setFlag(1);
+    //   alert("주문 정보를 확인해주세요");
+    //   return;
+    // }
 
-    if (!payType) {
-      alert("결제 수단을 선택해주세요");
-    }
+    // if (!payType) {
+    //   alert("결제 수단을 선택해주세요");
+    // }
+    postKakaoPay();
   };
 
   return (
