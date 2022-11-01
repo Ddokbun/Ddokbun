@@ -185,6 +185,16 @@ public class PotController {
         return  new ResponseEntity<>(responseFrame, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "화분 습도 로그 확인")
+    @RequestMapping(value = "/{potSeq}/humid", method = RequestMethod.GET)
+    public ResponseEntity<?> humidLog(@PathVariable("potSeq") String potSeq, @ApiIgnore @AuthenticationPrincipal UserDto principal){
+        log.info("화분 습도 로그 확인 컨트롤러 진입");
+        List<PotHumidLogResponse> potLogList =  potLogService.potHumidLogService(potSeq, principal.getUserSeq());
+        log.info("화분 습도 로그를 받아오는데 성공했습니다.");
+        ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분 광량 로그를 받아오는데 성공했습니다.", potLogList);
+        return  new ResponseEntity<>(responseFrame, HttpStatus.OK);
+    }
+
 
 }
 
