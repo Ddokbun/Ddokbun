@@ -57,7 +57,7 @@ export const InputRow = styled.div<StyleProps>`
     grid-template-columns: 1fr 200px;
     grid-template-rows: repeat(3, 40px);
     max-width: ${props => props.maxWidth || "100%"};
-    color: ${props => props.theme.color.ivory};
+    color: ${props => props.theme.color.black};
 
     input {
       grid-column: 1 / 3;

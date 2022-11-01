@@ -59,9 +59,14 @@ const OrderFormComponent: React.FC<OrderProps> = props => {
     },
 
     post: (e: string) => {
+      console.log("post", e);
+
       props.setPost(e);
+      console.log("props post", props.post);
     },
     detailPost: (e: string) => {
+      console.log("detailPost", e);
+
       props.setDetailPost(e);
     },
     additionalPost: (e: React.ChangeEvent<HTMLInputElement>) => {

@@ -7,7 +7,7 @@ const MainProduct = () => {
   return (
     <Wrapper>
       <div className="subcontent-wrap">
-        <Link href={"/commerce/products/3"}>
+        <Link href={"/commerce/product/0"}>
           <div className="pot-img">
             <div className="pot-img-front">
               <Image
@@ -24,7 +24,7 @@ const MainProduct = () => {
                 <h4>손쉽게 관리하는 스마트 화분</h4>
                 <h3>₩ 49,000</h3>
                 <div className="button">
-                  <Link href={"/commerce/products/3"}>
+                  <Link href={"/commerce/product/0"}>
                     <div className="button-wrap">바로가기</div>
                   </Link>
                 </div>
