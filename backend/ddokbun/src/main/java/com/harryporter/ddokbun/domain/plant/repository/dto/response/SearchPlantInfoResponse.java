@@ -15,7 +15,7 @@ public class SearchPlantInfoResponse {
         SearchPlantInfoResponse temp = new SearchPlantInfoResponse();
 
         temp.waterCycle = plant.getWaterCycle();
-        temp.lightType = plant.getLight();
+        temp.lightType = plant.getLightType();
         temp.minTemperature = plant.getMinTemperature();
         temp.maxTemperature = plant.getMaxTemperature();
         temp.growthHumid = plant.getGrowthHumid();

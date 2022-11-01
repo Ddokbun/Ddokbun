@@ -106,7 +106,7 @@ public class PlantDto {
                 .plantPlace(plantPlace)//배치 장소
                 .waterCycle(waterCycle)//물주기
                 .waterIfno(waterIfno)//물 설명
-                .light(light)//광량
+                .lightType(light)//광량
                 .lightInfo(lightInfo)//광량 설명
                 .minTemperature(minTemperature)// 최저 온도
                 .maxTemperature(maxTemperature)// 최고 온도
@@ -139,7 +139,7 @@ public class PlantDto {
                 .plantPlace(plant.getPlantPlace())//배치 장소
                 .waterCycle(plant.getWaterCycle())//물주기
                 .waterIfno(plant.getWaterIfno())//물 설명
-                .light(plant.getLight())//광량
+                .light(plant.getLightType())//광량
                 .lightInfo(plant.getLightInfo())//광량 설명
                 .minTemperature(plant.getMinTemperature())//최저온도
                 .maxTemperature(plant.getMaxTemperature()) //최고온도

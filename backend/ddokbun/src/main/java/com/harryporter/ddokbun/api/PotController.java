@@ -3,10 +3,7 @@ package com.harryporter.ddokbun.api;
 import com.harryporter.ddokbun.api.response.ResponseFrame;
 import com.harryporter.ddokbun.domain.plant.entity.Pot;
 import com.harryporter.ddokbun.domain.plant.repository.dto.request.RegisterPotRequest;
-import com.harryporter.ddokbun.domain.plant.repository.dto.response.MyPotReponse;
-import com.harryporter.ddokbun.domain.plant.repository.dto.response.PlantInfoAllReponse;
-import com.harryporter.ddokbun.domain.plant.repository.dto.response.RegisterPotResponse;
-import com.harryporter.ddokbun.domain.plant.repository.dto.response.SearchPlantInfoResponse;
+import com.harryporter.ddokbun.domain.plant.repository.dto.response.*;
 import com.harryporter.ddokbun.domain.plant.service.PlantService;
 import com.harryporter.ddokbun.domain.plant.service.PotService;
 import com.harryporter.ddokbun.domain.user.dto.UserDto;
@@ -134,4 +131,15 @@ public class PotController {
 
         return new ResponseEntity<>(responseFrame, HttpStatus.OK);
     }
+
+    @ApiOperation(value = "사용자 화분 세부정보 확인")
+    @RequestMapping(value = "/{potSeq}", method = RequestMethod.GET)
+    public ResponseEntity<?> potDetail(@PathVariable("potSeq") String potSeq,@ApiIgnore @AuthenticationPrincipal UserDto principal) {
+        log.info("화분 디테일 컨트롤러 진입");
+        PotDetailResponse potDetailResponse = potService.potDetail(potSeq, principal.getUserSeq());
+        log.info("화분 디테일을 반환 받았습니다.");
+        ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분 디테일 조회에 성공했습니다.",potDetailResponse);
+        return new ResponseEntity<>(responseFrame, HttpStatus.OK);
+   }
 }
+

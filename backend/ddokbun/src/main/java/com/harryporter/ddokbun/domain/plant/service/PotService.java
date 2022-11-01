@@ -5,6 +5,7 @@ import com.harryporter.ddokbun.domain.plant.entity.WaterApply;
 import com.harryporter.ddokbun.domain.plant.repository.WaterApplyRepository;
 import com.harryporter.ddokbun.domain.plant.repository.dto.request.RegisterPotRequest;
 import com.harryporter.ddokbun.domain.plant.repository.dto.response.MyPotReponse;
+import com.harryporter.ddokbun.domain.plant.repository.dto.response.PotDetailResponse;
 import com.harryporter.ddokbun.domain.plant.repository.dto.response.RegisterPotResponse;
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
 import com.harryporter.ddokbun.domain.plant.entity.Pot;
@@ -39,6 +40,7 @@ public class PotService {
     private final PlantRepository plantRepository;
     private final WaterApplyRepository waterApplyRepository;
 
+    @Transactional
     public void producePot(String potSerial){
         if (potRepository.existsByPotSerial(potSerial)){
             throw new GeneralException(ErrorCode.BAD_REQUEST, "이미 존재하는 화분입니다. 화분을 삭제하고 등록해주세요");
@@ -48,6 +50,7 @@ public class PotService {
         potRepository.save(potEntity);
     }
 
+    @Transactional
     public RegisterPotResponse registerPot(RegisterPotRequest registerPotRequest, Long userSeq){
         // Plant_seq로 통해서 Plant를 받아오는 logic으로 변경하기
         Plant plant = plantRepository.findByPlantSeq(registerPotRequest.getPlantSeq()).orElseThrow(
@@ -77,7 +80,7 @@ public class PotService {
         return registerPotResponse;
     }
 
-
+    @Transactional
     public void unregisterPot(String potSerial, Long userSeq){
         // Access_token으로 User을 받아오는 로직으로 변경하기
         User user = userRepository.findById(userSeq).orElseThrow(
@@ -105,7 +108,7 @@ public class PotService {
         }
     }
 
-
+    @Transactional
     public void applyWater(String potSerial, Long userSeq){
         User user = userRepository.findById(userSeq).orElseThrow(
                 ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다.")
@@ -117,16 +120,18 @@ public class PotService {
         log.info("현재 화분 Entity와 유저 받기 :: Pot : {}, userSeq : {}", potEntity, userSeq);
 
         if (potEntity.getUser().getUserSeq().equals(userSeq)){
-
+            log.info("물주는 서비스 진입성공");
             potEntity.potWaterApllyChange(LocalDate.now());
 
             WaterApply waterApply = new WaterApply(potEntity);
+            log.info("물 Apply table 생성 {}", waterApply);
             waterApplyRepository.save(waterApply);
         } else {
             throw new GeneralException(ErrorCode.BAD_REQUEST, "당신의 화분이 아닙니다");
         }
     }
 
+    @Transactional
     public void changeWaterApplyMethod(String potSerial, Long userSeq) {
         User user = userRepository.findById(userSeq).orElseThrow(
                 ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다.")
@@ -151,6 +156,7 @@ public class PotService {
 
     }
 
+    @Transactional
     public List<MyPotReponse> myPot(Long userSeq) {
         User user = userRepository.findById(userSeq).orElseThrow(
                 ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다.")
@@ -158,6 +164,22 @@ public class PotService {
         List<Pot> pots = user.getPots();
 
         return pots.stream().map(pot -> MyPotReponse.of(pot)).collect(Collectors.toList());
+    }
+
+    @Transactional
+    public PotDetailResponse potDetail(String potSerial, Long userSeq) {
+        User user = userRepository.findById(userSeq).orElseThrow(
+                ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다.")
+        );
+        // potSerial로 통해서 화분 불러오기
+        Pot potEntity = potRepository.findByPotSerial(potSerial).orElseThrow(
+                () -> new GeneralException(ErrorCode.NOT_FOUND)
+        );
+        if (!potEntity.getUser().getUserSeq().equals(userSeq)) {
+            throw new GeneralException(ErrorCode.BAD_REQUEST);
+        }
+        return PotDetailResponse.of(potEntity);
+
     }
 
 }
