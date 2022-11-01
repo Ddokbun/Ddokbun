@@ -1,6 +1,5 @@
 package com.harryporter.ddokbun.domain.plant.entity;
 
-import com.harryporter.ddokbun.domain.plant.repository.dto.response.SearchPlantInfoResponse;
 import lombok.*;
 
 import javax.persistence.*;

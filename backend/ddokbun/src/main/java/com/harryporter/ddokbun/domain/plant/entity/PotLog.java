@@ -1,9 +1,14 @@
 package com.harryporter.ddokbun.domain.plant.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class PotLog {
 
     // 화분로그 번호

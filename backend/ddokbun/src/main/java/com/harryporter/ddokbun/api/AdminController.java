@@ -3,7 +3,7 @@ package com.harryporter.ddokbun.api;
 import com.harryporter.ddokbun.api.response.ResponseFrame;
 import com.harryporter.ddokbun.domain.order.dto.request.OrderStatusDto;
 import com.harryporter.ddokbun.domain.order.service.OrderService;
-import com.harryporter.ddokbun.domain.plant.repository.dto.PlantDto;
+import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
 import com.harryporter.ddokbun.domain.plant.service.PlantService;
 import com.harryporter.ddokbun.domain.product.dto.request.InsertItemDto;
 import com.harryporter.ddokbun.domain.product.dto.request.UpdateItemDto;
