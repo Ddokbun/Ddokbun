@@ -157,13 +157,21 @@ export const LoginButtonStyle = styled.div`
   }
 `;
 
-export const StatusButtonStyle = styled.li<{ isActive: boolean }>`
+interface StatusButtonType {
+  isActive: boolean;
+  backgroundColor: string;
+  backgroundHover: string;
+  textColor: string;
+}
+
+export const StatusButtonStyle = styled.li<StatusButtonType>`
   width: 120px;
   height: 60px;
   border-radius: 16px;
   font-size: 16px;
   background-color: ${props =>
-    props.isActive ? props.theme.color.ivoryHover : props.theme.color.ivory};
+    props.isActive ? props.backgroundHover : props.backgroundColor};
+  color: ${props => props.textColor};
   display: flex;
   margin: 10px;
   justify-content: center;
@@ -171,7 +179,7 @@ export const StatusButtonStyle = styled.li<{ isActive: boolean }>`
 
   :hover {
     cursor: pointer;
-    background-color: ${props => props.theme.color.ivoryHover};
+    background-color: ${props => props.backgroundHover};
   }
 
   span {
@@ -183,3 +191,4 @@ export const StatusButtonStyle = styled.li<{ isActive: boolean }>`
     font-size: 12px;
   }
 `;
+

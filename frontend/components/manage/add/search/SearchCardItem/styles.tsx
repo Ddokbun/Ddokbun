@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled.div<{ isDelivery: boolean }>`
   background-color: ${props => props.theme.color.darkGreen};
-  width: 35%;
-  height: 100%;
+  width: ${props => props.isDelivery ? '90%' : '35%'};
+  height: ${props => props.isDelivery ? '80%' : '100%'};
   border-radius: 16px;
   margin: 3%;
   display: grid;
@@ -30,7 +30,16 @@ export const Wrapper = styled.div`
   }
 
   .info > .egName {
+    color: ${props => props.theme.color.brown};
+  }
+
+  .delivery {
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-end;
+    margin: 0% 20% 10% 0%;
     color: ${props => props.theme.color.ivory};
+    font-size: 12px;
   }
 
   @media screen and (${props => props.theme.mobile}) {
