@@ -2,8 +2,9 @@ import React, { useEffect, useState } from "react";
 import { SearchInput } from "../../../../common/Input";
 import SearchCardList from "../../../../components/manage/add/search/SearchCardList";
 import { Wrapper } from "../../../../styles/manage/add/search/styles";
-import image from "../../../../assets/temp.jpg";
 import { StaticImageData } from "next/image";
+import { fetchAllPlantsList } from "../../../../apis/manage";
+import { NextPage } from "next";
 
 export interface SearchPlantType {
   image: StaticImageData;
@@ -11,48 +12,38 @@ export interface SearchPlantType {
   egName: string;
   plantSeq: string;
 }
+export async function getStaticProps() {
+  const plants = await fetchAllPlantsList();
+  return {
+    props: {
+      plants,
+    }, // will be passed to the page component as props
+  };
+}
 
-export const DummyData = [
-  {
-    image: image,
-    krName: "신혜원",
-    egName: "Hyewon Shin",
-    plantSeq: "2",
-  },
-  {
-    image: image,
-    krName: "김철수",
-    egName: "Hyewon Shin",
-    plantSeq: "3",
-  },
-  {
-    image: image,
-    krName: "김가네",
-    egName: "Hyewon Shin",
-    plantSeq: "4",
-  },
-  {
-    image: image,
-    krName: "신가네",
-    egName: "Hey yooooo",
-    plantSeq: "5",
-  },
-];
+export interface Plants {
+  plantSeq: number;
+  plantName: string;
+  plantNeName: string;
+  plantZRName: string;
+  imagePath: string;
+  disnName: string;
+}
 
-const SearchPlant = () => {
+const SearchPlant: NextPage<{ plants: Plants[] }> = ({ plants }) => {
   const [searchInput, setSearchInput] = useState("");
-  const [plantList, setPlantList] = useState(DummyData);
+  const [plantList, setPlantList] = useState(plants);
   useEffect(() => {
     if (searchInput === "" || searchInput === null) {
-      setPlantList(DummyData);
+      setPlantList(plants);
       return;
     }
-    const newData = DummyData.filter(list => {
-      return list.krName.includes(searchInput);
+    const newData = plants.filter(plant => {
+      return plant.plantName.includes(searchInput);
     });
 
     setPlantList(newData);
-  }, [searchInput]);
+  }, [plants, searchInput]);
 
   return (
     <Wrapper>
@@ -60,7 +51,7 @@ const SearchPlant = () => {
         placeholder="찾는 식물 이름을 검색해주세요."
         disabled={false}
         setSearchInput={setSearchInput}
-        // value={searchInput}
+        value={searchInput}
       />
       <SearchCardList data={plantList} isDelivery={false} />
     </Wrapper>

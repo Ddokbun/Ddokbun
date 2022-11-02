@@ -1,5 +1,5 @@
 import Image, { StaticImageData } from "next/image";
-import React, { useState, useTransition } from "react";
+import React from "react";
 import { BasicInput, DateInputStyle, SearchInputWrapper } from "./styles";
 import search from "../../assets/icon/search.png";
 import { useRouter } from "next/router";
@@ -17,7 +17,7 @@ export const Input: React.FC<{
   const onInputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     saveInput(event.target.value, identifier);
   };
-  const [startDate, setStartDate] = useState(new Date());
+  // const [startDate, setStartDate] = useState(new Date());
 
   return (
     <BasicInput>
@@ -45,10 +45,10 @@ export const SearchInput: React.FC<{
   placeholder: string;
   disabled: boolean;
   setSearchInput: React.Dispatch<React.SetStateAction<string>> | null;
-  // value: string | undefined;
-}> = ({ placeholder, disabled, setSearchInput }) => {
+  value: string | undefined;
+}> = ({ placeholder, disabled, setSearchInput, value }) => {
   const router = useRouter();
-  const [isPending, startTransition] = useTransition();
+  // const [isPending, startTransition] = useTransition();
   const onShowSearchHandler = () => {
     router.push("/manage/add/search");
   };
@@ -57,12 +57,16 @@ export const SearchInput: React.FC<{
     HTMLInputElement
   > = event => {
     //
-    startTransition(() => {
-      // 저장set
-      if (setSearchInput) {
-        setSearchInput(event.target.value);
-      }
-    });
+    console.log(event.target.value);
+    if (setSearchInput) {
+      setSearchInput(event.target.value);
+    }
+
+    // startTransition(() => {
+    //   // 저장set
+    //   if (setSearchInput) {
+    //   }
+    // });
   };
 
   return (
@@ -76,7 +80,7 @@ export const SearchInput: React.FC<{
         placeholder={placeholder}
         type="text"
         onChange={onInputChangeHandler}
-        // value={value}
+        value={value}
       />
     </SearchInputWrapper>
   );

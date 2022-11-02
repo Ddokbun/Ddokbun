@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div<{ isDelivery: boolean }>`
   background-color: ${props => props.theme.color.darkGreen};
-  width: ${props => props.isDelivery ? '90%' : '35%'};
-  height: ${props => props.isDelivery ? '80%' : '100%'};
+  width: ${props => (props.isDelivery ? "90%" : "35%")};
+  height: ${props => (props.isDelivery ? "80%" : "100%")};
   border-radius: 16px;
   margin: 3%;
   display: grid;
@@ -23,13 +23,17 @@ export const Wrapper = styled.div<{ isDelivery: boolean }>`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    grid-column: span 2;
   }
 
   .info > .krName {
     font-weight: bold;
+    width: 100%;
+    text-align: center;
   }
 
   .info > .egName {
+    text-align: center;
     color: ${props => props.theme.color.brown};
   }
 

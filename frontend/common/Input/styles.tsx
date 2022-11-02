@@ -103,6 +103,6 @@ export const DateInputStyle = styled.div`
     right: 2%;
     width: 30px;
     height: 30px;
-    z-index: -1;
+    /* z-index: -1; */
   }
 `;
