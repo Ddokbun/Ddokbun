@@ -3,13 +3,22 @@ import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import { combineReducers } from "redux";
 import authSlice from "./auth";
 import manage from "./manage";
-import { persistReducer } from "redux-persist";
+import {
+  persistStore,
+  persistReducer,
+  FLUSH,
+  REHYDRATE,
+  PAUSE,
+  PERSIST,
+  PURGE,
+  REGISTER,
+} from "redux-persist";
 import storageSession from "redux-persist/lib/storage/session"; //sessionstorage나 localstorage 중에 선택
 
 const persistConfig: any = {
   key: "root",
   storage: storageSession,
-  whitelist: ["authReducer"], //유지할 데이터
+  whitelist: ["authSlice"], //유지할 데이터
 };
 
 const rootReducers = combineReducers({
@@ -22,9 +31,22 @@ const persistedReducer = persistReducer(persistConfig, rootReducers);
 
 export const makeStore = () =>
   configureStore({
-    reducer: rootReducers,
-    devTools: true,
+    reducer: persistedReducer,
+    middleware: getDefaultMiddleware =>
+      getDefaultMiddleware({
+        serializableCheck: {
+          ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+        },
+        // }).concat(logger),
+      }),
   });
+export const persistor = persistStore(makeStore());
+
+// export const makeStore = () =>
+//   configureStore({
+//     reducer: rootReducers,
+//     devTools: true,
+//   });
 
 export type AppStore = ReturnType<typeof makeStore>;
 export type AppState = ReturnType<AppStore["getState"]>;
