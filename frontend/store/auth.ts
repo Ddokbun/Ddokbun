@@ -1,16 +1,18 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 
-const initialState = {};
+const initialState = {
+  accessToken: "",
+};
 
 const authSlice = createSlice({
   name: "authentication",
   initialState,
   reducers: {
     // 얘는 예시
-    // setEnt(state, action) {
-    //   return action.payload;
-    // },
+    setEnt(state, action) {
+      return action.payload;
+    },
   },
   extraReducers: {
     // 예시
@@ -24,4 +26,5 @@ const authSlice = createSlice({
   },
 });
 
+export const ent = authSlice.actions;
 export default authSlice.reducer;
