@@ -5,6 +5,7 @@ import CartList from "../../../../components/commerce/cart/CartList";
 import OrderFormComponent from "../../../../components/commerce/order/OrderForm";
 import PayFormComponent from "../../../../components/commerce/order/PayForm";
 import { Wrapper } from "../../../../styles/commerce/order/order-form/styles";
+import { setCookie } from "cookies-next";
 
 const OrderForm: NextPage = () => {
   const [name, setName] = useState("");
