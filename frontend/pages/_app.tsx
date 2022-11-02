@@ -9,6 +9,10 @@ import { Theme } from "../styles/theme";
 import GlobalStyle from "../styles/global-styles";
 import { wrapper } from "../store";
 import Navbar from "../common/Navbar/index";
+
+import { persistStore } from "redux-persist";
+import { PersistGate } from "redux-persist/integration/react";
+
 import "@fortawesome/fontawesome-svg-core/styles.css";
 
 const DEFAULT_SEO = {
@@ -39,18 +43,22 @@ const DEFAULT_SEO = {
 
 const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
   const { store, props } = wrapper.useWrappedStore(rest);
+  const persistor = persistStore(store);
   const router = useRouter();
   const isOnboarding = router.route.includes("welcome");
+  const isAdmin = router.route.includes("admin");
 
   return (
     <>
       <Provider store={store}>
-        <DefaultSeo {...DEFAULT_SEO} />
-        <ThemeProvider theme={Theme}>
-          {!isOnboarding && <Navbar />}
-          <GlobalStyle />
-          <Component {...props.pageProps} />
-        </ThemeProvider>
+        <PersistGate persistor={persistor}>
+          <DefaultSeo {...DEFAULT_SEO} />
+          <ThemeProvider theme={Theme}>
+            {!isOnboarding && !isAdmin && <Navbar />}
+            <GlobalStyle />
+            <Component {...props.pageProps} />
+          </ThemeProvider>
+        </PersistGate>
       </Provider>
     </>
   );
