@@ -14,7 +14,7 @@ import { RootState } from "../../../../store";
 const AddForm = () => {
   // const router = useRouter();
   const plantSeq = useSelector((state: RootState) => state.manage.plantSeq);
-  const name = useSelector((state: RootState) => state.manage.krName);
+  const name = useSelector((state: RootState) => state.manage.plantName);
 
   const inputValues: React.MutableRefObject<Register> = useRef({
     potSerial: "",
@@ -102,6 +102,7 @@ const AddForm = () => {
           setSearchInput={null}
           placeholder="식물종 검색"
           disabled={true}
+          value={name}
         />
         <Input
           saveInput={saveInput}
