@@ -129,7 +129,7 @@ public class ProductController {
     @ApiOperation("인기 식물 조회 (24시간 후 reset)")
     @RequestMapping(value = "/hot",method = RequestMethod.GET)
     public ResponseEntity<?> getHotProduct(){
-        ResponseFrame res = ResponseFrame.ofOKResponse("오늘을 식물을 반환합니다.",itemService.SearchRankList());
+        ResponseFrame res = ResponseFrame.ofOKResponse("인기 식물 리스트를 반환합니다.",itemService.SearchRankList());
         return new ResponseEntity<>(res,HttpStatus.OK);
     }
 
