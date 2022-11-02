@@ -22,6 +22,8 @@ public class ItemDto {
     private long itemSeq;
     //상품명
     private String itemName;
+
+    private String itemEnName;
     //가격
     private int itemPrice;
     //설명
@@ -42,6 +44,7 @@ public class ItemDto {
                 .itemPrice(item.getItemPrice())
                 .itemStock(item.getItemStock())
                 .itemName(item.getItemName())
+                .itemEnName(item.getItemEnName())
                 .itemPicture(item.getItemPicture())
                 .build();
     }
@@ -55,6 +58,7 @@ public class ItemDto {
         this.itemPicture = other.itemPicture;
         this.itemPrice = other.itemPrice;
         this.itemStock = other.itemStock;
+        this.itemEnName= other.itemEnName;
     }
 
 
