@@ -1,6 +1,7 @@
 package com.harryporter.ddokbun.api;
 
 import com.harryporter.ddokbun.api.response.ResponseFrame;
+import com.harryporter.ddokbun.domain.product.dto.response.ClickRankDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemSearchDto;
 import com.harryporter.ddokbun.domain.product.service.ItemService;
@@ -97,7 +98,7 @@ public class ProductController {
 
     //유형별 추천 조회
     //유형별 카테고리를 통하여 필터링을 통해 상품을 반환합니다.
-    @ApiOperation("유형별 조회(미완)")
+    @ApiOperation("카테고리 상품 조회")
     @RequestMapping(value = "/category/{categoryName}",method = RequestMethod.GET)
     public ResponseEntity<?> getProductByCategory(@PathVariable String categoryName){
         ResponseFrame res = ResponseFrame.ofOKResponse("카테고리별 상품 리스트를 반환합니다.",itemService.getProductByCategory(categoryName));
@@ -116,14 +117,20 @@ public class ProductController {
         return new ResponseEntity<>(res,HttpStatus.OK);
     }
 
+    @ApiOperation("인기 식물 클릭 - 조회시 클릭 수 증가")
+    @RequestMapping(value = "/hotc/{itemSeq}",method = RequestMethod.GET)
+    public ResponseEntity<?> click(@PathVariable Long itemSeq){
+        ResponseFrame res = ResponseFrame.ofOKResponse(itemSeq +"번 상품의 조회 수가 증가되었습니다.",itemService.click(itemSeq));
+        return new ResponseEntity<>(res,HttpStatus.OK);
+    }
+
     //인기 식물을 조회한다.
     //조회수가 많은 상품을 출력함
-    @ApiOperation("인기 식물(미완)")
+    @ApiOperation("인기 식물 조회 (24시간 후 reset)")
     @RequestMapping(value = "/hot",method = RequestMethod.GET)
     public ResponseEntity<?> getHotProduct(){
-
-
-        return null;
+        ResponseFrame res = ResponseFrame.ofOKResponse("오늘을 식물을 반환합니다.",itemService.SearchRankList());
+        return new ResponseEntity<>(res,HttpStatus.OK);
     }
 
 

@@ -1,26 +1,30 @@
 package com.harryporter.ddokbun.domain.product.service;
 
-import com.harryporter.ddokbun.domain.plant.repository.PlantRepository;
-import com.harryporter.ddokbun.domain.product.dto.request.InsertItemDto;
-import com.harryporter.ddokbun.domain.product.dto.request.UpdateItemDto;
-import com.harryporter.ddokbun.domain.product.entity.TodayItem;
 import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
+import com.harryporter.ddokbun.domain.plant.repository.PlantRepository;
 import com.harryporter.ddokbun.domain.product.dto.ItemDto;
+import com.harryporter.ddokbun.domain.product.dto.request.InsertItemDto;
+import com.harryporter.ddokbun.domain.product.dto.request.UpdateItemDto;
+import com.harryporter.ddokbun.domain.product.dto.response.ClickRankDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemSearchDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemSimpleSearchDto;
 import com.harryporter.ddokbun.domain.product.entity.Item;
+import com.harryporter.ddokbun.domain.product.entity.TodayItem;
 import com.harryporter.ddokbun.domain.product.repository.ItemRepository;
 import com.harryporter.ddokbun.domain.product.repository.ItemRepositoryCustom;
 import com.harryporter.ddokbun.exception.ErrorCode;
 import com.harryporter.ddokbun.exception.GeneralException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -31,6 +35,8 @@ public class ItemServiceImple implements ItemService{
     private final ItemRepositoryCustom itemRepositoryCustom;
     private final ItemRepository itemRepository;
     private final PlantRepository plantRepository;
+
+    private final RedisTemplate<String, String> redisTemplate;
 
     @Override
     public List<ItemSearchDto> searchByTitle(String title) {
@@ -188,5 +194,29 @@ public class ItemServiceImple implements ItemService{
         List<ItemDto> productList = items.stream().map(item ->ItemDto.of(item)).collect(Collectors.toList());
         return productList;
     }
+
+    @Override
+    public String click(long itemSeq){
+        String key = "rank";
+        ZSetOperations<String, String> ZSetOperations = redisTemplate.opsForZSet();
+        //score를 1씩 올려준다.
+        ZSetOperations.incrementScore(key, itemSeq+"", 1);
+        return "Success";
+    }
+
+    @Override
+    public List<ClickRankDto> SearchRankList() {
+        String key = "rank";
+        ZSetOperations<String, String> ZSetOperations = redisTemplate.opsForZSet();
+        //score순으로 10개 보여줌
+        Set<ZSetOperations.TypedTuple<String>> typedTuples = ZSetOperations.reverseRangeWithScores(key, 0, 9);
+        List<ClickRankDto> list = typedTuples.stream()
+                .map(tuple->ClickRankDto.convertToClickRankDto(tuple, itemRepository.findItemNameByItemSeq(Long.parseLong(tuple.getValue()))))
+                .collect(Collectors.toList());
+        System.out.println(list);
+        return list;
+    }
+
+
 
 }

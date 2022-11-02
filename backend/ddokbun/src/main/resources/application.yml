@@ -41,3 +41,7 @@ spring:
     hibernate:
       ddl-auto: update
 
+  redis:
+    host: ddokbun.com
+    port: 6379
+
