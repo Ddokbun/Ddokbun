@@ -10,13 +10,17 @@ const KakaoLogin: NextPage = () => {
   const login_code = router.query.code;
   const dispatch = useDispatch();
 
+  // useEffect(() => {
+  //   const fetchAccessToken = async () => {
+  //     const token = await Kakaologin(login_code);
+  //     dispatch(ent.setEnt(token));
+  //   };
+  //   fetchAccessToken();
+  //   router.push("/manage");
+  // }, [login_code]);
+
   useEffect(() => {
-    const fetchAccessToken = async () => {
-      const token = await Kakaologin(login_code);
-      dispatch(ent.setEnt(token));
-    };
-    fetchAccessToken();
-    router.push("/manage");
+    Kakaologin(login_code);
   }, [login_code]);
 
   return (

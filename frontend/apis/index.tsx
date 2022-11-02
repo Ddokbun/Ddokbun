@@ -1,4 +1,5 @@
 import axios from "axios";
+import { getCookie } from "cookies-next";
 
 const AXIOS = axios.create({
   baseURL: "https://ddokbun.com/api/",
@@ -6,5 +7,7 @@ const AXIOS = axios.create({
     "Content-Type": "application/json",
   },
 });
+
+AXIOS.defaults.headers.common["Authorization"] = `${getCookie("token")}`;
 
 export default AXIOS;
