@@ -1,10 +1,13 @@
 import React from "react";
 import { Wrapper } from "./styles";
+
 import Bag from "../../assets/commerce/bag.svg";
 import LeftArrow from "../../assets/commerce/leftArrow.svg";
 import Link from "next/link";
 
 const Navbar = () => {
+  const userseq = 1;
+
   return (
     <Wrapper>
       <div className="img_wrap">
@@ -18,10 +21,14 @@ const Navbar = () => {
       </div>
       <div className="menu">
         <ul>
-          <Link href={"manage"}>IoT</Link>
-          <li>Shopping</li>
-          <li>Search</li>
-          <li>MyPage</li>
+          <Link href={"/manage"}>IoT</Link>
+          <Link href={"/commerce"}>
+            <li>Shopping</li>
+          </Link>
+          <Link href={"/search"}>Search</Link>
+          <Link href={`/mypage/${userseq}`}>
+            <li>MyPage</li>
+          </Link>
         </ul>
       </div>
     </Wrapper>

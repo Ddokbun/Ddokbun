@@ -1,18 +1,18 @@
 import React from "react";
 import { ResponsiveWrapper, Wrapper } from "./styles";
 
-import Temp from "../../../assets/Temp2.png";
+import Temp from "../../../assets/temp2.png";
 import Image from "next/image";
 import ProductLabel from "../../Labels/ProductsLabel";
-import { PriceButtonStyle } from "../../Button/styles";
 import { BuyTextButton } from "../../Button";
 
 interface CardProps {
   price: number;
   isResponsive: boolean;
+  id: number;
 }
 
-const ProductCard: React.FC<CardProps> = ({ price, isResponsive }) => {
+const ProductCard: React.FC<CardProps> = ({ price, isResponsive, id }) => {
   return (
     <>
       {isResponsive ? (
@@ -32,7 +32,7 @@ const ProductCard: React.FC<CardProps> = ({ price, isResponsive }) => {
             </div>
             <ProductLabel>초보집사</ProductLabel>
             <h3>₩ {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h3>
-            <BuyTextButton />
+            <BuyTextButton id={id} />
           </div>
         </ResponsiveWrapper>
       ) : (
@@ -52,7 +52,7 @@ const ProductCard: React.FC<CardProps> = ({ price, isResponsive }) => {
             </div>
             <ProductLabel>초보집사</ProductLabel>
             <h3>₩ {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h3>
-            <BuyTextButton />
+            <BuyTextButton id={id} />
           </div>
         </Wrapper>
       )}

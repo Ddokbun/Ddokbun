@@ -1,13 +1,10 @@
-import React, { Suspense, useEffect } from "react";
+import React, { Suspense } from "react";
 import AutoToggle from "../AutoToggle";
 import { Wrapper } from "./styles";
 import Sun from "../../../assets/icon/Sun.svg";
 import Water from "../../../assets/icon/Water.svg";
-import * as THREE from "three";
-import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 import { Canvas } from "@react-three/fiber";
 import Three from "../Three";
-// import { Model } from "../../../Model";
 
 const DigitalTwin = () => {
   return (

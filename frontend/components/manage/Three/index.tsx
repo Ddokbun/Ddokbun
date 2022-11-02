@@ -1,5 +1,4 @@
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
 import React, { useEffect, useRef } from "react";
 import { Theme } from "../../../styles/theme";
 import Flower from "../../Flower";
@@ -13,7 +12,6 @@ const Three = () => {
   const angleToRadians = (angle: number) => (Math.PI / 180) * angle;
 
   const orbitControlsRef = useRef(null);
-  useFrame(state => {});
 
   useEffect(() => {
     if (orbitControlsRef.current) {

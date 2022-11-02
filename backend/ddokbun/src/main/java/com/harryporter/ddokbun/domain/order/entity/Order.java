@@ -2,12 +2,16 @@ package com.harryporter.ddokbun.domain.order.entity;
 
 import com.harryporter.ddokbun.domain.product.entity.Item;
 import com.harryporter.ddokbun.domain.user.entity.User;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "tb_order") //mysql 예약어
 public class Order {
 
@@ -79,6 +83,10 @@ public class Order {
     public void setting(){
         this.orderTime = LocalDateTime.now(); //서버 돌아가는 컴퓨터 시간대의 현재
         orderStatus = OrderStatus.READY;
+    }
+
+    public void updateOrderStatus(OrderStatus orderStatus){
+        this.orderStatus = orderStatus;
     }
 
 

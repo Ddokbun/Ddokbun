@@ -14,7 +14,7 @@ module.exports = {
     "plugin:@typescript-eslint/recommended",
     // "airbnb",
     // "airbnb-typescript",
-    "plugin:prettier/recommended",
+    // "plugin:prettier/recommended",
     "prettier",
   ],
   rules: {

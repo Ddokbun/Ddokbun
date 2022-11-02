@@ -19,10 +19,13 @@ export const Theme: DefaultTheme = {
   font-family: 'Prata', serif; */
 
   color: {
+    red: "#e84118",
     mainGreen: "#43855C",
     darkGreen: "#4E6C50",
     black: "#395144",
     brown: "#AA8B56",
+    brownHover: "#CEB282",
     ivory: "#F0EBCE",
+    ivoryHover: "#FFFBE7",
   },
 };

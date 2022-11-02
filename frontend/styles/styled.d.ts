@@ -12,11 +12,14 @@ declare module "styled-components" {
       TextFont2: string;
     };
     color: {
+      red: string;
       mainGreen: string;
       darkGreen: string;
       black: string;
       ivory: string;
       brown: string;
+      brownHover: string;
+      ivoryHover: string;
     };
   }
 }

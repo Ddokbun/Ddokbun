@@ -1,10 +1,13 @@
 package com.harryporter.ddokbun.domain.survey.entity;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 import java.util.List;
 
 @Table(name="survey")
 @Entity
+@Getter
 public class Survey {
     @Id
     private Integer surveySeq;

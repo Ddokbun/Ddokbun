@@ -3,13 +3,20 @@ package com.harryporter.ddokbun.domain.user.entity;
 import com.harryporter.ddokbun.domain.cart.entity.Cart;
 import com.harryporter.ddokbun.domain.order.entity.Order;
 import com.harryporter.ddokbun.domain.plant.entity.Pot;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-@Table(name="user")
 @Entity
+@Builder
+@Getter
+@AllArgsConstructor
+@NoArgsConstructor
+@Table(name="user")
 public class User {
 
     @Id
@@ -26,11 +33,11 @@ public class User {
     @Column(name="user_role",nullable = false,columnDefinition = "varchar(20)")
     private String userRole;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @CreationTimestamp
     @Column(name="user_created_at")
     private Date createdTime;
 
-    @Temporal(TemporalType.TIMESTAMP)
+    @UpdateTimestamp
     @Column(name="user_updated_at")
     private Date updatedTime;
 
@@ -44,4 +51,8 @@ public class User {
 
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "user")
     private List<Pot> pots;
+
+    public void changeNickName(String nickName){
+        this.userNickname = nickName;
+    }
 }

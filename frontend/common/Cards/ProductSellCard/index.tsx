@@ -1,22 +1,23 @@
 import Image from "next/image";
 import React from "react";
 import { Wrapper } from "./styles";
-import Temp from "../../../assets/temp2.png";
+import Temp from "../../../assets/temp.jpg";
 import ProductLabel from "../../Labels/ProductsLabel";
 import { BuyButton, BuyListButton } from "../../Button";
 
 interface ProductInfo {
   price: number;
+  id: number;
 }
 
-const ProductSellCard: React.FC<ProductInfo> = ({ price }) => {
+const ProductSellCard: React.FC<ProductInfo> = ({ price, id }) => {
   return (
     <Wrapper>
       <div className="img-wrap">
         <Image
           objectFit="contain"
+          objectPosition="50% 50%"
           src={Temp}
-          layout="responsive"
           alt="임시상품이미지"
         />
       </div>
@@ -28,8 +29,8 @@ const ProductSellCard: React.FC<ProductInfo> = ({ price }) => {
         <ProductLabel>초보집사</ProductLabel>
         <h3>₩ {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h3>
         <div className="button-wrap">
-          <BuyButton width="60vw" />
-          <BuyListButton />
+          <BuyButton id={id} />
+          <BuyListButton id={id} />
         </div>
       </div>
     </Wrapper>

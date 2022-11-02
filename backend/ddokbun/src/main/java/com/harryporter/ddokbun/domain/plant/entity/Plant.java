@@ -1,11 +1,18 @@
 package com.harryporter.ddokbun.domain.plant.entity;
 
+import lombok.*;
+
 import javax.persistence.*;
 
 @Entity
+@Getter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Plant {
     //식물 일련 번호
     @Id
+    @Column(name="plant_seq")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long plantSeq;
 
@@ -14,7 +21,7 @@ public class Plant {
     private String plantName;
 
     //식물 학명
-    @Column(name = "palnt_ne_name", columnDefinition = "VARCHAR(255)")
+    @Column(name = "palnt_ne_name", columnDefinition = "VARCHAR(255)" )
     private String plantNeName;
 
     //식물 영명
@@ -88,15 +95,18 @@ public class Plant {
     private String waterIfno;
 
     //광량
-    @Column(name = "light")
-    private Integer light;
+    @Column(name = "light_type")
+    private Integer lightType;
     //광량 설명
     @Column(name = "light_info")
     private String lightInfo;
 
-    @Column(name = "temperature")
+    @Column(name = "min_temperature")
 
-    private Integer temperature;
+    private Integer minTemperature;
+
+    @Column(name = "max_temperature")
+    private Integer maxTemperature;
     @Column(name = "temperature_info")
     private String temperatureInfo;
     @Column(name = "image_path")
@@ -104,5 +114,40 @@ public class Plant {
 
     @Column(name = "rec_rate")
     private String recRate;
+
+    public void changeImgPath(long plantSeq){
+        this.imagePath="plant/"+plantSeq+".webp";
+    }
+
+    public void changePlant(Plant plant){
+        this.plantName=plant.getPlantName();
+        this.plantNeName=plant.getPlantNeName();
+        this.plantZRName=plant.getPlantZRName();
+        this.distbName=plant.getDistbName();
+        this.originPlace=plant.getOriginPlace();
+        this.growthHeight=plant.getGrowthHeight();
+        this.growthWidth=plant.getGrowthWidth();
+        this.smellDesc=plant.getSmellDesc();
+        this.toxctyInfo=plant.getToxctyInfo();
+        this.manageLevel=plant.getManageLevel();
+        this.growthTemperature=plant.getGrowthTemperature();
+        this.winterTemperature=plant.getWinterTemperature();
+        this.growthHumid=plant.getGrowthHumid();
+        this.specManageInfo=plant.getSpecManageInfo();
+        this.adviseInfo=plant.getAdviseInfo();
+        this.functionInfo=plant.getFunctionInfo();
+        this.manageRequire=plant.getManageRequire();
+        this.plantPlace=plant.getPlantPlace();
+        this.waterCycle=plant.getWaterCycle();
+        this.waterIfno=plant.getWaterIfno();
+        this.lightType=plant.getLightType();
+        this.lightInfo=plant.getLightInfo();
+        this.minTemperature=plant.getMinTemperature();
+        this.maxTemperature=plant.getMaxTemperature();
+        this.temperatureInfo=plant.getTemperatureInfo();
+        this.imagePath=plant.getImagePath();
+        this.recRate=plant.getRecRate();
+
+    }
 
 }

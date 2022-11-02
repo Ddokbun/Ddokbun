@@ -7,17 +7,26 @@ export const Wrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   grid-auto-flow: row;
+
+  position: relative;
   grid-gap: 50px;
   place-items: end;
   .img-wrap {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
     place-self: right;
-    padding: 0px 60px 0px 0px;
+    padding: 0px 0px 0px 0px;
     width: 100%;
-    position: relative;
     max-width: 400px;
+
     min-width: 300px;
     align-items: center;
     text-align: center;
+    img {
+      vertical-align: middle;
+    }
   }
 
   .text-wrap {
@@ -34,6 +43,7 @@ export const Wrapper = styled.div`
     .text-top {
       h2 {
         padding: 0px;
+
         font-size: 60px;
         margin: 0;
         color: ${props => props.theme.color.mainGreen};
@@ -54,6 +64,7 @@ export const Wrapper = styled.div`
       display: flex;
       justify-content: flex-start;
       gap: 10px;
+      z-index: 0;
     }
   }
 
@@ -67,13 +78,9 @@ export const Wrapper = styled.div`
     grid-gap: 0px;
     place-items: end;
     .img-wrap {
-      place-self: center;
-      padding: 0px 70px;
       width: 100%;
       position: relative;
       max-width: 400px;
-      align-items: center;
-      text-align: center;
     }
 
     .text-wrap {
@@ -108,6 +115,7 @@ export const Wrapper = styled.div`
         margin-top: 20px;
       }
       .button-wrap {
+        z-index: 1;
         position: fixed;
         transform: translate(-50%, 0%);
         bottom: 20px;

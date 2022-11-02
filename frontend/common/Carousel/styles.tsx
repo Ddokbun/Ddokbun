@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #fff;
+    background: #fafafa;
 
     /* Center slide text vertically */
     display: -webkit-box;
@@ -29,6 +29,12 @@ export const Wrapper = styled.div`
     align-items: center;
   }
 
+  .swiper-button-next {
+    color: ${props => props.theme.color.mainGreen};
+  }
+  .swiper-button-prev {
+    color: ${props => props.theme.color.mainGreen};
+  }
   .swiper-slide img {
     display: block;
     width: 100%;
