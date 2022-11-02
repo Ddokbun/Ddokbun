@@ -1,6 +1,5 @@
 import "../styles/globals.css";
 import React, { FC, useEffect } from "react";
-import cookies from "next-cookies";
 import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";

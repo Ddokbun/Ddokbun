@@ -1,4 +1,3 @@
-import axios from "axios";
 import Router from "next/router";
 import cookies from "react-cookies";
 import AXIOS from "./index";
@@ -12,13 +11,10 @@ export const Kakaologin = async (login_code?: string[] | string) => {
     });
     const accessToken = res.data.content.jwtToken;
     AXIOS.defaults.headers.common["Authorization"] = `${accessToken}`;
-    document.cookie = `키이름=${accessToken}`;
-
     console.log("성공", res);
     cookies.save("accessToken", accessToken, {
       path: "/",
     });
-
     Router.push("/manage");
     return res.data;
   } catch (error) {
@@ -33,10 +29,12 @@ export const Googlelogin = async (login_code?: string[] | string) => {
       method: "GET",
       url: path + login_code,
     });
-    axios.defaults.headers.common[
-      "Authorization"
-    ] = `${res.data.content.jwtToken}`;
+    const accessToken = res.data.content.jwtToken;
+    AXIOS.defaults.headers.common["Authorization"] = `${accessToken}`;
     console.log("성공", res);
+    cookies.save("accessToken", accessToken, {
+      path: "/",
+    });
     Router.push("/manage");
     return res.data;
   } catch (error) {
