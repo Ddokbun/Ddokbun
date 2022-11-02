@@ -24,6 +24,9 @@ public class Item {
     @Column(name="item_name",columnDefinition = "VARCHAR(30) NOT NULL")
     private String itemName;
 
+    @Column(name="item_en_name",columnDefinition = "VARCHAR(30) NOT NULL")
+    private String itemEnName;
+
     //가격
     @Column
     private Integer itemPrice;

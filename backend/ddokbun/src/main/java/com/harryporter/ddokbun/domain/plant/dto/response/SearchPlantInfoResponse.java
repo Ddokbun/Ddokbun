@@ -9,6 +9,8 @@ public class SearchPlantInfoResponse {
     private Integer lightType;
     private Integer minTemperature;
     private Integer maxTemperature;
+
+    private String temperatureRange;
     private String growthHumid;
 
     public static SearchPlantInfoResponse of(Plant plant){
@@ -18,6 +20,7 @@ public class SearchPlantInfoResponse {
         temp.lightType = plant.getLightType();
         temp.minTemperature = plant.getMinTemperature();
         temp.maxTemperature = plant.getMaxTemperature();
+        temp.temperatureRange =plant.getMinTemperature()+" ~ "+ plant.getMaxTemperature();
         temp.growthHumid = plant.getGrowthHumid();
 
         return temp;

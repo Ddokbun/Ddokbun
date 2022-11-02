@@ -6,10 +6,7 @@ import com.harryporter.ddokbun.domain.plant.repository.PlantRepository;
 import com.harryporter.ddokbun.domain.product.dto.ItemDto;
 import com.harryporter.ddokbun.domain.product.dto.request.InsertItemDto;
 import com.harryporter.ddokbun.domain.product.dto.request.UpdateItemDto;
-import com.harryporter.ddokbun.domain.product.dto.response.ClickRankDto;
-import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
-import com.harryporter.ddokbun.domain.product.dto.response.ItemSearchDto;
-import com.harryporter.ddokbun.domain.product.dto.response.ItemSimpleSearchDto;
+import com.harryporter.ddokbun.domain.product.dto.response.*;
 import com.harryporter.ddokbun.domain.product.entity.Item;
 import com.harryporter.ddokbun.domain.product.entity.TodayItem;
 import com.harryporter.ddokbun.domain.product.repository.ItemRepository;
@@ -189,9 +186,9 @@ public class ItemServiceImple implements ItemService{
     }
 
     @Override
-    public List<ItemDto> getProductByCategory(String category){
+    public List<ItemCategoryDto> getProductByCategory(String category){
         List<Item> items = itemRepository.findAllByPlant_RecRateContainingIgnoreCase(category);
-        List<ItemDto> productList = items.stream().map(item ->ItemDto.of(item)).collect(Collectors.toList());
+        List<ItemCategoryDto> productList = items.stream().map(item ->ItemCategoryDto.of(item)).collect(Collectors.toList());
         return productList;
     }
 
