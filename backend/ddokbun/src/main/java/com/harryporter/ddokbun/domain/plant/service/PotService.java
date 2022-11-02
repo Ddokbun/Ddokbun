@@ -1,6 +1,7 @@
 package com.harryporter.ddokbun.domain.plant.service;
 
 
+import com.harryporter.ddokbun.domain.plant.dto.MotorActionDto;
 import com.harryporter.ddokbun.domain.plant.entity.WaterApply;
 import com.harryporter.ddokbun.domain.plant.repository.*;
 import com.harryporter.ddokbun.domain.plant.repository.WaterApplyRepository;
@@ -33,6 +34,7 @@ public class PotService {
     private final PlantRepository plantRepository;
     private final WaterApplyRepository waterApplyRepository;
     private  final PotLogRepository potLogRepository;
+    private final WaterApplyUtil waterApplyUtil;
 
     @Transactional
     public void producePot(String potSerial){
@@ -104,6 +106,7 @@ public class PotService {
         }
     }
 
+    //물을 준다.
     @Transactional
     public void applyWater(String potSerial, Long userSeq){
         User user = userRepository.findById(userSeq).orElseThrow(
@@ -113,11 +116,20 @@ public class PotService {
         Pot potEntity = potRepository.findByPotSerial(potSerial).orElseThrow(
                 () -> new GeneralException(ErrorCode.NOT_FOUND)
         );
+
+
         log.info("현재 화분 Entity와 유저 받기 :: Pot : {}, userSeq : {}", potEntity, userSeq);
 
         if (potEntity.getUser().getUserSeq().equals(userSeq)){
             log.info("물주는 서비스 진입성공");
             potEntity.potWaterApllyChange(LocalDate.now());
+
+            //카프카 브로커로 모터 동작하라고 알려준다.
+            boolean result = waterApplyUtil.sendMotorAction(MotorActionDto.of(potSerial));
+
+            if(result == false){
+                throw new GeneralException(ErrorCode.EXTERNAL_SERVICE_ACCESS_ERROR,"카프카 서비스 이용 중 에러");
+            }
 
             WaterApply waterApply = new WaterApply(potEntity);
             log.info("물 Apply table 생성 {}", waterApply);
