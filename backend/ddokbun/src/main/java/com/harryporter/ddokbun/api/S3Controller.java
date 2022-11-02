@@ -42,7 +42,7 @@ public class S3Controller {
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
-    @ApiOperation("파일 펫치")
+    @ApiOperation("파일 가져오기")
     @GetMapping("/s3")
     public void getResources2(@RequestParam("plantSeq") long plantSeq, HttpServletResponse res){
         log.info("파일 가져오기 API 진입");
