@@ -1,21 +1,19 @@
 import React from "react";
-import { SearchPlantType } from "../../../../../pages/manage/add/search";
+import { Plants } from "../../../../../pages/manage/add/search";
 import SearchCardItem from "../SearchCardItem";
 
 const SearchCardList: React.FC<{
-  data: SearchPlantType[];
-  isDelivery:boolean
+  data: Plants[];
+  isDelivery: boolean;
 }> = ({ data, isDelivery }) => {
   const itemList = data.map(plant => {
     return (
       <SearchCardItem
-        image={plant.image}
-        krName={plant.krName}
-        egName={plant.egName}
+        plantName={plant.plantName}
+        plantNeName={plant.plantNeName}
         plantSeq={plant.plantSeq}
         key={plant.plantSeq}
-        isDelivery={isDelivery}
-      />
+        isDelivery={isDelivery} plantZRName={""} imagePath={""} disnName={""}      />
     );
   });
 

@@ -2,45 +2,52 @@ import Image, { StaticImageData } from "next/image";
 import { useRouter } from "next/router";
 import React from "react";
 import { useDispatch } from "react-redux";
+import { Plants } from "../../../../../pages/manage/add/search";
 import { manageActions } from "../../../../../store/manage";
 import { Wrapper } from "./styles";
 
-const SearchCardItem: React.FC<{
-  image: StaticImageData;
-  krName: string;
-  egName: string;
-  plantSeq: string;
-  isDelivery: boolean
-}> = ({ image, krName, egName, plantSeq, isDelivery }) => {
+interface Props extends Plants {
+  isDelivery: boolean;
+}
+
+const SearchCardItem: React.FC<Props> = ({
+  plantName,
+  plantNeName,
+  plantSeq,
+  isDelivery,
+}) => {
   const dispatch = useDispatch();
   const router = useRouter();
   const onFetchPlantSeqHandler = () => {
-    dispatch(manageActions.setPlantInfo({ plantSeq, krName }));
+    dispatch(manageActions.setPlantInfo({ plantSeq, plantName }));
     router.back();
   };
 
   const onShowDeliveryHandler = () => {
-    console.log('배송조회');
-    
-  }
+    console.log("배송조회");
+  };
 
   return (
     <Wrapper onClick={onFetchPlantSeqHandler} isDelivery={isDelivery}>
       <div className="image-container">
         <Image
           width={"100%"}
-          height={"90%"}
-          src={image}
+          height={"100%"}
+          src={`https://ddokbun.com/api/resources/s3?plantSeq=${plantSeq}`}
           objectFit="cover"
           className="image"
           alt="식물 카드 이미지 입니다."
         />
       </div>
       <div className="info">
-        <h2 className="krName">{krName}</h2>
-        <p className="egName">{egName}</p>
+        <h2 className="krName">{plantName}</h2>
+        <p className="egName">{plantNeName}</p>
       </div>
-      {isDelivery && <p onClick={onShowDeliveryHandler} className="delivery">배송조회</p>}
+      {isDelivery && (
+        <p onClick={onShowDeliveryHandler} className="delivery">
+          배송조회
+        </p>
+      )}
     </Wrapper>
   );
 };

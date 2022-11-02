@@ -11,6 +11,16 @@ const nextConfig = {
     });
     return config;
   },
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "ddokbun.com",
+        port: "",
+        pathname: "/api/**",
+      },
+    ],
+  },
   async redirects() {
     return [
       {
