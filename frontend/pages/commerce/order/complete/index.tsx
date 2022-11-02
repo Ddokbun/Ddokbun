@@ -1,10 +1,50 @@
-import { NextPage } from "next";
+import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
+
+import { getCookie, CookieValueTypes, deleteCookie } from "cookies-next";
 import Carousel from "../../../../common/Carousel";
 import { Wrapper } from "../../../../styles/commerce/order/complete/styles";
 
-const Complete: NextPage = () => {
+import { approveKakaoPay } from "../../../../apis/commerce";
+
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+  req,
+  res,
+}) => {
+  const tid = getCookie("tid", { req, res });
+  if (!tid) {
+    return {
+      redirect: {
+        destination: "/commerce/order/cancled",
+      },
+      props: {},
+    };
+  }
+  const pgToken = query.pg_token as string;
+  const payResult = await approveKakaoPay(tid, pgToken);
+  deleteCookie("tid", { req, res });
+  const payObj = {
+    orderId: payResult?.aid,
+    User: payResult?.partner_user_id,
+  };
+  // 결제정보를 DB에 입력하도록 해야함
+  console.log(payResult);
+
+  return { props: { payObj } };
+};
+
+interface OrderProps {
+  orderId: string;
+  User: string;
+}
+
+interface IOrder {
+  payObj: OrderProps;
+}
+
+const Complete: NextPage<IOrder> = ({ payObj }) => {
   return (
     <Wrapper>
       <div className="grid">
@@ -15,11 +55,11 @@ const Complete: NextPage = () => {
           <ul>
             <li>
               <span>주문번호 : </span>
-              <span>12345678</span>
+              <span>{payObj.orderId}</span>
             </li>
             <li>
               <span>주문자 : </span>
-              <span>허건녕</span>
+              <span>{payObj.User}</span>
             </li>
             <li>
               <span>배송지 : </span>
@@ -31,7 +71,9 @@ const Complete: NextPage = () => {
               </Link>
             </li>
           </ul>
-          <div className="button">다른 상품 보러가기</div>
+          <Link href={"/commerce"}>
+            <div className="button">다른 상품 보러가기</div>
+          </Link>
         </div>
       </div>
       <div className="carousel-wrap">
