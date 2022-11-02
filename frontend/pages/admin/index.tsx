@@ -1,5 +1,5 @@
 import type { NextPage } from "next";
-import Nav from "../../components/admin/nav";
+import Nav from "../../components/admin/Nav";
 
 const Admin: NextPage = () => {
   return (
