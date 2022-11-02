@@ -6,13 +6,13 @@ import lombok.Data;
 import java.time.format.DateTimeFormatter;
 
 @Data
-public class PotHumidLogResponse {
-    private Double humid;
+public class PotHumidityLogResponse {
+    private Double humidity;
     private String createdTime;
 
-    public static PotHumidLogResponse of(PotLog potLog){
-        PotHumidLogResponse temp = new PotHumidLogResponse();
-        temp.humid = potLog.getTemperature();
+    public static PotHumidityLogResponse of(PotLog potLog){
+        PotHumidityLogResponse temp = new PotHumidityLogResponse();
+        temp.humidity = potLog.getTemperature();
         temp.createdTime = potLog.getCreatedTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
         return temp;
