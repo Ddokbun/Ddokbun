@@ -10,7 +10,7 @@ export const Wrapper = styled.section`
   }
 
   .twin-background {
-    background-color: ${props => props.theme.color.ivory};
+    /* background-color: ${props => props.theme.color.ivory}; */
     width: 100%;
     height: 500px;
     border-radius: 16px;
