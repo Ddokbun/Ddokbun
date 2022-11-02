@@ -2,11 +2,8 @@ package com.harryporter.ddokbun.domain.plant.service;
 
 
 import com.harryporter.ddokbun.domain.plant.entity.WaterApply;
-<<<<<<< Updated upstream
 import com.harryporter.ddokbun.domain.plant.repository.*;
-=======
 import com.harryporter.ddokbun.domain.plant.repository.WaterApplyRepository;
->>>>>>> Stashed changes
 import com.harryporter.ddokbun.domain.plant.dto.request.RegisterPotRequest;
 import com.harryporter.ddokbun.domain.plant.dto.response.MyPotReponse;
 import com.harryporter.ddokbun.domain.plant.dto.response.PotDetailResponse;
@@ -17,19 +14,12 @@ import com.harryporter.ddokbun.domain.user.entity.User;
 import com.harryporter.ddokbun.domain.user.repository.UserRepository;
 import com.harryporter.ddokbun.exception.ErrorCode;
 import com.harryporter.ddokbun.exception.GeneralException;
-import io.swagger.models.auth.In;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-<<<<<<< Updated upstream
-import java.time.YearMonth;
-import java.time.format.DateTimeFormatter;
-import java.util.Calendar;
-=======
->>>>>>> Stashed changes
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -39,7 +29,6 @@ import java.util.stream.Collectors;
 public class PotService {
 
     private final PotRepository potRepository;
-    private final PotRepositoryCustom potRepositoryCustom;
     private final UserRepository userRepository;
     private final PlantRepository plantRepository;
     private final WaterApplyRepository waterApplyRepository;
