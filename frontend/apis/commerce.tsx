@@ -1,8 +1,8 @@
 import axios from "axios";
-import Router, { useRouter } from "next/router";
+import Router from "next/router";
 import AXIOS from ".";
 import { setCookie, CookieValueTypes } from "cookies-next";
-import { ParsedUrlQuery } from "querystring";
+
 export const getAllProductNumber = async () => {
   const path = "market/product/list";
 
@@ -26,14 +26,11 @@ export const fetchProductList = async (params: string) => {
       method: "GET",
       url: path,
     });
-
     return res.data.content;
   } catch (error) {
-    // console.log(error);
+    console.log(error);
   }
 };
-
-// market product/list
 
 export const fetchProductDetail = async (id: string) => {
   const path = `market/product/${id}`;

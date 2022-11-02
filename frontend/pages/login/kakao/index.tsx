@@ -19,9 +19,9 @@ const KakaoLogin: NextPage = () => {
   //   router.push("/manage");
   // }, [login_code]);
 
-  useEffect(() => {
-    Kakaologin(login_code);
-  }, [login_code]);
+  // useEffect(() => {
+  //   Kakaologin(login_code);
+  // }, [login_code]);
 
   return (
     <div>

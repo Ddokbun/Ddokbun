@@ -38,16 +38,64 @@ export const getStaticProps: GetStaticProps = async context => {
   console.log(typeof productid);
 
   const data = await fetchProductDetail(productid);
-  // console.log(data);
+  console.log(data);
 
   return {
     props: {
-      plz: "제발",
+      data,
     },
   };
 };
 
-const Product: NextPage = () => {
+interface IPlant {
+  plantSeq: number;
+  plantName: string;
+  plantNeName: string;
+  plantZRName: string;
+  distbName: string;
+  originPlace: string;
+  growthHeight: number;
+  growthWidth: number;
+  smellDesc: string;
+  toxctyInfo: string;
+  manageLevel: string;
+  growthTemperature: string;
+  winterTemperature: string;
+  growthHumid: string;
+  specManageInfo: string;
+  adviseInfo: string;
+  functionInfo: string;
+  manageRequire: string;
+  plantPlace: string;
+  waterCycle: number;
+  waterInfo: string;
+  lightType: number;
+  lightInfo: string;
+  minTemperature: number;
+  maxTemperature: number;
+  temperatureInfo: string;
+  imagePath: string;
+  recRate: string;
+}
+
+interface IRootObject {
+  itemSeq: number;
+  itemName: string;
+  itemPrice: number;
+  itemInfo: string;
+  itemStock: number;
+  itemPicture: string;
+  itemKind: number;
+  plant: IPlant;
+}
+
+interface IdetailProps {
+  data: IRootObject;
+}
+
+const Product: NextPage<IdetailProps> = ({ data }) => {
+  console.log(data);
+
   return (
     <Wrapper>
       <ProductSellCard price={18000} id={0} />

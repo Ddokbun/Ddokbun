@@ -13,14 +13,12 @@ interface IParams extends ParsedUrlQuery {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const arr: string[] = ["a", "b", "c", "d"];
+  const arr: string[] = ["초보집사", "집꾸미기", "반려동물", "공기정화"];
   const paths = arr.map(params => {
     return {
       params: { params },
     };
   });
-  console.log(paths);
-
   return {
     paths,
     fallback: false,
@@ -32,6 +30,7 @@ export const getStaticProps: GetStaticProps = async context => {
   console.log(params);
 
   const data = await fetchProductList(params);
+  console.log(data);
 
   return {
     props: {
