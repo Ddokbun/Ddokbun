@@ -25,7 +25,7 @@ public class PlantInfoAllReponse {
         temp.plantNeName = plant.getPlantNeName();
         temp.plantZRName = plant.getPlantZRName();
         temp.distbName = plant.getDistbName();
-        temp.imagePath = plant.getImagePath();
+        temp.imagePath = "https://ddokbun.com/api/resources/s3?plantSeq="+plant.getPlantSeq() ;
 
         return temp;
     }
