@@ -1,7 +1,7 @@
 import AXIOS from "./index";
 
 export const fetchTodayPlant = async () => {
-  const path = "cart";
+  const path = "market/product/rec-today";
   try {
     const res = await AXIOS({
       method: "GET",

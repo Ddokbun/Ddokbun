@@ -11,12 +11,7 @@ const Home: NextPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    const fetchAccessToken = async () => {
-      const token = await Googlelogin(login_code);
-      dispatch(ent.setEnt(token));
-    };
-    fetchAccessToken();
-    router.push("/manage");
+    Googlelogin(login_code);
   }, [login_code]);
 
   return (
