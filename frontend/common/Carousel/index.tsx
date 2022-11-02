@@ -36,22 +36,22 @@ const Carousel: React.FC = () => {
         className="mySwiper"
       >
         <SwiperSlide>
-          <ProductCard isResponsive={false} price={18000} />
+          <ProductCard isResponsive={false} price={18000} id={1} />
         </SwiperSlide>
         <SwiperSlide>
-          <ProductCard isResponsive={false} price={18000} />
+          <ProductCard isResponsive={false} price={18000} id={1} />
         </SwiperSlide>
         <SwiperSlide>
-          <ProductCard isResponsive={false} price={18000} />
+          <ProductCard isResponsive={false} price={18000} id={1} />
         </SwiperSlide>
         <SwiperSlide>
-          <ProductCard isResponsive={false} price={18000} />
+          <ProductCard isResponsive={false} price={18000} id={1} />
         </SwiperSlide>
         <SwiperSlide>
-          <ProductCard isResponsive={false} price={18000} />
+          <ProductCard isResponsive={false} price={18000} id={1} />
         </SwiperSlide>
         <SwiperSlide>
-          <ProductCard isResponsive={false} price={18000} />
+          <ProductCard isResponsive={false} price={18000} id={1} />
         </SwiperSlide>
       </Swiper>
     </Wrapper>

@@ -11,7 +11,7 @@ const authSlice = createSlice({
   reducers: {
     // 얘는 예시
     setEnt(state, action) {
-      return action.payload;
+      return { ...state, ...action.payload };
     },
   },
   extraReducers: {

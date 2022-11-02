@@ -11,7 +11,7 @@ const Cart: NextPage = () => {
       <CartList />
 
       <div className="button-wrap">
-        <PriceButtonStyle width="300px">
+        <PriceButtonStyle>
           <h3>CHECKOUT</h3>
         </PriceButtonStyle>
       </div>

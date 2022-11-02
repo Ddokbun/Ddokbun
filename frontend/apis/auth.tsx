@@ -1,5 +1,5 @@
 import Router from "next/router";
-import cookies from "react-cookies";
+import { setCookie } from "cookies-next";
 import AXIOS from "./index";
 
 export const Kakaologin = async (login_code?: string[] | string) => {
@@ -11,7 +11,9 @@ export const Kakaologin = async (login_code?: string[] | string) => {
     });
     const accessToken = res.data.content.jwtToken;
     AXIOS.defaults.headers.common["Authorization"] = `${accessToken}`;
-    console.log("성공", res);
+    console.log("성공진행", res, "액세스", accessToken);
+    setCookie("token", accessToken);
+    Router.push("/manage");
     return accessToken;
   } catch (error) {
     console.log(error);
@@ -27,10 +29,8 @@ export const Googlelogin = async (login_code?: string[] | string) => {
     });
     const accessToken = res.data.content.jwtToken;
     AXIOS.defaults.headers.common["Authorization"] = `${accessToken}`;
-    console.log("성공", res);
-    cookies.save("accessToken", accessToken, {
-      path: "/",
-    });
+    console.log("성공입니다", res);
+    setCookie("token", accessToken);
     Router.push("/manage");
     return res.data;
   } catch (error) {
