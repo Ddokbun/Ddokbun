@@ -92,7 +92,7 @@ export const BuyListButton: React.FC<{ id: number }> = ({ id }) => {
 };
 
 // 추후 api로 이동
-export interface Register {
+export interface RegisterType {
   potSerial: string;
   plantNickname: string;
   waterSupply: string;

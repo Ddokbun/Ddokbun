@@ -2,7 +2,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import {
   CancelButton,
-  Register,
+  RegisterType,
   SubmitButton,
 } from "../../../../common/Button";
 import { DateInput, Input, SearchInput } from "../../../../common/Input";
@@ -10,13 +10,14 @@ import { Wrapper } from "./styles";
 import calander from "../../../../assets/icon/calander.png";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../store";
+import { fetchRegisterPot } from "../../../../apis/manage";
 
 const AddForm = () => {
-  // const router = useRouter();
+  const router = useRouter();
   const plantSeq = useSelector((state: RootState) => state.manage.plantSeq);
   const name = useSelector((state: RootState) => state.manage.plantName);
 
-  const inputValues: React.MutableRefObject<Register> = useRef({
+  const inputValues: React.MutableRefObject<RegisterType> = useRef({
     potSerial: "",
     plantNickname: "",
     waterSupply: "",
@@ -62,7 +63,7 @@ const AddForm = () => {
     }
   };
 
-  const onRegisterHandler = (): void => {
+  const onRegisterHandler = async (): Promise<void> => {
     if (!inputValues.current.plantNickname) {
       //닉네임 확인
     } else if (!inputValues.current.potSerial) {
@@ -73,10 +74,13 @@ const AddForm = () => {
 
     console.log(inputValues.current);
 
+    const res = await fetchRegisterPot(inputValues.current);
+    if (res.status === 201) {
+      router.push(`/manage/${res.potSeq}`);
+    }
     // axios
     // fetchPotRegister(inputValues.current)
     // if (res.status === 201) {
-    //   router.push(`/manage/${res.potSeq}`)
     // }
   };
 
