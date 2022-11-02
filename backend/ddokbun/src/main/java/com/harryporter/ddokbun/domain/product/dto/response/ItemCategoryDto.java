@@ -23,6 +23,7 @@ public class ItemCategoryDto{
 
     private int itemPrice;
 
+    private String itemImage;
     private List<String> tags;
 
     public static ItemCategoryDto of(Item item) {
@@ -31,6 +32,7 @@ public class ItemCategoryDto{
         idt.itemName=item.getItemName();
         idt.itemEnName=item.getItemEnName();
         idt.itemPrice=item.getItemPrice();
+        idt.itemImage=item.getItemPicture();
         idt.tags= Arrays.asList(item.getPlant().getRecRate().split(","));
         return idt;
     }

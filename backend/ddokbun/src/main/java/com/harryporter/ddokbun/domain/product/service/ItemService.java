@@ -1,9 +1,10 @@
 package com.harryporter.ddokbun.domain.product.service;
-
+import org.springframework.data.domain.Pageable;
 import com.harryporter.ddokbun.domain.product.dto.request.InsertItemDto;
 import com.harryporter.ddokbun.domain.product.dto.ItemDto;
 import com.harryporter.ddokbun.domain.product.dto.request.UpdateItemDto;
 import com.harryporter.ddokbun.domain.product.dto.response.*;
+
 
 import java.util.List;
 
@@ -27,7 +28,8 @@ public interface ItemService {
 
     List<Long> getProductList();
 
-    List<ItemCategoryDto> getProductByCategory(String category);
+
+    List<ItemCategoryDto> getProductByCategory(String category,Pageable pageable);
 
     String click(long itemSeq);
 

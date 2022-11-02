@@ -8,6 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 import javax.persistence.LockModeType;
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 public interface ItemRepository extends JpaRepository<Item,Long> {
@@ -22,7 +23,7 @@ public interface ItemRepository extends JpaRepository<Item,Long> {
     @Query("SELECT i FROM Item i WHERE i.itemSeq = :itemSeq")
     Item findByIdWithWriteLock(@Param("itemSeq") long itemSeq);
 
-    List<Item> findAllByPlant_RecRateContainingIgnoreCase(String category);
+    List<Item> findByPlant_RecRateContainingIgnoreCase(String category,Pageable pageable);
 
     @Query("SELECT t.itemName FROM Item t WHERE t.itemSeq=:itemSeq")
     String findItemNameByItemSeq(@Param("itemSeq") long itemSeq);
