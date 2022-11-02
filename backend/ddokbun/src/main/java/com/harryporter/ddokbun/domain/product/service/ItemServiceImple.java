@@ -4,7 +4,7 @@ import com.harryporter.ddokbun.domain.plant.repository.PlantRepository;
 import com.harryporter.ddokbun.domain.product.dto.request.InsertItemDto;
 import com.harryporter.ddokbun.domain.product.dto.request.UpdateItemDto;
 import com.harryporter.ddokbun.domain.product.entity.TodayItem;
-import com.harryporter.ddokbun.domain.plant.repository.dto.PlantDto;
+import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
 import com.harryporter.ddokbun.domain.product.dto.ItemDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
@@ -56,6 +56,7 @@ public class ItemServiceImple implements ItemService{
     }
 
     @Override
+    @Transactional
     public ItemDetailDto getOneItemById(Long ItemSeq) {
 
         Item item = itemRepository.findById(ItemSeq).orElseThrow(()->{
@@ -172,6 +173,20 @@ public class ItemServiceImple implements ItemService{
            throw new GeneralException(ErrorCode.NOT_FOUND,"삭제가 불가능하거나, 존재하지 않는 상품입니다.");
         }
         return "Delete Success";
+    }
+
+    @Override
+    public List<Long> getProductList(){
+        List<Item> products = itemRepository.findAll();
+        List<Long> productList = products.stream().map(product -> product.getItemSeq()).collect(Collectors.toList());
+        return productList;
+    }
+
+    @Override
+    public List<ItemDto> getProductByCategory(String category){
+        List<Item> items = itemRepository.findAllByPlant_RecRateContainingIgnoreCase(category);
+        List<ItemDto> productList = items.stream().map(item ->ItemDto.of(item)).collect(Collectors.toList());
+        return productList;
     }
 
 }

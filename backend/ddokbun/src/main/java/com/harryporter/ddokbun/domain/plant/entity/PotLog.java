@@ -1,9 +1,16 @@
 package com.harryporter.ddokbun.domain.plant.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
 public class PotLog {
 
     // 화분로그 번호
@@ -33,4 +40,14 @@ public class PotLog {
     @JoinColumn(name = "pot_serial", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private Pot pot;
+
+    public PotLog(Pot pot) {
+        this.temperature = 34.2;
+        this.humudity = 32.2;
+        this.soilHumidity = 32.2;
+        this.waterLevel = 32.2;
+        this.light = 32.2;
+        this.createdTime = LocalDateTime.now();
+        this.pot = pot;
+    }
 }

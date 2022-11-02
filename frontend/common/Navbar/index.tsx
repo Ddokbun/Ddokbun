@@ -22,7 +22,9 @@ const Navbar = () => {
       <div className="menu">
         <ul>
           <Link href={"/manage"}>IoT</Link>
-          <li>Shopping</li>
+          <Link href={"/commerce"}>
+            <li>Shopping</li>
+          </Link>
           <Link href={"/search"}>Search</Link>
           <Link href={`/mypage/${userseq}`}>
             <li>MyPage</li>

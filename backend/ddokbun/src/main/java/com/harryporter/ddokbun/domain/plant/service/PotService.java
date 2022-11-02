@@ -2,31 +2,28 @@ package com.harryporter.ddokbun.domain.plant.service;
 
 
 import com.harryporter.ddokbun.domain.plant.entity.WaterApply;
-import com.harryporter.ddokbun.domain.plant.repository.WaterApplyRepository;
-import com.harryporter.ddokbun.domain.plant.repository.dto.request.RegisterPotRequest;
-import com.harryporter.ddokbun.domain.plant.repository.dto.response.MyPotReponse;
-import com.harryporter.ddokbun.domain.plant.repository.dto.response.PotDetailResponse;
-import com.harryporter.ddokbun.domain.plant.repository.dto.response.RegisterPotResponse;
+import com.harryporter.ddokbun.domain.plant.repository.*;
+import com.harryporter.ddokbun.domain.plant.dto.request.RegisterPotRequest;
+import com.harryporter.ddokbun.domain.plant.dto.response.MyPotReponse;
+import com.harryporter.ddokbun.domain.plant.dto.response.PotDetailResponse;
+import com.harryporter.ddokbun.domain.plant.dto.response.RegisterPotResponse;
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
 import com.harryporter.ddokbun.domain.plant.entity.Pot;
-import com.harryporter.ddokbun.domain.plant.repository.PlantRepository;
-import com.harryporter.ddokbun.domain.plant.repository.PotRepository;
-import com.harryporter.ddokbun.domain.plant.repository.PotRepositoryCustom;
 import com.harryporter.ddokbun.domain.user.entity.User;
 import com.harryporter.ddokbun.domain.user.repository.UserRepository;
 import com.harryporter.ddokbun.exception.ErrorCode;
 import com.harryporter.ddokbun.exception.GeneralException;
+import io.swagger.models.auth.In;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.time.YearMonth;
 import java.time.format.DateTimeFormatter;
+import java.util.Calendar;
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -39,6 +36,7 @@ public class PotService {
     private final UserRepository userRepository;
     private final PlantRepository plantRepository;
     private final WaterApplyRepository waterApplyRepository;
+    private  final PotLogRepository potLogRepository;
 
     @Transactional
     public void producePot(String potSerial){
@@ -101,6 +99,8 @@ public class PotService {
             //여기에 유저만 null로 바꾸는게 아니라 log 값들을 다 삭제해야하는 거
             pot.setUser(null);
             potRepository.save(pot);
+            waterApplyRepository.deleteAllByPot_PotSerial(potSerial);
+            potLogRepository.deleteAllByPot_PotSerial(potSerial);
         }
         // 그것도 아니면 자신의 화분이 아닌것
         else {
@@ -180,6 +180,27 @@ public class PotService {
         }
         return PotDetailResponse.of(potEntity);
 
+    }
+
+    public List<LocalDate> waterApplies(String potSerial, Integer year, Integer month, Long userSeq){
+        User user = userRepository.findById(userSeq).orElseThrow(
+                ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다.")
+        );
+        // potSerial로 통해서 화분 불러오기
+        Pot potEntity = potRepository.findByPotSerial(potSerial).orElseThrow(
+                () -> new GeneralException(ErrorCode.NOT_FOUND)
+        );
+        if (!potEntity.getUser().getUserSeq().equals(userSeq)) {
+            throw new GeneralException(ErrorCode.BAD_REQUEST);
+        }
+
+        String firstDate = year + "-" + month + "-01" ;
+        LocalDate fDate = LocalDate.parse(firstDate);
+        LocalDate lDate = fDate.withDayOfMonth(fDate.lengthOfMonth());
+
+        List<LocalDate> dateList = waterApplyRepository.findPotWaterLog(potSerial, fDate, lDate);
+
+        return dateList;
     }
 
 }

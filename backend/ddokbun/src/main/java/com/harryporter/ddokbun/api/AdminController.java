@@ -3,7 +3,9 @@ package com.harryporter.ddokbun.api;
 import com.harryporter.ddokbun.api.response.ResponseFrame;
 import com.harryporter.ddokbun.domain.order.dto.request.OrderStatusDto;
 import com.harryporter.ddokbun.domain.order.service.OrderService;
-import com.harryporter.ddokbun.domain.plant.repository.dto.PlantDto;
+import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
+import com.harryporter.ddokbun.domain.plant.entity.Plant;
+import com.harryporter.ddokbun.domain.plant.repository.PlantRepository;
 import com.harryporter.ddokbun.domain.plant.service.PlantService;
 import com.harryporter.ddokbun.domain.product.dto.request.InsertItemDto;
 import com.harryporter.ddokbun.domain.product.dto.request.UpdateItemDto;
@@ -28,6 +30,7 @@ import springfox.documentation.annotations.ApiIgnore;
 @Api(tags ={" 관리자 API"})
 public class AdminController {
 
+    private final PlantRepository plantRepository;
     private final PlantService plantService;
     private final ItemService itemService;
     private final OrderService orderService;
@@ -38,6 +41,7 @@ public class AdminController {
 //        if(!userDto.getUserRole().equals("ROLE_ADMIN"))
 //            throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
 //        log.info("관리자 접속 완료");
+
         ResponseFrame<?> res =  ResponseFrame.ofOKResponse("Success",plantService.getPlant());
         return new ResponseEntity<>(res, HttpStatus.OK);
     }

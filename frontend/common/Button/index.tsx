@@ -16,6 +16,7 @@ import RightUp from "../../assets/commerce/right-up.svg";
 import Bag from "../../assets/commerce/bag.svg";
 import { useRouter } from "next/router";
 import Image from "next/image";
+import { putCart } from "../../apis/commerce";
 
 export const TextBtn: React.FC<{
   children: string;
@@ -43,26 +44,48 @@ export const SearchBtn: React.FC<{
 
 // 컨벤션 다름! Btn vs Button 중에 선택해야 할듯
 
-export const BuyTextButton: React.FC = () => {
+/**
+ * Product List에서 Product Detail로 이동시키는 버튼
+ *
+ * @param {number} id  Product Detail Id
+ * @return {void} Product Detail로 이동시킴
+ */
+export const BuyTextButton: React.FC<{ id: number }> = ({ id }) => {
   return (
-    <PriceTextButtonStyle>
-      <h3>Buy</h3>
-      <RightUp />
-    </PriceTextButtonStyle>
+    <Link href={`/commerce/product/${id}`}>
+      <PriceTextButtonStyle>
+        <h3>Buy</h3>
+        <RightUp />
+      </PriceTextButtonStyle>
+    </Link>
   );
 };
 
-export const BuyButton: React.FC<{ width: string }> = ({ width }) => {
+export const BuyButton: React.FC<{ id: number }> = ({ id }) => {
+  const route = useRouter();
+  const putBuyNowHandler = (id: number) => {
+    putCart(id);
+    route.push("/commerce/order/order-form");
+  };
   return (
-    <PriceButtonStyle width="250px">
+    <PriceButtonStyle onClick={() => putBuyNowHandler(id)}>
       <h3>Buy Now</h3>
     </PriceButtonStyle>
   );
 };
 
-export const BuyListButton: React.FC = () => {
+/**
+ * Product Detail에서 장바구니로 이동시키는 버튼
+ *
+ * @params {number} id Product Detail Id
+ * @returns Alert를 활용하여 장바구니로 이동시키거나 확인할 수 있음
+ */
+export const BuyListButton: React.FC<{ id: number }> = ({ id }) => {
+  const putCartHandler = (id: number) => {
+    putCart(id);
+  };
   return (
-    <BuyListButtonStyle>
+    <BuyListButtonStyle onClick={() => putCartHandler(id)}>
       <Bag className="bag" />
     </BuyListButtonStyle>
   );

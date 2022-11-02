@@ -1,6 +1,5 @@
 package com.harryporter.ddokbun.domain.plant.entity;
 
-import com.harryporter.ddokbun.domain.plant.repository.dto.response.SearchPlantInfoResponse;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,6 +12,7 @@ import javax.persistence.*;
 public class Plant {
     //식물 일련 번호
     @Id
+    @Column(name="plant_seq")
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long plantSeq;
 
@@ -21,7 +21,7 @@ public class Plant {
     private String plantName;
 
     //식물 학명
-    @Column(name = "palnt_ne_name", columnDefinition = "VARCHAR(255)")
+    @Column(name = "palnt_ne_name", columnDefinition = "VARCHAR(255)" )
     private String plantNeName;
 
     //식물 영명
@@ -114,6 +114,10 @@ public class Plant {
 
     @Column(name = "rec_rate")
     private String recRate;
+
+    public void changeImgPath(long plantSeq){
+        this.imagePath="plant/"+plantSeq+".webp";
+    }
 
     public void changePlant(Plant plant){
         this.plantName=plant.getPlantName();

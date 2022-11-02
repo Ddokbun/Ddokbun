@@ -1,4 +1,4 @@
-package com.harryporter.ddokbun.domain.plant.repository.dto;
+package com.harryporter.ddokbun.domain.plant.dto;
 
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
 import lombok.*;
@@ -64,13 +64,13 @@ public class PlantDto {
     private String plantPlace;
 
     //실제 물주기
-    private int waterCycle;
+    private Integer waterCycle;
 
     //물주기 설명
-    private String waterIfno;
+    private String waterInfo;
 
     //광량
-    private int light;
+    private Integer lightType;
     //광량 설명
     private String lightInfo;
 
@@ -105,8 +105,8 @@ public class PlantDto {
                 .manageRequire(manageRequire)//관리 요구도
                 .plantPlace(plantPlace)//배치 장소
                 .waterCycle(waterCycle)//물주기
-                .waterIfno(waterIfno)//물 설명
-                .lightType(light)//광량
+                .waterIfno(waterInfo)//물 설명
+                .lightType(lightType)//광량
                 .lightInfo(lightInfo)//광량 설명
                 .minTemperature(minTemperature)// 최저 온도
                 .maxTemperature(maxTemperature)// 최고 온도
@@ -138,8 +138,8 @@ public class PlantDto {
                 .manageRequire(plant.getManageRequire())//관리 요구도
                 .plantPlace(plant.getPlantPlace())//배치 장소
                 .waterCycle(plant.getWaterCycle())//물주기
-                .waterIfno(plant.getWaterIfno())//물 설명
-                .light(plant.getLightType())//광량
+                .waterInfo(plant.getWaterIfno())//물 설명
+                .lightType(plant.getLightType())//광량
                 .lightInfo(plant.getLightInfo())//광량 설명
                 .minTemperature(plant.getMinTemperature())//최저온도
                 .maxTemperature(plant.getMaxTemperature()) //최고온도

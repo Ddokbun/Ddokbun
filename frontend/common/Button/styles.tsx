@@ -25,12 +25,8 @@ export const PriceTextButtonStyle = styled.div`
   }
 `;
 
-interface PriceButtonProps {
-  width: string;
-}
-
-export const PriceButtonStyle = styled.div<PriceButtonProps>`
-  width: ${props => props.width || "250px"};
+export const PriceButtonStyle = styled.div`
+  width: 250px;
   height: 50px;
   border-radius: 2px;
   display: flex;
@@ -191,4 +187,3 @@ export const StatusButtonStyle = styled.li<StatusButtonType>`
     font-size: 12px;
   }
 `;
-
