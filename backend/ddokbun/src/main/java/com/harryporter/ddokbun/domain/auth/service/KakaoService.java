@@ -33,6 +33,11 @@ public class KakaoService {
         KakaoAccessToken accessToken = getKakaoAuthTokenByCode(code);
         KakaoProfile kakaoProfile = getKakaoProfileByAccessToken(accessToken);
 
+        if(kakaoProfile.getKakao_account().getEmail()==null){
+            kakaoDisconnect(accessToken);
+            throw new GeneralException(ErrorCode.NOT_FOUND,"사용자 이메일을 찾을 수 없습니다. 이메일 제공에 동의해주세요");
+        }
+
         UserDto userDto = userService.signup(new UserSocialDto(kakaoProfile));
         log.info("user nickname : {}",userDto.getUserNickname());
         log.info("user email : {}",userDto.getUserEmail());
@@ -111,5 +116,24 @@ public class KakaoService {
         }
 
         return kakaoProfile;
+    }
+
+    private String kakaoDisconnect(KakaoAccessToken oAuthToken){
+        // HTTP Header 생성
+        HttpHeaders headers3 = new HttpHeaders();
+        headers3.add("Authorization", "Bearer "+oAuthToken.getAccess_token());
+        headers3.add("Content-type","application/x-www-form-urlencoded;charset=utf-8");
+
+        // HTTP 요청 보내기 (POST 방식으로)
+        HttpEntity<String> kakaoDisconnect = new HttpEntity(headers3);
+        RestTemplate rt2 = new RestTemplate();
+        ResponseEntity<String> response2 = rt2.exchange(
+                "https://kapi.kakao.com/v1/user/unlink",
+                HttpMethod.POST,
+                kakaoDisconnect,
+                String.class
+        );
+
+        return "Success";
     }
 }
