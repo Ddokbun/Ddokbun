@@ -24,4 +24,7 @@ public interface ItemRepository extends JpaRepository<Item,Long> {
 
     List<Item> findAllByPlant_RecRateContainingIgnoreCase(String category);
 
+    @Query("SELECT t.itemName FROM Item t WHERE t.itemSeq=:itemSeq")
+    String findItemNameByItemSeq(@Param("itemSeq") long itemSeq);
+
 }

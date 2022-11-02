@@ -3,6 +3,7 @@ package com.harryporter.ddokbun.domain.product.service;
 import com.harryporter.ddokbun.domain.product.dto.request.InsertItemDto;
 import com.harryporter.ddokbun.domain.product.dto.ItemDto;
 import com.harryporter.ddokbun.domain.product.dto.request.UpdateItemDto;
+import com.harryporter.ddokbun.domain.product.dto.response.ClickRankDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemSearchDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemSimpleSearchDto;
@@ -30,4 +31,8 @@ public interface ItemService {
     List<Long> getProductList();
 
     List<ItemDto> getProductByCategory(String category);
+
+    String click(long itemSeq);
+
+    List<ClickRankDto> SearchRankList();
 }
