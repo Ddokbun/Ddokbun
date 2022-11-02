@@ -12,11 +12,7 @@ export const Kakaologin = async (login_code?: string[] | string) => {
     const accessToken = res.data.content.jwtToken;
     AXIOS.defaults.headers.common["Authorization"] = `${accessToken}`;
     console.log("성공", res);
-    cookies.save("accessToken", accessToken, {
-      path: "/",
-    });
-    Router.push("/manage");
-    return res.data;
+    return accessToken;
   } catch (error) {
     console.log(error);
   }

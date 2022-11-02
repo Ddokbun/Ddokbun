@@ -1,7 +1,7 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import { combineReducers } from "redux";
-import auth from "./auth";
+import authSlice from "./auth";
 import manage from "./manage";
 import { persistReducer } from "redux-persist";
 import storageSession from "redux-persist/lib/storage/session"; //sessionstorage나 localstorage 중에 선택
@@ -14,7 +14,7 @@ const persistConfig: any = {
 
 const rootReducers = combineReducers({
   // 여기에 reducer들 추가
-  auth,
+  authSlice,
   manage,
 });
 

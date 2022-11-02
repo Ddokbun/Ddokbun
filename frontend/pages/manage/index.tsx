@@ -1,9 +1,7 @@
 import { NextPage } from "next";
 // import { useRouter } from "next/router";
 import React from "react";
-
 import PageTitle from "../../common/PageTitle";
-
 import Card from "../../components/manage/CardItem";
 // import CardList from "../../components/manage/CardList";
 import { Wrapper } from "../../styles/manage/styles";
