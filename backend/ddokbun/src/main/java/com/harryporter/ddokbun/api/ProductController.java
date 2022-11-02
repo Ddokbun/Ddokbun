@@ -1,5 +1,7 @@
 package com.harryporter.ddokbun.api;
-
+import io.swagger.v3.oas.annotations.Parameter;
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.data.domain.Pageable;
 import com.harryporter.ddokbun.api.response.ResponseFrame;
 import com.harryporter.ddokbun.domain.product.dto.response.ClickRankDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
@@ -12,6 +14,7 @@ import com.harryporter.ddokbun.domain.user.dto.UserDto;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -100,8 +103,9 @@ public class ProductController {
     //유형별 카테고리를 통하여 필터링을 통해 상품을 반환합니다.
     @ApiOperation("카테고리 상품 조회")
     @RequestMapping(value = "/category/{categoryName}",method = RequestMethod.GET)
-    public ResponseEntity<?> getProductByCategory(@PathVariable String categoryName){
-        ResponseFrame res = ResponseFrame.ofOKResponse("카테고리별 상품 리스트를 반환합니다.",itemService.getProductByCategory(categoryName));
+    public ResponseEntity<?> getProductByCategory(
+            @Parameter(description = "?page=1&size=10")@PathVariable String categoryName, @ApiIgnore Pageable pageable){
+        ResponseFrame res = ResponseFrame.ofOKResponse("카테고리별 상품 리스트를 반환합니다.",itemService.getProductByCategory(categoryName, pageable));
         return new ResponseEntity<>(res,HttpStatus.OK);
     }
 

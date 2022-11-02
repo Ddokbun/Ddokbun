@@ -1,5 +1,5 @@
 package com.harryporter.ddokbun.domain.product.service;
-
+import org.springframework.data.domain.Pageable;
 import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
 import com.harryporter.ddokbun.domain.plant.repository.PlantRepository;
@@ -20,6 +20,7 @@ import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -186,8 +187,8 @@ public class ItemServiceImple implements ItemService{
     }
 
     @Override
-    public List<ItemCategoryDto> getProductByCategory(String category){
-        List<Item> items = itemRepository.findAllByPlant_RecRateContainingIgnoreCase(category);
+    public List<ItemCategoryDto> getProductByCategory(String category, Pageable pageable){
+        List<Item> items = itemRepository.findByPlant_RecRateContainingIgnoreCase(category,pageable);
         List<ItemCategoryDto> productList = items.stream().map(item ->ItemCategoryDto.of(item)).collect(Collectors.toList());
         return productList;
     }
@@ -206,7 +207,7 @@ public class ItemServiceImple implements ItemService{
         String key = "rank";
         ZSetOperations<String, String> ZSetOperations = redisTemplate.opsForZSet();
         //score순으로 10개 보여줌
-        Set<ZSetOperations.TypedTuple<String>> typedTuples = ZSetOperations.reverseRangeWithScores(key, 0, 9);
+        Set<ZSetOperations.TypedTuple<String>> typedTuples = ZSetOperations.reverseRangeWithScores(key, 0, 4);
         List<ClickRankDto> list = typedTuples.stream()
                 .map(tuple->ClickRankDto.convertToClickRankDto(tuple, itemRepository.findItemNameByItemSeq(Long.parseLong(tuple.getValue()))))
                 .collect(Collectors.toList());
