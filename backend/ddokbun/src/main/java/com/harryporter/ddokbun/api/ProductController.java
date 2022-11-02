@@ -99,9 +99,9 @@ public class ProductController {
     //유형별 카테고리를 통하여 필터링을 통해 상품을 반환합니다.
     @ApiOperation("유형별 조회(미완)")
     @RequestMapping(value = "/category/{categoryName}",method = RequestMethod.GET)
-    public ResponseEntity<?> getProductWhereCategory(@PathVariable String categoryName){
-
-        return null;
+    public ResponseEntity<?> getProductByCategory(@PathVariable String categoryName){
+        ResponseFrame res = ResponseFrame.ofOKResponse("카테고리별 상품 리스트를 반환합니다.",itemService.getProductByCategory(categoryName));
+        return new ResponseEntity<>(res,HttpStatus.OK);
     }
 
     //오늘의 식물 조회

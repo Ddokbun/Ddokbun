@@ -4,6 +4,7 @@ import commerceImg01 from "../../../assets/onboarding/tempRecommend01.jpg";
 import commerceImg02 from "../../../assets/onboarding/tempRecommend02.jpg";
 import commerceImg03 from "../../../assets/onboarding/tempRecommend03.jpg";
 import commerceImg04 from "../../../assets/onboarding/tempRecommend04.jpg";
+import { useSelector, useDispatch } from "react-redux";
 
 const CommerceItem = () => {
   return (

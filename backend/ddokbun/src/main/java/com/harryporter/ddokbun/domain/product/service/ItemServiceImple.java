@@ -20,7 +20,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -178,12 +177,16 @@ public class ItemServiceImple implements ItemService{
 
     @Override
     public List<Long> getProductList(){
-        List<Item> productList = itemRepository.findAll();
-        List<Long> itemSeqList =new ArrayList<>();
-        for(Item item : productList){
-            itemSeqList.add(item.getItemSeq());
-        }
-        return itemSeqList;
+        List<Item> products = itemRepository.findAll();
+        List<Long> productList = products.stream().map(product -> product.getItemSeq()).collect(Collectors.toList());
+        return productList;
+    }
+
+    @Override
+    public List<ItemDto> getProductByCategory(String category){
+        List<Item> items = itemRepository.findAllByPlant_RecRateContainingIgnoreCase(category);
+        List<ItemDto> productList = items.stream().map(item ->ItemDto.of(item)).collect(Collectors.toList());
+        return productList;
     }
 
 }

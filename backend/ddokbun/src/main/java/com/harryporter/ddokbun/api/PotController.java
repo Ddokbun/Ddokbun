@@ -4,6 +4,7 @@ import com.harryporter.ddokbun.api.response.ResponseFrame;
 import com.harryporter.ddokbun.domain.plant.dto.response.*;
 import com.harryporter.ddokbun.domain.plant.dto.request.RegisterPotRequest;
 import com.harryporter.ddokbun.domain.plant.service.PlantService;
+import com.harryporter.ddokbun.domain.plant.service.PotLogService;
 import com.harryporter.ddokbun.domain.plant.service.PotService;
 import com.harryporter.ddokbun.domain.user.dto.UserDto;
 import io.swagger.annotations.Api;
@@ -16,18 +17,19 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
-import javax.websocket.server.PathParam;
 import java.time.LocalDate;
 import java.util.List;
 
 @RequestMapping("/pot")
 @RestController
 @RequiredArgsConstructor
-@Api(tags = "화분 CRUD API")
+@Api(tags = "pot-controller")
 @Slf4j
 public class PotController {
     private final PotService potService;
     private final PlantService plantService;
+
+    private final PotLogService potLogService;
 
     // 생산직후 화분 등록
     @ApiOperation(value = "생산직후 화분 시리얼 정보만 기입")
@@ -146,8 +148,61 @@ public class PotController {
     public ResponseEntity<?> waterLog(@PathVariable("potSeq") String potSeq, @RequestParam("year") Integer year, @RequestParam("month") Integer month, @ApiIgnore @AuthenticationPrincipal UserDto principal) {
         log.info("화분 물준 로그 확인 컨트롤러 진입");
         List<LocalDate> waterList = potService.waterApplies(potSeq, year, month, principal.getUserSeq());
-        ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분 디테일 조회에 성공했습니다.", waterList);
+        log.info("화분 물준 로그를 받아오는데 성공했습니다.");
+        ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분 물 준 로그를 확인하는데 성공했습니다.", waterList);
         return new ResponseEntity<>(responseFrame, HttpStatus.OK);
     }
+
+    @ApiOperation(value = "로그값 넣기")
+    @RequestMapping(value = "/{potSeq}/potLog", method = RequestMethod.POST)
+    public ResponseEntity<?> addLog(@PathVariable("potSeq") String potSeq){
+        log.info("화분 물준 로그 확인 컨트롤러 진입");
+        Long potLog = potLogService.addLog(potSeq);
+        log.info("화분 물준 로그를 받아오는데 성공했습니다.");
+        ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분 물 준 로그를 확인하는데 성공했습니다.", potLog);
+        return new ResponseEntity<>(responseFrame, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "화분 온도 로그 확인")
+    @RequestMapping(value = "/{potSeq}/temperature", method = RequestMethod.GET)
+    public ResponseEntity<?> temperatureLog(@PathVariable("potSeq") String potSeq, @ApiIgnore @AuthenticationPrincipal UserDto principal){
+        log.info("화분 온도 로그 확인 컨트롤러 진입");
+        List<PotTemperatureLogResponse> potLogList =  potLogService.potTemperatureLogService(potSeq, principal.getUserSeq());
+        log.info("화분 온도 로그를 받아오는데 성공했습니다.");
+        ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분 온도 로그를 받아오는데 성공했습니다.", potLogList);
+        return  new ResponseEntity<>(responseFrame, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "화분 광량 로그 확인")
+    @RequestMapping(value = "/{potSeq}/light", method = RequestMethod.GET)
+    public ResponseEntity<?> lightLog(@PathVariable("potSeq") String potSeq, @ApiIgnore @AuthenticationPrincipal UserDto principal){
+        log.info("화분 광량 로그 확인 컨트롤러 진입");
+        List<PotLightLogResponse> potLogList =  potLogService.potLightLogService(potSeq, principal.getUserSeq());
+        log.info("화분 광량 로그를 받아오는데 성공했습니다.");
+        ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분 광량 로그를 받아오는데 성공했습니다.", potLogList);
+        return  new ResponseEntity<>(responseFrame, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "화분 습도 로그 확인")
+    @RequestMapping(value = "/{potSeq}/humid", method = RequestMethod.GET)
+    public ResponseEntity<?> humidityLog(@PathVariable("potSeq") String potSeq, @ApiIgnore @AuthenticationPrincipal UserDto principal){
+        log.info("화분 습도 로그 확인 컨트롤러 진입");
+        List<PotHumidityLogResponse> potLogList =  potLogService.potHumidityLogService(potSeq, principal.getUserSeq());
+        log.info("화분 습도 로그를 받아오는데 성공했습니다.");
+        ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분 습도 로그를 받아오는데 성공했습니다.", potLogList);
+        return  new ResponseEntity<>(responseFrame, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "화분 토양 습도 로그 확인")
+    @RequestMapping(value = "/{potSeq}/soil-humid", method = RequestMethod.GET)
+    public ResponseEntity<?> soilHumidityLog(@PathVariable("potSeq") String potSeq, @ApiIgnore @AuthenticationPrincipal UserDto principal){
+        log.info("화분 토양 습도 로그 확인 컨트롤러 진입");
+        List<PotSoilHumidityLogResponse> potLogList =  potLogService.potSoilHumidityLogService(potSeq, principal.getUserSeq());
+        log.info("화분 토양 습도 로그를 받아오는데 성공했습니다.");
+        ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분 토양습도 로그를 받아오는데 성공했습니다.", potLogList);
+        return  new ResponseEntity<>(responseFrame, HttpStatus.OK);
+    }
+
+
 }
 
