@@ -26,18 +26,24 @@ const PlantCare = () => {
 
   return (
     <Wrapper>
-      <DigitalTwin />
-      <span className="title">모든 환경이 최상이예요!</span>
-      <SimpleGraph
-        pages="manage"
-        temper={"51%"}
-        water={"50%"}
-        humid={"50%"}
-        waterBottle={"20%"}
-      />
-      <WeekPicker showDetailHandler={showDetailHandler} />
-      <PlantStatus />
-      <LineGraph />
+      <section className="left-section">
+        <DigitalTwin />
+        <span className="title">모든 환경이 최상이예요!</span>
+        <div className="simpleGraph-container">
+          <SimpleGraph
+            pages="manage"
+            temper={"51%"}
+            water={"50%"}
+            humid={"50%"}
+            waterBottle={"20%"}
+          />
+        </div>
+      </section>
+      <section>
+        <WeekPicker showDetailHandler={showDetailHandler} />
+        <PlantStatus />
+        <LineGraph />
+      </section>
     </Wrapper>
   );
 };

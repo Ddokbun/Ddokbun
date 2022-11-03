@@ -7,10 +7,10 @@ interface Props {
 // https://velog.io/@whljm1003/React-toggle-switch-%EA%B8%B0%EB%8A%A5
 
 export const Wrapper = styled.div<Props>`
-  /* width: max-content; */
+  width: max-content;
   width: 50px;
   display: flex;
-  flex-direction: "column";
+  flex-direction: column;
 
   .toggle {
     width: 40px;

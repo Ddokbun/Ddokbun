@@ -76,7 +76,21 @@ export const fetchCurrentStatus = async (potSeq: string) => {
     });
 
     console.log(res.data);
-    
+  } catch (error) {
+    const err = error as AxiosError;
+    console.log(err.response);
+  }
+};
+
+export const changeAutoWateringStatus = async (potSeq: string) => {
+  const url = `/api/pot/${potSeq}/water`;
+
+  try {
+    const res = await AXIOS({
+      method: "put",
+      url,
+    });
+    return res;
   } catch (error) {
     const err = error as AxiosError;
     console.log(err.response);
