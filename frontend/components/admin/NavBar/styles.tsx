@@ -1,27 +1,23 @@
-import tw from "tailwind-styled-components";
+import styled from "styled-components";
 
-export const Wrapper = tw.div`
-
-    nav {
-        md:left-0 
-        md:block 
-        md:fixed 
-        md:top-0 
-        md:bottom-0 
-        md:overflow-y-auto 
-        md:flex-row 
-        md:flex-nowrap 
-        md:overflow-hidden 
-        shadow-xl 
-        bg-white 
-        flex 
-        flex-wrap 
-        items-center 
-        justify-between 
-        relative 
-        md:w-64 
-        z-10 
-        py-4 
-        px-6
-    }
+export const Wrapper = styled.div`
+  background-color: #ededed;
+  position: fixed;
+  top: 0;
+  height: 100%;
+  padding: 40px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
+  font-family: ${props => props.theme.font.TextFont2};
+  .admin-nav {
+    display: flex;
+    flex-direction: column;
+  }
+  .title {
+    margin-bottom: 20px;
+    font-size: 22px;
+  }
+  .link-list {
+    margin-bottom: 15px;
+    font-size: 18px;
+  }
 `;

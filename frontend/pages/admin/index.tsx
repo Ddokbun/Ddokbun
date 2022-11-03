@@ -1,13 +1,14 @@
 import type { NextPage } from "next";
-import AdminMain from "../../components/admin/Main";
 import AdminNav from "../../components/admin/NavBar";
+import CommerceTable from "../../components/admin/Commerce";
+import UserTable from "../../components/admin/User";
 
 const Admin: NextPage = () => {
   return (
     <div>
       <AdminNav></AdminNav>
-      <AdminMain></AdminMain>
-      <AdminMain></AdminMain>
+      <CommerceTable></CommerceTable>
+      <UserTable></UserTable>
     </div>
   );
 };

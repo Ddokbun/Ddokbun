@@ -5,6 +5,9 @@ export const Wrapper = styled.div`
   width: 100%;
   .title {
     margin: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
   h2 {
     font-family: ${props => props.theme.font.TitleFont};
@@ -37,10 +40,16 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (${props => props.theme.mobile}) {
+    h2 {
+      font-family: ${props => props.theme.font.TitleFont};
+      font-size: 35px;
+      margin: 10px 0px 10px 0px;
+    }
     .wrap {
       display: flex;
       justify-content: center;
       align-items: center;
+
       .search {
         display: flex;
         justify-content: center;
