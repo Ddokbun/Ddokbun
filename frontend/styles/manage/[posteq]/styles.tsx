@@ -5,17 +5,39 @@ export const Wrapper = styled.section`
   max-width: 1240px;
   width: 100%;
   background-color: "#fafafa";
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   position: relative;
-<<<<<<< HEAD
-=======
 
   .title {
     color: ${props => props.theme.color.mainGreen};
     margin: 4%;
+    display: flex;
+    justify-content: center;
+    margin-right: 10%;
   }
->>>>>>> 70c584b9e00dc5206d00fca50df5b76121ceb7a4
+
+  .left-section {
+    justify-content: center;
+  }
+
+  .simpleGraph-container {
+    display: flex;
+    justify-content: center;
+    margin-right: 10%;
+  }
+
+  @media screen and (${props => props.theme.tablet}) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90%;
+  }
+
+  @media screen and (${props => props.theme.mobile}) {
+  }
+
+  .simpleGraph-container {
+    margin-right: 0;
+  }
 `;
