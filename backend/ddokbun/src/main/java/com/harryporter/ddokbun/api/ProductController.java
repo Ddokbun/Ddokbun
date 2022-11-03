@@ -91,20 +91,19 @@ public class ProductController {
 
     //유사 식물 조회
     //해당 상품과 유사한 상품을 추천한다.
-    @ApiOperation("유사 식물 조회 (미완)")
-    @RequestMapping(value = "/{itemSeq}/similar",method = RequestMethod.GET)
-    public ResponseEntity<?> productSimilar(@PathVariable Integer itemSeq){
+    @ApiOperation("유사 식물 조회")
+    @GetMapping("/{itemSeq}/similar")
+    public ResponseEntity<?> productSimilar(@PathVariable Integer itemSeq, @ApiIgnore Pageable pageable){
+        ResponseFrame res = ResponseFrame.ofOKResponse("유사 식물 리스트를 반환합니다.",itemService.getSimilarProduct(itemSeq, pageable));
+        return new ResponseEntity<>(res,HttpStatus.OK);
 
-
-        return null;
     }
 
     //유형별 추천 조회
     //유형별 카테고리를 통하여 필터링을 통해 상품을 반환합니다.
     @ApiOperation("카테고리 상품 조회")
-    @RequestMapping(value = "/category/{categoryName}",method = RequestMethod.GET)
-    public ResponseEntity<?> getProductByCategory(
-            @Parameter(description = "?page=1&size=10")@PathVariable String categoryName, @ApiIgnore Pageable pageable){
+    @GetMapping("/category/{categoryName}")
+    public ResponseEntity<?> getProductByCategory(@PathVariable String categoryName, @ApiIgnore Pageable pageable){
         ResponseFrame res = ResponseFrame.ofOKResponse("카테고리별 상품 리스트를 반환합니다.",itemService.getProductByCategory(categoryName, pageable));
         return new ResponseEntity<>(res,HttpStatus.OK);
     }

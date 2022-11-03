@@ -25,6 +25,8 @@ public interface ItemRepository extends JpaRepository<Item,Long> {
 
     List<Item> findByPlant_RecRateContainingIgnoreCase(String category,Pageable pageable);
 
+    List<Item> findByPlant_RecRate(String category,Pageable pageable);
+
     @Query("SELECT t.itemName FROM Item t WHERE t.itemSeq=:itemSeq")
     String findItemNameByItemSeq(@Param("itemSeq") long itemSeq);
 

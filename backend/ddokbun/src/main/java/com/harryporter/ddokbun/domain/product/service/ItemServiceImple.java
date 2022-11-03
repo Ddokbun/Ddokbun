@@ -187,9 +187,18 @@ public class ItemServiceImple implements ItemService{
     }
 
     @Override
-    public List<ItemCategoryDto> getProductByCategory(String category, Pageable pageable){
+    public List<ItemListDto> getSimilarProduct(long itemSeq, Pageable pageable){
+        Item i=itemRepository.findById(itemSeq).orElseThrow(
+                ()-> new GeneralException(ErrorCode.NOT_FOUND,"상품을 찾을 수 없습니다."));
+        List<Item> items = itemRepository.findByPlant_RecRate(i.getPlant().getRecRate(), pageable);
+        List<ItemListDto> similarList = items.stream().map(item -> ItemListDto.of(item)).collect(Collectors.toList());
+        return similarList;
+    }
+
+    @Override
+    public List<ItemListDto> getProductByCategory(String category, Pageable pageable){
         List<Item> items = itemRepository.findByPlant_RecRateContainingIgnoreCase(category,pageable);
-        List<ItemCategoryDto> productList = items.stream().map(item ->ItemCategoryDto.of(item)).collect(Collectors.toList());
+        List<ItemListDto> productList = items.stream().map(item -> ItemListDto.of(item)).collect(Collectors.toList());
         return productList;
     }
 
@@ -207,7 +216,7 @@ public class ItemServiceImple implements ItemService{
         String key = "rank";
         ZSetOperations<String, String> ZSetOperations = redisTemplate.opsForZSet();
         //score순으로 10개 보여줌
-        Set<ZSetOperations.TypedTuple<String>> typedTuples = ZSetOperations.reverseRangeWithScores(key, 0, 4);
+        Set<ZSetOperations.TypedTuple<String>> typedTuples = ZSetOperations.reverseRangeWithScores(key, 0, 9);
         List<ClickRankDto> list = typedTuples.stream()
                 .map(tuple->ClickRankDto.convertToClickRankDto(tuple, itemRepository.findItemNameByItemSeq(Long.parseLong(tuple.getValue()))))
                 .collect(Collectors.toList());
