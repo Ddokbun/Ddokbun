@@ -3,6 +3,8 @@ package com.harryporter.ddokbun.domain.plant.dto.response;
 import com.harryporter.ddokbun.domain.plant.entity.Pot;
 import lombok.Data;
 
+import java.time.LocalDate;
+
 @Data
 public class PotDetailResponse {
 
@@ -18,6 +20,8 @@ public class PotDetailResponse {
     private Double waterHeight;
     private String isAuto;
 
+    private LocalDate waterSupply;
+
     public static PotDetailResponse of(Pot pot){
         PotDetailResponse temp = new PotDetailResponse();
         temp.maxTemperature = pot.getPlant().getMaxTemperature();
@@ -31,6 +35,7 @@ public class PotDetailResponse {
         temp.light = pot.getLight();
         temp.waterHeight = pot.getWaterHeight();
         temp.isAuto = pot.getIsAuto();
+        temp.waterSupply = pot.getWaterSupply();
         return temp;
     }
 }
