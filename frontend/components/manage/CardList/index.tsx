@@ -1,29 +1,28 @@
 import React from "react";
-// import CardItem from "../CardItem";
+import { PlantListType } from "../../../pages/manage/[userseq]";
+import CardItem from "../CardItem";
+import { Wrapper } from "./styles";
 
-interface Plants {
-  plantSeq: string;
-  potSeq: string;
-  imagePath: string;
-  nickname: string;
-}
-
-const CardList: React.FC<{ plants: Plants[] }> = ({ plants }) => {
+const CardList: React.FC<{ plantsList: PlantListType[] }> = ({
+  plantsList,
+}) => {
   // 여기서 axios 할지 상위 컴포넌트에서 요청할지 확인필요
 
   return (
-    <ul>
-      {/* {plants.map(plant => {
-        <li>
-          <CardItem
-            plantSeq={plant.plantSeq}
-            potSeq={plant.potSeq}
-            nickname={plant.plantNickname}
-            src={plant.imagePath}
-          />
-        </li>;
-      })} */}
-    </ul>
+    <Wrapper>
+      {plantsList?.map(plant => {
+        return (
+          <li key={plant.plantSeq}>
+            <CardItem
+              plantSeq={plant.plantSeq}
+              potSerial={plant.potSerial}
+              plantNickname={plant.plantNickname}
+              imagePath={""}
+            />
+          </li>
+        );
+      })}
+    </Wrapper>
   );
 };
 

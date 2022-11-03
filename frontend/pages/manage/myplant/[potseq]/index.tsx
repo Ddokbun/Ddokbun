@@ -1,10 +1,10 @@
 import React from "react";
-import SimpleGraph from "../../../common/Graph/SimpleGraph";
-import WeekPicker from "../../../components/manage/add/WeekPicker";
-import DigitalTwin from "../../../components/manage/DigitalTwin";
-import LineGraph from "../../../components/manage/LineGraph";
-import PlantStatus from "../../../components/manage/PlantStatus";
-import { Wrapper } from "../../../styles/manage/[posteq]/styles";
+import SimpleGraph from "../../../../common/Graph/SimpleGraph";
+import WeekPicker from "../../../../components/manage/add/WeekPicker";
+import DigitalTwin from "../../../../components/manage/DigitalTwin";
+import LineGraph from "../../../../components/manage/LineGraph";
+import PlantStatus from "../../../../components/manage/PlantStatus";
+import { Wrapper } from "../../../../styles/manage/[posteq]/styles";
 
 const PlantCare = () => {
   const showDetailHandler = () => {
