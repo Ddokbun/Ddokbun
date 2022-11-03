@@ -1,5 +1,5 @@
-package com.harryporter.ddokbun.domain.plant.entity;
-
+package com.harrypoter.ddokbun_consumer.env.data.entity;
+import com.harrypoter.ddokbun_consumer.env.data.EnvDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -37,17 +37,22 @@ public class PotLog {
     @Column(name = "create_time", nullable = false)
     private LocalDateTime createdTime;
 
-    @JoinColumn(name = "pot_serial", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Pot pot;
+    @Column(name = "pot_serial", nullable = false)
+    private String potSerial;
 
-    public PotLog(Pot pot) {
-        this.temperature = 34.2;
-        this.humudity = 32.2;
-        this.soilHumidity = 32.2;
-        this.waterLevel = 32.2;
-        this.light = 32.2;
-        this.createdTime = LocalDateTime.now();
-        this.pot = pot;
+
+    public static PotLog of(EnvDto envDto) {
+        PotLog temp  =new PotLog();
+
+        temp.temperature = envDto.getTemperature();
+        temp.humudity = envDto.getHumid();
+        temp.soilHumidity =envDto.getSoilHumid();
+        temp.waterLevel = envDto.getWaterLevel();
+        temp.light =envDto.getLight();
+        temp.createdTime = LocalDateTime.now();
+        temp.potSerial = envDto.getPotSid();
+        temp.createdTime = envDto.getTime();
+        return temp;
+
     }
 }

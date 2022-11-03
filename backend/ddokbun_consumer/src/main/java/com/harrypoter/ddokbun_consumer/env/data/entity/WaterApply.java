@@ -1,5 +1,4 @@
-package com.harryporter.ddokbun.domain.plant.entity;
-
+package com.harrypoter.ddokbun_consumer.env.data.entity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -20,14 +19,7 @@ public class WaterApply {
     @Column(name = "water_supply_date", nullable = false)
     private LocalDate waterSupplyDate;
 
-    @JoinColumn(name = "pot_serial", nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Pot pot;
+    @Column(name = "pot_serial", nullable = false)
+    private String potSerial;
 
-
-    public WaterApply(Pot pot) {
-        //현재 시간 들고오기
-        this.waterSupplyDate = LocalDate.now();
-        this.pot = pot;
-    }
 }
