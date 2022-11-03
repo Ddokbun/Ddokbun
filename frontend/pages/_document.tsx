@@ -17,6 +17,7 @@ const Document = () => (
         href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Black+Han+Sans&family=DM+Serif+Display&family=Prata&display=swap"
         rel="stylesheet"
       />
+      <link rel="manifest" href="manifest.json" />
       <Script
         type="text/javascript"
         src="https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.0.js"
@@ -28,6 +29,10 @@ const Document = () => (
         href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.8.2/css/all.min.css"
       />
       <script src="https://developers.kakao.com/sdk/js/kakao.js" async></script>
+      <script type="module">
+        import 'https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate'; const el =
+        document.createElement('pwa-update'); document.body.appendChild(el);
+      </script>
     </Head>
     <body>
       <Main />

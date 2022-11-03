@@ -5,8 +5,6 @@ import ProductCard from "../../../../common/Cards/ProductCard";
 import { ListArray } from "../../../../types/commerce/list.interface";
 
 const ProductList: React.FC<{ data: ListArray }> = ({ data }) => {
-  console.log("건녕", data);
-
   return (
     <GridWrapper>
       <>
