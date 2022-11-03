@@ -6,7 +6,6 @@ import SearchCardList from "../../../components/manage/add/search/SearchCardList
 import { Wrapper } from "../../../styles/mypage/[userseq]/styles";
 import { Theme } from "../../../styles/theme";
 import Manage from "../../manage";
-import { DummyData } from "../../manage/add/search";
 
 const MyPage: NextPage = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
@@ -55,7 +54,7 @@ const MyPage: NextPage = () => {
       <div className="button-container">{buttons}</div>
 
       <div className="card-container">
-        <SearchCardList data={DummyData} isDelivery />
+        {/* <SearchCardList data={DummyData} isDelivery /> */}
       </div>
       <Manage />
     </Wrapper>

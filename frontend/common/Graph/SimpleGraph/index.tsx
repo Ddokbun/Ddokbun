@@ -25,7 +25,7 @@ const SimpleGraph: React.FC<SimpleGraphProps> = ({
   return (
     <Wrapper pages={pages}>
       <div className="line">
-        <Image src={Temper} alt="온도계이미지입니다" />
+        <Image src={Temper} alt="온도계 이미지입니다" />
         <Progress level={temper}>
           <div className="graph-total">
             <div className="graph-now"></div>
