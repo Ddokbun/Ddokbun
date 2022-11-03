@@ -10,7 +10,6 @@ export const fetchAllPlantsList = async () => {
       method: "get",
       url,
     });
-    console.log(res.data.content);
     return res.data.content;
   } catch (error) {
     const err = error as AxiosError;
@@ -19,9 +18,7 @@ export const fetchAllPlantsList = async () => {
 };
 
 export const fetchRegisterPot = async (data: RegisterType) => {
-  const url = "/api/pot";
-  console.log("여기");
-  AXIOS.defaults.withCredentials = true;
+  const url = "pot";
   try {
     const res = await AXIOS({
       method: "put",
@@ -31,6 +28,23 @@ export const fetchRegisterPot = async (data: RegisterType) => {
     console.log(res.data);
 
     return res.data.status;
+  } catch (error) {
+    const err = error as AxiosError;
+    console.log(err.response);
+  }
+};
+
+export const fetchPlantData = async (plantSeq: string) => {
+  const url = `pot/${plantSeq}/plant-info`;
+  
+  try {
+    const res = await AXIOS({
+      method: "get",
+      url,
+    });
+    console.log(res.data);
+    return res.data
+    
   } catch (error) {
     const err = error as AxiosError;
     console.log(err.response);
