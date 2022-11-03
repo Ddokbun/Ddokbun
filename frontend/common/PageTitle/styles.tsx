@@ -34,6 +34,7 @@ export const Wrapper = styled.section<Props>`
     }
     .add-btn-container {
       display: flex;
+      position: relative;
       align-items: flex-end;
       margin: 2%;
     }
