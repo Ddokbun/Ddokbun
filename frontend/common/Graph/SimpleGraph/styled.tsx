@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 interface ProgressProps {
   level: string;
+  pages: string;
 }
 
 export const Wrapper = styled.div<{ pages: string }>`
@@ -45,7 +46,11 @@ export const Progress = styled.div<ProgressProps>`
       width: ${props => props.level};
       height: 100%;
       border-radius: inherit;
-      background-color: #80c66e;
+      background-color: ${props =>
+        props.pages === "commerce" ||
+        (props.pages === "manage" && Number(props.level.slice(0, 2)) >= 30)
+          ? "#80c66e"
+          : "#b00"};
     }
   }
 `;
