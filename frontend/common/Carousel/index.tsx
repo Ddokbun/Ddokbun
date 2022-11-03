@@ -35,7 +35,7 @@ const Carousel: React.FC = () => {
         spaceBetween={30}
         className="mySwiper"
       >
-        <SwiperSlide>
+        {/* <SwiperSlide>
           <ProductCard isResponsive={false} price={18000} id={1} />
         </SwiperSlide>
         <SwiperSlide>
@@ -52,7 +52,7 @@ const Carousel: React.FC = () => {
         </SwiperSlide>
         <SwiperSlide>
           <ProductCard isResponsive={false} price={18000} id={1} />
-        </SwiperSlide>
+        </SwiperSlide> */}
       </Swiper>
     </Wrapper>
   );
