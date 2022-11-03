@@ -10,7 +10,7 @@ import { Wrapper } from "../../../styles/manage/styles";
 export interface PlantListType {
   potSerial: string;
   plantNickname: string;
-  imagePath: string;
+  imagePath?: string;
   plantSeq: number;
 }
 
@@ -25,6 +25,8 @@ const Manage: NextPage = () => {
   useEffect(() => {
     const fetchInitialData = async () => {
       const data = await fetchPlantsList();
+      console.log(data);
+
       setPlantsList(data);
     };
     fetchInitialData();

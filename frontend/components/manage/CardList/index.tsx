@@ -17,7 +17,6 @@ const CardList: React.FC<{ plantsList: PlantListType[] }> = ({
               plantSeq={plant.plantSeq}
               potSerial={plant.potSerial}
               plantNickname={plant.plantNickname}
-              imagePath={""}
             />
           </li>
         );

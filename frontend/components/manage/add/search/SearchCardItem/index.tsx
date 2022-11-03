@@ -15,6 +15,7 @@ const SearchCardItem: React.FC<Props> = ({
   plantNeName,
   plantSeq,
   isDelivery,
+  imagePath,
 }) => {
   const dispatch = useDispatch();
   const router = useRouter();
@@ -33,7 +34,7 @@ const SearchCardItem: React.FC<Props> = ({
         <Image
           width={"100%"}
           height={"100%"}
-          src={`https://ddokbun.com/api/resources/s3?plantSeq=${plantSeq}`}
+          src={imagePath}
           objectFit="cover"
           className="image"
           alt="식물 카드 이미지 입니다."
