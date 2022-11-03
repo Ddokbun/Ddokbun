@@ -27,11 +27,14 @@ export const Wrapper = styled.section`
     margin-right: 10%;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (${props => props.theme.tablet}) {
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
+    width: 90%;
+  }
+
+  @media screen and (${props => props.theme.mobile}) {
   }
 
   .simpleGraph-container {

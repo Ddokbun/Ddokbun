@@ -32,6 +32,10 @@ export const Wrapper = styled.div`
     cursor: pointer;
   }
 
+  @media screen and (${props => props.theme.tablet}) {
+    width: 100%;
+  }
+
   @media screen and (${props => props.theme.mobile}) {
     width: 90%;
     margin: auto;
