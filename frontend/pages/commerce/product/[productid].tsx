@@ -4,12 +4,12 @@ import { Wrapper } from "../../../styles/commerce/products/[product-id]/style";
 import ProductSellCard from "../../../common/Cards/ProductSellCard";
 import ProductSummary from "../../../components/commerce/products/[product-id]/ProductSummary";
 import ProductCare from "../../../components/commerce/products/[product-id]/ProductCare";
-import RelatedProducts from "../../../components/commerce/products/[product-id]/RelatedProducts";
 import { ParsedUrlQuery } from "querystring";
 import {
   fetchProductDetail,
   getAllProductNumber,
 } from "../../../apis/commerce";
+import { ItemObject } from "../../../types/commerce/detail.interface";
 
 interface IParams {
   productid: number;
@@ -22,7 +22,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
       params: { productid: String(productid) },
     };
   });
-  // const paths = [{ params: { productid: "0" } }];
+
   return {
     paths,
     fallback: false,
@@ -35,8 +35,6 @@ interface IProps extends ParsedUrlQuery {
 
 export const getStaticProps: GetStaticProps = async context => {
   const { productid } = context.params as IProps;
-  console.log(typeof productid);
-
   const data = await fetchProductDetail(productid);
   console.log(data);
 
@@ -47,58 +45,19 @@ export const getStaticProps: GetStaticProps = async context => {
   };
 };
 
-interface IPlant {
-  plantSeq: number;
-  plantName: string;
-  plantNeName: string;
-  plantZRName: string;
-  distbName: string;
-  originPlace: string;
-  growthHeight: number;
-  growthWidth: number;
-  smellDesc: string;
-  toxctyInfo: string;
-  manageLevel: string;
-  growthTemperature: string;
-  winterTemperature: string;
-  growthHumid: string;
-  specManageInfo: string;
-  adviseInfo: string;
-  functionInfo: string;
-  manageRequire: string;
-  plantPlace: string;
-  waterCycle: number;
-  waterInfo: string;
-  lightType: number;
-  lightInfo: string;
-  minTemperature: number;
-  maxTemperature: number;
-  temperatureInfo: string;
-  imagePath: string;
-  recRate: string;
-}
-
-interface IRootObject {
-  itemSeq: number;
-  itemName: string;
-  itemPrice: number;
-  itemInfo: string;
-  itemStock: number;
-  itemPicture: string;
-  itemKind: number;
-  plant: IPlant;
-}
-
-interface IdetailProps {
-  data: IRootObject;
-}
-
-const Product: NextPage<IdetailProps> = ({ data }) => {
+const Product: NextPage<{ data: ItemObject }> = ({ data }) => {
   console.log(data);
 
   return (
     <Wrapper>
-      <ProductSellCard price={18000} id={0} />
+      <ProductSellCard
+        itemSeq={data.itemSeq}
+        itemName={data.itemName}
+        itemEnName={data.itemEnName}
+        itemPicture={data.itemPicture}
+        itemPrice={data.itemPrice}
+        tags={data.plant?.recRate.split(",")}
+      />
       <ProductSummary></ProductSummary>
       <ProductCare></ProductCare>
       {/* <RelatedProducts></RelatedProducts> */}
