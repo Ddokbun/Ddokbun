@@ -84,7 +84,7 @@ export const postKakaoPay = async () => {
     total_amount: 2200,
     vat_amount: 200,
     tax_free_amount: 0,
-    approval_url: "http://localhost:3000/commerce/order/complete",
+    approval_url: "https://localhost:3000/commerce/order/complete",
     fail_url: "http://localhost:3000/commerce/order/cancled",
     cancel_url: "http://localhost:3000/commerce/order/cancled",
   };

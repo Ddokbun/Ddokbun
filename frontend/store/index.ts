@@ -3,6 +3,7 @@ import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import { combineReducers } from "redux";
 import authSlice from "./auth";
 import manage from "./manage";
+import commerce from "./commerce";
 import {
   persistStore,
   persistReducer,
@@ -25,6 +26,7 @@ const rootReducers = combineReducers({
   // 여기에 reducer들 추가
   authSlice,
   manage,
+  commerce,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);
