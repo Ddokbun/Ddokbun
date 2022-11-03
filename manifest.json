@@ -1,0 +1,27 @@
+{
+  "background_color": "#ffffff",
+  "description": "스마트 화분 관리 및 커머스 플랫폼 똑분 - Ddokbun",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "똑분 - Ddokbun",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "똑분 - Ddokbun",
+  "start_url": "/",
+  "theme_color": "#ffffff",
+  "categories": [],
+  "screenshots": [],
+  "icons": [
+    {
+      "src": "/favicon.ico"
+    },
+    {
+      "src": "카카오톡, 페이스북에에 링크 넣으면 올라올 이미지"
+    },
+    {
+      "src": "/favicon.ico",
+      "type": "image/x-icon"
+    }
+  ],
+  "shortcuts": []
+}

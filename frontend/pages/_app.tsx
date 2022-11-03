@@ -27,7 +27,7 @@ const DEFAULT_SEO = {
     site_name: "똑분 - Ddokbun",
     images: [
       {
-        url: "카카오톡, 페이스북에에 링크 넣으면 올라올 이미지",
+        url: "https://i.postimg.cc/rySCypg1/logo-04.png",
         width: 285,
         height: 167,
         alt: "스마트화분 커머스, 똑분(Ddokbun)에 방문해보세요!",
