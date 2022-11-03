@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
-import AdminNav from "../../../components/admin/nav";
+import AdminNav from "../../../components/admin/NavBar";
 
-const Admin: NextPage = () => {
+const AdminCommerce: NextPage = () => {
   return (
     <div>
       <AdminNav></AdminNav>
@@ -9,4 +9,4 @@ const Admin: NextPage = () => {
   );
 };
 
-export default Admin;
+export default AdminCommerce;
