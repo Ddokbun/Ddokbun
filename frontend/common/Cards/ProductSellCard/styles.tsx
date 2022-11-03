@@ -19,13 +19,14 @@ export const Wrapper = styled.div`
   }
 
   .text-wrap {
+    padding: max(2vw, 20px) 0px;
     width: 100%;
     height: 100%;
     display: flex;
 
     flex-direction: column;
     align-items: baseline;
-    justify-content: center;
+    justify-content: space-evenly;
 
     gap: 20px;
 
@@ -36,7 +37,7 @@ export const Wrapper = styled.div`
     .text-top {
       h2 {
         padding: 0px;
-        font-size: 60px;
+        font-size: min(5vw, 80px);
         margin: 0;
         color: ${props => props.theme.color.mainGreen};
         font-family: ${props => props.theme.font.TitleFont};
@@ -44,7 +45,7 @@ export const Wrapper = styled.div`
         text-overflow: ellipsis;
       }
       h3 {
-        font-size: 40px;
+        font-size: min(3vw, 50px);
         white-space: nowrap;
         text-overflow: ellipsis;
 
@@ -54,7 +55,7 @@ export const Wrapper = styled.div`
     }
     & > h3 {
       font-family: ${props => props.theme.font.EnglishFont};
-      font-size: 50px;
+      font-size: min(3vw, 80px);
     }
     .button-wrap {
       position: relative;

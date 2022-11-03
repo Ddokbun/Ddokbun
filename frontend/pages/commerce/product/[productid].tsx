@@ -10,6 +10,7 @@ import {
   getAllProductNumber,
 } from "../../../apis/commerce";
 import { ItemObject } from "../../../types/commerce/detail.interface";
+import RelatedProducts from "../../../components/commerce/products/[product-id]/RelatedProducts";
 
 interface IParams {
   productid: number;
@@ -46,8 +47,6 @@ export const getStaticProps: GetStaticProps = async context => {
 };
 
 const Product: NextPage<{ data: ItemObject }> = ({ data }) => {
-  console.log(data);
-
   return (
     <Wrapper>
       <ProductSellCard
@@ -57,10 +56,17 @@ const Product: NextPage<{ data: ItemObject }> = ({ data }) => {
         itemPicture={data.itemPicture}
         itemPrice={data.itemPrice}
         tags={data.plant?.recRate.split(",")}
+        originPlace={data.plant?.originPlace}
+        plantZRName={data.plant?.plantZRName}
+        growthWidth={data.plant?.growthWidth}
+        growthHeight={data.plant?.growthHeight}
       />
-      <ProductSummary></ProductSummary>
-      <ProductCare></ProductCare>
-      {/* <RelatedProducts></RelatedProducts> */}
+      <ProductCare
+        itemInfo={data.itemInfo}
+        water={data.plant?.waterCycle as number}
+        humid={data.plant?.growthHumid as string}
+      />
+      <RelatedProducts />
     </Wrapper>
   );
 };
