@@ -84,8 +84,10 @@ const AddForm = () => {
     console.log(inputValues.current);
 
     const res = await fetchRegisterPot(inputValues.current);
-    if (res.status === 201) {
+    if (res?.status === 201) {
       router.push(`/manage/${res.potSeq}`);
+    } else {
+      alert('다시 한번 확인해주세요.')
     }
   };
 

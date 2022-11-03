@@ -25,9 +25,9 @@ export interface Plants {
   plantSeq: number;
   plantName: string;
   plantNeName: string;
-  plantZRName: string;
+  plantZRName?: string;
   imagePath: string;
-  disnName: string;
+  disnName?: string;
 }
 
 const SearchPlant: NextPage<{ plants: Plants[] }> = ({ plants }) => {
