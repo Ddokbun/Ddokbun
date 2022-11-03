@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.section`
-  width: 40%;
+export const Wrapper = styled.div`
+  width: 90%;
   h2 {
     color: ${props => props.theme.color.mainGreen};
     display: flex;
