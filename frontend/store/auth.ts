@@ -3,6 +3,7 @@ import { HYDRATE } from "next-redux-wrapper";
 
 const initialState = {
   accessToken: "",
+  userSeq: "",
 };
 
 const authSlice = createSlice({

@@ -34,8 +34,11 @@ export const Wrapper = styled.section<Props>`
     }
     .add-btn-container {
       display: flex;
+      position: relative;
       align-items: flex-end;
-      margin: 2%;
+      justify-content: flex-end;
+      /* margin-left: 10%; */
+      width: 200px;
     }
   }
 `;

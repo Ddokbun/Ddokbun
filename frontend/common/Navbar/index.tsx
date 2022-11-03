@@ -21,7 +21,7 @@ const Navbar = () => {
       </div>
       <div className="menu">
         <ul>
-          <Link href={"/manage"}>IoT</Link>
+          <Link href={`/manage/${userseq}`}>IoT</Link>
           <Link href={"/commerce"}>
             <li>Shopping</li>
           </Link>
