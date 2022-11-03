@@ -1,6 +1,6 @@
 import { Wrapper } from "./styles";
 import Image from "next/image";
-import mainImg from "../../../assets/onboarding/tempAdvice01.jpg";
+import adviceImg from "../../../assets/onboarding/tempAdvice01.jpg";
 
 const RecommendItem = () => {
   return (
@@ -12,7 +12,7 @@ const RecommendItem = () => {
           <div className="img">
             <Image
               layout="fill"
-              src={mainImg}
+              src={adviceImg}
               alt="똑분 식물추천 설명 이미지"
               className="banner-img"
             />

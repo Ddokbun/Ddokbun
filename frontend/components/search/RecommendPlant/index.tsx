@@ -1,15 +1,13 @@
 import { Wrapper } from "./styles";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import Temp from "../../../assets/temp.jpg";
 import { fetchTodayPlant } from "../../../apis/search";
+import { PlantType } from "../../../types/search/recommend.interface";
 
-const RecommendPlant = () => {
-  const plants = fetchTodayPlant();
-  console.log("채리", plants);
-  useEffect(() => {
-    fetchTodayPlant();
-  }, []);
+const RecommendPlant: React.FC<{ data: PlantType }> = ({ data }) => {
+  const url = data.itemImageUrl;
+  console.log(url);
   return (
     <Wrapper>
       <div className="title">
@@ -18,7 +16,7 @@ const RecommendPlant = () => {
       <div className="img-wrap">
         <Image
           // src={Temp}
-          src={`https://ddokbun.com/api/resources/s3?plantSeq=${plants}`}
+          src={`${url}`}
           alt="임시상품이미지"
           className="img"
           width={500}
