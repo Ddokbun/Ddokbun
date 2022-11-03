@@ -1,7 +1,4 @@
 import { Wrapper } from "./styles";
-import { useEffect } from "react";
-import Image from "next/image";
-import { Input } from "../../../../../common/Input";
 
 const InputBox = () => {
   return (

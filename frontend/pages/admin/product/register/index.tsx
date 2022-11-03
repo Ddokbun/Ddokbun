@@ -1,6 +1,6 @@
 import type { NextPage } from "next";
-import InputBox from "../../../../components/admin/Commerce/Register/InputBox";
 import AdminNav from "../../../../components/admin/NavBar";
+import InputBox from "../../../../components/admin/Product/ProductRegister";
 
 const AdminRegister: NextPage = () => {
   return (

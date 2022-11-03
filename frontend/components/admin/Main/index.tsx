@@ -1,32 +1,50 @@
 import { Wrapper } from "./styles";
-import { useEffect } from "react";
-import Image from "next/image";
-import Temp from "../../../assets/temp.jpg";
-import { fetchTodayPlant } from "../../../apis/search";
-
-const RecommendPlant = () => {
-  const plants = fetchTodayPlant();
-  console.log("채리", plants);
-  useEffect(() => {
-    fetchTodayPlant();
-  }, []);
+const AdminMain = () => {
   return (
     <Wrapper>
-      <div className="title">
-        <h2>오늘의 식물</h2>
-      </div>
-      <div className="img-wrap">
-        <Image
-          // src={Temp}
-          src={`https://ddokbun.com/api/resources/s3?plantSeq=${plants}`}
-          alt="임시상품이미지"
-          className="img"
-          width={500}
-          height={500}
-        />
-      </div>
+      <>
+        <div className=" ">
+          <h3 className="title">Card Tables</h3>
+          <hr />
+          <table className="table">
+            <thead>
+              <tr className="tr">
+                <th className="">Product</th>
+                <th className="">Name</th>
+                <th className="">Status</th>
+                <th className="">Phone</th>
+                <th className="">Address</th>
+              </tr>
+            </thead>
+            <div className="table-head">
+              <hr />
+            </div>
+
+            <tbody>
+              <tr>
+                <td>해바라기</td>
+                <td>김채리</td>
+                <td>배송중</td>
+                <td>010-2250-9036</td>
+                <td>구미 임수동 수출대로</td>
+              </tr>
+              <div className="table-head">
+                <hr />
+              </div>
+              <tr>
+                <td>해바라기</td>
+                <td>김채리</td>
+                <td>배송중</td>
+                <td>010-2250-9036</td>
+                <td>구미 임수동 수출대로</td>
+              </tr>
+              <div className="table-head"></div>
+            </tbody>
+          </table>
+        </div>
+      </>
     </Wrapper>
   );
 };
 
-export default RecommendPlant;
+export default AdminMain;

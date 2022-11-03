@@ -5,7 +5,7 @@ import { useRouter } from "next/router";
 
 const AdminNav = () => {
   const [collapseShow, setCollapseShow] = React.useState("hidden");
-  const router = useRouter();
+
   return (
     <Wrapper>
       <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
@@ -17,17 +17,17 @@ const AdminNav = () => {
             }
           >
             <h6 className="md:min-w-full text-blueGray-500 text-xs uppercase font-bold block pt-1 pb-4 no-underline">
-              Admin Page
+              <Link href="/admin/">Admin Page</Link>
             </h6>
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center">
-                <Link href="/admin/user">
+                <Link href="/admin/product/register">
                   <a
                     href="#pablo"
                     className="text-xs uppercase py-3 font-bold block "
                   >
-                    <i className={"fas fa-tv mr-2 text-sm "}></i> UserData
+                    <i className={"fas fa-tv mr-2 text-sm "}></i> Product
                   </a>
                 </Link>
               </li>
@@ -47,13 +47,13 @@ const AdminNav = () => {
               </li>
 
               <li className="items-center">
-                <Link href="/admin/product">
+                <Link href="/admin/user">
                   <a
                     href="#pablo"
                     className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                   >
                     <i className="fas fa-user-circle text-blueGray-400 mr-2 text-sm"></i>{" "}
-                    Product
+                    user
                   </a>
                 </Link>
               </li>
