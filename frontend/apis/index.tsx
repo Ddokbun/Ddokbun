@@ -6,7 +6,7 @@ const AXIOS = axios.create({
   headers: {
     "Content-Type": "application/json",
   },
-  withCredentials: true,
+  // withCredentials: true,
 });
 
 AXIOS.defaults.headers.common["Authorization"] = `${getCookie("token")}`;

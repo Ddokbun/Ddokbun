@@ -1,4 +1,4 @@
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import {
   CancelButton,
@@ -10,7 +10,16 @@ import { Wrapper } from "./styles";
 import calander from "../../../../assets/icon/calander.png";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../store";
-import { fetchRegisterPot } from "../../../../apis/manage";
+import { fetchPlantData, fetchRegisterPot } from "../../../../apis/manage";
+import PlantData from "../PlantData";
+import AXIOS from "../../../../apis";
+
+export interface PlantDataType {
+  growthHumid: string;
+  lightType: number;
+  temperatureRange: number;
+  waterCycle: number;
+}
 
 const AddForm = () => {
   const router = useRouter();
@@ -23,7 +32,7 @@ const AddForm = () => {
     waterSupply: "",
     plantSeq: "",
   });
-
+  const [plantData, setPlantData] = useState<PlantDataType>();
   const [showCalander, setShowCalander] = useState(false);
   const leftPad = (value: number) => {
     if (value >= 10) {
@@ -78,14 +87,16 @@ const AddForm = () => {
     if (res.status === 201) {
       router.push(`/manage/${res.potSeq}`);
     }
-    // axios
-    // fetchPotRegister(inputValues.current)
-    // if (res.status === 201) {
-    // }
   };
 
   const onShowCalanderHandler = () => {
     setShowCalander(prev => !prev);
+  };
+
+  const getPlantData = async (data: string) => {
+    const res = await fetchPlantData(data);
+    setPlantData(res.content);
+    return res.content;
   };
 
   useEffect(() => {
@@ -97,6 +108,9 @@ const AddForm = () => {
 
   useEffect(() => {
     inputValues.current.plantSeq = plantSeq;
+    if (inputValues.current.plantSeq) {
+      getPlantData(inputValues.current.plantSeq);
+    }
   }, [plantSeq]);
 
   return (
@@ -127,30 +141,12 @@ const AddForm = () => {
           value={inputValues.current.plantNickname}
         />
         <div onClick={onShowCalanderHandler} className="calander-container">
-          {/* <Input
-            saveInput={saveInput}
-            label="마지막 물준날"
-            placeholder={inputValues.current.waterSupply}
-            type="text"
-            identifier="waterSupply"
-            image={calander}
-            value={inputValues.current.waterSupply}
-          /> */}
           <DateInput
             label="마지막 물 준날"
             image={calander}
             saveInput={saveInput}
           />
         </div>
-
-        {/* {showCalander && (
-            <DateInput
-              saveInput={saveInput}
-              onShowCalanderHandler={onShowCalanderHandler}
-            />
-          )} */}
-        {/* <div className="calander-container"> */}
-        {/* </div> */}
       </div>
       <div className="button-container">
         <div className="submit-button-container">
@@ -162,6 +158,7 @@ const AddForm = () => {
           <CancelButton>취소</CancelButton>
         </div>
       </div>
+      {plantData && <PlantData data={plantData} />}
     </Wrapper>
   );
 };
