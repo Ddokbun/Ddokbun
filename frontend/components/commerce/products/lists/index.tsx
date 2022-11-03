@@ -2,13 +2,20 @@ import React from "react";
 import { GridWrapper } from "./styles";
 
 import ProductCard from "../../../../common/Cards/ProductCard";
+import { ListArray } from "../../../../types/commerce/list.interface";
 
-const ProductList: React.FC = () => {
+const ProductList: React.FC<{ data: ListArray }> = ({ data }) => {
+  console.log(data);
+
   return (
     <GridWrapper>
-      <ProductCard isResponsive={true} price={10000} id={1} />
-      <ProductCard isResponsive={true} price={10000} id={1} />
-      <ProductCard isResponsive={true} price={10000} id={1} />
+      <>
+        {data.map(item => {
+          return (
+            <ProductCard key={item.itemSeq} item={item} isResponsive={true} />
+          );
+        })}
+      </>
     </GridWrapper>
   );
 };
