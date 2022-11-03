@@ -14,14 +14,17 @@ const CardItem: React.FC<PlantListType> = plant => {
       <h2>똑분</h2>
       <div className="plantImg">
         <Image
-          layout="fill"
-          src={`/api/resources/s3?plantSeq=${plant.plantSeq}`}
+          className="image"
+          // layout="fill"
+          width={450}
+          height={450}
+          src={`https://ddokbun.com/api//resources/s3?plantSeq=${plant.plantSeq}`}
           alt="식물이미지"
         />
       </div>
       <div className="btnContainer">
         <TextBtn
-          color={Theme.color.brown}
+          color={Theme.color.brownHover}
           path={`/manage/myplant/${plant.potSerial}`}
         >
           보러 가기
