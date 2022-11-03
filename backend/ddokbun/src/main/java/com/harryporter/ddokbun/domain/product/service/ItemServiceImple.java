@@ -125,6 +125,7 @@ public class ItemServiceImple implements ItemService{
     public ItemDetailDto insertItem(InsertItemDto insertItemDto){
         Plant plant=null;
         if(insertItemDto.getItemKind()!=2) {
+            log.info("itemKind {} : 식물, 식물+화분",insertItemDto.getItemKind());
             plant = plantRepository.findByPlantSeq(insertItemDto.getPlantSeq()).orElseThrow(
                     ()-> new GeneralException(ErrorCode.NOT_FOUND,"식물을 찾을 수 없습니다."));
         }
@@ -153,7 +154,6 @@ public class ItemServiceImple implements ItemService{
                     ()-> new GeneralException(ErrorCode.NOT_FOUND,"식물을 찾을 수 없습니다."));
         }
         Item newItem = updateItemDto.toEntity(plant);
-
         log.info("데이터 update 전 : {}",oldItem.getItemSeq());
         oldItem.changeItem(newItem);
         try {
@@ -171,11 +171,13 @@ public class ItemServiceImple implements ItemService{
 
     @Override
     public String deleteItem(long itemSeq) {
+        log.info("삭제할 item : {}",itemSeq);
         try {
             itemRepository.deleteById(itemSeq);
         }catch (Exception e){
            throw new GeneralException(ErrorCode.NOT_FOUND,"삭제가 불가능하거나, 존재하지 않는 상품입니다.");
         }
+        log.info("삭제 완료");
         return "Delete Success";
     }
 
@@ -188,16 +190,20 @@ public class ItemServiceImple implements ItemService{
 
     @Override
     public List<ItemListDto> getSimilarProduct(long itemSeq, Pageable pageable){
+        log.info("### Similar to 상품 {}번 찾기",itemSeq);
         Item i=itemRepository.findById(itemSeq).orElseThrow(
                 ()-> new GeneralException(ErrorCode.NOT_FOUND,"상품을 찾을 수 없습니다."));
         List<Item> items = itemRepository.findByPlant_RecRate(i.getPlant().getRecRate(), pageable);
+        log.info("### entity list -> dto list");
         List<ItemListDto> similarList = items.stream().map(item -> ItemListDto.of(item)).collect(Collectors.toList());
         return similarList;
     }
 
     @Override
     public List<ItemListDto> getProductByCategory(String category, Pageable pageable){
+        log.info("### 카테고리 이름({})으로 상품 찾기",category);
         List<Item> items = itemRepository.findByPlant_RecRateContainingIgnoreCase(category,pageable);
+        log.info("### entity list -> dto list");
         List<ItemListDto> productList = items.stream().map(item -> ItemListDto.of(item)).collect(Collectors.toList());
         return productList;
     }
@@ -206,7 +212,7 @@ public class ItemServiceImple implements ItemService{
     public String click(long itemSeq){
         String key = "rank";
         ZSetOperations<String, String> ZSetOperations = redisTemplate.opsForZSet();
-        //score를 1씩 올려준다.
+        log.info("### {} score +1",itemSeq);
         ZSetOperations.incrementScore(key, itemSeq+"", 1);
         return "Success";
     }
@@ -215,12 +221,12 @@ public class ItemServiceImple implements ItemService{
     public List<ClickRankDto> SearchRankList() {
         String key = "rank";
         ZSetOperations<String, String> ZSetOperations = redisTemplate.opsForZSet();
-        //score순으로 10개 보여줌
+        log.info("### 1 ~ 10 rank sort");
         Set<ZSetOperations.TypedTuple<String>> typedTuples = ZSetOperations.reverseRangeWithScores(key, 0, 9);
+        log.info("### convert to Dto by itemSeq");
         List<ClickRankDto> list = typedTuples.stream()
-                .map(tuple->ClickRankDto.convertToClickRankDto(tuple, itemRepository.findItemNameByItemSeq(Long.parseLong(tuple.getValue()))))
+                .map(tuple->ClickRankDto.convertToClickRankDto(tuple, itemRepository.findById(Long.parseLong(tuple.getValue())).orElse(null)))
                 .collect(Collectors.toList());
-        System.out.println(list);
         return list;
     }
 

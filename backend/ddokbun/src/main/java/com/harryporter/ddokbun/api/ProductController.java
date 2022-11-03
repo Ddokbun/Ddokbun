@@ -129,7 +129,7 @@ public class ProductController {
 
     //인기 식물을 조회한다.
     //조회수가 많은 상품을 출력함
-    @ApiOperation("인기 식물 조회 (24시간 후 reset)")
+    @ApiOperation("인기 식물 조회 (00시/서버리붓시 reset)")
     @RequestMapping(value = "/hot",method = RequestMethod.GET)
     public ResponseEntity<?> getHotProduct(){
         ResponseFrame res = ResponseFrame.ofOKResponse("인기 식물 리스트를 반환합니다.",itemService.SearchRankList());
