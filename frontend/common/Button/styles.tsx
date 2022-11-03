@@ -10,9 +10,12 @@ export const PriceTextButtonStyle = styled.div`
   color: ${props => props.theme.color.brown};
   cursor: pointer;
   align-items: center;
+  h3 {
+    font-size: 30px !important;
+  }
   gap: 10px;
   svg {
-    width: 10px;
+    width: 25px;
     height: 20px;
   }
 

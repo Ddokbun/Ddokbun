@@ -19,12 +19,12 @@ export const getAllProductNumber = async () => {
 };
 
 export const fetchProductList = async (params: string) => {
-  const path = `market/product/category/${params}`;
+  const url = `market/product/category/${params}`;
 
   try {
     const res = await AXIOS({
       method: "GET",
-      url: path,
+      url,
     });
     return res.data.content;
   } catch (error) {
