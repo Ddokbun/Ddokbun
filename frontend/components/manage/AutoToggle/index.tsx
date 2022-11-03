@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import { useRouter } from "next/router";
+import React, { useEffect, useState } from "react";
+import { changeAutoWateringStatus } from "../../../apis/manage";
 import { Wrapper } from "./styles";
 
 const AutoToggle = () => {
@@ -7,6 +9,17 @@ const AutoToggle = () => {
   const onToggleChangeHandler = () => {
     setIsToggled(prev => !prev);
   };
+
+  const { potseq } = useRouter().query;
+
+  // useEffect(() => {
+  //   const changeStatus = async () => {
+  //     if (typeof potseq === "string") {
+  //       await changeAutoWateringStatus(potseq);
+  //     }
+  //   };
+  //   changeStatus();
+  // }, [isToggled, potseq]);
 
   return (
     <Wrapper toggle={isToggled}>
