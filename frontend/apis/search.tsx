@@ -7,8 +7,8 @@ export const fetchTodayPlant = async () => {
       method: "GET",
       url: path,
     });
-    console.log(res);
-    return res.data.content;
+    console.log(res.data.content[0]);
+    return res.data.content[0];
   } catch (error) {
     console.log(error);
   }
