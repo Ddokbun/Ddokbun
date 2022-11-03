@@ -7,8 +7,8 @@ import lombok.Data;
 public class SearchPlantInfoResponse {
     private Integer waterCycle;
     private Integer lightType;
-    private Integer minTemperature;
-    private Integer maxTemperature;
+//    private Integer minTemperature;
+//    private Integer maxTemperature;
 
     private String temperatureRange;
     private String growthHumid;
@@ -18,8 +18,8 @@ public class SearchPlantInfoResponse {
 
         temp.waterCycle = plant.getWaterCycle();
         temp.lightType = plant.getLightType();
-        temp.minTemperature = plant.getMinTemperature();
-        temp.maxTemperature = plant.getMaxTemperature();
+//        temp.minTemperature = plant.getMinTemperature();
+//        temp.maxTemperature = plant.getMaxTemperature();
         temp.temperatureRange =plant.getMinTemperature()+" ~ "+ plant.getMaxTemperature();
         temp.growthHumid = plant.getGrowthHumid();
 
