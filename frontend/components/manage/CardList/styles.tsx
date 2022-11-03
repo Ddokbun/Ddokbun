@@ -1,3 +1,6 @@
 import styled from "styled-components";
 
-const Wrapper = styled.ul``
+export const Wrapper = styled.ul`
+  display: flex;
+  justify-content: space-between;
+`;

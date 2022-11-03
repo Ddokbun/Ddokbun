@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   border-color: ${props => props.theme.color.brown};
-  width: 40%;
+  width: 100%;
   height: 60%;
   border-width: 3px;
   border-radius: 20px;
