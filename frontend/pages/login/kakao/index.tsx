@@ -2,13 +2,10 @@ import type { NextPage } from "next";
 import React, { useEffect } from "react";
 import { Router, useRouter } from "next/router";
 import { Kakaologin } from "../../../apis/auth";
-import { useSelector, useDispatch } from "react-redux";
-import { ent } from "../../../store/auth";
 
 const KakaoLogin: NextPage = () => {
   const router = useRouter();
   const login_code = router.query.code;
-  const dispatch = useDispatch();
 
   // useEffect(() => {
   //   const fetchAccessToken = async () => {

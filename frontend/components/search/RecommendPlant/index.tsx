@@ -5,10 +5,11 @@ import Temp from "../../../assets/temp.jpg";
 import { fetchTodayPlant } from "../../../apis/search";
 
 const RecommendPlant = () => {
+  const plants = fetchTodayPlant();
+  console.log("채리", plants);
   useEffect(() => {
     fetchTodayPlant();
   }, []);
-
   return (
     <Wrapper>
       <div className="title">
@@ -16,8 +17,8 @@ const RecommendPlant = () => {
       </div>
       <div className="img-wrap">
         <Image
-          src={Temp}
-          // src="https://ddokbun.com/api/resources/s3?plantSeq=1"
+          // src={Temp}
+          src={`https://ddokbun.com/api/resources/s3?plantSeq=${plants}`}
           alt="임시상품이미지"
           className="img"
           width={500}
