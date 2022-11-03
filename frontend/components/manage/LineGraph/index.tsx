@@ -34,7 +34,6 @@ const LineGraph: React.FC = () => {
     ],
   };
   const options = {
-
     plugins: {
       tooltip: {
         // backgroundColor: "#fff",

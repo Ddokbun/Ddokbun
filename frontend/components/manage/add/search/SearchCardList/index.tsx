@@ -13,7 +13,9 @@ const SearchCardList: React.FC<{
         plantNeName={plant.plantNeName}
         plantSeq={plant.plantSeq}
         key={plant.plantSeq}
-        isDelivery={isDelivery} plantZRName={""} imagePath={""} disnName={""}      />
+        isDelivery={isDelivery}
+        imagePath={plant.imagePath}
+      />
     );
   });
 
