@@ -11,11 +11,13 @@ export const GridWrapper = styled.div`
   width: 100%;
   place-items: center;
 
+  @media screen and (${props => props.theme.tablet}) {
+    grid-template-columns: repeat(2, 1fr);
+    padding: 0px 100px;
+  }
+
   @media screen and (${props => props.theme.mobile}) {
-    display: grid;
     grid-template-columns: repeat(1, 1fr);
-    grid-template-rows: auto;
-    grid-auto-flow: row;
-    grid-gap: 50px;
+    padding: 0px 10px;
   }
 `;
