@@ -5,7 +5,7 @@ import PageTitle from "../../../common/PageTitle";
 import SearchCardList from "../../../components/manage/add/search/SearchCardList";
 import { Wrapper } from "../../../styles/mypage/[userseq]/styles";
 import { Theme } from "../../../styles/theme";
-import Manage from "../../manage";
+import Manage from "../../manage/[userseq]";
 
 const MyPage: NextPage = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
