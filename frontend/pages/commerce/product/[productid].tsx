@@ -101,7 +101,7 @@ const Product: NextPage<IdetailProps> = ({ data }) => {
       <ProductSellCard price={18000} id={0} />
       <ProductSummary></ProductSummary>
       <ProductCare></ProductCare>
-      <RelatedProducts></RelatedProducts>
+      {/* <RelatedProducts></RelatedProducts> */}
     </Wrapper>
   );
 };

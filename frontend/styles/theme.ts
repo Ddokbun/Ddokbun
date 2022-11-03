@@ -2,10 +2,12 @@ import { DefaultTheme } from "styled-components";
 
 const deviceSize = {
   mobile: "600px",
+  tablet: "1024px",
 };
 
 export const Theme: DefaultTheme = {
   mobile: `(max-width:${deviceSize.mobile})`,
+  tablet: `(max-width:${deviceSize.tablet})`,
 
   font: {
     EnglishFont: "DM Serif Display",
