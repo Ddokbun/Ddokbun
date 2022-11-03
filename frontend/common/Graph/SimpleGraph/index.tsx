@@ -26,15 +26,16 @@ const SimpleGraph: React.FC<SimpleGraphProps> = ({
     <Wrapper pages={pages}>
       <div className="line">
         <Image src={Temper} alt="온도계 이미지입니다" />
-        <Progress level={temper}>
+        <Progress pages={pages} level={temper}>
           <div className="graph-total">
             <div className="graph-now"></div>
           </div>
         </Progress>
+        <span></span>
       </div>
       <div className="line">
         <Image src={Water} alt="물 이미지입니다" />
-        <Progress level={water}>
+        <Progress pages={pages} level={water}>
           <div className="graph-total">
             <div className="graph-now"></div>
           </div>
@@ -42,7 +43,7 @@ const SimpleGraph: React.FC<SimpleGraphProps> = ({
       </div>
       <div className="line">
         <Image src={Humid} alt="토양습도 이미지입니다" />
-        <Progress level={humid}>
+        <Progress pages={pages} level={humid}>
           <div className="graph-total">
             <div className="graph-now"></div>
           </div>
@@ -51,7 +52,7 @@ const SimpleGraph: React.FC<SimpleGraphProps> = ({
       {waterBottle && (
         <div className="line">
           <Image src={WaterBottle} alt="남은 물양 이미지입니다" />
-          <Progress level={waterBottle}>
+          <Progress level={waterBottle} pages={pages}>
             <div className="graph-total">
               <div className="graph-now"></div>
             </div>

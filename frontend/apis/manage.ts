@@ -65,3 +65,20 @@ export const fetchPlantsList = async () => {
     console.log(err.response);
   }
 };
+
+export const fetchCurrentStatus = async (potSeq: string) => {
+  const url = `pot/${potSeq}`;
+
+  try {
+    const res = await AXIOS({
+      method: "get",
+      url,
+    });
+
+    console.log(res.data);
+    
+  } catch (error) {
+    const err = error as AxiosError;
+    console.log(err.response);
+  }
+};
