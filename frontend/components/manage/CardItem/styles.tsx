@@ -2,25 +2,26 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   border-color: ${props => props.theme.color.brown};
-  width: 40%;
-  height: 60%;
+  width: 90%;
+  /* height: 100%; */
   border-width: 3px;
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   position: relative;
+  margin-bottom: 10%;
 
   .btnContainer {
     position: absolute;
     bottom: 18px;
     right: 18px;
   }
-  .plantImg {
-    width: 320px;
-    height: 440px;
+  .image {
     display: flex;
+    justify-content: center;
+    border-radius: 16px;
+    opacity: 0.9
   }
   h2 {
     color: ${props => props.theme.color.mainGreen};
@@ -33,7 +34,7 @@ export const Wrapper = styled.div`
     /* margin: auto; */
     display: flex;
 
-    .add-btn-container {
+    .btn-container {
       display: flex;
       align-items: flex-end;
       margin: 2%;
