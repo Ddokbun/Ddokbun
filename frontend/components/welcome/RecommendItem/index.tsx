@@ -13,7 +13,7 @@ const RecommendItem = () => {
             <Image
               layout="fill"
               src={mainImg}
-              alt="임시 메인 이미지"
+              alt="똑분 식물추천 설명 이미지"
               className="banner-img"
             />
           </div>

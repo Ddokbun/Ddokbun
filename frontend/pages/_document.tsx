@@ -4,6 +4,14 @@ import Script from "next/script";
 const Document = () => (
   <Html>
     <Head>
+      <meta
+        name="naver-site-verification"
+        content="dcc1baf4f88a927d4f1b9d8e02e127e25357e300"
+      />
+      <meta
+        name="google-site-verification"
+        content="TX_UfTDiWfdrhQQgBw8r8aHU0Krb2_foLRN6GowEBCw"
+      />
       <link rel="preconnect" href="https://fonts.googleapis.com" />
       <link
         href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Black+Han+Sans&family=DM+Serif+Display&family=Prata&display=swap"
