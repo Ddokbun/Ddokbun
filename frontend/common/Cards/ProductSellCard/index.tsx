@@ -4,34 +4,52 @@ import { Wrapper } from "./styles";
 import Temp from "../../../assets/temp.jpg";
 import ProductLabel from "../../Labels/ProductsLabel";
 import { BuyButton, BuyListButton } from "../../Button";
+import { ItemObject } from "../../../types/commerce/detail.interface";
+import ProductSummary from "../../../components/commerce/products/[product-id]/ProductSummary";
 
-interface ProductInfo {
-  price: number;
-  id: number;
+interface SellItemObject extends ItemObject {
+  tags?: string[];
+  originPlace?: string;
+  plantZRName?: string;
+  growthWidth?: number;
+  growthHeight?: number;
 }
 
-const ProductSellCard: React.FC<ProductInfo> = ({ price, id }) => {
+const ProductSellCard: React.FC<SellItemObject> = props => {
   return (
     <Wrapper>
       <div className="img-wrap">
         <Image
           objectFit="contain"
-          objectPosition="50% 50%"
-          src={Temp}
+          layout="fill"
+          src={props.itemPicture}
           alt="임시상품이미지"
         />
       </div>
       <div className="text-wrap">
         <div className="text-top">
-          <h3>Swiss Chress</h3>
-          <h2>임시상품명</h2>
+          <h3>{props.itemEnName}</h3>
+          <h2>{props.itemName}</h2>
+          <div className="tag-wrap">
+            {props.tags?.map((tag, idx) => {
+              return <ProductLabel key={idx}>{tag}</ProductLabel>;
+            })}
+          </div>
         </div>
 
-        <ProductLabel>초보집사</ProductLabel>
-        <h3>₩ {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h3>
+        <h3>
+          ₩ {props.itemPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+        </h3>
+        <ProductSummary
+          originPlace={props.originPlace}
+          plantZRName={props.plantZRName}
+          growthWidth={props.growthWidth}
+          growthHeight={props.growthHeight}
+        />
+
         <div className="button-wrap">
-          <BuyButton id={id} />
-          <BuyListButton id={id} />
+          <BuyButton id={props.itemSeq} />
+          <BuyListButton id={props.itemSeq} />
         </div>
       </div>
     </Wrapper>
