@@ -22,7 +22,7 @@ const AdminNav = () => {
 
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center">
-                <Link href="/admin/product/register">
+                <Link href="/admin/product">
                   <a
                     href="#pablo"
                     className="text-xs uppercase py-3 font-bold block "
@@ -58,12 +58,13 @@ const AdminNav = () => {
                 </Link>
               </li>
               <li className="items-center">
-                <Link href="/admin/plant">
+                <Link href="/admin/product/register">
                   <a
                     href="#pablo"
                     className="text-blueGray-700 hover:text-blueGray-500 text-xs uppercase py-3 font-bold block"
                   >
-                    <i className="fas fa-tools mr-2 text-sm"></i> PlantData
+                    <i className="fas fa-tools mr-2 text-sm"></i> Product
+                    Register
                   </a>
                 </Link>
               </li>

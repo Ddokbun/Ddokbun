@@ -1,7 +1,6 @@
 import tw from "tailwind-styled-components";
 
 export const Wrapper = tw.div`
-
     nav {
         md:left-0 
         md:block 
