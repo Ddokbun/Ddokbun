@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="9d91fe11-88d3-4043-950c-f5d7afc72424" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/S07P31D208.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.gradle/7.4/checksums/checksums.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.gradle/7.4/checksums/md5-checksums.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.gradle/7.4/checksums/sha1-checksums.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.gradle/7.4/dependencies-accessors/dependencies-accessors.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.gradle/7.4/dependencies-accessors/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.gradle/7.4/executionHistory/executionHistory.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.gradle/7.4/executionHistory/executionHistory.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.gradle/7.4/fileChanges/last-build.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.gradle/7.4/fileHashes/fileHashes.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.gradle/7.4/fileHashes/fileHashes.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.gradle/7.4/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.gradle/7.4/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.gradle/file-system.probe" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.gradle/vcs-1/gc.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.idea/gradle.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.idea/jarRepositories.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/build.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/gradle/wrapper/gradle-wrapper.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/gradlew" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/gradlew.bat" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/settings.gradle" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/src/main/java/com/harrypoter/ddokbun_consumer/KafkaConsumerMain.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/src/main/java/com/harrypoter/ddokbun_consumer/env/data/EnvDataService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/src/main/java/com/harrypoter/ddokbun_consumer/env/data/EnvDto.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/src/main/java/com/harrypoter/ddokbun_consumer/env/data/repository/PotLogRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/src/main/java/com/harrypoter/ddokbun_consumer/env/data/repository/PotRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/src/main/java/com/harrypoter/ddokbun_consumer/env/data/repository/WaterApplyRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ddokbun/src/main/java/com/harryporter/ddokbun/domain/plant/entity/Plant.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/src/main/java/com/harrypoter/ddokbun_consumer/env/data/entity/Plant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ddokbun/src/main/java/com/harryporter/ddokbun/domain/plant/entity/Pot.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/src/main/java/com/harrypoter/ddokbun_consumer/env/data/entity/Pot.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ddokbun/src/main/java/com/harryporter/ddokbun/domain/plant/entity/PotLog.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/src/main/java/com/harrypoter/ddokbun_consumer/env/data/entity/PotLog.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/backend/ddokbun/src/main/java/com/harryporter/ddokbun/domain/plant/entity/WaterApply.java" beforeDir="false" afterPath="$PROJECT_DIR$/backend/ddokbun_consumer/src/main/java/com/harrypoter/ddokbun_consumer/env/data/entity/WaterApply.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectId" id="2H1Nrq6O4jBGTOIJiHkkEfierxh" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "C:/Users/multicampus/Desktop/gitwork/freeproject/S07P31D208"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\multicampus\Desktop\gitwork\freeproject\S07P31D208\backend\ddokbun\src\main\java\com\harryporter\ddokbun\domain\plant\repository" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="9d91fe11-88d3-4043-950c-f5d7afc72424" name="Changes" comment="" />
+      <created>1667448831865</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1667448831865</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>

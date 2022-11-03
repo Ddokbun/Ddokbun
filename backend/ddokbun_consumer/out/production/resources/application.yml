@@ -1,0 +1,40 @@
+spring:
+  kafka:
+    bootstrap-servers:
+      - k7d208.p.ssafy.io:8992
+      - k7d208.p.ssafy.io:8993
+      - k7d208.p.ssafy.io:8994
+    consumer:
+      # consumer bootstrap servers가 따로 존재하면 설정
+      # bootstrap-servers: 192.168.0.4:9092
+      # 식별 가능한 Consumer Group Id
+      group-id: pot_data_consume_basic_test
+      # Kafka 서버에 초기 offset이 없거나, 서버에 현재 offset이 더 이상 존재하지 않을 경우 수행할 작업을 설정
+      # latest: 가장 최근에 생산된 메시지로 offeset reset
+      # earliest: 가장 오래된 메시지로 offeset reset
+      # none: offset 정보가 없으면 Exception 발생
+      auto-offset-reset: latest
+      # 데이터를 받아올 때, key/value를 역직렬화
+      # JSON 데이터를 받아올 것이라면 JsonDeserializer
+      key-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-deserializer: org.apache.kafka.common.serialization.StringDeserializer
+    producer:
+      # producer bootstrap servers가 따로 존재하면 설정
+      # bootstrap-servers: 3.34.97.97:9092
+      # 데이터를 보낼 때, key/value를 직렬화
+      # JSON 데이터를 보낼 것이라면 JsonDeserializer
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
+# 출처 :https://velog.io/@taehodot/SpringBoot-%EC%B9%B4%ED%94%84%EC%B9%B4%EC%99%80-%EC%8A%A4%ED%94%84%EB%A7%81%EB%B6%80%ED%8A%B8-%EC%97%B0%EB%8F%99
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://k7d208.p.ssafy.io:3208/ddokbun
+    username: ddokbun
+    password: dd123
+  jpa:
+    properties:
+      hibernate:
+        show_sql: true
+        format_sql: true
+    hibernate:
+      ddl-auto: none

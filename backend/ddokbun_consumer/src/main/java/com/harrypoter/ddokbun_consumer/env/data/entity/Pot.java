@@ -1,10 +1,10 @@
-package com.harryporter.ddokbun.domain.plant.entity;
+package com.harrypoter.ddokbun_consumer.env.data.entity;
 
-import com.harryporter.ddokbun.domain.plant.dto.request.RegisterPotRequest;
-import com.harryporter.ddokbun.domain.user.entity.User;
+import com.harrypoter.ddokbun_consumer.env.data.EnvDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.time.LocalDate;
@@ -12,6 +12,7 @@ import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@DynamicUpdate
 @NoArgsConstructor
 @Setter
 public class Pot {
@@ -70,31 +71,19 @@ public class Pot {
     private String isAuto;
 
     // 식물
-    @JoinColumn(name = "plant_seq", nullable = true)
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Plant plant;
+    @Column(name = "plant_seq", nullable = true)
+    private Long plant;
 
     //멤버
-    @JoinColumn(name = "user_seq", nullable = true)
-    @ManyToOne(fetch = FetchType.LAZY)
-    private User user;
+    @Column(name = "user_seq", nullable = true)
+    private Long userSeq;
 
-    @PrePersist
-    public void setting(){
-        this.createdTime = LocalDateTime.now(); //서버 돌아가는 컴퓨터 시간대의 현재
-    }
-
-
-    public void potChange(RegisterPotRequest registerPotRequest, User user, Plant plant){
-        this.potSerial = registerPotRequest.getPotSerial();
-        this.plantNickname = registerPotRequest.getPlantNickname();
-        this.isAuto = "Y";
-        this.waterSupply = registerPotRequest.getWaterSupply();
-        this.user = user;
-        this.plant = plant;
-    }
-
-    public void potWaterApllyChange(LocalDate localDate) {
-        this.waterSupply = localDate;
+    public void updateBy(EnvDto envDto) {
+        this.temperature = envDto.getTemperature();
+        this.humidity = envDto.getHumid();
+        this.soilHumidity = envDto.getSoilHumid();
+        this.waterHeight = envDto.getWaterLevel();
+        this.light = envDto.getLight();
+        this.updatedTime =envDto.getTime();
     }
 }

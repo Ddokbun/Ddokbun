@@ -1,4 +1,4 @@
-package com.harryporter.ddokbun.domain.plant.entity;
+package com.harrypoter.ddokbun_consumer.env.data.entity;
 
 import lombok.*;
 
@@ -10,7 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Plant {
-    //식물 일련 번호
+    //식물 인련 번호
     @Id
     @Column(name="plant_seq")
     @GeneratedValue(strategy = GenerationType.AUTO)
