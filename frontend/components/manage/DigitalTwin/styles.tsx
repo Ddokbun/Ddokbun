@@ -6,6 +6,8 @@ export const Wrapper = styled.div`
     color: ${props => props.theme.color.mainGreen};
     display: flex;
     align-items: flex-end;
+    font-size: 36px;
+    font-weight: bold;
   }
 
   .twin-background {
@@ -29,11 +31,14 @@ export const Wrapper = styled.div`
   .water {
     cursor: pointer;
   }
-  svg {
-  }
 
   @media screen and (${props => props.theme.mobile}) {
     width: 90%;
     margin: auto;
+    min-width: 400px;
+
+    h2 {
+      font-size: 16px;
+    }
   }
 `;
