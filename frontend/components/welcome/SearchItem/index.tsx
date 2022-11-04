@@ -13,7 +13,7 @@ const SearchItem = () => {
               <div className="back-img">
                 <Image
                   src={tempSearch01}
-                  alt="임시 메인 이미지"
+                  alt="똑분 식물 검색 이미지 1"
                   className="banner-img"
                   layout="fill"
                 />
@@ -23,7 +23,7 @@ const SearchItem = () => {
               <div className="front-img">
                 <Image
                   src={tempSearch02}
-                  alt="임시 메인 이미지"
+                  alt="똑분 식물 검색 이미지 2"
                   className="banner-img"
                 />
               </div>

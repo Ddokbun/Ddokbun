@@ -9,35 +9,31 @@ import { Theme } from "../styles/theme";
 import GlobalStyle from "../styles/global-styles";
 import { wrapper } from "../store";
 import Navbar from "../common/Navbar/index";
-
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
-
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import Head from "next/head";
 
 const DEFAULT_SEO = {
   title: "똑분 - Ddokbun",
-  description: "똑분 - Ddokbun",
+  description: "스마트화분 판매 플랫폼 똑분 - Ddokbun",
   canonical: "https://www.ddokbun.com",
   openGraph: {
     type: "website",
     locale: "ko_KR",
     url: "https://www.ddokbun.com",
     title: "똑분 - Ddokbun에 방문해보세요!",
+    description:
+      "스마트화분 판매 플랫폼 똑분 - Ddokbun에 방문해서 나만의 식물을 추천받아보세요!",
     site_name: "똑분 - Ddokbun",
     images: [
       {
-        url: "카카오톡, 페이스북에에 링크 넣으면 올라올 이미지",
+        url: "https://i.postimg.cc/rySCypg1/logo-04.png",
         width: 285,
         height: 167,
-        alt: "이미지",
+        alt: "스마트화분 커머스, 똑분(Ddokbun)에 방문해보세요!",
       },
     ],
-  },
-  twitter: {
-    handle: "@handle",
-    site: "@site",
-    cardType: "summary_large_image",
   },
 };
 
@@ -50,6 +46,9 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
 
   return (
     <>
+      <Head>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+      </Head>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <DefaultSeo {...DEFAULT_SEO} />

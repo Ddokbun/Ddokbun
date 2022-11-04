@@ -134,9 +134,11 @@ export const LoginButton: React.FC<{
   path: string;
 }> = ({ path }) => {
   return (
-    <Link href={path}>
-      <LoginButtonStyle>로그인 없이 둘러보기</LoginButtonStyle>
-    </Link>
+    <div>
+      <Link href={path}>
+        <LoginButtonStyle>로그인 없이 둘러보기</LoginButtonStyle>
+      </Link>
+    </div>
   );
 };
 

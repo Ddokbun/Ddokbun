@@ -32,7 +32,7 @@ public class UserController {
     @ApiOperation(value = "사용자 정보 조회")
     @GetMapping
     public ResponseEntity<?> getUserInfo(@ApiIgnore @AuthenticationPrincipal UserDto userDto){
-        log.info("사용자 : {}",userDto.getUserSeq());
+        log.info("사용자 정보 조회 API :: userSeq : {}",userDto.getUserSeq());
         ResponseFrame<?> res =  ResponseFrame.ofOKResponse("Success",userService.loadUserByUserSeq(userDto.getUserSeq()));
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
@@ -40,7 +40,7 @@ public class UserController {
     @ApiOperation(value = "닉네임 변경")
     @PutMapping
     public ResponseEntity<?> updateNickname(String nickname,@ApiIgnore @AuthenticationPrincipal UserDto userDto){
-        log.info("User Seq  :  {}",userDto.getUserSeq());
+        log.info("닉네임 변경 API :: userSeq : {}",userDto.getUserSeq());
         String result = userService.updateNickname(userDto.getUserSeq(),nickname);
         ResponseFrame<?> res =  ResponseFrame.ofOKResponse("Success",result);
         return new ResponseEntity<>(res, HttpStatus.OK);
