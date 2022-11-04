@@ -15,14 +15,6 @@ const authSlice = createSlice({
       return { ...action.payload.setEnt };
     },
   },
-  extraReducers: {
-    // 예시
-    [HYDRATE]: (state, action) => {
-      return {
-        ...action.payload.setEnt,
-      };
-    },
-  },
 });
 
 export const ent = authSlice.actions;

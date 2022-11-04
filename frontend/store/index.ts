@@ -1,6 +1,6 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
-import { combineReducers } from "redux";
+import { AnyAction, combineReducers } from "redux";
 import authSlice from "./auth";
 import manage from "./manage";
 import { CartListSlice, CommerceState, RelatedProductSlice } from "./commerce";
@@ -15,22 +15,20 @@ import {
   REGISTER,
 } from "redux-persist";
 import storageSession from "redux-persist/lib/storage/session"; //sessionstorage나 localstorage 중에 선택
-import { ListArray } from "../types/commerce/list.interface";
-
-const persistConfig: any = {
-  key: "root",
-  storage: storageSession,
-  whitelist: ["authSlice", "CartListSlice.reducer"], //유지할 데이터
-};
+import {
+  ListArray,
+  ListObjectItem,
+  ProductLists,
+} from "../types/commerce/list.interface";
 
 export interface StoreState {
-  relatedProductSlice: ListArray;
-  CartListSlice: ListArray;
+  relatedProductSlice: ProductLists;
+  cartList: ListArray;
   authSlice: any;
   manage: any;
 }
 
-const rootReducers = combineReducers({
+const combinedReducer = combineReducers({
   // 여기에 reducer들 추가
   manage,
   authSlice,
@@ -38,7 +36,29 @@ const rootReducers = combineReducers({
   relatedProductSlice: RelatedProductSlice.reducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducers);
+const rootReducers = (
+  state: ReturnType<typeof combinedReducer>,
+  action: AnyAction,
+) => {
+  switch (action.type) {
+    case HYDRATE:
+      return {
+        ...state,
+        ...action.payload,
+      };
+
+    default:
+      return combinedReducer(state, action);
+  }
+};
+
+const persistConfig = {
+  key: "root",
+  storage: storageSession,
+  blacklist: ["manage", "relatedProductSlice"], //유지할 데이터
+};
+
+const persistedReducer = persistReducer<any>(persistConfig, rootReducers);
 
 export const makeStore = () =>
   configureStore({

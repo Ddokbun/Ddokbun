@@ -70,6 +70,7 @@ export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
     const data = await fetchProductDetail(productid);
     const { content } = await fetchRelatedProducts(productid);
     store.dispatch(setRelatedItemList(content));
+
     return {
       props: {
         data,

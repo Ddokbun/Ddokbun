@@ -1,4 +1,4 @@
-import { combineReducers, createSlice } from "@reduxjs/toolkit";
+import { combineReducers, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
 import { ListArray } from "../types/commerce/list.interface";
 
@@ -7,17 +7,13 @@ import { ListArray } from "../types/commerce/list.interface";
 // 특정상품을 선택했을 때 연관상품관리 ->> props
 export const RelatedProductSlice = createSlice({
   name: "reatedProducts",
-  initialState: [],
+  initialState: { data: [] },
   reducers: {
-    setRelatedItemList(state, action) {
-      return action.payload;
-    },
-  },
-  extraReducers: {
-    [HYDRATE]: (state, action) => {
-      if (action.payload.relatedProductSlice) {
-        return action.payload.relatedProductSlice;
-      }
+    setRelatedItemList: (state, action) => {
+      return {
+        ...state,
+        data: action.payload,
+      };
     },
   },
 });
@@ -29,29 +25,11 @@ export const CartListSlice = createSlice({
   name: "CartList",
   initialState: {},
   reducers: {
-    setCartLists(state, action) {
-      console.log("제발", action);
-
+    setCartLists: (state, action) => {
       return {
         ...state,
         ...action.payload,
       };
-    },
-    // incrementCartItem(state) {
-    //   state.value ++
-    // }
-    // decrementCartItem(state) {
-    //   state.value ++
-    // }
-  },
-  extraReducers: {
-    // 예시
-    [HYDRATE]: (state, action) => {
-      if (action.payload.setServerCartLists) {
-        return {
-          ...action.payload.setServerCartLists,
-        };
-      }
     },
   },
 });
@@ -63,8 +41,3 @@ export interface CommerceState {
   CartListSlice: ListArray;
   relatedProductSlice: ListArray;
 }
-
-export default combineReducers({
-  relatedProductSlice: RelatedProductSlice.reducer,
-  CartListSlice: CartListSlice.reducer,
-});

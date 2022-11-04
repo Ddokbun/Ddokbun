@@ -13,6 +13,8 @@ const ProductCard: React.FC<{
   item: ListObjectItem;
   isResponsive: boolean;
 }> = ({ item, isResponsive }) => {
+  console.log(item);
+
   return (
     <>
       {isResponsive ? (
@@ -53,7 +55,7 @@ const ProductCard: React.FC<{
           <Wrapper variants={CardHover} whileHover="hover">
             <div className="img-wrap">
               <Image
-                src={item?.itemImage}
+                src={item.itemImage != "plant/2.jpg" ? item.itemImage : Temp}
                 objectFit="contain"
                 layout="fill"
                 alt="임시상품이미지"

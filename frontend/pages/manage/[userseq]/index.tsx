@@ -6,6 +6,7 @@ import { fetchPlantsList } from "../../../apis/manage";
 import PageTitle from "../../../common/PageTitle";
 import CardList from "../../../components/manage/CardList";
 import { wrapper } from "../../../store";
+import { setCartLists } from "../../../store/commerce";
 import { Wrapper } from "../../../styles/manage/styles";
 
 export interface PlantListType {
@@ -35,7 +36,8 @@ export const getServerSideProps: GetServerSideProps =
     // const data = await fetchCartList(token);
     const plantsListData = await fetchPlantsList(token);
 
-    // store.dispatch(setCartLists(["하이"]));
+    store.dispatch(setCartLists({ 390: 1 }));
+    console.log(store.getState());
 
     return {
       props: {
