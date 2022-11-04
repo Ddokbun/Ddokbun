@@ -33,9 +33,5 @@ public class ItemListDto {
         idt.tags= Arrays.asList(item.getPlant().getRecRate().split(","));
         return idt;
     }
-    public static ItemListDto of(Item item,long itemSeq) {
-        if(item.getItemSeq()==itemSeq) return null;
-        ItemListDto idt = of(item);
-        return idt;
-    }
+
 }
