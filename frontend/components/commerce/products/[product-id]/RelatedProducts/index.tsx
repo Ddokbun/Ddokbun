@@ -8,7 +8,6 @@ const RelatedProducts: React.FC = () => {
   const relatedItems = useSelector(
     (state: StoreState) => state.relatedProductSlice.data,
   );
-  console.log(relatedItems);
 
   return (
     <Wrapper>

@@ -174,16 +174,28 @@ export const approveKakaoPay = async (
  * @returns 장바구니에있는 상품을 오브젝트형식으로 반환합니다
  */
 
-export const fetchCartList = async () => {
+export const fetchCartList = async (token?: string) => {
   const url = "cart";
 
   try {
-    const data = await AXIOS({
-      url,
-      method: "GET",
-    });
+    console.log(token);
 
-    return data;
+    if (token) {
+      return await AXIOS({
+        url,
+        method: "GET",
+        headers: {
+          Authorization: token,
+        },
+      });
+    } else {
+      console.log("here");
+
+      return await AXIOS({
+        url,
+        method: "GET",
+      });
+    }
   } catch (error) {
     console.log(error);
   }

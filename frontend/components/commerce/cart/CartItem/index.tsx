@@ -2,19 +2,24 @@ import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
 import { Wrapper } from "./styles";
 import Temp from "../../../../assets/temp.jpg";
 import Image from "next/image";
+import { ListObjectItem } from "../../../../types/commerce/list.interface";
 
-interface CardProps {
+interface CartProps extends ListObjectItem {
+  quantity: number;
   price: number;
-  setTotal: Dispatch<SetStateAction<number>>;
+  imageUrl: string;
 }
 
-const CartItem: React.FC<CardProps> = ({ price, setTotal }) => {
+const CartItem: React.FC<{
+  item: ListObjectItem;
+  setTotal: Dispatch<SetStateAction<number>>;
+}> = ({ item, setTotal }) => {
   // 더미데이터
   const [count, setCount] = useState(1);
-  const [nowPrice, setNowPrice] = useState(price * count);
+  const [nowPrice, setNowPrice] = useState((item.price as number) * count);
 
   useEffect(() => {
-    setTotal(val => val + price * count);
+    setTotal(val => (val + (item.price as number)) * count);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -27,8 +32,8 @@ const CartItem: React.FC<CardProps> = ({ price, setTotal }) => {
   // }, [fetchSetTotal]);
 
   useEffect(() => {
-    setNowPrice(price * count);
-  }, [price, count]);
+    setNowPrice((item.price as number) * count);
+  }, [item.price, count]);
 
   const onCountHandler = (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -36,12 +41,12 @@ const CartItem: React.FC<CardProps> = ({ price, setTotal }) => {
     switch (handler) {
       case "+":
         setCount(val => val + 1);
-        setTotal(val => val + price);
+        setTotal(val => val + (item.price as number));
         break;
 
       case "-":
         setCount(val => (count > 1 ? val - 1 : val));
-        setTotal(val => val - price);
+        setTotal(val => val - (item.price as number));
         break;
     }
   };
@@ -49,22 +54,27 @@ const CartItem: React.FC<CardProps> = ({ price, setTotal }) => {
   return (
     <Wrapper>
       <div className="grid-left">
-        <Image src={Temp} objectFit="cover" />
+        <Image src={item.imageUrl as string} layout="fill" objectFit="cover" />
       </div>
       <div className="grid-center">
-        <h2>몬스테라</h2>
+        <h2>{item.itemName}</h2>
         <div className="count">
           <div onClick={onCountHandler} className="handler">
             +
           </div>
-          <div className="now-cnt">{count}</div>
+          <div className="now-cnt">{item.quantity}</div>
           <div onClick={onCountHandler} className="handler">
             -
           </div>
         </div>
       </div>
       <div className="grid-right">
-        <h2>₩ {nowPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h2>
+        <h2>
+          ₩{" "}
+          {(item.price as number)
+            .toString()
+            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+        </h2>
       </div>
     </Wrapper>
   );

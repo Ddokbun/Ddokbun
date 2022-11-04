@@ -33,11 +33,10 @@ export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps(store => async ({ req, res }) => {
     const { token } = getCookies({ req, res });
 
-    // const data = await fetchCartList(token);
+    const data = await fetchCartList(token);
     const plantsListData = await fetchPlantsList(token);
 
-    store.dispatch(setCartLists({ 390: 1 }));
-    console.log(store.getState());
+    store.dispatch(setCartLists(data?.data.content));
 
     return {
       props: {

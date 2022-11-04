@@ -10,4 +10,7 @@ export type ListObjectItem = {
   itemPrice: number;
   itemImage: string;
   tags: string[];
+  price?: number;
+  quantity?: number;
+  imageUrl?: string;
 };

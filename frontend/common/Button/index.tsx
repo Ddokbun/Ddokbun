@@ -89,10 +89,6 @@ export const BuyListButton: React.FC<{ id: number }> = ({ id }) => {
   // const baguni = useSelector((state: StoreState) => state);
   const putCartHandler = async (id: number) => {
     const res = await putCart(id);
-    // if (res == 200) {
-    //   const cartItem = { [id]: 1 };
-
-    // }
   };
   return (
     <BuyListButtonStyle onClick={() => putCartHandler(id)}>

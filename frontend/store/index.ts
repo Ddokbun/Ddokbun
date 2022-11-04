@@ -55,7 +55,6 @@ const rootReducers = (
 const persistConfig = {
   key: "root",
   storage: storageSession,
-  blacklist: ["manage", "relatedProductSlice"], //유지할 데이터
 };
 
 const persistedReducer = persistReducer<any>(persistConfig, rootReducers);
