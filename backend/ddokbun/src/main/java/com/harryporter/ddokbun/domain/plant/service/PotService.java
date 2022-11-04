@@ -184,8 +184,9 @@ public class PotService {
         User user = userRepository.findById(userSeq).orElseThrow(
                 ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다.")
         );
+        log.info("나의화분{}", userSeq);
         List<Pot> pots = user.getPots();
-
+        log.info("화분리스트{}", pots);
         return pots.stream().map(pot -> MyPotReponse.of(pot)).collect(Collectors.toList());
     }
 
