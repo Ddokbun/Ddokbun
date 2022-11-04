@@ -3,6 +3,7 @@ package com.harryporter.ddokbun.domain.order.service;
 import com.harryporter.ddokbun.domain.order.dto.OrderDto;
 import com.harryporter.ddokbun.domain.order.dto.request.OrderReq;
 import com.harryporter.ddokbun.domain.order.dto.request.OrderStatusDto;
+import com.harryporter.ddokbun.domain.order.dto.response.AdminOrderDto;
 import com.harryporter.ddokbun.domain.order.dto.response.OrderDetailDto;
 import com.harryporter.ddokbun.domain.order.dto.response.OrderListItemDto;
 import com.harryporter.ddokbun.domain.order.entity.Order;
@@ -23,6 +24,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -126,9 +128,16 @@ public class OrderServiceImpl implements OrderService{
 
         return orderDetailDto;
     }
+    @Override
+    public List<AdminOrderDto> getTotalOrderList(){
+        List<Order> orders=orderRepository.findAll();
+        return orders.stream()
+                .filter(Objects::nonNull).map(order -> AdminOrderDto.of(order)).collect(Collectors.toList());
+    }
 
     @Override
     public String updateOrderStatus(OrderStatusDto orderStatusDto){
+        log.info("주문 상태 변경 Service :: 변경할 OrderStatus : {}", orderStatusDto.getOrderStatus());
         Order order = orderRepository.findById(orderStatusDto.getOrderSeq()).orElseThrow(
                 ()->new GeneralException(ErrorCode.NOT_FOUND,"해당하는 주문 내역을 찾을 수 없습니다,"));
 
@@ -143,7 +152,7 @@ public class OrderServiceImpl implements OrderService{
         }catch (Exception e){
             throw new GeneralException(ErrorCode.BAD_REQUEST,"주문 내역 변경에 실패하였습니다.");
         }
-        log.info("요청 상태 : {},  변경 후 주문 상태 : {}",orderStatusDto.getOrderSeq(),order.getOrderStatus());
+        log.info("주문 상태 변경 Success :: 변경된 OrderStatus : {}", order.getOrderStatus());
 
         return "Success update OrderStatus : "+order.getOrderStatus();
     }
