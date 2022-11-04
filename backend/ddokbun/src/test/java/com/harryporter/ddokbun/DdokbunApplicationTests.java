@@ -19,7 +19,6 @@ class DdokbunApplicationTests {
 	@Test
 	@DisplayName("카프카에 토픽 전송되는 지 테스트")
 	void givenTopicWhenProduceThenCheck(){
-		waterApplyUtil.sendMotorAction(MotorActionDto.of("test11"));
 
 	}
 
