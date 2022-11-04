@@ -50,14 +50,18 @@ export const fetchPlantData = async (plantSeq: string) => {
   }
 };
 
-export const fetchPlantsList = async () => {
+export const fetchPlantsList = async (cookie?: string) => {
   const url = "pot/my-pot";
   console.log("진입");
+
 
   try {
     const res = await AXIOS({
       method: "get",
       url,
+      headers: {
+        authorization: cookie,
+      },
     });
     return res.data.content;
   } catch (error) {

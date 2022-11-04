@@ -1,9 +1,9 @@
+import { getCookies } from "cookies-next";
 import { GetServerSideProps, NextPage } from "next";
 // import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 import { fetchPlantsList } from "../../../apis/manage";
 import PageTitle from "../../../common/PageTitle";
-import Card from "../../../components/manage/CardItem";
 import CardList from "../../../components/manage/CardList";
 import { Wrapper } from "../../../styles/manage/styles";
 
@@ -41,11 +41,10 @@ const Manage: NextPage = () => {
     </Wrapper>
   );
 };
-// export const getServerSideProps: GetServerSideProps = async context => {
+// export const getServerSideProps: GetServerSideProps = async ({ res, req }) => {
+//   const { token } = getCookies({ res, req });
+//   const plantsList = await fetchPlantsList(token);
 
-//   const plantsList = await fetchPlantsList();
-
-//   console.log("서버사이드");
 
 //   return {
 //     props: {

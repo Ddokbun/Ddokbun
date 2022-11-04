@@ -34,7 +34,7 @@ export const Googlelogin = async (login_code?: string[] | string) => {
     console.log("성공입니다", res);
     setCookie("token", accessToken);
     Router.push(`/manage/${userSeq}`);
-    return res.data;
+    return res.data.content;
   } catch (error) {
     console.log(error);
   }
