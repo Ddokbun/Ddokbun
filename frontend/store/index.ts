@@ -19,7 +19,7 @@ import storageSession from "redux-persist/lib/storage/session"; //sessionstorage
 const persistConfig: any = {
   key: "root",
   storage: storageSession,
-  whitelist: ["authSlice"], //유지할 데이터
+  whitelist: ["authSlice", "commerce"], //유지할 데이터
 };
 
 const rootReducers = combineReducers({
