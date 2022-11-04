@@ -1,15 +1,19 @@
 import Image from "next/image";
 import React from "react";
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import {
+  GetServerSideProps,
+  GetStaticPaths,
+  GetStaticProps,
+  NextPage,
+} from "next";
 import { Wrapper } from "../../../styles/commerce/products/list/styles";
 import Temp from "../../../assets/temp.jpg";
 import ProductList from "../../../components/commerce/products/lists";
 import { ParsedUrlQuery } from "querystring";
-import { fetchProductList } from "../../../apis/commerce";
-import {
-  ListArray,
-  ListObjectItem,
-} from "../../../types/commerce/list.interface";
+import { fetchCartList, fetchProductList } from "../../../apis/commerce";
+import { ListArray } from "../../../types/commerce/list.interface";
+import axios from "axios";
+import { getCookie } from "cookies-next";
 
 interface IParams extends ParsedUrlQuery {
   params: string;
@@ -31,7 +35,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async context => {
   const { params } = context.params as IParams;
   const data = await fetchProductList(params);
-  console.log(data);
 
   return {
     props: {

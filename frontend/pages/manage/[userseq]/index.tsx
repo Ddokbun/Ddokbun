@@ -1,10 +1,14 @@
+import { getCookie, getCookies } from "cookies-next";
 import { GetServerSideProps, NextPage } from "next";
 // import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
+import { fetchCartList } from "../../../apis/commerce";
 import { fetchPlantsList } from "../../../apis/manage";
 import PageTitle from "../../../common/PageTitle";
 import Card from "../../../components/manage/CardItem";
 import CardList from "../../../components/manage/CardList";
+import { wrapper } from "../../../store";
+import { setCartLists } from "../../../store/commerce";
 import { Wrapper } from "../../../styles/manage/styles";
 
 export interface PlantListType {
@@ -13,6 +17,19 @@ export interface PlantListType {
   imagePath?: string;
   plantSeq: number;
 }
+
+export const getServerSideProps: GetServerSideProps =
+  wrapper.getServerSideProps(store => async ({ req, res }) => {
+    const { token } = getCookies({ req, res });
+
+    const data = await fetchCartList(token);
+
+    // store.dispatch(setCartLists(["하이"]));
+
+    return {
+      props: {},
+    };
+  });
 
 // const Manage: NextPage<{ plantsList: PlantListType }> = ({ plantsList }) => {
 const Manage: NextPage = () => {
