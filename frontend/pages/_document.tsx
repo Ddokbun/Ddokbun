@@ -8,7 +8,6 @@ const Document = () => (
         name="naver-site-verification"
         content="dcc1baf4f88a927d4f1b9d8e02e127e25357e300"
       />
-      <meta content="width=device-width, initial-scale=1" name="viewport" />
       <meta
         name="google-site-verification"
         content="TX_UfTDiWfdrhQQgBw8r8aHU0Krb2_foLRN6GowEBCw"

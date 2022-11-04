@@ -12,6 +12,7 @@ import Navbar from "../common/Navbar/index";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import "@fortawesome/fontawesome-svg-core/styles.css";
+import Head from "next/head";
 
 const DEFAULT_SEO = {
   title: "똑분 - Ddokbun",
@@ -45,6 +46,9 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
 
   return (
     <>
+      <Head>
+        <meta content="width=device-width, initial-scale=1" name="viewport" />
+      </Head>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
           <DefaultSeo {...DEFAULT_SEO} />
