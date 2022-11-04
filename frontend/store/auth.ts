@@ -12,15 +12,14 @@ const authSlice = createSlice({
   reducers: {
     // 얘는 예시
     setEnt(state, action) {
-      return { ...state, ...action.payload };
+      return { ...action.payload.setEnt };
     },
   },
   extraReducers: {
     // 예시
     [HYDRATE]: (state, action) => {
       return {
-        ...state,
-        ...action.payload,
+        ...action.payload.setEnt,
       };
     },
   },

@@ -1,5 +1,5 @@
 import Link from "next/link";
-import React from "react";
+import React, { useState } from "react";
 import {
   Button,
   BuyListButtonStyle,
@@ -17,6 +17,10 @@ import Bag from "../../assets/commerce/bag.svg";
 import { useRouter } from "next/router";
 import Image from "next/image";
 import { putCart } from "../../apis/commerce";
+import { useDispatch } from "react-redux";
+import { setCartLists } from "../../store/commerce";
+import { useSelector } from "react-redux";
+import { StoreState } from "../../store";
 
 export const TextBtn: React.FC<{
   children: string;
@@ -81,8 +85,14 @@ export const BuyButton: React.FC<{ id: number }> = ({ id }) => {
  * @returns Alert를 활용하여 장바구니로 이동시키거나 확인할 수 있음
  */
 export const BuyListButton: React.FC<{ id: number }> = ({ id }) => {
-  const putCartHandler = (id: number) => {
-    putCart(id);
+  // const dispatch = useDispatch();
+  // const baguni = useSelector((state: StoreState) => state);
+  const putCartHandler = async (id: number) => {
+    const res = await putCart(id);
+    // if (res == 200) {
+    //   const cartItem = { [id]: 1 };
+
+    // }
   };
   return (
     <BuyListButtonStyle onClick={() => putCartHandler(id)}>

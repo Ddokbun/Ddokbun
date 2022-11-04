@@ -1,7 +1,8 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import Router from "next/router";
 import AXIOS from ".";
 import { setCookie, CookieValueTypes } from "cookies-next";
+import Error from "next/error";
 
 export const getAllProductNumber = async () => {
   const url = "market/product/list";
@@ -55,10 +56,8 @@ export const fetchProductDetail = async (id: string) => {
  */
 
 export const putCart = async (id: number) => {
-  console.log(id);
-
   const data = { itemSeq: id };
-  const url = `market/cart`;
+  const url = `cart`;
 
   try {
     const res = await AXIOS({
@@ -66,9 +65,23 @@ export const putCart = async (id: number) => {
       url,
       data,
     });
-    return res.data.content;
+    alert("id를 장바구니에 넣었습니다");
+
+    return res.status;
   } catch (error) {
-    console.log(error);
+    const { response } = error as any | AxiosError;
+    console.log(response);
+
+    switch (response.status) {
+      case 400:
+        alert("이미 등록된 상품입니다");
+        break;
+
+      default:
+        alert("로그인 해라 이자슥아");
+        break;
+    }
+    return 400;
   }
 };
 
@@ -161,14 +174,13 @@ export const approveKakaoPay = async (
  * @returns 장바구니에있는 상품을 오브젝트형식으로 반환합니다
  */
 
-export const fetchCartList = async (token?: string) => {
+export const fetchCartList = async () => {
   const url = "cart";
 
   try {
     const data = await AXIOS({
       url,
       method: "GET",
-      headers: { Authorization: token },
     });
 
     return data;

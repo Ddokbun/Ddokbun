@@ -5,7 +5,7 @@ import { ListArray } from "../types/commerce/list.interface";
 // const commerceSlice = createSlice
 
 // 특정상품을 선택했을 때 연관상품관리 ->> props
-const RelatedProductSlice = createSlice({
+export const RelatedProductSlice = createSlice({
   name: "reatedProducts",
   initialState: [],
   reducers: {
@@ -15,8 +15,8 @@ const RelatedProductSlice = createSlice({
   },
   extraReducers: {
     [HYDRATE]: (state, action) => {
-      if (action.payload.commerce.relatedProductSlice) {
-        return action.payload.commerce.relatedProductSlice;
+      if (action.payload.relatedProductSlice) {
+        return action.payload.relatedProductSlice;
       }
     },
   },
@@ -25,14 +25,16 @@ const RelatedProductSlice = createSlice({
 /***
  * 장바구니를 보관, 관리하는 스토어입니다
  */
-const CartListSlice = createSlice({
+export const CartListSlice = createSlice({
   name: "CartList",
   initialState: {},
   reducers: {
     setCartLists(state, action) {
+      console.log("제발", action);
+
       return {
         ...state,
-        ...action.payload.setCartLists,
+        ...action.payload,
       };
     },
     // incrementCartItem(state) {
@@ -45,10 +47,11 @@ const CartListSlice = createSlice({
   extraReducers: {
     // 예시
     [HYDRATE]: (state, action) => {
-      return {
-        ...state,
-        ...action.payload.setCartLists,
-      };
+      if (action.payload.setServerCartLists) {
+        return {
+          ...action.payload.setServerCartLists,
+        };
+      }
     },
   },
 });

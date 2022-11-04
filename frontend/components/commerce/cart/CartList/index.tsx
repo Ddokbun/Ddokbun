@@ -1,10 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { fetchCartList } from "../../../../apis/commerce";
 
 import CartItem from "../CartItem";
 import { Wrapper } from "./styles";
 
 const CartList: React.FC = () => {
   const [total, setTotal] = useState(0);
+  const [cart, setCarts] = useState({});
+  useEffect(() => {
+    const getCartList = async () => {
+      const data = await fetchCartList();
+      setCarts(data as any);
+    };
+    getCartList();
+  }, []);
+  console.log(cart);
+
   return (
     <>
       <Wrapper>

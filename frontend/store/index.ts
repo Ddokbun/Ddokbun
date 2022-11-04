@@ -3,7 +3,7 @@ import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import { combineReducers } from "redux";
 import authSlice from "./auth";
 import manage from "./manage";
-import commerce, { CommerceState } from "./commerce";
+import { CartListSlice, CommerceState, RelatedProductSlice } from "./commerce";
 import {
   persistStore,
   persistReducer,
@@ -15,24 +15,27 @@ import {
   REGISTER,
 } from "redux-persist";
 import storageSession from "redux-persist/lib/storage/session"; //sessionstorage나 localstorage 중에 선택
+import { ListArray } from "../types/commerce/list.interface";
 
 const persistConfig: any = {
   key: "root",
   storage: storageSession,
-  whitelist: ["authSlice"], //유지할 데이터
+  whitelist: ["authSlice", "CartListSlice.reducer"], //유지할 데이터
 };
 
 export interface StoreState {
-  commerce: CommerceState;
+  relatedProductSlice: ListArray;
+  CartListSlice: ListArray;
   authSlice: any;
   manage: any;
 }
 
 const rootReducers = combineReducers({
   // 여기에 reducer들 추가
-  authSlice,
   manage,
-  commerce,
+  authSlice,
+  cartList: CartListSlice.reducer,
+  relatedProductSlice: RelatedProductSlice.reducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducers);

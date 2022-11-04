@@ -13,8 +13,6 @@ const ProductCard: React.FC<{
   item: ListObjectItem;
   isResponsive: boolean;
 }> = ({ item, isResponsive }) => {
-  console.log(item);
-
   return (
     <>
       {isResponsive ? (

@@ -17,6 +17,34 @@ import { setRelatedItemList } from "../../../store/commerce";
 interface IParams {
   productid: number;
 }
+
+const Product: NextPage<{ data: ItemObject }> = ({ data }) => {
+  return (
+    <Wrapper>
+      <ProductSellCard
+        itemSeq={data.itemSeq}
+        itemName={data.itemName}
+        itemEnName={data.itemEnName}
+        itemPicture={data.itemPicture}
+        itemPrice={data.itemPrice}
+        tags={data.plant?.recRate.split(",")}
+        originPlace={data.plant?.originPlace}
+        plantZRName={data.plant?.plantZRName}
+        growthWidth={data.plant?.growthWidth}
+        growthHeight={data.plant?.growthHeight}
+      />
+      <ProductCare
+        itemInfo={data.itemInfo}
+        water={data.plant?.waterCycle as number}
+        humid={data.plant?.growthHumid as string}
+      />
+      <RelatedProducts />
+    </Wrapper>
+  );
+};
+
+export default Product;
+
 export const getStaticPaths: GetStaticPaths = async () => {
   const arr: IParams[] = await getAllProductNumber();
 
@@ -49,30 +77,3 @@ export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
     };
   },
 );
-
-const Product: NextPage<{ data: ItemObject }> = ({ data }) => {
-  return (
-    <Wrapper>
-      <ProductSellCard
-        itemSeq={data.itemSeq}
-        itemName={data.itemName}
-        itemEnName={data.itemEnName}
-        itemPicture={data.itemPicture}
-        itemPrice={data.itemPrice}
-        tags={data.plant?.recRate.split(",")}
-        originPlace={data.plant?.originPlace}
-        plantZRName={data.plant?.plantZRName}
-        growthWidth={data.plant?.growthWidth}
-        growthHeight={data.plant?.growthHeight}
-      />
-      <ProductCare
-        itemInfo={data.itemInfo}
-        water={data.plant?.waterCycle as number}
-        humid={data.plant?.growthHumid as string}
-      />
-      <RelatedProducts />
-    </Wrapper>
-  );
-};
-
-export default Product;
