@@ -78,7 +78,7 @@ const Complete: NextPage<IOrder> = ({ payObj }) => {
       </div>
       <div className="carousel-wrap">
         <h1>Other Plants</h1>
-        <Carousel />
+        {/* <Carousel /> */}
       </div>
     </Wrapper>
   );
