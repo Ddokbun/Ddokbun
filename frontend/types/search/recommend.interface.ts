@@ -1,5 +1,7 @@
-export interface PlantType {
-  content: string[];
+export type PlantArray = {
+  content: ListObjectItem[];
+};
+export interface ListObjectItem {
   itemEnName: string;
   itemImageUrl: string;
   itemLabels: string;

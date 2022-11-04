@@ -3,9 +3,9 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 import Temp from "../../../assets/temp.jpg";
 import { fetchTodayPlant } from "../../../apis/search";
-import { PlantType } from "../../../types/search/recommend.interface";
+import { ListObjectItem } from "../../../types/search/recommend.interface";
 
-const RecommendPlant: React.FC<{ data: PlantType }> = ({ data }) => {
+const RecommendPlant: React.FC<{ data: ListObjectItem }> = ({ data }) => {
   const url = data.itemImageUrl;
   console.log(url);
   return (
