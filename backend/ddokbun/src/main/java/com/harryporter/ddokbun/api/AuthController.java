@@ -26,10 +26,9 @@ public class AuthController {
     @ApiOperation(value = "Kakao 로그인")
     @GetMapping("/login/oauth/kakao")
     public ResponseEntity<?> loginByKakao(@Parameter(description = "인가 코드 입력") @RequestParam String code){
-        log.info("provider :  kakao");
+        log.info("카카오 :: 카카오 로그인 API");
         OAuthRes result=kakaoService.kakaoLogin(code);
-        log.info("jwtToken : {}",result.getJwtToken());
-
+        log.info("JWT 토큰 발행 : {}",result.getJwtToken());
         ResponseFrame<?> res =  ResponseFrame.ofOKResponse("jwt 토큰이 발급되었습니다",result);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
@@ -37,10 +36,9 @@ public class AuthController {
     @ApiOperation(value = "Google 로그인")
     @GetMapping("/login/oauth/google")
     public ResponseEntity<?> loginByGoogle(@Parameter(description = "인가 코드 입력") @RequestParam String code){
-        log.info("provider : google");
+        log.info("구글 :: 구글 로그인 API");
         OAuthRes result=googleService.googleLogin(code);
-        log.info("jwtToken : {}",result.getJwtToken());
-
+        log.info("JWT 토큰 발행 : {}",result.getJwtToken());
         ResponseFrame<?> res =  ResponseFrame.ofOKResponse("jwt 토큰이 발급되었습니다",result);
         return new ResponseEntity<>(res, HttpStatus.OK);
     }

@@ -1,5 +1,6 @@
 package com.harryporter.ddokbun.domain.plant.entity;
 
+import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -116,10 +117,10 @@ public class Plant {
     private String recRate;
 
     public void changeImgPath(long plantSeq){
-        this.imagePath="plant/"+plantSeq+".webp";
+        this.imagePath="plant/"+plantSeq+".jpg";
     }
 
-    public void changePlant(Plant plant){
+    public void changePlant(PlantDto plant){
         this.plantName=plant.getPlantName();
         this.plantNeName=plant.getPlantNeName();
         this.plantZRName=plant.getPlantZRName();
@@ -139,7 +140,7 @@ public class Plant {
         this.manageRequire=plant.getManageRequire();
         this.plantPlace=plant.getPlantPlace();
         this.waterCycle=plant.getWaterCycle();
-        this.waterIfno=plant.getWaterIfno();
+        this.waterIfno=plant.getWaterInfo();
         this.lightType=plant.getLightType();
         this.lightInfo=plant.getLightInfo();
         this.minTemperature=plant.getMinTemperature();

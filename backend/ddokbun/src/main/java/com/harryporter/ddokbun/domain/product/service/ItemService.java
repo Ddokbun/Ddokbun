@@ -29,7 +29,9 @@ public interface ItemService {
     List<Long> getProductList();
 
 
-    List<ItemCategoryDto> getProductByCategory(String category,Pageable pageable);
+    List<ItemListDto> getSimilarProduct(long itemSeq, Pageable pageable);
+
+    List<ItemListDto> getProductByCategory(String category, Pageable pageable);
 
     String click(long itemSeq);
 
