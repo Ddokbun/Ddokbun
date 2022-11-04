@@ -1,5 +1,6 @@
 import AXIOS from "./index";
 
+//오늘의 식물
 export const fetchTodayPlant = async () => {
   const path = "market/product/rec-today";
   try {
@@ -7,8 +8,7 @@ export const fetchTodayPlant = async () => {
       method: "GET",
       url: path,
     });
-    console.log(res.data.content[0]);
-    return res.data.content[0];
+    return res.data;
   } catch (error) {
     console.log(error);
   }
