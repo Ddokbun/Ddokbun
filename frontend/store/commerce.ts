@@ -1,17 +1,22 @@
 import { combineReducers, createSlice } from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
+import { ListArray } from "../types/commerce/list.interface";
 
 // const commerceSlice = createSlice
 
 // 특정상품을 선택했을 때 연관상품관리 ->> props
-const relatedProductSlice = createSlice({
+const RelatedProductSlice = createSlice({
   name: "reatedProducts",
   initialState: [],
-  reducers: {},
+  reducers: {
+    setRelatedItemList(state, action) {
+      return action.payload;
+    },
+  },
   extraReducers: {
     [HYDRATE]: (state, action) => {
-      if (action.payload.setRelated) {
-        return action.payload.setRelated;
+      if (action.payload.commerce.relatedProductSlice) {
+        return action.payload.commerce.relatedProductSlice;
       }
     },
   },
@@ -27,7 +32,7 @@ const CartListSlice = createSlice({
     setCartLists(state, action) {
       return {
         ...state,
-        ...action.payload,
+        ...action.payload.setCartLists,
       };
     },
     // incrementCartItem(state) {
@@ -42,15 +47,21 @@ const CartListSlice = createSlice({
     [HYDRATE]: (state, action) => {
       return {
         ...state,
-        ...action.payload,
+        ...action.payload.setCartLists,
       };
     },
   },
 });
 
 export const { setCartLists } = CartListSlice.actions;
+export const { setRelatedItemList } = RelatedProductSlice.actions;
+
+export interface CommerceState {
+  CartListSlice: ListArray;
+  relatedProductSlice: ListArray;
+}
 
 export default combineReducers({
-  relatedProductSlice: relatedProductSlice.reducer,
+  relatedProductSlice: RelatedProductSlice.reducer,
   CartListSlice: CartListSlice.reducer,
 });

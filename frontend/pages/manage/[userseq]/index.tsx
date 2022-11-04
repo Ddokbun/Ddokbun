@@ -6,7 +6,6 @@ import { fetchPlantsList } from "../../../apis/manage";
 import PageTitle from "../../../common/PageTitle";
 import CardList from "../../../components/manage/CardList";
 import { wrapper } from "../../../store";
-import { setCartLists } from "../../../store/commerce";
 import { Wrapper } from "../../../styles/manage/styles";
 
 export interface PlantListType {

@@ -13,11 +13,13 @@ const ProductCard: React.FC<{
   item: ListObjectItem;
   isResponsive: boolean;
 }> = ({ item, isResponsive }) => {
+  console.log(item);
+
   return (
     <>
       {isResponsive ? (
         <>
-          <Link href={`/commerce/product/${item.itemSeq}`}>
+          <Link href={`/commerce/product/${item?.itemSeq}`}>
             <ResponsiveWrapper variants={CardHover} whileHover="hover">
               <div className="img-wrap">
                 <Image
@@ -49,29 +51,33 @@ const ProductCard: React.FC<{
           </Link>
         </>
       ) : (
-        <Link href={`/commerce/product/${item.itemSeq}`}>
-          <Wrapper>
+        <Link href={`/commerce/product/${item?.itemSeq}`}>
+          <Wrapper variants={CardHover} whileHover="hover">
             <div className="img-wrap">
               <Image
+                src={item?.itemImage}
                 objectFit="contain"
-                src={Temp}
-                layout="responsive"
+                layout="fill"
                 alt="임시상품이미지"
               />
             </div>
             <div className="text-wrap">
               <div className="title">
-                <h2>임시상품명</h2>
-                <h3>Swiss Chress</h3>
+                <h2>{item?.itemName}</h2>
+                <h3>{item?.itemEnName}</h3>
               </div>
-              <ProductLabel>초보집사</ProductLabel>
+              <div className="tag-wrap">
+                {item?.tags.map((tag, idx) => {
+                  return <ProductLabel key={idx}>{tag}</ProductLabel>;
+                })}
+              </div>
               <h3>
                 ₩{" "}
-                {item.itemPrice
+                {item?.itemPrice
                   .toString()
                   .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
               </h3>
-              <BuyTextButton id={item.itemSeq} />
+              <BuyTextButton id={item?.itemSeq} />
             </div>
           </Wrapper>
         </Link>

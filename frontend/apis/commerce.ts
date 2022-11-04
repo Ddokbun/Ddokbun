@@ -1,14 +1,7 @@
 import axios from "axios";
 import Router from "next/router";
 import AXIOS from ".";
-import { setCookie, CookieValueTypes, getCookie } from "cookies-next";
-import {
-  GetServerSideProps,
-  GetServerSidePropsContext,
-  NextApiRequest,
-} from "next";
-import { NextApiResponse } from "next";
-import { IncomingMessage, ServerResponse } from "http";
+import { setCookie, CookieValueTypes } from "cookies-next";
 
 export const getAllProductNumber = async () => {
   const url = "market/product/list";
@@ -53,6 +46,13 @@ export const fetchProductDetail = async (id: string) => {
     console.log(error);
   }
 };
+
+/**
+ * 장바구니에 희망하는 아이템을 넣습니다
+ * @param id 희망하는 아이디가 필요합니다
+ * @param 로그인을 필요로 합니다
+ * @returns
+ */
 
 export const putCart = async (id: number) => {
   console.log(id);
@@ -155,6 +155,12 @@ export const approveKakaoPay = async (
   }
 };
 
+/**
+ * 자신의 장바구니에 있는 카트를 불러오는 함수있니다
+ * @param token 회원정보를 필요로 합니다
+ * @returns 장바구니에있는 상품을 오브젝트형식으로 반환합니다
+ */
+
 export const fetchCartList = async (token?: string) => {
   const url = "cart";
 
@@ -165,6 +171,26 @@ export const fetchCartList = async (token?: string) => {
       headers: { Authorization: token },
     });
 
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * 상품과 관련된 연관상품을 호출하는 상품입니다.
+ * @param itemSeq 희망하는 상품 번호
+ * @returns 연관 상품을 리스트형태로 반환합니다
+ */
+
+export const fetchRelatedProducts = async (itemSeq: string) => {
+  const url = `market/product/${itemSeq}/similar`;
+
+  try {
+    const { data } = await AXIOS({
+      url,
+      method: "GET",
+    });
     return data;
   } catch (error) {
     console.log(error);
