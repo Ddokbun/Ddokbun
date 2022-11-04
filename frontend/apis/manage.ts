@@ -50,17 +50,15 @@ export const fetchPlantData = async (plantSeq: string) => {
   }
 };
 
-export const fetchPlantsList = async (cookie?: string) => {
+export const fetchPlantsList = async (token?: string) => {
   const url = "pot/my-pot";
-  console.log("진입");
-
 
   try {
     const res = await AXIOS({
       method: "get",
       url,
       headers: {
-        authorization: cookie,
+        authorization: token,
       },
     });
     return res.data.content;
@@ -70,16 +68,22 @@ export const fetchPlantsList = async (cookie?: string) => {
   }
 };
 
-export const fetchCurrentStatus = async (potSeq: string) => {
+export const fetchCurrentStatus = async (
+  potSeq?: string | string[],
+  token?: string,
+) => {
   const url = `pot/${potSeq}`;
 
   try {
     const res = await AXIOS({
       method: "get",
       url,
+      headers: {
+        authorization: token,
+      },
     });
 
-    console.log(res.data);
+    return res.data.content;
   } catch (error) {
     const err = error as AxiosError;
     console.log(err.response);
@@ -87,7 +91,7 @@ export const fetchCurrentStatus = async (potSeq: string) => {
 };
 
 export const changeAutoWateringStatus = async (potSeq: string) => {
-  const url = `/api/pot/${potSeq}/water`;
+  const url = `pot/${potSeq}/water`;
 
   try {
     const res = await AXIOS({
@@ -95,6 +99,28 @@ export const changeAutoWateringStatus = async (potSeq: string) => {
       url,
     });
     return res;
+  } catch (error) {
+    const err = error as AxiosError;
+    console.log(err.response);
+  }
+};
+
+export const fetchLogs = async (
+  identifier: string,
+  potSeq?: string | string[],
+  token?: string,
+) => {
+  const url = `pot/${potSeq}/${identifier}`;
+  try {
+    const res = await AXIOS({
+      method: "get",
+      url,
+      headers: {
+        authorization: token,
+      },
+    });
+
+    return res.data.content;
   } catch (error) {
     const err = error as AxiosError;
     console.log(err.response);

@@ -1,63 +1,61 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  margin-top: 20px;
   width: 100%;
+  height: 100%;
   padding: 0px 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: auto;
+  grid-template-rows: calc(100px + 25vw);
   grid-auto-flow: row;
-
-  position: relative;
   grid-gap: 50px;
-  place-items: end;
-  .img-wrap {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-    place-self: right;
-    padding: 0px 0px 0px 0px;
-    width: 100%;
-    max-width: 400px;
 
-    min-width: 300px;
-    align-items: center;
-    text-align: center;
-    img {
-      vertical-align: middle;
-    }
+  .img-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-width: 320px;
   }
 
   .text-wrap {
-    margin-top: 80px;
+    padding: max(2vw, 20px) 0px;
     width: 100%;
-    height: 70%;
+    height: 100%;
     display: flex;
-    justify-content: center;
+
     flex-direction: column;
-    align-self: start;
+    align-items: baseline;
+    justify-content: space-evenly;
 
     gap: 20px;
 
+    .tag-wrap {
+      display: flex;
+      gap: 5px;
+    }
     .text-top {
       h2 {
         padding: 0px;
-
-        font-size: 60px;
+        font-size: min(5vw, 80px);
         margin: 0;
         color: ${props => props.theme.color.mainGreen};
         font-family: ${props => props.theme.font.TitleFont};
+        white-space: nowrap;
+        text-overflow: ellipsis;
       }
       h3 {
-        font-size: 2em;
+        font-size: min(3vw, 50px);
+        white-space: nowrap;
+        text-overflow: ellipsis;
+
         line-height: 0.5em;
-        color: ${props => props.theme.color.ivory};
+        color: ${props => props.theme.color.brownHover};
       }
     }
     & > h3 {
       font-family: ${props => props.theme.font.EnglishFont};
-      font-size: 50px;
+      font-size: min(3vw, 80px);
     }
     .button-wrap {
       position: relative;
@@ -66,6 +64,9 @@ export const Wrapper = styled.div`
       gap: 10px;
       z-index: 0;
     }
+  }
+
+  @media screen and (${props => props.theme.tablet}) {
   }
 
   @media screen and (${props => props.theme.mobile}) {

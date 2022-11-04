@@ -2,7 +2,7 @@ import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
-import { getCookie, CookieValueTypes, deleteCookie } from "cookies-next";
+import { getCookie, deleteCookie } from "cookies-next";
 import Carousel from "../../../../common/Carousel";
 import { Wrapper } from "../../../../styles/commerce/order/complete/styles";
 

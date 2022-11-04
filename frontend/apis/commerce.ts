@@ -1,15 +1,22 @@
 import axios from "axios";
 import Router from "next/router";
 import AXIOS from ".";
-import { setCookie, CookieValueTypes } from "cookies-next";
+import { setCookie, CookieValueTypes, getCookie } from "cookies-next";
+import {
+  GetServerSideProps,
+  GetServerSidePropsContext,
+  NextApiRequest,
+} from "next";
+import { NextApiResponse } from "next";
+import { IncomingMessage, ServerResponse } from "http";
 
 export const getAllProductNumber = async () => {
-  const path = "market/product/list";
+  const url = "market/product/list";
 
   try {
     const res = await AXIOS({
       method: "GET",
-      url: path,
+      url,
     });
 
     return res.data.content;
@@ -33,12 +40,12 @@ export const fetchProductList = async (params: string) => {
 };
 
 export const fetchProductDetail = async (id: string) => {
-  const path = `market/product/${id}`;
+  const url = `market/product/${id}`;
 
   try {
     const res = await AXIOS({
       method: "GET",
-      url: path,
+      url,
     });
 
     return res.data.content;
@@ -51,12 +58,12 @@ export const putCart = async (id: number) => {
   console.log(id);
 
   const data = { itemSeq: id };
-  const path = `market/cart`;
+  const url = `market/cart`;
 
   try {
     const res = await AXIOS({
       method: "POST",
-      url: path,
+      url,
       data,
     });
     return res.data.content;
@@ -74,7 +81,7 @@ export const putCart = async (id: number) => {
  */
 export const postKakaoPay = async () => {
   const route = Router;
-  const path = "https://kapi.kakao.com/v1/payment/ready";
+  const url = "https://kapi.kakao.com/v1/payment/ready";
   const params = {
     cid: "TC0ONETIME",
     partner_order_id: "partner_order_id",
@@ -84,14 +91,14 @@ export const postKakaoPay = async () => {
     total_amount: 2200,
     vat_amount: 200,
     tax_free_amount: 0,
-    approval_url: "http://localhost:3000/commerce/order/complete",
+    approval_url: "https://localhost:3000/commerce/order/complete",
     fail_url: "http://localhost:3000/commerce/order/cancled",
     cancel_url: "http://localhost:3000/commerce/order/cancled",
   };
 
   try {
     const res = await axios({
-      url: path,
+      url,
       method: "POST",
       headers: {
         Authorization: "KakaoAK 46b639c2f7c3f7a7cff1606b75f90b83",
@@ -122,7 +129,7 @@ export const approveKakaoPay = async (
   tid: CookieValueTypes,
   pgToken: string,
 ) => {
-  const path = "https://kapi.kakao.com/v1/payment/approve";
+  const url = "https://kapi.kakao.com/v1/payment/approve";
   const params = {
     cid: "TC0ONETIME",
     tid,
@@ -133,7 +140,7 @@ export const approveKakaoPay = async (
 
   try {
     const res = await axios({
-      url: path,
+      url,
       method: "POST",
       headers: {
         Authorization: "KakaoAK 46b639c2f7c3f7a7cff1606b75f90b83",
@@ -145,5 +152,21 @@ export const approveKakaoPay = async (
     return res.data;
   } catch (error) {
     // console.log(error);
+  }
+};
+
+export const fetchCartList = async (token?: string) => {
+  const url = "cart";
+
+  try {
+    const data = await AXIOS({
+      url,
+      method: "GET",
+      headers: { Authorization: token },
+    });
+
+    return data;
+  } catch (error) {
+    console.log(error);
   }
 };
