@@ -76,13 +76,16 @@ public class PotLogService {
         User user = userRepository.findById(userSeq).orElseThrow(
                 ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다.")
         );
+        log.info("11");
         // potSerial로 통해서 화분 불러오기
         Pot potEntity = potRepository.findByPotSerial(potSerial).orElseThrow(
                 () -> new GeneralException(ErrorCode.NOT_FOUND)
         );
+        log.info("22");
         if (!potEntity.getUser().getUserSeq().equals(userSeq)) {
             throw new GeneralException(ErrorCode.BAD_REQUEST);
         }
+        log.info("33");
 
         List<PotLog> potLogList = potLogRepository.findTop30ByPot_PotSerialOrderByCreatedTimeDesc(potSerial);
         log.info("화분 습도 로그를 받아오는데 성공했습니다.{}", potLogList);
