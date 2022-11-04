@@ -24,6 +24,10 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 @Slf4j
 @RequestMapping("/admin")
 @RequiredArgsConstructor
@@ -130,14 +134,14 @@ public class AdminController {
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "일자별 판매 건수 조회")
+    @ApiOperation(value = "최근 10일 간 일자별 판매 건수 조회")
     @GetMapping ("/order/count-by-date")
     public ResponseEntity<?> getOrderCountByDate(@ApiIgnore @AuthenticationPrincipal UserDto userDto){
-        if(!userDto.getUserRole().equals("ROLE_ADMIN"))
-            throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
-        log.info("관리자 :: 일자별 판매 건수 조회 API");
+//        if(!userDto.getUserRole().equals("ROLE_ADMIN"))
+//            throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
+//        log.info("관리자 :: 일자별 판매 건수 조회 API");
 
-        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("일자별 판매 건수를 반환합니다.","");
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("일자별 판매 건수를 반환합니다.",orderService.getOrderCountByDate());
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
