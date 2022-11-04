@@ -1,11 +1,15 @@
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { useState } from "react";
 import { postKakaoPay } from "../../../../apis/commerce";
 import CartList from "../../../../components/commerce/cart/CartList";
 import OrderFormComponent from "../../../../components/commerce/order/OrderForm";
 import PayFormComponent from "../../../../components/commerce/order/PayForm";
 import { Wrapper } from "../../../../styles/commerce/order/order-form/styles";
-import { setCookie } from "cookies-next";
+import { getCookie, setCookie } from "cookies-next";
+import axios from "axios";
+import { useDispatch } from "react-redux";
+import { wrapper } from "../../../../store";
+import commerce, { setCartLists } from "../../../../store/commerce";
 
 const OrderForm: NextPage = () => {
   const [name, setName] = useState("");
