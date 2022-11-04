@@ -199,8 +199,8 @@ public class ItemServiceImple implements ItemService{
 
         log.info("유사 상품 조회 Success :: 유사 상품 목록 Size : {}", items.size());
         return items.stream()
-                .filter(Objects::nonNull)
-                .map(item -> ItemListDto.of(item,itemSeq)).collect(Collectors.toList());
+                .filter(item -> item.getItemSeq() != itemSeq)
+                .map(item -> ItemListDto.of(item)).collect(Collectors.toList());
     }
 
     @Override

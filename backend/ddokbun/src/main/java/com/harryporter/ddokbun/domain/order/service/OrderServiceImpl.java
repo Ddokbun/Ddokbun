@@ -132,7 +132,8 @@ public class OrderServiceImpl implements OrderService{
     public List<AdminOrderDto> getTotalOrderList(){
         List<Order> orders=orderRepository.findAll();
         return orders.stream()
-                .filter(Objects::nonNull).map(order -> AdminOrderDto.of(order)).collect(Collectors.toList());
+                .filter(order -> order.getItem() != null)
+                .map(order -> AdminOrderDto.of(order)).collect(Collectors.toList());
     }
 
     @Override
