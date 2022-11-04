@@ -8,6 +8,7 @@ import com.harryporter.ddokbun.exception.ErrorCode;
 import com.harryporter.ddokbun.exception.GeneralException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -34,9 +35,9 @@ public class UserService {
         return UserDto.convert(user);
     }
 
-    public List<UserDto> getUserList() {
+    public List<UserDto> getUserList(Pageable pageable) {
         log.info("회원 목록 조회 Service ::");
-        List<User> users=userRepository.findAll();
+        List<User> users=userRepository.findAllBy(pageable);
         log.info("회원 조회 Success :: ");
         return users.stream().map(user -> UserDto.convert(user)).collect(Collectors.toList());
     }

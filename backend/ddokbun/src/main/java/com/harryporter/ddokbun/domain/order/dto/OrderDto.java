@@ -5,6 +5,7 @@ import com.harryporter.ddokbun.domain.order.entity.Order;
 import com.harryporter.ddokbun.domain.order.entity.OrderStatus;
 import lombok.Getter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Getter
@@ -36,7 +37,7 @@ public class OrderDto {
     private String orderMethod;
     //결제 시간
     @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime orderTime;
+    private LocalDate orderTime;
     //주문 상태
     private OrderStatus orderStatus;
 
