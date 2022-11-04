@@ -4,16 +4,26 @@ import SubItem from "../../components/welcome/SubItem";
 import CommerceItem from "../../components/welcome/CommerceItem";
 import SearchItem from "../../components/welcome/SearchItem";
 import RecommendItem from "../../components/welcome/RecommendItem";
+import { Wrapper } from "../../styles/welcome/styles";
+import { useScroll, useSpring } from "framer-motion";
 
 const Onboarding: NextPage = () => {
+  const { scrollYProgress } = useScroll();
+  const scaleX = useSpring(scrollYProgress, {
+    stiffness: 100,
+    damping: 30,
+    restDelta: 0.001,
+  });
   return (
-    <div>
-      <MainItem></MainItem>
-      <SubItem></SubItem>
-      <CommerceItem></CommerceItem>
-      <SearchItem></SearchItem>
-      <RecommendItem></RecommendItem>
-    </div>
+    <Wrapper>
+      <>
+        <MainItem></MainItem>
+        <SubItem></SubItem>
+        <CommerceItem></CommerceItem>
+        <SearchItem></SearchItem>
+        <RecommendItem></RecommendItem>
+      </>
+    </Wrapper>
   );
 };
 

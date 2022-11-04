@@ -3,6 +3,20 @@ import Router from "next/router";
 import AXIOS from ".";
 import { setCookie, CookieValueTypes } from "cookies-next";
 
+// 인기식물 조회
+export const fetchHotPlant = async () => {
+  const path = "market/product/hot";
+  try {
+    const res = await AXIOS({
+      method: "GET",
+      url: path,
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getAllProductNumber = async () => {
   const url = "market/product/list";
 

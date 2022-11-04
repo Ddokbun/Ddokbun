@@ -10,6 +10,9 @@ export const Wrapper = styled.div`
     grid-template-rows: 1fr;
     height: 100%;
   }
+  .pot-img-front {
+    position: relative;
+  }
   .pot-img-back {
     display: flex;
     align-items: center;
@@ -20,6 +23,7 @@ export const Wrapper = styled.div`
       h2 {
         font-size: 50px;
         margin: 20px;
+        font-family: ${props => props.theme.font.TextFont2};
       }
       h3 {
         font-size: 30px;
@@ -27,7 +31,7 @@ export const Wrapper = styled.div`
       }
       h4 {
         font-size: 18px;
-        font-family: ${props => props.theme.font.TextFont2};
+        font-family: ${props => props.theme.font.EnglishFont};
       }
     }
     .button {
