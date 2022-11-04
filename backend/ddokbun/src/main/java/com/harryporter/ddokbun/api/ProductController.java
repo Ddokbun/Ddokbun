@@ -93,7 +93,7 @@ public class ProductController {
     //해당 상품과 유사한 상품을 추천한다.
     @ApiOperation("유사 식물 조회")
     @GetMapping("/{itemSeq}/similar")
-    public ResponseEntity<?> productSimilar(@PathVariable Integer itemSeq, @ApiIgnore Pageable pageable){
+    public ResponseEntity<?> productSimilar(@PathVariable Integer itemSeq, @ApiIgnore @PageableDefault(size = 11) Pageable pageable){
         ResponseFrame res = ResponseFrame.ofOKResponse("유사 식물 리스트를 반환합니다.",itemService.getSimilarProduct(itemSeq, pageable));
         return new ResponseEntity<>(res,HttpStatus.OK);
 

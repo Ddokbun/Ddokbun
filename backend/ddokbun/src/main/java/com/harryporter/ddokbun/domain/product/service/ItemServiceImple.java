@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -192,11 +193,11 @@ public class ItemServiceImple implements ItemService{
     @Override
     public List<ItemListDto> getSimilarProduct(long itemSeq, Pageable pageable){
         log.info("유사 상품 조회 Service :: itemSeq : {}", itemSeq);
-        Item i=itemRepository.findById(itemSeq).orElseThrow(
-                ()-> new GeneralException(ErrorCode.NOT_FOUND,"상품을 찾을 수 없습니다."));
-        List<Item> items = itemRepository.findByPlant_RecRate(i.getPlant().getRecRate(), pageable);
+        List<Item> items = itemRepository.findItemNameByItemSeq(itemSeq,pageable);
+        Collections.shuffle(items);
+
         log.info("유사 상품 조회 Success :: 유사 상품 목록 Size : {}", items.size());
-        return items.stream().map(item -> ItemListDto.of(item)).collect(Collectors.toList());
+        return items.stream().map(item -> ItemListDto.of(item,itemSeq)).collect(Collectors.toList());
     }
 
     @Override
