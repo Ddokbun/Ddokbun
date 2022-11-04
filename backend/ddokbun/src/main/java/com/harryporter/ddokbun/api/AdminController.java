@@ -114,7 +114,7 @@ public class AdminController {
             throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
         log.info("관리자 :: 전체 주문 내역 목록 조회 API");
 
-        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("주문 내역 목록을 반환합니다.","");
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("전체 주문 내역 목록을 반환합니다.",orderService.getTotalOrderList());
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 

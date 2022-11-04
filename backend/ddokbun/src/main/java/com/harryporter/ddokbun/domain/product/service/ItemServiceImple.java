@@ -23,6 +23,7 @@ import javax.transaction.Transactional;
 
 import java.util.Collections;
 import java.util.List;
+import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -197,7 +198,9 @@ public class ItemServiceImple implements ItemService{
         Collections.shuffle(items);
 
         log.info("유사 상품 조회 Success :: 유사 상품 목록 Size : {}", items.size());
-        return items.stream().map(item -> ItemListDto.of(item,itemSeq)).collect(Collectors.toList());
+        return items.stream()
+                .filter(Objects::nonNull)
+                .map(item -> ItemListDto.of(item,itemSeq)).collect(Collectors.toList());
     }
 
     @Override
