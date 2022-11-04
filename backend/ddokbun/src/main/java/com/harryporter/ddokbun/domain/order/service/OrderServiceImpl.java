@@ -3,6 +3,7 @@ package com.harryporter.ddokbun.domain.order.service;
 import com.harryporter.ddokbun.domain.order.dto.OrderDto;
 import com.harryporter.ddokbun.domain.order.dto.request.OrderReq;
 import com.harryporter.ddokbun.domain.order.dto.request.OrderStatusDto;
+import com.harryporter.ddokbun.domain.order.dto.response.AdminOrderDto;
 import com.harryporter.ddokbun.domain.order.dto.response.OrderDetailDto;
 import com.harryporter.ddokbun.domain.order.dto.response.OrderListItemDto;
 import com.harryporter.ddokbun.domain.order.entity.Order;
@@ -23,6 +24,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -125,6 +127,12 @@ public class OrderServiceImpl implements OrderService{
         orderDetailDto.setOrderProperty(orderDto,itemDetailDto);
 
         return orderDetailDto;
+    }
+    @Override
+    public List<AdminOrderDto> getTotalOrderList(){
+        List<Order> orders=orderRepository.findAll();
+        return orders.stream()
+                .filter(Objects::nonNull).map(order -> AdminOrderDto.of(order)).collect(Collectors.toList());
     }
 
     @Override
