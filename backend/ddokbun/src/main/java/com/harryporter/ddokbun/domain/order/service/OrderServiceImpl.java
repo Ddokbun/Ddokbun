@@ -129,6 +129,7 @@ public class OrderServiceImpl implements OrderService{
 
     @Override
     public String updateOrderStatus(OrderStatusDto orderStatusDto){
+        log.info("주문 상태 변경 Service :: 변경할 OrderStatus : {}", orderStatusDto.getOrderStatus());
         Order order = orderRepository.findById(orderStatusDto.getOrderSeq()).orElseThrow(
                 ()->new GeneralException(ErrorCode.NOT_FOUND,"해당하는 주문 내역을 찾을 수 없습니다,"));
 
@@ -143,7 +144,7 @@ public class OrderServiceImpl implements OrderService{
         }catch (Exception e){
             throw new GeneralException(ErrorCode.BAD_REQUEST,"주문 내역 변경에 실패하였습니다.");
         }
-        log.info("요청 상태 : {},  변경 후 주문 상태 : {}",orderStatusDto.getOrderSeq(),order.getOrderStatus());
+        log.info("주문 상태 변경 Success :: 변경된 OrderStatus : {}", order.getOrderStatus());
 
         return "Success update OrderStatus : "+order.getOrderStatus();
     }

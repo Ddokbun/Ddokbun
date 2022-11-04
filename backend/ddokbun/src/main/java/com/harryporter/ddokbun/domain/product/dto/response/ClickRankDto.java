@@ -1,29 +1,33 @@
 package com.harryporter.ddokbun.domain.product.dto.response;
 
+import com.harryporter.ddokbun.domain.product.entity.Item;
 import lombok.Data;
 import org.springframework.data.redis.core.ZSetOperations;
 
 @Data
 public class ClickRankDto {
     private long rankItemSeq;
+    private double clickCount;
     private String rankItemName;
-    private double score;
+    private String rankItemEnName;
+    private int rankItemPrice;
+    private String imgPath;
+    private long plantSeq;
 
-    public static ClickRankDto convertToClickRankDto(ZSetOperations.TypedTuple<String> stringTypedTuple,String rankItemName) {
+
+
+    public static ClickRankDto convertToClickRankDto(ZSetOperations.TypedTuple<String> stringTypedTuple, Item item) {
+        if(item==null) return null;
         ClickRankDto clickRankDto = new ClickRankDto();
         clickRankDto.rankItemSeq = Long.parseLong(stringTypedTuple.getValue());
-        clickRankDto.score=stringTypedTuple.getScore();
-        clickRankDto.rankItemName=rankItemName;
+        clickRankDto.clickCount=stringTypedTuple.getScore();
+        clickRankDto.rankItemName=item.getItemName();
+        clickRankDto.rankItemEnName=item.getItemEnName();
+        clickRankDto.rankItemPrice=item.getItemPrice();
+        clickRankDto.imgPath=item.getItemPicture();
+        clickRankDto.plantSeq=item.getPlant().getPlantSeq();
         return clickRankDto;
 
     }
 
-    @Override
-    public String toString() {
-        return "ClickRankDto{" +
-                "rankItemSeq='" + rankItemSeq + '\'' +
-                ", score=" + score +
-                ", rankItemName='" + rankItemName + '\'' +
-                '}';
-    }
 }
