@@ -10,8 +10,9 @@ import {
   Tooltip,
   Legend,
 } from "chart.js";
+import { LogsType } from "../../../pages/manage/myplant/[potseq]";
 
-const LineGraph: React.FC = () => {
+const LineGraph: React.FC<{ log: LogsType[] }> = ({ log }) => {
   Chart.register(
     CategoryScale,
     LinearScale,
@@ -21,12 +22,14 @@ const LineGraph: React.FC = () => {
     Legend,
   );
 
+  console.log(log);
+
   const data = {
     labels: ["5일전", "4", "3", "2", "today"],
     datasets: [
       {
         label: "온도.",
-        data: [33, 53, 85, 41, 44, 65],
+        data: log,
         fill: true,
         backgroundColor: "rgba(75,192,192,0.2)",
         borderColor: "#92ECEE",
