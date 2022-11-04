@@ -10,6 +10,20 @@ import {
 import { NextApiResponse } from "next";
 import { IncomingMessage, ServerResponse } from "http";
 
+// 인기식물 조회
+export const fetchHotPlant = async () => {
+  const path = "market/product/hot";
+  try {
+    const res = await AXIOS({
+      method: "GET",
+      url: path,
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getAllProductNumber = async () => {
   const url = "market/product/list";
 
