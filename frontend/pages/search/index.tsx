@@ -4,8 +4,8 @@ import { Wrapper } from "../../styles/search/styles";
 import RecommendPlant from "../../components/search/RecommendPlant";
 import SearchBar from "../../components/search/SearchBar";
 import SearchButton from "../../components/search/SearchButton";
-import { fetchTodayPlant } from "../../apis/search";
 import { PlantArray } from "../../types/search/recommend.interface";
+import { fetchTodayPlant } from "../../apis/search";
 
 export const getStaticProps: GetStaticProps = async context => {
   const data = await fetchTodayPlant();
