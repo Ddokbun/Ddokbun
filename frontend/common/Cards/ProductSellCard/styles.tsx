@@ -71,18 +71,14 @@ export const Wrapper = styled.div`
 
   @media screen and (${props => props.theme.mobile}) {
     width: 100%;
+    height: 100%;
     padding: 0px 0px;
     display: grid;
     grid-template-columns: 1fr;
-    grid-template-rows: auto;
+    grid-template-rows: 350px;
     grid-auto-flow: row;
     grid-gap: 0px;
     place-items: end;
-    .img-wrap {
-      width: 100%;
-      position: relative;
-      max-width: 400px;
-    }
 
     .text-wrap {
       margin-top: 60px;
@@ -105,9 +101,9 @@ export const Wrapper = styled.div`
           font-family: ${props => props.theme.font.TitleFont};
         }
         h3 {
-          font-size: 40px;
+          font-size: 30px;
           line-height: 10px;
-          color: ${props => props.theme.color.ivory};
+          color: ${props => props.theme.color.brownHover};
         }
       }
       & > h3 {

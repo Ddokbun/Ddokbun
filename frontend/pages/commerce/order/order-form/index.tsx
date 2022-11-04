@@ -9,7 +9,7 @@ import { getCookie, setCookie } from "cookies-next";
 import axios from "axios";
 import { useDispatch } from "react-redux";
 import { wrapper } from "../../../../store";
-import commerce, { setCartLists } from "../../../../store/commerce";
+import commerce from "../../../../store/commerce";
 
 const OrderForm: NextPage = () => {
   const [name, setName] = useState("");
