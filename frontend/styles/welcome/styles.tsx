@@ -1,8 +1,8 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(motion.div)`
   margin: 0 auto;
-  max-width: 1240px;
   width: 100%;
   background-color: "#fafafa";
 `;
