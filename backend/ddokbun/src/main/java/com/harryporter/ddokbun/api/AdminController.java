@@ -16,6 +16,8 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -141,12 +143,12 @@ public class AdminController {
 
     @ApiOperation(value = "유저 목록 조회")
     @GetMapping ("/user/list")
-    public ResponseEntity<?> getUserList(@ApiIgnore @AuthenticationPrincipal UserDto userDto){
+    public ResponseEntity<?> getUserList(@ApiIgnore @AuthenticationPrincipal UserDto userDto, @ApiIgnore @PageableDefault(size = 10) Pageable pageable){
         if(!userDto.getUserRole().equals("ROLE_ADMIN"))
             throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
         log.info("관리자 :: 유저 목록 조회 API");
 
-        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("유저 목록을 반환합니다.",userService.getUserList());
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("유저 목록을 반환합니다.",userService.getUserList(pageable));
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
