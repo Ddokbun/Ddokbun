@@ -170,3 +170,17 @@ export const fetchCartList = async (token?: string) => {
     console.log(error);
   }
 };
+
+export const fetchRelatedProducts = async (itemSeq: string) => {
+  const url = `market/product/${itemSeq}/similar`;
+
+  try {
+    const { data } = await AXIOS({
+      url,
+      method: "GET",
+    });
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+};

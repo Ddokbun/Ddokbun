@@ -8,7 +8,6 @@ import PageTitle from "../../../common/PageTitle";
 import Card from "../../../components/manage/CardItem";
 import CardList from "../../../components/manage/CardList";
 import { wrapper } from "../../../store";
-import { setCartLists } from "../../../store/commerce";
 import { Wrapper } from "../../../styles/manage/styles";
 
 export interface PlantListType {
@@ -23,8 +22,6 @@ export const getServerSideProps: GetServerSideProps =
     const { token } = getCookies({ req, res });
 
     const data = await fetchCartList(token);
-
-    // store.dispatch(setCartLists(["하이"]));
 
     return {
       props: {},
