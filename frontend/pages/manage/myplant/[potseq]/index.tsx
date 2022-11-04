@@ -8,6 +8,7 @@ import WeekPicker from "../../../../components/manage/add/WeekPicker";
 import DigitalTwin from "../../../../components/manage/DigitalTwin";
 import LineGraph from "../../../../components/manage/LineGraph";
 import PlantStatus from "../../../../components/manage/PlantStatus";
+
 import { Wrapper } from "../../../../styles/manage/[posteq]/styles";
 export interface LogsType {
   [name: string]: number | string;

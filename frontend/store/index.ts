@@ -3,7 +3,7 @@ import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import { combineReducers } from "redux";
 import authSlice from "./auth";
 import manage from "./manage";
-import commerce from "./commerce";
+import commerce, { CommerceState } from "./commerce";
 import {
   persistStore,
   persistReducer,
@@ -19,8 +19,14 @@ import storageSession from "redux-persist/lib/storage/session"; //sessionstorage
 const persistConfig: any = {
   key: "root",
   storage: storageSession,
-  whitelist: ["authSlice", "commerce"], //유지할 데이터
+  whitelist: ["authSlice"], //유지할 데이터
 };
+
+export interface StoreState {
+  commerce: CommerceState;
+  authSlice: any;
+  manage: any;
+}
 
 const rootReducers = combineReducers({
   // 여기에 reducer들 추가

@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   .swiper {
     width: 100%;
     height: 100%;
+    overflow: visible;
   }
 
   .swiper-slide {
@@ -31,9 +32,15 @@ export const Wrapper = styled.div`
 
   .swiper-button-next {
     color: ${props => props.theme.color.mainGreen};
+    @media screen and (${props => props.theme.mobile}) {
+      visibility: hidden;
+    }
   }
   .swiper-button-prev {
     color: ${props => props.theme.color.mainGreen};
+    @media screen and (${props => props.theme.mobile}) {
+      visibility: hidden;
+    }
   }
   .swiper-slide img {
     display: block;

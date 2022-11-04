@@ -18,7 +18,6 @@ const authSlice = createSlice({
   extraReducers: {
     // 예시
     [HYDRATE]: (state, action) => {
-      console.log("HYDRATE", state, action.payload);
       return {
         ...state,
         ...action.payload,
