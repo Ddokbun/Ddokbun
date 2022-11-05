@@ -10,6 +10,9 @@ import org.springframework.data.repository.query.Param;
 
 import javax.persistence.LockModeType;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
+import springfox.documentation.annotations.ApiIgnore;
+
 import java.util.List;
 
 public interface ItemRepository extends JpaRepository<Item,Long> {
@@ -33,5 +36,7 @@ public interface ItemRepository extends JpaRepository<Item,Long> {
             "LEFT OUTER JOIN i.plant p " +
             "WHERE p.recRate= (SELECT p2.recRate FROM Item i2 LEFT OUTER JOIN i2.plant p2 WHERE i2.itemSeq = :itemSeq)")
     List<Item> findItemNameByItemSeq(@Param("itemSeq") long itemSeq, Pageable pageable);
+
+    List<Item> findAllBy(Pageable pageable);
 
 }
