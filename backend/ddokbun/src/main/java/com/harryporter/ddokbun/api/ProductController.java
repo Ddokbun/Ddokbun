@@ -173,10 +173,10 @@ public class ProductController {
     }
 
 
-    @ApiOperation(value = "상품 전체 조회 (itemSeq만)")
+    @ApiOperation(value = "상품 전체 조회")
     @GetMapping("/list")
-    public ResponseEntity<?> getProductList(){
-        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("전체 상품 seq를 반환합니다",itemService.getProductList());
+    public ResponseEntity<?> getProductList(@ApiIgnore @PageableDefault(size = 10) Pageable pageable){
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("전체 상품 목록을 반환합니다",itemService.getProductList(pageable));
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 

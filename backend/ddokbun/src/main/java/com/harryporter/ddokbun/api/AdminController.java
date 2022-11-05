@@ -72,6 +72,17 @@ public class AdminController {
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "상품 전체 목록 조회")
+    @GetMapping ("/product/list")
+    public ResponseEntity<?> getProductList(@ApiIgnore @AuthenticationPrincipal UserDto userDto, @ApiIgnore @PageableDefault(size = 10) Pageable pageable){
+        if(!userDto.getUserRole().equals("ROLE_ADMIN"))
+            throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
+        log.info("관리자 :: 상품 전체 목록 조회 API");
+
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("상품 전체 목록을 반환합니다.",itemService.getProductList(pageable));
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
     @ApiOperation(value = "상품 등록")
     @PostMapping("/product")
     public ResponseEntity<?> insertProduct(@RequestBody InsertItemDto itemDto, @ApiIgnore @AuthenticationPrincipal UserDto userDto){
