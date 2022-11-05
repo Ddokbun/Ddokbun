@@ -18,11 +18,11 @@ const DigitalTwin = () => {
           <Sun viewBox="-50 -30 200 200" />
           <Water className="water" viewBox="-50 -30 200 200" />
         </div>
-        <Canvas id="digital-twin">
-          <Suspense fallback={null}>
+        <Suspense fallback={null}>
+          <Canvas id="digital-twin">
             <Three />
-          </Suspense>
-        </Canvas>
+          </Canvas>
+        </Suspense>
       </div>
     </Wrapper>
   );
