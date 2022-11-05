@@ -10,7 +10,7 @@ const CardList: React.FC<{ plantsList: PlantListType[] }> = ({
     <Wrapper>
       {plantsList?.map(plant => {
         return (
-          <li key={plant.plantSeq}>
+          <li key={plant.potSerial}>
             <CardItem
               plantSeq={plant.plantSeq}
               potSerial={plant.potSerial}

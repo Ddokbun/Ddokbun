@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Wrapper } from "./styles";
 import { Line } from "react-chartjs-2";
 import {
@@ -9,10 +9,22 @@ import {
   LineElement,
   Tooltip,
   Legend,
+  TimeScale,
 } from "chart.js";
-import { LogsType } from "../../../pages/manage/myplant/[potseq]";
+import "chartjs-adapter-date-fns";
+import { tempLogs } from "../../../pages/manage/myplant/[potseq]";
 
-const LineGraph: React.FC<{ log: LogsType[] }> = ({ log }) => {
+export interface LogsType {
+  [name: string]: string;
+}
+
+interface Props {
+  labels: Date[];
+  data: string[];
+  label: string;
+}
+
+const LineGraph: FC<Props> = ({ labels, data, label }) => {
   Chart.register(
     CategoryScale,
     LinearScale,
@@ -20,25 +32,30 @@ const LineGraph: React.FC<{ log: LogsType[] }> = ({ log }) => {
     LineElement,
     Tooltip,
     Legend,
+    TimeScale,
   );
 
-  console.log(log);
-
-  const data = {
-    labels: ["5일전", "4", "3", "2", "today"],
+  const chartData = {
+    labels,
     datasets: [
       {
-        label: "온도.",
-        data: log,
+        label,
+        data,
         fill: true,
         backgroundColor: "rgba(75,192,192,0.2)",
         borderColor: "#92ECEE",
       },
     ],
   };
+
   const options = {
     plugins: {
       tooltip: {
+        callbacks: {
+          // label: (tooltipItem, data) => {
+          //   console.log(tooltipItem);
+          // },
+        },
         // backgroundColor: "#fff",
       },
       indexAxis: "y" as const,
@@ -48,16 +65,25 @@ const LineGraph: React.FC<{ log: LogsType[] }> = ({ log }) => {
         },
       },
     },
+    scales: {
+      x: {
+        type: "time" as const,
+        time: {
+          // unit: "day" as const,
+          // parser: "yy:mm:dd" as const,
+        },
+      },
+    },
     interaction: {
       mode: "index" as const,
-      intersect: false,
       axis: "y" as const,
     },
   };
 
+
   return (
     <Wrapper>
-      <Line data={data} options={options} />
+      <Line data={chartData} options={options} />
     </Wrapper>
   );
 };

@@ -36,6 +36,10 @@ export const getServerSideProps: GetServerSideProps =
     // const data = await fetchCartList(token);
     const plantsListData = await fetchPlantsList(token);
 
+    if (!plantsListData) {
+      return { props: {} };
+    }
+
     // store.dispatch(setCartLists(["하이"]));
 
     return {
