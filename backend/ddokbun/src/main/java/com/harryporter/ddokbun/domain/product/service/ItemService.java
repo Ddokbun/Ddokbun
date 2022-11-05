@@ -26,7 +26,7 @@ public interface ItemService {
 
     String deleteItem(long itemSeq);
 
-    List<Long> getProductList();
+    List<ItemDetailDto> getProductList(Pageable pageable);
 
 
     List<ItemListDto> getSimilarProduct(long itemSeq, Pageable pageable);
