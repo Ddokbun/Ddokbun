@@ -186,9 +186,12 @@ public class ItemServiceImple implements ItemService{
     }
 
     @Override
-    public List<Long> getProductList(){
-        List<Item> products = itemRepository.findAll();
-        return products.stream().map(product -> product.getItemSeq()).collect(Collectors.toList());
+    public List<ItemDetailDto> getProductList(Pageable pageable){
+        log.info("상품 전체 목록 조회 Service :: ");
+        List<Item> products = itemRepository.findAllBy(pageable);
+
+        log.info("상품 전체 목록 조회 Success :: ");
+        return products.stream().map(product -> ItemDetailDto.of(product)).collect(Collectors.toList());
     }
 
     @Override

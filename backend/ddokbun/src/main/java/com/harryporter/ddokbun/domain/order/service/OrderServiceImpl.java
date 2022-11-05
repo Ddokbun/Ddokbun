@@ -11,7 +11,6 @@ import com.harryporter.ddokbun.domain.order.entity.Order;
 import com.harryporter.ddokbun.domain.order.entity.OrderStatus;
 import com.harryporter.ddokbun.domain.order.repository.OrderRepository;
 import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
-import com.harryporter.ddokbun.domain.plant.entity.Pot;
 import com.harryporter.ddokbun.domain.product.dto.ItemDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
 import com.harryporter.ddokbun.domain.product.entity.Item;
@@ -26,9 +25,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -150,6 +146,7 @@ public class OrderServiceImpl implements OrderService{
         log.info("현재 주문 상태 : {}, 변경할 주문 상태 : {}",order.getOrderStatus(),orderStatusDto.getOrderStatus());
         switch (orderStatusDto.getOrderStatus()){
             case "ready" : order.updateOrderStatus(OrderStatus.READY); break;
+            case "paycomplete" : order.updateOrderStatus(OrderStatus.PAYCOMPLETE); break;
             case "delivery" : order.updateOrderStatus(OrderStatus.DELIVERY); break;
             case "complete" : order.updateOrderStatus(OrderStatus.COMPLETE); break;
         }
