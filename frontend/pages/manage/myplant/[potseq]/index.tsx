@@ -1,4 +1,7 @@
 import { NextPage } from "next";
+import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
+import { fetchCurrentStatus } from "../../../../apis/manage";
 import SimpleGraph from "../../../../common/Graph/SimpleGraph";
 import WeekPicker from "../../../../components/manage/add/WeekPicker";
 import DigitalTwin from "../../../../components/manage/DigitalTwin";
@@ -29,10 +32,29 @@ const PlantCare: NextPage = () => {
     return;
   };
 
+  const { potseq } = useRouter().query;
+
+  const [plantStatus, setPlantStatus] = useState({
+    light: 1,
+  });
+
+  // useEffect(() => {
+  //   if (!potseq) {
+  //     return;
+  //   }
+
+  //   const getInitialData = async () => {
+  //     const res = await fetchCurrentStatus(potseq);
+  //     setPlantStatus(res.light);
+  //     console.log(res);
+  //   };
+  //   getInitialData();
+  // }, [potseq]);
+
   return (
     <Wrapper>
       <section className="left-section">
-        <DigitalTwin />
+        <DigitalTwin light={plantStatus.light}/>
         <span className="title">모든 환경이 최상이예요!</span>
         <div className="simpleGraph-container">
           <SimpleGraph

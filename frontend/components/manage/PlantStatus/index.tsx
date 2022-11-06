@@ -9,6 +9,7 @@ import { Theme } from "../../../styles/theme";
 import LineGraph from "../LineGraph";
 import { fetchLogs } from "../../../apis/manage";
 import { useRouter } from "next/router";
+
 export interface LogsType {
   [name: string]: string;
 }
@@ -54,7 +55,7 @@ const PlantStatus = () => {
       setCreatedTime(getCreatedTime);
     };
     getInitialData();
-  }, [potseq, activeIndex]);
+  }, [potseq, activeIndex, logTitle]);
 
   const statusButtons = plantStatus.map(plant => {
     return (
