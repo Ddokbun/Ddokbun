@@ -1,8 +1,6 @@
 package com.harryporter.ddokbun.schedule;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -38,7 +36,7 @@ public class TodayItemScheduler {
         //기존 today_item에 있는 모든 열 삭제
 
         //아이템의 key만 들고 온다.
-        List<Long> itemkeys =  jdbcTemplate.query("SELECT * FROM ddokbun.item ORDER BY RAND() LIMIT 1", (rs, rowNum) ->
+        List<Long> itemkeys =  jdbcTemplate.query("SELECT * FROM ddokbun.item ORDER BY RAND() LIMIT 5", (rs, rowNum) ->
                 rs.getLong("item_seq")
         );
 
