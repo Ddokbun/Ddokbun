@@ -5,6 +5,11 @@ server:
 
 
 spring:
+  batch:
+    jdbc:
+      initialize-schema: ALWAYS
+    job:
+      enabled: false
   servlet:
     multipart:
       max-file-size: 50MB
@@ -25,7 +30,6 @@ spring:
         - k7d208.p.ssafy.io:8994
       key-serializer: org.apache.kafka.common.serialization.StringSerializer
       value-serializer: org.apache.kafka.common.serialization.StringSerializer
-
 
 logging:
   level:
