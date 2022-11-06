@@ -210,6 +210,7 @@ public class ItemServiceImple implements ItemService{
     public List<ItemListDto> getProductByCategory(String category, Pageable pageable){
         log.info("카테고리 조회 Service :: Category : {}", category);
         List<Item> items = itemRepository.findByPlant_RecRateContainingIgnoreCase(category,pageable);
+        Collections.shuffle(items);
         log.info("카테고리 조회 Success :: 상품 목록 Size : {}", items.size());
         return items.stream().map(item -> ItemListDto.of(item)).collect(Collectors.toList());
      }
