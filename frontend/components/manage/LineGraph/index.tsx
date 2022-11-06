@@ -12,7 +12,6 @@ import {
   TimeScale,
 } from "chart.js";
 import "chartjs-adapter-date-fns";
-import { tempLogs } from "../../../pages/manage/myplant/[potseq]";
 
 export interface LogsType {
   [name: string]: string;
@@ -25,6 +24,7 @@ interface Props {
 }
 
 const LineGraph: FC<Props> = ({ labels, data, label }) => {
+
   Chart.register(
     CategoryScale,
     LinearScale,

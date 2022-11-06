@@ -1,7 +1,6 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { fetchCurrentStatus } from "../../../../apis/manage";
+import {  useState } from "react";
 import SimpleGraph from "../../../../common/Graph/SimpleGraph";
 import WeekPicker from "../../../../components/manage/add/WeekPicker";
 import DigitalTwin from "../../../../components/manage/DigitalTwin";

@@ -13,18 +13,34 @@ const CommerceItem = () => {
         <div className="pot-img">
           <div>
             <div className="img-item">
-              <Image src={commerceImg01} alt="임시 메인 이미지" layout="fill" />
+              <Image
+                src={commerceImg01}
+                alt="똑분 스마트화분 설명 이미지1"
+                layout="fill"
+              />
             </div>
             <div className="img-item">
-              <Image src={commerceImg03} alt="임시 메인 이미지" layout="fill" />
+              <Image
+                src={commerceImg03}
+                alt="똑분 스마트화분 설명 이미지2"
+                layout="fill"
+              />
             </div>
           </div>
           <div>
             <div className="img-item">
-              <Image src={commerceImg04} alt="임시 메인 이미지" layout="fill" />
+              <Image
+                src={commerceImg04}
+                alt="똑분 스마트화분 설명 이미지3"
+                layout="fill"
+              />
             </div>
             <div className="img-item">
-              <Image src={commerceImg02} alt="임시 메인 이미지" layout="fill" />
+              <Image
+                src={commerceImg02}
+                alt="똑분 스마트화분 설명 이미지4"
+                layout="fill"
+              />
             </div>
           </div>
         </div>

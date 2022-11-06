@@ -78,6 +78,8 @@ export const ResponsiveWrapper = styled(motion.div)`
       max-width: 250px;
       position: relative;
       align-items: center;
+      overflow: hidden;
+      border-radius: 25px;
     }
 
     .text-wrap {
@@ -119,19 +121,28 @@ export const ResponsiveWrapper = styled(motion.div)`
   }
 `;
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(motion.div)`
+  @media not all and (min-resolution: 0.001dpcm) {
+    img[loading="lazy"] {
+      clip-path: inset(0.5px);
+    }
+  }
+
   width: 100%;
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
   grid-template-rows: 3fr 2fr;
   place-items: center;
+  z-index: 1;
   .img-wrap {
     padding: 0px 20px;
     width: 100%;
+    height: 100%;
     max-width: 250px;
     position: relative;
-    align-items: center;
+    overflow: hidden;
+    border-radius: 25px;
   }
 
   .text-wrap {
@@ -148,6 +159,10 @@ export const Wrapper = styled.div`
       font-family: ${props => props.theme.font.EnglishFont};
       font-size: 1.2rem;
     }
+    .tag-wrap {
+      display: flex;
+      gap: 5px;
+    }
 
     .title {
       display: flex;
@@ -160,10 +175,10 @@ export const Wrapper = styled.div`
         color: ${props => props.theme.color.darkGreen};
       }
       h3 {
-        font-size: 1.25rem;
+        font-size: 13px;
         line-height: 10px;
         margin-bottom: 10px;
-        color: ${props => props.theme.color.ivory};
+        color: ${props => props.theme.color.brownHover};
         font-family: ${props => props.theme.font.EnglishFont};
       }
     }

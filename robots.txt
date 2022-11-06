@@ -1,0 +1,3 @@
+User-agent: *
+Allow:/
+Sitemap: https://ddokbun.com/sitemap.xml

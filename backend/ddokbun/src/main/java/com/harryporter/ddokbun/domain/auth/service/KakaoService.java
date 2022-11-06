@@ -29,26 +29,24 @@ import org.springframework.web.client.RestTemplate;
 public class KakaoService {
     private final UserService userService;
     public OAuthRes kakaoLogin(String code){
-        log.info("Login 파이프라인 진입 & 받은 인가코드 : {}",code);
+        log.info("카카오 로그인 파이프라인 진입 :: 인가 코드 : {}", code);
         KakaoAccessToken accessToken = getKakaoAuthTokenByCode(code);
         KakaoProfile kakaoProfile = getKakaoProfileByAccessToken(accessToken);
 
         if(kakaoProfile.getKakao_account().getEmail()==null){
+            log.info("이메일 미등록 오류 :: Access Token : {}", accessToken);
             kakaoDisconnect(accessToken);
             throw new GeneralException(ErrorCode.NOT_FOUND,"사용자 이메일을 찾을 수 없습니다. 이메일 제공에 동의해주세요");
         }
 
         UserDto userDto = userService.signup(new UserSocialDto(kakaoProfile));
-        log.info("user nickname : {}",userDto.getUserNickname());
-        log.info("user email : {}",userDto.getUserEmail());
-
         String jwtToken = JwtTokenUtils.generateJwtToken(userDto);
         OAuthRes res = new OAuthRes(jwtToken,userDto.getUserSeq());
-
         return res;
     }
 
     private KakaoAccessToken getKakaoAuthTokenByCode(String code){
+        log.info("카카오 Access Token 받아오기 :: 인가 코드 : {}", code);
         try{
             // HTTP Header 생성
             HttpHeaders headers = new HttpHeaders();
@@ -92,6 +90,7 @@ public class KakaoService {
     }
 
     private KakaoProfile getKakaoProfileByAccessToken(KakaoAccessToken oAuthToken){
+        log.info("카카오 프로필 받아오기 :: Access Token : {}", oAuthToken.getAccess_token());
         // HTTP Header 생성
         HttpHeaders headers2 = new HttpHeaders();
         headers2.add("Authorization", "Bearer "+oAuthToken.getAccess_token());
@@ -119,6 +118,7 @@ public class KakaoService {
     }
 
     private String kakaoDisconnect(KakaoAccessToken oAuthToken){
+        log.info("카카오 연결 해제 :: Access Token : {}", oAuthToken.getAccess_token());
         // HTTP Header 생성
         HttpHeaders headers3 = new HttpHeaders();
         headers3.add("Authorization", "Bearer "+oAuthToken.getAccess_token());
