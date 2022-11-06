@@ -17,10 +17,7 @@ public class TodayItemScheduler {
     //nativeQuery 없이 JPA truncate 못함, delete 보다 truncate가 빠름
     private final JdbcTemplate jdbcTemplate;
 
-    private RedisTemplate<String, Object> redisTemplate;
-
-
-    public TodayItemScheduler(JdbcTemplate jdbcTemplate,RedisTemplate redisTemplate ){
+    public TodayItemScheduler(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
      //   this.redisTemplate = redisTemplate;
         //서버 켜질 떄는 무조건 실행되게 하자.
