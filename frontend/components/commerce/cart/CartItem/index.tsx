@@ -3,6 +3,10 @@ import { Wrapper } from "./styles";
 import Temp from "../../../../assets/temp.jpg";
 import Image from "next/image";
 import { ListObjectItem } from "../../../../types/commerce/list.interface";
+import { changeCount } from "../../../../store/commerce";
+import { useDispatch } from "react-redux";
+import { putCartItemCount } from "../../../../apis/commerce";
+import { DispatchProp } from "react-redux";
 
 interface CartProps extends ListObjectItem {
   quantity: number;
@@ -17,36 +21,36 @@ const CartItem: React.FC<{
   // 더미데이터
   const [count, setCount] = useState(1);
   const [nowPrice, setNowPrice] = useState((item.price as number) * count);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    setTotal(val => (val + (item.price as number)) * count);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+    setNowPrice((item.price as number) * (item.quantity as number));
+  }, [item.price, item.quantity]);
 
-  // const fetchSetTotal = useCallback(() => {
-  //   setTotal(val => val + count * price);
-  // }, []);
-
-  // useEffect(() => {
-  //   fetchSetTotal();
-  // }, [fetchSetTotal]);
-
-  useEffect(() => {
-    setNowPrice((item.price as number) * count);
-  }, [item.price, count]);
-
-  const onCountHandler = (event: React.MouseEvent<HTMLElement>) => {
+  const onCountHandler = async (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     const handler = (event.target as HTMLElement).innerText;
     switch (handler) {
       case "+":
-        setCount(val => val + 1);
-        setTotal(val => val + (item.price as number));
+        await putCartItemCount(
+          (item.quantity as number) + 1,
+          item.itemSeq,
+          dispatch,
+        );
+
         break;
 
       case "-":
-        setCount(val => (count > 1 ? val - 1 : val));
-        setTotal(val => val - (item.price as number));
+        if ((item.quantity as number) <= 1) {
+          alert("삭제구현안됨 ㅋㄷ");
+          return;
+        }
+        await putCartItemCount(
+          (item.quantity as number) - 1,
+          item.itemSeq,
+          dispatch,
+        );
+
         break;
     }
   };
@@ -71,7 +75,7 @@ const CartItem: React.FC<{
       <div className="grid-right">
         <h2>
           ₩{" "}
-          {(item.price as number)
+          {((item.price as number) * (item.quantity as number))
             .toString()
             .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         </h2>

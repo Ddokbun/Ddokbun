@@ -15,6 +15,7 @@ import {
   REGISTER,
 } from "redux-persist";
 import storageSession from "redux-persist/lib/storage/session"; //sessionstorage나 localstorage 중에 선택
+
 import {
   ListArray,
   ListObjectItem,
@@ -80,6 +81,8 @@ export const persistor = persistStore(makeStore());
 
 export type AppStore = ReturnType<typeof makeStore>;
 export type AppState = ReturnType<AppStore["getState"]>;
+
+export type AppDispatch = typeof persistor.dispatch;
 
 export const wrapper = createWrapper<AppStore>(makeStore);
 export type RootState = ReturnType<typeof rootReducers>;

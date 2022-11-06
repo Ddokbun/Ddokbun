@@ -2,7 +2,9 @@ import axios, { AxiosError } from "axios";
 import Router from "next/router";
 import AXIOS from ".";
 import { setCookie, CookieValueTypes } from "cookies-next";
-import Error from "next/error";
+import { changeCount } from "../store/commerce";
+import { AnyAction, Dispatch } from "@reduxjs/toolkit";
+import { AppDispatch } from "../store";
 
 export const getAllProductNumber = async () => {
   const url = "market/product/list";
@@ -178,8 +180,6 @@ export const fetchCartList = async (token?: string) => {
   const url = "cart";
 
   try {
-    console.log(token);
-
     if (token) {
       return await AXIOS({
         url,
@@ -202,11 +202,40 @@ export const fetchCartList = async (token?: string) => {
 };
 
 /**
+ * 장바구니의 아이템의 수량을 변경하는 api입니다
+ *
+ */
+export const putCartItemCount = async (
+  quantity: number,
+  itemSeq: number,
+  dispatch: Dispatch<AnyAction>,
+) => {
+  const url = `cart/${itemSeq}`;
+  console.log("here", itemSeq);
+
+  try {
+    const { data } = await AXIOS({
+      url,
+      method: "PUT",
+      data: {
+        quantity,
+      },
+    });
+
+    dispatch(changeCount({ itemSeq, quantity }));
+    return "잘됐습니다";
+  } catch (error) {
+    console.log(error);
+
+    alert("뭔가가 잘못됐습니다");
+  }
+};
+
+/**
  * 상품과 관련된 연관상품을 호출하는 상품입니다.
  * @param itemSeq 희망하는 상품 번호
  * @returns 연관 상품을 리스트형태로 반환합니다
  */
-
 export const fetchRelatedProducts = async (itemSeq: string) => {
   const url = `market/product/${itemSeq}/similar`;
 

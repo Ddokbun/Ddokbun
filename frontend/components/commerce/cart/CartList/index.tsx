@@ -2,28 +2,40 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCartList } from "../../../../apis/commerce";
 import { setCartLists } from "../../../../store/commerce";
-import { ProductLists } from "../../../../types/commerce/list.interface";
+import {
+  ListObjectItem,
+  ProductLists,
+} from "../../../../types/commerce/list.interface";
 
 import CartItem from "../CartItem";
 import { Wrapper } from "./styles";
 import { StoreState } from "../../../../store";
 
+interface Item {}
+
 const CartList: React.FC = () => {
   const [total, setTotal] = useState(0);
   const dispatch = useDispatch();
   const selector = useSelector((state: StoreState) => state.cartList);
+
+  useEffect(() => {
+    const idxArray = Object.keys(selector);
+    let temp = 0;
+    idxArray.forEach((idx: string) => {
+      const iidx = parseInt(idx);
+      temp +=
+        (selector[iidx].price as number) * (selector[iidx].quantity as number);
+    });
+    setTotal(temp);
+  }, [selector]);
+
   useEffect(() => {
     const getCartList = async () => {
       const data = await fetchCartList();
-      console.log(data?.data.content);
-
       dispatch(setCartLists(data?.data.content.data as ProductLists));
     };
     getCartList();
   }, []);
-  console.log(selector);
-
-  console.log(Object.keys(selector));
 
   return (
     <>
@@ -31,7 +43,6 @@ const CartList: React.FC = () => {
         <div className="grid">
           <>
             {Object.keys(selector).map((idx: string) => {
-              console.log(selector[parseInt(idx)]);
               const item = selector[parseInt(idx)];
               return (
                 <CartItem key={item.itemSeq} item={item} setTotal={setTotal} />

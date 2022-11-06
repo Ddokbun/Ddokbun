@@ -1,6 +1,14 @@
-import { combineReducers, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import {
+  AnyAction,
+  combineReducers,
+  createSlice,
+  current,
+  PayloadAction,
+} from "@reduxjs/toolkit";
 import { HYDRATE } from "next-redux-wrapper";
-import { ListArray } from "../types/commerce/list.interface";
+import { type } from "os";
+import { LoadingManager } from "three";
+import { ListArray, ListObjectItem } from "../types/commerce/list.interface";
 
 // const commerceSlice = createSlice
 
@@ -31,10 +39,22 @@ export const CartListSlice = createSlice({
         ...action.payload,
       };
     },
+    changeCount: (state: any, action) => {
+      const nowState = current(state);
+      const keys = Object.keys(nowState);
+      console.log(nowState[0]);
+
+      const newState = keys.map(idx => {
+        if (nowState[idx].itemSeq == action.payload.itemSeq) {
+          return { ...nowState[idx], quantity: action.payload.quantity };
+        } else return { ...nowState[idx] };
+      });
+      return newState;
+    },
   },
 });
 
-export const { setCartLists } = CartListSlice.actions;
+export const { setCartLists, changeCount } = CartListSlice.actions;
 export const { setRelatedItemList } = RelatedProductSlice.actions;
 
 export interface CommerceState {
