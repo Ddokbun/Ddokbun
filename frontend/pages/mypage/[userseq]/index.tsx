@@ -1,15 +1,20 @@
 import { NextPage } from "next";
 import React, { useState } from "react";
-import { StatusButton, StatusType } from "../../../common/Button";
+import { StatusButton } from "../../../common/Button";
 import PageTitle from "../../../common/PageTitle";
-import SearchCardList from "../../../components/manage/add/search/SearchCardList";
 import { Wrapper } from "../../../styles/mypage/[userseq]/styles";
 import { Theme } from "../../../styles/theme";
 import Manage from "../../manage/[userseq]";
 
+interface DeliveryStatus {
+  statusCode: number;
+  title: string;
+  src: null | string;
+}
+
 const MyPage: NextPage = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
-  const deliveryStatus: StatusType[] = [
+  const deliveryStatus: DeliveryStatus[] = [
     {
       statusCode: 0,
       title: "상품 준비",
@@ -28,7 +33,7 @@ const MyPage: NextPage = () => {
   ];
 
   const onFetchDeliveryHandler = (code: number) => {
-    console.log("log");
+    setActiveIndex(code);
   };
 
   const buttons = deliveryStatus.map(delivery => {
@@ -36,7 +41,6 @@ const MyPage: NextPage = () => {
       <StatusButton
         status={delivery}
         activeIndex={activeIndex}
-        setActiveIndex={setActiveIndex}
         key={delivery.statusCode}
         onClick={onFetchDeliveryHandler}
         backgroundColor={Theme.color.brown}

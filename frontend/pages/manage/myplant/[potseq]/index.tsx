@@ -1,17 +1,14 @@
-import { getCookie } from "cookies-next";
-import { GetServerSideProps, NextPage } from "next";
+import { NextPage } from "next";
 import { useRouter } from "next/router";
-import React, { useEffect } from "react";
-import { fetchCurrentStatus, fetchLogs } from "../../../../apis/manage";
+import {  useState } from "react";
 import SimpleGraph from "../../../../common/Graph/SimpleGraph";
 import WeekPicker from "../../../../components/manage/add/WeekPicker";
 import DigitalTwin from "../../../../components/manage/DigitalTwin";
-import LineGraph from "../../../../components/manage/LineGraph";
 import PlantStatus from "../../../../components/manage/PlantStatus";
-
 import { Wrapper } from "../../../../styles/manage/[posteq]/styles";
+
 export interface LogsType {
-  [name: string]: number | string;
+  [name: string]: string;
 }
 
 export interface currentStatus {
@@ -28,23 +25,35 @@ export interface currentStatus {
   isAuto: string;
   waterSupply: number[];
 }
-const tempToken =
-  "eyJyZWdEYXRlIjoxNjY3MTkyODg3NTgwLCJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJyb2xlIjoiUk9MRV9VU0VSIiwidXNlck5pY2tuYW1lIjoi7J207JuD7KeRIOybkOyIreydtCIsInVzZXJFbWFpbCI6Imtjcjc4MTJAbmF2ZXIuY29tIiwiZXhwIjoxNjY3NTUyODg3LCJ1c2VyU2VxIjozMX0.JmxN7lp62Gysizq-5O_witMqSGrD6j17iG4y7LwC2Rc";
-const PlantCare: NextPage<{
-  initialLogs: LogsType[];
-  currentStatus: currentStatus;
-  label: string;
-}> = ({ initialLogs, currentStatus, label }) => {
-  console.log(initialLogs, currentStatus, "여기요");
 
+const PlantCare: NextPage = () => {
   const showDetailHandler = () => {
     return;
   };
 
+  const { potseq } = useRouter().query;
+
+  const [plantStatus, setPlantStatus] = useState({
+    light: 1,
+  });
+
+  // useEffect(() => {
+  //   if (!potseq) {
+  //     return;
+  //   }
+
+  //   const getInitialData = async () => {
+  //     const res = await fetchCurrentStatus(potseq);
+  //     setPlantStatus(res.light);
+  //     console.log(res);
+  //   };
+  //   getInitialData();
+  // }, [potseq]);
+
   return (
     <Wrapper>
       <section className="left-section">
-        <DigitalTwin />
+        <DigitalTwin light={plantStatus.light}/>
         <span className="title">모든 환경이 최상이예요!</span>
         <div className="simpleGraph-container">
           <SimpleGraph
@@ -59,37 +68,103 @@ const PlantCare: NextPage<{
       <section>
         <WeekPicker showDetailHandler={showDetailHandler} />
         <PlantStatus />
-        <LineGraph log={initialLogs} />
       </section>
     </Wrapper>
   );
 };
 
-export const getServerSideProps: GetServerSideProps = async ({
-  res,
-  req,
-  query,
-}) => {
-  const token = getCookie("token", { res, req }) as string;
-  const { potseq } = query;
-
-  const [initialLogs, currentStatus]: [LogsType[], currentStatus] =
-    await Promise.all([
-      fetchLogs("temperature", "string11", tempToken),
-      fetchCurrentStatus(potseq, token),
-    ]);
-
-  const tempLogs = initialLogs.map(log => {
-    return log.temperature;
-  });
-
-  return {
-    props: {
-      initialLogs: tempLogs,
-      currentStatus,
-      logLabel: "temperature",
-    },
-  };
-};
-
 export default PlantCare;
+
+export const temp = [
+  { temperature: 36.2, createdTime: "2022-11-01 01:44:27" },
+  { temperature: 36.2, createdTime: "2022-11-01 01:44:28" },
+  { temperature: 36.2, createdTime: "2022-11-01 01:44:29" },
+  { temperature: 36.2, createdTime: "2022-11-02 01:44:30" },
+  { temperature: 36.2, createdTime: "2022-11-02 01:44:31" },
+  { temperature: 36.2, createdTime: "2022-11-02 01:44:32" },
+  { temperature: 36.2, createdTime: "2022-11-03 01:44:33" },
+  { temperature: 36.2, createdTime: "2022-11-03 01:44:34" },
+  { temperature: 36.2, createdTime: "2022-11-03 01:44:35" },
+  { temperature: 36.2, createdTime: "2022-11-04 01:44:36" },
+  { temperature: 36.2, createdTime: "2022-11-04 01:44:37" },
+  { temperature: 36.2, createdTime: "2022-11-04 01:44:38" },
+];
+// //   { temperature: 35.1, createdTime: "2022-11-02 01:44:39" },
+// //   { temperature: 35.2, createdTime: "2022-11-02 01:44:40" },
+// //   { temperature: 35.3, createdTime: "2022-11-02 01:44:41" },
+// //   { temperature: 35.4, createdTime: "2022-11-02 01:44:42" },
+// //   { temperature: 35.5, createdTime: "2022-11-02 01:44:43" },
+// //   { temperature: 35.0, createdTime: "2022-11-02 01:44:44" },
+// //   { temperature: 34.6, createdTime: "2022-11-02 01:44:37" },
+// //   { temperature: 36.0, createdTime: "2022-11-02 01:44:38" },
+// //   { temperature: 35.1, createdTime: "2022-11-02 01:44:39" },
+// //   { temperature: 35.2, createdTime: "2022-11-02 01:44:40" },
+// //   { temperature: 35.3, createdTime: "2022-11-03 01:44:41" },
+// //   { temperature: 35.4, createdTime: "2022-11-03 01:44:42" },
+// //   { temperature: 35.5, createdTime: "2022-11-03 01:44:43" },
+// //   { temperature: 35.0, createdTime: "2022-11-03 01:44:44" },
+// //   { temperature: 34.6, createdTime: "2022-11-03 01:44:37" },
+// //   { temperature: 36.0, createdTime: "2022-11-03 01:44:38" },
+// //   { temperature: 35.1, createdTime: "2022-11-03 01:44:39" },
+// //   { temperature: 35.2, createdTime: "2022-11-03 01:44:40" },
+// //   { temperature: 35.3, createdTime: "2022-11-03 01:44:41" },
+// //   { temperature: 35.4, createdTime: "2022-11-03 01:44:42" },
+// //   { temperature: 35.5, createdTime: "2022-11-03 01:44:43" },
+// //   { temperature: 35.0, createdTime: "2022-11-04 01:44:44" },
+// //   { temperature: 34.6, createdTime: "2022-11-04 01:44:37" },
+// //   { temperature: 36.0, createdTime: "2022-11-04 01:44:38" },
+// //   { temperature: 35.1, createdTime: "2022-11-04 01:44:39" },
+// //   { temperature: 35.2, createdTime: "2022-11-04 01:44:40" },
+// //   { temperature: 35.3, createdTime: "2022-11-04 01:44:41" },
+// //   { temperature: 35.4, createdTime: "2022-11-05 01:44:42" },
+// //   { temperature: 35.5, createdTime: "2022-11-05 01:44:43" },
+// //   { temperature: 35.0, createdTime: "2022-11-05 01:44:44" },
+// //   { temperature: 34.6, createdTime: "2022-11-05 01:44:37" },
+// //   { temperature: 36.0, createdTime: "2022-11-05 01:44:38" },
+// //   { temperature: 35.1, createdTime: "2022-11-05 01:44:39" },
+// //   { temperature: 35.2, createdTime: "2022-11-05 01:44:40" },
+// //   { temperature: 35.3, createdTime: "2022-11-05 01:44:41" },
+// //   { temperature: 35.4, createdTime: "2022-11-05 01:44:42" },
+// //   { temperature: 35.5, createdTime: "2022-11-05 01:44:43" },
+// //   { temperature: 35.0, createdTime: "2022-11-05 01:44:44" },
+// //   { temperature: 34.6, createdTime: "2022-11-05 01:44:37" },
+// //   { temperature: 36.0, createdTime: "2022-11-05 01:44:38" },
+// //   { temperature: 35.1, createdTime: "2022-11-05 01:44:39" },
+// //   { temperature: 35.2, createdTime: "2022-11-05 01:44:40" },
+// //   { temperature: 35.3, createdTime: "2022-11-05 01:44:41" },
+// //   { temperature: 35.4, createdTime: "2022-11-05 01:44:42" },
+// //   { temperature: 35.5, createdTime: "2022-11-05 01:44:43" },
+// //   { temperature: 35.0, createdTime: "2022-11-05 01:44:44" },
+// //   { temperature: 34.6, createdTime: "2022-11-06 01:44:37" },
+// //   { temperature: 36.0, createdTime: "2022-11-06 01:44:38" },
+// //   { temperature: 35.1, createdTime: "2022-11-06 01:44:39" },
+// //   { temperature: 35.2, createdTime: "2022-11-06 01:44:40" },
+// //   { temperature: 35.3, createdTime: "2022-11-06 01:44:41" },
+// //   { temperature: 35.4, createdTime: "2022-11-06 01:44:42" },
+// //   { temperature: 35.5, createdTime: "2022-11-06 01:44:43" },
+// //   { temperature: 35.0, createdTime: "2022-11-06 01:44:44" },
+// //   { temperature: 34.6, createdTime: "2022-11-06 01:44:37" },
+// //   { temperature: 36.0, createdTime: "2022-11-06 01:44:38" },
+// //   { temperature: 35.1, createdTime: "2022-11-06 01:44:39" },
+// //   { temperature: 35.2, createdTime: "2022-11-06 06:44:40" },
+// //   { temperature: 35.3, createdTime: "2022-11-07 07:44:41" },
+// //   { temperature: 35.4, createdTime: "2022-11-07 07:44:42" },
+// //   { temperature: 35.5, createdTime: "2022-11-07 07:44:43" },
+// //   { temperature: 35.0, createdTime: "2022-11-07 07:44:44" },
+// //   { temperature: 34.6, createdTime: "2022-11-07 07:44:37" },
+// //   { temperature: 36.0, createdTime: "2022-11-07 07:44:38" },
+// //   { temperature: 35.1, createdTime: "2022-11-07 07:44:39" },
+// //   { temperature: 35.2, createdTime: "2022-11-07 07:44:40" },
+// //   { temperature: 35.3, createdTime: "2022-11-07 07:44:41" },
+// //   { temperature: 35.4, createdTime: "2022-11-07 07:44:42" },
+// //   { temperature: 35.5, createdTime: "2022-11-07 07:44:43" },
+// //   { temperature: 35.0, createdTime: "2022-11-07 07:44:44" },
+// // ];
+
+export const tempLogs = temp.map(log => {
+  return log.temperature;
+});
+
+export const tempLables = temp.map(log => {
+  return new Date(log.createdTime);
+});

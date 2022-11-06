@@ -6,3 +6,4 @@
 declare module "*.png";
 declare module "*.fbx";
 declare module "*.gltf";
+declare module "chartjs-adapter-date-fns";

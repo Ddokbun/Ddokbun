@@ -1,24 +1,25 @@
-import React, { useState, useEffect, SyntheticEvent } from "react";
-import ReactDatePicker from "react-datepicker";
-import { DatePickerWrapper, Wrapper } from "./styles";
+import React, { useState, FC } from "react";
+import { DatePickerWrapper } from "./styles";
 import "react-datepicker/dist/react-datepicker.css";
 
-const DatePick: React.FC<{
-  saveInput: (value: string, identifier: string) => void;
-}> = ({ saveInput }) => {
+interface Props {
+  saveInput: (value: string | Date, identifier: string) => void;
+}
+
+const DatePick: FC<Props> = ({ saveInput }) => {
   const [startDate, setStartDate] = useState(new Date());
-  const onChange = (dates: any) => {
+  const onChange = (dates: Date) => {
     saveInput(dates, "waterSupply");
     setStartDate(dates);
   };
 
   return (
-      <DatePickerWrapper
-        selected={startDate}
-        onChange={onChange}
-        dateFormat="yyyy-MM-dd"
-        startDate={startDate}
-      />
+    <DatePickerWrapper
+      selected={startDate}
+      onChange={onChange}
+      dateFormat="yyyy-MM-dd"
+      startDate={startDate}
+    />
   );
 };
 
