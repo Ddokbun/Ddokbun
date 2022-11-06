@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Dispatch, SetStateAction } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCartList } from "../../../../apis/commerce";
 import { setCartLists } from "../../../../store/commerce";
@@ -11,9 +11,11 @@ import CartItem from "../CartItem";
 import { Wrapper } from "./styles";
 import { StoreState } from "../../../../store";
 
-interface Item {}
+interface Item {
+  setOrderTotal?: Dispatch<SetStateAction<number>>;
+}
 
-const CartList: React.FC = () => {
+const CartList: React.FC<Item> = ({ setOrderTotal }) => {
   const [total, setTotal] = useState(0);
   const dispatch = useDispatch();
   const selector = useSelector((state: StoreState) => state.cartList);
@@ -27,6 +29,9 @@ const CartList: React.FC = () => {
         (selector[iidx].price as number) * (selector[iidx].quantity as number);
     });
     setTotal(temp);
+    if (setOrderTotal) {
+      setOrderTotal(temp);
+    }
   }, [selector]);
 
   useEffect(() => {

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { Wrapper } from "../../../styles/commerce/products/[product-id]/style";
 import ProductSellCard from "../../../common/Cards/ProductSellCard";
 import ProductCare from "../../../components/commerce/products/[product-id]/ProductCare";
 import { ParsedUrlQuery } from "querystring";
 import {
+  clickItem,
   fetchProductDetail,
   fetchRelatedProducts,
   getAllProductNumber,
@@ -13,12 +14,22 @@ import { ItemObject } from "../../../types/commerce/detail.interface";
 import RelatedProducts from "../../../components/commerce/products/[product-id]/RelatedProducts";
 import { wrapper } from "../../../store";
 import { setRelatedItemList } from "../../../store/commerce";
+import { useRouter } from "next/router";
 
 interface IParams {
   productid: number;
 }
 
 const Product: NextPage<{ data: ItemObject }> = ({ data }) => {
+  const router = useRouter();
+  const seqid = router.query.productid;
+
+  useEffect(() => {
+    const setClick = async (seqid: string) => {
+      await clickItem(seqid);
+    };
+    setClick(seqid as string);
+  }, [seqid]);
   return (
     <Wrapper>
       <ProductSellCard

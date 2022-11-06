@@ -5,6 +5,7 @@ import { setCookie, CookieValueTypes } from "cookies-next";
 import { changeCount } from "../store/commerce";
 import { AnyAction, Dispatch } from "@reduxjs/toolkit";
 import { AppDispatch } from "../store";
+import { ListObjectItem } from "../types/commerce/list.interface";
 
 export const getAllProductNumber = async () => {
   const url = "market/product/list";
@@ -94,19 +95,23 @@ export const putCart = async (id: number) => {
  * @params 결제를 위한 Params를 확인합니다.
  * @returns 결제진행을 위한 페이지로 Redirect됩니다.
  */
-export const postKakaoPay = async () => {
+export const postKakaoPay = async (
+  partner_user_id: string,
+  total_amount: number,
+  item_name: string,
+) => {
   const route = Router;
   const url = "https://kapi.kakao.com/v1/payment/ready";
   const params = {
     cid: "TC0ONETIME",
-    partner_order_id: "partner_order_id",
+    partner_order_id: "똑분 Ddokbun",
     partner_user_id: "partner_user_id",
-    item_name: "초코파이",
+    item_name,
     quantity: 1,
-    total_amount: 2200,
+    total_amount,
     vat_amount: 200,
     tax_free_amount: 0,
-    approval_url: "https://localhost:3000/commerce/order/complete",
+    approval_url: "http://localhost:3000/commerce/order/complete",
     fail_url: "http://localhost:3000/commerce/order/cancled",
     cancel_url: "http://localhost:3000/commerce/order/cancled",
   };
@@ -148,7 +153,7 @@ export const approveKakaoPay = async (
   const params = {
     cid: "TC0ONETIME",
     tid,
-    partner_order_id: "partner_order_id",
+    partner_order_id: "똑분 Ddokbun",
     partner_user_id: "partner_user_id",
     pg_token: pgToken,
   };
@@ -166,7 +171,7 @@ export const approveKakaoPay = async (
 
     return res.data;
   } catch (error) {
-    // console.log(error);
+    console.log(error);
   }
 };
 
@@ -178,6 +183,7 @@ export const approveKakaoPay = async (
 
 export const fetchCartList = async (token?: string) => {
   const url = "cart";
+  console.log(token);
 
   try {
     if (token) {
@@ -245,6 +251,75 @@ export const fetchRelatedProducts = async (itemSeq: string) => {
       method: "GET",
     });
     return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * 주문정보를 저장하는 API입니다.
+ *
+ */
+
+export const postOrderList = async (
+  orderEmail: string,
+  orderMethod: number,
+  orderPhone: string,
+  orderPrice: number,
+  post: string,
+  detailPost: string,
+  additionnalPost: string,
+  orderUserName: string,
+) => {
+  const url = `/order`;
+  const data = {
+    itemSeq: 0,
+    orderAddress: post + " " + detailPost + " " + additionnalPost,
+    orderEmail,
+    orderMethod: orderMethod === 1 ? "KAKAO" : "Naver",
+    orderPhone,
+    orderPrice: String(orderPrice),
+    orderQuantity: 1,
+    orderReceiver: post + " " + detailPost + " " + additionnalPost,
+    orderTime: "2022-11-06",
+    orderUserName,
+  };
+  try {
+    const res = await AXIOS({
+      url,
+      method: "POST",
+      data,
+    });
+    console.log(res);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchPriorityProduct = async () => {
+  const url = "market/product/hot";
+
+  try {
+    const res = await AXIOS({
+      url,
+      method: "GET",
+    });
+    return res.data.content;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const clickItem = async (itemSeq: string) => {
+  const url = `market/product/hotc/${itemSeq}`;
+
+  try {
+    const res = await AXIOS({
+      url,
+      method: "GET",
+    });
+
+    return res.data.content;
   } catch (error) {
     console.log(error);
   }
