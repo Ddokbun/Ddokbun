@@ -1,10 +1,16 @@
-import React, { Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import AutoToggle from "../AutoToggle";
 import { Wrapper } from "./styles";
 import { Canvas } from "@react-three/fiber";
-import Three from "../Three";
+
+const Three = lazy(() => import("../Three"));
 
 const DigitalTwin = ({ light }: any) => {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <Wrapper>
       <div className="top-container">
@@ -12,11 +18,13 @@ const DigitalTwin = ({ light }: any) => {
         <AutoToggle />
       </div>
       <div className="twin-background">
-        <Suspense fallback={null}>
-          <Canvas id="digital-twin">
-            <Three light={light} />
-          </Canvas>
-        </Suspense>
+        {!isMounted ? null : (
+          <Suspense fallback={null}>
+            <Canvas id="digital-twin">
+              <Three light={light} />
+            </Canvas>
+          </Suspense>
+        )}
       </div>
     </Wrapper>
   );

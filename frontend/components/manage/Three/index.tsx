@@ -2,10 +2,8 @@ import {
   Environment,
   OrbitControls,
   PerspectiveCamera,
-  Sky,
-  useTexture,
 } from "@react-three/drei";
-import { useFrame } from "@react-three/fiber";
+import { Canvas, useFrame } from "@react-three/fiber";
 import { useEffect, useRef } from "react";
 import Flower from "../../Flower";
 import * as THREE from "three";
@@ -17,19 +15,19 @@ const Three = ({ light }: any) => {
   // geomtry + metrial = 3d model = 두가지를 combine하여 mesh를 만듬
 
   const angleToRadians = (angle: number) => (Math.PI / 180) * angle;
-  const [colorMap, displacementMap, normalMap, roughnessMap] = useTexture([
-    "/color.jpg",
-    "/disp.png",
-    "/normal.jpg",
-    "/roughness.jpg",
-  ]);
+  // const [colorMap, displacementMap, normalMap, roughnessMap] = useTexture([
+  //   "/color.jpg",
+  //   "/disp.png",
+  //   "/normal.jpg",
+  //   "/roughness.jpg",
+  // ]);
 
   const orbitControlsRef = useRef<any>(null);
   useFrame(state => {
     if (orbitControlsRef.current) {
       const { x, y } = state.mouse;
       orbitControlsRef.current.setAzimuthalAngle?.(-angleToRadians(24) * x);
-      orbitControlsRef.current.setPolarAngle?.((y + 0.5) * angleToRadians(50));
+      orbitControlsRef.current.setPolarAngle?.((y + 0.5) * angleToRadians(90));
       // orbitControlsRef.current.update?.();
     }
   });
@@ -37,7 +35,7 @@ const Three = ({ light }: any) => {
   return (
     <>
       {/* 카메라 */}
-      <PerspectiveCamera makeDefault position={[1, 4, 5.5]} />
+      <PerspectiveCamera makeDefault position={[1, 5, 6.5]} />
       <OrbitControls
         ref={orbitControlsRef}
         minPolarAngle={angleToRadians(50)}
@@ -61,14 +59,13 @@ const Three = ({ light }: any) => {
         />
       </mesh> */}
       {/* 조명 */}
-      {/* <ambientLight args={["#fcfbf3", 1]} /> */}
-      <spotLight
+      {/* <ambientLight args={["#fcfbf3", 0]} /> */}
+      {/* <spotLight
         args={["#ffffff", 1.5, 7, angleToRadians(45), 0.5]}
         position={[-3, 1, 0]}
         castShadow
-      />
+      /> */}
       <directionalLight args={[0xffffff, 0.5]} />
-
       {/* <Sky
         distance={450000}
         sunPosition={[0, 1, 0]}

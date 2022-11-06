@@ -75,7 +75,11 @@ const PlantStatus = () => {
       <ul>{statusButtons}</ul>
       <Suspense>
         {createdTime && logs && (
-          <LineGraph labels={createdTime} data={logs} label={logTitle} />
+          <LineGraph
+            labels={createdTime}
+            data={logs}
+            label={plantStatus[activeIndex].title}
+          />
         )}
       </Suspense>
     </Wrapper>
