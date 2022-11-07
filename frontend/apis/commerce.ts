@@ -233,7 +233,7 @@ export const putCartItemCount = async (
   } catch (error) {
     console.log(error);
 
-    alert("뭔가가 잘못됐습니다");
+    alert("뭔가가 잘못됐습니다!");
   }
 };
 
