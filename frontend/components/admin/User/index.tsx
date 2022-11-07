@@ -1,6 +1,18 @@
+import { useEffect, useState } from "react";
+import { getAdminUserList } from "../../../apis/admin";
 import { Wrapper } from "./styles";
 
 const UserTable = () => {
+  const [user, setUser] = useState();
+  useEffect(() => {
+    async function fetchAndSetUser() {
+      const data = await getAdminUserList();
+      setUser(data);
+    }
+    fetchAndSetUser();
+  }, []);
+  console.log(user);
+
   return (
     <Wrapper>
       <>

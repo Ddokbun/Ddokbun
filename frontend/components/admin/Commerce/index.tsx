@@ -1,11 +1,22 @@
+import { useEffect, useState } from "react";
+import { getOrderCount } from "../../../apis/admin";
 import { Wrapper } from "./styles";
 
 const CommerceTable = () => {
+  const [order, setOrder] = useState();
+  useEffect(() => {
+    async function fetchAndSetUser() {
+      const data = await getOrderCount();
+      setOrder(data);
+    }
+    fetchAndSetUser();
+  }, []);
+  console.log(order);
   return (
     <Wrapper>
       <>
         <div className=" ">
-          <h3 className="title">Commerce Table</h3>
+          <h3 className="title">Order Table</h3>
           <hr />
           <table className="table">
             <thead>

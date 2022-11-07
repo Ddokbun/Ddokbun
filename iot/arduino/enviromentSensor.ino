@@ -5,7 +5,7 @@
 #define DHTTYPE DHT11
 #define ERORR_VALUE -999
 #define MOTOR_PIN 10
-#define MOTOR_TIME 200
+#define MOTOR_TIME 1000
 #define LOOP_TIME 3000
 
 DHT dht(DHTPIN, DHTTYPE);
@@ -16,10 +16,12 @@ unsigned long loopTime = 0;
 unsigned long addTime = 0;
 unsigned long afterTime = 0;
 
-
 unsigned long motorLoopTime = 0;
 unsigned long motorAddTime = 0;
 
+unsigned long motorLoopTime = 0;
+unsigned long motorAddTime = 0;
+unsigned long diffTime = 0;
 void setup() {
    
   Serial.begin(9600);
@@ -33,7 +35,11 @@ void loop() {
   addTime = millis();
 
   if (loopTime >= LOOP_TIME) {
+
+    
+  //Serial.println("# loop " + String(loopTime) + "LOOPTIME : " + String(LOOP_TIME) + "result : " + String(loopTime - LOOP_TIME));
     loopTime = loopTime - LOOP_TIME;
+    
     float humidity = dht.readHumidity(); //습도를 읽어 온다.   20~70
     float temperature = dht.readTemperature(); //온도 범위는 0~50℃이며 습도 범위는 20~90$ RH
     int light = analogRead(A0); //광량을 읽어온다. 0 ~1023
@@ -45,7 +51,6 @@ void loop() {
       humidity = ERORR_VALUE;
       temperature = ERORR_VALUE;
     }
-
     serial_print(temperature,humidity,light,soil_humid,water_level,motor_state);//시리얼 통신 출력
   }
    
@@ -67,10 +72,17 @@ void loop() {
 
   decreaseMotorgauge();
 
+  
+  delay(500);
   afterTime = millis();
-  loopTime = loopTime + afterTime - addTime;
-  motorLoopTime = motorLoopTime + afterTime - addTime; 
+  
+  diffTime =afterTime - addTime; 
+  //Serial.println("# af : " + String(afterTime) + "addt : " + String(addTime) );
+  loopTime = loopTime + diffTime;
+  motorLoopTime = motorLoopTime + diffTime; 
 
+  
+  
 }
 
 void decreaseMotorgauge(){
@@ -79,13 +91,7 @@ void decreaseMotorgauge(){
   }
   
   if(motor_gauge > 0&& motorLoopTime > MOTOR_TIME){
-
-    if(motor_gauge % 10 == 0){
-      
-    
-    Serial.println("# motor : " + String(motor_state) + "gauge : " + String(motor_gauge));
-    }
-    motorLoopTime -= MOTOR_TIME;
+    motorLoopTime =motorLoopTime- MOTOR_TIME;
     motor_gauge--;
   }
 }
@@ -115,6 +121,64 @@ void serial_read(){
 }
 void serial_print(float temperature,float humidity,int light , int soil_humid,int water_level,int motor_state){
 
+  light = nomal_light(light);
+  soil_humid = nomal_soild_humid(soil_humid);
+  water_level = nomal_water_level(water_level);
+
+
   Serial.println("{\"temperature\":"+String(temperature)+",\"humid\":"+String(humidity)+",\"light\":"+light+",\"soilHumid\":"+soil_humid+",\"waterLevel\":"+water_level+",\"motorState\":"+motor_state+"}");
   
+}
+
+int nomal_light (int light){
+  if(light <= 50){
+    return 1;
+  }else if(light <= 150){
+    return 2;
+  }else if(light <= 400){
+    return 3;
+  }else if(light <= 500){
+    return 4;
+  }else if(light <= 800){
+    return 5;
+  }else{
+    return 5;
+  }
+}
+
+int nomal_soild_humid(int humid){
+
+   if(humid <= 350){
+    //매우 축축
+    return 1;
+  }else if(humid <= 500){
+    //축축
+    return 2;
+  }else if(humid <= 600){
+    //촉촉
+    return 3;
+  }else if(humid <= 800){
+    //건조
+    return 4;
+  }
+  else{
+    //매우 건조
+    return 5;
+  }
+}
+
+
+int nomal_water_level(int water_level){
+
+//물 없음
+  if(water_level < 100){
+    return 1;
+  }else if(water_level < 200){
+    //물 없고, 습기만 남음
+    return 2;
+  }else{
+    //물 차있음
+    return 3;
+  }
+
 }
