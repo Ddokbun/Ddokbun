@@ -18,7 +18,7 @@ public class SurveyServiceImpl implements SurveyService{
     @Override
     public List<SurveyResponse> getSurveys() {
 
-        List<Survey> surveys =  surveyRepository.findAllWithAll();
+        List<Survey> surveys =  surveyRepository.findAll();
 
        List<SurveyResponse> surveyResponseList =  surveys.stream().map(
                 survey -> SurveyResponse.of(survey)
