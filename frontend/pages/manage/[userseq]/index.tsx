@@ -32,19 +32,15 @@ const Manage: NextPage<{ plantsListData?: PlantListType[] }> = ({
 export const getServerSideProps: GetServerSideProps =
   wrapper.getServerSideProps(store => async ({ req, res }) => {
     const { token } = getCookies({ req, res });
-
     const data = await fetchCartList(token);
     const plantsListData = await fetchPlantsList(token);
 
-<<<<<<< HEAD
     store.dispatch(setCartLists(data?.data.content));
-=======
     if (!plantsListData) {
       return { props: {} };
     }
 
     // store.dispatch(setCartLists(["하이"]));
->>>>>>> b3197f1f53ebeb14d0fc196769629ad49675d4ec
 
     return {
       props: {
