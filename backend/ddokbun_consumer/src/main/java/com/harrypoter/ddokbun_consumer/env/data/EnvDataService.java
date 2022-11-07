@@ -52,7 +52,7 @@ public class EnvDataService {
             envDto.setTime(triggerTime);
         }
         catch(JsonProcessingException e){
-            writeLog(String.format("가져온 메세지 등록에 실패하였습니다.::reason : Json 포맷 에러 :: data : {}",envDto.toString()));
+            writeLog(String.format("가져온 메세지 등록에 실패하였습니다.::reason : Json 포맷 에러 :: data : %s",envDto.toString()));
             return;
         }
 
@@ -61,7 +61,7 @@ public class EnvDataService {
         //메세지에 해당하는 화분을 못 찾을 경우
         if(opPot.isEmpty()){
 
-            writeLog(String.format("가져온 메세지 등록에 실패하였습니다.::reason : 화분 못 찾음 :: data : {}",envDto.toString()));
+            writeLog(String.format("가져온 메세지 등록에 실패하였습니다.::reason : 화분 못 찾음 :: data : %s",envDto.toString()));
 
             return;
         }
@@ -72,7 +72,7 @@ public class EnvDataService {
 
         potLogRepository.save(potLog);
 
-        writeLog(String.format("저장완료 :: ID : {}",potLog.getLogSeq()));
+        writeLog(String.format("저장완료 :: ID : %s",potLog.getLogSeq()));
 
     }
 
