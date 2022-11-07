@@ -9,13 +9,19 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface OrderRepository extends JpaRepository<Order,Long> {
-    @Query("SELECT o FROM Order o LEFT JOIN FETCH o.item i LEFT JOIN FETCH i.plant WHERE o.user = :user")
-    List<Order> findByUserSeq(@Param("user") User user);
+//    @Query("SELECT o FROM Order o LEFT JOIN FETCH i.plant WHERE o.user = :user")
+//    List<Order> findByUserSeq(@Param("user") User user);
 
     @Query("SELECT o FROM Order o WHERE o.orderTime >= :start AND o.orderTime <= :end")
-    List<Order> findAllByOrderTime(@Param("start") LocalDate start, @Param("end") LocalDate end);
+    List<Order> findAllByOrderTime(@Param("start") Date start, @Param("end") Date end);
+
+    List<Order> findByUser(User user);
+
+    Optional<Order> findByOrderSeq(Long orderSeq);
 }

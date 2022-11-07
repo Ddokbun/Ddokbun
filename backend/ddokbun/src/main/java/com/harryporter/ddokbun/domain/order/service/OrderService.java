@@ -16,7 +16,7 @@ public interface OrderService {
 
     OrderDto enrollOrder(OrderReq orderReq, Long userSeq);
 
-    OrderDetailDto getOrderDetail(Long orderSeq, Long userSeq);
+    OrderDto getOrderDetail(Long orderSeq, Long userSeq);
 
     List<AdminOrderDto> getTotalOrderList();
 

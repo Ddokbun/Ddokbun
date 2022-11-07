@@ -8,9 +8,6 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class OrderStatusDto {
-
     private Long orderSeq;
-
     private String orderStatus;
-
 }

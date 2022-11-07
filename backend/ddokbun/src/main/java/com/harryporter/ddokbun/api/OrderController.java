@@ -79,12 +79,8 @@ public class OrderController {
     @RequestMapping(value = "/{orderSeq}",method = RequestMethod.GET)
     public ResponseEntity<?> getMyOrderDetail(@PathVariable(value = "orderSeq") Long orderSeq, @ApiIgnore @AuthenticationPrincipal UserDto principal){
 
-        OrderDetailDto orderDetailDto =  orderService.getOrderDetail(orderSeq,principal.getUserSeq());
-
-        ResponseFrame<?> res =
-        ResponseFrame.ofOKResponse("주문 상세내용을 반환합니다.",orderDetailDto);
-
-
+        OrderDto orderDetailDto =  orderService.getOrderDetail(orderSeq,principal.getUserSeq());
+        ResponseFrame<?> res = ResponseFrame.ofOKResponse("주문 상세내용을 반환합니다.",orderDetailDto);
 
         return new ResponseEntity<>(res,HttpStatus.OK);
     }
