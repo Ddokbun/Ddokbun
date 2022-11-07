@@ -119,7 +119,7 @@ export const postKakaoPay = async (
   const params = {
     cid: "TC0ONETIME",
     partner_order_id: "똑분 Ddokbun",
-    partner_user_id: "partner_user_id",
+    partner_user_id,
     item_name,
     quantity: 1,
     total_amount,
@@ -160,6 +160,7 @@ export const postKakaoPay = async (
  */
 
 export const approveKakaoPay = async (
+  partner_user_id: string,
   tid: CookieValueTypes,
   pgToken: string,
 ) => {
@@ -168,7 +169,7 @@ export const approveKakaoPay = async (
     cid: "TC0ONETIME",
     tid,
     partner_order_id: "똑분 Ddokbun",
-    partner_user_id: "partner_user_id",
+    partner_user_id,
     pg_token: pgToken,
   };
 
@@ -182,6 +183,7 @@ export const approveKakaoPay = async (
       },
       params,
     });
+    console.log(res);
 
     return res.data;
   } catch (error) {
@@ -276,6 +278,8 @@ export const fetchRelatedProducts = async (itemSeq: string) => {
  */
 
 export const postOrderList = async (
+  orderName: string,
+  itemSeqList: string,
   orderEmail: string,
   orderMethod: number,
   orderPhone: string,
@@ -285,17 +289,19 @@ export const postOrderList = async (
   additionnalPost: string,
   orderUserName: string,
 ) => {
-  const url = `/order`;
+  console.log(itemSeqList);
+
+  const url = `order`;
   const data = {
-    itemSeq: 0,
+    itemSeqList,
     orderAddress: post + " " + detailPost + " " + additionnalPost,
     orderEmail,
     orderMethod: orderMethod === 1 ? "KAKAO" : "Naver",
+    orderName,
     orderPhone,
     orderPrice: String(orderPrice),
     orderQuantity: 1,
     orderReceiver: post + " " + detailPost + " " + additionnalPost,
-    orderTime: "2022-11-06",
     orderUserName,
   };
   try {
@@ -305,6 +311,7 @@ export const postOrderList = async (
       data,
     });
     console.log(res);
+    return res.data.content;
   } catch (error) {
     console.log(error);
   }
@@ -340,14 +347,55 @@ export const clickItem = async (itemSeq: string) => {
 };
 
 export const fetchServeyList = async () => {
-  const url = "market/product/servey";
+  const url = "market/product/survey";
 
   try {
     const { data } = await AXIOS({
       url,
       method: "GET",
     });
-    console.log(data.content);
+    return data.content;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * 주문 후 주문상태 변경 API입니다
+ */
+
+export const setOrderInfo = async (orderSeq: string) => {
+  const url = `order/${orderSeq}/pay`;
+
+  try {
+    const res = await AXIOS({
+      url,
+      method: "GET",
+    });
+    // console.log(res);
+    return res.data.content;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * 주문 정보를 받아오는 API입니다
+ */
+
+export const fetchOrderInfo = async (orderSeq: string, token: string) => {
+  const url = `order/${orderSeq}`;
+
+  try {
+    const data = await AXIOS({
+      url,
+      method: "GET",
+      headers: {
+        Authorization: token,
+      },
+    });
+
+    return data.data.content;
   } catch (error) {
     console.log(error);
   }

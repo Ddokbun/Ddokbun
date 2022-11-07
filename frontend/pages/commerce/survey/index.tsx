@@ -2,19 +2,22 @@ import { GetStaticProps, NextPage } from "next";
 import { Wrapper } from "../../../styles/commerce/servey/styles";
 import BackgroudImage from "../../../assets/onboarding/mainImg.jpg";
 import Image from "next/image";
-import ServeyForm from "../../../components/commerce/servey";
+import ServeyForm from "../../../components/commerce/survey";
 import Dot from "../../../common/Dot";
 import { fetchServeyList } from "../../../apis/commerce";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import { ISurvey, ISurveyItem } from "../../../types/commerce/survey.interface";
 
-const Servey: NextPage = () => {
+const Servey: NextPage<{ surveys: ISurvey[] }> = ({ surveys }) => {
+  const [answer, setAnswer] = useState([]);
   useEffect(() => {
-    const aa = async () => {
-      const data = await fetchServeyList();
-      console.log(data);
-    };
-    aa();
+    // setAnswer([...Array(surveys.length).fill(0)]);
   }, []);
+  console.log(answer);
+  console.log(surveys);
+
+  console.log(surveys.length);
+
   return (
     <Wrapper>
       <Image
@@ -34,10 +37,12 @@ const Servey: NextPage = () => {
 export default Servey;
 
 export const getStaticProps: GetStaticProps = async () => {
-  const serveys = await fetchServeyList();
-  // console.log(serveys);
+  const surveys = await fetchServeyList();
+  console.log(surveys);
 
   return {
-    props: {},
+    props: {
+      surveys,
+    },
   };
 };
