@@ -79,7 +79,7 @@ public class AdminController {
             throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
         log.info("관리자 :: 상품 전체 목록 조회 API");
 
-        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("상품 전체 목록을 반환합니다.",itemService.getProductList(pageable));
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("상품 전체 목록을 반환합니다.",itemService.getAdminProductList(pageable));
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
