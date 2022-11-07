@@ -1,12 +1,16 @@
-import React, { Suspense } from "react";
+import React, { lazy, Suspense, useEffect, useState } from "react";
 import AutoToggle from "../AutoToggle";
 import { Wrapper } from "./styles";
-import Sun from "../../../assets/icon/Sun.svg";
-import Water from "../../../assets/icon/Water.svg";
 import { Canvas } from "@react-three/fiber";
-import Three from "../Three";
 
-const DigitalTwin = () => {
+const Three = lazy(() => import("../Three"));
+
+const DigitalTwin = ({ light }: any) => {
+  const [isMounted, setIsMounted] = useState(false);
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
   return (
     <Wrapper>
       <div className="top-container">
@@ -14,15 +18,13 @@ const DigitalTwin = () => {
         <AutoToggle />
       </div>
       <div className="twin-background">
-        <div className="icon-container">
-          <Sun viewBox="-50 -30 200 200" />
-          <Water className="water" viewBox="-50 -30 200 200" />
-        </div>
-        <Canvas id="digital-twin">
+        {!isMounted ? null : (
           <Suspense fallback={null}>
-            <Three />
+            <Canvas id="digital-twin">
+              <Three light={light} />
+            </Canvas>
           </Suspense>
-        </Canvas>
+        )}
       </div>
     </Wrapper>
   );
