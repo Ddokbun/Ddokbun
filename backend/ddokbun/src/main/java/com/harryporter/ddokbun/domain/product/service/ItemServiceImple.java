@@ -23,7 +23,6 @@ import javax.transaction.Transactional;
 
 import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -192,6 +191,14 @@ public class ItemServiceImple implements ItemService{
 
         log.info("상품 전체 목록 조회 Success :: ");
         return products.stream().map(product -> product.getItemSeq()).collect(Collectors.toList());
+    }
+    @Override
+    public List<ItemDetailDto> getAdminProductList(Pageable pageable){
+        log.info("상품 전체 목록 조회 Service :: ");
+        List<Item> products = itemRepository.findAllBy(pageable);
+
+        log.info("상품 전체 목록 조회 Success :: ");
+        return products.stream().map(product -> ItemDetailDto.of(product)).collect(Collectors.toList());
     }
 
     @Override
