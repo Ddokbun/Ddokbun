@@ -2,17 +2,20 @@ package com.harryporter.ddokbun.domain.order.entity;
 
 import com.harryporter.ddokbun.domain.product.entity.Item;
 import com.harryporter.ddokbun.domain.user.entity.User;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.List;
 
 @Entity
+@Builder
 @Getter
-@Setter
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "tb_order") //mysql 예약어
 public class Order {
 
@@ -27,11 +30,11 @@ public class Order {
     @JoinColumn(name="user_seq",nullable = false)
     private User user;
 
-    //상품
-    //상품에서 주문내역을 볼 필요는 없으니깐 , 상대편에서 mappedBy는 생략, 관리자가 생기면 추가해야할 듯
-    @JoinColumn(name = "item_seq",nullable = false)
-    @ManyToOne(fetch = FetchType.LAZY)
-    private Item item;
+    @Column(nullable = false)
+    private String itemSeqList;
+
+    @Column(nullable = false)
+    private String orderName;
 
     //상품 수량
     @Column(nullable = false)
@@ -70,8 +73,9 @@ public class Order {
     private String orderMethod;
 
     //결제 시간
+    @CreationTimestamp
     @Column(nullable = false)
-    private LocalDate orderTime;
+    private Date orderTime;
 
     //주문 상태
     @Column(nullable = false)
@@ -79,10 +83,9 @@ public class Order {
     private OrderStatus orderStatus;
 
 
-
     @PrePersist
     public void setting(){
-        this.orderTime = LocalDate.now(); //서버 돌아가는 컴퓨터 시간대의 현재
+        this.orderTime = new Date(); //서버 돌아가는 컴퓨터 시간대의 현재
         orderStatus = OrderStatus.READY;
     }
 
