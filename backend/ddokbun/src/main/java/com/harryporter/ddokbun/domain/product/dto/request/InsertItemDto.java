@@ -15,6 +15,7 @@ import lombok.NoArgsConstructor;
 public class InsertItemDto {
     //상품명
     private String itemName;
+    private String itemEnName;
     //가격
     private int itemPrice;
     //설명
@@ -41,15 +42,29 @@ public class InsertItemDto {
     }
 
     public Item toEntity(Plant plant){
-        return Item.builder()
-                .itemName(itemName)
-                .itemPrice(itemPrice)
-                .itemInfo(itemInfo)
-                .itemStock(itemStock)
-                .itemPicture(itemPicture)
-                .itemKind(itemKind)
-                .plant(plant)
-                .build();
+        if(plant == null) {
+            return Item.builder()
+                    .itemName(itemName)
+                    .itemEnName(itemEnName)
+                    .itemPrice(itemPrice)
+                    .itemInfo(itemInfo)
+                    .itemStock(itemStock)
+                    .itemPicture(itemPicture)
+                    .itemKind(itemKind)
+                    .plant(null)
+                    .build();
+        }else{
+            return Item.builder()
+                    .itemName(plant.getPlantName())
+                    .itemEnName(plant.getPlantNeName())
+                    .itemPrice(itemPrice)
+                    .itemInfo(plant.getSpecManageInfo())
+                    .itemStock(itemStock)
+                    .itemPicture(plant.getImagePath())
+                    .itemKind(itemKind)
+                    .plant(plant)
+                    .build();
+        }
     }
 
 

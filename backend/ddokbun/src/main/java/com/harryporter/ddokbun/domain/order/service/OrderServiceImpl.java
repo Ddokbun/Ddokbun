@@ -4,6 +4,7 @@ import com.harryporter.ddokbun.domain.order.dto.OrderDto;
 import com.harryporter.ddokbun.domain.order.dto.request.OrderReq;
 import com.harryporter.ddokbun.domain.order.dto.request.OrderStatusDto;
 import com.harryporter.ddokbun.domain.order.dto.response.AdminOrderDto;
+import com.harryporter.ddokbun.domain.order.dto.response.OrderDateDto;
 import com.harryporter.ddokbun.domain.order.dto.response.OrderDetailDto;
 import com.harryporter.ddokbun.domain.order.dto.response.OrderListItemDto;
 import com.harryporter.ddokbun.domain.order.entity.Order;
@@ -23,8 +24,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.List;
-import java.util.Objects;
+import java.time.LocalDate;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Slf4j
@@ -145,6 +146,7 @@ public class OrderServiceImpl implements OrderService{
         log.info("현재 주문 상태 : {}, 변경할 주문 상태 : {}",order.getOrderStatus(),orderStatusDto.getOrderStatus());
         switch (orderStatusDto.getOrderStatus()){
             case "ready" : order.updateOrderStatus(OrderStatus.READY); break;
+            case "paycomplete" : order.updateOrderStatus(OrderStatus.PAYCOMPLETE); break;
             case "delivery" : order.updateOrderStatus(OrderStatus.DELIVERY); break;
             case "complete" : order.updateOrderStatus(OrderStatus.COMPLETE); break;
         }
@@ -156,6 +158,25 @@ public class OrderServiceImpl implements OrderService{
         log.info("주문 상태 변경 Success :: 변경된 OrderStatus : {}", order.getOrderStatus());
 
         return "Success update OrderStatus : "+order.getOrderStatus();
+    }
+
+    @Override
+    public List<OrderDateDto> getOrderCountByDate() {
+        List<OrderDateDto> result = new ArrayList<>();
+
+        for(int i=0;i<10;i++) {
+            Calendar day = Calendar.getInstance();
+            day.add(Calendar.DATE, -i);
+            String date = new java.text.SimpleDateFormat("yyyy-MM-dd").format(day.getTime());
+
+            LocalDate start = LocalDate.parse(date);
+            LocalDate end = start.plusDays(1);
+            log.info("start :: {} , end :: {}", start, end);
+
+            List<Order> orders = orderRepository.findAllByOrderTime(start, end);
+            result.add(new OrderDateDto(start.toString(), orders.size()));
+        }
+        return result;
     }
 
 

@@ -17,7 +17,9 @@ import com.harryporter.ddokbun.exception.ErrorCode;
 import com.harryporter.ddokbun.exception.GeneralException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.kafka.support.SendResult;
 import org.springframework.stereotype.Service;
+import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
@@ -125,15 +127,28 @@ public class PotService {
             potEntity.potWaterApllyChange(LocalDate.now());
 
             //카프카 브로커로 모터 동작하라고 알려준다.
-            boolean result = waterApplyUtil.sendMotorAction(MotorActionDto.of(potSerial));
+            boolean result = waterApplyUtil.sendMotorAction(MotorActionDto.of(potSerial),
+                    new ListenableFutureCallback<SendResult<String, String>>() {
+                        @Override
+                        public void onFailure(Throwable ex) {
+                            log.info("{} : {}",ex.getMessage(),ex.getCause().toString());
+                        }
+
+                        @Override
+                        public void onSuccess(SendResult<String, String> result) {
+                            WaterApply waterApply = new WaterApply(potEntity);
+                            log.info("물 Apply table 생성 {}", waterApply);
+                            waterApplyRepository.save(waterApply);
+                        }
+                    });
 
             if(result == false){
                 throw new GeneralException(ErrorCode.EXTERNAL_SERVICE_ACCESS_ERROR,"카프카 서비스 이용 중 에러");
             }
 
-            WaterApply waterApply = new WaterApply(potEntity);
-            log.info("물 Apply table 생성 {}", waterApply);
-            waterApplyRepository.save(waterApply);
+            //WaterApply waterApply = new WaterApply(potEntity);
+            //log.info("물 Apply table 생성 {}", waterApply);
+            //waterApplyRepository.save(waterApply);
         } else {
             throw new GeneralException(ErrorCode.BAD_REQUEST, "당신의 화분이 아닙니다");
         }
@@ -169,8 +184,9 @@ public class PotService {
         User user = userRepository.findById(userSeq).orElseThrow(
                 ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다.")
         );
+        log.info("나의화분{}", userSeq);
         List<Pot> pots = user.getPots();
-
+        log.info("화분리스트{}", pots);
         return pots.stream().map(pot -> MyPotReponse.of(pot)).collect(Collectors.toList());
     }
 
@@ -209,6 +225,19 @@ public class PotService {
         List<LocalDate> dateList = waterApplyRepository.findPotWaterLog(potSerial, fDate, lDate);
 
         return dateList;
+    }
+
+    static class Callback implements ListenableFutureCallback<SendResult<String, String>>{
+
+        @Override
+        public void onFailure(Throwable ex) {
+            log.info("{} : {}",ex.getMessage(),ex.getCause().toString());
+        }
+
+        @Override
+        public void onSuccess(SendResult<String, String> result) {
+            log.info("메세지 보내기 성공 : {}",result.toString());
+        }
     }
 
 }

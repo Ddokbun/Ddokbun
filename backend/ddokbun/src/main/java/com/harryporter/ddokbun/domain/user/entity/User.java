@@ -55,4 +55,7 @@ public class User {
     public void changeNickName(String nickName){
         this.userNickname = nickName;
     }
+    public void changeUserRole(String userRole){
+        this.userRole = userRole;
+    }
 }

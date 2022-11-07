@@ -1,5 +1,7 @@
 import Link from "next/link";
-import React, { useState } from "react";
+
+import React, { Dispatch, FC, SetStateAction, useState } from "react";
+
 import {
   Button,
   BuyListButtonStyle,
@@ -148,31 +150,28 @@ export const LoginButton: React.FC<{
   );
 };
 
-export interface StatusType {
-  statusCode: number;
-  title: string;
-  src: null | string;
-}
-
-export const StatusButton: React.FC<{
-  status: StatusType;
+export interface StatusProps {
+  status: {
+    statusCode: number;
+    title: string;
+    src: null | string;
+  };
   activeIndex: number;
-  setActiveIndex: React.Dispatch<React.SetStateAction<number>>;
   onClick: (code: number) => void;
   backgroundColor: string;
   backgroundHover: string;
   textColor: string;
-}> = ({
+}
+
+export const StatusButton: FC<StatusProps> = ({
   status,
   activeIndex,
-  setActiveIndex,
   onClick,
   backgroundColor,
   backgroundHover,
   textColor,
 }) => {
   const onChangeActiveHandler = () => {
-    setActiveIndex(status.statusCode);
     if (onClick !== null) {
       onClick(status.statusCode);
     }
