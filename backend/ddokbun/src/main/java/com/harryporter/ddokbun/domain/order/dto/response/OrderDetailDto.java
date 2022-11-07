@@ -4,16 +4,18 @@ import com.harryporter.ddokbun.domain.order.dto.OrderDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
 import lombok.Getter;
 
+import java.util.List;
+
 @Getter
 public class OrderDetailDto  {
 
     private  OrderDto order;
-    private ItemDetailDto item;
+    private List<ItemDetailDto> items;
 
-    public void setOrderProperty(OrderDto orderDto, ItemDetailDto itemDetail){
+    public void setOrderProperty(OrderDto orderDto, List<ItemDetailDto> itemDetail){
 
         this.order = orderDto;
-        this.item = itemDetail;
+        this.items = itemDetail;
     }
 
 }
