@@ -1,9 +1,9 @@
 import { configureStore, createSlice } from "@reduxjs/toolkit";
 import { createWrapper, HYDRATE } from "next-redux-wrapper";
-import { combineReducers } from "redux";
+import { AnyAction, combineReducers } from "redux";
 import authSlice from "./auth";
 import manage from "./manage";
-import commerce, { CommerceState } from "./commerce";
+import { CartListSlice, CommerceState, RelatedProductSlice } from "./commerce";
 import {
   persistStore,
   persistReducer,
@@ -16,26 +16,49 @@ import {
 } from "redux-persist";
 import storageSession from "redux-persist/lib/storage/session"; //sessionstorage나 localstorage 중에 선택
 
-const persistConfig: any = {
-  key: "root",
-  storage: storageSession,
-  whitelist: ["authSlice"], //유지할 데이터
-};
+import {
+  ListArray,
+  ListObjectItem,
+  ProductLists,
+} from "../types/commerce/list.interface";
 
 export interface StoreState {
-  commerce: CommerceState;
+  relatedProductSlice: ProductLists;
+  cartList: ListArray;
   authSlice: any;
   manage: any;
 }
 
-const rootReducers = combineReducers({
+const combinedReducer = combineReducers({
   // 여기에 reducer들 추가
-  authSlice,
   manage,
-  commerce,
+  authSlice,
+  cartList: CartListSlice.reducer,
+  relatedProductSlice: RelatedProductSlice.reducer,
 });
 
-const persistedReducer = persistReducer(persistConfig, rootReducers);
+const rootReducers = (
+  state: ReturnType<typeof combinedReducer>,
+  action: AnyAction,
+) => {
+  switch (action.type) {
+    case HYDRATE:
+      return {
+        ...state,
+        ...action.payload,
+      };
+
+    default:
+      return combinedReducer(state, action);
+  }
+};
+
+const persistConfig = {
+  key: "root",
+  storage: storageSession,
+};
+
+const persistedReducer = persistReducer<any>(persistConfig, rootReducers);
 
 export const makeStore = () =>
   configureStore({
@@ -58,6 +81,8 @@ export const persistor = persistStore(makeStore());
 
 export type AppStore = ReturnType<typeof makeStore>;
 export type AppState = ReturnType<AppStore["getState"]>;
+
+export type AppDispatch = typeof persistor.dispatch;
 
 export const wrapper = createWrapper<AppStore>(makeStore);
 export type RootState = ReturnType<typeof rootReducers>;

@@ -1,16 +1,59 @@
-import React, { useState } from "react";
+import React, { useEffect, useState, Dispatch, SetStateAction } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchCartList } from "../../../../apis/commerce";
+import { setCartLists } from "../../../../store/commerce";
+import {
+  ListObjectItem,
+  ProductLists,
+} from "../../../../types/commerce/list.interface";
 
 import CartItem from "../CartItem";
 import { Wrapper } from "./styles";
+import { StoreState } from "../../../../store";
 
-const CartList: React.FC = () => {
+interface Item {
+  setOrderTotal?: Dispatch<SetStateAction<number>>;
+}
+
+const CartList: React.FC<Item> = ({ setOrderTotal }) => {
   const [total, setTotal] = useState(0);
+  const dispatch = useDispatch();
+  const selector = useSelector((state: StoreState) => state.cartList);
+
+  useEffect(() => {
+    const idxArray = Object.keys(selector);
+    let temp = 0;
+    idxArray.forEach((idx: string) => {
+      const iidx = parseInt(idx);
+      temp +=
+        (selector[iidx].price as number) * (selector[iidx].quantity as number);
+    });
+    setTotal(temp);
+    if (setOrderTotal) {
+      setOrderTotal(temp);
+    }
+  }, [selector]);
+
+  useEffect(() => {
+    const getCartList = async () => {
+      const data = await fetchCartList();
+      dispatch(setCartLists(data?.data.content.data as ProductLists));
+    };
+    getCartList();
+  }, []);
+
   return (
     <>
       <Wrapper>
         <div className="grid">
-          <CartItem price={18000} setTotal={setTotal} />
-          <CartItem price={18000} setTotal={setTotal} />
+          <>
+            {Object.keys(selector).map((idx: string) => {
+              const item = selector[parseInt(idx)];
+              return (
+                <CartItem key={item.itemSeq} item={item} setTotal={setTotal} />
+              );
+            })}
+          </>
         </div>
         <div className="subtotal">
           <div className="subtotal-left">
