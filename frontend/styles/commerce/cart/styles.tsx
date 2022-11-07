@@ -25,4 +25,8 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
   }
+
+  @media screen and (${props => props.theme.mobile}) {
+    padding: 10px 10px;
+  }
 `;

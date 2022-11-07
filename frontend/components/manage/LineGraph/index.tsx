@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import { Wrapper } from "./styles";
 import { Line } from "react-chartjs-2";
 import {
@@ -9,9 +9,22 @@ import {
   LineElement,
   Tooltip,
   Legend,
+  TimeScale,
 } from "chart.js";
+import "chartjs-adapter-date-fns";
 
-const LineGraph: React.FC = () => {
+export interface LogsType {
+  [name: string]: string;
+}
+
+interface Props {
+  labels: Date[];
+  data: string[];
+  label: string;
+}
+
+const LineGraph: FC<Props> = ({ labels, data, label }) => {
+
   Chart.register(
     CategoryScale,
     LinearScale,
@@ -19,23 +32,30 @@ const LineGraph: React.FC = () => {
     LineElement,
     Tooltip,
     Legend,
+    TimeScale,
   );
 
-  const data = {
-    labels: ["5일전", "4", "3", "2", "today"],
+  const chartData = {
+    labels,
     datasets: [
       {
-        label: "온도.",
-        data: [33, 53, 85, 41, 44, 65],
+        label,
+        data,
         fill: true,
         backgroundColor: "rgba(75,192,192,0.2)",
         borderColor: "#92ECEE",
       },
     ],
   };
+
   const options = {
     plugins: {
       tooltip: {
+        callbacks: {
+          // label: (tooltipItem, data) => {
+          //   console.log(tooltipItem);
+          // },
+        },
         // backgroundColor: "#fff",
       },
       indexAxis: "y" as const,
@@ -45,16 +65,25 @@ const LineGraph: React.FC = () => {
         },
       },
     },
+    scales: {
+      x: {
+        type: "time" as const,
+        time: {
+          // unit: "day" as const,
+          // parser: "yy:mm:dd" as const,
+        },
+      },
+    },
     interaction: {
       mode: "index" as const,
-      intersect: false,
       axis: "y" as const,
     },
   };
 
+
   return (
     <Wrapper>
-      <Line data={data} options={options} />
+      <Line data={chartData} options={options} />
     </Wrapper>
   );
 };

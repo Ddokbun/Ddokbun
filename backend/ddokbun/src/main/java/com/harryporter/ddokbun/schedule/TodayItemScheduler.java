@@ -1,8 +1,6 @@
 package com.harryporter.ddokbun.schedule;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
@@ -19,15 +17,12 @@ public class TodayItemScheduler {
     //nativeQuery 없이 JPA truncate 못함, delete 보다 truncate가 빠름
     private final JdbcTemplate jdbcTemplate;
 
-    private RedisTemplate<String, Object> redisTemplate;
-
-
-    public TodayItemScheduler(JdbcTemplate jdbcTemplate,RedisTemplate redisTemplate ){
+    public TodayItemScheduler(JdbcTemplate jdbcTemplate){
         this.jdbcTemplate = jdbcTemplate;
-        this.redisTemplate = redisTemplate;
+     //   this.redisTemplate = redisTemplate;
         //서버 켜질 떄는 무조건 실행되게 하자.
         changeTodayItems();
-        resetHotClick();
+       // resetHotClick();
     }
     //0초0분 0시  모든일 모든월 모든 요일
     //오늘의 아이템을 셋팅한다.
@@ -38,7 +33,7 @@ public class TodayItemScheduler {
         //기존 today_item에 있는 모든 열 삭제
 
         //아이템의 key만 들고 온다.
-        List<Long> itemkeys =  jdbcTemplate.query("SELECT * FROM ddokbun.item ORDER BY RAND() LIMIT 1", (rs, rowNum) ->
+        List<Long> itemkeys =  jdbcTemplate.query("SELECT * FROM ddokbun.item ORDER BY RAND() LIMIT 5", (rs, rowNum) ->
                 rs.getLong("item_seq")
         );
 
@@ -49,18 +44,18 @@ public class TodayItemScheduler {
                 }
         );
     }
-    @Scheduled(cron = "0 0 0 * * *")
-    public void resetHotClick() {
-        try {
-            log.info("rank");
-            redisTemplate.keys("rank").stream().forEach(k -> {
-                log.info(k);
-                redisTemplate.delete(k);
-            });
-            log.info("캐쉬 삭제에 성공했습니다.");
-        }catch (Exception e){
-            log.info("지울 캐쉬가 없습니다.");
-        }
-    }
+//    @Scheduled(cron = "0 0 0 * * *")
+//    public void resetHotClick() {
+//        try {
+//            log.info("rank");
+//            redisTemplate.keys("rank").stream().forEach(k -> {
+//                log.info(k);
+//                redisTemplate.delete(k);
+//            });
+//            log.info("캐쉬 삭제에 성공했습니다.");
+//        }catch (Exception e){
+//            log.info("지울 캐쉬가 없습니다.");
+//        }
+//    }
 
 }

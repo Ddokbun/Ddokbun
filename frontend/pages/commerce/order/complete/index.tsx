@@ -1,12 +1,20 @@
-import { GetServerSideProps, GetServerSidePropsContext, NextPage } from "next";
+import {
+  GetServerSideProps,
+  GetServerSidePropsContext,
+  GetStaticProps,
+  NextPage,
+} from "next";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 
-import { getCookie, CookieValueTypes, deleteCookie } from "cookies-next";
+import { getCookie, deleteCookie } from "cookies-next";
 import Carousel from "../../../../common/Carousel";
 import { Wrapper } from "../../../../styles/commerce/order/complete/styles";
 
-import { approveKakaoPay } from "../../../../apis/commerce";
+import {
+  approveKakaoPay,
+  fetchPriorityProduct,
+} from "../../../../apis/commerce";
 
 export const getServerSideProps: GetServerSideProps = async ({
   query,
@@ -24,13 +32,12 @@ export const getServerSideProps: GetServerSideProps = async ({
   }
   const pgToken = query.pg_token as string;
   const payResult = await approveKakaoPay(tid, pgToken);
-  deleteCookie("tid", { req, res });
+  const Datas = await deleteCookie("tid", { req, res });
   const payObj = {
     orderId: payResult?.aid,
     User: payResult?.partner_user_id,
   };
   // 결제정보를 DB에 입력하도록 해야함
-  console.log(payResult);
 
   return { props: { payObj } };
 };
@@ -45,6 +52,15 @@ interface IOrder {
 }
 
 const Complete: NextPage<IOrder> = ({ payObj }) => {
+  const [priorityList, setPrioriyList] = useState([]);
+  useEffect(() => {
+    const getPriorityProduct = async () => {
+      const data = await fetchPriorityProduct();
+      setPrioriyList(data);
+    };
+    getPriorityProduct();
+  }, []);
+
   return (
     <Wrapper>
       <div className="grid">
@@ -78,7 +94,7 @@ const Complete: NextPage<IOrder> = ({ payObj }) => {
       </div>
       <div className="carousel-wrap">
         <h1>Other Plants</h1>
-        <Carousel />
+        {/* <Carousel /> */}
       </div>
     </Wrapper>
   );

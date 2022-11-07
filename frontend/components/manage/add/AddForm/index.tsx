@@ -12,7 +12,6 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../../store";
 import { fetchPlantData, fetchRegisterPot } from "../../../../apis/manage";
 import PlantData from "../PlantData";
-import AXIOS from "../../../../apis";
 
 export interface PlantDataType {
   growthHumid: string;

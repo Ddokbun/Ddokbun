@@ -16,6 +16,8 @@ unsigned long loopTime = 0;
 unsigned long addTime = 0;
 unsigned long afterTime = 0;
 
+unsigned long motorLoopTime = 0;
+unsigned long motorAddTime = 0;
 
 unsigned long motorLoopTime = 0;
 unsigned long motorAddTime = 0;

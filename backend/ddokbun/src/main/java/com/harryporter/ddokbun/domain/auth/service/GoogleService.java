@@ -30,25 +30,17 @@ import java.nio.charset.StandardCharsets;
 public class GoogleService {
     private final UserService userService;
     public OAuthRes googleLogin(String code){
-        log.info("Login 파이프라인 진입 & 받은 인가코드 : {}",code);
+        log.info("구글 로그인 파이프라인 진입 :: 인가 코드 : {}", code);
         String decodedCode="";
-
         try {
             decodedCode = java.net.URLDecoder.decode(code, StandardCharsets.UTF_8.name());
         } catch (UnsupportedEncodingException e) {
 
         }
-
-        log.info("해독된 인가코드 : {}",decodedCode);
         GoogleAccessToken accessToken = getGoogleAuthTokenByCode(decodedCode);
-
-        log.info("access Token : {}",accessToken.getAccess_token());
-
         GoogleProfile googleProfile = getGoogleProfileByAccessToken(accessToken);
 
         UserDto userDto = userService.signup(new UserSocialDto(googleProfile));
-        log.info("user nickname : {}",userDto.getUserNickname());
-        log.info("user email : {}",userDto.getUserEmail());
 
         String jwtToken = JwtTokenUtils.generateJwtToken(userDto);
         OAuthRes res = new OAuthRes(jwtToken,userDto.getUserSeq());
@@ -57,8 +49,8 @@ public class GoogleService {
     }
 
     private GoogleAccessToken getGoogleAuthTokenByCode(String code){
-        try{
-            // HTTP Header 생성
+        log.info("구글 Access Token 받아오기 :: 인가 코드 : {}", code);
+        try{// HTTP Header 생성
             HttpHeaders headers = new HttpHeaders();
             headers.add("Content-type","application/x-www-form-urlencoded;charset=utf-8");
 
@@ -84,8 +76,6 @@ public class GoogleService {
             }catch (HttpClientErrorException e){
                 throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Authorization code를 확인하세요.");
             }
-
-
             // HTTP 응답 (JSON) -> 액세스 토큰 파싱
             String responseBody = response.getBody();
             ObjectMapper objectMapper = new ObjectMapper();
@@ -100,6 +90,7 @@ public class GoogleService {
     }
 
     private GoogleProfile getGoogleProfileByAccessToken(GoogleAccessToken oAuthToken){
+        log.info("구글 프로필 받아오기 :: Access Token : {}", oAuthToken.getAccess_token());
         // HTTP Header 생성
         HttpHeaders headers2 = new HttpHeaders();
         headers2.add("Authorization", "Bearer "+oAuthToken.getAccess_token());

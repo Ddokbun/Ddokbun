@@ -26,10 +26,12 @@ public interface ItemService {
 
     String deleteItem(long itemSeq);
 
-    List<Long> getProductList();
+    List<Long> getProductList(Pageable pageable);
 
 
-    List<ItemCategoryDto> getProductByCategory(String category,Pageable pageable);
+    List<ItemListDto> getSimilarProduct(long itemSeq, Pageable pageable);
+
+    List<ItemListDto> getProductByCategory(String category, Pageable pageable);
 
     String click(long itemSeq);
 
