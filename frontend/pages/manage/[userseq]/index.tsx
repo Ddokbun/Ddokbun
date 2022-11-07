@@ -39,7 +39,6 @@ export const getServerSideProps: GetServerSideProps =
     if (!plantsListData) {
       return { props: {} };
     }
-
     // store.dispatch(setCartLists(["하이"]));
 
     return {

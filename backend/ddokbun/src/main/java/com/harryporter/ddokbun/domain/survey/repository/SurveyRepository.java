@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface SurveyRepository extends JpaRepository<Survey,Integer> {
 
-    @Query("SELECT s FROM Survey s  JOIN FETCH s.surveySelectList")
+    @Query("SELECT distinct s FROM Survey s  JOIN FETCH s.surveySelectList")
     List<Survey> findAllWithAll();
 
 }
