@@ -13,10 +13,9 @@ export const ResponsiveWrapper = styled(motion.div)`
   grid-gap: 5px;
   place-items: center;
   .img-wrap {
-    padding: 0px 0px;
+    overflow: hidden;
     width: 100%;
     height: 100%;
-
     position: relative;
     align-items: center;
   }
@@ -34,6 +33,8 @@ export const ResponsiveWrapper = styled(motion.div)`
     h3 {
       font-family: ${props => props.theme.font.EnglishFont};
       font-size: 25px;
+      text-align: center;
+      word-wrap: normal;
     }
 
     .title {
@@ -49,7 +50,7 @@ export const ResponsiveWrapper = styled(motion.div)`
         color: ${props => props.theme.color.darkGreen};
       }
       h3 {
-        font-size: 18px;
+        font-size: 16px;
         line-height: 10px;
         margin-bottom: 10px;
         color: ${props => props.theme.color.brownHover};
