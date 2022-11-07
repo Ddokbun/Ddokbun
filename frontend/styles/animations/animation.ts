@@ -9,3 +9,31 @@ export const WelcomeMotion = {
     opacity: 1,
   },
 };
+
+export const WrapperVar = {
+  start: {
+    opacity: 0,
+  },
+  end: {
+    opacity: 1,
+    scale: 1,
+    transition: {
+      type: "spring",
+      duration: 3,
+      bounce: 0.5,
+      delayChildren: 0.5,
+      staggerChildren: 0.5,
+    },
+  },
+};
+
+export const EleVar = {
+  start: {
+    opacity: 0,
+    y: 10,
+  },
+  end: {
+    opacity: 1,
+    y: 0,
+  },
+};

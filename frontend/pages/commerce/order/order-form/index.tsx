@@ -35,6 +35,7 @@ const OrderForm: NextPage = () => {
 
   const [total_amount, setOrderTotal] = useState(0);
   const [item_name, setItemName] = useState("");
+  const [item_seq, setItemSeq] = useState("");
   const orderItems = useSelector((state: StoreState) => state.cartList);
 
   useEffect(() => {
@@ -45,22 +46,37 @@ const OrderForm: NextPage = () => {
     } else {
       setItemName(orderItems[0].itemName);
     }
-  }, [orderItems]);
+
+    Object.keys(orderItems).map((idx: string) => {
+      setItemSeq(val => val + `${orderItems[parseInt(idx)].itemSeq},`);
+    });
+
+    console.log(item_seq);
+    console.log(item_name);
+  }, []);
   const postOrder = async () => {
+    console.log(item_seq);
+
     try {
-      // await postOrderList(
-      //   mailHead + mailTail,
-      //   payType,
-      //   phoneHead + phoneBody + phoneTail,
-      //   total_amount,
-      //   post,
-      //   detailPost,
-      //   additionalPost,
-      //   "임시유저이름",
-      // );
+      const res = await postOrderList(
+        item_name,
+        item_seq,
+        mailHead + mailTail,
+        payType,
+        phoneHead + phoneBody + phoneTail,
+        total_amount,
+        post,
+        detailPost,
+        additionalPost,
+        name,
+      );
+
+      setCookie("orderSeq", res.orderSeq);
+      console.log(res.orderSeq);
 
       if (payType === 1) {
-        postKakaoPay("임시", total_amount, item_name);
+        alert("올 ㅋ");
+        postKakaoPay(res.orderSeq, total_amount, item_name);
       } else {
         alert("네이버준비중");
       }
@@ -70,7 +86,7 @@ const OrderForm: NextPage = () => {
   };
   /** 폼 유효성 검사 */
   const onSubmitHandler = () => {
-    setFlag(0);
+    // setFlag(0);
     // if (name) {
     //   setNameError("");
     // } else {
@@ -115,11 +131,14 @@ const OrderForm: NextPage = () => {
     if (!payType) {
       alert("결제 수단을 선택해주세요");
     } else {
-      postOrder();
+      try {
+        postOrder();
+      } catch {
+        alert("뭔가 잘못됐습니다");
+      }
     }
   };
 
-  console.log(item_name);
   return (
     <Wrapper>
       <div className="row">
