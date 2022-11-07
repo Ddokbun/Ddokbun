@@ -2,7 +2,7 @@ import AXIOS from "./index";
 
 // 유저 리스트 조회
 export const getAdminUserList = async () => {
-  // const path = "admin/user/list?size=2&page=2";
+  // const path = "admin/user/list?size=&page=2";
   const path = "admin/user/list";
   try {
     const res = await AXIOS({
@@ -11,6 +11,7 @@ export const getAdminUserList = async () => {
     });
     return res.data;
   } catch (error) {
+    5;
     console.log(error);
   }
 };
