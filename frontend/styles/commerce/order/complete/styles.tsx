@@ -35,9 +35,15 @@ export const Wrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
+
+    ul li:nth-child(4) {
+      display: flex;
+      justify-content: center;
+    }
     a {
       color: #0097e6;
     }
+
     .button {
       margin-top: 50px;
       border-radius: 10px;
