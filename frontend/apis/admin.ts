@@ -30,7 +30,7 @@ export const fetchAdminRole = async (userSeq: number) => {
   }
 };
 
-// 전체 주문 목록 조회
+// 전체 주문 건수 조회
 export const getOrderCount = async () => {
   const path = "admin/order/count";
   try {
@@ -47,6 +47,19 @@ export const getOrderCount = async () => {
 // 전체 주문 목록 조회
 export const getAdminOrderList = async () => {
   const path = "admin/order/list";
+  try {
+    const res = await AXIOS({
+      method: "GET",
+      url: path,
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getProductList = async () => {
+  const path = "admin/product/list";
   try {
     const res = await AXIOS({
       method: "GET",
