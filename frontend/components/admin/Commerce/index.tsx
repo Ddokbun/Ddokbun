@@ -47,7 +47,6 @@ const CommerceTable = () => {
               list.map(item => {
                 return <OrderList key={item.index} item={item}></OrderList>;
               })}
-            <tbody></tbody>
           </table>
         </div>
       </>
