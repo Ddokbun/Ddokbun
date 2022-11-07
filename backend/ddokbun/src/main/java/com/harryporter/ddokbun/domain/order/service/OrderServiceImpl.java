@@ -22,6 +22,7 @@ import com.harryporter.ddokbun.exception.ErrorCode;
 import com.harryporter.ddokbun.exception.GeneralException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -96,8 +97,8 @@ public class OrderServiceImpl implements OrderService{
     }
 
     @Override
-    public List<AdminOrderDto> getTotalOrderList(){
-        List<Order> orders=orderRepository.findAll();
+    public List<AdminOrderDto> getTotalOrderList(Pageable pageable){
+        List<Order> orders=orderRepository.findAllBy(pageable);
 
         List<AdminOrderDto> list = orders.stream()
                 .filter(order -> order.getItemSeqList() != null)

@@ -2,6 +2,7 @@ package com.harryporter.ddokbun.domain.order.repository;
 
 import com.harryporter.ddokbun.domain.order.entity.Order;
 import com.harryporter.ddokbun.domain.user.entity.User;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
@@ -20,6 +21,8 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
 
     @Query("SELECT o FROM Order o WHERE o.orderTime >= :start AND o.orderTime <= :end")
     List<Order> findAllByOrderTime(@Param("start") Date start, @Param("end") Date end);
+
+    List<Order> findAllBy(Pageable pageable);
 
     List<Order> findByUser(User user);
 
