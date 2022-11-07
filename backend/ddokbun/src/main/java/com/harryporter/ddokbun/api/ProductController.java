@@ -1,4 +1,5 @@
 package com.harryporter.ddokbun.api;
+import com.harryporter.ddokbun.domain.survey.dto.response.SurveyAnswerResponse;
 import io.swagger.v3.oas.annotations.Parameter;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Pageable;
@@ -161,7 +162,9 @@ public class ProductController {
     public ResponseEntity<?> getSurveyThenProcessionEndData(@RequestBody SurveyAnswerRequest surveyAnswerRequest){
 
         log.info("설문 결과 반환 API 접근 :: {}",surveyAnswerRequest.getAnswerList());
-        return new ResponseEntity<>("qwe",HttpStatus.OK);
+        List<SurveyAnswerResponse> response = surveyService.surveyAnswerService(surveyAnswerRequest);
+        ResponseFrame res = ResponseFrame.ofOKResponse("설문 응답에 대한 식물을 반환합니다.",response);
+        return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
     //자신의 화분에 맞는 추천 식물들을 반환한다.
