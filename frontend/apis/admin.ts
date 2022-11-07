@@ -58,12 +58,29 @@ export const getAdminOrderList = async () => {
   }
 };
 
+//상품 목록 조회
 export const getProductList = async () => {
-  const path = "admin/product/list";
+  const path = "admin/product/list?size=&page=0";
   try {
     const res = await AXIOS({
       method: "GET",
       url: path,
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//상품 등록
+export const postProduct = async ({ item }) => {
+  const data = item;
+  const path = "admin/product";
+  try {
+    const res = await AXIOS({
+      method: "POST",
+      url: path,
+      data: data,
     });
     return res.data;
   } catch (error) {

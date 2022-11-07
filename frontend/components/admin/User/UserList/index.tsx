@@ -1,9 +1,9 @@
 export interface UserArray {
-  userNickname?: string;
-  userEmail?: string;
-  userSeq?: number;
-  userRole?: string;
-  createdTime?: string;
+  userNickname: string;
+  userEmail: string;
+  userSeq: number;
+  userRole: string;
+  createdTime: string;
 }
 
 const UserList: React.FC<{ item: UserArray }> = ({ item }) => {

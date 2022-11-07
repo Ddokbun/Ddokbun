@@ -1,9 +1,9 @@
 export interface ProductArray {
-  orderName?: string;
-  orderUserName?: string;
-  orderStatus?: string;
-  orderPhone?: string;
-  orderAddress?: string;
+  orderName: string;
+  orderUserName: string;
+  orderStatus: string;
+  orderPhone: string;
+  orderAddress: string;
 }
 
 const OrderList: React.FC<{ item: ProductArray }> = ({ item }) => {
