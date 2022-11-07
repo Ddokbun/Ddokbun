@@ -1,6 +1,7 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(motion.div)`
   position: relative;
   width: 50vw;
   height: 80vh;
@@ -61,25 +62,6 @@ export const Wrapper = styled.div`
     flex-direction: column;
     justify-content: space-evenly;
 
-    .question {
-      padding-left: 0;
-      h1 {
-        font-weight: 600;
-        word-break: keep-all;
-        font-size: 32px;
-        font-family: ${props => props.theme.font.TextFont1};
-      }
-    }
-
-    .answers {
-      width: 100%;
-
-      ul li {
-        margin: 50px 0px;
-        font-family: ${props => props.theme.font.TextFont1};
-        font-size: 24px;
-      }
-    }
     .button-wrap {
       align-self: center;
       width: 100%;
@@ -95,5 +77,27 @@ export const Wrapper = styled.div`
         border: 3px solid ${props => props.theme.color.ivory};
       }
     }
+  }
+`;
+
+export const FormWrapper = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  padding-left: 0;
+  h1 {
+    font-weight: 600;
+    word-break: keep-all;
+    font-size: 32px;
+    font-family: ${props => props.theme.font.TextFont1};
+  }
+  ul {
+    width: 40%;
+    margin-left: auto;
+  }
+
+  ul li {
+    margin: 50px 0px;
+    font-family: ${props => props.theme.font.TextFont1};
+    font-size: 24px;
   }
 `;

@@ -338,3 +338,17 @@ export const clickItem = async (itemSeq: string) => {
     console.log(error);
   }
 };
+
+export const fetchServeyList = async () => {
+  const url = "market/product/servey";
+
+  try {
+    const { data } = await AXIOS({
+      url,
+      method: "GET",
+    });
+    console.log(data.content);
+  } catch (error) {
+    console.log(error);
+  }
+};

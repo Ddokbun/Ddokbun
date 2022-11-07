@@ -1,6 +1,9 @@
 import React, { useState } from "react";
+import { start } from "repl";
 import Dot from "../../../common/Dot";
-import { Wrapper } from "./styles";
+import { EleVar, WrapperVar } from "../../../styles/animations/animation";
+import { FormWrapper, Wrapper } from "./styles";
+import { motion } from "framer-motion";
 
 const ServeyForm: React.FC = () => {
   const [level, setLevel] = useState(1);
@@ -13,16 +16,18 @@ const ServeyForm: React.FC = () => {
         <Dot now={false} />
         <Dot now={false} />
       </div>
-      <div className="question">
-        <h1>Q1. 당신은 식물을 얼마나 좋아하시나요?</h1>
-      </div>
-      <div className="answers">
+      <FormWrapper variants={WrapperVar} initial="start" animate="end">
+        <motion.h1 variants={EleVar}>
+          Q1. 당신은 식물을 얼마나 좋아하시나요?
+        </motion.h1>
+
         <ul>
-          <li>1. 하늘만큼</li>
-          <li>2. 땅만큼</li>
-          <li>3. 우주만큼</li>
+          <motion.li variants={EleVar}>1. 하늘만큼</motion.li>
+          <motion.li variants={EleVar}>2. 땅만큼</motion.li>
+          <motion.li variants={EleVar}>3. 우주만큼</motion.li>
         </ul>
-      </div>
+      </FormWrapper>
+
       <div className="button-wrap">
         <button className="button">이전</button>
         <button className="button">다음</button>
