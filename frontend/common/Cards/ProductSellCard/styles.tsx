@@ -7,9 +7,9 @@ export const Wrapper = styled.div`
   padding: 0px 40px;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: calc(100px + 25vw);
+  grid-template-rows: calc(100px + 28vw);
   grid-auto-flow: row;
-  grid-gap: 50px;
+  grid-gap: 20px;
 
   .img-wrap {
     position: relative;
@@ -41,13 +41,9 @@ export const Wrapper = styled.div`
         margin: 0;
         color: ${props => props.theme.color.mainGreen};
         font-family: ${props => props.theme.font.TitleFont};
-        white-space: nowrap;
-        text-overflow: ellipsis;
       }
       h3 {
         font-size: min(3vw, 50px);
-        white-space: nowrap;
-        text-overflow: ellipsis;
 
         line-height: 0.5em;
         color: ${props => props.theme.color.brownHover};
@@ -55,7 +51,7 @@ export const Wrapper = styled.div`
     }
     & > h3 {
       font-family: ${props => props.theme.font.EnglishFont};
-      font-size: min(3vw, 80px);
+      font-size: min(3vw, 50px);
     }
     .button-wrap {
       position: relative;

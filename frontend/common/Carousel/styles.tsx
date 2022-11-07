@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   .swiper {
     width: 100%;
     height: 100%;
-    overflow: visible;
+    overflow-x: hidden !important;
   }
 
   .swiper-slide {
