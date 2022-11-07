@@ -89,7 +89,7 @@ export const SearchInput: React.FC<{
 export const DateInput: React.FC<{
   label: string;
   image: StaticImageData;
-  saveInput: (value: string, identifier: string) => void;
+  saveInput: (value: string | Date, identifier: string) => void;
 }> = ({ label, image, saveInput }) => {
   return (
     <DateInputStyle>

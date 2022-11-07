@@ -16,11 +16,17 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 
 @Slf4j
 @RequestMapping("/admin")
@@ -63,6 +69,17 @@ public class AdminController {
             throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
         log.info("관리자 :: 식물 데이터 변경 API");
         ResponseFrame<?> res =  ResponseFrame.ofOKResponse("식물 데이터 변경에 성공했습니다.",plantService.updatePlant(plantDto));
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "상품 전체 목록 조회")
+    @GetMapping ("/product/list")
+    public ResponseEntity<?> getProductList(@ApiIgnore @AuthenticationPrincipal UserDto userDto, @ApiIgnore @PageableDefault(size = 10) Pageable pageable){
+        if(!userDto.getUserRole().equals("ROLE_ADMIN"))
+            throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
+        log.info("관리자 :: 상품 전체 목록 조회 API");
+
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("상품 전체 목록을 반환합니다.",itemService.getProductList(pageable));
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
@@ -128,25 +145,25 @@ public class AdminController {
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
-    @ApiOperation(value = "일자별 판매 건수 조회")
+    @ApiOperation(value = "최근 10일 간 일자별 판매 건수 조회")
     @GetMapping ("/order/count-by-date")
     public ResponseEntity<?> getOrderCountByDate(@ApiIgnore @AuthenticationPrincipal UserDto userDto){
-        if(!userDto.getUserRole().equals("ROLE_ADMIN"))
-            throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
-        log.info("관리자 :: 일자별 판매 건수 조회 API");
+//        if(!userDto.getUserRole().equals("ROLE_ADMIN"))
+//            throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
+//        log.info("관리자 :: 일자별 판매 건수 조회 API");
 
-        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("일자별 판매 건수를 반환합니다.","");
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("일자별 판매 건수를 반환합니다.",orderService.getOrderCountByDate());
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
     @ApiOperation(value = "유저 목록 조회")
     @GetMapping ("/user/list")
-    public ResponseEntity<?> getUserList(@ApiIgnore @AuthenticationPrincipal UserDto userDto){
+    public ResponseEntity<?> getUserList(@ApiIgnore @AuthenticationPrincipal UserDto userDto, @ApiIgnore @PageableDefault(size = 10) Pageable pageable){
         if(!userDto.getUserRole().equals("ROLE_ADMIN"))
             throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
         log.info("관리자 :: 유저 목록 조회 API");
 
-        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("유저 목록을 반환합니다.",userService.getUserList());
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("유저 목록을 반환합니다.",userService.getUserList(pageable));
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 

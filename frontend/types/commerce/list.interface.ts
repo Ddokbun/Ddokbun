@@ -1,4 +1,8 @@
+export interface ProductLists {
+  data: ListArray;
+}
 export type ListArray = ListObjectItem[];
+
 export type ListObjectItem = {
   itemSeq: number;
   itemName: string;
@@ -6,4 +10,7 @@ export type ListObjectItem = {
   itemPrice: number;
   itemImage: string;
   tags: string[];
+  price?: number;
+  quantity?: number;
+  imageUrl?: string;
 };

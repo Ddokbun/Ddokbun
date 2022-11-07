@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -70,7 +71,7 @@ public class Order {
 
     //결제 시간
     @Column(nullable = false)
-    private LocalDateTime orderTime;
+    private LocalDate orderTime;
 
     //주문 상태
     @Column(nullable = false)
@@ -81,7 +82,7 @@ public class Order {
 
     @PrePersist
     public void setting(){
-        this.orderTime = LocalDateTime.now(); //서버 돌아가는 컴퓨터 시간대의 현재
+        this.orderTime = LocalDate.now(); //서버 돌아가는 컴퓨터 시간대의 현재
         orderStatus = OrderStatus.READY;
     }
 
