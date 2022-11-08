@@ -1,5 +1,25 @@
 export const CardHover = {
-  hover: { y: -10 },
+  hover: {
+    y: -10,
+  },
+
+  start: {
+    opacity: 0,
+    y: 5,
+  },
+
+  end: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      default: {
+        duration: 0.2,
+      },
+      opacity: {
+        duration: 1,
+      },
+    },
+  },
 };
 
 export const WelcomeMotion = {
@@ -7,6 +27,9 @@ export const WelcomeMotion = {
   visible: {
     y: 0,
     opacity: 1,
+    transition: {
+      duration: 10,
+    },
   },
 };
 
