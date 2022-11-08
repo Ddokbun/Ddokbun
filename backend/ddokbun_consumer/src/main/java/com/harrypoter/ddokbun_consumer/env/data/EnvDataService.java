@@ -8,6 +8,7 @@ import com.harrypoter.ddokbun_consumer.env.data.entity.PotLog;
 import com.harrypoter.ddokbun_consumer.env.data.repository.PotLogRepository;
 import com.harrypoter.ddokbun_consumer.env.data.repository.PotRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.jdbc.core.CallableStatementCreator;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.SqlParameter;
@@ -28,6 +29,7 @@ import java.util.TimeZone;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class EnvDataService {
     private final int MAX_COUNT = 20000;
     private final PotLogRepository potLogRepository;
@@ -43,16 +45,26 @@ public class EnvDataService {
     @Transactional
     public void saveEnvData(String in,long ts)  {
 
+
         LocalDateTime triggerTime =
                 LocalDateTime.ofInstant(Instant.ofEpochMilli(ts),
                         TimeZone.getDefault().toZoneId());
         EnvDto envDto = null;
         try{
+
+            if(objectMapper == null){
+                log.warn("mapper is not load");
+            }
             envDto = objectMapper.readValue(in,EnvDto.class);
+            System.out.println(envDto);
+
+            System.out.println(triggerTime);
             envDto.setTime(triggerTime);
         }
-        catch(JsonProcessingException e){
-            writeLog(String.format("가져온 메세지 등록에 실패하였습니다.::reason : Json 포맷 에러 :: data : %s",envDto));
+        catch(Exception e){
+            e.printStackTrace();
+            System.out.println(e.getMessage());
+            writeLog(String.format("가져온 메세지 등록에 실패하였습니다.::reason : Json 포맷 에러"));
             return;
         }
 
@@ -83,7 +95,7 @@ public class EnvDataService {
     //로그 남기는 트랜잭션이 기존 트랜잭션에 영향을 주면 안될 것
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     private void writeLog(String content){
-
+        log.info("{}",content);
         ConsumeLog consumeLog = ConsumeLog.of(content);
         em.persist(consumeLog);
 
