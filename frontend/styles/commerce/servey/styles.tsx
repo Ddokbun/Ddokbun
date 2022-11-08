@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
   img {
     z-index: -2;
   }
+
   .gradation {
     opacity: 0.45;
     width: 100%;
@@ -26,18 +27,34 @@ export const Wrapper = styled.div`
     background-blend-mode: multiply, multiply;
   }
 
-  .servey-wrapper {
-    flex-direction: column;
-    align-items: center;
+  .survey-wrapper {
     position: absolute;
     transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 1000px;
+    aspect-ratio: 16 / 12;
     top: 50%;
     left: 50%;
     z-index: 1;
-    padding: 20px 60px;
     border-radius: 10px;
     color: ${props => props.theme.color.ivoryHover};
     background-color: rgba(48, 48, 48, 0.8);
+
+    .survey {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 80px 1fr;
+
+      .dots {
+        align-self: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+    }
   }
 
   @media screen and (${props => props.theme.mobile}) {
@@ -45,10 +62,10 @@ export const Wrapper = styled.div`
     width: 100%;
     min-width: 0px;
 
-    .servey-wrapper {
+    .survey-wrapper {
+      aspect-ratio: 8 / 10;
       min-width: 0px;
       width: 95%;
-      padding: 20px;
     }
   }
 `;

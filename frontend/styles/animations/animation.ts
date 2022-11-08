@@ -21,7 +21,7 @@ export const WrapperVar = {
       type: "spring",
       duration: 3,
       bounce: 0.5,
-      delayChildren: 0.5,
+      delayChildren: 0.3,
       staggerChildren: 0.5,
     },
   },
@@ -35,5 +35,12 @@ export const EleVar = {
   end: {
     opacity: 1,
     y: 0,
+  },
+};
+
+export const SvgAni = {
+  start: { strokeDashoffset: 60 },
+  end: {
+    strokeDashoffset: 0,
   },
 };
