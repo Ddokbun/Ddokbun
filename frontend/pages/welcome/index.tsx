@@ -6,6 +6,7 @@ import SearchItem from "../../components/welcome/SearchItem";
 import RecommendItem from "../../components/welcome/RecommendItem";
 import { Wrapper } from "../../styles/welcome/styles";
 import { useScroll, useSpring } from "framer-motion";
+import { NextSeo } from "next-seo";
 
 const Onboarding: NextPage = () => {
   const { scrollYProgress } = useScroll();

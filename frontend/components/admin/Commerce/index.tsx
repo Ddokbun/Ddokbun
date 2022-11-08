@@ -1,11 +1,34 @@
+import { useEffect, useState } from "react";
+import { getAdminOrderList, getOrderCount } from "../../../apis/admin";
+import OrderList from "./OrderList";
 import { Wrapper } from "./styles";
 
 const CommerceTable = () => {
+  const [order, setOrder] = useState();
+  const [list, setlist] = useState();
+
+  useEffect(() => {
+    async function fetchAndSetList() {
+      const data = await getAdminOrderList();
+      setlist(data.content);
+    }
+    fetchAndSetList();
+  }, []);
+  // console.log(list);
+
+  useEffect(() => {
+    async function fetchAndSetOrder() {
+      const data = await getOrderCount();
+      setOrder(data);
+    }
+    fetchAndSetOrder();
+  }, []);
+  console.log(order);
   return (
     <Wrapper>
       <>
         <div className=" ">
-          <h3 className="title">Commerce Table</h3>
+          <h3 className="title">Order Table</h3>
           <hr />
           <table className="table">
             <thead>
@@ -20,31 +43,11 @@ const CommerceTable = () => {
             <div className="table-head">
               <hr />
             </div>
-
-            <tbody>
-              <tr>
-                <td>해바라기</td>
-                <td>김챌이</td>
-                <td>
-                  <button>배송중</button>
-                </td>
-                <td>010-2250-9036</td>
-                <td>구미 임수동 수출대로</td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-              <tr>
-                <td>해바라기</td>
-                <td>김채리</td>
-                <td>
-                  <button>배송중</button>
-                </td>
-                <td>010-2250-9036</td>
-                <td>구미 임수동 수출대로</td>
-              </tr>
-              <div className="table-head"></div>
-            </tbody>
+            {list &&
+              list.map(item => {
+                return <OrderList key={item.index} item={item}></OrderList>;
+              })}
+            <tbody></tbody>
           </table>
         </div>
       </>

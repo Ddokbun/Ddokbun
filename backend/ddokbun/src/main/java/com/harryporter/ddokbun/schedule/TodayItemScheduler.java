@@ -1,7 +1,6 @@
 package com.harryporter.ddokbun.schedule;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
@@ -21,7 +20,7 @@ public class TodayItemScheduler {
         this.jdbcTemplate = jdbcTemplate;
      //   this.redisTemplate = redisTemplate;
         //서버 켜질 떄는 무조건 실행되게 하자.
-        changeTodayItems();
+        // changeTodayItems();
        // resetHotClick();
     }
     //0초0분 0시  모든일 모든월 모든 요일

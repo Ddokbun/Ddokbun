@@ -4,6 +4,7 @@ import { Provider } from "react-redux";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
 import { DefaultSeo } from "next-seo";
+import SEO from "../seo.config";
 import { ThemeProvider } from "styled-components";
 import { Theme } from "../styles/theme";
 import GlobalStyle from "../styles/global-styles";
@@ -16,28 +17,28 @@ import Head from "next/head";
 import firebase from "firebase";
 import { getToken } from "../apis/firebase";
 
-const DEFAULT_SEO = {
-  title: "똑분 - Ddokbun",
-  description: "스마트화분 판매 플랫폼 똑분 - Ddokbun",
-  canonical: "https://www.ddokbun.com",
-  openGraph: {
-    type: "website",
-    locale: "ko_KR",
-    url: "https://www.ddokbun.com",
-    title: "똑분 - Ddokbun에 방문해보세요!",
-    description:
-      "스마트화분 판매 플랫폼 똑분 - Ddokbun에 방문해서 나만의 식물을 추천받아보세요!",
-    site_name: "똑분 - Ddokbun",
-    images: [
-      {
-        url: "https://i.postimg.cc/rySCypg1/logo-04.png",
-        width: 285,
-        height: 167,
-        alt: "스마트화분 커머스, 똑분(Ddokbun)에 방문해보세요!",
-      },
-    ],
-  },
-};
+// const DEFAULT_SEO = {
+//   title: "똑분 - Ddokbun",
+//   description: "스마트화분 판매 플랫폼 똑분 - Ddokbun",
+//   canonical: "https://www.ddokbun.com",
+//   openGraph: {
+//     type: "website",
+//     locale: "ko_KR",
+//     url: "https://www.ddokbun.com",
+//     title: "똑분 - Ddokbun에 방문해보세요!",
+//     description:
+//       "스마트화분 판매 플랫폼 똑분 - Ddokbun에 방문해서 나만의 식물을 추천받아보세요!",
+//     site_name: "똑분 - Ddokbun",
+//     images: [
+//       {
+//         url: "https://i.postimg.cc/rySCypg1/logo-04.png",
+//         width: 285,
+//         height: 167,
+//         alt: "스마트화분 커머스, 똑분(Ddokbun)에 방문해보세요!",
+//       },
+//     ],
+//   },
+// };
 
 const firebaseConfig = {
   apiKey: "AIzaSyCwdWKZo4h03IqLGmInSPIsDtArvtIJzpA",
@@ -79,7 +80,7 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
       </Head>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
-          <DefaultSeo {...DEFAULT_SEO} />
+          <DefaultSeo {...SEO} />
           <ThemeProvider theme={Theme}>
             {!isOnboarding && !isAdmin && <Navbar />}
             <GlobalStyle />

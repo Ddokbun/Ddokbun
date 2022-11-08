@@ -1,9 +1,9 @@
 import type { NextPage } from "next";
 import React, { useEffect } from "react";
 import { useRouter } from "next/router";
-import { Googlelogin } from "../../../apis/auth";
 import { useDispatch } from "react-redux";
 import { ent } from "../../../store/auth";
+import { Googlelogin } from "../../../apis/auth";
 
 const Home: NextPage = () => {
   const router = useRouter();

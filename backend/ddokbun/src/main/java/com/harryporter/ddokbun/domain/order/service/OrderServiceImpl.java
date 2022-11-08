@@ -14,6 +14,7 @@ import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
 import com.harryporter.ddokbun.domain.product.dto.ItemDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
 import com.harryporter.ddokbun.domain.product.entity.Item;
+import com.harryporter.ddokbun.domain.product.repository.ItemRepository;
 import com.harryporter.ddokbun.domain.product.service.ItemService;
 import com.harryporter.ddokbun.domain.user.entity.User;
 import com.harryporter.ddokbun.domain.user.repository.UserRepository;
@@ -21,10 +22,13 @@ import com.harryporter.ddokbun.exception.ErrorCode;
 import com.harryporter.ddokbun.exception.GeneralException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -34,6 +38,7 @@ import java.util.stream.Collectors;
 public class OrderServiceImpl implements OrderService{
 
     private final OrderRepository orderRepository;
+    private final ItemRepository itemRepository;
     private final UserRepository userRepository;
     private final ItemService itemService;
 
@@ -44,13 +49,10 @@ public class OrderServiceImpl implements OrderService{
                 ()-> new GeneralException(ErrorCode.NOT_FOUND)
         );
 
-        List<Order> orders = orderRepository.findByUserSeq(user);
+        List<Order> orders = orderRepository.findByUser(user);
 
-        List<OrderListItemDto> orderListItemDtoList = orders.stream().map(
-                (order)->{
-                    return OrderListItemDto.of(order);
-                }
-        ).collect(Collectors.toList());
+        List<OrderListItemDto> orderListItemDtoList
+                = orders.stream().map(order->(OrderListItemDto.of(order))).collect(Collectors.toList());
         return orderListItemDtoList;
 
     }
@@ -58,46 +60,17 @@ public class OrderServiceImpl implements OrderService{
     @Override
     @Transactional
     public OrderDto enrollOrder(OrderReq orderReq, Long userSeq) {
-
         User user = userRepository.findById(userSeq).orElseThrow(
-                ()->new GeneralException(ErrorCode.NOT_FOUND)
-        );
-
-        itemService.decreaseQuantity(orderReq.getItemSeq(),orderReq.getOrderQuantity());
-        //item의 수량을 확인하고 제거하고, order에 올려줘야함
-        ItemDetailDto itemDetailDto =  itemService.getOneItemById(orderReq.getItemSeq());
-
-
-
-
-        //Entity 설저 영역, 따로 뺴던가 해야할 듯
-        Order order = new Order();
-        order.setOrderAddress(orderReq.getOrderAddress());//주소
-        order.setOrderEmail(orderReq.getOrderEmail());//이메일
-        order.setOrderMethod(orderReq.getOrderMethod());//결제 방식
-        order.setOrderPhone(orderReq.getOrderPhone());//폰
-        order.setOrderPrice(itemDetailDto.getItemPrice() * orderReq.getOrderPrice()); //총가
-        order.setOrderQuantity(order.getOrderQuantity()); // 수량
-        order.setUser(user); //유저
-        Item item = new Item();
-        item.setItemSeq(orderReq.getItemSeq()); //아이템
-        order.setItem(item);
-        order.setOrderReciver(orderReq.getOrderReceiver());
-        order.setOrderStatus(OrderStatus.READY);
-        order.setOrderMethod(orderReq.getOrderMethod());//결제방식
-        order.setOrderTime(orderReq.getOrderTime());
-        order.setOrderWaybillNumber("111-23-12-31-2-1");
-        order.setOrderQuantity(orderReq.getOrderQuantity());
-        order.setOrderUserName(orderReq.getOrderUserName());
-
-
+                ()->new GeneralException(ErrorCode.NOT_FOUND));
+        Order order = orderReq.toEntity(user);
+        log.info("저장합니다!!");
         orderRepository.save(order);
-
+        log.info("변환합니다!!");
         return OrderDto.of(order);
     }
 
     @Override
-    public OrderDetailDto getOrderDetail(Long orderSeq, Long userSeq) {
+    public OrderDto getOrderDetail(Long orderSeq, Long userSeq) {
 
         Order order =  orderRepository.findById(orderSeq).orElseThrow(
                 ()->new GeneralException(ErrorCode.NOT_FOUND,"해당하는 주문 내역을 찾을 수 없습니다,")
@@ -107,40 +80,37 @@ public class OrderServiceImpl implements OrderService{
             throw  new GeneralException(ErrorCode.DATA_ACCESS_ERROR,"ACCESS DENIED");
         };
 
+        String items=order.getItemSeqList();
+        List<String> itemSeqList = Arrays.asList(items.split(","));
+
+        List<ItemDto> itemList = itemSeqList.stream().map(
+                item -> ItemDto.of(itemRepository.findById(Long.parseLong(item)).orElse(null))).collect(Collectors.toList());
+
+
         //주문으로 부터 아이템을 가져온다.
-        Item item = order.getItem();
+    //    Item item = order.getItem();
         //Entity 속성을 맵핑되는 DTO에 삽입
         OrderDto orderDto = OrderDto.of(order);
+        orderDto.setItemlist(itemList);
 
-        //너많은 정보를 추가한 DTO 생성
-        ItemDetailDto itemDetailDto = new ItemDetailDto();
-        //ItemDto <- ItemDetailDto 상속관계이기에, 상속 받은 필드들을 설정해준다.
-        itemDetailDto.copy(ItemDto.of(item));
-
-        //아이템이 식물이면 ,식물 속성들을 채워준다.
-        if(item.getPlant() != null){
-            itemDetailDto.setPlant(PlantDto.of(item.getPlant()));
-        }
-
-        //OrderDetailDto를 생성하고
-        OrderDetailDto orderDetailDto = new OrderDetailDto();
-        //Order의 속성을 채워주고 , Item속성을 채워주고, 식물이면 Plant속성을 채워준다.
-        orderDetailDto.setOrderProperty(orderDto,itemDetailDto);
-
-        return orderDetailDto;
+        return orderDto;
     }
+
     @Override
-    public List<AdminOrderDto> getTotalOrderList(){
-        List<Order> orders=orderRepository.findAll();
-        return orders.stream()
-                .filter(order -> order.getItem() != null)
+    public List<AdminOrderDto> getTotalOrderList(Pageable pageable){
+        List<Order> orders=orderRepository.findAllBy(pageable);
+
+        List<AdminOrderDto> list = orders.stream()
+                .filter(order -> order.getItemSeqList() != null)
                 .map(order -> AdminOrderDto.of(order)).collect(Collectors.toList());
+
+        return list;
     }
 
     @Override
     public String updateOrderStatus(OrderStatusDto orderStatusDto){
         log.info("주문 상태 변경 Service :: 변경할 OrderStatus : {}", orderStatusDto.getOrderStatus());
-        Order order = orderRepository.findById(orderStatusDto.getOrderSeq()).orElseThrow(
+        Order order = orderRepository.findByOrderSeq(orderStatusDto.getOrderSeq()).orElseThrow(
                 ()->new GeneralException(ErrorCode.NOT_FOUND,"해당하는 주문 내역을 찾을 수 없습니다,"));
 
         log.info("현재 주문 상태 : {}, 변경할 주문 상태 : {}",order.getOrderStatus(),orderStatusDto.getOrderStatus());
@@ -165,16 +135,17 @@ public class OrderServiceImpl implements OrderService{
         List<OrderDateDto> result = new ArrayList<>();
 
         for(int i=0;i<10;i++) {
-            Calendar day = Calendar.getInstance();
-            day.add(Calendar.DATE, -i);
-            String date = new java.text.SimpleDateFormat("yyyy-MM-dd").format(day.getTime());
+            Calendar st = Calendar.getInstance();
+            Calendar ed = Calendar.getInstance();
+            st.add(Calendar.DATE, -i-1);
+            ed.add(Calendar.DATE,-i);
+            Date start = st.getTime();
+            Date end = ed.getTime();
 
-            LocalDate start = LocalDate.parse(date);
-            LocalDate end = start.plusDays(1);
             log.info("start :: {} , end :: {}", start, end);
 
             List<Order> orders = orderRepository.findAllByOrderTime(start, end);
-            result.add(new OrderDateDto(start.toString(), orders.size()));
+            result.add(new OrderDateDto(end, orders.size()));
         }
         return result;
     }

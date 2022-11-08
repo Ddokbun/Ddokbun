@@ -79,7 +79,7 @@ public class AdminController {
             throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
         log.info("관리자 :: 상품 전체 목록 조회 API");
 
-        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("상품 전체 목록을 반환합니다.",itemService.getProductList(pageable));
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("상품 전체 목록을 반환합니다.",itemService.getAdminProductList(pageable));
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
@@ -125,12 +125,12 @@ public class AdminController {
 
     @ApiOperation(value = "전체 주문 내역 목록 조회")
     @GetMapping ("/order/list")
-    public ResponseEntity<?> getOrderList(@ApiIgnore @AuthenticationPrincipal UserDto userDto){
+    public ResponseEntity<?> getOrderList(@ApiIgnore @AuthenticationPrincipal UserDto userDto, @ApiIgnore @PageableDefault(size = 10) Pageable pageable){
         if(!userDto.getUserRole().equals("ROLE_ADMIN"))
             throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
         log.info("관리자 :: 전체 주문 내역 목록 조회 API");
 
-        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("전체 주문 내역 목록을 반환합니다.",orderService.getTotalOrderList());
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("전체 주문 내역 목록을 반환합니다.",orderService.getTotalOrderList(pageable));
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
@@ -141,7 +141,7 @@ public class AdminController {
             throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
         log.info("관리자 :: 전체 주문 건수 조회 API");
 
-        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("전체 주문 건수를 반환합니다.",orderService.getTotalOrderList().size());
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("전체 주문 건수를 반환합니다.",orderService.getTotalOrderList(null).size());
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 

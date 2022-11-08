@@ -22,15 +22,6 @@ const manageSlice = createSlice({
       };
     },
   },
-  extraReducers: {
-    // 예시
-    [HYDRATE]: (state, action) => {
-      return {
-        ...state,
-        ...action.payload,
-      };
-    },
-  },
 });
 
 export const manageActions = manageSlice.actions;

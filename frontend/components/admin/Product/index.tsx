@@ -1,8 +1,24 @@
 import { Wrapper } from "./styles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import ProductList from "./ProductList";
+import { useEffect, useState } from "react";
+import { getProductList } from "../../../apis/admin";
 
-const ProductTable = () => {
+export interface OrderArray {
+  index: number;
+  item: string[];
+}
+
+const ProductTable: React.FC = () => {
+  const [list, setlist] = useState();
+  useEffect(() => {
+    async function fetchAndSetList() {
+      const data = await getProductList();
+      setlist(data.content);
+    }
+    fetchAndSetList();
+  }, []);
+  console.log(list);
+
   return (
     <Wrapper>
       <>
@@ -22,65 +38,10 @@ const ProductTable = () => {
             <div className="table-head">
               <hr />
             </div>
-
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>스투키</td>
-                <td>10,000</td>
-                <td>20</td>
-                <td>
-                  <button>
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-              <tr>
-                <td>1</td>
-                <td>스투키</td>
-                <td>10,000</td>
-                <td>20</td>
-                <td>
-                  <button>
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-              <tr>
-                <td>1</td>
-                <td>스투키</td>
-                <td>10,000</td>
-                <td>20</td>
-                <td>
-                  <button>
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-              <tr>
-                <td>1</td>
-                <td>스투키</td>
-                <td>10,000</td>
-                <td>20</td>
-                <td>
-                  <button>
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-            </tbody>
+            {list &&
+              list.map((item: OrderArray) => {
+                return <ProductList key={item.index} item={item}></ProductList>;
+              })}
           </table>
         </div>
       </>

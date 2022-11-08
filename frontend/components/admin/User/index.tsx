@@ -1,6 +1,19 @@
+import { useEffect, useState } from "react";
+import { getAdminUserList } from "../../../apis/admin";
 import { Wrapper } from "./styles";
+import UserList from "./UserList";
 
 const UserTable = () => {
+  const [user, setUser] = useState();
+  useEffect(() => {
+    async function fetchAndSetUser() {
+      const data = await getAdminUserList();
+      setUser(data.content);
+    }
+    fetchAndSetUser();
+  }, []);
+  console.log(user);
+
   return (
     <Wrapper>
       <>
@@ -20,69 +33,10 @@ const UserTable = () => {
             <div className="table-head">
               <hr />
             </div>
-
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>김챌이</td>
-                <td>kcr7812@naver.com</td>
-                <td>2022-10-31 13:19:22</td>
-                <td>관리자</td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-              <tr>
-                <td>2</td>
-                <td>김챌이</td>
-                <td>kcr7812@naver.com</td>
-                <td>2022-10-31 13:19:22</td>
-                <td>일반유저</td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-              <tr>
-                <td>3</td>
-                <td>김챌이</td>
-                <td>kcr7812@naver.com</td>
-                <td>2022-10-31 13:19:22</td>
-                <td>관리자</td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-              <tr>
-                <td>4</td>
-                <td>김챌이</td>
-                <td>kcr7812@naver.com</td>
-                <td>2022-10-31 13:19:22</td>
-                <td>관리자</td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-              <tr>
-                <td>5</td>
-                <td>김챌이</td>
-                <td>kcr7812@naver.com</td>
-                <td>2022-10-31 13:19:22</td>
-                <td>일반유저</td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-              <tr>
-                <td>6</td>
-                <td>김챌이</td>
-                <td>kcr7812@naver.com</td>
-                <td>2022-10-31 13:19:22</td>
-                <td>일반유저</td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-            </tbody>
+            {user &&
+              user.map(item => {
+                return <UserList key={item.userSeq} item={item}></UserList>;
+              })}
           </table>
         </div>
       </>

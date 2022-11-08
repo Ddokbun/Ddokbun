@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Link from "next/link";
 import { PriceButtonStyle } from "../../../common/Button/styles";
 import SmartPotCard from "../../../common/Cards/SmartPotCard";
 import CartList from "../../../components/commerce/cart/CartList";
@@ -11,9 +12,11 @@ const Cart: NextPage = () => {
       <CartList />
 
       <div className="button-wrap">
-        <PriceButtonStyle>
-          <h3>CHECKOUT</h3>
-        </PriceButtonStyle>
+        <Link href={"/commerce/order/order-form"}>
+          <PriceButtonStyle>
+            <h3>CHECKOUT</h3>
+          </PriceButtonStyle>
+        </Link>
       </div>
       <div className="card-wrap">
         <SmartPotCard price={36000} />

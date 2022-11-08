@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   grid-gap: 10px;
 
   .grid-left {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -52,7 +53,6 @@ export const Wrapper = styled.div`
   @media screen and (${props => props.theme.mobile}) {
     padding: 5px;
     display: flex;
-    background-color: #fafafa;
     display: grid;
     grid-template-columns: 180px 1fr;
     grid-template-rows: 100px auto;
@@ -78,7 +78,7 @@ export const Wrapper = styled.div`
         height: 20px;
         left: 10px;
 
-        top: 110px;
+        top: 60px;
         font-size: 19px;
         font-weight: 600;
         display: flex;
