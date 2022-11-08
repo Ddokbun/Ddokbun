@@ -1,7 +1,6 @@
 import { Wrapper } from "./styles";
 import Image from "next/image";
 import Link from "next/link";
-import temp01 from "../../../../assets/commerce/temp-product.jpg";
 import { ListObjectItem } from "../../../../../types/commerce/home.interface";
 
 const MainProduct: React.FC<{
