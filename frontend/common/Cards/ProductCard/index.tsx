@@ -22,7 +22,7 @@ const ProductCard: React.FC<{
               <div className="img-wrap">
                 <Image
                   src={item.itemImage}
-                  objectFit="contain"
+                  objectFit="cover"
                   layout="fill"
                   alt="임시상품이미지"
                 />
@@ -37,13 +37,15 @@ const ProductCard: React.FC<{
                     return <ProductLabel key={idx}>{tag}</ProductLabel>;
                   })}
                 </div>
-                <h3>
-                  ₩{" "}
-                  {item.itemPrice
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                </h3>
-                <BuyTextButton id={item.itemSeq} />
+                <div className="text-wrap-bottom">
+                  <h3>
+                    ₩{" "}
+                    {item.itemPrice
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  </h3>
+                  <BuyTextButton id={item.itemSeq} />
+                </div>
               </div>
             </ResponsiveWrapper>
           </Link>
