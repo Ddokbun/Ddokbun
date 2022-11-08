@@ -7,11 +7,15 @@ export const Wrapper = styled.div`
   width: 60px;
   padding: 2px 5px;
   border-radius: 5px;
-  color: ${props => props.theme.color.ivory};
-  background-color: ${props => props.theme.color.black};
+  color: ${props => props.theme.color.mainGreen};
+  background-color: ${props => props.theme.color.ivory};
 
   p {
-    font-size: 14px;
+    font-size: 10px;
     font-family: ${props => props.theme.font.TextFont2};
+  }
+
+  @media screen and (${props => props.theme.mobile}) {
+    width: 50px;
   }
 `;

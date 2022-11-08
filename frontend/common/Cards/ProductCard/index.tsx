@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { ResponsiveWrapper, Wrapper } from "./styles";
 
 import Temp from "../../../assets/temp2.png";
@@ -8,17 +8,28 @@ import { BuyTextButton } from "../../Button";
 import { ListObjectItem } from "../../../types/commerce/list.interface";
 import { CardHover } from "../../../styles/animations/animation";
 import Link from "next/link";
+import { useInView } from "framer-motion";
 
 const ProductCard: React.FC<{
   item: ListObjectItem;
   isResponsive: boolean;
 }> = ({ item, isResponsive }) => {
+  const ref = useRef(null);
+  const isInView = useInView(ref, { once: true });
+  console.log(isInView);
+
   return (
     <>
       {isResponsive ? (
         <>
           <Link href={`/commerce/product/${item?.itemSeq}`}>
-            <ResponsiveWrapper variants={CardHover} whileHover="hover">
+            <ResponsiveWrapper
+              ref={ref}
+              variants={CardHover}
+              whileHover={isInView ? "hover" : ""}
+              initial="start"
+              animate={isInView ? "end" : ""}
+            >
               <div className="img-wrap">
                 <Image
                   src={item.itemImage}
@@ -29,14 +40,15 @@ const ProductCard: React.FC<{
               </div>
               <div className="text-wrap">
                 <div className="title">
-                  <h2>{item.itemName}</h2>
                   <h3>{item.itemEnName}</h3>
+                  <h2>{item.itemName}</h2>
                 </div>
                 <div className="tag-wrap">
                   {item.tags.map((tag, idx) => {
                     return <ProductLabel key={idx}>{tag}</ProductLabel>;
                   })}
                 </div>
+
                 <div className="text-wrap-bottom">
                   <h3>
                     ₩{" "}
