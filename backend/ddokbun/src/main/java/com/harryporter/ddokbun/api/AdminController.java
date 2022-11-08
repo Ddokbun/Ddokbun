@@ -145,6 +145,28 @@ public class AdminController {
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 
+    @ApiOperation(value = "전체 상품 건수 조회")
+    @GetMapping ("/product/count")
+    public ResponseEntity<?> getTotalProductCount(@ApiIgnore @AuthenticationPrincipal UserDto userDto){
+        if(!userDto.getUserRole().equals("ROLE_ADMIN"))
+            throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
+        log.info("관리자 :: 전체 상품 건수 조회 API");
+
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("전체 상품 건수를 반환합니다.",itemService.getAdminProductList(null).size());
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
+    @ApiOperation(value = "전체 유저 수 조회")
+    @GetMapping ("/user/count")
+    public ResponseEntity<?> getTotalUserCount(@ApiIgnore @AuthenticationPrincipal UserDto userDto){
+        if(!userDto.getUserRole().equals("ROLE_ADMIN"))
+            throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
+        log.info("관리자 :: 전체 상품 건수 조회 API");
+
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("전체 유저 수를 반환합니다.",userService.getUserList(null).size());
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
     @ApiOperation(value = "최근 10일 간 일자별 판매 건수 조회")
     @GetMapping ("/order/count-by-date")
     public ResponseEntity<?> getOrderCountByDate(@ApiIgnore @AuthenticationPrincipal UserDto userDto){

@@ -1,4 +1,8 @@
 spring:
+  config:
+    activate:
+      on-profile:
+        - local
   kafka:
     bootstrap-servers:
       - k7d208.p.ssafy.io:8992

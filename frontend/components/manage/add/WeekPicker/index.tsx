@@ -16,7 +16,6 @@ interface Props {
 }
 
 const WeekPicker: FC<Props> = ({ showDetailHandler }) => {
-  
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [currentWeek, setCurrentWeek] = useState(getWeek(currentMonth));
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -66,8 +65,7 @@ const WeekPicker: FC<Props> = ({ showDetailHandler }) => {
         </p>,
       );
     }
-    console.log(days);
-    
+
     return <div className="week-container">{days}</div>;
   };
   const renderCells = () => {
@@ -103,11 +101,10 @@ const WeekPicker: FC<Props> = ({ showDetailHandler }) => {
         day = addDays(day, 1);
       }
 
-      console.log(days);
       rows.push(<div className="day-container">{days}</div>);
       days = [];
     }
-    
+
     return <>{rows}</>;
   };
 
