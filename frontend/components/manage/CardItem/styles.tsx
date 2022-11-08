@@ -21,7 +21,10 @@ export const Wrapper = styled.div`
     display: flex;
     justify-content: center;
     border-radius: 16px;
-    opacity: 0.9
+    opacity: 0.9;
+  }
+  .image:hover {
+    cursor: pointer;
   }
   h2 {
     color: ${props => props.theme.color.mainGreen};
@@ -33,11 +36,5 @@ export const Wrapper = styled.div`
     width: 90%;
     /* margin: auto; */
     display: flex;
-
-    .btn-container {
-      display: flex;
-      align-items: flex-end;
-      margin: 2%;
-    }
   }
 `;
