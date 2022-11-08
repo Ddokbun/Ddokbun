@@ -11,27 +11,29 @@ export interface ProductArray {
 
 const ProductList: React.FC<{ item: ProductArray }> = ({ item }) => {
   return (
-    <tbody>
-      <tr>
-        <td>{item.itemSeq}</td>
-        <td>{item.itemName}</td>
-        <td>
-          ₩{" "}
-          {(item.itemPrice as number)
-            .toString()
-            .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-        </td>
-        <td>{item.itemStock}</td>
-        <td>
-          <button>
-            <FontAwesomeIcon icon={faTrash} />
-          </button>
-        </td>
-      </tr>
+    <>
+      <tbody>
+        <tr>
+          <td>{item.itemSeq}</td>
+          <td>{item.itemName}</td>
+          <td>
+            ₩{" "}
+            {(item.itemPrice as number)
+              .toString()
+              .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+          </td>
+          <td>{item.itemStock}</td>
+          <td>
+            <button>
+              <FontAwesomeIcon icon={faTrash} />
+            </button>
+          </td>
+        </tr>
+      </tbody>
       <div className="table-head">
         <hr />
       </div>
-    </tbody>
+    </>
   );
 };
 
