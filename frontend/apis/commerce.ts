@@ -400,3 +400,24 @@ export const fetchOrderInfo = async (orderSeq: string, token: string) => {
     console.log(error);
   }
 };
+
+/**
+ * 설문결과를 받아오는 API입니다
+ */
+
+export const fetchSurveyComplete = async (answerList: number[]) => {
+  const url = `market/product/survey`;
+
+  try {
+    const { data } = await AXIOS({
+      url,
+      method: "POST",
+      data: {
+        answerList: [1, 1, 1, 1],
+      },
+    });
+    return data.content;
+  } catch (error) {
+    console.log(error);
+  }
+};

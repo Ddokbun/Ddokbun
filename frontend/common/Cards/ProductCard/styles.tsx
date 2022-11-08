@@ -2,26 +2,28 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const ResponsiveWrapper = styled(motion.div)`
-  box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
   border-radius: 5px;
   margin-top: 20px;
-  width: 300px;
+  width: 350px;
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 3fr 2fr;
-  grid-gap: 5px;
+  grid-template-rows: 3fr auto;
+  grid-gap: 20px;
   place-items: center;
+
   .img-wrap {
-    padding: 0px 0px;
+    overflow: hidden;
     width: 100%;
     height: 100%;
-
     position: relative;
     align-items: center;
+    aspect-ratio: 1 / 1;
   }
 
   .text-wrap {
+    padding: 0px 20px;
     margin-top: 10px;
     width: 100%;
     height: 100%;
@@ -34,6 +36,14 @@ export const ResponsiveWrapper = styled(motion.div)`
     h3 {
       font-family: ${props => props.theme.font.EnglishFont};
       font-size: 25px;
+
+      word-wrap: normal;
+    }
+    .text-wrap-bottom {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
     }
 
     .title {
@@ -49,7 +59,7 @@ export const ResponsiveWrapper = styled(motion.div)`
         color: ${props => props.theme.color.darkGreen};
       }
       h3 {
-        font-size: 18px;
+        font-size: 16px;
         line-height: 10px;
         margin-bottom: 10px;
         color: ${props => props.theme.color.brownHover};
