@@ -10,12 +10,10 @@ export interface UserArray {
 }
 
 const UserList: React.FC<{ item: UserArray }> = ({ item }) => {
-  const [role, setRole] = useState();
-
-  const data = fetchAdminRole(item.userSeq);
   function click() {
-    data;
-    console.log(role);
+    alert("사용자 권한을 변경하시겠습니까?");
+    const data = fetchAdminRole(item.userSeq);
+    window.location.replace("/admin/user");
   }
 
   return (

@@ -14,8 +14,11 @@ export const Wrapper = styled.div`
     justify-content: center;
   }
   .button {
+    width: 130px;
+    display: flex;
+    justify-content: center;
     margin: 0 50px;
-    padding: 10px 20px;
+    padding: 10px;
     border: 0.5px solid grey;
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);

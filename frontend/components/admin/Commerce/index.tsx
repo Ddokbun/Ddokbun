@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { getAdminOrderList, getOrderCount } from "../../../apis/admin";
-import SubItem from "../../welcome/SubItem";
 import CommerceTable from "./OrderTable";
-import OrderList from "./OrderTable/OrderList";
 import { Wrapper } from "./styles";
 
 const AdminCommerce = () => {

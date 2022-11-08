@@ -14,7 +14,7 @@ export const getAdminUserList = async (page?: number) => {
   }
 };
 
-//유저 Role 변경 -> 김채리 카카오 아이디로만 가능
+//유저 Role 변경 -> 김채리 구글 아이디로만 가능
 export const fetchAdminRole = async (userSeq: number) => {
   const path = "admin/user/role/";
   try {
@@ -78,6 +78,22 @@ export const postProduct = async ({ item }) => {
   try {
     const res = await AXIOS({
       method: "POST",
+      url: path,
+      data: data,
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//주문 상태 변경
+export const putOrderStatus = async ({ item }) => {
+  const data = item;
+  const path = "admin/order";
+  try {
+    const res = await AXIOS({
+      method: "PUT",
       url: path,
       data: data,
     });
