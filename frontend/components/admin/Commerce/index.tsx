@@ -1,58 +1,38 @@
 import { useEffect, useState } from "react";
 import { getAdminOrderList, getOrderCount } from "../../../apis/admin";
-import OrderList from "./OrderList";
+import CommerceTable from "./OrderTable";
 import { Wrapper } from "./styles";
 
-const CommerceTable = () => {
-  const [order, setOrder] = useState();
-  const [list, setlist] = useState();
+const AdminCommerce = () => {
+  const [data, setData] = useState();
+  const [page, setPage] = useState(0);
 
   useEffect(() => {
     async function fetchAndSetList() {
-      const data = await getAdminOrderList();
-      setlist(data.content);
+      const data = await getAdminOrderList(page);
+      setData(data.content);
     }
     fetchAndSetList();
-  }, []);
-  // console.log(list);
+  }, [page]);
 
-  useEffect(() => {
-    async function fetchAndSetOrder() {
-      const data = await getOrderCount();
-      setOrder(data);
-    }
-    fetchAndSetOrder();
-  }, []);
-  console.log(order);
   return (
     <Wrapper>
       <>
-        <div className=" ">
-          <h3 className="title">Order Table</h3>
-          <hr />
-          <table className="table">
-            <thead>
-              <tr className="tr">
-                <th className="">Product</th>
-                <th className="">Name</th>
-                <th className="">Status</th>
-                <th className="">Phone</th>
-                <th className="">Address</th>
-              </tr>
-            </thead>
-            <div className="table-head">
-              <hr />
-            </div>
-            {list &&
-              list.map(item => {
-                return <OrderList key={item.index} item={item}></OrderList>;
-              })}
-            <tbody></tbody>
-          </table>
+        <CommerceTable data={data}></CommerceTable>
+        <div className="button-wrapper">
+          <div onClick={() => setPage(page - 1)} className="button">
+            <button>Previous</button>
+          </div>
+          <div onClick={() => setPage(0)} className="button">
+            <button>Reset</button>
+          </div>
+          <div onClick={() => setPage(page + 1)} className="button">
+            <button>Next</button>
+          </div>
         </div>
       </>
     </Wrapper>
   );
 };
 
-export default CommerceTable;
+export default AdminCommerce;

@@ -1,22 +1,20 @@
 import AXIOS from "./index";
 
 // 유저 리스트 조회
-export const getAdminUserList = async () => {
-  // const path = "admin/user/list?size=&page=2";
-  const path = "admin/user/list";
+export const getAdminUserList = async (page?: number) => {
+  const path = "admin/user/list?size=&page=";
   try {
     const res = await AXIOS({
       method: "GET",
-      url: path,
+      url: path + page,
     });
     return res.data;
   } catch (error) {
-    5;
     console.log(error);
   }
 };
 
-//유저 Role 변경 -> 김채리 카카오 아이디로만 가능
+//유저 Role 변경 -> 김채리 구글 아이디로만 가능
 export const fetchAdminRole = async (userSeq: number) => {
   const path = "admin/user/role/";
   try {
@@ -45,12 +43,27 @@ export const getOrderCount = async () => {
 };
 
 // 전체 주문 목록 조회
-export const getAdminOrderList = async () => {
-  const path = "admin/order/list";
+export const getAdminOrderList = async (page?: number) => {
+  const path = "admin/order/list?size=&page=";
   try {
     const res = await AXIOS({
       method: "GET",
-      url: path,
+      url: path + page,
+    });
+    console.log(path + page);
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//상품 목록 조회
+export const getProductList = async (page?: number) => {
+  const path = "admin/product/list?size=&page=";
+  try {
+    const res = await AXIOS({
+      method: "GET",
+      url: path + page,
     });
     return res.data;
   } catch (error) {
@@ -58,12 +71,31 @@ export const getAdminOrderList = async () => {
   }
 };
 
-export const getProductList = async () => {
-  const path = "admin/product/list";
+//상품 등록
+export const postProduct = async ({ item }) => {
+  const data = item;
+  const path = "admin/product";
   try {
     const res = await AXIOS({
-      method: "GET",
+      method: "POST",
       url: path,
+      data: data,
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//주문 상태 변경
+export const putOrderStatus = async ({ item }) => {
+  const data = item;
+  const path = "admin/order";
+  try {
+    const res = await AXIOS({
+      method: "PUT",
+      url: path,
+      data: data,
     });
     return res.data;
   } catch (error) {

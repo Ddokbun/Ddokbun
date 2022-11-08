@@ -7,8 +7,8 @@ const Admin: NextPage = () => {
   return (
     <div>
       <AdminNav></AdminNav>
-      <CommerceTable></CommerceTable>
-      <UserTable></UserTable>
+      {/* <CommerceTable></CommerceTable>
+      <UserTable></UserTable> */}
     </div>
   );
 };
