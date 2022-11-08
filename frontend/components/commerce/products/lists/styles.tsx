@@ -6,14 +6,16 @@ export const GridWrapper = styled.div`
   grid-template-rows: auto;
   grid-auto-flow: row;
   grid-row: auto;
-  grid-gap: 50px;
+  grid-gap: 10px;
+  grid-row-gap: 60px;
   margin: auto;
   width: 100%;
   place-items: center;
 
   @media screen and (${props => props.theme.tablet}) {
     grid-template-columns: repeat(2, 1fr);
-    padding: 0px 100px;
+
+    padding: 0px 0px;
   }
 
   @media screen and (${props => props.theme.mobile}) {
