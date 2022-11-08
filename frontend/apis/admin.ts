@@ -76,20 +76,20 @@ export const getProductList = async (page?: number) => {
 };
 
 //상품 등록
-export const postProduct = async ({ item }) => {
-  const data = item;
-  const path = "admin/product";
-  try {
-    const res = await AXIOS({
-      method: "POST",
-      url: path,
-      data: data,
-    });
-    return res.data;
-  } catch (error) {
-    console.log(error);
-  }
-};
+// export const postProduct = async ({ item }) => {
+//   const data = item;
+//   const path = "admin/product";
+//   try {
+//     const res = await AXIOS({
+//       method: "POST",
+//       url: path,
+//       data: data,
+//     });
+//     return res.data;
+//   } catch (error) {
+//     console.log(error);
+//   }
+// };
 
 //주문 상태 변경
 export const putOrderStatus = async ({ item }) => {
@@ -142,6 +142,20 @@ export const getOrderData = async () => {
     const res = await AXIOS({
       method: "GET",
       url: path,
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+//상품 삭제
+export const deleteProduct = async (itemSeq: number) => {
+  const path = "admin/product/";
+  try {
+    const res = await AXIOS({
+      method: "DELETE",
+      url: path + itemSeq,
     });
     return res.data;
   } catch (error) {
