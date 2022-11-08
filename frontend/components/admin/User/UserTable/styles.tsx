@@ -15,4 +15,13 @@ export const Wrapper = styled.div`
   th {
     text-align: start;
   }
+  .button-role {
+    width: 130px;
+    border: 1px solid grey;
+    padding: 10px;
+    border-radius: 4px;
+    :hover {
+      background-color: ${props => props.theme.color.ivory};
+    }
+  }
 `;

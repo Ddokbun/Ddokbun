@@ -1,5 +1,3 @@
-import { useEffect, useState } from "react";
-
 export interface ProductArray {
   orderName: string;
   orderUserName: string;
@@ -9,11 +7,6 @@ export interface ProductArray {
 }
 
 const OrderList: React.FC<{ item: ProductArray }> = ({ item }) => {
-  // const [data, setData] = useState();
-  // useEffect(() => {
-  //   const data = await getAdminOrderList(page);
-  //   setData(data.content);
-  // });
   return (
     <>
       <tbody>
@@ -26,10 +19,10 @@ const OrderList: React.FC<{ item: ProductArray }> = ({ item }) => {
           <td>{item.orderPhone}</td>
           <td>{item.orderAddress}</td>
         </tr>
-        <div className="table-head">
-          <hr />
-        </div>
       </tbody>
+      <div className="table-head">
+        <hr />
+      </div>
     </>
   );
 };
