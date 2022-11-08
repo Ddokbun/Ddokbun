@@ -4,7 +4,6 @@ import Script from "next/script";
 const Document = () => (
   <Html>
     <Head>
-      <title> 똑분 - Ddokbun</title>
       <meta
         name="naver-site-verification"
         content="dcc1baf4f88a927d4f1b9d8e02e127e25357e300"
