@@ -20,7 +20,6 @@ const AdminProduct: React.FC = () => {
     }
     fetchAndSetList();
   }, [page]);
-  console.log(list);
 
   return (
     <Wrapper>
