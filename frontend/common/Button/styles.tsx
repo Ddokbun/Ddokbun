@@ -11,18 +11,21 @@ export const PriceTextButtonStyle = styled.div`
   cursor: pointer;
   align-items: center;
   h3 {
-    font-size: 30px !important;
+    font-size: 20px !important;
   }
-  gap: 10px;
+  gap: 5px;
   svg {
-    width: 25px;
-    height: 20px;
+    width: 20px;
+    height: 15px;
   }
 
   @media screen and (${props => props.theme.mobile}) {
-    font-size: 36px;
+    h3 {
+      font-size: 30px !important;
+    }
+    gap: 10px;
     svg {
-      width: 20px;
+      width: 25px;
       height: 30px;
     }
   }
