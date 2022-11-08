@@ -1,105 +1,39 @@
 import { useEffect, useState } from "react";
 import { getAdminUserList } from "../../../apis/admin";
 import { Wrapper } from "./styles";
+import UserTable from "./UserTable";
 
-const UserTable = () => {
-  const [user, setUser] = useState();
+const AdminUser = () => {
+  const [data, setData] = useState();
+  const [page, setPage] = useState(0);
+
   useEffect(() => {
     async function fetchAndSetUser() {
-      const data = await getAdminUserList();
-      setUser(data);
+      const data = await getAdminUserList(page);
+      setData(data.content);
     }
     fetchAndSetUser();
-  }, []);
-  console.log(user);
+  }, [page]);
+  console.log(data);
 
   return (
     <Wrapper>
       <>
-        <div className=" ">
-          <h3 className="title">User Table</h3>
-          <hr />
-          <table className="table">
-            <thead>
-              <tr className="tr">
-                <th className="">Seq</th>
-                <th className="">Name</th>
-                <th className="">E-mail</th>
-                <th className="">Created Time</th>
-                <th className="">Role</th>
-              </tr>
-            </thead>
-            <div className="table-head">
-              <hr />
-            </div>
-
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>김챌이</td>
-                <td>kcr7812@naver.com</td>
-                <td>2022-10-31 13:19:22</td>
-                <td>관리자</td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-              <tr>
-                <td>2</td>
-                <td>김챌이</td>
-                <td>kcr7812@naver.com</td>
-                <td>2022-10-31 13:19:22</td>
-                <td>일반유저</td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-              <tr>
-                <td>3</td>
-                <td>김챌이</td>
-                <td>kcr7812@naver.com</td>
-                <td>2022-10-31 13:19:22</td>
-                <td>관리자</td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-              <tr>
-                <td>4</td>
-                <td>김챌이</td>
-                <td>kcr7812@naver.com</td>
-                <td>2022-10-31 13:19:22</td>
-                <td>관리자</td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-              <tr>
-                <td>5</td>
-                <td>김챌이</td>
-                <td>kcr7812@naver.com</td>
-                <td>2022-10-31 13:19:22</td>
-                <td>일반유저</td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-              <tr>
-                <td>6</td>
-                <td>김챌이</td>
-                <td>kcr7812@naver.com</td>
-                <td>2022-10-31 13:19:22</td>
-                <td>일반유저</td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-            </tbody>
-          </table>
+        <UserTable data={data}></UserTable>
+        <div className="button-wrapper">
+          <div onClick={() => setPage(page - 1)} className="button">
+            <button>Previous</button>
+          </div>
+          <div onClick={() => setPage(0)} className="button">
+            <button>Reset</button>
+          </div>
+          <div onClick={() => setPage(page + 1)} className="button">
+            <button>Next</button>
+          </div>
         </div>
       </>
     </Wrapper>
   );
 };
 
-export default UserTable;
+export default AdminUser;

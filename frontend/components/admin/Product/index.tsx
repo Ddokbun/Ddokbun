@@ -1,91 +1,45 @@
 import { Wrapper } from "./styles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import ProductList from "./ProductTable/ProductList";
+import { useEffect, useState } from "react";
+import { getProductList } from "../../../apis/admin";
+import ProductTable from "./ProductTable";
 
-const ProductTable = () => {
+export interface OrderArray {
+  index: number;
+  item: string[];
+}
+
+const AdminProduct: React.FC = () => {
+  const [list, setlist] = useState();
+  const [page, setPage] = useState(0);
+
+  useEffect(() => {
+    async function fetchAndSetList() {
+      const data = await getProductList(page);
+      setlist(data.content);
+    }
+    fetchAndSetList();
+  }, [page]);
+  console.log(list);
+
   return (
     <Wrapper>
       <>
-        <div className=" ">
-          <h3 className="title">Product Table</h3>
-          <hr />
-          <table className="table">
-            <thead>
-              <tr className="tr">
-                <th className="">Num</th>
-                <th className="">Name</th>
-                <th className="">Price</th>
-                <th className="">Stock</th>
-                <th className="">Del</th>
-              </tr>
-            </thead>
-            <div className="table-head">
-              <hr />
-            </div>
-
-            <tbody>
-              <tr>
-                <td>1</td>
-                <td>스투키</td>
-                <td>10,000</td>
-                <td>20</td>
-                <td>
-                  <button>
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-              <tr>
-                <td>1</td>
-                <td>스투키</td>
-                <td>10,000</td>
-                <td>20</td>
-                <td>
-                  <button>
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-              <tr>
-                <td>1</td>
-                <td>스투키</td>
-                <td>10,000</td>
-                <td>20</td>
-                <td>
-                  <button>
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-              <tr>
-                <td>1</td>
-                <td>스투키</td>
-                <td>10,000</td>
-                <td>20</td>
-                <td>
-                  <button>
-                    <FontAwesomeIcon icon={faTrash} />
-                  </button>
-                </td>
-              </tr>
-              <div className="table-head">
-                <hr />
-              </div>
-            </tbody>
-          </table>
+        <ProductTable data={list}></ProductTable>
+        <div className="button-wrapper">
+          <div onClick={() => setPage(page - 1)} className="button">
+            <button>Previous</button>
+          </div>
+          <div onClick={() => setPage(0)} className="button">
+            <button>Reset</button>
+          </div>
+          <div onClick={() => setPage(page + 1)} className="button">
+            <button>Next</button>
+          </div>
         </div>
       </>
     </Wrapper>
   );
 };
 
-export default ProductTable;
+export default AdminProduct;
