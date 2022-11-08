@@ -1,6 +1,6 @@
 import { getCookies } from "cookies-next";
 import { GetServerSideProps, NextPage } from "next";
-import React from "react";
+import React, { useEffect } from "react";
 import { fetchCartList } from "../../../apis/commerce";
 import { fetchPlantsList } from "../../../apis/manage";
 import PageTitle from "../../../common/PageTitle";
@@ -19,6 +19,7 @@ export interface PlantListType {
 const Manage: NextPage<{ plantsListData?: PlantListType[] }> = ({
   plantsListData,
 }) => {
+
   return (
     <Wrapper>
       <PageTitle isLink isBold>
@@ -34,6 +35,7 @@ export const getServerSideProps: GetServerSideProps =
     const { token } = getCookies({ req, res });
     const data = await fetchCartList(token);
     const plantsListData = await fetchPlantsList(token);
+    console.log(plantsListData, "asdfasdfasdf");
 
     store.dispatch(setCartLists(data?.data.content));
     if (!plantsListData) {
