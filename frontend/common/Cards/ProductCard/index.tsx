@@ -37,13 +37,15 @@ const ProductCard: React.FC<{
                     return <ProductLabel key={idx}>{tag}</ProductLabel>;
                   })}
                 </div>
-                <h3>
-                  ₩{" "}
-                  {item.itemPrice
-                    .toString()
-                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                </h3>
-                <BuyTextButton id={item.itemSeq} />
+                <div className="text-wrap-bottom">
+                  <h3>
+                    ₩{" "}
+                    {item.itemPrice
+                      .toString()
+                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                  </h3>
+                  <BuyTextButton id={item.itemSeq} />
+                </div>
               </div>
             </ResponsiveWrapper>
           </Link>

@@ -4,20 +4,33 @@ import BackgroudImage from "../../../assets/onboarding/mainImg.jpg";
 import Image from "next/image";
 import ServeyForm from "../../../components/commerce/survey";
 import Dot from "../../../common/Dot";
-import { fetchServeyList } from "../../../apis/commerce";
+import { fetchServeyList, fetchSurveyComplete } from "../../../apis/commerce";
 import { SetStateAction, useEffect, useState } from "react";
 import { ISurvey, ISurveyItem } from "../../../types/commerce/survey.interface";
+import SurveyComplete from "../../../components/commerce/survey/complete";
 
 const Servey: NextPage<{ surveys: ISurveyItem[] }> = ({ surveys }) => {
   const [answer, setAnswer] = useState<number[]>([]);
+  const [surveyComplete, setSurveyComplete] = useState([]);
   const [level, setLevel] = useState(0);
-  useEffect(() => {
-    setAnswer([...Array(surveys.length).fill(0)]);
-  }, []);
-  console.log(answer);
-  console.log(surveys);
 
-  console.log(surveys.length);
+  const setAnswerHandler = async (
+    event: React.MouseEvent<HTMLLIElement, MouseEvent>,
+  ) => {
+    const nowAnswer = parseInt(event.currentTarget.id);
+
+    setAnswer(val => {
+      return [...val.slice(0, level), nowAnswer, ...val.slice(level + 1)];
+    });
+    switch (level < 3) {
+      case true:
+        return;
+      case false: {
+        const data = await fetchSurveyComplete(answer);
+        setSurveyComplete(data);
+      }
+    }
+  };
 
   return (
     <Wrapper>
@@ -28,13 +41,33 @@ const Servey: NextPage<{ surveys: ISurveyItem[] }> = ({ surveys }) => {
         alt="설문조사 배경이미지"
       />
       <div className="gradation"></div>
-      <div className="servey-wrapper">
-        {/* 각 컴포넌트에 질문가 대답 넣기, 히든을 활용해서 렌더링될때 에니메이션작동하게하기 */}
-        <ServeyForm survey={surveys[level]} level={level} setLevel={setLevel} />
-        <ServeyForm survey={surveys[level]} level={level} setLevel={setLevel} />
-        <ServeyForm survey={surveys[level]} level={level} setLevel={setLevel} />
-        <ServeyForm survey={surveys[level]} level={level} setLevel={setLevel} />
-      </div>
+
+      {level != 4 ? (
+        <div className="survey-wrapper">
+          <div className="survey">
+            <div className="dots">
+              <Dot now={level == 0 ? true : false} />
+              <Dot now={level == 1 ? true : false} />
+              <Dot now={level == 2 ? true : false} />
+              <Dot now={level == 3 ? true : false} />
+            </div>
+            {surveys.map((item, idx) => {
+              return level == idx ? (
+                <ServeyForm
+                  key={idx}
+                  survey={item}
+                  level={level}
+                  setLevel={setLevel}
+                  answer={answer}
+                  setAnswerHandler={setAnswerHandler}
+                />
+              ) : null;
+            })}
+          </div>
+        </div>
+      ) : (
+        <SurveyComplete items={surveyComplete} />
+      )}
     </Wrapper>
   );
 };
