@@ -18,6 +18,7 @@ public class EnvDto {
     private int motorState;
     private String potSid;
 
+    private int simple;
     private LocalDateTime time;
 
     @Override
@@ -30,6 +31,7 @@ public class EnvDto {
                 ", waterLevel=" + waterLevel +
                 ", motorState=" + motorState +
                 ", potSid='" + potSid + '\'' +
+                ", simple=" + simple +
                 ", time=" + time +
                 '}';
     }
