@@ -13,6 +13,8 @@ import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import Head from "next/head";
+import firebase from "firebase";
+import { getToken } from "../apis/firebase";
 
 const DEFAULT_SEO = {
   title: "똑분 - Ddokbun",
@@ -37,7 +39,29 @@ const DEFAULT_SEO = {
   },
 };
 
+const firebaseConfig = {
+  apiKey: "AIzaSyCwdWKZo4h03IqLGmInSPIsDtArvtIJzpA",
+  authDomain: "ddokbun-89ed0.firebaseapp.com",
+  projectId: "ddokbun-89ed0",
+  storageBucket: "ddokbun-89ed0.appspot.com",
+  messagingSenderId: "977818145024",
+  appId: "1:977818145024:web:4b33968439dff5cd1063e5",
+  measurementId: "G-PZ8KF65XZ7",
+};
+
 const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
+  if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig);
+    console.log(firebase);
+  }
+  useEffect(() => {
+    const getMessageToken = async () => {
+      const token = await getToken();
+      console.log(token, "토큰토큰");
+    };
+    getMessageToken();
+  }, []);
+
   const { store, props } = wrapper.useWrappedStore(rest);
   const persistor = persistStore(store);
   const router = useRouter();
