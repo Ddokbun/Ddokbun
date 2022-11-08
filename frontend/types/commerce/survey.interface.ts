@@ -1,5 +1,8 @@
 // @flow
-export type ISurvey = {};
+export type ISurvey = {
+  surveySeq: number;
+  surveyContent: string;
+};
 export type ISurveyItem = {
   survey: ISurvey;
   surveySelectList: ISurveySelectListItem[];
