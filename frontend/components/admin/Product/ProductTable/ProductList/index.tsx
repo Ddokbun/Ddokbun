@@ -2,11 +2,11 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
 
 export interface ProductArray {
-  itemName?: string;
-  itemPrice?: number;
-  itemSeq?: number;
-  itemStock?: number;
-  createdTime?: string;
+  itemName: string;
+  itemPrice: number;
+  itemSeq: number;
+  itemStock: number;
+  createdTime: string;
 }
 
 const ProductList: React.FC<{ item: ProductArray }> = ({ item }) => {

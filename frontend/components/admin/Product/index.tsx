@@ -1,52 +1,45 @@
 import { Wrapper } from "./styles";
-import ProductList from "./ProductList";
+import ProductList from "./ProductTable/ProductList";
 import { useEffect, useState } from "react";
 import { getProductList } from "../../../apis/admin";
+import ProductTable from "./ProductTable";
 
 export interface OrderArray {
   index: number;
   item: string[];
 }
 
-const ProductTable: React.FC = () => {
+const AdminProduct: React.FC = () => {
   const [list, setlist] = useState();
+  const [page, setPage] = useState(0);
+
   useEffect(() => {
     async function fetchAndSetList() {
-      const data = await getProductList();
+      const data = await getProductList(page);
       setlist(data.content);
     }
     fetchAndSetList();
-  }, []);
+  }, [page]);
   console.log(list);
 
   return (
     <Wrapper>
       <>
-        <div className=" ">
-          <h3 className="title">Product Table</h3>
-          <hr />
-          <table className="table">
-            <thead>
-              <tr className="tr">
-                <th className="">Num</th>
-                <th className="">Name</th>
-                <th className="">Price</th>
-                <th className="">Stock</th>
-                <th className="">Del</th>
-              </tr>
-            </thead>
-            <div className="table-head">
-              <hr />
-            </div>
-            {list &&
-              list.map((item: OrderArray) => {
-                return <ProductList key={item.index} item={item}></ProductList>;
-              })}
-          </table>
+        <ProductTable data={list}></ProductTable>
+        <div className="button-wrapper">
+          <div onClick={() => setPage(page - 1)} className="button">
+            <button>Previous</button>
+          </div>
+          <div onClick={() => setPage(0)} className="button">
+            <button>Reset</button>
+          </div>
+          <div onClick={() => setPage(page + 1)} className="button">
+            <button>Next</button>
+          </div>
         </div>
       </>
     </Wrapper>
   );
 };
 
-export default ProductTable;
+export default AdminProduct;
