@@ -52,7 +52,7 @@ public class EnvDataService {
             envDto.setTime(triggerTime);
         }
         catch(JsonProcessingException e){
-            writeLog(String.format("가져온 메세지 등록에 실패하였습니다.::reason : Json 포맷 에러 :: data : %s",envDto.toString()));
+            writeLog(String.format("가져온 메세지 등록에 실패하였습니다.::reason : Json 포맷 에러 :: data : %s",envDto));
             return;
         }
 
@@ -67,12 +67,15 @@ public class EnvDataService {
         }
         Pot pot = opPot.get();
         pot.updateBy(envDto);
+
+
+        if(envDto.getSimple() != 1){
+            PotLog potLog = PotLog.of(envDto);
+            potLogRepository.save(potLog);
+        }
         //로그 남기기
-        PotLog potLog = PotLog.of(envDto);
 
-        potLogRepository.save(potLog);
-
-        writeLog(String.format("저장완료 :: ID : %s",potLog.getLogSeq()));
+        writeLog(String.format("저장완료 :: data : %s",envDto));
 
     }
 

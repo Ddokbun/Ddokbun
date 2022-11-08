@@ -23,10 +23,7 @@ public class KafkaConsumerMain {
     }
 
     @KafkaListener(topics = "ddokbun_pot_data",groupId ="${spring.kafka.consumer.group-id}")
-    public void listen(String in,@Header(KafkaHeaders.RECEIVED_TIMESTAMP) long ts) {
-
-
-
+    public void listen(@org.springframework.messaging.handler.annotation.Payload String in,@Header(KafkaHeaders.RECEIVED_TIMESTAMP) long ts) {
 
         envDataService.saveEnvData(in,ts);
 
