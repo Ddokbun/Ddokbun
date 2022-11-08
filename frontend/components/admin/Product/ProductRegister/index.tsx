@@ -2,7 +2,6 @@ import { postProduct } from "../../../../apis/admin";
 import { Wrapper } from "./styles";
 
 const InputBox = () => {
-  postProduct(item);
   return (
     <Wrapper>
       <div className="flex">

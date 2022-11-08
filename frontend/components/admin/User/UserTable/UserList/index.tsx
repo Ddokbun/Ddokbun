@@ -1,3 +1,6 @@
+import { useEffect, useState } from "react";
+import { fetchAdminRole } from "../../../../../apis/admin";
+
 export interface UserArray {
   userNickname: string;
   userEmail: string;
@@ -7,6 +10,14 @@ export interface UserArray {
 }
 
 const UserList: React.FC<{ item: UserArray }> = ({ item }) => {
+  const [role, setRole] = useState();
+
+  const data = fetchAdminRole(item.userSeq);
+  function click() {
+    data;
+    console.log(role);
+  }
+
   return (
     <tbody>
       <tr>
@@ -15,7 +26,7 @@ const UserList: React.FC<{ item: UserArray }> = ({ item }) => {
         <td>{item.userEmail}</td>
         <td>{item.createdTime}</td>
         <td>
-          <button>{item.userRole}</button>
+          <button onClick={click}>{item.userRole}</button>
         </td>
       </tr>
       <div className="table-head">

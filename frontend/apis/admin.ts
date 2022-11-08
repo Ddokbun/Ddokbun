@@ -1,17 +1,15 @@
 import AXIOS from "./index";
 
 // 유저 리스트 조회
-export const getAdminUserList = async () => {
-  // const path = "admin/user/list?size=&page=2";
-  const path = "admin/user/list";
+export const getAdminUserList = async (page?: number) => {
+  const path = "admin/user/list?size=&page=";
   try {
     const res = await AXIOS({
       method: "GET",
-      url: path,
+      url: path + page,
     });
     return res.data;
   } catch (error) {
-    5;
     console.log(error);
   }
 };
@@ -45,13 +43,14 @@ export const getOrderCount = async () => {
 };
 
 // 전체 주문 목록 조회
-export const getAdminOrderList = async () => {
-  const path = "admin/order/list";
+export const getAdminOrderList = async (page?: number) => {
+  const path = "admin/order/list?size=&page=";
   try {
     const res = await AXIOS({
       method: "GET",
-      url: path,
+      url: path + page,
     });
+    console.log(path + page);
     return res.data;
   } catch (error) {
     console.log(error);
@@ -59,12 +58,12 @@ export const getAdminOrderList = async () => {
 };
 
 //상품 목록 조회
-export const getProductList = async () => {
-  const path = "admin/product/list?size=&page=0";
+export const getProductList = async (page?: number) => {
+  const path = "admin/product/list?size=&page=";
   try {
     const res = await AXIOS({
       method: "GET",
-      url: path,
+      url: path + page,
     });
     return res.data;
   } catch (error) {
