@@ -53,12 +53,30 @@ const firebaseConfig = {
 const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
-    console.log(firebase);
   }
   useEffect(() => {
     const getMessageToken = async () => {
-      const token = await getToken();
-      console.log(token, "토큰토큰");
+      const request = await Notification.requestPermission();
+      if (request === "granted") {
+        const token = await getToken();
+        const messaging = firebase.messaging();
+
+        messaging.onMessage(payload => {
+          const notificationTitle = payload.notification.title;
+          const notificationOptions = {
+            body: payload.notification.body,
+            icon: "/icon.png",
+          };
+
+          console.log(payload, "포어그라운드");
+
+          const notif = new Notification(
+            notificationTitle,
+            notificationOptions,
+          );
+        });
+        console.log(token, "토큰토큰");
+      }
     };
     getMessageToken();
   }, []);

@@ -22,10 +22,29 @@ const PlantStatus = () => {
       src: temperature.src,
       title: "온도",
       logTitle: "temperature",
+      params: "temperature",
     },
-    { statusCode: 1, src: illuminance.src, title: "조도", logTitle: "light" },
-    { statusCode: 2, src: humidity.src, title: "습도", logTitle: "hunid" },
-    { statusCode: 3, src: soil.src, title: "토양습도", logTitle: "soil-humid" },
+    {
+      statusCode: 1,
+      src: illuminance.src,
+      title: "조도",
+      logTitle: "light",
+      params: "light",
+    },
+    {
+      statusCode: 2,
+      src: humidity.src,
+      title: "습도",
+      logTitle: "humid",
+      params: "humidity",
+    },
+    {
+      statusCode: 3,
+      src: soil.src,
+      title: "토양습도",
+      logTitle: "soil-humid",
+      params: "soilHumidity",
+    },
   ];
 
   const [logTitle, setLogTitle] = useState(plantStatus[activeIndex].logTitle);
@@ -44,9 +63,10 @@ const PlantStatus = () => {
     }
     const getInitialData = async () => {
       const logDatas: LogsType[] = await fetchLogs(logTitle, potseq);
+      console.log(logDatas);
 
       const getLogDatas: string[] = logDatas?.map(logData => {
-        return logData[logTitle];
+        return logData[plantStatus[activeIndex].params];
       });
       const getCreatedTime = logDatas?.map(logData => {
         return new Date(logData.createdTime);
