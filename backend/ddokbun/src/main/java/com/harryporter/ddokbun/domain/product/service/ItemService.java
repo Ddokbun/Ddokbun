@@ -18,7 +18,6 @@ public interface ItemService {
     List<ItemSearchDto> getTodayRecommendItem();
     int decreaseQuantity(long itemSeq,int quantity);
 
-
     ItemDto insertItem(InsertItemDto insertItemDto);
 
     ItemDetailDto updateItem(UpdateItemDto updateItemDto);
@@ -38,4 +37,6 @@ public interface ItemService {
     String click(long itemSeq);
 
     List<ClickRankDto> SearchRankList();
+
+    List<ItemSelectedDto> getSelectedProduct();
 }

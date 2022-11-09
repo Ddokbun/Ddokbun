@@ -99,6 +99,13 @@ public class ProductController {
 
     }
 
+    @ApiOperation("선별된 상품 리스트 조회")
+    @GetMapping("/selected")
+    public ResponseEntity<?> getSelectedProduct(){
+        ResponseFrame res = ResponseFrame.ofOKResponse("선별된 상품 리스트를 반환합니다.",itemService.getSelectedProduct());
+        return new ResponseEntity<>(res,HttpStatus.OK);
+    }
+
     //유형별 추천 조회
     //유형별 카테고리를 통하여 필터링을 통해 상품을 반환합니다.
     @ApiOperation("카테고리 상품 조회")
