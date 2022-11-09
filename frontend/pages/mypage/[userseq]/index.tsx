@@ -1,5 +1,6 @@
 import { NextPage } from "next";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { DeliveriesType, fetchDeliveries } from "../../../apis/commerce";
 import { StatusButton } from "../../../common/Button";
 import PageTitle from "../../../common/PageTitle";
 import { Wrapper } from "../../../styles/mypage/[userseq]/styles";
@@ -10,32 +11,58 @@ interface DeliveryStatus {
   statusCode: number;
   title: string;
   src: null | string;
+  status: string;
 }
 
 const deliveryStatus: DeliveryStatus[] = [
   {
     statusCode: 0,
-    title: "상품 준비",
+    title: "결제 대기",
     src: null,
+    status: "READY",
   },
   {
     statusCode: 1,
-    title: "배송중",
+    title: "상품 준비",
     src: null,
+    status: "PAYCOMPLETE",
   },
   {
     statusCode: 2,
-    title: "배송 완료",
+    title: "배송중",
     src: null,
+    status: "DELIVERY",
+  },
+  {
+    statusCode: 3,
+    title: "배송완료",
+    src: null,
+    status: "COMPLETE",
   },
 ];
 
 const MyPage: NextPage = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [data, setData] = useState<DeliveriesType[]>();
 
   const onFetchDeliveryHandler = (code: number) => {
     setActiveIndex(code);
   };
+
+  // useEffect(() => {
+  //   if (activeIndex == -1) {
+  //     return;
+  //   }
+
+  //   const getInitialData = async () => {
+  //     const res: DeliveriesType[] = await fetchDeliveries();
+  //     const filteredData = res.filter(item => {
+  //       item.orderStatus === deliveryStatus[activeIndex].status;
+  //     });
+  //     setData(filteredData);
+  //   };
+  //   getInitialData();
+  // }, []);
 
   const buttons = deliveryStatus.map(delivery => {
     return (
@@ -57,7 +84,7 @@ const MyPage: NextPage = () => {
       <div className="button-container">{buttons}</div>
 
       <div className="card-container">
-        {/* <SearchCardList data={DummyData} isDelivery /> */}
+        {/* {data && <SearchCardList data={data} isDelivery />} */}
       </div>
       <Manage />
     </Wrapper>

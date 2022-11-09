@@ -24,7 +24,7 @@ const CardItem: FC<PlantListType> = plant => {
         // layout="fill"
         width={450}
         height={400}
-        src={`https://ddokbun.com/api//resources/s3?plantSeq=${plant.plantSeq}`}
+        src={`https://ddokbun.com/api/resources/s3?plantSeq=${plant.plantSeq}`}
         alt="식물이미지"
       />
       <motion.h2>{plant.plantNickname}</motion.h2>
