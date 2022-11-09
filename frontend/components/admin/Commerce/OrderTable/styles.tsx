@@ -15,4 +15,18 @@ export const Wrapper = styled.div`
   th {
     text-align: start;
   }
+  .modal-name {
+    h2 {
+      font-size: 100px;
+    }
+  }
+  .confirm-button {
+    padding: 10px;
+    border: 1px solid grey;
+    width: 140px;
+    border-radius: 5px;
+    :hover {
+      background-color: ${props => props.theme.color.ivoryHover};
+    }
+  }
 `;
