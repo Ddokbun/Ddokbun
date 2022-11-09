@@ -37,7 +37,7 @@ public class CartController {
         UserDto userDto = ((UserDto)principal);
 
         log.info("장바구니 등록 컨트롤러 진입 :: 아이템 SEQ : {} :: 사용자 SEQ : {}",reqBody.getItemSeq(),userDto.getUserSeq());
-         int isSuccess = cartService.enrollCartItem(reqBody.getItemSeq(),userDto.getUserSeq());
+        CartItemDetail isSuccess = cartService.enrollCartItem(reqBody.getItemSeq(),userDto.getUserSeq());
 
         ResponseFrame<?> response = ResponseFrame.ofOKResponse("장바구니에 정상적으로 등록되었습니다.",isSuccess);
         log.info("장바구니 등록 정산 완료 :: response :{}",response.toString());

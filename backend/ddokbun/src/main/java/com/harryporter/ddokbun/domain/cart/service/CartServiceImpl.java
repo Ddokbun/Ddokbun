@@ -31,7 +31,7 @@ public class CartServiceImpl implements  CartService{
 
     @Transactional
     @Override
-    public int enrollCartItem(Long itemSeq, Long userSeq) {
+    public CartItemDetail enrollCartItem(Long itemSeq, Long userSeq) {
 
         User user = userRepository.findById(userSeq).orElseThrow(
                 ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다.")
@@ -62,7 +62,8 @@ public class CartServiceImpl implements  CartService{
         cartRepository.save(cart);
 
 
-        return 1; //성공
+
+        return CartItemDetail.of(cart); //성공
     }
 
     @Transactional
