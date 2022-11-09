@@ -77,7 +77,7 @@ public class AutoWaterApplyBatch {
         //읽어오븐 갯수는 커밋 갯수인 청크사이즈랑 동일하게 한다.
         return new JpaPagingItemReaderBuilder<Pot>()
                 .pageSize(10)
-                .queryString("SELECT p FROM Pot p WHERE p.isAuto = 'Y' AND p.waterSupply  < :now ") //우선적으로는 자동설정된 화분들 AND 물준 날이 오늘 미만인
+                .queryString("SELECT p FROM Pot p WHERE p.isAuto = 'Y' AND p.waterSupply  < :now AND p.waterPeriod != 0") //우선적으로는 자동설정된 화분들 AND 물준 날이 오늘 미만인
                 .parameterValues(parameterValues)
                 .entityManagerFactory(entityManagerFactory)
                 .name("JpaPagingItemReader")
@@ -92,11 +92,9 @@ public class AutoWaterApplyBatch {
             @Override
             public Pot process(Pot pot) throws Exception {
                 //자동 설정으로 된 화분들 프로세싱
-
                 LocalDate localDate = pot.getWaterSupply();
-                //int period = pot.getWaterPeriod(); 물주기 설정이 아직 없음
 
-                int period = 7;
+                int period = pot.getWaterPeriod();
 
                 if(localDate.plusDays(period) == LocalDate.parse(date)){
                     //물주기 + 물 마지막으로 줫던 일 == 현재 라면 물을 줘야함

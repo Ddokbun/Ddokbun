@@ -111,10 +111,15 @@ public class PotController {
     }
 
     @ApiOperation(value = "수동, 자동 물주기 변경")
-    @RequestMapping(value = "/{potSeq}/water", method = RequestMethod.PUT)
-    public ResponseEntity<?> changeWaterApplyMethod(@PathVariable("potSeq") String potSeq, @ApiIgnore @AuthenticationPrincipal UserDto principal){
+    @RequestMapping(value = "/{potSeq}/water/{waterPeriod}", method = RequestMethod.PUT)
+    public ResponseEntity<?> changeWaterApplyMethod(
+            @PathVariable("potSeq") String potSeq,
+            @PathVariable(value = "waterPeriod",required = false) int waterPeriod,
+            @ApiIgnore @AuthenticationPrincipal UserDto principal){
+
         log.info("화분 수동 물주기 컨트롤러 진입 :: 화분시리얼 {}", potSeq);
-        potService.changeWaterApplyMethod(potSeq, principal.getUserSeq());
+
+        potService.changeWaterApplyMethod(potSeq,waterPeriod, principal.getUserSeq());
 
         log.info("화분 물 공급 방법 변경 성공");
         ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분 물 공급 방법 변경에 성공했습니다.", null);
