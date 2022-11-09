@@ -1,7 +1,7 @@
 import React, { useEffect, useState, Dispatch, SetStateAction } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCartList } from "../../../../apis/commerce";
-import { setCartLists } from "../../../../store/commerce";
+import { setAllCartLists } from "../../../../store/commerce";
 import {
   ListObjectItem,
   ProductLists,
@@ -37,18 +37,18 @@ const CartList: React.FC<Item> = ({ setOrderTotal }) => {
   useEffect(() => {
     const getCartList = async () => {
       const data = await fetchCartList();
-      dispatch(setCartLists(data?.data.content.data as ProductLists));
+      dispatch(setAllCartLists(data));
     };
     getCartList();
   }, []);
+  console.log(selector);
 
   return (
     <>
       <Wrapper>
         <div className="grid">
           <>
-            {Object.keys(selector).map((idx: string) => {
-              const item = selector[parseInt(idx)];
+            {selector.map(item => {
               return (
                 <CartItem key={item.itemSeq} item={item} setTotal={setTotal} />
               );

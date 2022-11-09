@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   background-color: #fafafa;
 
   display: grid;
-  grid-template-columns: 180px 1fr 150px;
+  grid-template-columns: 180px 1fr 200px;
   grid-template-rows: 1fr;
   grid-gap: 10px;
 
@@ -29,7 +29,7 @@ export const Wrapper = styled.div`
     }
     .count {
       position: absolute;
-      top: 10px;
+      bottom: 10px;
       right: 10px;
 
       font-size: 19px;
@@ -43,14 +43,28 @@ export const Wrapper = styled.div`
     }
   }
   .grid-right {
-    padding: 10px 20px;
+    position: relative;
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    svg {
+      top: -5px;
+      right: -10px;
+      width: 25px;
+      height: 25px;
+      position: absolute;
+      path {
+        fill: ${props => props.theme.color.darkGreen};
+      }
+    }
+    padding: 5px 20px 0px 0px;
     h2 {
-      font-size: 25px;
+      font-size: 35px;
       font-family: ${props => props.theme.font.EnglishFont};
       color: ${props => props.theme.color.darkGreen};
     }
   }
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (${props => props.theme.tablet}) {
     padding: 5px;
     display: flex;
     display: grid;
@@ -90,6 +104,19 @@ export const Wrapper = styled.div`
       }
     }
     .grid-right {
+      display: flex;
+      justify-content: flex-end;
+      svg {
+        cursor: pointer;
+        top: -100px;
+        right: 0px;
+        width: 25px;
+        height: 25px;
+        position: absolute;
+        path {
+          fill: ${props => props.theme.color.darkGreen};
+        }
+      }
       position: absolute;
       grid-area: 2 / 2 / 3 / 3;
       padding: 10px 20px;

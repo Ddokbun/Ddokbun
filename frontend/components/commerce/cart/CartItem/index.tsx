@@ -3,10 +3,10 @@ import { Wrapper } from "./styles";
 import Temp from "../../../../assets/temp.jpg";
 import Image from "next/image";
 import { ListObjectItem } from "../../../../types/commerce/list.interface";
-import { changeCount } from "../../../../store/commerce";
 import { useDispatch } from "react-redux";
-import { putCartItemCount } from "../../../../apis/commerce";
-import { DispatchProp } from "react-redux";
+import { deleteCart, putCartItemCount } from "../../../../apis/commerce";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 
 interface CartProps extends ListObjectItem {
   quantity: number;
@@ -27,6 +27,20 @@ const CartItem: React.FC<{
     setNowPrice((item.price as number) * (item.quantity as number));
   }, [item.price, item.quantity]);
 
+  const onDeleteHandler = async (itemSeq: number) => {
+    const data = await deleteCart(itemSeq);
+    console.log(data);
+
+    // switch (status) {
+    //   case 200:
+    //     dispatch();
+    //     alert("성공적으로 삭제됐습니다");
+    //     return;
+
+    //   default:
+    //     alert("삭제에 실패했습니다");
+    // }
+  };
   const onCountHandler = async (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
     const handler = (event.target as HTMLElement).innerText;
@@ -73,6 +87,10 @@ const CartItem: React.FC<{
         </div>
       </div>
       <div className="grid-right">
+        <FontAwesomeIcon
+          icon={faXmark}
+          onClick={() => onDeleteHandler(item.itemSeq)}
+        />
         <h2>
           ₩{" "}
           {((item.price as number) * (item.quantity as number))
