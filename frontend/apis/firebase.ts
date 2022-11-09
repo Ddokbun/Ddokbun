@@ -3,10 +3,9 @@ import firebase from "firebase/app";
 export async function getToken() {
   if (firebase.apps.length) {
     const messaging = firebase.messaging();
-    const token = await messaging.getToken({
+    return await messaging.getToken({
       vapidKey: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_VAPID_KEY,
     });
-    return token;
   } else {
     firebase.initializeApp({
       apiKey: "AIzaSyCwdWKZo4h03IqLGmInSPIsDtArvtIJzpA",
@@ -18,9 +17,8 @@ export async function getToken() {
       measurementId: "G-PZ8KF65XZ7",
     });
     const messaging = firebase.messaging();
-    const token = await messaging.getToken({
+    return await messaging.getToken({
       vapidKey: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_VAPID_KEY,
     });
-    return token;
   }
 }

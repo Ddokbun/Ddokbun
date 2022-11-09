@@ -15,6 +15,8 @@ export const Wrapper = styled.div`
     width: 100%;
     height: 500px;
     border-radius: 16px;
+    background-color: ${props => props.theme.color.ivory};
+    filter: brightness(50%);
   }
 
   .top-container {

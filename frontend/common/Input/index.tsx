@@ -46,11 +46,12 @@ export const SearchInput: React.FC<{
   disabled: boolean;
   setSearchInput: React.Dispatch<React.SetStateAction<string>> | null;
   value: string | undefined;
-}> = ({ placeholder, disabled, setSearchInput, value }) => {
+  path?: string;
+}> = ({ placeholder, disabled, setSearchInput, value, path }) => {
   const router = useRouter();
   // const [isPending, startTransition] = useTransition();
   const onShowSearchHandler = () => {
-    router.push("/manage/add/search");
+    router.push({ pathname: "/manage/add/search", query: { path } });
   };
 
   const onInputChangeHandler: React.ChangeEventHandler<
