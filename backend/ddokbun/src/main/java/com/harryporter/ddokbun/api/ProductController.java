@@ -77,6 +77,18 @@ public class ProductController {
         return  new ResponseEntity<>(res,HttpStatus.OK);
     }
 
+    @ApiOperation("상품 디테일 검색 by plantSeq")
+    @RequestMapping(value = "/plant/{plantSeq}",method = RequestMethod.GET)
+    public ResponseEntity<?> getProductDetailByPlantSeq(@PathVariable Long plantSeq){
+
+        log.info("상품 상세보기 API 진입");
+        ItemDetailDto itemDetailDto = itemService.getItemByPlantSeq(plantSeq);
+
+        ResponseFrame<?> res = ResponseFrame.ofOKResponse("상품 상세 정보를 반환합니다.",itemDetailDto);
+        log.info("상품 상세보기 API 반환 : {}" , res);
+        return  new ResponseEntity<>(res,HttpStatus.OK);
+    }
+
 
 
     //식물(상품) 사진으로 검색
