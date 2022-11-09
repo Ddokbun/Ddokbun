@@ -5,9 +5,14 @@ import ProductList from "./ProductList";
 export interface OrderArray {
   index: number;
   item: string[];
+  itemName: string;
+  itemPrice: number;
+  itemSeq: number;
+  itemStock: number;
+  createdTime: string;
 }
 
-const ProductTable: React.FC = ({ data }) => {
+const ProductTable: React.FC<{ data: OrderArray[] }> = ({ data }) => {
   return (
     <Wrapper>
       <>

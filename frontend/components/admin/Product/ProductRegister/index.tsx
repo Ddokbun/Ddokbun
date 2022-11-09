@@ -1,4 +1,3 @@
-import { postProduct } from "../../../../apis/admin";
 import { Wrapper } from "./styles";
 
 const InputBox = () => {
