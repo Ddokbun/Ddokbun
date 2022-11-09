@@ -8,6 +8,7 @@ export const BasicInput = styled.div`
   position: relative;
   font-family: "DM Serif Display", serif;
   color: ${props => props.theme.color.darkGreen};
+  font-family: ${props => props.theme.font.TextFont2};
 
   .icon {
     top: 10%;
@@ -51,6 +52,7 @@ export const SearchInputWrapper = styled.div`
   position: relative;
   font-family: "DM Serif Display", serif;
   color: ${props => props.theme.color.darkGreen};
+  font-family: ${props => props.theme.font.TextFont2};
 
   .icon {
     top: 25%;
@@ -90,6 +92,8 @@ export const DateInputStyle = styled.div`
   position: relative;
   font-family: "DM Serif Display", serif;
   color: ${props => props.theme.color.darkGreen};
+  font-family: ${props => props.theme.font.TextFont2};
+
   .icon {
   }
   .label-basic {

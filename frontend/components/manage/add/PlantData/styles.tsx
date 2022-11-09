@@ -5,6 +5,8 @@ export const Wrapper = styled.div`
   justify-content: center;
   margin: 5%;
   grid-template-columns: repeat(2, 35%);
+  font-family: ${props => props.theme.font.TextFont2};
+  padding-left: 4px;
 
   .info-container {
     display: flex;
