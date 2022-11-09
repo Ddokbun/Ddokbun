@@ -35,12 +35,12 @@ export const CartListSlice = createSlice({
 
     deleteCartList: (state: any, action: any) => {
       const temp = current(state).map((item: ListObjectItem) => {
-        if (item.itemSeq !== parseInt(action.payload.itemSeq)) {
-          console.log("hre");
+        if (item && item.itemSeq !== parseInt(action.payload)) {
           return item;
         }
       });
       console.log(temp);
+      return temp;
     },
 
     putCartItem: (state: any, action: any) => {

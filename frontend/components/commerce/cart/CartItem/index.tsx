@@ -7,6 +7,8 @@ import { useDispatch } from "react-redux";
 import { deleteCart, putCartItemCount } from "../../../../apis/commerce";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { deleteCartList } from "../../../../store/commerce";
+import { useRouter } from "next/dist/client/router";
 
 interface CartProps extends ListObjectItem {
   quantity: number;
@@ -21,6 +23,8 @@ const CartItem: React.FC<{
   // 더미데이터
   const [count, setCount] = useState(1);
   const [nowPrice, setNowPrice] = useState((item.price as number) * count);
+  const isCart = !useRouter().asPath.includes("order");
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -31,15 +35,15 @@ const CartItem: React.FC<{
     const data = await deleteCart(itemSeq);
     console.log(data);
 
-    // switch (status) {
-    //   case 200:
-    //     dispatch();
-    //     alert("성공적으로 삭제됐습니다");
-    //     return;
+    switch (data?.code) {
+      case 200:
+        dispatch(deleteCartList(itemSeq));
+        alert("성공적으로 삭제됐습니다");
+        return;
 
-    //   default:
-    //     alert("삭제에 실패했습니다");
-    // }
+      default:
+        alert("삭제에 실패했습니다");
+    }
   };
   const onCountHandler = async (event: React.MouseEvent<HTMLElement>) => {
     event.preventDefault();
@@ -76,21 +80,26 @@ const CartItem: React.FC<{
       </div>
       <div className="grid-center">
         <h2>{item.itemName}</h2>
-        <div className="count">
-          <div onClick={onCountHandler} className="handler">
-            +
+        {isCart && (
+          <div className="count">
+            <div onClick={onCountHandler} className="handler">
+              +
+            </div>
+            <div className="now-cnt">{item.quantity}</div>
+            <div onClick={onCountHandler} className="handler">
+              -
+            </div>
           </div>
-          <div className="now-cnt">{item.quantity}</div>
-          <div onClick={onCountHandler} className="handler">
-            -
-          </div>
-        </div>
+        )}
       </div>
       <div className="grid-right">
-        <FontAwesomeIcon
-          icon={faXmark}
-          onClick={() => onDeleteHandler(item.itemSeq)}
-        />
+        {isCart && (
+          <FontAwesomeIcon
+            icon={faXmark}
+            onClick={() => onDeleteHandler(item.itemSeq)}
+          />
+        )}
+
         <h2>
           ₩{" "}
           {((item.price as number) * (item.quantity as number))
