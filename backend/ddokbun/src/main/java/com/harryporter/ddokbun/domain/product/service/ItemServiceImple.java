@@ -60,6 +60,38 @@ public class ItemServiceImple implements ItemService{
         return itemSimpleSearchDtoList;
 
     }
+    @Override
+    @Transactional
+    public ItemDetailDto getItemByPlantSeq(Long plantSeq) {
+        Plant p = plantRepository.findByPlantSeq(plantSeq).orElseThrow(()->{
+            throw new GeneralException(ErrorCode.NOT_FOUND);
+        });
+
+        Item item = itemRepository.findByPlant(p).orElseThrow(()->{
+            throw new GeneralException(ErrorCode.NOT_FOUND);
+        });
+
+
+        ItemDetailDto idt = new ItemDetailDto();
+        PlantDto plantDto =null;
+        ItemDto itemDto = ItemDto.of(item);
+
+        //kind가 1이면 식물
+        //kind가 2이면 화분
+        if(item.getItemKind().intValue() == 1){
+            Plant plant=item.getPlant();
+            plantDto = PlantDto.of(plant);
+        }else if(item.getItemKind().intValue() == 2){
+            plantDto = null;
+        }
+
+        idt.copy(itemDto);
+        idt.setPlant(plantDto);
+
+        return idt;
+
+
+    }
 
     @Override
     @Transactional
