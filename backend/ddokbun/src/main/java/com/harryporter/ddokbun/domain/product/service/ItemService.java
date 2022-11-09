@@ -6,12 +6,16 @@ import com.harryporter.ddokbun.domain.product.dto.request.UpdateItemDto;
 import com.harryporter.ddokbun.domain.product.dto.response.*;
 
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 public interface ItemService {
 
     List<ItemSearchDto> searchByTitle(String title);
     List<ItemSimpleSearchDto> simpleSearchByTitle(String title);
+
+    @Transactional
+    ItemDetailDto getItemByPlantSeq(Long plantSeq);
 
     ItemDetailDto getOneItemById(Long ItemSeq);
 
