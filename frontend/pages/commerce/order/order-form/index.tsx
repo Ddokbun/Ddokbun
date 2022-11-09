@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from "next";
-import { useState } from "react";
-import { postKakaoPay } from "../../../../apis/commerce";
+import { useState, useEffect } from "react";
+import { postKakaoPay, postOrderList } from "../../../../apis/commerce";
 import CartList from "../../../../components/commerce/cart/CartList";
 import OrderFormComponent from "../../../../components/commerce/order/OrderForm";
 import PayFormComponent from "../../../../components/commerce/order/PayForm";
@@ -8,8 +8,9 @@ import { Wrapper } from "../../../../styles/commerce/order/order-form/styles";
 import { getCookie, setCookie } from "cookies-next";
 import axios from "axios";
 import { useDispatch } from "react-redux";
-import { wrapper } from "../../../../store";
-import commerce from "../../../../store/commerce";
+import { StoreState, wrapper } from "../../../../store";
+import { useSelect } from "@react-three/drei";
+import { useSelector } from "react-redux";
 
 const OrderForm: NextPage = () => {
   const [name, setName] = useState("");
@@ -32,9 +33,60 @@ const OrderForm: NextPage = () => {
   const [mailError, setMailError] = useState("");
   const [postEroor, setPostError] = useState("");
 
+  const [total_amount, setOrderTotal] = useState(0);
+  const [item_name, setItemName] = useState("");
+  const [item_seq, setItemSeq] = useState("");
+  const orderItems = useSelector((state: StoreState) => state.cartList);
+
+  useEffect(() => {
+    if (Object.keys(orderItems).length > 1) {
+      setItemName(
+        orderItems[0].itemName + ` 외 ${Object.keys(orderItems).length - 1}개`,
+      );
+    } else {
+      setItemName(orderItems[0].itemName);
+    }
+
+    Object.keys(orderItems).map((idx: string) => {
+      setItemSeq(val => val + `${orderItems[parseInt(idx)].itemSeq},`);
+    });
+
+    console.log(item_seq);
+    console.log(item_name);
+  }, []);
+  const postOrder = async () => {
+    console.log(item_seq);
+
+    try {
+      const res = await postOrderList(
+        item_name,
+        item_seq,
+        mailHead + mailTail,
+        payType,
+        phoneHead + phoneBody + phoneTail,
+        total_amount,
+        post,
+        detailPost,
+        additionalPost,
+        name,
+      );
+
+      setCookie("orderSeq", res.orderSeq);
+      console.log(res.orderSeq);
+
+      if (payType === 1) {
+        alert("올 ㅋ");
+        postKakaoPay(res.orderSeq, total_amount, item_name);
+      } else {
+        alert("네이버준비중");
+      }
+    } catch (error) {
+      alert("주문실패");
+    }
+  };
   /** 폼 유효성 검사 */
   const onSubmitHandler = () => {
-    setFlag(0);
+    // setFlag(0);
     // if (name) {
     //   setNameError("");
     // } else {
@@ -76,17 +128,22 @@ const OrderForm: NextPage = () => {
     //   return;
     // }
 
-    // if (!payType) {
-    //   alert("결제 수단을 선택해주세요");
-    // }
-    postKakaoPay();
+    if (!payType) {
+      alert("결제 수단을 선택해주세요");
+    } else {
+      try {
+        postOrder();
+      } catch {
+        alert("뭔가 잘못됐습니다");
+      }
+    }
   };
 
   return (
     <Wrapper>
       <div className="row">
         <h1>Buy List</h1>
-        <CartList />
+        <CartList setOrderTotal={setOrderTotal} />
       </div>
       <div className="row">
         <h1 className="sub-title">Order Information</h1>

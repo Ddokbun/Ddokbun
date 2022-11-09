@@ -21,7 +21,9 @@
     "**/*.ts",
     "**/*.tsx",
     "_document.js",
-    "pages/_app.tsx"
+    "pages/_app.tsx",
+    "pages/sitemap.xml/index.js",
+    "pages/sitemap.xml/index.js"
   ],
   "exclude": ["node_modules"]
 }

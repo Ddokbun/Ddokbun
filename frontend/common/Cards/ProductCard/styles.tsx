@@ -2,56 +2,65 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const ResponsiveWrapper = styled(motion.div)`
-  box-shadow: 0px 1px 2px 2px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
+  cursor: pointer;
   margin-top: 20px;
-  width: 300px;
+  width: 350px;
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 3fr 2fr;
-  grid-gap: 5px;
-  place-items: center;
+  grid-template-rows: 3fr auto;
+  grid-gap: 15px;
+
   .img-wrap {
-    padding: 0px 0px;
+    border-radius: 10px;
+    box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
     width: 100%;
     height: 100%;
-
     position: relative;
     align-items: center;
+    aspect-ratio: 1 / 1;
   }
 
   .text-wrap {
-    margin-top: 10px;
+    padding: 0px 10px;
     width: 100%;
     height: 100%;
     gap: 5px;
 
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
 
     h3 {
       font-family: ${props => props.theme.font.EnglishFont};
-      font-size: 25px;
+      font-size: 20px;
+      word-wrap: normal;
+    }
+    .text-wrap-bottom {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
     }
 
     .title {
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       gap: 5px;
       h2 {
-        font-size: 25px;
+        font-size: 20px;
         font-family: ${props => props.theme.font.TextFont2};
         letter-spacing: 0px;
+        line-height: 15px;
         font-weight: 600;
+        line-height: 10px;
         color: ${props => props.theme.color.darkGreen};
+        margin-bottom: 10px;
       }
       h3 {
-        font-size: 18px;
-        line-height: 10px;
-        margin-bottom: 10px;
+        font-size: 14px;
         color: ${props => props.theme.color.brownHover};
         font-family: ${props => props.theme.font.EnglishFont};
       }
@@ -90,29 +99,42 @@ export const ResponsiveWrapper = styled(motion.div)`
       display: flex;
       flex-direction: column;
       align-items: flex-start;
+
       gap: 10px;
 
       h3 {
         font-family: ${props => props.theme.font.EnglishFont};
-        font-size: 1.8rem;
+        font-size: 25px;
       }
 
+      .text-wrap-bottom {
+        padding-left: 5px;
+        padding-bottom: 20px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        align-items: flex-start;
+        justify-self: baselines;
+      }
       .title {
         display: flex;
         flex-direction: column;
         align-items: flex-start;
         gap: 5px;
         h2 {
-          font-size: 30px;
+          font-size: 22px;
           font-family: ${props => props.theme.font.TextFont2};
           letter-spacing: 0px;
           font-weight: 600;
           color: ${props => props.theme.color.darkGreen};
+          white-space: nowrap;
+          word-wrap: normal;
         }
         h3 {
-          font-size: 14px;
-          line-height: 10px;
-          margin-bottom: 10px;
+          font-size: 12px;
+          line-height: 18px;
           color: ${props => props.theme.color.brownHover};
           font-family: ${props => props.theme.font.EnglishFont};
         }
@@ -172,6 +194,7 @@ export const Wrapper = styled(motion.div)`
         font-size: 1.25rem;
         font-family: ${props => props.theme.font.TextFont1};
         font-weight: 600;
+
         color: ${props => props.theme.color.darkGreen};
       }
       h3 {

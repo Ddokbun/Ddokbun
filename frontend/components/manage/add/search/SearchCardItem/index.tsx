@@ -4,6 +4,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Plants } from "../../../../../pages/manage/add/search";
 import { manageActions } from "../../../../../store/manage";
+import { EleVar } from "../../../../../styles/animations/animation";
 import { Wrapper } from "./styles";
 
 interface Props extends Plants {
@@ -29,7 +30,11 @@ const SearchCardItem: React.FC<Props> = ({
   };
 
   return (
-    <Wrapper onClick={onFetchPlantSeqHandler} isDelivery={isDelivery}>
+    <Wrapper
+      onClick={onFetchPlantSeqHandler}
+      isDelivery={isDelivery}
+      variants={EleVar}
+    >
       <div className="image-container">
         <Image
           width={"100%"}

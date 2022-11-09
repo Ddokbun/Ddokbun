@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import { Dispatch, FC, SetStateAction, useState } from "react";
 import {
   format,
-  subMonths,
-  addMonths,
   startOfWeek,
   addDays,
   isSameDay,
@@ -13,9 +11,11 @@ import {
 } from "date-fns";
 import { Wrapper } from "./styles";
 
-const WeekPicker: React.FC<{
-  showDetailHandler: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ showDetailHandler }) => {
+interface Props {
+  showDetailHandler: Dispatch<SetStateAction<boolean>>;
+}
+
+const WeekPicker: FC<Props> = ({ showDetailHandler }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [currentWeek, setCurrentWeek] = useState(getWeek(currentMonth));
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -31,12 +31,11 @@ const WeekPicker: React.FC<{
     }
   };
 
-  const onDateClickHandle = (day: any, dayStr: any) => {
+  const onDateClickHandle = (day: Date, dayStr: any) => {
     setSelectedDate(day);
     showDetailHandler(dayStr);
   };
 
-  //   007AFF => 버튼
   const renderHeader = () => {
     const dateFormat = "MMMM yyyy";
     return (
@@ -66,6 +65,7 @@ const WeekPicker: React.FC<{
         </p>,
       );
     }
+
     return <div className="week-container">{days}</div>;
   };
   const renderCells = () => {
@@ -100,11 +100,11 @@ const WeekPicker: React.FC<{
         );
         day = addDays(day, 1);
       }
-      console.log(days);
 
       rows.push(<div className="day-container">{days}</div>);
       days = [];
     }
+
     return <>{rows}</>;
   };
 

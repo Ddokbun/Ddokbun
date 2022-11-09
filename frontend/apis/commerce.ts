@@ -1,7 +1,11 @@
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import Router from "next/router";
 import AXIOS from ".";
 import { setCookie, CookieValueTypes } from "cookies-next";
+import { changeCount } from "../store/commerce";
+import { AnyAction, Dispatch } from "@reduxjs/toolkit";
+import { AppDispatch } from "../store";
+import { ListObjectItem } from "../types/commerce/list.interface";
 
 // 인기식물 조회
 export const fetchHotPlant = async () => {
@@ -69,10 +73,8 @@ export const fetchProductDetail = async (id: string) => {
  */
 
 export const putCart = async (id: number) => {
-  console.log(id);
-
   const data = { itemSeq: id };
-  const url = `market/cart`;
+  const url = `cart`;
 
   try {
     const res = await AXIOS({
@@ -80,9 +82,23 @@ export const putCart = async (id: number) => {
       url,
       data,
     });
-    return res.data.content;
+    alert("id를 장바구니에 넣었습니다");
+
+    return res.status;
   } catch (error) {
-    console.log(error);
+    const { response } = error as any | AxiosError;
+    console.log(response);
+
+    switch (response.status) {
+      case 400:
+        alert("이미 등록된 상품입니다");
+        break;
+
+      default:
+        alert("로그인 해라 이자슥아");
+        break;
+    }
+    return 400;
   }
 };
 
@@ -93,19 +109,23 @@ export const putCart = async (id: number) => {
  * @params 결제를 위한 Params를 확인합니다.
  * @returns 결제진행을 위한 페이지로 Redirect됩니다.
  */
-export const postKakaoPay = async () => {
+export const postKakaoPay = async (
+  partner_user_id: string,
+  total_amount: number,
+  item_name: string,
+) => {
   const route = Router;
   const url = "https://kapi.kakao.com/v1/payment/ready";
   const params = {
     cid: "TC0ONETIME",
-    partner_order_id: "partner_order_id",
-    partner_user_id: "partner_user_id",
-    item_name: "초코파이",
+    partner_order_id: "똑분 Ddokbun",
+    partner_user_id,
+    item_name,
     quantity: 1,
-    total_amount: 2200,
+    total_amount,
     vat_amount: 200,
     tax_free_amount: 0,
-    approval_url: "https://localhost:3000/commerce/order/complete",
+    approval_url: "http://localhost:3000/commerce/order/complete",
     fail_url: "http://localhost:3000/commerce/order/cancled",
     cancel_url: "http://localhost:3000/commerce/order/cancled",
   };
@@ -140,6 +160,7 @@ export const postKakaoPay = async () => {
  */
 
 export const approveKakaoPay = async (
+  partner_user_id: string,
   tid: CookieValueTypes,
   pgToken: string,
 ) => {
@@ -147,8 +168,8 @@ export const approveKakaoPay = async (
   const params = {
     cid: "TC0ONETIME",
     tid,
-    partner_order_id: "partner_order_id",
-    partner_user_id: "partner_user_id",
+    partner_order_id: "똑분 Ddokbun",
+    partner_user_id,
     pg_token: pgToken,
   };
 
@@ -162,10 +183,11 @@ export const approveKakaoPay = async (
       },
       params,
     });
+    console.log(res);
 
     return res.data;
   } catch (error) {
-    // console.log(error);
+    console.log(error);
   }
 };
 
@@ -177,17 +199,57 @@ export const approveKakaoPay = async (
 
 export const fetchCartList = async (token?: string) => {
   const url = "cart";
+  console.log(token);
 
   try {
-    const data = await AXIOS({
-      url,
-      method: "GET",
-      headers: { Authorization: token },
-    });
+    if (token) {
+      return await AXIOS({
+        url,
+        method: "GET",
+        headers: {
+          Authorization: token,
+        },
+      });
+    } else {
+      console.log("here");
 
-    return data;
+      return await AXIOS({
+        url,
+        method: "GET",
+      });
+    }
   } catch (error) {
     console.log(error);
+  }
+};
+
+/**
+ * 장바구니의 아이템의 수량을 변경하는 api입니다
+ *
+ */
+export const putCartItemCount = async (
+  quantity: number,
+  itemSeq: number,
+  dispatch: Dispatch<AnyAction>,
+) => {
+  const url = `cart/${itemSeq}`;
+  console.log("here", itemSeq);
+
+  try {
+    const { data } = await AXIOS({
+      url,
+      method: "PUT",
+      data: {
+        quantity,
+      },
+    });
+
+    dispatch(changeCount({ itemSeq, quantity }));
+    return "잘됐습니다";
+  } catch (error) {
+    console.log(error);
+
+    alert("뭔가가 잘못됐습니다!");
   }
 };
 
@@ -196,7 +258,6 @@ export const fetchCartList = async (token?: string) => {
  * @param itemSeq 희망하는 상품 번호
  * @returns 연관 상품을 리스트형태로 반환합니다
  */
-
 export const fetchRelatedProducts = async (itemSeq: string) => {
   const url = `market/product/${itemSeq}/similar`;
 
@@ -206,6 +267,156 @@ export const fetchRelatedProducts = async (itemSeq: string) => {
       method: "GET",
     });
     return data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * 주문정보를 저장하는 API입니다.
+ *
+ */
+
+export const postOrderList = async (
+  orderName: string,
+  itemSeqList: string,
+  orderEmail: string,
+  orderMethod: number,
+  orderPhone: string,
+  orderPrice: number,
+  post: string,
+  detailPost: string,
+  additionnalPost: string,
+  orderUserName: string,
+) => {
+  console.log(itemSeqList);
+
+  const url = `order`;
+  const data = {
+    itemSeqList,
+    orderAddress: post + " " + detailPost + " " + additionnalPost,
+    orderEmail,
+    orderMethod: orderMethod === 1 ? "KAKAO" : "Naver",
+    orderName,
+    orderPhone,
+    orderPrice: String(orderPrice),
+    orderQuantity: 1,
+    orderReceiver: post + " " + detailPost + " " + additionnalPost,
+    orderUserName,
+  };
+  try {
+    const res = await AXIOS({
+      url,
+      method: "POST",
+      data,
+    });
+    console.log(res);
+    return res.data.content;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchPriorityProduct = async () => {
+  const url = "market/product/hot";
+
+  try {
+    const res = await AXIOS({
+      url,
+      method: "GET",
+    });
+    return res.data.content;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const clickItem = async (itemSeq: string) => {
+  const url = `market/product/hotc/${itemSeq}`;
+
+  try {
+    const res = await AXIOS({
+      url,
+      method: "GET",
+    });
+
+    return res.data.content;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const fetchServeyList = async () => {
+  const url = "market/product/survey";
+
+  try {
+    const { data } = await AXIOS({
+      url,
+      method: "GET",
+    });
+    return data.content;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * 주문 후 주문상태 변경 API입니다
+ */
+
+export const setOrderInfo = async (orderSeq: string) => {
+  const url = `order/${orderSeq}/pay`;
+
+  try {
+    const res = await AXIOS({
+      url,
+      method: "GET",
+    });
+    // console.log(res);
+    return res.data.content;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * 주문 정보를 받아오는 API입니다
+ */
+
+export const fetchOrderInfo = async (orderSeq: string, token: string) => {
+  const url = `order/${orderSeq}`;
+
+  try {
+    const data = await AXIOS({
+      url,
+      method: "GET",
+      headers: {
+        Authorization: token,
+      },
+    });
+
+    return data.data.content;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+/**
+ * 설문결과를 받아오는 API입니다
+ */
+
+export const fetchSurveyComplete = async (answerList: number[]) => {
+  const url = `market/product/survey`;
+
+  try {
+    const { data } = await AXIOS({
+      url,
+      method: "POST",
+      data: {
+        answerList: [1, 1, 1, 1],
+      },
+    });
+    return data.content;
   } catch (error) {
     console.log(error);
   }

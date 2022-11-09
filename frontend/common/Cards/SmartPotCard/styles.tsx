@@ -9,7 +9,7 @@ export const Wrapper = styled.div`
   align-items: center;
   gap: 5px;
   h2 {
-    font-size: 45px;
+    font-size: 40px;
     letter-spacing: 3px;
     font-weight: 200;
     font-family: ${props => props.theme.font.EnglishFont};

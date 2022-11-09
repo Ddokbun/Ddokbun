@@ -6,9 +6,8 @@ import { StoreState } from "../../../../../store";
 
 const RelatedProducts: React.FC = () => {
   const relatedItems = useSelector(
-    (state: StoreState) => state.commerce.relatedProductSlice,
+    (state: StoreState) => state.relatedProductSlice.data,
   );
-  console.log(relatedItems);
 
   return (
     <Wrapper>

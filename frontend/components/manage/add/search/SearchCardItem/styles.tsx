@@ -1,6 +1,7 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const Wrapper = styled.div<{ isDelivery: boolean }>`
+export const Wrapper = styled(motion.div)<{ isDelivery: boolean }>`
   background-color: ${props => props.theme.color.darkGreen};
   width: ${props => (props.isDelivery ? "90%" : "35%")};
   height: ${props => (props.isDelivery ? "80%" : "100%")};
@@ -9,6 +10,9 @@ export const Wrapper = styled.div<{ isDelivery: boolean }>`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: repeat(1, 100%);
+  :hover {
+    cursor: pointer;
+  }
 
   .image-container {
     border-radius: 8px;
@@ -30,11 +34,13 @@ export const Wrapper = styled.div<{ isDelivery: boolean }>`
     font-weight: bold;
     width: 100%;
     text-align: center;
+    font-family: ${props => props.theme.font.TextFont2};
   }
 
   .info > .egName {
     text-align: center;
     color: ${props => props.theme.color.brown};
+    font-family: ${props => props.theme.font.TextFont2};
   }
 
   .delivery {
