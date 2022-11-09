@@ -1,4 +1,5 @@
 import AXIOS from "./index";
+import router from "next/router";
 
 // 유저 리스트 조회
 export const getAdminUserList = async (page?: number) => {
@@ -24,6 +25,7 @@ export const fetchAdminRole = async (userSeq: number) => {
     });
     return res.data;
   } catch (error) {
+    alert("마스터 계정만 권한 변경이 가능합니다.");
     console.log(error);
   }
 };
@@ -38,6 +40,8 @@ export const getOrderCount = async () => {
     });
     return res.data;
   } catch (error) {
+    alert("어드민 접근 권한이 없습니다");
+    router.push("/welcome");
     console.log(error);
   }
 };
@@ -96,6 +100,48 @@ export const putOrderStatus = async ({ item }) => {
       method: "PUT",
       url: path,
       data: data,
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// 전체 가입 유저 수 조회
+export const getUserCount = async () => {
+  const path = "admin/user/count";
+  try {
+    const res = await AXIOS({
+      method: "GET",
+      url: path,
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// 보유 상품 개수 조회
+export const getProductCount = async () => {
+  const path = "admin/product/count";
+  try {
+    const res = await AXIOS({
+      method: "GET",
+      url: path,
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// 최근 10일간 판매 데이터
+export const getOrderData = async () => {
+  const path = "admin/order/count-by-date";
+  try {
+    const res = await AXIOS({
+      method: "GET",
+      url: path,
     });
     return res.data;
   } catch (error) {

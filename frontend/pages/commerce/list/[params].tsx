@@ -49,7 +49,7 @@ const ProductLists: NextPage<{ data: ListArray }> = ({ data }) => {
       <div className="banner-wrap">
         <Image src={Temp} alt="임시배너이미지입니다" />
       </div>
-      <ProductList data={data.slice(0, 6)} />;
+      <ProductList data={data} />;
     </Wrapper>
   );
 };

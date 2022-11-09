@@ -14,7 +14,6 @@ const AdminUser = () => {
     }
     fetchAndSetUser();
   }, [page]);
-  console.log(data);
 
   return (
     <Wrapper>
