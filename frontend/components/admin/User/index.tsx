@@ -18,7 +18,7 @@ const AdminUser = () => {
   return (
     <Wrapper>
       <>
-        <UserTable data={data}></UserTable>
+        {data && <UserTable data={data}></UserTable>}
         <div className="button-wrapper">
           <div onClick={() => setPage(page - 1)} className="button">
             <button>Previous</button>

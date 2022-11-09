@@ -92,8 +92,8 @@ export const getProductList = async (page?: number) => {
 // };
 
 //주문 상태 변경
-export const putOrderStatus = async ({ item }) => {
-  const data = item;
+export const putOrderStatus = async (status: (string | number)[]) => {
+  const data = { orderSeq: status[0], orderStatus: status[1] };
   const path = "admin/order";
   try {
     const res = await AXIOS({
@@ -101,6 +101,8 @@ export const putOrderStatus = async ({ item }) => {
       url: path,
       data: data,
     });
+    console.log("성공 우하하");
+    window.location.replace("/admin/commerce");
     return res.data;
   } catch (error) {
     console.log(error);

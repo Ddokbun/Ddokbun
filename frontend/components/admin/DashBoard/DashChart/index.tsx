@@ -14,6 +14,12 @@ import { Line } from "react-chartjs-2";
 import "chartjs-adapter-date-fns";
 import { getOrderData } from "../../../../apis/admin";
 
+export interface ProductArray {
+  list: string[];
+  orderTime: string;
+  count: number;
+}
+
 const DashChart = () => {
   const [list, setList] = useState([]);
   useEffect(() => {
@@ -25,8 +31,8 @@ const DashChart = () => {
   }, []);
 
   console.log(list);
-  const date = list.map(list => list.orderTime).reverse();
-  const rawData = list.map(list => list.count).reverse();
+  const date = list.map((list: ProductArray) => list.orderTime).reverse();
+  const rawData = list.map((list: ProductArray) => list.count).reverse();
 
   Chart.register(
     CategoryScale,

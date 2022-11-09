@@ -24,7 +24,7 @@ const AdminProduct: React.FC = () => {
   return (
     <Wrapper>
       <>
-        <ProductTable data={list}></ProductTable>
+        {list && <ProductTable data={list}></ProductTable>}
         <div className="button-wrapper">
           <div onClick={() => setPage(page - 1)} className="button">
             <button>Previous</button>
