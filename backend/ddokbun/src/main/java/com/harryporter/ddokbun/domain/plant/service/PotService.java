@@ -155,24 +155,34 @@ public class PotService {
     }
 
     @Transactional
-    public void changeWaterApplyMethod(String potSerial, Long userSeq) {
+    public void changeWaterApplyMethod(String potSerial, int waterPeriod, Long userSeq) {
+
         User user = userRepository.findById(userSeq).orElseThrow(
                 ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다.")
         );
-        // potSerial로 통해서 화분 불러오기
+
         Pot potEntity = potRepository.findByPotSerial(potSerial).orElseThrow(
                 () -> new GeneralException(ErrorCode.NOT_FOUND)
         );
 
+        // getUser에서 Null이 발생할 수 있기는 하나.
         if (potEntity.getUser().getUserSeq().equals(userSeq)){
             // 화분의 자동, 수동을 바꾸기
             if (potEntity.getIsAuto().equals("Y")) {
                 potEntity.setIsAuto("N");
+                potEntity.setWaterPeriod(0);
             }
+
             else {
+                if(waterPeriod == 0){
+                    throw new GeneralException(ErrorCode.BAD_REQUEST, "물 주기 설정 시 0으로 설정할 수 없습니다.");
+                }
                 potEntity.setIsAuto("Y");
+                potEntity.setWaterPeriod(waterPeriod);
             }
+
             potRepository.save(potEntity);
+
         } else {
             throw new GeneralException(ErrorCode.BAD_REQUEST, "당신의 화분이 아닙니다");
         }
