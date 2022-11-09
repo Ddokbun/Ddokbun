@@ -6,21 +6,23 @@ import org.springframework.data.redis.core.ZSetOperations;
 
 @Data
 public class ItemSelectedDto {
-    private String rankItemName;
-    private String rankItemEnName;
-    private int rankItemPrice;
+    private String ItemName;
+    private String ItemEnName;
+    private int ItemPrice;
     private String imgPath;
     private long plantSeq;
+    private long itemSeq;
 
     public static ItemSelectedDto of(Item item) {
         if(item==null) return null;
-        ItemSelectedDto clickRankDto = new ItemSelectedDto();
-        clickRankDto.rankItemName=item.getItemName();
-        clickRankDto.rankItemEnName=item.getItemEnName();
-        clickRankDto.rankItemPrice=item.getItemPrice();
-        clickRankDto.imgPath=item.getItemPicture();
-        clickRankDto.plantSeq=item.getPlant().getPlantSeq();
-        return clickRankDto;
+        ItemSelectedDto selectedDto = new ItemSelectedDto();
+        selectedDto.ItemName=item.getItemName();
+        selectedDto.ItemEnName=item.getItemEnName();
+        selectedDto.ItemPrice=item.getItemPrice();
+        selectedDto.imgPath=item.getItemPicture();
+        selectedDto.plantSeq=item.getPlant().getPlantSeq();
+        selectedDto.itemSeq=item.getItemSeq();
+        return selectedDto;
     }
 
 }
