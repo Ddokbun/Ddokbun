@@ -1,6 +1,7 @@
 package com.harryporter.ddokbun.domain.order.repository;
 
 import com.harryporter.ddokbun.domain.order.entity.Order;
+import com.harryporter.ddokbun.domain.order.entity.OrderStatus;
 import com.harryporter.ddokbun.domain.user.entity.User;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -25,6 +26,7 @@ public interface OrderRepository extends JpaRepository<Order,Long> {
     List<Order> findAllBy(Pageable pageable);
 
     List<Order> findByUser(User user);
+    List<Order> findByUserAndOrderStatus(User user,OrderStatus orderStatus);
 
     Optional<Order> findByOrderSeq(Long orderSeq);
 }

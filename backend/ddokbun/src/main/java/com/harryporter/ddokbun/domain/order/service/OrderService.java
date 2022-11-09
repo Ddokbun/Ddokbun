@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Map;
 
 public interface OrderService {
-    List<OrderListItemDto> getOrderListByUserSeq(Long userSeq);
+    List<OrderDto> getOrderListByUserSeq(Long userSeq, String status);
 
     OrderDto enrollOrder(OrderReq orderReq, Long userSeq);
 

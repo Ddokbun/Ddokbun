@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -222,6 +223,7 @@ public class ItemServiceImple implements ItemService{
         return items.stream().map(item -> ItemListDto.of(item)).collect(Collectors.toList());
      }
 
+
     @Override
     public String click(long itemSeq){
         log.info("조회수 증가 Service :: itemSeq : {}", itemSeq);
@@ -245,6 +247,15 @@ public class ItemServiceImple implements ItemService{
         return list;
     }
 
-
+    @Override
+    public List<ItemSelectedDto> getSelectedProduct() {
+        log.info("선별된 식물 조회");
+        long number[]={3, 6, 7, 11, 18, 20, 21,  27, 34, 75, 103, 109};
+        List<Item> items=new ArrayList<>();
+        for(int i=0; i<number.length;i++){
+            items.add(itemRepository.findById(387+number[i]).orElse(null));
+        }
+        return items.stream().map(item -> ItemSelectedDto.of(item)).collect(Collectors.toList());
+    }
 
 }
