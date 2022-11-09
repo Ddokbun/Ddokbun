@@ -18,6 +18,7 @@ import java.util.stream.Collectors;
 @Builder
 public class AdminOrderDto {
 
+    private long orderSeq;
     private String orderUserName;
     private OrderStatus orderStatus;
     private String orderPhone;
@@ -28,6 +29,7 @@ public class AdminOrderDto {
         if(order==null||order.getItemSeqList()==null) return null;
 
         return AdminOrderDto.builder()
+                .orderSeq(order.getOrderSeq())
                 .orderUserName(order.getOrderUserName())
                 .orderStatus(order.getOrderStatus())
                 .orderPhone(order.getOrderPhone())
