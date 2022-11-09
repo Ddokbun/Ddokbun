@@ -2,11 +2,16 @@ import React, { lazy, Suspense, useEffect, useState } from "react";
 import AutoToggle from "../AutoToggle";
 import { Wrapper } from "./styles";
 import { Canvas } from "@react-three/fiber";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../store";
 
 const Three = lazy(() => import("../Three"));
 
 const DigitalTwin = ({ light }: any) => {
   const [isMounted, setIsMounted] = useState(false);
+  const plantNickname = useSelector(
+    (state: RootState) => state.manage.plantNickname,
+  );
   useEffect(() => {
     setIsMounted(true);
   }, []);
@@ -14,7 +19,7 @@ const DigitalTwin = ({ light }: any) => {
   return (
     <Wrapper>
       <div className="top-container">
-        <h2>똑분</h2>
+        <h2>{plantNickname}</h2>
         <AutoToggle />
       </div>
       <div className="twin-background">
