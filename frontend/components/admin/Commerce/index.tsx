@@ -18,7 +18,7 @@ const AdminCommerce = () => {
   return (
     <Wrapper>
       <>
-        <CommerceTable data={data}></CommerceTable>
+        {data && <CommerceTable data={data}></CommerceTable>}
         <div className="button-wrapper">
           <div onClick={() => setPage(page - 1)} className="button">
             <button>Previous</button>

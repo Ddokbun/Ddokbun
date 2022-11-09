@@ -18,9 +18,9 @@ const AdminNav = () => {
         <div className="link-list">
           <Link href={"/admin/product"}>Product</Link>
         </div>
-        <div className="link-list">
-          <Link href={"/admin/product/register"}>Product Register</Link>
-        </div>
+        {/* <div className="link-list">
+            <Link href={"/admin/product/register"}>Product Register</Link>
+          </div> */}
       </div>
     </Wrapper>
   );
