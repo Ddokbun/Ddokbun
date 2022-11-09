@@ -1,16 +1,19 @@
-import React from "react";
+import { motion } from "framer-motion";
+import React, { FC } from "react";
+import { EleVar } from "../../styles/animations/animation";
 import { Theme } from "../../styles/theme";
 import { TextBtn } from "../Button";
 
 import { Wrapper } from "./styles";
 
-const PageTitle: React.FC<{
+interface Props {
   isLink: boolean;
-  isBold: boolean;
   children: string;
-}> = ({ isLink, isBold, children }) => {
+}
+
+const PageTitle: FC<Props> = ({ isLink, children }) => {
   return (
-    <Wrapper isBold={isBold}>
+    <Wrapper variants={EleVar}>
       <h1>{children} </h1>
       {isLink && (
         <div className="add-btn-container">

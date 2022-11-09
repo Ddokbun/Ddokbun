@@ -1,10 +1,7 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
-interface Props {
-  isBold: boolean;
-}
-
-export const Wrapper = styled.section<Props>`
+export const Wrapper = styled(motion.section)`
   display: flex;
   justify-content: center;
   width: 100%;
@@ -15,14 +12,15 @@ export const Wrapper = styled.section<Props>`
 
   h1 {
     color: ${props => props.theme.color.mainGreen};
-    font-weight: ${props => (props.isBold ? "bold" : "none")};
     font-size: 36px;
+    font-family: ${props => props.theme.font.TitleFont};
   }
 
   .add-btn-container {
     position: absolute;
     bottom: 1%;
     right: 2%;
+    font-family: ${props => props.theme.font.TextFont2};
   }
 
   @media screen and (${props => props.theme.mobile}) {
@@ -37,7 +35,6 @@ export const Wrapper = styled.section<Props>`
       position: relative;
       align-items: flex-end;
       justify-content: flex-end;
-      /* margin-left: 10%; */
       width: 200px;
     }
   }
