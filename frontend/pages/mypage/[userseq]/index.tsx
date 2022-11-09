@@ -12,25 +12,26 @@ interface DeliveryStatus {
   src: null | string;
 }
 
+const deliveryStatus: DeliveryStatus[] = [
+  {
+    statusCode: 0,
+    title: "상품 준비",
+    src: null,
+  },
+  {
+    statusCode: 1,
+    title: "배송중",
+    src: null,
+  },
+  {
+    statusCode: 2,
+    title: "배송 완료",
+    src: null,
+  },
+];
+
 const MyPage: NextPage = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
-  const deliveryStatus: DeliveryStatus[] = [
-    {
-      statusCode: 0,
-      title: "상품 준비",
-      src: null,
-    },
-    {
-      statusCode: 1,
-      title: "배송중",
-      src: null,
-    },
-    {
-      statusCode: 2,
-      title: "배송 완료",
-      src: null,
-    },
-  ];
 
   const onFetchDeliveryHandler = (code: number) => {
     setActiveIndex(code);
