@@ -64,10 +64,21 @@ public class OrderController {
     //주문 내역 리스트
     //사용자 주문내역 리스트 보기
     @ApiOperation("주문 내역 리스트")
-    @RequestMapping(method = RequestMethod.GET)
+    @GetMapping("/list")
     public ResponseEntity<?> getMyOrderList(@ApiIgnore @AuthenticationPrincipal UserDto userDto){
 
-        List<OrderListItemDto> orderListItemDtoList =  orderService.getOrderListByUserSeq(userDto.getUserSeq());
+        List<OrderDto> orderListItemDtoList =  orderService.getOrderListByUserSeq(userDto.getUserSeq(),null);
+
+        ResponseFrame<?> res = ResponseFrame.ofOKResponse("주문 내역 리스트를 반환합니다.",orderListItemDtoList);
+
+        return new ResponseEntity<>(res, HttpStatus.OK);
+    }
+
+    @ApiOperation("주문 내역 리스트 (주문 상태별)")
+    @GetMapping("/list/{status}")
+    public ResponseEntity<?> getMyOrderListByOrderStatus(@PathVariable String status, @ApiIgnore @AuthenticationPrincipal UserDto userDto){
+
+        List<OrderDto> orderListItemDtoList =  orderService.getOrderListByUserSeq(userDto.getUserSeq(),status);
 
         ResponseFrame<?> res = ResponseFrame.ofOKResponse("주문 내역 리스트를 반환합니다.",orderListItemDtoList);
 

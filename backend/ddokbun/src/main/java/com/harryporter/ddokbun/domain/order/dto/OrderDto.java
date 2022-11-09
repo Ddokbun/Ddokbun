@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.harryporter.ddokbun.domain.order.entity.Order;
 import com.harryporter.ddokbun.domain.order.entity.OrderStatus;
 import com.harryporter.ddokbun.domain.product.dto.ItemDto;
+import com.harryporter.ddokbun.domain.product.dto.response.ItemSimpleDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,7 +25,7 @@ public class OrderDto {
     private long userSeq;
     //상품
     //상품에서 주문내역을 볼 필요는 없으니깐 , 상대편에서 mappedBy는 생략, 관리자가 생기면 추가해야할 듯
-    private List<ItemDto> itemlist;
+    private List<ItemSimpleDto> itemlist;
 
     private String itemSeqList;
 
