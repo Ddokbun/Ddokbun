@@ -1,9 +1,9 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(motion.div)`
   border-color: ${props => props.theme.color.brown};
   width: 90%;
-  /* height: 100%; */
   border-width: 3px;
   border-radius: 20px;
   display: flex;
@@ -20,21 +20,22 @@ export const Wrapper = styled.div`
   .image {
     display: flex;
     justify-content: center;
-    border-radius: 16px;
-    opacity: 0.9;
+    border-top-left-radius: 16px;
+    border-top-right-radius: 16px;
   }
   .image:hover {
     cursor: pointer;
   }
   h2 {
-    color: ${props => props.theme.color.mainGreen};
+    color: ${props => props.theme.color.brown};
     font-weight: bold;
     font-size: 28px;
+    margin: 6%;
+    font-family: ${props => props.theme.font.TextFont2};
   }
 
   @media screen and (${props => props.theme.mobile}) {
     width: 90%;
-    /* margin: auto; */
     display: flex;
   }
 `;

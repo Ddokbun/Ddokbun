@@ -1,6 +1,7 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const Wrapper = styled.form`
+export const Wrapper = styled(motion.form)`
   width: 100%;
 
   /* padding-left: 5%; */
