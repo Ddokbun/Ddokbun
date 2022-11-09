@@ -23,7 +23,7 @@ import {
 } from "../types/commerce/list.interface";
 
 export interface StoreState {
-  relatedProductSlice: ProductLists;
+  relatedProductSlice: ListObjectItem[];
   cartList: ListArray;
   authSlice: any;
   manage: any;
