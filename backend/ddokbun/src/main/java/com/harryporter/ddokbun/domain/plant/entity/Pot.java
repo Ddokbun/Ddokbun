@@ -69,6 +69,9 @@ public class Pot {
     @Column(name = "is_auto", columnDefinition = "CHAR(1)")
     private String isAuto;
 
+    @Column(name="water_period")
+    private Integer waterPeriod;
+
     // 식물
     @JoinColumn(name = "plant_seq", nullable = true)
     @ManyToOne(fetch = FetchType.LAZY)
