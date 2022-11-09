@@ -72,12 +72,12 @@ const Three = ({ light }: any) => {
         inclination={0}
         azimuth={0.25}
       /> */}
-      <Environment ground files={"background.hdr"} path={"/"}>
-        {/* <mesh>
+      {/* <Environment ground files={"background.hdr"} path={"/"}>
+        <mesh>
           <sphereGeometry args={[50, 100, 100]} />
           <meshBasicMaterial map={colorMap} side={THREE.BackSide} />
-        </mesh> */}
-      </Environment>
+        </mesh>
+      </Environment> */}
     </>
   );
 };
