@@ -52,9 +52,7 @@ const MyPage: NextPage = () => {
 
   return (
     <Wrapper>
-      <PageTitle isBold isLink={false}>
-        마이페이지
-      </PageTitle>
+      <PageTitle isLink={false}>마이페이지</PageTitle>
       <div className="button-container">{buttons}</div>
 
       <div className="card-container">
