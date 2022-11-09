@@ -1,0 +1,8 @@
+fcm:
+  auth:
+    file_path: 'ddokbun-89ed0-firebase-adminsdk-xd2if-58d480a4c0.json'
+  project:
+    id: ddokbun-89ed0
+  message:
+    scope: 'https://www.googleapis.com/auth/firebase.messaging'
+  endpoint: https://fcm.googleapis.com/v1/projects/ddokbun-89ed0/messages:send
