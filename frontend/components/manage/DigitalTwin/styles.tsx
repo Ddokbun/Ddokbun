@@ -8,6 +8,7 @@ export const Wrapper = styled.div`
     align-items: flex-end;
     font-size: 36px;
     font-weight: bold;
+    font-family: ${props => props.theme.font.TextFont2};
   }
 
   .twin-background {
