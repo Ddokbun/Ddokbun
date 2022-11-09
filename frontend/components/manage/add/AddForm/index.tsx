@@ -12,6 +12,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../../store";
 import { fetchPlantData, fetchRegisterPot } from "../../../../apis/manage";
 import PlantData from "../PlantData";
+import { EleVar } from "../../../../styles/animations/animation";
 
 export interface PlantDataType {
   growthHumid: string;
@@ -86,7 +87,7 @@ const AddForm = () => {
     if (res?.status === 201) {
       router.push(`/manage/${res.potSeq}`);
     } else {
-      alert('다시 한번 확인해주세요.')
+      alert("다시 한번 확인해주세요.");
     }
   };
 
@@ -115,7 +116,7 @@ const AddForm = () => {
   }, [plantSeq]);
 
   return (
-    <Wrapper>
+    <Wrapper variants={EleVar}>
       <div className="grid">
         <SearchInput
           setSearchInput={null}
