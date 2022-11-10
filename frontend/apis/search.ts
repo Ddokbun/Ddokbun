@@ -13,3 +13,17 @@ export const fetchTodayPlant = async () => {
     console.log(error);
   }
 };
+
+//
+export const fetchItemSeq = async (plantSeq: number) => {
+  const path = "market/product/plant/";
+  try {
+    const res = await AXIOS({
+      method: "GET",
+      url: path + plantSeq,
+    });
+    return res.data.content.itemSeq;
+  } catch (error) {
+    console.log(error);
+  }
+};
