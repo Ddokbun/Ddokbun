@@ -1,8 +1,12 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
-const Camera = () => {
-  let videoRef = useRef(null);
-  let photoRef = useRef(null);
+interface RTCVideoProps {
+  mediaStream: MediaStream | undefined;
+}
+
+const Camera: React.FC<{ photo: any; video: any }> = () => {
+  let videoRef = useRef<HTMLVideoElement | any>(null);
+  let photoRef = useRef<HTMLVideoElement | any>(null);
 
   const getUserCamera = () => {
     navigator.mediaDevices
