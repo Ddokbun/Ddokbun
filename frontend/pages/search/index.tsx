@@ -7,7 +7,7 @@ import SearchButton from "../../components/search/SearchButton";
 import { PlantArray } from "../../types/search/recommend.interface";
 import { fetchTodayPlant } from "../../apis/search";
 import { fetchAllPlantsList } from "../../apis/manage";
-import { SearchInput } from "../../common/Input";
+import { PlantListArray } from "../../types/search/searchbar.interface";
 
 export const getStaticProps: GetStaticProps = async context => {
   const data = await fetchTodayPlant();
@@ -19,15 +19,8 @@ export const getStaticProps: GetStaticProps = async context => {
     },
   };
 };
-export interface Plants {
-  plantSeq: number;
-  plantName: string;
-  plantNeName: string;
-  plantZRName?: string;
-  imagePath: string;
-  disnName?: string;
-}
-const Search: NextPage<{ data: PlantArray; plants: Plants }> = ({
+
+const Search: NextPage<{ data: PlantArray; plants: PlantListArray }> = ({
   data,
   plants,
 }) => {

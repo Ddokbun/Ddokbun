@@ -3,17 +3,9 @@ import { Wrapper } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { SearchInput } from "../../../common/Input";
+import { PlantListArray } from "../../../types/search/searchbar.interface";
 
-export interface Plants {
-  plantSeq: number;
-  plantName: string;
-  plantNeName: string;
-  plantZRName?: string;
-  imagePath: string;
-  disnName?: string;
-}
-
-const SearchBar: React.FC<{ plants: Plants[] }> = ({ plants }) => {
+const SearchBar: React.FC<{ plants: PlantListArray }> = ({ plants }) => {
   const [searchInput, setSearchInput] = useState("");
   const [plantList, setPlantList] = useState(plants);
 
