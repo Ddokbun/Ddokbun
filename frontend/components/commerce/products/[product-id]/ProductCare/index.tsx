@@ -8,8 +8,8 @@ const ProductCare: React.FC<{
   humid: string;
 }> = ({ itemInfo, water, humid }) => {
   const thisHumid = humid.slice(0, -1).split("~");
-  const avgHumid =
-    (parseInt(thisHumid[0].trim()) + parseInt(thisHumid[1].trim())) / 2;
+  // const avgHumid =
+  //   (parseInt(thisHumid[0].trim()) + parseInt(thisHumid[1].trim())) / 2;
 
   return (
     <Wrapper>
@@ -18,7 +18,7 @@ const ProductCare: React.FC<{
       <SimpleGraph
         pages="commerce"
         water={`${(15 / water) * 100}%`}
-        humid={`${avgHumid}%`}
+        humid={`30%`}
         temper="80%"
         waterBottle={null}
       />
