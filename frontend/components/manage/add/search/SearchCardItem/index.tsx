@@ -27,7 +27,6 @@ const SearchCardItem: React.FC<Props> = ({
 
       return;
     }
-    console.log(router.query);
 
     dispatch(manageActions.setPlantInfo({ plantSeq, plantName }));
     router.back();
