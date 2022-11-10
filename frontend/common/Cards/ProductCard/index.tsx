@@ -44,7 +44,7 @@ const ProductCard: React.FC<{
                   <h2>{item.itemName}</h2>
                 </div>
                 <div className="tag-wrap">
-                  {item.tags.map((tag, idx) => {
+                  {item.tags?.map((tag, idx) => {
                     return <ProductLabel key={idx}>{tag}</ProductLabel>;
                   })}
                 </div>
@@ -79,7 +79,7 @@ const ProductCard: React.FC<{
                 <h3>{item?.itemEnName}</h3>
               </div>
               <div className="tag-wrap">
-                {item?.tags.map((tag, idx) => {
+                {item?.tags?.map((tag, idx) => {
                   return <ProductLabel key={idx}>{tag}</ProductLabel>;
                 })}
               </div>

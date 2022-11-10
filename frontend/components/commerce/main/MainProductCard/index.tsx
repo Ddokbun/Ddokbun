@@ -7,7 +7,7 @@ const MainProductCard: React.FC<{ data: MainPlant }> = ({ data }) => {
     <Wrapper>
       <>
         {data.map(item => {
-          return <MainProduct key={item.rankItemSeq} item={item}></MainProduct>;
+          return <MainProduct key={item.itemSeq} item={item}></MainProduct>;
         })}
       </>
     </Wrapper>
