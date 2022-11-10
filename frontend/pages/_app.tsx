@@ -91,10 +91,6 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
     <>
       <Head>
         <meta content="yes" name="apple-mobile-web-app-capable" />
-        <meta
-          content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no"
-          name="viewport"
-        />
       </Head>
       <Provider store={store}>
         <PersistGate persistor={persistor}>
