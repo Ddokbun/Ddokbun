@@ -21,6 +21,13 @@ const SearchCardItem: React.FC<Props> = ({
   const dispatch = useDispatch();
   const router = useRouter();
   const onFetchPlantSeqHandler = () => {
+    if (router.query.path === "search") {
+      router.push(`/commerce/product/${plantSeq}`);
+      console.log(router.query);
+      return;
+    }
+    console.log(router.query);
+
     dispatch(manageActions.setPlantInfo({ plantSeq, plantName }));
     router.back();
   };

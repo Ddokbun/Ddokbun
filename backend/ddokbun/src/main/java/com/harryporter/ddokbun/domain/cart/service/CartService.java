@@ -6,7 +6,7 @@ import com.harryporter.ddokbun.domain.cart.dto.response.CartItemDetail;
 import java.util.List;
 
 public interface CartService {
-    int enrollCartItem(Long itemSeq, Long userSeq);
+    CartItemDetail enrollCartItem(Long itemSeq, Long userSeq);
 
     int deleteCartItem(Long itemSeq, Long userSeq);
 

@@ -29,6 +29,7 @@ const SearchBar = ({ plants }) => {
         disabled={false}
         setSearchInput={setSearchInput}
         value={searchInput}
+        path={"search"}
       ></SearchInput>
 
       <div className="wrap">
