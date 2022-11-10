@@ -142,7 +142,7 @@ export const watering = async (potSeq: string | string[]) => {
 
 export const changeWateringStatus = async (
   potSeq: string,
-  waterPeriod: number,
+  waterPeriod: string,
 ) => {
   const url = `pot/${potSeq}/water/${waterPeriod}`;
   try {
