@@ -28,9 +28,13 @@ public class BatchProcessor {
     @Autowired
     private Job AutoWaterApplyJob;
 
-    //매일 9시
+    @Qualifier("WaterApplyAlarmJob")
+    @Autowired
+    private Job waterApplyAlarmJob;
+
+    //매일 9시 자동 물주기
     @Scheduled(cron = "0 0 9 * * *")
-    public void jobSchduled() throws JobParametersInvalidException, JobExecutionAlreadyRunningException,
+    public void autoWaterApplyJobSchduled() throws JobParametersInvalidException, JobExecutionAlreadyRunningException,
             JobRestartException, JobInstanceAlreadyCompleteException {
 
         Map<String, JobParameter> jobParametersMap = new HashMap<>();
@@ -41,6 +45,35 @@ public class BatchProcessor {
         JobParameters parameters = new JobParameters(jobParametersMap);
 
         JobExecution jobExecution = jobLauncher.run(AutoWaterApplyJob, parameters);
+
+        while (jobExecution.isRunning()) {
+            log.info("...");
+        }
+
+        log.info("Job Execution: " + jobExecution.getStatus());
+        log.info("Job getJobConfigurationName: " + jobExecution.getJobConfigurationName());
+        log.info("Job getJobId: " + jobExecution.getJobId());
+        log.info("Job getExitStatus: " + jobExecution.getExitStatus());
+        log.info("Job getJobInstance: " + jobExecution.getJobInstance());
+        log.info("Job getStepExecutions: " + jobExecution.getStepExecutions());
+        log.info("Job getLastUpdated: " + jobExecution.getLastUpdated());
+        log.info("Job getFailureExceptions: " + jobExecution.getFailureExceptions());
+
+    }
+
+
+    @Scheduled(cron = "0 0 9 * * *")
+    public void waterApplyAlarmJobSchduled() throws JobParametersInvalidException, JobExecutionAlreadyRunningException,
+            JobRestartException, JobInstanceAlreadyCompleteException {
+
+        Map<String, JobParameter> jobParametersMap = new HashMap<>();
+
+
+        jobParametersMap.put("date",new JobParameter(String.valueOf(LocalDate.now())));
+
+        JobParameters parameters = new JobParameters(jobParametersMap);
+
+        JobExecution jobExecution = jobLauncher.run(waterApplyAlarmJob, parameters);
 
         while (jobExecution.isRunning()) {
             log.info("...");

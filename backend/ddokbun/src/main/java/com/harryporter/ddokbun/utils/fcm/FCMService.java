@@ -62,12 +62,11 @@ public class FCMService {
                     clientResponse -> {
                         if (clientResponse.statusCode().is2xxSuccessful()) {
 
-                            System.out.println("good");
+                          return Mono.just(true);
                         } else {
 
-                            System.out.println("bad");
+                            return Mono.just(false);
                         }
-                        return clientResponse.bodyToMono(Boolean.class);
                     }
                 ).block();
 
