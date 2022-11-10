@@ -22,11 +22,11 @@ const MainProduct: React.FC<{
             </div>
             <div className="pot-img-back">
               <div className="font-wrap">
-                <h2>{item.rankItemName}</h2>
-                <h4>{item.rankItemEnName}</h4>
+                <h2>{item.itemName}</h2>
+                <h4>{item.itemEnName}</h4>
                 <h3>
                   ₩{" "}
-                  {item.rankItemPrice
+                  {item.itemPrice
                     .toString()
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </h3>
