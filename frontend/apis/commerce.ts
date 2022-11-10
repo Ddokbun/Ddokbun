@@ -20,6 +20,20 @@ export const fetchHotPlant = async () => {
   }
 };
 
+// 커머스 메인
+export const getMainProduct = async () => {
+  const path = "market/product/selected";
+  try {
+    const res = await AXIOS({
+      method: "GET",
+      url: path,
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
 export const getAllProductNumber = async () => {
   const url = "market/product/list";
 

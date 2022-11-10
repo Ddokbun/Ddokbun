@@ -1,11 +1,11 @@
 export type MainPlant = ListObjectItem[];
 
 export interface ListObjectItem {
-  rankItemSeq: number;
+  itemSeq: number;
   clickCount: number;
-  rankItemName: string;
-  rankItemEnName: string;
-  rankItemPrice: number;
+  itemName: string;
+  itemEnName: string;
+  itemPrice: number;
   imgPath: string;
   plantSeq: number;
 }

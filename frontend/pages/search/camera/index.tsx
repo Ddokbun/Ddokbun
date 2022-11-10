@@ -5,10 +5,20 @@ interface RTCVideoProps {
 }
 
 const Camera: React.FC<{ photo: any; video: any }> = () => {
+  const FACING_MODE_USER = "user";
+  const FACING_MODE_ENVIRONMENT = "environment";
+  const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
+
   let videoRef = useRef<HTMLVideoElement | any>(null);
   let photoRef = useRef<HTMLVideoElement | any>(null);
 
+  const videoConstraints = {
+    facingMode: FACING_MODE_USER,
+  };
+
   const getUserCamera = () => {
+    const devices = navigator.mediaDevices.enumerateDevices();
+    console.log("사용가능한 장치", devices);
     navigator.mediaDevices
       .getUserMedia({
         video: true,
@@ -38,7 +48,6 @@ const Camera: React.FC<{ photo: any; video: any }> = () => {
 
     let ctx = photo.getContext("2d");
     ctx.drawImage(video, 0, 0, photo.width, photo.height);
-    console.log(ctx);
   };
 
   const clearPicture = () => {
