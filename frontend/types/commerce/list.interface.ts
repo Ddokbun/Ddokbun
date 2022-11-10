@@ -9,7 +9,7 @@ export type ListObjectItem = {
   itemEnName: string;
   itemPrice: number;
   itemImage: string;
-  tags: string[];
+  tags?: string[];
   price?: number;
   quantity?: number;
   imageUrl?: string;
