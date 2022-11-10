@@ -1,10 +1,7 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import {
-  fetchCurrentStatus,
-  watering,
-} from "../../../../apis/manage";
+import { fetchCurrentStatus, watering } from "../../../../apis/manage";
 import SimpleGraph from "../../../../common/Graph/SimpleGraph";
 import WeekPicker from "../../../../components/manage/add/WeekPicker";
 import DigitalTwin from "../../../../components/manage/DigitalTwin";
@@ -29,6 +26,7 @@ export interface currentStatus {
   temperature: number;
   waterCycle: number;
   waterHeight: number;
+  waterSupply: number[];
 }
 
 const PlantCare: NextPage = () => {
@@ -50,6 +48,7 @@ const PlantCare: NextPage = () => {
     temperature: 0,
     waterCycle: 0,
     waterHeight: 0,
+    waterSupply: [],
   });
   const onWateringHandler = async () => {
     const res = await watering(potseq!);
@@ -58,6 +57,17 @@ const PlantCare: NextPage = () => {
       alert("물 주기가 완료되었어요");
     }
   };
+
+  const getDateDiff = (d1: string) => {
+    const date1 = new Date(d1);
+    const date2 = new Date();
+    console.log(date2);
+
+    const diffDate = date1.getTime() - date2.getTime();
+
+    return Math.abs(diffDate / (1000 * 60 * 60 * 24)); // 밀리세컨 * 초 * 분 * 시 = 일
+  };
+
   const dispatch = useDispatch();
   useEffect(() => {
     if (!potseq) {
@@ -77,7 +87,10 @@ const PlantCare: NextPage = () => {
       <section className="left-section">
         <DigitalTwin light={plantStatus.light} />
         <span onClick={onWateringHandler} className="title">
-          모든 환경이 최상이예요!
+          {plantStatus.waterSupply &&
+          getDateDiff(plantStatus.waterSupply.join("-")) > 1
+            ? "물을 주셔야 할 것 같아요!"
+            : " 모든 환경이 최상이예요!"}
         </span>
         <div className="simpleGraph-container">
           <SimpleGraph
