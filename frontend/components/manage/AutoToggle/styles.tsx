@@ -46,5 +46,6 @@ export const Wrapper = styled.div<Props>`
     color: ${props => props.theme.color.mainGreen};
     transition: all 0.5s ease-in-out;
     /* text-align: center; */
+    width: 200px
   }
 `;

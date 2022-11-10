@@ -40,7 +40,7 @@ class DdokbunApplicationTests {
 				.title("손광진 테스트")
 				.build();
 		
-		fcmService.sendMessage(fcmMessageDto);
+		//fcmService.sendMessage(fcmMessageDto);
 
 	}
 

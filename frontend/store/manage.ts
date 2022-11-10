@@ -4,6 +4,8 @@ import { HYDRATE } from "next-redux-wrapper";
 const initialState = {
   plantSeq: "",
   plantNickname: "",
+  isAuto: "",
+  waterCycle: "",
 };
 
 const manageSlice = createSlice({

@@ -27,6 +27,8 @@ export const Wrapper = styled.section`
     margin-right: 10%;
   }
 
+
+
   @media screen and (${props => props.theme.tablet}) {
     display: flex;
     flex-direction: column;
