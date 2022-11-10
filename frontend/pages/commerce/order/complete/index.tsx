@@ -13,11 +13,18 @@ import { Wrapper } from "../../../../styles/commerce/order/complete/styles";
 
 import {
   approveKakaoPay,
+  deleteCart,
   fetchOrderInfo,
   fetchPriorityProduct,
   fetchRelatedProducts,
   setOrderInfo,
 } from "../../../../apis/commerce";
+import {
+  ListArray,
+  ListObjectItem,
+} from "../../../../types/commerce/list.interface";
+import { deleteCartList } from "../../../../store/commerce";
+import { useDispatch } from "react-redux";
 
 export const getServerSideProps: GetServerSideProps = async ({
   query,
@@ -39,8 +46,8 @@ export const getServerSideProps: GetServerSideProps = async ({
   const pgToken = query.pg_token as string;
   const payResult = await approveKakaoPay(orderSeq as string, tid, pgToken);
 
-  // deleteCookie("tid", { req, res });
-  // deleteCookie("orderSeq", { req, res });
+  deleteCookie("tid", { req, res });
+  deleteCookie("orderSeq", { req, res });
 
   const status = await setOrderInfo(orderSeq as string);
   const data = await fetchOrderInfo(orderSeq as string, token as string);
@@ -51,7 +58,7 @@ export const getServerSideProps: GetServerSideProps = async ({
     orderSeq: data.orderSeq,
     orderUserName: data.orderUserName,
     orderAddress: data.orderAddress,
-    firstItemIdx: data.itemlist[0].itemSeq,
+    itemIdx: data.itemlist,
   };
   // 결제정보를 DB에 입력하도록 해야함
 
@@ -64,7 +71,7 @@ interface OrderProps {
   orderSeq: string;
   orderUserName: string;
   orderAddress: string;
-  firstItemIdx: string;
+  itemIdx: ListArray;
 }
 
 interface IOrder {
@@ -72,14 +79,28 @@ interface IOrder {
 }
 
 const Complete: NextPage<IOrder> = ({ payObj }) => {
+  const dispatch = useDispatch();
   const [relatedList, setRelatedList] = useState([]);
   useEffect(() => {
     const getRelatedList = async () => {
-      const data = await fetchRelatedProducts(payObj.firstItemIdx);
+      const data = await fetchRelatedProducts(
+        String(payObj.itemIdx[0].itemSeq),
+      );
       setRelatedList(data.content);
     };
+
+    payObj.itemIdx.reduce((prev, item) => {
+      return prev.then(async () => {
+        const data = await deleteCart(item.itemSeq);
+        dispatch(deleteCartList(item.itemSeq));
+      });
+    }, Promise.resolve());
+
+    console.log(payObj.itemIdx);
+
     getRelatedList();
   }, []);
+  console.log(payObj.itemIdx[0].itemSeq);
 
   return (
     <Wrapper>

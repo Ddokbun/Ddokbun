@@ -85,7 +85,7 @@ export const fetchProductDetail = async (id: string) => {
  * @returns
  */
 
-export const putCart = async (id: number, dispatch: AppDispatch) => {
+export const putCart = async (id: number) => {
   const data = { itemSeq: id };
   const url = `cart`;
 
@@ -96,9 +96,8 @@ export const putCart = async (id: number, dispatch: AppDispatch) => {
       data,
     });
     alert("id를 장바구니에 넣었습니다");
-    console.log(res);
 
-    return res.status;
+    return res.data;
   } catch (error) {
     const { response } = error as any | AxiosError;
     console.log(response);

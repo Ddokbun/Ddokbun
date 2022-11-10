@@ -37,13 +37,14 @@ const Carousel: React.FC<{ items: ListObjectItem[] }> = ({ items }) => {
         spaceBetween={30}
         className="mySwiper"
       >
-        {items.map(item => {
-          return (
-            <SwiperSlide key={item?.itemSeq}>
-              <ProductCard isResponsive={false} item={item} />
-            </SwiperSlide>
-          );
-        })}
+        {items &&
+          items.map(item => {
+            return (
+              <SwiperSlide key={item?.itemSeq}>
+                <ProductCard isResponsive={false} item={item} />
+              </SwiperSlide>
+            );
+          })}
       </Swiper>
     </Wrapper>
   );

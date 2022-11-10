@@ -15,7 +15,7 @@ public class MotorActionDto {
     }
 
     public static MotorActionDto of(String potSerial){
-        return new MotorActionDto(potSerial,1,50);
+        return new MotorActionDto(potSerial,1,10);
     }
 
 

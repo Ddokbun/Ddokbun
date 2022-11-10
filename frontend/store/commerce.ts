@@ -14,7 +14,7 @@ export const RelatedProductSlice = createSlice({
   name: "reatedProducts",
   initialState: [],
   reducers: {
-    setRelatedItemList: (state, action: any) => {
+    setRelatedItemList: (state, action) => {
       return action.payload;
     },
   },
@@ -25,25 +25,29 @@ export const RelatedProductSlice = createSlice({
  */
 export const CartListSlice = createSlice({
   name: "CartList",
-  initialState: [],
+  initialState: [] as ListObjectItem[],
   reducers: {
-    setAllCartLists: (state, action: any) => {
+    setAllCartLists: (state, action) => {
+      console.log("wht", action.payload);
+
       return action.payload;
     },
 
-    setCartLists: (state: any, action: any) => {},
+    setCartLists: (state, action) => {
+      return [...state, action.payload];
+    },
 
-    deleteCartList: (state: any, action: any) => {
+    deleteCartList: (state, action) => {
       const temp = current(state).map((item: ListObjectItem) => {
         if (item && item.itemSeq !== parseInt(action.payload)) {
           return item;
         }
       });
       console.log(temp);
-      return temp;
+      return temp as ListObjectItem[];
     },
 
-    putCartItem: (state: any, action: any) => {
+    putCartItem: (state, action) => {
       const temp = current(state).map((item: ListObjectItem) => {
         if (item.itemSeq === parseInt(action.payload.itemSeq)) {
           return {
@@ -52,6 +56,7 @@ export const CartListSlice = createSlice({
           };
         } else return item;
       });
+      console.log(temp);
 
       return temp;
     },
