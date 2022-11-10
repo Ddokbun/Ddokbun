@@ -1,5 +1,7 @@
 package com.harryporter.ddokbun.schedule.batch;
 
+import com.harryporter.ddokbun.domain.alarm.dto.AlarmMessageDto;
+import com.harryporter.ddokbun.domain.alarm.service.AlarmService;
 import com.harryporter.ddokbun.domain.plant.dto.MotorActionDto;
 import com.harryporter.ddokbun.domain.plant.entity.Pot;
 import com.harryporter.ddokbun.domain.plant.entity.WaterApply;
@@ -33,15 +35,17 @@ public class AutoWaterApplyBatch {
 
 
     @Autowired
-    public JobBuilderFactory jobBuilderFactory;
-    @Autowired public StepBuilderFactory stepBuilderFactory;
+    private JobBuilderFactory jobBuilderFactory;
+    @Autowired private StepBuilderFactory stepBuilderFactory;
     //엔티티 매니저 멀티쓰레드 해결해주는 랩퍼
-    @Autowired public EntityManagerFactory entityManagerFactory;
+    @Autowired private EntityManagerFactory entityManagerFactory;
 
     @Autowired
-    public WaterApplyUtil waterApplyUtil;
+    private WaterApplyUtil waterApplyUtil;
     @Autowired
-    public WaterApplyRepository waterApplyRepository;
+    private WaterApplyRepository waterApplyRepository;
+    @Autowired
+    private AlarmService alarmService;
 
 
 
@@ -49,7 +53,7 @@ public class AutoWaterApplyBatch {
     public Job AutoWaterApplyJob() throws Exception {
 
         Job exampleJob = jobBuilderFactory.get("AutoWaterApplyJob")
-                .start(Step())
+                .start(AutoWaterApplyStep())
                 .build();
 
         return exampleJob;
@@ -58,15 +62,15 @@ public class AutoWaterApplyBatch {
 
     @Bean
     @JobScope
-    public Step Step() throws Exception {
-        return stepBuilderFactory.get("Step")
+    public Step AutoWaterApplyStep() throws Exception {
+        return stepBuilderFactory.get("AutoWaterApplyStep")
                 .<Pot,Pot>chunk(10)
                 .reader(reader(null))
                 .processor(processor(null))
                 .writer(writer())
                 .build();
     }
-    @Bean
+    @Bean("reader1")
     @StepScope
     public JpaPagingItemReader<Pot> reader(@Value("#{jobParameters[date]}")  String date) throws Exception {
 
@@ -77,14 +81,14 @@ public class AutoWaterApplyBatch {
         //읽어오븐 갯수는 커밋 갯수인 청크사이즈랑 동일하게 한다.
         return new JpaPagingItemReaderBuilder<Pot>()
                 .pageSize(10)
-                .queryString("SELECT p FROM Pot p WHERE p.isAuto = 'Y' AND p.waterSupply  < :now ") //우선적으로는 자동설정된 화분들 AND 물준 날이 오늘 미만인
+                .queryString("SELECT p FROM Pot p INNER JOIN FETCH p.user WHERE p.isAuto = 'Y' AND p.waterSupply  < :now AND p.waterPeriod != 0") //우선적으로는 자동설정된 화분들 AND 물준 날이 오늘 미만인
                 .parameterValues(parameterValues)
                 .entityManagerFactory(entityManagerFactory)
-                .name("JpaPagingItemReader")
+                .name("AutoPotReader")
                 .build();
     }
 
-    @Bean
+    @Bean("processor1")
     @StepScope
     public ItemProcessor<Pot, Pot> processor(@Value("#{jobParameters[date]}")  String date){
 
@@ -92,13 +96,11 @@ public class AutoWaterApplyBatch {
             @Override
             public Pot process(Pot pot) throws Exception {
                 //자동 설정으로 된 화분들 프로세싱
-
                 LocalDate localDate = pot.getWaterSupply();
-                //int period = pot.getWaterPeriod(); 물주기 설정이 아직 없음
 
-                int period = 7;
+                int period = pot.getWaterPeriod();
 
-                if(localDate.plusDays(period) == LocalDate.parse(date)){
+                if(!localDate.plusDays(period).isAfter(LocalDate.parse(date))){
                     //물주기 + 물 마지막으로 줫던 일 == 현재 라면 물을 줘야함
                     waterApplyUtil.sendMotorAction(MotorActionDto.of(pot.getPotSerial()), new ListenableFutureCallback() {
                         @Override
@@ -107,23 +109,24 @@ public class AutoWaterApplyBatch {
                             log.info("{} 화분 물 주기 메세지 발송", pot.getPotSerial());
                             waterApplyRepository.save(waterApply);
                             pot.potWaterApllyChange(LocalDate.now());
+                            String title = String.format("자동 물주기") ;
+                            String body = String.format("{}님,{} 화분에 물이 공급되었습니다.",pot.getUser().getUserNickname(),pot.getPlantNickname());
+                            alarmService.sendAlarmToUser(new AlarmMessageDto(title,body), pot.getUser().getUserSeq());
                         }
 
                         @Override
                         public void onFailure(Throwable ex) {
-                            log.info("{} :: {} : {}",pot.getPotSerial(),ex.getMessage(),ex.getCause().toString());
+                            log.info("화분 물 주기 실패 :: {} :: {} : {}",pot.getPotSerial(),ex.getMessage(),ex.getCause().toString());
                         }
 
                     });
                 }
-
-
                 return pot;
             }
         };
     }
 
-    @Bean
+    @Bean("writer1")
     @StepScope
     public JpaItemWriter<Pot> writer(){
         return new JpaItemWriterBuilder<Pot>()

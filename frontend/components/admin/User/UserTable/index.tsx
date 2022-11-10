@@ -2,7 +2,17 @@ import { useEffect, useState } from "react";
 import { Wrapper } from "./styles";
 import UserList from "./UserList";
 
-const UserTable = ({ data }) => {
+export interface OrderArray {
+  index: number;
+  item: string[];
+  userSeq: number;
+  userNickname: string;
+  userEmail: string;
+  userRole: string;
+  createdTime: string;
+}
+
+const UserTable: React.FC<{ data: OrderArray[] }> = ({ data }) => {
   return (
     <Wrapper>
       <>

@@ -16,6 +16,7 @@ spring:
       max-request-size: 50MB
   config:
     import:
+      - 'classpath:application-fcm.yml'
       - 'classpath:application-aws.yml'
   profiles:
     default: local
