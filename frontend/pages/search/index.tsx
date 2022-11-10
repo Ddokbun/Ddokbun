@@ -12,7 +12,6 @@ import { SearchInput } from "../../common/Input";
 export const getStaticProps: GetStaticProps = async context => {
   const data = await fetchTodayPlant();
   const plants = await fetchAllPlantsList();
-  console.log(data);
   return {
     props: {
       data,
