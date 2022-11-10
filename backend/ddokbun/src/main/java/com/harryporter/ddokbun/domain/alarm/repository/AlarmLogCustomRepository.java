@@ -34,7 +34,10 @@ public class AlarmLogCustomRepository {
                         alarmLog.body.as("body"),
                         alarmLog.time.as("time")
                         ))
-                .where(builder).fetch();
+                .where(builder)
+                .orderBy(alarmLog.alarmLogSeq.desc())
+                .limit(10L)
+                .fetch();
         return alarmLogResponseList;
 
     }

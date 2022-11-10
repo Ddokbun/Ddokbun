@@ -38,7 +38,7 @@ public class AlarmController {
     @ApiOperation(value = "자신의 알람 내역 가져오기")
     public ResponseEntity<?> getMyAlarmHisory(@RequestParam(required = false) Long lastSeq,@ApiIgnore @AuthenticationPrincipal UserDto principal){
 
-        List<AlarmLogResponse> alarmLogResponseList =  alarmService.getAlarmLogsByUserSeq(principal.getUserSeq(),lastSeq);
+        List<AlarmLogResponse> alarmLogResponseList =  alarmService.getAlarmLogsByUserSeq(lastSeq,principal.getUserSeq());
 
 
         ResponseFrame<?> res = ResponseFrame.ofOKResponse("자신의 알람 내역을 반환합니다.",alarmLogResponseList);
