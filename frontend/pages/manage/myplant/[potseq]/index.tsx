@@ -2,16 +2,16 @@ import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import {
-  changeWateringStatus,
   fetchCurrentStatus,
   watering,
 } from "../../../../apis/manage";
 import SimpleGraph from "../../../../common/Graph/SimpleGraph";
-import Modal from "../../../../common/Modal";
 import WeekPicker from "../../../../components/manage/add/WeekPicker";
 import DigitalTwin from "../../../../components/manage/DigitalTwin";
 import PlantStatus from "../../../../components/manage/PlantStatus";
 import { Wrapper } from "../../../../styles/manage/[posteq]/styles";
+import { useDispatch } from "react-redux";
+import { manageActions } from "../../../../store/manage";
 
 export interface LogsType {
   [name: string]: string;
@@ -37,7 +37,7 @@ const PlantCare: NextPage = () => {
   };
 
   const { potseq } = useRouter().query;
-  const [modalOpen, setModalOpen] = useState(false);
+
   const [plantStatus, setPlantStatus] = useState({
     growHumid: "",
     humidity: 0,
@@ -58,39 +58,7 @@ const PlantCare: NextPage = () => {
       alert("물 주기가 완료되었어요");
     }
   };
-
-  const changeWatering = async () => {
-    if (typeof potseq === "string") {
-      const res = await changeWateringStatus(potseq, plantStatus.waterCycle);
-    }
-  };
-
-  const changeWaterCycle = event => {
-    // setPlantStatus(prev => {
-    //   ...prev,
-    //   ...prev[event.target]
-    // })
-  };
-
-  const modalContents = () => {
-    return (
-      <>
-        <input
-          type="number"
-          value={plantStatus.waterCycle}
-          onChange={changeWaterCycle}
-        />
-      </>
-    );
-  };
-
-  const openModal = () => {
-    setModalOpen(true);
-  };
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
+  const dispatch = useDispatch();
   useEffect(() => {
     if (!potseq) {
       return;
@@ -98,23 +66,14 @@ const PlantCare: NextPage = () => {
 
     const getInitialData = async () => {
       const res = await fetchCurrentStatus(potseq);
+      console.log(res);
       setPlantStatus(res);
+      dispatch(manageActions.setPlantInfo(res));
     };
     getInitialData();
   }, [potseq]);
-  const [showModal, setShowModal] = useState(true);
   return (
     <Wrapper>
-      <button onClick={openModal}>Open Modal</button>
-      {showModal && (
-        <Modal
-          onClose={closeModal}
-          title="물주기 설정"
-          onSubmitHandler={changeWatering}
-        >
-          {modalContents()}
-        </Modal>
-      )}
       <section className="left-section">
         <DigitalTwin light={plantStatus.light} />
         <span onClick={onWateringHandler} className="title">

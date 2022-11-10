@@ -71,6 +71,14 @@ export const Wrapper = styled.div`
     /* 팝업이 열릴때 스르륵 열리는 효과 */
     animation: modal-bg-show 0.3s;
   }
+  input {
+    text-align: center;
+    border-width: 1px;
+    width: fit-content;
+    font-size: 16px;
+    width: 20%;
+    font-family: ${props => props.theme.font.TextFont2};
+  }
   @keyframes modal-show {
     from {
       opacity: 0;

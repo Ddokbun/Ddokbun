@@ -125,12 +125,11 @@ export const SubmitButton: React.FC<{
 
 export const CancelButton: React.FC<{
   children: string;
-  onClick: () => void
+  onClick: () => void;
 }> = ({ children, onClick }) => {
   const router = useRouter();
   const onClickHandler = (event: React.MouseEvent<HTMLElement>) => {
-    // router.back();
-    onclick()
+    onClick();
   };
 
   return (
