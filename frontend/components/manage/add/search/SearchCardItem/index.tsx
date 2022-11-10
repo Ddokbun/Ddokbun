@@ -1,7 +1,8 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
+import { fetchItemSeq } from "../../../../../apis/search";
 import { Plants } from "../../../../../pages/manage/add/search";
 import { manageActions } from "../../../../../store/manage";
 import { EleVar } from "../../../../../styles/animations/animation";
@@ -20,13 +21,24 @@ const SearchCardItem: React.FC<Props> = ({
 }) => {
   const dispatch = useDispatch();
   const router = useRouter();
+  const [item, setItem] = useState();
+
+  useEffect(() => {
+    async function fetchSeqNum() {
+      const data = await fetchItemSeq(plantSeq);
+      setItem(data);
+    }
+    fetchSeqNum();
+  }, []);
+
   const onFetchPlantSeqHandler = () => {
     if (router.query.path === "search") {
-      // 여기에 push
-      console.log(router.query);
 
+      router.push(`/commerce/product/${item}`);
+      console.log(router.query);
       return;
     }
+    console.log(router.query);
 
     dispatch(manageActions.setPlantInfo({ plantSeq, plantName }));
     router.back();

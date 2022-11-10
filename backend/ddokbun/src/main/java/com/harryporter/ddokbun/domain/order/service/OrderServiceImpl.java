@@ -13,6 +13,7 @@ import com.harryporter.ddokbun.domain.order.repository.OrderRepository;
 import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
 import com.harryporter.ddokbun.domain.product.dto.ItemDto;
 import com.harryporter.ddokbun.domain.product.dto.response.ItemDetailDto;
+import com.harryporter.ddokbun.domain.product.dto.response.ItemSimpleDto;
 import com.harryporter.ddokbun.domain.product.entity.Item;
 import com.harryporter.ddokbun.domain.product.repository.ItemRepository;
 import com.harryporter.ddokbun.domain.product.service.ItemService;
@@ -43,17 +44,34 @@ public class OrderServiceImpl implements OrderService{
     private final ItemService itemService;
 
     @Override
-    public List<OrderListItemDto> getOrderListByUserSeq(Long userSeq) {
+    public List<OrderDto> getOrderListByUserSeq(Long userSeq,String status) {
 
         User user =  userRepository.findById(userSeq).orElseThrow(
-                ()-> new GeneralException(ErrorCode.NOT_FOUND)
-        );
+                ()-> new GeneralException(ErrorCode.NOT_FOUND));
+        List<Order> orders=null;
+        if(status==null)
+            orders = orderRepository.findByUser(user);
+        else {
+            OrderStatus orderStatus=null;
+            switch (status){
+                case "ready" : orderStatus=OrderStatus.READY; break;
+                case "paycomplete" : orderStatus=(OrderStatus.PAYCOMPLETE); break;
+                case "delivery" : orderStatus=(OrderStatus.DELIVERY); break;
+                case "complete" : orderStatus=(OrderStatus.COMPLETE); break;
+            }
+            orders = orderRepository.findByUserAndOrderStatus(user, orderStatus);
 
-        List<Order> orders = orderRepository.findByUser(user);
+        }
 
-        List<OrderListItemDto> orderListItemDtoList
-                = orders.stream().map(order->(OrderListItemDto.of(order))).collect(Collectors.toList());
-        return orderListItemDtoList;
+        List<OrderDto> orderList = new ArrayList<>();
+        for(int i=0;i<orders.size();i++){
+            OrderDto order = OrderDto.of(orders.get(i));
+            List<ItemSimpleDto> itemList = Arrays.asList(orders.get(i).getItemSeqList().split(",")).stream().map(
+                    item -> ItemSimpleDto.of(itemRepository.findById(Long.parseLong(item)).orElse(null))).collect(Collectors.toList());
+            order.setItemlist(itemList);
+            orderList.add(order);
+        }
+        return orderList;
 
     }
 
@@ -83,8 +101,8 @@ public class OrderServiceImpl implements OrderService{
         String items=order.getItemSeqList();
         List<String> itemSeqList = Arrays.asList(items.split(","));
 
-        List<ItemDto> itemList = itemSeqList.stream().map(
-                item -> ItemDto.of(itemRepository.findById(Long.parseLong(item)).orElse(null))).collect(Collectors.toList());
+        List<ItemSimpleDto> itemList = itemSeqList.stream().map(
+                item -> ItemSimpleDto.of(itemRepository.findById(Long.parseLong(item)).orElse(null))).collect(Collectors.toList());
 
 
         //주문으로 부터 아이템을 가져온다.

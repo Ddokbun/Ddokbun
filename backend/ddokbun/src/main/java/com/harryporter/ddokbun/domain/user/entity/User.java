@@ -5,6 +5,7 @@ import com.harryporter.ddokbun.domain.order.entity.Order;
 import com.harryporter.ddokbun.domain.plant.entity.Pot;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
@@ -29,6 +30,9 @@ public class User {
 
     @Column(name="user_nickname",nullable = false, unique = true,columnDefinition = "varchar(50)")
     private String userNickname;
+
+    @Column(name="alarm_token",nullable = true)
+    private String alarmToken;
 
     @Column(name="user_role",nullable = false,columnDefinition = "varchar(20)")
     private String userRole;
@@ -57,5 +61,8 @@ public class User {
     }
     public void changeUserRole(String userRole){
         this.userRole = userRole;
+    }
+    public void changeAlarmToken(String alarmToken){
+        this.alarmToken=alarmToken;
     }
 }

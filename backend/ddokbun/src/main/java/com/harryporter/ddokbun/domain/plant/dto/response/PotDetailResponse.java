@@ -20,22 +20,32 @@ public class PotDetailResponse {
     private Double waterHeight;
     private String isAuto;
 
+    private Integer waterPeriod;
     private LocalDate waterSupply;
+    private Long plantSeq;
 
     public static PotDetailResponse of(Pot pot){
+
         PotDetailResponse temp = new PotDetailResponse();
-        temp.maxTemperature = pot.getPlant().getMaxTemperature();
-        temp.minTemperature = pot.getPlant().getMinTemperature();
-        temp.growHumid = pot.getPlant().getGrowthHumid();
-        temp.lightType = pot.getPlant().getLightType();
-        temp.waterCycle = pot.getPlant().getWaterCycle();
+
         temp.temperature = pot.getTemperature();
         temp.humidity = pot.getHumidity();
         temp.soilHumidity = pot.getSoilHumidity();
         temp.light = pot.getLight();
         temp.waterHeight = pot.getWaterHeight();
         temp.isAuto = pot.getIsAuto();
+        temp.waterPeriod = pot.getWaterPeriod();
         temp.waterSupply = pot.getWaterSupply();
+
+        if(pot.getPlant() != null){
+            temp.plantSeq = pot.getPlant().getPlantSeq();
+            temp.maxTemperature = pot.getPlant().getMaxTemperature();
+            temp.minTemperature = pot.getPlant().getMinTemperature();
+            temp.growHumid = pot.getPlant().getGrowthHumid();
+            temp.lightType = pot.getPlant().getLightType();
+            temp.waterCycle = pot.getPlant().getWaterCycle();
+        }
         return temp;
+
     }
 }

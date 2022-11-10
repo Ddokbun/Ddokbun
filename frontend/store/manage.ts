@@ -5,7 +5,7 @@ const initialState = {
   plantSeq: "",
   plantNickname: "",
   isAuto: "",
-  waterCycle: '',
+  waterCycle: "",
 };
 
 const manageSlice = createSlice({
