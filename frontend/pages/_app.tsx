@@ -82,7 +82,7 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
   }, []);
 
   const { store, props } = wrapper.useWrappedStore(rest);
-  // const persistor = persistStore(store);
+  const persistor = persistStore(store);
   const router = useRouter();
   const isOnboarding = router.route.includes("welcome");
   const isAdmin = router.route.includes("admin");

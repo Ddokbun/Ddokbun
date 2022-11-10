@@ -36,7 +36,6 @@ const CartList: React.FC<Item> = ({ setOrderTotal }) => {
     };
     getCartList();
   }, []);
-  console.log(selector);
 
   return (
     <>

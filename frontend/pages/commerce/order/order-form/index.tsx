@@ -39,16 +39,17 @@ const OrderForm: NextPage = () => {
   const orderItems = useSelector((state: StoreState) => state.cartList);
 
   useEffect(() => {
-    if (Object.keys(orderItems).length > 1) {
-      setItemName(
-        orderItems[0].itemName + ` 외 ${Object.keys(orderItems).length - 1}개`,
-      );
+    const NewOrder = orderItems.filter(item => {
+      if (item) return item;
+    });
+    if (NewOrder.length > 1) {
+      setItemName(orderItems[0]?.itemName + ` 외 ${NewOrder.length - 1}개`);
     } else {
-      setItemName(orderItems[0].itemName);
+      setItemName(NewOrder[0].itemName);
     }
 
-    Object.keys(orderItems).map((idx: string) => {
-      setItemSeq(val => val + `${orderItems[parseInt(idx)].itemSeq},`);
+    NewOrder.map(item => {
+      setItemSeq(val => val + `${item.itemSeq},`);
     });
 
     console.log(item_seq);
@@ -86,47 +87,47 @@ const OrderForm: NextPage = () => {
   };
   /** 폼 유효성 검사 */
   const onSubmitHandler = () => {
-    // setFlag(0);
-    // if (name) {
-    //   setNameError("");
-    // } else {
-    //   setNameError("이름을 입력해주세요");
-    //   setFlag(1);
-    //   alert("주문 정보를 확인해주세요");
-    //   return;
-    // }
+    setFlag(0);
+    if (name) {
+      setNameError("");
+    } else {
+      setNameError("이름을 입력해주세요");
+      setFlag(1);
+      alert("주문 정보를 확인해주세요");
+      return;
+    }
 
-    // if (phoneHead && phoneBody && phoneTail) {
-    //   const fullPhone = phoneHead + phoneBody + phoneTail;
-    //   console.log(fullPhone);
+    if (phoneHead && phoneBody && phoneTail) {
+      const fullPhone = phoneHead + phoneBody + phoneTail;
+      console.log(fullPhone);
 
-    //   setPhoneError("");
-    // } else {
-    //   setPhoneError("전화번호를 입력해주세요");
-    //   setFlag(1);
-    //   alert("주문 정보를 확인해주세요");
-    //   return;
-    // }
+      setPhoneError("");
+    } else {
+      setPhoneError("전화번호를 입력해주세요");
+      setFlag(1);
+      alert("주문 정보를 확인해주세요");
+      return;
+    }
 
-    // if (mailHead && mailTail) {
-    //   const fullEmail = mailHead + "@" + mailTail;
-    //   console.log(fullEmail);
-    //   setMailError("");
-    // } else {
-    //   setMailError("올바른 이메일을 입력해주세요");
-    //   setFlag(1);
-    //   alert("주문 정보를 확인해주세요");
-    //   return;
-    // }
+    if (mailHead && mailTail) {
+      const fullEmail = mailHead + "@" + mailTail;
+      console.log(fullEmail);
+      setMailError("");
+    } else {
+      setMailError("올바른 이메일을 입력해주세요");
+      setFlag(1);
+      alert("주문 정보를 확인해주세요");
+      return;
+    }
 
-    // if (post && detailPost && additionalPost) {
-    //   setPostError("");
-    // } else {
-    //   setPostError("올바른 주소를 입력해주세요");
-    //   setFlag(1);
-    //   alert("주문 정보를 확인해주세요");
-    //   return;
-    // }
+    if (post && detailPost && additionalPost) {
+      setPostError("");
+    } else {
+      setPostError("올바른 주소를 입력해주세요");
+      setFlag(1);
+      alert("주문 정보를 확인해주세요");
+      return;
+    }
 
     if (!payType) {
       alert("결제 수단을 선택해주세요");

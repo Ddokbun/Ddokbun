@@ -14,7 +14,7 @@ import {
   PURGE,
   REGISTER,
 } from "redux-persist";
-import storageSession from "redux-persist/lib/storage/session"; //sessionstorage나 localstorage 중에 선택
+import localstorage from "redux-persist/lib/storage"; //sessionstorage나 localstorage 중에 선택
 
 import {
   ListArray,
@@ -45,7 +45,7 @@ const rootReducers = (
     case HYDRATE:
       return {
         ...state,
-        ...action.payload,
+        relatedProductSlice: action.payload.relatedProductSlice.data,
       };
 
     default:
@@ -55,7 +55,8 @@ const rootReducers = (
 
 const persistConfig = {
   key: "root",
-  storage: storageSession,
+  storage: localstorage,
+  whitelist: ["cartList"],
 };
 
 const persistedReducer = persistReducer<any>(persistConfig, rootReducers);
