@@ -33,6 +33,7 @@ const SearchCardItem: React.FC<Props> = ({
 
   const onFetchPlantSeqHandler = () => {
     if (router.query.path === "search") {
+
       router.push(`/commerce/product/${item}`);
       console.log(router.query);
       return;

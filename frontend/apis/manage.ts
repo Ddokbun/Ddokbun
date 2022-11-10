@@ -126,3 +126,31 @@ export const fetchLogs = async (
     console.log(err.response);
   }
 };
+
+export const watering = async (potSeq: string | string[]) => {
+  const url = `pot/${potSeq}/water`;
+
+  try {
+    const res = await AXIOS({
+      method: "post",
+      url,
+    });
+
+    return res;
+  } catch (error) {}
+};
+
+export const changeWateringStatus = async (
+  potSeq: string,
+  waterPeriod: number,
+) => {
+  const url = `pot/${potSeq}/water/${waterPeriod}`;
+  try {
+    const res = await AXIOS({
+      method: "put",
+      url,
+    });
+
+    console.log(res);
+  } catch (error) {}
+};
