@@ -1,5 +1,6 @@
 package com.harryporter.ddokbun.domain.product.repository;
 
+import com.harryporter.ddokbun.domain.plant.entity.Plant;
 import com.harryporter.ddokbun.domain.product.entity.Item;
 import com.harryporter.ddokbun.domain.product.entity.TodayItem;
 import org.springframework.data.domain.Page;
@@ -14,6 +15,7 @@ import org.springframework.data.web.PageableDefault;
 import springfox.documentation.annotations.ApiIgnore;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface ItemRepository extends JpaRepository<Item,Long> {
 
@@ -39,4 +41,5 @@ public interface ItemRepository extends JpaRepository<Item,Long> {
 
     List<Item> findAllBy(Pageable pageable);
 
+    Optional<Item> findByPlant(Plant plant);
 }
