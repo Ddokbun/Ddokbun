@@ -59,6 +59,7 @@ const Camera: React.FC<{ photo: any; video: any }> = () => {
 
   return (
     <div className="container">
+      <input type="file" />
       <h1>사진을 촬영해주세요</h1>
       <video className="container" ref={videoRef}></video>
       <button onClick={takePicture}> Take Picture</button>
