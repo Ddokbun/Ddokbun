@@ -1,8 +1,13 @@
 import { NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { fetchCurrentStatus, watering } from "../../../../apis/manage";
+import {
+  changeWateringStatus,
+  fetchCurrentStatus,
+  watering,
+} from "../../../../apis/manage";
 import SimpleGraph from "../../../../common/Graph/SimpleGraph";
+import Modal from "../../../../common/Modal";
 import WeekPicker from "../../../../components/manage/add/WeekPicker";
 import DigitalTwin from "../../../../components/manage/DigitalTwin";
 import PlantStatus from "../../../../components/manage/PlantStatus";
@@ -13,18 +18,17 @@ export interface LogsType {
 }
 
 export interface currentStatus {
+  growHumid: string;
+  humidity: number;
+  isAuto: string;
+  light: number;
+  lightType: number;
   maxTemperature: number;
   minTemperature: number;
-  growHumid: string;
-  lightType: number;
+  soilHumidity: number;
+  temperature: number;
   waterCycle: number;
-  temperature: null;
-  humidity: null;
-  soilHumidity: null;
-  light: null;
-  waterHeight: null;
-  isAuto: string;
-  waterSupply: number[];
+  waterHeight: number;
 }
 
 const PlantCare: NextPage = () => {
@@ -33,7 +37,20 @@ const PlantCare: NextPage = () => {
   };
 
   const { potseq } = useRouter().query;
-
+  const [modalOpen, setModalOpen] = useState(false);
+  const [plantStatus, setPlantStatus] = useState({
+    growHumid: "",
+    humidity: 0,
+    isAuto: "",
+    light: 0,
+    lightType: 0,
+    maxTemperature: 0,
+    minTemperature: 0,
+    soilHumidity: 0,
+    temperature: 0,
+    waterCycle: 0,
+    waterHeight: 0,
+  });
   const onWateringHandler = async () => {
     const res = await watering(potseq!);
 
@@ -42,25 +59,62 @@ const PlantCare: NextPage = () => {
     }
   };
 
-  const [plantStatus, setPlantStatus] = useState({
-    light: 1,
-  });
+  const changeWatering = async () => {
+    if (typeof potseq === "string") {
+      const res = await changeWateringStatus(potseq, plantStatus.waterCycle);
+    }
+  };
 
-  // useEffect(() => {
-  //   if (!potseq) {
-  //     return;
-  //   }
+  const changeWaterCycle = event => {
+    // setPlantStatus(prev => {
+    //   ...prev,
+    //   ...prev[event.target]
+    // })
+  };
 
-  //   const getInitialData = async () => {
-  //     const res = await fetchCurrentStatus(potseq);
-  //     setPlantStatus(res.light);
-  //     console.log(res);
-  //   };
-  //   getInitialData();
-  // }, [potseq]);
+  const modalContents = () => {
+    return (
+      <>
+        <input
+          type="number"
+          value={plantStatus.waterCycle}
+          onChange={changeWaterCycle}
+        />
+      </>
+    );
+  };
 
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
+  useEffect(() => {
+    if (!potseq) {
+      return;
+    }
+
+    const getInitialData = async () => {
+      const res = await fetchCurrentStatus(potseq);
+      setPlantStatus(res);
+    };
+    getInitialData();
+  }, [potseq]);
+  const [showModal, setShowModal] = useState(true);
   return (
     <Wrapper>
+      <button onClick={openModal}>Open Modal</button>
+      {showModal && (
+        <Modal
+          onClose={closeModal}
+          title="물주기 설정"
+          onSubmitHandler={changeWatering}
+        >
+          {modalContents()}
+        </Modal>
+      )}
       <section className="left-section">
         <DigitalTwin light={plantStatus.light} />
         <span onClick={onWateringHandler} className="title">
