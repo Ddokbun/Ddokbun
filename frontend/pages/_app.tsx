@@ -92,7 +92,7 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
       <Head>
         <meta content="yes" name="apple-mobile-web-app-capable" />
         <meta
-          content="minimum-scale=1.0, width=device-width, maximum-scale=1, user-scalable=no"
+          content="minimum-scale=1.0, width=device-width, maximum-scale=1, use r-scalable=no"
           name="viewport"
         />
       </Head>

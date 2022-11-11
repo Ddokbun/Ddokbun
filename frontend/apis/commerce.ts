@@ -437,7 +437,7 @@ export interface DeliveriesType {
 }
 
 export const fetchDeliveries = async () => {
-  const url = `order`;
+  const url = `order/list`;
   try {
     const res = await AXIOS({
       url,
