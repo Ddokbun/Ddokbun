@@ -21,7 +21,9 @@ const Camera: React.FC<{ photo: any; video: any }> = () => {
     console.log("사용가능한 장치", devices);
     navigator.mediaDevices
       .getUserMedia({
-        video: true,
+        video: {
+          facingMode: "environment",
+        },
       })
       .then(stream => {
         let video = videoRef.current;
@@ -29,7 +31,8 @@ const Camera: React.FC<{ photo: any; video: any }> = () => {
         video.play();
       })
       .catch(error => {
-        console.log(error);
+        alert("장치에 접근하지 못하고 있습니다");
+        console.log("절대안된다잉", error);
       });
   };
 
