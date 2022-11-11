@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { Wrapper } from "./styles";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 import { SearchInput } from "../../../common/Input";
 import { PlantListArray } from "../../../types/search/searchbar.interface";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCamera, faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import Link from "next/link";
 
 const SearchBar: React.FC<{ plants: PlantListArray }> = ({ plants }) => {
   const [searchInput, setSearchInput] = useState("");
@@ -33,7 +34,13 @@ const SearchBar: React.FC<{ plants: PlantListArray }> = ({ plants }) => {
           value={searchInput}
           path={"search"}
         ></SearchInput>
+        <Link href={"search/camera"}>
+          <div className="camera">
+            <FontAwesomeIcon icon={faCamera} size="2x"></FontAwesomeIcon>
+          </div>
+        </Link>
       </div>
+      <div></div>
     </Wrapper>
   );
 };

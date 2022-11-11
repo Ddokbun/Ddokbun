@@ -20,6 +20,9 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { putCart } from "../../apis/commerce";
 import { useDispatch } from "react-redux";
+import { setAllCartLists, setCartLists } from "../../store/commerce";
+import { useSelector } from "react-redux";
+import { StoreState } from "../../store";
 
 export const TextBtn: React.FC<{
   children: string;
@@ -67,12 +70,18 @@ export const BuyTextButton: React.FC<{ id: number }> = ({ id }) => {
 export const BuyButton: React.FC<{ id: number }> = ({ id }) => {
   const route = useRouter();
   const dispatch = useDispatch();
-  const putBuyNowHandler = (id: number) => {
-    putCart(id, dispatch);
-    route.push("/commerce/cart");
+  const putCartHandler = async (id: number) => {
+    const res = await putCart(id);
+    console.log(res);
+
+    if (res.code === 200) {
+      console.log("here");
+      dispatch(setCartLists(res.content));
+      route.push("/commerce/cart");
+    }
   };
   return (
-    <PriceButtonStyle onClick={() => putBuyNowHandler(id)}>
+    <PriceButtonStyle onClick={() => putCartHandler(id)}>
       <h3>Buy Now</h3>
     </PriceButtonStyle>
   );
@@ -88,7 +97,12 @@ export const BuyListButton: React.FC<{ id: number }> = ({ id }) => {
   const dispatch = useDispatch();
   // const baguni = useSelector((state: StoreState) => state);
   const putCartHandler = async (id: number) => {
-    const res = await putCart(id, dispatch);
+    const res = await putCart(id);
+
+    if (res.code === 200) {
+      console.log("here");
+      dispatch(setCartLists(res.content));
+    }
   };
   return (
     <BuyListButtonStyle onClick={() => putCartHandler(id)}>

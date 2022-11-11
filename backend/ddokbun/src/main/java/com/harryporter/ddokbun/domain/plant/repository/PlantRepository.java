@@ -16,4 +16,6 @@ public interface PlantRepository extends JpaRepository<Plant, Long> {
     @Query("SELECT t.imagePath FROM Plant t WHERE t.plantSeq=:plantSeq")
     String findImagePathByPlantSeq(@Param("plantSeq") long plantSeq);
     Plant findByPlantNameOrPlantNeName(String plantName, String plantNeName);
+
+    Plant findByPlantName(String plantName);
 }

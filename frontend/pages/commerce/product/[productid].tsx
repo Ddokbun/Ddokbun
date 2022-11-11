@@ -15,6 +15,7 @@ import RelatedProducts from "../../../components/commerce/products/[product-id]/
 import { wrapper } from "../../../store";
 import { setRelatedItemList } from "../../../store/commerce";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 interface IParams {
   productid: number;
@@ -80,7 +81,7 @@ export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
     const { productid } = context.params as IProps;
     const data = await fetchProductDetail(productid);
     const { content } = await fetchRelatedProducts(productid);
-    store.dispatch(setRelatedItemList(content));
+    store.dispatch(setRelatedItemList({ data: content }));
 
     return {
       props: {

@@ -11,7 +11,7 @@ const SurveyBanner = () => {
         </h2>
       </div>
       <div className="button">
-        <Link href={"/commerce/servey"}>
+        <Link href={"/commerce/survey"}>
           <div className="button-wrap">바로가기</div>
         </Link>
       </div>

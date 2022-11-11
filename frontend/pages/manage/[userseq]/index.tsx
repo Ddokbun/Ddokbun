@@ -13,6 +13,8 @@ import { Wrapper } from "../../../styles/manage/styles";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
+import { useSelect } from "@react-three/drei";
+import { useSelector } from "react-redux";
 
 const DynamicCardlist = dynamic(
   () => import("../../../components/manage/CardList"),
@@ -31,6 +33,7 @@ export interface PlantListType {
 const Manage: NextPage = () => {
   const [plantsList, setPlantsList] = useState<PlantListType[]>();
   const dispatch = useDispatch();
+  const selecor = useSelector(state => state);
   useEffect(() => {
     const getInitialData = async () => {
       const plantsListData = await fetchPlantsList();
@@ -39,11 +42,13 @@ const Manage: NextPage = () => {
 
     const getCartList = async () => {
       const data = await fetchCartList();
+      console.log(data);
       dispatch(setAllCartLists(data));
     };
 
     getCartList();
     getInitialData();
+    console.log("rere", selecor);
   }, []);
 
   return (
