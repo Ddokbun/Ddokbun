@@ -1,17 +1,27 @@
 import Image from "next/image";
-import { FC, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Wrapper } from "./styles";
 import { OrderItemTypes } from "../../../pages/mypage/[userseq]";
 import Modal from "../../../common/Modal";
 import Delivery from "../Delivery";
+import OrderDetailCardList from "../OrderDetailCardList";
 
 interface Props {
   data: OrderItemTypes;
 }
 
+export interface ItemListType {
+  itemEnName: string;
+  itemName: string;
+  itemPicture: string;
+  itemPrice: number;
+  itemSeq: number;
+}
+
 const DeliveryCard: FC<Props> = ({ data }) => {
   const orderedDate = data.orderTime.slice(0, 10);
 
+  const [orderDetailData, setOrderDetailData] = useState<ItemListType[]>();
   const [modalOpen, setModalOpen] = useState(false);
   const [modalTitle, setModalTitle] = useState("");
   const showDeliveryStatus = () => {
@@ -19,19 +29,33 @@ const DeliveryCard: FC<Props> = ({ data }) => {
     setModalOpen(true);
   };
 
+  const showOrderDetails = () => {
+    setModalTitle("상품 조회");
+    setModalOpen(true);
+  };
+
   const closeModal = () => {
     setModalOpen(false);
   };
+
+  useEffect(() => {
+    const details = data.itemlist.map(item => item);
+    setOrderDetailData(details);
+  }, []);
 
   return (
     <Wrapper>
       {modalOpen && (
         <Modal title={modalTitle} onClose={closeModal}>
-          <Delivery
-            orderReciver={data.orderReciver}
-            orderWaybillNumber={data.orderWaybillNumber}
-            orderStatus={data.orderStatus}
-          />
+          {modalTitle === "배송 조회" ? (
+            <Delivery
+              orderReciver={data.orderReciver}
+              orderWaybillNumber={data.orderWaybillNumber}
+              orderStatus={data.orderStatus}
+            />
+          ) : (
+            <OrderDetailCardList data={orderDetailData!} />
+          )}
         </Modal>
       )}
       <div>
@@ -47,7 +71,7 @@ const DeliveryCard: FC<Props> = ({ data }) => {
         <p>{orderedDate}</p>
         <div className="button-container">
           <button onClick={showDeliveryStatus}>배송조회</button>
-          <button>상세보기</button>
+          <button onClick={showOrderDetails}>상세보기</button>
         </div>
       </div>
     </Wrapper>

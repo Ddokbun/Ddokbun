@@ -110,6 +110,11 @@ export const CancelButtonStyle = styled.button`
   margin: 1%;
   width: 40%;
 
+  :hover {
+    background-color: ${props => props.theme.color.mainGreen};
+    color: white;
+  }
+
   @media screen and (${props => props.theme.mobile}) {
     width: 40%;
     height: 100%;
