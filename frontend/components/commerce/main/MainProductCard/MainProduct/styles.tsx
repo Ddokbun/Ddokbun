@@ -53,7 +53,7 @@ export const Wrapper = styled.div`
       }
     }
   }
-  @media (display-mode: standalone) and (${props => props.theme.mobile}) {
+  @media screen and (${props => props.theme.mobile}) {
     .pot-img {
       display: flex;
       justify-content: center;
