@@ -4,17 +4,9 @@ interface RTCVideoProps {
   mediaStream: MediaStream | undefined;
 }
 
-const Camera: React.FC<{ photo: any; video: any }> = () => {
-  const FACING_MODE_USER = "user";
-  const FACING_MODE_ENVIRONMENT = "environment";
-  const [facingMode, setFacingMode] = useState(FACING_MODE_USER);
-
+const Camera: React.FC = () => {
   let videoRef = useRef<HTMLVideoElement | any>(null);
   let photoRef = useRef<HTMLVideoElement | any>(null);
-
-  const videoConstraints = {
-    facingMode: FACING_MODE_USER,
-  };
 
   const getUserCamera = () => {
     const devices = navigator.mediaDevices.enumerateDevices();
@@ -31,7 +23,7 @@ const Camera: React.FC<{ photo: any; video: any }> = () => {
         video.play();
       })
       .catch(error => {
-        alert("장치에 접근하지 못하고 있습니다");
+        alert("카메라에 접근하지 못하고 있습니다");
         console.log("절대안된다잉", error);
       });
   };
@@ -55,19 +47,26 @@ const Camera: React.FC<{ photo: any; video: any }> = () => {
 
   const clearPicture = () => {
     let photo = photoRef.current;
-
     let ctx = photo.getContext("2d");
     ctx.clearRect(0, 0, photo.width, photo.height);
+  };
+  const postPicture = () => {
+    let width = 500;
+    let height = 200;
+    let photo = photoRef.current;
+    console.log("사진 보낼게요", photoRef);
   };
 
   return (
     <div className="container">
-      <input type="file" />
-      <h1>사진을 촬영해주세요</h1>
       <video className="container" ref={videoRef}></video>
       <button onClick={takePicture}> Take Picture</button>
-      <canvas className="container" ref={photoRef}></canvas>
-      <button onClick={clearPicture}> Clear Picture</button>
+      <canvas className="container" ref={photoRef} id="plz"></canvas>
+      <a href="" download="plz.png">
+        다운로드
+      </a>
+      <button onClick={clearPicture}> 다시찍기 </button>
+      <button onClick={postPicture}>사진 보내기</button>
     </div>
   );
 };
