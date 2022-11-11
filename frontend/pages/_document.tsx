@@ -4,6 +4,13 @@ import Script from "next/script";
 const Document = () => (
   <Html>
     <Head>
+      <meta name="apple-mobile-web-app-capable" content="yes" />
+      <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+      <meta name="apple-mobile-web-app-title" content="PWA App" />
+      <meta name="mobile-web-app-capable" content="yes" />
+      <link rel="apple-touch-icon" href="/icons/touch-icon-iphone.png" />
+      <link rel="shortcut icon" href="/favicon.ico" />
+
       <meta
         name="naver-site-verification"
         content="dcc1baf4f88a927d4f1b9d8e02e127e25357e300"
@@ -37,6 +44,7 @@ const Document = () => (
     <body>
       <Main />
       <NextScript />
+      <div id="modal-root"></div>
     </body>
   </Html>
 );

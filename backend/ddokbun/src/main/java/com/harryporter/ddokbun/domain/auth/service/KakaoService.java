@@ -56,7 +56,7 @@ public class KakaoService {
             MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
             body.add("grant_type","authorization_code");
             body.add("client_id","e7b3aeb0998dc77e6832174667e50b90");
-            body.add("redirect_uri","http://localhost:3000/login/kakao");
+            body.add("redirect_uri","https://ddokbun.com/login/kakao");
             body.add("client_secret","eVwrpF6JJYcPVSRthjAuuWS5yD0vU4oU");
             body.add("code",code);
 
@@ -77,7 +77,7 @@ public class KakaoService {
 
 
             // HTTP 응답 (JSON) -> 액세스 토큰 파싱
-            String responseBody = response.getBody();
+            String responseBody = response.getBody(); //"{"result" : result}"
             ObjectMapper objectMapper = new ObjectMapper();
             KakaoAccessToken kakaoOAuthToken = objectMapper.readValue(responseBody, KakaoAccessToken.class);
 

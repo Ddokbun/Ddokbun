@@ -14,29 +14,19 @@ export const Wrapper = styled.div`
     font-size: 40px;
     margin: 30px 0px 10px 0px;
   }
-  .wrap {
+  .search {
     display: flex;
-    justify-content: center;
     align-items: center;
-    .search {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 50%;
-      border: 2px solid #b9b9b9;
-      padding: 15px;
-      height: 50px;
-      border-radius: 5px;
-      color: #000000;
-      background-color: #d1d1d1;
-      box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
-    }
-    .search-term {
-      width: 100%;
-      margin-left: 10px;
-      background-color: #d1d1d1;
-      outline: none;
-    }
+    width: 60%;
+    margin: auto;
+    justify-content: center;
+  }
+  .camera {
+    margin-left: 10px;
+    padding: 13px;
+    border-radius: 10px;
+    background-color: ${props => props.theme.color.darkGreen};
+    color: ${props => props.theme.color.ivory};
   }
 
   @media screen and (${props => props.theme.mobile}) {
@@ -44,31 +34,6 @@ export const Wrapper = styled.div`
       font-family: ${props => props.theme.font.TitleFont};
       font-size: 35px;
       margin: 10px 0px 10px 0px;
-    }
-    .wrap {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      .search {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 80%;
-        border: 2px solid #b9b9b9;
-        padding: 15px;
-        height: 50px;
-        border-radius: 5px;
-        color: #000000;
-        background-color: #d1d1d1;
-        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.2);
-      }
-      .search-term {
-        width: 100%;
-        margin-left: 10px;
-        background-color: #d1d1d1;
-        outline: none;
-      }
     }
   }
 `;

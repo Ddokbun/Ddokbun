@@ -23,4 +23,13 @@ public class ResponseFrame<T> {
         return temp;
     }
 
+    public static <T> ResponseFrame<T> ofFailResponse(String message,T content){
+        ResponseFrame<T> temp = new ResponseFrame<>();
+        temp.setCode(400);
+        temp.setState(0);
+        temp.setMessage(message);
+        temp.setContent(content);
+        return temp;
+    }
+
 }

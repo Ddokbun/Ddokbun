@@ -4,6 +4,8 @@ import { BasicInput, DateInputStyle, SearchInputWrapper } from "./styles";
 import search from "../../assets/icon/search.png";
 import { useRouter } from "next/router";
 import DatePick from "../DatePick";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export const Input: React.FC<{
   type: string;
@@ -46,11 +48,12 @@ export const SearchInput: React.FC<{
   disabled: boolean;
   setSearchInput: React.Dispatch<React.SetStateAction<string>> | null;
   value: string | undefined;
-}> = ({ placeholder, disabled, setSearchInput, value }) => {
+  path?: string;
+}> = ({ placeholder, disabled, setSearchInput, value, path }) => {
   const router = useRouter();
   // const [isPending, startTransition] = useTransition();
   const onShowSearchHandler = () => {
-    router.push("/manage/add/search");
+    router.push({ pathname: "/manage/add/search", query: { path } });
   };
 
   const onInputChangeHandler: React.ChangeEventHandler<
@@ -71,8 +74,8 @@ export const SearchInput: React.FC<{
 
   return (
     <SearchInputWrapper onClick={onShowSearchHandler}>
-      <div className={"icon"}>
-        <Image src={search} alt="search-icon" />
+      <div className="icon">
+        <FontAwesomeIcon icon={faMagnifyingGlass} size="2x" />
       </div>
       <input
         disabled={disabled}

@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 import java.util.Set;
@@ -57,6 +58,38 @@ public class ItemServiceImple implements ItemService{
         }).collect(Collectors.toList());
 
         return itemSimpleSearchDtoList;
+
+    }
+    @Override
+    @Transactional
+    public ItemDetailDto getItemByPlantSeq(Long plantSeq) {
+        Plant p = plantRepository.findByPlantSeq(plantSeq).orElseThrow(()->{
+            throw new GeneralException(ErrorCode.NOT_FOUND);
+        });
+
+        Item item = itemRepository.findByPlant(p).orElseThrow(()->{
+            throw new GeneralException(ErrorCode.NOT_FOUND);
+        });
+
+
+        ItemDetailDto idt = new ItemDetailDto();
+        PlantDto plantDto =null;
+        ItemDto itemDto = ItemDto.of(item);
+
+        //kind가 1이면 식물
+        //kind가 2이면 화분
+        if(item.getItemKind().intValue() == 1){
+            Plant plant=item.getPlant();
+            plantDto = PlantDto.of(plant);
+        }else if(item.getItemKind().intValue() == 2){
+            plantDto = null;
+        }
+
+        idt.copy(itemDto);
+        idt.setPlant(plantDto);
+
+        return idt;
+
 
     }
 
@@ -222,6 +255,7 @@ public class ItemServiceImple implements ItemService{
         return items.stream().map(item -> ItemListDto.of(item)).collect(Collectors.toList());
      }
 
+
     @Override
     public String click(long itemSeq){
         log.info("조회수 증가 Service :: itemSeq : {}", itemSeq);
@@ -245,6 +279,15 @@ public class ItemServiceImple implements ItemService{
         return list;
     }
 
-
+    @Override
+    public List<ItemSelectedDto> getSelectedProduct() {
+        log.info("선별된 식물 조회");
+        long number[]={3, 6, 7, 11, 18, 20, 21,  27, 34, 75, 103, 109};
+        List<Item> items=new ArrayList<>();
+        for(int i=0; i<number.length;i++){
+            items.add(itemRepository.findById(387+number[i]).orElse(null));
+        }
+        return items.stream().map(item -> ItemSelectedDto.of(item)).collect(Collectors.toList());
+    }
 
 }

@@ -2,6 +2,8 @@ server:
   port: 8080
   servlet:
     context-path: "/api"
+  tomcat:
+    max-http-form-post-size: 100MB
 
 
 spring:
@@ -12,10 +14,11 @@ spring:
       enabled: false
   servlet:
     multipart:
-      max-file-size: 50MB
-      max-request-size: 50MB
+      max-file-size: 100MB
+      max-request-size: 100MB
   config:
     import:
+      - 'classpath:application-fcm.yml'
       - 'classpath:application-aws.yml'
   profiles:
     default: local

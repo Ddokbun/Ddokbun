@@ -2,14 +2,27 @@ import axios, { AxiosError } from "axios";
 import Router from "next/router";
 import AXIOS from ".";
 import { setCookie, CookieValueTypes } from "cookies-next";
-import { changeCount } from "../store/commerce";
-import { AnyAction, Dispatch } from "@reduxjs/toolkit";
 import { AppDispatch } from "../store";
 import { ListObjectItem } from "../types/commerce/list.interface";
+import { putCartItem, setCartLists } from "../store/commerce";
 
 // 인기식물 조회
 export const fetchHotPlant = async () => {
   const path = "market/product/hot";
+  try {
+    const res = await AXIOS({
+      method: "GET",
+      url: path,
+    });
+    return res.data;
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+// 커머스 메인
+export const getMainProduct = async () => {
+  const path = "market/product/selected";
   try {
     const res = await AXIOS({
       method: "GET",
@@ -84,7 +97,7 @@ export const putCart = async (id: number) => {
     });
     alert("id를 장바구니에 넣었습니다");
 
-    return res.status;
+    return res.data;
   } catch (error) {
     const { response } = error as any | AxiosError;
     console.log(response);
@@ -99,6 +112,25 @@ export const putCart = async (id: number) => {
         break;
     }
     return 400;
+  }
+};
+
+/**
+ * 장바구니 삭제 API
+ * @params ItemSeq를 필요로 합니다
+ */
+
+export const deleteCart = async (itemSeq: number) => {
+  const url = `cart/${itemSeq}`;
+  try {
+    const { data } = await AXIOS({
+      url,
+      method: "DELETE",
+    });
+
+    return data;
+  } catch (error) {
+    console.log(error);
   }
 };
 
@@ -202,22 +234,11 @@ export const fetchCartList = async (token?: string) => {
   console.log(token);
 
   try {
-    if (token) {
-      return await AXIOS({
-        url,
-        method: "GET",
-        headers: {
-          Authorization: token,
-        },
-      });
-    } else {
-      console.log("here");
-
-      return await AXIOS({
-        url,
-        method: "GET",
-      });
-    }
+    const data = await AXIOS({
+      url,
+      method: "GET",
+    });
+    return data.data.content;
   } catch (error) {
     console.log(error);
   }
@@ -230,10 +251,9 @@ export const fetchCartList = async (token?: string) => {
 export const putCartItemCount = async (
   quantity: number,
   itemSeq: number,
-  dispatch: Dispatch<AnyAction>,
+  dispatch: any,
 ) => {
   const url = `cart/${itemSeq}`;
-  console.log("here", itemSeq);
 
   try {
     const { data } = await AXIOS({
@@ -243,12 +263,10 @@ export const putCartItemCount = async (
         quantity,
       },
     });
-
-    dispatch(changeCount({ itemSeq, quantity }));
-    return "잘됐습니다";
+    dispatch(putCartItem({ itemSeq, quantity }));
+    alert("수량이 변경됐습니다");
   } catch (error) {
     console.log(error);
-
     alert("뭔가가 잘못됐습니다!");
   }
 };
@@ -420,4 +438,24 @@ export const fetchSurveyComplete = async (answerList: number[]) => {
   } catch (error) {
     console.log(error);
   }
+};
+
+export interface DeliveriesType {
+  orderSeq: number;
+  orderQuantity: number;
+  orderName: string;
+  orderPrice: number;
+  orderStatus: string;
+  orderTime: string;
+}
+
+export const fetchDeliveries = async () => {
+  const url = `order/list`;
+  try {
+    const res = await AXIOS({
+      url,
+      method: "get",
+    });
+    return res.data.content;
+  } catch (error) {}
 };

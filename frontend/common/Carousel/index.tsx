@@ -11,9 +11,9 @@ import "swiper/css/navigation";
 import { Navigation, Pagination } from "swiper";
 import { Wrapper } from "./styles";
 import ProductCard from "../Cards/ProductCard";
-import { ListArray } from "../../types/commerce/list.interface";
+import { ListArray, ListObjectItem } from "../../types/commerce/list.interface";
 
-const Carousel: React.FC<{ items: ListArray }> = ({ items }) => {
+const Carousel: React.FC<{ items: ListObjectItem[] }> = ({ items }) => {
   return (
     <Wrapper>
       <Swiper
@@ -37,13 +37,14 @@ const Carousel: React.FC<{ items: ListArray }> = ({ items }) => {
         spaceBetween={30}
         className="mySwiper"
       >
-        {items.map(item => {
-          return (
-            <SwiperSlide key={item?.itemSeq}>
-              <ProductCard isResponsive={false} item={item} />
-            </SwiperSlide>
-          );
-        })}
+        {items &&
+          items.map(item => {
+            return (
+              <SwiperSlide key={item?.itemSeq}>
+                <ProductCard isResponsive={false} item={item} />
+              </SwiperSlide>
+            );
+          })}
       </Swiper>
     </Wrapper>
   );

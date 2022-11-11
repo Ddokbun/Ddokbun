@@ -1,11 +1,7 @@
 import React, { useEffect, useState, Dispatch, SetStateAction } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCartList } from "../../../../apis/commerce";
-import { setCartLists } from "../../../../store/commerce";
-import {
-  ListObjectItem,
-  ProductLists,
-} from "../../../../types/commerce/list.interface";
+import { setAllCartLists } from "../../../../store/commerce";
 
 import CartItem from "../CartItem";
 import { Wrapper } from "./styles";
@@ -21,12 +17,11 @@ const CartList: React.FC<Item> = ({ setOrderTotal }) => {
   const selector = useSelector((state: StoreState) => state.cartList);
 
   useEffect(() => {
-    const idxArray = Object.keys(selector);
     let temp = 0;
-    idxArray.forEach((idx: string) => {
-      const iidx = parseInt(idx);
-      temp +=
-        (selector[iidx].price as number) * (selector[iidx].quantity as number);
+    selector.forEach(item => {
+      if (item) {
+        temp += (item.price as number) * (item.quantity as number);
+      }
     });
     setTotal(temp);
     if (setOrderTotal) {
@@ -37,7 +32,7 @@ const CartList: React.FC<Item> = ({ setOrderTotal }) => {
   useEffect(() => {
     const getCartList = async () => {
       const data = await fetchCartList();
-      dispatch(setCartLists(data?.data.content.data as ProductLists));
+      dispatch(setAllCartLists(data));
     };
     getCartList();
   }, []);
@@ -47,10 +42,17 @@ const CartList: React.FC<Item> = ({ setOrderTotal }) => {
       <Wrapper>
         <div className="grid">
           <>
-            {Object.keys(selector).map((idx: string) => {
-              const item = selector[parseInt(idx)];
+            {selector.map(item => {
               return (
-                <CartItem key={item.itemSeq} item={item} setTotal={setTotal} />
+                <>
+                  {item && (
+                    <CartItem
+                      key={item.itemSeq}
+                      item={item}
+                      setTotal={setTotal}
+                    />
+                  )}
+                </>
               );
             })}
           </>

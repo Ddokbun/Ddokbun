@@ -59,7 +59,7 @@ const Three = ({ light }: any) => {
         />
       </mesh> */}
       {/* 조명 */}
-      {/* <ambientLight args={["#fcfbf3", 0]} /> */}
+      <ambientLight args={["#fcfbf3", 1]} />
       {/* <spotLight
         args={["#ffffff", 1.5, 7, angleToRadians(45), 0.5]}
         position={[-3, 1, 0]}

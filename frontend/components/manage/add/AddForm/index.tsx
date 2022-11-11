@@ -24,7 +24,7 @@ export interface PlantDataType {
 const AddForm = () => {
   const router = useRouter();
   const plantSeq = useSelector((state: RootState) => state.manage.plantSeq);
-  const name = useSelector((state: RootState) => state.manage.plantName);
+  const name = useSelector((state: RootState) => state.manage.plantNickname);
 
   const inputValues: React.MutableRefObject<RegisterType> = useRef({
     potSerial: "",
@@ -101,6 +101,10 @@ const AddForm = () => {
     return res.content;
   };
 
+  const onCancleAddForm = () => {
+    router.back();
+  };
+
   useEffect(() => {
     const date = changeDateFormat(new Date());
     inputValues.current.waterSupply = date;
@@ -157,7 +161,7 @@ const AddForm = () => {
           </SubmitButton>
         </div>
         <div className="cancel-button-container">
-          <CancelButton>취소</CancelButton>
+          <CancelButton onClick={onCancleAddForm}>취소</CancelButton>
         </div>
       </div>
       {plantData && <PlantData data={plantData} />}

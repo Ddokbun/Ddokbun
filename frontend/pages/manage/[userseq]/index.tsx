@@ -7,11 +7,14 @@ import { fetchPlantsList } from "../../../apis/manage";
 import PageTitle from "../../../common/PageTitle";
 import CardList from "../../../components/manage/CardList";
 import { wrapper } from "../../../store";
-import { setCartLists } from "../../../store/commerce";
+import { setAllCartLists } from "../../../store/commerce";
 import { EleVar, WrapperVar } from "../../../styles/animations/animation";
 import { Wrapper } from "../../../styles/manage/styles";
 import dynamic from "next/dynamic";
 import Link from "next/link";
+import { useDispatch } from "react-redux";
+import { useSelect } from "@react-three/drei";
+import { useSelector } from "react-redux";
 
 const DynamicCardlist = dynamic(
   () => import("../../../components/manage/CardList"),
@@ -29,13 +32,23 @@ export interface PlantListType {
 
 const Manage: NextPage = () => {
   const [plantsList, setPlantsList] = useState<PlantListType[]>();
-
+  const dispatch = useDispatch();
+  const selecor = useSelector(state => state);
   useEffect(() => {
     const getInitialData = async () => {
       const plantsListData = await fetchPlantsList();
       setPlantsList(plantsListData);
     };
+
+    const getCartList = async () => {
+      const data = await fetchCartList();
+      console.log(data);
+      dispatch(setAllCartLists(data));
+    };
+
+    getCartList();
     getInitialData();
+    console.log("rere", selecor);
   }, []);
 
   return (
@@ -59,18 +72,5 @@ const Manage: NextPage = () => {
     </Wrapper>
   );
 };
-
-export const getServerSideProps: GetServerSideProps =
-  wrapper.getServerSideProps(store => async ({ req, res }) => {
-    const { token } = getCookies({ req, res });
-    const data = await fetchCartList(token);
-
-    store.dispatch(setCartLists(data?.data.content));
-    // store.dispatch(setCartLists(["하이"]));
-
-    return {
-      props: {},
-    };
-  });
 
 export default Manage;

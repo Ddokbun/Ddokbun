@@ -47,25 +47,37 @@ export const BasicInput = styled.div`
 `;
 
 export const SearchInputWrapper = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 90%;
   height: 60px;
   position: relative;
   font-family: "DM Serif Display", serif;
+  background-color: #c9c9c9;
+  border-radius: 16px;
+  border: 1px solid grey;
   color: ${props => props.theme.color.darkGreen};
   font-family: ${props => props.theme.font.TextFont2};
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
 
   .icon {
-    top: 25%;
-    position: absolute;
-    left: 3%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 13px;
   }
 
   input {
-    width: 100%;
+    margin-left: 13px;
+    width: 92%;
     height: 100%;
-    background-color: ${props => props.theme.color.ivory};
     border-radius: 16px;
-    padding-left: 10%;
+    outline: none;
+    background-color: #c9c9c9;
+    ::placeholder {
+      color: ${props => props.theme.color.darkGreen};
+    }
   }
 
   @media screen and (${props => props.theme.mobile}) {
@@ -73,7 +85,6 @@ export const SearchInputWrapper = styled.div`
     margin-bottom: 10%;
 
     input {
-      width: 90%;
       padding: 16px 12px 16px 10%;
       border-radius: 18px;
     }

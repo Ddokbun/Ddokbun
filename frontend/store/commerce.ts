@@ -5,9 +5,6 @@ import {
   current,
   PayloadAction,
 } from "@reduxjs/toolkit";
-import { HYDRATE } from "next-redux-wrapper";
-import { type } from "os";
-import { LoadingManager } from "three";
 import { ListArray, ListObjectItem } from "../types/commerce/list.interface";
 
 // const commerceSlice = createSlice
@@ -15,13 +12,10 @@ import { ListArray, ListObjectItem } from "../types/commerce/list.interface";
 // 특정상품을 선택했을 때 연관상품관리 ->> props
 export const RelatedProductSlice = createSlice({
   name: "reatedProducts",
-  initialState: { data: [] },
+  initialState: [],
   reducers: {
     setRelatedItemList: (state, action) => {
-      return {
-        ...state,
-        data: action.payload,
-      };
+      return action.payload;
     },
   },
 });
@@ -31,30 +25,46 @@ export const RelatedProductSlice = createSlice({
  */
 export const CartListSlice = createSlice({
   name: "CartList",
-  initialState: {},
+  initialState: [] as ListObjectItem[],
   reducers: {
-    setCartLists: (state, action) => {
-      return {
-        ...state,
-        ...action.payload,
-      };
-    },
-    changeCount: (state: any, action) => {
-      const nowState = current(state);
-      const keys = Object.keys(nowState);
-      console.log(nowState[0]);
+    setAllCartLists: (state, action) => {
+      console.log("wht", action.payload);
 
-      const newState = keys.map(idx => {
-        if (nowState[idx].itemSeq == action.payload.itemSeq) {
-          return { ...nowState[idx], quantity: action.payload.quantity };
-        } else return { ...nowState[idx] };
+      return action.payload;
+    },
+
+    setCartLists: (state, action) => {
+      return [...state, action.payload];
+    },
+
+    deleteCartList: (state, action) => {
+      const temp = current(state).map((item: ListObjectItem) => {
+        if (item && item.itemSeq !== parseInt(action.payload)) {
+          return item;
+        }
       });
-      return newState;
+      console.log(temp);
+      return temp as ListObjectItem[];
+    },
+
+    putCartItem: (state, action) => {
+      const temp = current(state).map((item: ListObjectItem) => {
+        if (item.itemSeq === parseInt(action.payload.itemSeq)) {
+          return {
+            ...item,
+            quantity: action.payload.quantity,
+          };
+        } else return item;
+      });
+      console.log(temp);
+
+      return temp;
     },
   },
 });
 
-export const { setCartLists, changeCount } = CartListSlice.actions;
+export const { setAllCartLists, setCartLists, putCartItem, deleteCartList } =
+  CartListSlice.actions;
 export const { setRelatedItemList } = RelatedProductSlice.actions;
 
 export interface CommerceState {
