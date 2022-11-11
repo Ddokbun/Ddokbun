@@ -13,6 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.Scheduled;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,7 +48,6 @@ public class BatchProcessor {
         jobParametersMap.put("date",new JobParameter(String.valueOf(LocalDate.now())));
 
         JobParameters parameters = new JobParameters(jobParametersMap);
-
         JobExecution jobExecution = jobLauncher.run(AutoWaterApplyJob, parameters);
 
         while (jobExecution.isRunning()) {
@@ -71,6 +71,7 @@ public class BatchProcessor {
             JobRestartException, JobInstanceAlreadyCompleteException {
 
         Map<String, JobParameter> jobParametersMap = new HashMap<>();
+
 
 
         jobParametersMap.put("date",new JobParameter(String.valueOf(LocalDate.now())));
@@ -101,7 +102,7 @@ public class BatchProcessor {
         Map<String, JobParameter> jobParametersMap = new HashMap<>();
 
         jobParametersMap.put("date",new JobParameter(String.valueOf(LocalDate.now())));
-
+        jobParametersMap.put("temp",new JobParameter(String.valueOf(LocalDateTime.now())));
         JobParameters parameters = new JobParameters(jobParametersMap);
         JobExecution jobExecution = jobLauncher.run(waterLevelAlarmJob, parameters);
         while (jobExecution.isRunning()) {
