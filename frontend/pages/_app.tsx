@@ -15,7 +15,7 @@ import { PersistGate } from "redux-persist/integration/react";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 import Head from "next/head";
 import firebase from "firebase";
-import { getToken } from "../apis/firebase";
+import { getToken, setToken } from "../apis/firebase";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCwdWKZo4h03IqLGmInSPIsDtArvtIJzpA",
@@ -36,6 +36,7 @@ const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
       const request = await Notification.requestPermission();
       if (request === "granted") {
         const token = await getToken();
+        await setToken(token);
         const messaging = firebase.messaging();
 
         messaging.onMessage((payload: any) => {

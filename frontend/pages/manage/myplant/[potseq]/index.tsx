@@ -75,6 +75,10 @@ const PlantCare: NextPage = () => {
     }
 
     const getInitialData = async () => {
+      const request = await Notification.requestPermission();
+      if (!request) {
+        alert("물 주기 알림을 받으시려면 알림 설정을 허용해주세요");
+      }
       const res = await fetchCurrentStatus(potseq);
       console.log(res);
       setPlantStatus(res);
