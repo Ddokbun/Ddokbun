@@ -32,9 +32,13 @@ public class BatchProcessor {
     @Autowired
     private Job waterApplyAlarmJob;
 
+    @Qualifier("waterLevelAlarmJob")
+    @Autowired
+    private Job waterLevelAlarmJob;
+
     //매일 9시 자동 물주기
     @Scheduled(cron = "0 0 9 * * *")
-    public void autoWaterApplyJobSchduled() throws JobParametersInvalidException, JobExecutionAlreadyRunningException,
+    public void autoWaterApplyJobScheduled() throws JobParametersInvalidException, JobExecutionAlreadyRunningException,
             JobRestartException, JobInstanceAlreadyCompleteException {
 
         Map<String, JobParameter> jobParametersMap = new HashMap<>();
@@ -63,7 +67,7 @@ public class BatchProcessor {
 
 
     @Scheduled(cron = "0 0 9 * * *")
-    public void waterApplyAlarmJobSchduled() throws JobParametersInvalidException, JobExecutionAlreadyRunningException,
+    public void waterApplyAlarmJobScheduled() throws JobParametersInvalidException, JobExecutionAlreadyRunningException,
             JobRestartException, JobInstanceAlreadyCompleteException {
 
         Map<String, JobParameter> jobParametersMap = new HashMap<>();
@@ -79,6 +83,30 @@ public class BatchProcessor {
             log.info("...");
         }
 
+        log.info("Job Execution: " + jobExecution.getStatus());
+        log.info("Job getJobConfigurationName: " + jobExecution.getJobConfigurationName());
+        log.info("Job getJobId: " + jobExecution.getJobId());
+        log.info("Job getExitStatus: " + jobExecution.getExitStatus());
+        log.info("Job getJobInstance: " + jobExecution.getJobInstance());
+        log.info("Job getStepExecutions: " + jobExecution.getStepExecutions());
+        log.info("Job getLastUpdated: " + jobExecution.getLastUpdated());
+        log.info("Job getFailureExceptions: " + jobExecution.getFailureExceptions());
+
+    }
+
+    @Scheduled(cron = "0 0 9 * * *")
+    public void waterLevelAlarmJobScheduled() throws JobParametersInvalidException, JobExecutionAlreadyRunningException,
+            JobRestartException, JobInstanceAlreadyCompleteException {
+
+        Map<String, JobParameter> jobParametersMap = new HashMap<>();
+
+        jobParametersMap.put("date",new JobParameter(String.valueOf(LocalDate.now())));
+
+        JobParameters parameters = new JobParameters(jobParametersMap);
+        JobExecution jobExecution = jobLauncher.run(waterLevelAlarmJob, parameters);
+        while (jobExecution.isRunning()) {
+            log.info("...");
+        }
         log.info("Job Execution: " + jobExecution.getStatus());
         log.info("Job getJobConfigurationName: " + jobExecution.getJobConfigurationName());
         log.info("Job getJobId: " + jobExecution.getJobId());
