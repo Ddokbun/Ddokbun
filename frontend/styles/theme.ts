@@ -6,7 +6,7 @@ const deviceSize = {
 };
 
 export const Theme: DefaultTheme = {
-  mobile: `(max-device-width:${deviceSize.mobile})`,
+  mobile: `(max-width:${deviceSize.mobile})`,
   tablet: `(max-width:${deviceSize.tablet})`,
 
   font: {
