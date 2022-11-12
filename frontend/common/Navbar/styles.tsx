@@ -231,37 +231,36 @@ export const Slider = styled(motion.div)`
   z-index: 1;
   width: 100%;
   height: calc(100vh - 80px);
-
   .menu {
-    ul {
-      li .title {
-        margin: 5px 0px;
-        color: ${props => props.theme.color.darkGreen};
-        padding-bottom: 2px;
-        border-bottom: 1px solid ${props => props.theme.color.darkGreen};
-        font-size: 24px;
-        font-family: ${props => props.theme.font.TextFont2};
-
-        :hover {
-          cursor: pointer;
-        }
-      }
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  .title {
+    heiggt: 40px;
+    margin: 12px 0px;
+    color: ${props => props.theme.color.darkGreen};
+    padding-bottom: 2px;
+    border-bottom: 1px solid ${props => props.theme.color.darkGreen};
+    font-size: 24px;
+    font-family: ${props => props.theme.font.TextFont2};
+    font-weight: 600;
+    :hover {
+      cursor: pointer;
     }
-
-    .drop-down {
-      display: none;
-      margin: 20px 0px 10px 40px;
-      padding-bottom: 10px;
-      /* border-bottom: 1px solid ${props => props.theme.color.darkGreen}; */
-      li {
-        margin: 5px 0px;
-        font-size: 18px;
-        color: ${props => props.theme.color.darkGreen};
-        font-family: ${props => props.theme.font.TextFont2};
-      }
+    :nth-child(3) {
+      margin-top: 20px;
     }
-    .open {
-      display: block !important;
+  }
+  .drop-down {
+    p {
+      padding: 0px 4px;
+      margin: 10px 0px;
+      font-size: 18px;
+      color: ${props => props.theme.color.darkGreen};
+      font-weight: 600;
+      font-family: ${props => props.theme.font.TextFont2};
+      cursor: pointer;
     }
   }
 `;
