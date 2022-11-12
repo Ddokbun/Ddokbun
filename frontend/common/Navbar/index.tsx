@@ -12,6 +12,8 @@ import Plant1 from "../../assets/commerce/plants/plant1.jpg";
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { NabAni, NabCategoryAni } from "../../styles/animations/animation";
+import NavCard from "../NavCard";
+import Starter from "../../assets/commerce/plants/starter.jpg";
 
 const Navbar = () => {
   const ref = useRef<HTMLDivElement>(null);
@@ -102,11 +104,45 @@ const Navbar = () => {
           <div className="grid-wrapper">
             <div className="gird-left">
               <Image src={Plant1} layout="fill" objectFit="cover" />
-              <h3>Commerce</h3>
-              <p>당신의 취향에 맞는 화분을 골라보세요</p>
-              <div className="button">보러가기</div>
+              <h3>Smart Plant Pot</h3>
+              <p>
+                당신의 가드닝을 도와줄 <br />
+                스마트 화분을 만나보세요
+              </p>
+              <div className="button">
+                <a>보러가기</a>
+              </div>
             </div>
-            <div className="grid-right"></div>
+            <div className="grid-col">
+              <Link href={"/commerce/list/초보집사"}>
+                <NavCard
+                  source={Starter}
+                  title="Beginer"
+                  content="초보 집사들을 위한 최선의 선택"
+                />
+              </Link>
+            </div>
+            <div className="grid-col">
+              <NavCard
+                source={Starter}
+                title="Beginer"
+                content="초보 집사들을 위한 최선의 선택"
+              />
+            </div>
+            <div className="grid-col">
+              <NavCard
+                source={Starter}
+                title="Beginer"
+                content="초보 집사들을 위한 최선의 선택"
+              />
+            </div>
+            <div className="grid-col">
+              <NavCard
+                source={Starter}
+                title="Beginer"
+                content="초보 집사들을 위한 최선의 선택"
+              />
+            </div>
           </div>
         </ShopHoverNav>
       </Wrapper>

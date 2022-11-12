@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
-
+import Plant1 from "../../assets/commerce/plants/plant1.jpg";
 export const Wrapper = styled.div`
   width: 100%;
   position: sticky;
@@ -322,7 +322,7 @@ export const Slider = styled(motion.div)`
 export const ShopHoverNav = styled(motion.div)`
   margin: auto;
   width: 100%;
-  height: 300px;
+  height: 320px;
   z-index: 1;
   max-width: 1500px;
   position: sticky;
@@ -333,15 +333,16 @@ export const ShopHoverNav = styled(motion.div)`
     width: 100%;
     height: 100%;
     display: grid;
-    grid-gap: 60px;
-    grid-template-rows: 1fr 1fr;
+    grid-gap: 30px;
+    grid-row-gap: 20px;
+    grid-template-rows: 1fr 1fr 1fr;
     grid-template-columns: 2fr 1.5fr 1.5fr;
 
     .gird-left {
       width: 100%;
       height: 100%;
       position: relative;
-      grid-area: 1 / 1 / 3 / 2;
+      grid-area: 1 / 1 / 4 / 2;
     }
 
     h3 {
@@ -354,8 +355,9 @@ export const ShopHoverNav = styled(motion.div)`
     }
 
     p {
-      top: 80px;
-      left: 30px;
+      top: 90px;
+      left: 35px;
+
       font-size: 20px;
       letter-spacing: 1px;
       position: absolute;
@@ -363,6 +365,7 @@ export const ShopHoverNav = styled(motion.div)`
     }
     .button {
       background-color: black;
+      cursor: pointer;
       width: 90%;
       height: 40px;
       bottom: 20px;
