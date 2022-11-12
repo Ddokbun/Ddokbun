@@ -2,19 +2,28 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background-color: #fafafa;
-  position: fixed;
-  z-index: 1;
-  top: 0;
   width: 100%;
+  position: sticky;
   height: 80px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 30px;
+  top: 0;
+  background-color: #fafafa;
+  z-index: 1;
+  .wrapper {
+    margin: auto;
+    width: 100%;
+    max-width: 1500px;
 
-  font-family: ${props => props.theme.font.EnglishFont};
-  font-size: 18px;
+    height: 100%;
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px;
+
+    font-family: ${props => props.theme.font.EnglishFont};
+    font-size: 18px;
+  }
   .logo {
     position: absolute;
     left: 50%;
@@ -22,19 +31,47 @@ export const Wrapper = styled.div`
     color: ${props => props.theme.color.darkGreen};
     font-size: 40px;
   }
-  .img_wrap {
-    width: 100px;
+
+  .menu-wrap {
     display: flex;
+    height: 100%;
+    gap: 50px;
+    font-size: 18px;
+    color: ${props => props.theme.color.black};
+
+    a {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+  }
+
+  .img_wrap {
+    display: flex;
+    gap: 30px;
     justify-content: space-evenly;
+    align-items: center;
 
     svg {
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
       cursor: pointer;
       path {
         fill: transparent;
         stroke: ${props => props.theme.color.darkGreen};
         stroke-width: 3;
+      }
+      :nth-child(1) {
+        width: 20px;
+        height: 20px;
+        path {
+          fill: ${props => props.theme.color.darkGreen};
+          stroke-width: 0.1;
+        }
+      }
+      :nth-child(3) {
+        width: 20px;
+        height: 20px;
       }
     }
 
@@ -61,8 +98,9 @@ export const Wrapper = styled.div`
       }
     }
   }
+
   .icon-wrapper {
-    display: flex;
+    display: none;
     align-items: center;
   }
   #nav-icon2 {
@@ -160,8 +198,10 @@ export const Wrapper = styled.div`
     top: 12px;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
-    padding: 0px 10px;
+  @media screen and (${props => props.theme.tablet}) {
+    .wrapper {
+      padding: 0px 40px;
+    }
 
     .menu {
       display: none;
@@ -174,11 +214,18 @@ export const Wrapper = styled.div`
       font-size: 30px;
       order: 0;
     }
+    .icon-wrapper {
+      display: flex;
+      align-items: center;
+    }
 
+    .menu-wrap {
+      display: none;
+    }
     .img_wrap {
       height: 100%;
-      width: 60px;
-      gap: 10px;
+      width: 100px;
+      gap: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -220,11 +267,18 @@ export const Wrapper = styled.div`
       top: 10px;
     }
   }
+
+  @media screen and (${props => props.theme.mobile}) {
+    .wrapper {
+      padding: 0px 10px;
+    }
+  }
 `;
 
 export const Slider = styled(motion.div)`
   padding: 20px;
   top: 80px;
+  transform: translateX(-100%);
   opacity: 1;
   position: fixed;
   background-color: #fafafa;
@@ -261,6 +315,66 @@ export const Slider = styled(motion.div)`
       font-weight: 600;
       font-family: ${props => props.theme.font.TextFont2};
       cursor: pointer;
+    }
+  }
+`;
+
+export const ShopHoverNav = styled(motion.div)`
+  margin: auto;
+  width: 100%;
+  height: 300px;
+  z-index: 1;
+  max-width: 1500px;
+  position: sticky;
+  background-color: #fafafa;
+
+  .grid-wrapper {
+    padding: 20px 40px 40px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-gap: 60px;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 2fr 1.5fr 1.5fr;
+
+    .gird-left {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      grid-area: 1 / 1 / 3 / 2;
+    }
+
+    h3 {
+      top: 20px;
+      left: 30px;
+      font-size: 40px;
+      letter-spacing: 1px;
+      position: absolute;
+      font-family: ${props => props.theme.font.EnglishFont};
+    }
+
+    p {
+      top: 80px;
+      left: 30px;
+      font-size: 20px;
+      letter-spacing: 1px;
+      position: absolute;
+      font-family: ${props => props.theme.font.TextFont2};
+    }
+    .button {
+      background-color: black;
+      width: 90%;
+      height: 40px;
+      bottom: 20px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      color: #e8e8e4;
+      font-size: 20px;
+      letter-spacing: 1px;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 `;

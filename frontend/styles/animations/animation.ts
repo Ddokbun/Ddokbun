@@ -71,6 +71,7 @@ export const SvgAni = {
 export const NabAni = {
   open: {
     x: 0,
+    display: "block",
     transition: {
       duration: 0.5,
     },
@@ -86,6 +87,7 @@ export const NabAni = {
 export const NabCategoryAni = {
   open: {
     opacity: 1,
+
     height: "160px",
     transition: {
       duration: 0.5,
