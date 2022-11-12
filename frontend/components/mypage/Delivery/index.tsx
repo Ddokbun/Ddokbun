@@ -1,14 +1,24 @@
-import React from "react";
+import React, { FC } from "react";
 import { DeliveryLine, Wrapper } from "./styles";
 import Call from "../../../assets/icon/call.svg";
 import Dot from "../../../assets/icon/dot.svg";
 
-const Delivery: React.FC = () => {
+interface Props {
+  orderWaybillNumber: string;
+  orderStatus: string;
+  orderReciver: string;
+}
+
+const Delivery: FC<Props> = ({
+  orderWaybillNumber,
+  orderStatus,
+  orderReciver,
+}) => {
   return (
     <Wrapper>
       <div className="delivery-num">
         <span>운송장 번호 : </span>
-        <span>12345678</span>
+        <span>{orderWaybillNumber}</span>
       </div>
       <div className="button-wrap">
         <button className="button">
@@ -50,6 +60,12 @@ const Delivery: React.FC = () => {
           <span>싸피 구미사업장</span>
         </DeliveryLine>
       </div>
+      {orderStatus === "COMPLETE" && (
+        <div className="delivery-num">
+          <span>수취인 : </span>
+          <span>{orderReciver}</span>
+        </div>
+      )}
     </Wrapper>
   );
 };
