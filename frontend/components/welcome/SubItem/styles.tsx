@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   background-color: ${props => props.theme.color.black};
   color: white;
   padding: 40px 20px 60px 20px;
+  height: 100vh;
   .subcontent-wrap {
     width: 100%;
     .title {
