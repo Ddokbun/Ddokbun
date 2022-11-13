@@ -17,7 +17,7 @@ public class Item {
     //상품 일련 번호
     @Id
     @Column(name="item_seq",columnDefinition = "INTEGER UNSIGNED")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long itemSeq;
 
     //상품명

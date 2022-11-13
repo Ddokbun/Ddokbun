@@ -15,7 +15,7 @@ public class AlarmLog {
 
     @Id
     @Column(name = "alarm_log_seq",nullable = false)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long alarmLogSeq;
 
     @Column(name = "userSeq",nullable = false)

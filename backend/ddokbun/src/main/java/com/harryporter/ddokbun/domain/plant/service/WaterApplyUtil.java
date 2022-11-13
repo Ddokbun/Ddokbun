@@ -34,8 +34,6 @@ public class WaterApplyUtil {
 
             resultFuture.addCallback(callback);
 
-            //동기가 되서 비동기일 떄보다 상당히 느려지겠지만 , 보장하기 위해서는 어쩔 수 없다.
-
           return true;
 
         } catch (JsonProcessingException e) {

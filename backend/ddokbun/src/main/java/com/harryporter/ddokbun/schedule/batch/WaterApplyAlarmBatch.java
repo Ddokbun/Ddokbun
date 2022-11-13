@@ -105,8 +105,8 @@ public class WaterApplyAlarmBatch {
                 if(!localDate.plusDays(period).isAfter(now)){
                     //물주기 + 물 마지막으로 줫던 일 >= 현재 물을 주라는 알림
                     alarmService.sendAlarmToUser(new AlarmMessageDto(
-                            String.format("{}님 물을 줘야할 거 같아요!",pot.getUser().getUserNickname()),
-                            String.format("{}의 {}의 경우 권장 물 주기는 {} 일에 한번입니다. 현재 {}간 물을 주지 않았습니다.",
+                            String.format("%s님 물을 줘야할 거 같아요!",pot.getUser().getUserNickname()),
+                            String.format("%s의 %s의 경우 권장 물 주기는 %s 일에 한번입니다. 현재 % 일간 물을 주지 않았습니다.",
                                     pot.getPlantNickname(),
                                     pot.getPlant().getPlantName(),
                                     pot.getPlant().getWaterCycle(),
