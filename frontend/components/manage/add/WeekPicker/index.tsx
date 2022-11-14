@@ -1,4 +1,4 @@
-import { Dispatch, FC, SetStateAction, useState } from "react";
+import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import {
   format,
   startOfWeek,
@@ -10,15 +10,43 @@ import {
   subWeeks,
 } from "date-fns";
 import { Wrapper } from "./styles";
+import { fetchWateringLogs } from "../../../../apis/manage";
+import { useRouter } from "next/router";
 
 interface Props {
   showDetailHandler: Dispatch<SetStateAction<boolean>>;
+  setWateringLogs: Dispatch<SetStateAction<string>>;
 }
 
-const WeekPicker: FC<Props> = ({ showDetailHandler }) => {
+const WeekPicker: FC<Props> = ({ showDetailHandler, setWateringLogs }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [currentWeek, setCurrentWeek] = useState(getWeek(currentMonth));
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const { potseq } = useRouter().query;
+  console.log(selectedDate, "selectedDate");
+
+  useEffect(() => {
+    if (!selectedDate || !potseq) {
+      return;
+    }
+    const getWateringLogs = async () => {
+      const year = selectedDate.getFullYear();
+      const month = selectedDate.getMonth() + 1;
+      const date = selectedDate.getDate();
+      const dataList: any[] = await fetchWateringLogs(potseq, year, month);
+      const logs = dataList.filter(
+        item => item[0] === year && item[1] === month && item[2] === date,
+      );
+      console.log(dataList, logs);
+
+      if (logs.length) {
+        setWateringLogs(`${year}년 ${month}월 ${date}일에 물을 주었네요`);
+      } else {
+        setWateringLogs("물을 준 이력이 없네요.");
+      }
+    };
+    getWateringLogs();
+  }, [selectedDate, setWateringLogs]);
 
   const changeWeekHandle = (btnType: string) => {
     if (btnType === "prev") {
