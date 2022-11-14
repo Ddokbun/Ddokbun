@@ -14,7 +14,7 @@ public class Plant {
     //식물 일련 번호
     @Id
     @Column(name="plant_seq")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long plantSeq;
 
     //식물 이름
