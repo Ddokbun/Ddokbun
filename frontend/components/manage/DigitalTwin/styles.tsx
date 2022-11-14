@@ -21,6 +21,7 @@ export const Wrapper = styled.div<Props>`
     height: 500px;
     border-radius: 16px;
     background-color: ${props => props.theme.color.ivory};
+    filter: brightness(${props => props.light}+ "%");
   }
 
   .top-container {
@@ -69,7 +70,6 @@ export const Wrapper = styled.div<Props>`
 
   .tooltip {
     display: inline-block;
-    color: deeppink;
     font-weight: bold;
   }
 

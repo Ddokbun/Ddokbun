@@ -19,9 +19,7 @@ const Rain = () => {
 
     useEffect(() => {
       const tick = () => {
-        // if (savedCallback.current === callback) {
-        savedCallback.current(); // tick이 실행되면 callback 함수를 실행시킨다.
-        // }
+        savedCallback.current?.(); // tick이 실행되면 callback 함수를 실행시킨다.
       };
       if (delay !== null) {
         // 만약 delay가 null이 아니라면
