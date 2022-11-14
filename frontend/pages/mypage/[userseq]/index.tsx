@@ -5,7 +5,10 @@ import { StatusButton } from "../../../common/Button";
 import PageTitle from "../../../common/PageTitle";
 import SearchCardList from "../../../components/manage/add/search/SearchCardList";
 import DeliveryCardList from "../../../components/mypage/DeliveryCardList";
-import { WrapperVar } from "../../../styles/animations/animation";
+import {
+  ManageHomeAni,
+  WrapperVar,
+} from "../../../styles/animations/animation";
 import { Line, Wrapper } from "../../../styles/mypage/[userseq]/styles";
 import { Theme } from "../../../styles/theme";
 import Manage from "../../manage/[userseq]";
@@ -112,7 +115,7 @@ const MyPage: NextPage = () => {
   });
 
   return (
-    <Wrapper variants={WrapperVar}>
+    <Wrapper variants={ManageHomeAni} initial="out" animate="in" exit="out">
       <PageTitle mypage isLink={false}>
         <div>
           <h1>주문내역 조회</h1>
@@ -130,7 +133,6 @@ const MyPage: NextPage = () => {
         </thead>
         <tbody>{data && <DeliveryCardList data={data} />}</tbody>
       </table>
-
       <Manage />
     </Wrapper>
   );

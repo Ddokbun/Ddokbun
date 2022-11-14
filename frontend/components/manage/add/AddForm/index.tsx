@@ -24,7 +24,7 @@ export interface PlantDataType {
 const AddForm = () => {
   const router = useRouter();
   const plantSeq = useSelector((state: RootState) => state.manage.plantSeq);
-  const name = useSelector((state: RootState) => state.manage.plantNickname);
+  const name = useSelector((state: RootState) => state.manage.plantName);
 
   const inputValues: React.MutableRefObject<RegisterType> = useRef({
     potSerial: "",
