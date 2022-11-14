@@ -21,7 +21,7 @@ const DigitalTwin: FC<Props> = ({ light }) => {
   }, []);
 
   return (
-    <Wrapper light={light * 20}>
+    <Wrapper light={100 - light * 20}>
       <div className="top-container">
         <h2>{plantNickname}</h2>
         <AutoToggle />

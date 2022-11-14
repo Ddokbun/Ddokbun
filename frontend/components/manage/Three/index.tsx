@@ -19,7 +19,7 @@ const Three = () => {
   useFrame(state => {
     if (orbitControlsRef.current) {
       const { x, y } = state.mouse;
-      orbitControlsRef.current.setAzimuthalAngle?.(-angleToRadians(24) * x);
+      orbitControlsRef.current.setAzimuthalAngle?.(-angleToRadians(90) * x);
       orbitControlsRef.current.setPolarAngle?.((y + 0.5) * angleToRadians(90));
       orbitControlsRef.current.update?.();
     }
@@ -28,7 +28,7 @@ const Three = () => {
   return (
     <>
       {/* 카메라 */}
-      <PerspectiveCamera makeDefault position={[1, 5, 6.5]} />
+      <PerspectiveCamera makeDefault position={[1, 10, 6.5]} />
       <OrbitControls
         ref={orbitControlsRef}
         minPolarAngle={angleToRadians(50)}
