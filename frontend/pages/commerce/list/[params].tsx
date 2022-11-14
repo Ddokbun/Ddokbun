@@ -88,7 +88,7 @@ export const getStaticProps: GetStaticProps = async context => {
 
   const BannerTitle = {
     초보집사: {
-      title: "Beginer",
+      title: "Beginner",
       contents: "초보가드너를 위한 맞춤 식믈들로 식물키우기에 도전해보세요",
       image: "초보집사",
     },
