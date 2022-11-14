@@ -103,7 +103,7 @@ export const InputRow = styled.div<StyleProps>`
       text-align: center;
     }
   }
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     margin-bottom: 5px;
     padding: 3px;
     display: grid;
@@ -215,7 +215,7 @@ export const Wrapper = styled.div`
     display: grid;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     .grid-form {
       grid-template-columns: 1fr;
       grid-template-rows: auto;

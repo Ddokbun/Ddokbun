@@ -7,7 +7,7 @@ export const Wrapper = styled(motion.ul)`
   margin-left: 10%;
   flex-wrap: wrap;
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     flex-direction: column;
   }
 `;
