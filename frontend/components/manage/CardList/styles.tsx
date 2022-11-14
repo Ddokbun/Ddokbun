@@ -55,5 +55,6 @@ export const Wrapper = styled(motion.ul)`
   }
   @media screen and (max-width: 600px) {
     width: 90%;
+    height: 300px;
   }
 `;
