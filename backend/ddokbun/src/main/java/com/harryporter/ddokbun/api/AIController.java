@@ -28,7 +28,9 @@ public class AIController {
             @RequestPart MultipartFile file){
         log.info("식물 사진 AI에 접근했습니다.");
         PictureResponse response = aiService.findPlant(file);
+        log.info("식물 정보를 받아왔습니다.");
         ResponseFrame res = ResponseFrame.ofOKResponse("정상적으로 식물 이름이 출력됬습니다.",response);
+
 
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
