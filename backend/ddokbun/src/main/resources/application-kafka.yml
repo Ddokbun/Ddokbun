@@ -1,0 +1,9 @@
+spring:
+  kafka:
+    producer:
+      bootstrap-servers:
+        - k7d208.p.ssafy.io:8992
+        - k7d208.p.ssafy.io:8993
+        - k7d208.p.ssafy.io:8994
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.apache.kafka.common.serialization.StringSerializer
