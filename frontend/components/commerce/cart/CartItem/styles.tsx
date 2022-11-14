@@ -3,29 +3,31 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
-  padding: 10px;
-  display: flex;
   background-color: #fafafa;
 
   display: grid;
   grid-template-columns: 180px 1fr 200px;
   grid-template-rows: 1fr;
-  grid-gap: 10px;
+  padding: 20px 10px;
 
   .grid-left {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
 
   .grid-center {
     position: relative;
-    padding: 10px 20px;
+    padding: 0px 0px;
+    transform: translateX(-15px);
     h2 {
-      font-size: 30px;
+      font-size: 20px;
       font-family: ${props => props.theme.font.TitleFont};
-      color: ${props => props.theme.color.darkGreen};
+      color: ${props => props.theme.color.black};
+      line-height: 20px;
+    }
+    h3 {
+      font-size: 10px;
+      font-family: ${props => props.theme.font.TitleFont};
+      color: ${props => props.theme.color.black};
     }
     .count {
       position: absolute;
