@@ -4,10 +4,11 @@ export const GridWrapper = styled.div`
   width: 100%;
   background-color: #f7f7f7;
   padding: 90px 40px;
-  p {
+  .p-title {
     width: 100%;
     max-width: 1400px;
     margin: auto;
+    margin-bottom: 20px;
     font-size: 12px;
   }
   .grid {
@@ -20,13 +21,17 @@ export const GridWrapper = styled.div`
     grid-auto-flow: row;
     grid-row: auto;
     grid-gap: 20px;
-    grid-row-gap: 60px;
+    grid-row-gap: 30px;
     place-items: center;
   }
 
   @media screen and (${props => props.theme.tablet}) {
+    .grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 
   @media screen and (${props => props.theme.mobile}) {
+    padding: 90px 10px;
   }
 `;

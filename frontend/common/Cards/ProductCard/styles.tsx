@@ -8,8 +8,9 @@ export const ResponsiveWrapper = styled(motion.div)`
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 3fr 50px;
-  grid-gap: 10px;
+  grid-template-rows: 3fr 80px;
+
+  overflow: hidden;
 
   .img-wrap {
     box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
@@ -22,24 +23,31 @@ export const ResponsiveWrapper = styled(motion.div)`
   }
 
   .text-wrap {
-    padding: 0px 10px;
+    z-index: 1;
+    background-color: #f7f7f7;
+    padding: 15px 10px;
     width: 100%;
     height: 100%;
     gap: 5px;
-
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
     h2 {
+      margin-top: 5px;
+      word-break: keep-all;
       font-size: 18px;
       font-family: ${props => props.theme.font.TitleFont};
+      line-height: 18px;
     }
     h3 {
       font-family: ${props => props.theme.font.EnglishFont};
       font-size: 15px;
       word-break: keep-all;
+      width: 80px;
+      text-align: right;
     }
     .title p {
+      position: static;
       color: ${props => props.theme.color.mainGreen};
       line-height: 8px;
       font-size: 10px;
@@ -47,135 +55,36 @@ export const ResponsiveWrapper = styled(motion.div)`
     }
   }
   @media screen and (${props => props.theme.mobile}) {
-    width: 100%;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
-    grid-auto-flow: row;
-    grid-gap: 5px;
-
-    .img-wrap {
-      padding: 0px 20px;
-      width: 100%;
-      max-width: 250px;
-      position: relative;
-      align-items: center;
-      overflow: hidden;
-      border-radius: 25px;
-    }
+    position: relative;
 
     .text-wrap {
-      padding-left: 10px;
-      margin-top: 10px;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-
-      gap: 10px;
-
-      h3 {
-        font-family: ${props => props.theme.font.EnglishFont};
-        font-size: 25px;
-      }
-
-      .text-wrap-bottom {
-        padding-left: 5px;
-        padding-bottom: 20px;
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: flex-start;
-        justify-self: baselines;
-      }
-      .title {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-        h2 {
-          font-size: 22px;
-          font-family: ${props => props.theme.font.TextFont2};
-          letter-spacing: 0px;
-          font-weight: 600;
-          color: ${props => props.theme.color.darkGreen};
-          white-space: nowrap;
-          word-wrap: normal;
-        }
-        h3 {
-          font-size: 12px;
-          line-height: 18px;
-          color: ${props => props.theme.color.brownHover};
-          font-family: ${props => props.theme.font.EnglishFont};
-        }
-      }
-    }
-  }
-`;
-
-export const Wrapper = styled(motion.div)`
-  @media not all and (min-resolution: 0.001dpcm) {
-    img[loading="lazy"] {
-      clip-path: inset(0.5px);
-    }
-  }
-
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 3fr 2fr;
-  place-items: center;
-  z-index: 1;
-  .img-wrap {
-    padding: 0px 20px;
-    width: 100%;
-    height: 100%;
-    max-width: 250px;
-    position: relative;
-    overflow: hidden;
-    border-radius: 25px;
-  }
-
-  .text-wrap {
-    margin-top: 10px;
-    width: 100%;
-    height: 100%;
-    gap: 5px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-
-    h3 {
-      font-family: ${props => props.theme.font.EnglishFont};
-      font-size: 1.2rem;
-    }
-    .tag-wrap {
-      display: flex;
+      padding: 20px 10px;
+      position: relative;
       gap: 5px;
-    }
-
-    .title {
       display: flex;
-      flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
+      justify-content: space-between;
       h2 {
-        font-size: 1.25rem;
-        font-family: ${props => props.theme.font.TextFont1};
-        font-weight: 600;
-
-        color: ${props => props.theme.color.darkGreen};
+        word-break: keep-all;
+        font-size: 13px;
+        font-family: ${props => props.theme.font.TitleFont};
+        line-height: 13px;
       }
       h3 {
-        font-size: 13px;
-        line-height: 10px;
-        margin-bottom: 10px;
-        color: ${props => props.theme.color.brownHover};
         font-family: ${props => props.theme.font.EnglishFont};
+        font-size: 15px;
+        word-break: keep-all;
+        width: 80px;
+        text-align: right;
+      }
+      .title p {
+        top: 5px;
+        left: 10px;
+        position: absolute;
+        color: ${props => props.theme.color.mainGreen};
+        line-height: 7px;
+        font-size: 10px;
+        word-break: keep-all;
       }
     }
   }

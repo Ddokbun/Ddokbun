@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   height: 80px;
   top: 0;
   background-color: #fafafa;
-  z-index: 1;
+  z-index: 999;
   .wrapper {
     margin: auto;
     width: 100%;
@@ -282,7 +282,7 @@ export const Slider = styled(motion.div)`
   opacity: 1;
   position: fixed;
   background-color: #fafafa;
-  z-index: 1;
+  z-index: 999;
   width: 100%;
   height: calc(100vh - 80px);
   .menu {
