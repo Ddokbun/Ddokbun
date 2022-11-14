@@ -23,13 +23,12 @@ export const fetchItemSeq = async (plantSeq: number | null) => {
       method: "GET",
       url: path + plantSeq,
     });
-    console.log("시퀀스를 드립니다", res.data.content.itemSeq);
     return res.data.content.itemSeq;
   } catch (error) {
-    if (error) {
-      alert("해당하는 값을 찾지 못했습니다.");
-      router.push("/search");
-    }
+    // if (error) {
+    //   alert("해당하는 값을 찾지 못했습니다.");
+    //   router.push("/search");
+    // }
   }
 };
 

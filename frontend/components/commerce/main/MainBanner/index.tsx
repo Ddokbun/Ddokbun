@@ -8,6 +8,13 @@ const MainBanner = () => {
     <Wrapper>
       <div className="wrap">
         <h2>Commerce</h2>
+        <div className="button-wrap">
+          <Link href={"commerce/survey"}>
+            <button>Survey</button>
+          </Link>
+
+          <button>View all</button>
+        </div>
       </div>
       <div className="img-wrap">
         <Image
