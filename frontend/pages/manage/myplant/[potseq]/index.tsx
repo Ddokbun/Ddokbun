@@ -125,7 +125,7 @@ const PlantCare: NextPage = () => {
       setGraphStatus({ temp, humid, soil });
     };
     getInitialData();
-  }, [potseq, statusContents, graphStatus]);
+  }, [potseq, statusContents]);
 
   console.log(graphStatus);
 
