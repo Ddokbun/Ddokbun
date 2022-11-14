@@ -6,7 +6,6 @@ const SearchCamera: NextPage = () => {
   return (
     <>
       <Camera> </Camera>
-      <Camera> </Camera>
     </>
   );
 };
