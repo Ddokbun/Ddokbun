@@ -67,3 +67,43 @@ export const SvgAni = {
     strokeDashoffset: 0,
   },
 };
+
+export const NabAni = {
+  open: {
+    x: 0,
+    display: "block",
+    transition: {
+      duration: 0.5,
+    },
+  },
+  closed: {
+    x: "-100%",
+    transition: {
+      duration: 0.5,
+    },
+  },
+};
+
+export const NabCategoryAni = {
+  open: {
+    opacity: 1,
+
+    height: "160px",
+    transition: {
+      duration: 0.5,
+      opacity: {
+        delay: 0.3,
+      },
+    },
+  },
+  closed: {
+    opacity: 0,
+    height: 0,
+    transition: {
+      duration: 0.5,
+      opacity: {
+        duration: 0.1,
+      },
+    },
+  },
+};

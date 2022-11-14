@@ -439,3 +439,23 @@ export const fetchSurveyComplete = async (answerList: number[]) => {
     console.log(error);
   }
 };
+
+export interface DeliveriesType {
+  orderSeq: number;
+  orderQuantity: number;
+  orderName: string;
+  orderPrice: number;
+  orderStatus: string;
+  orderTime: string;
+}
+
+export const fetchDeliveries = async () => {
+  const url = `order/list`;
+  try {
+    const res = await AXIOS({
+      url,
+      method: "get",
+    });
+    return res.data.content;
+  } catch (error) {}
+};

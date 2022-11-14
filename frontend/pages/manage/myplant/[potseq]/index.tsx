@@ -30,11 +30,13 @@ export interface currentStatus {
 }
 
 const PlantCare: NextPage = () => {
+  const [statusContents, setStatusContents] = useState("");
   const showDetailHandler = () => {
     return;
   };
 
   const { potseq } = useRouter().query;
+  const [wateringLogs, setWateringLogs] = useState("");
 
   const [plantStatus, setPlantStatus] = useState({
     growHumid: "",
@@ -75,22 +77,31 @@ const PlantCare: NextPage = () => {
     }
 
     const getInitialData = async () => {
+      const request = await Notification.requestPermission();
+      if (!request) {
+        alert("물 주기 알림을 받으시려면 알림 설정을 허용해주세요");
+      }
       const res = await fetchCurrentStatus(potseq);
       console.log(res);
       setPlantStatus(res);
       dispatch(manageActions.setPlantInfo(res));
+      console.log(getDateDiff(res.waterSupply.join("-")));
+
+      const contents =
+        getDateDiff(res.waterSupply.join("-")) > 1
+          ? "물을 주셔야 할 것 같아요!"
+          : "모든 환경이 최상이예요:)";
+      setStatusContents(contents);
     };
     getInitialData();
-  }, [potseq]);
+  }, [potseq, statusContents]);
+
   return (
     <Wrapper>
       <section className="left-section">
         <DigitalTwin light={plantStatus.light} />
         <span onClick={onWateringHandler} className="title">
-          {plantStatus.waterSupply &&
-          getDateDiff(plantStatus.waterSupply.join("-")) > 1
-            ? "물을 주셔야 할 것 같아요!"
-            : " 모든 환경이 최상이예요!"}
+          {statusContents}
         </span>
         <div className="simpleGraph-container">
           <SimpleGraph
@@ -103,7 +114,11 @@ const PlantCare: NextPage = () => {
         </div>
       </section>
       <section>
-        <WeekPicker showDetailHandler={showDetailHandler} />
+        <WeekPicker
+          showDetailHandler={showDetailHandler}
+          setWateringLogs={setWateringLogs}
+        />
+        {wateringLogs !== "" && wateringLogs}
         <PlantStatus />
       </section>
     </Wrapper>

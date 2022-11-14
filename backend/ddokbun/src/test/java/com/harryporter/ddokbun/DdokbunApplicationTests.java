@@ -1,13 +1,22 @@
 package com.harryporter.ddokbun;
 
+import com.harryporter.ddokbun.domain.plant.repository.PotRepository;
+import com.harryporter.ddokbun.domain.plant.service.PotService;
+import com.harryporter.ddokbun.schedule.BatchProcessor;
 import com.harryporter.ddokbun.utils.fcm.FCMMessageDto;
 import com.harryporter.ddokbun.utils.fcm.FCMService;
 import org.junit.jupiter.api.Test;
+import org.springframework.batch.core.JobParametersInvalidException;
+import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
+import org.springframework.batch.core.repository.JobInstanceAlreadyCompleteException;
+import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
+import java.time.LocalDate;
 
 @SpringBootTest
 class DdokbunApplicationTests {
@@ -44,4 +53,37 @@ class DdokbunApplicationTests {
 
 	}
 
+
+	@Autowired
+	public BatchProcessor batchProcessor;
+
+	@Autowired
+	public PotRepository c;
+	@Test
+	void autoWaterTest() throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {
+
+		System.out.println(LocalDate.now());
+		batchProcessor.autoWaterApplyJobScheduled();
+	}
+
+	@Test
+	void waterAlarmTest() throws JobInstanceAlreadyCompleteException, JobExecutionAlreadyRunningException, JobParametersInvalidException, JobRestartException {
+
+		System.out.println(LocalDate.now());
+		batchProcessor.waterApplyAlarmJobScheduled();
+	}
+
+	@Test
+	void waterLevelAlarmTest() throws Exception{
+		batchProcessor.waterLevelAlarmJobScheduled();
+	}
+
+
+	@Autowired
+	public PotService potService;
+	@Test
+	void updatePotWaterApplyTest(){
+
+		potService.applyWater("0000000000",145L);
+	}
 }
