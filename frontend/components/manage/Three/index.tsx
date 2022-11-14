@@ -1,13 +1,13 @@
-import {
-  Environment,
-  OrbitControls,
-  PerspectiveCamera,
-} from "@react-three/drei";
+import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { useEffect, useRef } from "react";
+import { FC, useEffect, useRef } from "react";
 import Flower from "../../Flower";
 
-const Three = () => {
+interface Props {
+  isAnimated: boolean;
+}
+
+const Three: FC<Props> = ({ isAnimated }) => {
   // shape, surface를 가지고 있음.
   // geometry = shape = 구, 정육면체등등
   // material = surface
@@ -16,26 +16,26 @@ const Three = () => {
   const angleToRadians = (angle: number) => (Math.PI / 180) * angle;
 
   const orbitControlsRef = useRef<any>(null);
-  useFrame(state => {
-    if (orbitControlsRef.current) {
-      const { x, y } = state.mouse;
-      orbitControlsRef.current.setAzimuthalAngle?.(-angleToRadians(90) * x);
-      orbitControlsRef.current.setPolarAngle?.((y + 0.5) * angleToRadians(90));
-      // orbitControlsRef.current.update?.();
-    }
-  });
+  // useFrame(state => {
+  //   if (orbitControlsRef.current) {
+  //     const { x, y } = state.mouse;
+  //     orbitControlsRef.current.setAzimuthalAngle?.(-angleToRadians(90) * x);
+  //     orbitControlsRef.current.setPolarAngle?.((y + 0.5) * angleToRadians(90));
+  //     orbitControlsRef.current.update?.();
+  //   }
+  // });
 
   return (
     <>
       {/* 카메라 */}
       <PerspectiveCamera makeDefault position={[2, 10, 6.5]} />
       <OrbitControls
-        ref={orbitControlsRef}
-        minPolarAngle={angleToRadians(50)}
-        maxPolarAngle={angleToRadians(80)}
+      // ref={orbitControlsRef}
+      // minPolarAngle={angleToRadians(50)}
+      // maxPolarAngle={angleToRadians(80)}
       />
       {/* 모델 */}
-      <Flower />
+      <Flower isAnimated={isAnimated} />
       {/* 조명 */}
       <ambientLight args={["#fcfbf3", 1]} />
       <directionalLight args={[0xffffff, 1]} />

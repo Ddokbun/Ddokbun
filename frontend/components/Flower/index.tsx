@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import React, { useRef } from "react";
+import React, { FC, useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 
@@ -27,16 +27,32 @@ type GLTFResult = GLTF & {
 type ActionName = "Cacti Baby Dance";
 type GLTFActions = Record<ActionName, THREE.AnimationAction>;
 
-const Flower = (props: JSX.IntrinsicElements["group"]) => {
-  const group = useRef<THREE.Group>();
-  const { nodes, materials, animations } = useGLTF(
-    "/models/model.glb",
-  ) as GLTFResult;
-  const { actions } = useAnimations<GLTFActions>(animations, group);
+interface Props {
+  isAnimated: boolean;
+}
+
+const Flower: FC<Props> = ({ isAnimated }) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const group = useRef<any>();
+  const { nodes, materials, animations }: any = useGLTF("/models/model.glb");
+  console.log(animations[0]);
+
+  const { actions } = useAnimations(animations, group);
+  console.log(actions, "asdasdfasdf");
+  console.log(actions["Cacti Baby Dance"]);
+
+  useEffect(() => {
+    actions["Cacti Baby Dance"]?.play();
+
+    setTimeout(() => {
+      actions["Cacti Baby Dance"]?.stop();
+    }, 10000);
+  }, [isAnimated]);
+
   return (
-    <group ref={group} {...props} dispose={null}>
+    <group ref={group} dispose={null}>
       <group name="Sketchfab_Scene">
-        <group name="Sketchfab_model" rotation={[-Math.PI / 2, 0, 0]}>
+        <group name="Sketchfab_model" rotation={[-Math.PI / 1.6, -0.1, 1.8]}>
           <group name="Cacti_Babyfbx" rotation={[Math.PI / 2, 0, 0]}>
             <group name="Object_2">
               <group name="RootNode">
