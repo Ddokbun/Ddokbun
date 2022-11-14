@@ -34,7 +34,7 @@ const SearchBar: React.FC<{ plants: PlantListArray }> = ({ plants }) => {
           value={searchInput}
           path={"search"}
         ></SearchInput>
-        <Link href={"search/camera"}>
+        <Link href={"search/ai-search"}>
           <div className="camera">
             <FontAwesomeIcon icon={faCamera} size="2x"></FontAwesomeIcon>
           </div>

@@ -78,7 +78,10 @@ public class WaterLevelAlarmBatch {
 
         return pot -> {
 
-            alarmService.sendAlarmToUser(new AlarmMessageDto(),pot.getUser().getUserSeq());
+            String title= "물통 물 부족" ;
+            String body = String.format("%s 님 물을 공급할 물통에 물이 부족합니다. 물을 채워주세요.",pot.getUser().getUserNickname());
+
+            alarmService.sendAlarmToUser(new AlarmMessageDto(title,body),pot.getUser().getUserSeq());
             return pot;
         };
     }
