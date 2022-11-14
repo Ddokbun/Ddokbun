@@ -14,10 +14,12 @@ import { motion } from "framer-motion";
 import { NabAni, NabCategoryAni } from "../../styles/animations/animation";
 import NavCard from "../NavCard";
 import Starter from "../../assets/commerce/plants/starter.jpg";
+import { useSelector } from "react-redux";
+import { RootState } from "../../store";
 
 const Navbar = () => {
   const ref = useRef<HTMLDivElement>(null);
-  const userseq = 1;
+  const userseq = useSelector((state: RootState) => state.authSlice.userSeq);
   const [slider, setSlider] = useState(false);
   const [shopCate, setShopCate] = useState(false);
   const [shopHover, setShopHover] = useState(false);
@@ -79,7 +81,7 @@ const Navbar = () => {
             <Link href={"/welcome"}>Ddokbbun</Link>
           </div>
           <div className="menu-wrap">
-            <Link href={"/manage"}>
+            <Link href={`/manage/${userseq}`}>
               <a>IoT</a>
             </Link>
             <Link href={"/commerce"}>
