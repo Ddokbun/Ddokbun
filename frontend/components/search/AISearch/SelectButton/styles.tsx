@@ -44,7 +44,7 @@ export const Wrapper = styled.div`
     border: 0;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     .file-select {
       width: 90px;
       height: 90px;

@@ -65,7 +65,7 @@ export const Wrapper = styled.div`
   @media screen and (${props => props.theme.tablet}) {
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     width: 100%;
     height: 100%;
     padding: 0px 0px;

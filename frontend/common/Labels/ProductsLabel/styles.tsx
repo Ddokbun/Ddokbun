@@ -15,7 +15,7 @@ export const Wrapper = styled.div`
     font-family: ${props => props.theme.font.TextFont2};
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     width: 50px;
   }
 `;
