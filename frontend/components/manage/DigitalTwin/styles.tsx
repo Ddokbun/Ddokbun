@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+interface Props {
+  light: number;
+}
+
+export const Wrapper = styled.div<Props>`
   width: 90%;
   h2 {
     color: ${props => props.theme.color.mainGreen};
@@ -16,7 +20,7 @@ export const Wrapper = styled.div`
     height: 500px;
     border-radius: 16px;
     background-color: ${props => props.theme.color.ivory};
-    filter: brightness(50%);
+    filter: brightness(${props => props.light}%);
   }
 
   .top-container {

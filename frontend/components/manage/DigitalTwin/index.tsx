@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useEffect, useState } from "react";
+import React, { FC, lazy, Suspense, useEffect, useState } from "react";
 import AutoToggle from "../AutoToggle";
 import { Wrapper } from "./styles";
 import { Canvas } from "@react-three/fiber";
@@ -7,7 +7,11 @@ import { RootState } from "../../../store";
 
 const Three = lazy(() => import("../Three"));
 
-const DigitalTwin = ({ light }: any) => {
+interface Props {
+  light: number;
+}
+
+const DigitalTwin: FC<Props> = ({ light }) => {
   const [isMounted, setIsMounted] = useState(false);
   const plantNickname = useSelector(
     (state: RootState) => state.manage.plantNickname,
@@ -17,7 +21,7 @@ const DigitalTwin = ({ light }: any) => {
   }, []);
 
   return (
-    <Wrapper>
+    <Wrapper light={light * 20}>
       <div className="top-container">
         <h2>{plantNickname}</h2>
         <AutoToggle />
@@ -26,7 +30,7 @@ const DigitalTwin = ({ light }: any) => {
         {!isMounted ? null : (
           <Suspense fallback={null}>
             <Canvas id="digital-twin">
-              <Three light={light} />
+              <Three />
             </Canvas>
           </Suspense>
         )}
