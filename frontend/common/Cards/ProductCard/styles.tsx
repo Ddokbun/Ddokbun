@@ -4,15 +4,14 @@ import styled from "styled-components";
 export const ResponsiveWrapper = styled(motion.div)`
   cursor: pointer;
   margin-top: 20px;
-  width: 350px;
+  width: 100%;
   height: 100%;
   display: grid;
   grid-template-columns: 1fr;
-  grid-template-rows: 3fr auto;
-  grid-gap: 15px;
+  grid-template-rows: 3fr 50px;
+  grid-gap: 10px;
 
   .img-wrap {
-    border-radius: 10px;
     box-shadow: 0px 1px 1px 1px rgba(0, 0, 0, 0.2);
     overflow: hidden;
     width: 100%;
@@ -29,49 +28,23 @@ export const ResponsiveWrapper = styled(motion.div)`
     gap: 5px;
 
     display: flex;
-    flex-direction: column;
     align-items: flex-start;
-
+    justify-content: space-between;
+    h2 {
+      font-size: 18px;
+      font-family: ${props => props.theme.font.TitleFont};
+    }
     h3 {
       font-family: ${props => props.theme.font.EnglishFont};
-      font-size: 20px;
-      word-wrap: normal;
+      font-size: 15px;
+      word-break: keep-all;
     }
-    .text-wrap-bottom {
-      width: 100%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+    .title p {
+      color: ${props => props.theme.color.mainGreen};
+      line-height: 8px;
+      font-size: 10px;
+      word-break: keep-all;
     }
-
-    .title {
-      display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 5px;
-      h2 {
-        font-size: 20px;
-        font-family: ${props => props.theme.font.TextFont2};
-        letter-spacing: 0px;
-        line-height: 15px;
-        font-weight: 600;
-        line-height: 10px;
-        color: ${props => props.theme.color.darkGreen};
-        margin-bottom: 10px;
-      }
-      h3 {
-        font-size: 14px;
-        color: ${props => props.theme.color.brownHover};
-        font-family: ${props => props.theme.font.EnglishFont};
-      }
-    }
-    .tag-wrap {
-      display: flex;
-      gap: 5px;
-    }
-  }
-  :hover {
-    bottom: 2px;
   }
   @media screen and (${props => props.theme.mobile}) {
     width: 100%;

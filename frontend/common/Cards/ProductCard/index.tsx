@@ -39,24 +39,15 @@ const ProductCard: React.FC<{
               </div>
               <div className="text-wrap">
                 <div className="title">
-                  <h3>{item.itemEnName}</h3>
+                  <p>{item.itemEnName}</p>
                   <h2>{item.itemName}</h2>
                 </div>
-                <div className="tag-wrap">
-                  {item.tags?.map((tag, idx) => {
-                    return <ProductLabel key={idx}>{tag}</ProductLabel>;
-                  })}
-                </div>
-
-                <div className="text-wrap-bottom">
-                  <h3>
-                    ₩{" "}
-                    {item.itemPrice
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                  </h3>
-                  <BuyTextButton id={item.itemSeq} />
-                </div>
+                <h3>
+                  ₩{" "}
+                  {item.itemPrice
+                    .toString()
+                    .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+                </h3>
               </div>
             </ResponsiveWrapper>
           </Link>
