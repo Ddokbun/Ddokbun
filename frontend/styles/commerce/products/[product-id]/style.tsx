@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
   padding-bottom: 100px;
   gap: 35px;
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     gap: 0px;
     padding: 0 20px;
   }

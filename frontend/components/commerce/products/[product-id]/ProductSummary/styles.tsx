@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
     }
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     padding: 0px 0px 0px 0px;
     ul li {
       font-family: ${props => props.theme.font.TextFont2};

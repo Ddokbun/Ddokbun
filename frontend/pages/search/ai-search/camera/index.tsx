@@ -1,9 +1,13 @@
-import React, { useEffect, useState } from "react";
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
-import Camera from "../../../../components/search/AISearch/SelectButton/Camera";
+import React from "react";
+import { NextPage } from "next";
+import CameraCompo from "../../../../components/search/AISearch/SelectButton/Camera";
 
 const SearchCamera: NextPage = () => {
-  return <>{/* <Camera> </Camera> */}</>;
+  return (
+    <>
+      <CameraCompo></CameraCompo>
+    </>
+  );
 };
 
 export default SearchCamera;
