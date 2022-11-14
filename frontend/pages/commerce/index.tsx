@@ -6,6 +6,7 @@ import IoTSurvey from "../../components/commerce/main/IoTSurvey";
 import { fetchHotPlant, getMainProduct } from "../../apis/commerce";
 import { MainPlant } from "../../types/commerce/home.interface";
 import MainProductCard from "../../components/commerce/main/MainProductCard";
+import MainBanner from "../../components/commerce/main/MainBanner";
 
 export const getStaticProps: GetStaticProps = async context => {
   const res = await getMainProduct();
@@ -20,9 +21,10 @@ export const getStaticProps: GetStaticProps = async context => {
 const Commerce: NextPage<{ data: MainPlant }> = ({ data }) => {
   return (
     <Wrapper>
+      <MainBanner />
+      <MainProductCard data={data} />
       <SurveyBanner />
       <IoTSurvey />
-      <MainProductCard data={data} />
     </Wrapper>
   );
 };

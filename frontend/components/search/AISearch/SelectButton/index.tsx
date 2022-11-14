@@ -4,11 +4,11 @@ import { Theme } from "../../../../styles/theme";
 import { Wrapper } from "./styles";
 
 const SelectButton = () => {
-  function setFile(event: any) {
+  const setFile = (event: any) => {
     console.log(event.target.files[0]);
     console.log(typeof event.target.files[0]);
     postPicture(event.target.files[0]);
-  }
+  };
   return (
     <Wrapper>
       <h1>사진으로 식물을 검색해보세요!</h1>

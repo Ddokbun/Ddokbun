@@ -30,19 +30,21 @@ export const fetchItemSeq = async (plantSeq: number) => {
 
 // AI 검색을 위한 이미지 전송
 export const postPicture = async (image: any) => {
-  console.log("이미지는", image);
+  console.log("이미지입니다", image);
   const formData = new FormData();
   formData.append("file", image);
-  console.log("들어오긴했나", formData);
   const path = "AI/picture";
-
   try {
     const res = await AXIOS({
       method: "POST",
       url: path,
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
       data: formData,
     });
-    return res.data;
+    console.log("성공", res.data.content.plantSeq);
+    return res.data.content.plantSeq;
   } catch (error) {
     console.log(error);
   }
