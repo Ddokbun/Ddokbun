@@ -136,9 +136,9 @@ public class PotService {
 
                         @Override
                         public void onSuccess(SendResult<String, String> result) {
-                            WaterApply waterApply = new WaterApply(potEntity);
-                            log.info("물 Apply table 생성 {}", waterApply);
-                            waterApplyRepository.save(waterApply);
+
+                            log.info("물 주기 성공");
+
                         }
                     });
 
@@ -146,6 +146,9 @@ public class PotService {
                 throw new GeneralException(ErrorCode.EXTERNAL_SERVICE_ACCESS_ERROR,"카프카 서비스 이용 중 에러");
             }
 
+            WaterApply waterApply = new WaterApply(potEntity);
+            waterApplyRepository.save(waterApply);
+            potRepository.save(potEntity);
             //WaterApply waterApply = new WaterApply(potEntity);
             //log.info("물 Apply table 생성 {}", waterApply);
             //waterApplyRepository.save(waterApply);

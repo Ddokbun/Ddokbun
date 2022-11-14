@@ -13,7 +13,7 @@ import java.time.LocalDate;
 public class WaterApply {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "water_supply_seq", columnDefinition = "INTEGER UNSIGNED NOT NULL")
     private Long waterSupplySeq;
 

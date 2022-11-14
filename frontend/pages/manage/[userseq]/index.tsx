@@ -33,22 +33,16 @@ export interface PlantListType {
 const Manage: NextPage = () => {
   const [plantsList, setPlantsList] = useState<PlantListType[]>();
   const dispatch = useDispatch();
-  const selecor = useSelector(state => state);
   useEffect(() => {
     const getInitialData = async () => {
-      const plantsListData = await fetchPlantsList();
+      const [plantsListData, cartListData] = await Promise.all([
+        fetchPlantsList(),
+        fetchCartList(),
+      ]);
       setPlantsList(plantsListData);
+      dispatch(setAllCartLists(cartListData));
     };
-
-    const getCartList = async () => {
-      const data = await fetchCartList();
-      console.log(data);
-      dispatch(setAllCartLists(data));
-    };
-
-    getCartList();
     getInitialData();
-    console.log("rere", selecor);
   }, []);
 
   return (

@@ -22,7 +22,7 @@ public class Order {
     //주문 일련 번호
     @Id
     @Column(columnDefinition = "INTEGER UNSIGNED")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long orderSeq;
 
     //멤버
