@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #fafafa;
+    background: none;
 
     /* Center slide text vertically */
     display: -webkit-box;

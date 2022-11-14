@@ -5,7 +5,7 @@ export const CardHover = {
 
   start: {
     opacity: 0,
-    y: 5,
+    y: 10,
   },
 
   end: {
@@ -13,7 +13,7 @@ export const CardHover = {
     y: 0,
     transition: {
       default: {
-        duration: 0.2,
+        duration: 1,
       },
       opacity: {
         duration: 1,
