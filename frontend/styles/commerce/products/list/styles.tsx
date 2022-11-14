@@ -78,7 +78,7 @@ export const Wrapper = styled.div`
       }
     }
   }
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     .banner-wrap {
       margin: 0 auto;
       padding: 0px 5px;

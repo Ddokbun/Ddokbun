@@ -27,8 +27,6 @@ export const Wrapper = styled.section`
     margin-right: 10%;
   }
 
-
-
   @media screen and (${props => props.theme.tablet}) {
     display: flex;
     flex-direction: column;
@@ -36,7 +34,7 @@ export const Wrapper = styled.section`
     width: 90%;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
   }
 
   .simpleGraph-container {

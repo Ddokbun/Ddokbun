@@ -4,6 +4,8 @@ import mainImg from "../../../assets/onboarding/mainImg.jpg";
 import { LoginButton } from "../../../common/Button";
 import KakaoLogin from "../../../common/Login/Kakao";
 import GoogleLogin from "../../../common/Login/Google";
+import { CardHover } from "../../../styles/animations/animation";
+import { motion } from "framer-motion";
 
 const MainItem = () => {
   return (

@@ -27,6 +27,6 @@ export const GridWrapper = styled.div`
   @media screen and (${props => props.theme.tablet}) {
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
   }
 `;

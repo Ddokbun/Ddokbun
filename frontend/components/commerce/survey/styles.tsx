@@ -45,7 +45,7 @@ export const FormWrapper = styled(motion.div)`
     font-family: ${props => props.theme.font.TextFont1};
     font-size: min(30px, 3vw);
   }
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     position: relative;
 
     grid-template-columns: 1fr;
