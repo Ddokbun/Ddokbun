@@ -50,7 +50,7 @@ export const Wrapper = styled(motion.section)`
     }
     th {
       font-size: 14px;
-      :nth-child(3) {
+      :nth-child(2) {
         display: none;
       }
     }

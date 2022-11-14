@@ -76,10 +76,10 @@ const DeliveryCard: FC<Props> = ({ data }) => {
       </td>
       <td>
         <p>{data.orderWaybillNumber}</p>
-        {/* <p>{data.orderPrice}원</p> */}
+        <button onClick={showDeliveryStatus}>배송조회</button>
       </td>
       <td>
-        <button onClick={showDeliveryStatus}>배송조회</button>
+        <p>{data.orderPrice}원</p>
       </td>
     </Wrapper>
   );

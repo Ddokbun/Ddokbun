@@ -9,14 +9,16 @@ export const Wrapper = styled.tr`
     margin: 16px;
     justify-content: space-around;
   }
-  :nth-child(1) {
-  }
-  :nth-child(2) {
-    margin-left: 16px;
-  }
-
   button {
     font-size: 12px;
+    font-family: ${props => props.theme.font.TextFont2};
+  }
+  button:hover {
+    color: ${props => props.theme.color.mainGreen};
+  }
+
+  p {
+    font-family: ${props => props.theme.font.TextFont2};
   }
 
   .info {
