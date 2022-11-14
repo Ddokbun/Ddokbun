@@ -1,0 +1,16 @@
+version: "3"
+services:
+  jenkins:
+    container_name: jenkins-compose
+    build:
+      context: .
+      dockerfile: Dockerfile
+    user: root
+    ports:
+      - 9000:8080
+      - 8888:50000
+    volumes:
+      - /home/ddokbun/jenkins-compose-set/jenkins2:/var/jenkins_home
+      - /home/ddokbun/nginx-compose-set/data/nginx/conf.d:/var/nginx
+      - /home/ddokbun/jenkins-compose-set/.ssh:/root/.ssh
+      - /var/run/docker.sock:/var/run/docker.sock
