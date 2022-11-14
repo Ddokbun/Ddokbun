@@ -1,6 +1,10 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+interface Props {
+  light: number;
+}
+
+export const Wrapper = styled.div<Props>`
   width: 90%;
   h2 {
     color: ${props => props.theme.color.mainGreen};
@@ -12,11 +16,12 @@ export const Wrapper = styled.div`
   }
 
   .twin-background {
+    position: relative;
     width: 100%;
     height: 500px;
     border-radius: 16px;
     background-color: ${props => props.theme.color.ivory};
-    filter: brightness(50%);
+    filter: brightness(${props => props.light}+ "%");
   }
 
   .top-container {
@@ -46,5 +51,43 @@ export const Wrapper = styled.div`
     h2 {
       font-size: 16px;
     }
+  }
+
+  svg {
+    position: absolute;
+    top: 32px;
+    right: 16px;
+    width: 64px;
+    height: 64px;
+    z-index: 2;
+    cursor: pointer;
+    path {
+      fill: ${props => props.theme.color.darkGreen};
+      stroke: ${props => props.theme.color.darkGreen};
+      stroke-width: 3;
+    }
+  }
+
+  .tooltip {
+    display: inline-block;
+    font-weight: bold;
+  }
+
+  .tooltip-text {
+    display: none;
+    position: absolute;
+    max-width: 200px;
+    border: 1px solid;
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 0.8em;
+    color: white;
+    background: ${props => props.theme.color.darkGreen};
+    top: 100px;
+    right: 6px;
+  }
+
+  .tooltip:hover .tooltip-text {
+    display: block;
   }
 `;

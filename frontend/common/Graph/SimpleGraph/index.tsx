@@ -1,4 +1,4 @@
-import React from "react";
+import { FC } from "react";
 import { Progress, Wrapper } from "./styled";
 
 import Temper from "../../../assets/commerce/temper.png";
@@ -7,7 +7,7 @@ import Humid from "../../../assets/commerce/humid.png";
 import WaterBottle from "../../../assets/icon/waterbottle.png";
 import Image from "next/image";
 
-interface SimpleGraphProps {
+interface Props {
   temper: string;
   water: string;
   humid: string;
@@ -15,13 +15,15 @@ interface SimpleGraphProps {
   waterBottle: string | null;
 }
 
-const SimpleGraph: React.FC<SimpleGraphProps> = ({
+const SimpleGraph: FC<Props> = ({
   temper,
   water,
   humid,
   pages,
   waterBottle,
 }) => {
+  console.log(waterBottle);
+
   return (
     <Wrapper pages={pages}>
       <div className="line">

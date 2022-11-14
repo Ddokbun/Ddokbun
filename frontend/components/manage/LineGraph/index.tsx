@@ -24,7 +24,6 @@ interface Props {
 }
 
 const LineGraph: FC<Props> = ({ labels, data, label }) => {
-
   Chart.register(
     CategoryScale,
     LinearScale,
@@ -79,7 +78,6 @@ const LineGraph: FC<Props> = ({ labels, data, label }) => {
       axis: "y" as const,
     },
   };
-
 
   return (
     <Wrapper>

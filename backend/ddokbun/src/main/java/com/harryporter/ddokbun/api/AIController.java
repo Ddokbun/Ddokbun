@@ -29,7 +29,7 @@ public class AIController {
     @ApiOperation(value = "사진 받아 식물 이름과 Seq 반환")
     @PostMapping(value = "/picture")
     public ResponseEntity<?> findPlantKind(
-            @RequestParam MultipartFile file){
+            @RequestPart MultipartFile file){
         log.info("식물 사진 AI에 접근했습니다.");
         ResponseFrame res = null;
         log.info("파일이름{}", StringUtils.cleanPath(file.getOriginalFilename()));
