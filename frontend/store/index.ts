@@ -56,7 +56,7 @@ const rootReducers = (
 const persistConfig = {
   key: "root",
   storage: localstorage,
-  whitelist: ["cartList"],
+  whitelist: ["cartList", "manage"],
 };
 
 const persistedReducer = persistReducer<any>(persistConfig, rootReducers);
