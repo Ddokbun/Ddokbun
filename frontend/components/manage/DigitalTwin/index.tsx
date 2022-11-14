@@ -4,6 +4,7 @@ import { Wrapper } from "./styles";
 import { Canvas } from "@react-three/fiber";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
+import Rain from "../Rain";
 
 const Three = lazy(() => import("../Three"));
 
@@ -27,6 +28,7 @@ const DigitalTwin: FC<Props> = ({ light }) => {
         <AutoToggle />
       </div>
       <div className="twin-background">
+        {/* <Rain /> */}
         {!isMounted ? null : (
           <Suspense fallback={null}>
             <Canvas id="digital-twin">
