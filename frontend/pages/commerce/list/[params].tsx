@@ -19,6 +19,7 @@ import Starter from "../../../assets/commerce/plants/starter-banner.jpg";
 import Pet from "../../../assets/commerce/plants/pet-banner.jpg";
 import Home from "../../../assets/commerce/plants/home-banner.jpg";
 import Air from "../../../assets/commerce/plants/air-banner.jpg";
+import ProductList from "../../../components/commerce/products/lists";
 
 interface IParams extends ParsedUrlQuery {
   params: string;
@@ -60,7 +61,7 @@ const ProductLists: NextPage<{ data: ListArray; banner: Ibanner }> = ({
           ) : null}
         </div>
       </div>
-      {/* <ProductList data={data} />; */}
+      <ProductList data={data} />;
     </Wrapper>
   );
 };
@@ -108,13 +109,12 @@ export const getStaticProps: GetStaticProps = async context => {
     },
   };
 
-  // const data = await fetchProductList(params);
-  console.log(BannerTitle[params as keyof typeof BannerTitle]);
+  const data = await fetchProductList(params);
 
   return {
     props: {
       banner: BannerTitle[params as keyof typeof BannerTitle],
-      // data,
+      data,
     },
   };
 };

@@ -16,7 +16,6 @@ const ProductCard: React.FC<{
 }> = ({ item, isResponsive }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  console.log(isInView);
 
   return (
     <>
