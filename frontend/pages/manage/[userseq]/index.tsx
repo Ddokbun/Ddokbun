@@ -47,7 +47,9 @@ const Manage: NextPage = () => {
 
   return (
     <Wrapper variants={WrapperVar} initial="start" animate="end">
-      <PageTitle isLink>My Plants</PageTitle>
+      <PageTitle isLink mypage={false}>
+        <h1>My Plants</h1>
+      </PageTitle>
       {plantsList ? (
         <>
           <motion.h2 variants={EleVar}>
