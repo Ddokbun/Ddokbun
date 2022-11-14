@@ -1,6 +1,7 @@
+import router from "next/router";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
-import { postPicture } from "../../../../../apis/search";
+import { fetchItemSeq, postPicture } from "../../../../../apis/search";
 
 const base64toFile = (base_data: any, filename: any) => {
   var arr = base_data.split(","),
@@ -18,16 +19,19 @@ const base64toFile = (base_data: any, filename: any) => {
 
 const CameraCompo = () => {
   const [image, setImage] = useState("");
+
   const webcamRef = useRef<any>(null);
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
     setImage(imageSrc);
   }, [webcamRef]);
 
-  const postFile = () => {
+  const postFile = async () => {
     const imagePost = base64toFile(image, "image_file.png");
-    console.log(imagePost);
-    postPicture(imagePost);
+    const data = postPicture(imagePost);
+    const res = fetchItemSeq(await data);
+    const plantSeq = await res;
+    router.push(`/commerce/product/${plantSeq}`);
   };
 
   return (

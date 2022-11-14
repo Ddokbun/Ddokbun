@@ -1,4 +1,5 @@
 import AXIOS from "./index";
+import router from "next/router";
 
 //오늘의 식물
 export const fetchTodayPlant = async () => {
@@ -15,16 +16,20 @@ export const fetchTodayPlant = async () => {
 };
 
 // 검색 시 아이템 시퀀스 리턴
-export const fetchItemSeq = async (plantSeq: number) => {
+export const fetchItemSeq = async (plantSeq: number | null) => {
   const path = "market/product/plant/";
   try {
     const res = await AXIOS({
       method: "GET",
       url: path + plantSeq,
     });
+    console.log("시퀀스를 드립니다", res.data.content.itemSeq);
     return res.data.content.itemSeq;
   } catch (error) {
-    console.log(error);
+    if (error) {
+      alert("해당하는 값을 찾지 못했습니다.");
+      router.push("/search");
+    }
   }
 };
 

@@ -1,13 +1,15 @@
-import { postPicture } from "../../../../apis/search";
+import router from "next/router";
+import { fetchItemSeq, postPicture } from "../../../../apis/search";
 import { SearchBtn } from "../../../../common/Button";
 import { Theme } from "../../../../styles/theme";
 import { Wrapper } from "./styles";
 
 const SelectButton = () => {
-  const setFile = (event: any) => {
-    console.log(event.target.files[0]);
-    console.log(typeof event.target.files[0]);
-    postPicture(event.target.files[0]);
+  const setFile = async (event: any) => {
+    const data = postPicture(event.target.files[0]);
+    const res = fetchItemSeq(await data);
+    const plantSeq = await res;
+    router.push(`/commerce/product/${plantSeq}`);
   };
   return (
     <Wrapper>
