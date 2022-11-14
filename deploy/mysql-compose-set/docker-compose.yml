@@ -1,0 +1,18 @@
+version: '3'
+services:
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    restart: always
+    ports:
+      - 3208:3306 # HOST:CONTAINER
+    environment:
+      MYSQL_USER: ddokbun
+      MYSQL_PASSWORD: dd123
+      MYSQL_ROOT_PASSWORD: dd123
+      TZ: Asiz/Seoul
+    command:
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    volumes:
+      - ./mysqldata:/var/lib/mysql
