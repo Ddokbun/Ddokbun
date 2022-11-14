@@ -329,7 +329,7 @@ export const ShopHoverNav = styled(motion.div)`
   background-color: #fafafa;
 
   .grid-wrapper {
-    padding: 20px 40px 40px;
+    padding: 10px 40px 20px;
     width: 100%;
     height: 100%;
     display: grid;
