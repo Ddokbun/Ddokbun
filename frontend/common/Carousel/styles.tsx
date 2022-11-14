@@ -32,13 +32,13 @@ export const Wrapper = styled.div`
 
   .swiper-button-next {
     color: ${props => props.theme.color.mainGreen};
-    @media screen and (${props => props.theme.mobile}) {
+    @media screen and (max-width: 600px) {
       visibility: hidden;
     }
   }
   .swiper-button-prev {
     color: ${props => props.theme.color.mainGreen};
-    @media screen and (${props => props.theme.mobile}) {
+    @media screen and (max-width: 600px) {
       visibility: hidden;
     }
   }

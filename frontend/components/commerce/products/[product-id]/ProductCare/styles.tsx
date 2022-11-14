@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
     margin-bottom: 100px;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     margin: 50px 0px 0px;
     padding: 0px;
     width: 100%;

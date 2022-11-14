@@ -60,7 +60,8 @@ export const ResponsiveWrapper = styled(motion.div)`
       word-break: keep-all;
     }
   }
-  @media screen and (${props => props.theme.mobile}) {
+
+  @media screen and (max-width: 600px) {
     position: relative;
 
     .text-wrap {

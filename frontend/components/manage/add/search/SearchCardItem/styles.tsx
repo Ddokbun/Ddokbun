@@ -52,7 +52,7 @@ export const Wrapper = styled(motion.div)<{ isDelivery: boolean }>`
     font-size: 12px;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     width: 90%;
     height: 100px;
     display: grid;

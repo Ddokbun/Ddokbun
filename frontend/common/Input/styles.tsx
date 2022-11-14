@@ -36,7 +36,7 @@ export const BasicInput = styled.div`
     border-radius: 16px;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     input {
       width: 90%;
     }
@@ -80,7 +80,7 @@ export const SearchInputWrapper = styled.div`
     }
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     width: 100%;
     margin-bottom: 10%;
 

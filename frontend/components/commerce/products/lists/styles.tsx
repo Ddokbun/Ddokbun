@@ -25,13 +25,13 @@ export const GridWrapper = styled.div`
     place-items: center;
   }
 
-  @media screen and (${props => props.theme.tablet}) {
+  @media screen and (max-width: 1024px) {
     .grid {
       grid-template-columns: repeat(2, 1fr);
     }
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     padding: 90px 10px;
   }
 `;
