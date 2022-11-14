@@ -1,6 +1,5 @@
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
-import { Canvas, useFrame } from "@react-three/fiber";
-import { FC, useEffect, useRef } from "react";
+import { FC, useRef } from "react";
 import Flower from "../../Flower";
 
 interface Props {

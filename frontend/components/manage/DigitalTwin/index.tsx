@@ -5,15 +5,17 @@ import { Canvas } from "@react-three/fiber";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../store";
 import Rain from "../Rain";
-import { useInterval } from "../../../utils/useInterval";
+import Watering from "../../../assets/icon/watering-can.svg";
+import Image from "next/image";
 
 const Three = lazy(() => import("../Three"));
 
 interface Props {
   light: number;
+  onWateringHandler: () => void;
 }
 
-const DigitalTwin: FC<Props> = ({ light }) => {
+const DigitalTwin: FC<Props> = ({ light, onWateringHandler }) => {
   const [isMounted, setIsMounted] = useState(false);
   const plantNickname = useSelector(
     (state: RootState) => state.manage.plantNickname,
@@ -38,16 +40,20 @@ const DigitalTwin: FC<Props> = ({ light }) => {
 
   const onShowAnimationHandler = () => {
     setIsAnimated(true);
+    onWateringHandler();
   };
 
   return (
     <Wrapper light={100 - light * 20}>
       <div className="top-container">
         <h2>{plantNickname}</h2>
-        <span onClick={onShowAnimationHandler}>물주기</span>
         <AutoToggle />
       </div>
       <div className="twin-background">
+        <div className="svg-container tooltip" onClick={onShowAnimationHandler}>
+          <Watering viewBox="0 0 512 512" />
+          <p className="tooltip-text">물 주려면 클릭!</p>
+        </div>
         {!isMounted ? null : (
           <Suspense fallback={null}>
             {isAnimated && <Rain />}
