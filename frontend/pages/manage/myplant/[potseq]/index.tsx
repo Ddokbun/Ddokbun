@@ -99,7 +99,10 @@ const PlantCare: NextPage = () => {
   return (
     <Wrapper>
       <section className="left-section">
-        <DigitalTwin light={plantStatus.light} />
+        <DigitalTwin
+          light={plantStatus.light}
+          onWateringHandler={onWateringHandler}
+        />
         <span onClick={onWateringHandler} className="title">
           {statusContents}
         </span>
