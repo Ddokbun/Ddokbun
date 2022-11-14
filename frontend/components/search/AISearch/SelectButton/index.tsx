@@ -4,7 +4,7 @@ import { Theme } from "../../../../styles/theme";
 import { Wrapper } from "./styles";
 
 const SelectButton = () => {
-  function setFile(event) {
+  function setFile(event: any) {
     console.log(event.target.files[0]);
     console.log(typeof event.target.files[0]);
     postPicture(event.target.files[0]);

@@ -1,17 +1,16 @@
-import { Router } from "next/router";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
 
-const Camera: React.FC = () => {
+const Camera = () => {
   const [image, setImage] = useState("");
   const webcamRef = useRef(null);
-  const capture = useCallback(() => {
-    const imageSrc = webcamRef.current.getScreenshot();
-    setImage(imageSrc);
-  }, [webcamRef]);
+  //   const capture = useCallback(() => {
+  //     const imageSrc = webcamRef.current.getScreenshot();
+  //     setImage(imageSrc);
+  //   }, [webcamRef]);
 
   return (
-    <div className="container">
+    <div>
       <Webcam
         audio={false}
         height={720}
@@ -24,7 +23,7 @@ const Camera: React.FC = () => {
           window.alert("카메라 기기에 접근할 수 없습니다.")
         }
       />
-      <button onClick={capture}>캡쳐</button>
+      {/* <button onClick={capture}>캡쳐</button> */}
       <img src={image} />
       <button>전송하기</button>
     </div>
