@@ -37,7 +37,7 @@ export const Wrapper = styled.div`
       cursor: pointer;
     }
   }
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     .font-wrap {
       h2 {
         font-size: 30px;

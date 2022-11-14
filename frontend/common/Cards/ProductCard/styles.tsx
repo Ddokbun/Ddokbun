@@ -73,7 +73,7 @@ export const ResponsiveWrapper = styled(motion.div)`
   :hover {
     bottom: 2px;
   }
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;

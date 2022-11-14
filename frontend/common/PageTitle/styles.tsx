@@ -23,7 +23,7 @@ export const Wrapper = styled(motion.section)`
     font-family: ${props => props.theme.font.TextFont2};
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     * {
       width: 98%;
       padding-left: 3%;

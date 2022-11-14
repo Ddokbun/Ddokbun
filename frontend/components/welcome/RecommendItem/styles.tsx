@@ -32,7 +32,7 @@ export const Wrapper = styled.div`
     }
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     .subcontent-wrap {
       padding: 20px;
       .title {

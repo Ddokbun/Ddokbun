@@ -22,7 +22,7 @@ export const Wrapper = styled.section`
     display: flex;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     .card-container {
       grid-template-columns: repeat(1, 80%);
     }

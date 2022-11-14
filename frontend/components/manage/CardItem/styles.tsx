@@ -34,7 +34,7 @@ export const Wrapper = styled(motion.div)`
     font-family: ${props => props.theme.font.TextFont2};
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     width: 90%;
     display: flex;
   }

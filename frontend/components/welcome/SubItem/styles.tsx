@@ -29,7 +29,7 @@ export const Wrapper = styled.div`
     }
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     padding: 30px 10px 30px 10px;
     .subcontent-wrap {
       width: 100%;

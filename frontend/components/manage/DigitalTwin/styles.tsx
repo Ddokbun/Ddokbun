@@ -38,7 +38,7 @@ export const Wrapper = styled.div`
     width: 100%;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     width: 90%;
     margin: auto;
     min-width: 400px;
