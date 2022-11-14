@@ -11,6 +11,7 @@ import com.harryporter.ddokbun.exception.GeneralException;
 import com.harryporter.ddokbun.utils.auth.JwtTokenUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -29,6 +30,13 @@ import java.nio.charset.StandardCharsets;
 @Slf4j
 public class GoogleService {
     private final UserService userService;
+
+    @Value("${spring.security.oauth2.client.registration.google.client-id}")
+    private String clientId;
+    @Value("${spring.security.oauth2.client.registration.google.client-secret}")
+    private String clientSecret;
+    @Value("${spring.security.oauth2.client.registration.google.redirect-uri}")
+    private String redirectUri;
     public OAuthRes googleLogin(String code){
         log.info("구글 로그인 파이프라인 진입 :: 인가 코드 : {}", code);
         String decodedCode="";
@@ -57,9 +65,9 @@ public class GoogleService {
             // HTTP Body 생성
             MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
             body.add("grant_type","authorization_code");
-            body.add("client_id","127690755793-5kgtvm8bmt7dhacov2qitf3d90h62reb.apps.googleusercontent.com");
-            body.add("redirect_uri","http://localhost:3000/login/google");
-            body.add("client_secret","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");
+            body.add("client_id",clientId);
+            body.add("redirect_uri",redirectUri);
+            body.add("client_secret",clientSecret);
             body.add("code",code);
 
             // HTTP 요청 보내기 (POST 방식으로)

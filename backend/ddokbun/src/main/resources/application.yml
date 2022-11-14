@@ -5,7 +5,6 @@ server:
   tomcat:
     max-http-form-post-size: 100MB
 
-
 spring:
   batch:
     jdbc:
@@ -20,20 +19,13 @@ spring:
     import:
       - 'classpath:application-fcm.yml'
       - 'classpath:application-aws.yml'
+      - 'classpath:application-oauth.yml'
+      - 'classpath:application-kafka.yml'
   profiles:
     default: local
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
-  kafka:
-    producer:
-      bootstrap-servers:
-        - k7d208.p.ssafy.io:8992
-        - k7d208.p.ssafy.io:8993
-        - k7d208.p.ssafy.io:8994
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-
 logging:
   level:
     root: info
