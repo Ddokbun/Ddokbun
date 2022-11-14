@@ -23,8 +23,8 @@ export const ResponsiveWrapper = styled(motion.div)`
   }
 
   .text-wrap {
-    z-index: 1;
     background-color: #f7f7f7;
+    z-index: 1;
     padding: 15px 10px;
     width: 100%;
     height: 100%;
@@ -32,6 +32,10 @@ export const ResponsiveWrapper = styled(motion.div)`
     display: flex;
     align-items: flex-start;
     justify-content: space-between;
+    .title {
+      text-align: left;
+    }
+
     h2 {
       margin-top: 5px;
       word-break: keep-all;
@@ -47,9 +51,11 @@ export const ResponsiveWrapper = styled(motion.div)`
       text-align: right;
     }
     .title p {
+      top: 0px;
+      left: 0px;
       position: static;
       color: ${props => props.theme.color.mainGreen};
-      line-height: 8px;
+      line-height: 7px;
       font-size: 10px;
       word-break: keep-all;
     }
@@ -68,7 +74,6 @@ export const ResponsiveWrapper = styled(motion.div)`
         word-break: keep-all;
         font-size: 13px;
         font-family: ${props => props.theme.font.TitleFont};
-        line-height: 13px;
       }
       h3 {
         font-family: ${props => props.theme.font.EnglishFont};
@@ -77,6 +82,7 @@ export const ResponsiveWrapper = styled(motion.div)`
         width: 80px;
         text-align: right;
       }
+
       .title p {
         top: 5px;
         left: 10px;

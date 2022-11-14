@@ -33,24 +33,26 @@ const Product: NextPage<{ data: ItemObject }> = ({ data }) => {
   }, [seqid]);
   return (
     <Wrapper>
-      <ProductSellCard
-        itemSeq={data.itemSeq}
-        itemName={data.itemName}
-        itemEnName={data.itemEnName}
-        itemPicture={data.itemPicture}
-        itemPrice={data.itemPrice}
-        tags={data.plant?.recRate.split(",")}
-        originPlace={data.plant?.originPlace}
-        plantZRName={data.plant?.plantZRName}
-        growthWidth={data.plant?.growthWidth}
-        growthHeight={data.plant?.growthHeight}
-      />
-      <ProductCare
-        itemInfo={data.itemInfo}
-        water={data.plant?.waterCycle as number}
-        humid={data.plant?.growthHumid as string}
-      />
-      <RelatedProducts />
+      <div className="contents">
+        <ProductSellCard
+          itemSeq={data.itemSeq}
+          itemName={data.itemName}
+          itemEnName={data.itemEnName}
+          itemPicture={data.itemPicture}
+          itemPrice={data.itemPrice}
+          tags={data.plant?.recRate.split(",")}
+          originPlace={data.plant?.originPlace}
+          plantZRName={data.plant?.plantZRName}
+          growthWidth={data.plant?.growthWidth}
+          growthHeight={data.plant?.growthHeight}
+        />
+        <ProductCare
+          itemInfo={data.itemInfo}
+          water={data.plant?.waterCycle as number}
+          humid={data.plant?.growthHumid as string}
+        />
+        <RelatedProducts />
+      </div>
     </Wrapper>
   );
 };

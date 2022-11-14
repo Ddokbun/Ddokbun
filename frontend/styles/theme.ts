@@ -29,5 +29,6 @@ export const Theme: DefaultTheme = {
     brownHover: "#CEB282",
     ivory: "#F0EBCE",
     ivoryHover: "#FFFBE7",
+    whiteGray: "#f7f7f7",
   },
 };

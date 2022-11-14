@@ -4,14 +4,15 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 60px;
+  width: 80px;
   padding: 2px 5px;
   border-radius: 5px;
   color: ${props => props.theme.color.mainGreen};
   background-color: ${props => props.theme.color.ivory};
 
   p {
-    font-size: 10px;
+    font-weight: 600;
+    font-size: 15px;
     font-family: ${props => props.theme.font.TextFont2};
   }
 

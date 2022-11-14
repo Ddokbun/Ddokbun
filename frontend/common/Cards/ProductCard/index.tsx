@@ -26,12 +26,14 @@ const ProductCard: React.FC<{
     setHovered(false);
   };
 
+  const None = {};
+
   return (
     <>
       <Link href={`/commerce/product/${item?.itemSeq}`}>
         <ResponsiveWrapper
+          variants={isResponsive ? CardHover : None}
           ref={ref}
-          variants={CardHover}
           initial="start"
           animate={isInView ? "end" : ""}
           onMouseEnter={MouseHoverHandler}
