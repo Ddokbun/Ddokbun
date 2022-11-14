@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import React, { FC } from "react";
+import React, { FC, ReactElement } from "react";
 import { EleVar } from "../../styles/animations/animation";
 import { Theme } from "../../styles/theme";
 import { TextBtn } from "../Button";
@@ -8,13 +8,14 @@ import { Wrapper } from "./styles";
 
 interface Props {
   isLink: boolean;
-  children: string;
+  children: ReactElement;
+  mypage: boolean;
 }
 
-const PageTitle: FC<Props> = ({ isLink, children }) => {
+const PageTitle: FC<Props> = ({ isLink, children, mypage }) => {
   return (
     <Wrapper variants={EleVar}>
-      <h1>{children} </h1>
+      {children}
       {isLink && (
         <div className="add-btn-container">
           <TextBtn path="/manage/add" color={Theme.color.mainGreen}>
@@ -22,6 +23,7 @@ const PageTitle: FC<Props> = ({ isLink, children }) => {
           </TextBtn>
         </div>
       )}
+      {/* {mypage && } */}
     </Wrapper>
   );
 };

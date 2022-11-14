@@ -21,7 +21,6 @@ export const Wrapper = styled.div`
     margin: 0 auto;
     border-radius: 0.3rem;
     background-color: #fff;
-    /* 팝업이 열릴때 스르륵 열리는 효과 */
     animation: modal-show 0.3s;
     overflow: hidden;
   }
