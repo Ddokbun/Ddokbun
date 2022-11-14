@@ -198,7 +198,7 @@ export const Wrapper = styled.div`
     top: 12px;
   }
 
-  @media screen and (${props => props.theme.tablet}) {
+  @media screen and (max-width: 1024px) {
     .wrapper {
       padding: 0px 40px;
     }

@@ -145,7 +145,7 @@ export const Wrapper = styled.div`
         z-index: 1;
         position: fixed;
         transform: translate(-50%, 0%);
-        bottom: 20px;
+        bottom: 50px;
         margin-top: 20px;
         left: 50%;
         display: flex;
