@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { FC } from "react";
-import { Navigation, Pagination } from "swiper";
+import { Mousewheel, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { PlantListType } from "../../../pages/manage/[userseq]";
 import CardItem from "../CardItem";
@@ -21,7 +21,8 @@ const CardList: FC<Props> = ({ plantsList }) => {
       <Swiper
         navigation={true}
         slidesPerView={1}
-        modules={[Navigation, Pagination]}
+        mousewheel={true}
+        modules={[Navigation, Pagination, Mousewheel]}
       >
         {plantsList?.map(plant => {
           return (
