@@ -32,7 +32,7 @@ export const PriceTextButtonStyle = styled.div`
 `;
 
 export const PriceButtonStyle = styled.div`
-  width: 250px;
+  width: 100%;
   height: 50px;
   border-radius: 2px;
   display: flex;
@@ -63,7 +63,7 @@ export const PriceButtonStyle = styled.div`
 `;
 
 export const BuyListButtonStyle = styled.div`
-  width: 100px;
+  width: 100%;
   height: 50px;
   border-radius: 2px;
   display: flex;
