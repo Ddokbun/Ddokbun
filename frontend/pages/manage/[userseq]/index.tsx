@@ -68,7 +68,6 @@ const Manage: NextPage = () => {
           </Link>
         </>
       )}
-      <Spinner />
     </Wrapper>
   );
 };

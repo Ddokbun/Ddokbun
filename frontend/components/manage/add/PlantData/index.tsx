@@ -40,9 +40,9 @@ const imageDatas: { [key: string]: ImageDataType } = {
     contents: "생육습도 : ",
   },
 };
+export const lightTypes = [null, "음지", "반음지", "반그늘", "반양지", "양지"];
 
 const PlantData: FC<Props> = ({ data }) => {
-  const lightTypes = [null, "음지", "반음지", "반그늘", "반양지", "양지"];
 
   const [plantInfos, setPlantInfos] = useState(data);
   const infos = Object.entries(plantInfos).map(entry => {

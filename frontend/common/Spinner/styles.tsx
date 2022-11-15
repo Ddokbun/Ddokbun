@@ -1,10 +1,13 @@
 import styled from "styled-components";
-
-export const Wrapper = styled.div`
+import { motion } from "framer-motion";
+export const Wrapper = styled(motion.div)`
   margin: 0;
   min-height: 100vh;
-  display: grid;
-  place-content: center;
+  /* display: grid; */
+  /* place-content: center; */
+  position: absolute;
+  left: 45%;
+  top: 45%;
 
   .loader {
     /* the colors */

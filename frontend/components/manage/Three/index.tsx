@@ -37,7 +37,7 @@ const Three: FC<Props> = ({ isAnimated }) => {
       <Flower isAnimated={isAnimated} />
       {/* 조명 */}
       <ambientLight args={["#fcfbf3", 1]} />
-      <directionalLight args={[0xffffff, 1]} />
+      <directionalLight args={[0xffffff, 0.5]} castShadow />
     </>
   );
 };

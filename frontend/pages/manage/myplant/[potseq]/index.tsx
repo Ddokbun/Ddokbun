@@ -6,9 +6,19 @@ import SimpleGraph from "../../../../common/Graph/SimpleGraph";
 import WeekPicker from "../../../../components/manage/add/WeekPicker";
 import DigitalTwin from "../../../../components/manage/DigitalTwin";
 import PlantStatus from "../../../../components/manage/PlantStatus";
-import { Wrapper } from "../../../../styles/manage/[posteq]/styles";
+import {
+  LeftSection,
+  RightSection,
+  Wrapper,
+} from "../../../../styles/manage/[posteq]/styles";
 import { useDispatch } from "react-redux";
 import { manageActions } from "../../../../store/manage";
+import Swal from "sweetalert2";
+import { useSelector } from "react-redux";
+import { RootState } from "../../../../store";
+import PlantInfo from "../../../../components/manage/PlantInfo";
+import { getDateDiff } from "../../../../utils/getDateDiff";
+import Image from "next/image";
 
 export interface LogsType {
   [name: string]: string;
@@ -30,19 +40,16 @@ export interface currentStatus {
 }
 
 const PlantCare: NextPage = () => {
-  const [statusContents, setStatusContents] = useState("");
   const showDetailHandler = () => {
     return;
   };
 
-  const [graphStatus, setGraphStatus] = useState({
-    temp: "",
-    humid: "",
-    soil: "",
-  });
-
   const { potseq } = useRouter().query;
   const [wateringLogs, setWateringLogs] = useState("");
+
+  const plantNickname = useSelector(
+    (state: RootState) => state.manage.plantNickname,
+  );
 
   const [plantStatus, setPlantStatus] = useState({
     growHumid: "",
@@ -62,18 +69,10 @@ const PlantCare: NextPage = () => {
     const res = await watering(potseq!);
 
     if (res?.status === 200) {
-      alert("물 주기가 완료되었어요");
+      setTimeout(() => {
+        Swal.fire("물 주기가 완료되었어요");
+      }, 7000);
     }
-  };
-
-  const getDateDiff = (d1: string) => {
-    const date1 = new Date(d1);
-    const date2 = new Date();
-    console.log(date2);
-
-    const diffDate = date1.getTime() - date2.getTime();
-
-    return Math.abs(diffDate / (1000 * 60 * 60 * 24)); // 밀리세컨 * 초 * 분 * 시 = 일
   };
 
   const dispatch = useDispatch();
@@ -92,71 +91,37 @@ const PlantCare: NextPage = () => {
       setPlantStatus(res);
       dispatch(manageActions.setPlantInfo(res));
       console.log(getDateDiff(res.waterSupply.join("-")));
-
-      const contents =
-        getDateDiff(res.waterSupply.join("-")) > 1
-          ? "물을 주셔야 할 것 같아요!"
-          : "모든 환경이 최상이예요:)";
-      setStatusContents(contents);
-
-      // 온도
-      let temp;
-      let humid;
-      let soil;
-      if (res.temperature >= res.maxTemperature) {
-        temp = String(100 - res.temperature - res.maxTemperature) + "%";
-      } else if (res.temperature <= res.minTemperature) {
-        temp = String(100 - res.minTemperature - res.temperature);
-      } else {
-        temp = "99%";
-      }
-
-      // humidity
-      if (res.humidity < Number(res.growHumid?.slice(0, 2))) {
-        humid = String(100 - Number(res.growHumid?.slice(0, 2))) + "%";
-      } else if (res.humidity > Number(res.growHumid?.slice(5, 7))) {
-        humid = String(100 - Number(res.growHumid?.slice(5, 7))) + "%";
-      } else {
-        humid = "99%";
-      }
-
-      // soil
-      soil = String(100 - getDateDiff(res.waterSupply.join("-")) * 25) + "%";
-      setGraphStatus({ temp, humid, soil });
     };
     getInitialData();
-  }, [potseq, statusContents]);
-
-  console.log(graphStatus);
+  }, [potseq]);
 
   return (
     <Wrapper>
-      <section className="left-section">
+      <LeftSection>
         <DigitalTwin
           light={plantStatus.light}
           onWateringHandler={onWateringHandler}
         />
-        <span onClick={onWateringHandler} className="title">
-          {statusContents}
-        </span>
-        <div className="simpleGraph-container">
-          <SimpleGraph
-            pages="manage"
-            temper={graphStatus.temp}
-            water={graphStatus.humid}
-            humid={graphStatus.soil}
-            waterBottle={`${120 - plantStatus.waterHeight * 20 - 1}%`}
+      </LeftSection>
+      <RightSection>
+        <div className="image-container">
+          <Image
+            src={`https://ddokbun.com/api/resources/s3?plantSeq=${1}`}
+            alt="식물 이미지"
+            width={"100%"}
+            height={"100%"}
           />
         </div>
-      </section>
-      <section>
-        <WeekPicker
+        <h2>{plantNickname}</h2>
+        <h3>스투키 - Sansevieria cylindrica</h3>
+        <PlantInfo plantStatus={plantStatus} />
+        {/* <WeekPicker
           showDetailHandler={showDetailHandler}
           setWateringLogs={setWateringLogs}
         />
         {wateringLogs !== "" && wateringLogs}
-        <PlantStatus />
-      </section>
+        <PlantStatus /> */}
+      </RightSection>
     </Wrapper>
   );
 };
