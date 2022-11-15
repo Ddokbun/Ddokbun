@@ -4,6 +4,7 @@ import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
 import { ent } from "../../../store/auth";
 import { Googlelogin } from "../../../apis/auth";
+import Spinner from "../../../common/Spinner";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -17,7 +18,7 @@ const Home: NextPage = () => {
   return (
     <div>
       <main>
-        <h1>구글 로그인 하는 중</h1>
+        <Spinner />
       </main>
     </div>
   );
