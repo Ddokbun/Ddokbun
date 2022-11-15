@@ -272,6 +272,8 @@ public class ItemServiceImple implements ItemService{
         String key = "rank";
         ZSetOperations<String, String> ZSetOperations = redisTemplate.opsForZSet();
         Set<ZSetOperations.TypedTuple<String>> typedTuples = ZSetOperations.reverseRangeWithScores(key, 0, 9);
+        if(typedTuples == null)
+            return null;
         List<ClickRankDto> list = typedTuples.stream()
                 .map(tuple->ClickRankDto.convertToClickRankDto(tuple, itemRepository.findById(Long.parseLong(tuple.getValue())).orElse(null)))
                 .collect(Collectors.toList());

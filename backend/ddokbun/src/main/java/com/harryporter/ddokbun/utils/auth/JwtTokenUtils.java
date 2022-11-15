@@ -3,6 +3,8 @@ package com.harryporter.ddokbun.utils.auth;
 import com.harryporter.ddokbun.domain.user.dto.UserAthentication;
 import com.harryporter.ddokbun.domain.user.dto.UserDto;
 import com.harryporter.ddokbun.domain.user.service.UserService;
+import com.harryporter.ddokbun.exception.ErrorCode;
+import com.harryporter.ddokbun.exception.GeneralException;
 import io.jsonwebtoken.*;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -58,6 +60,8 @@ public class JwtTokenUtils {
 
     public Authentication getAuthentication(String token) {
         Claims claims = getTokenClaims(token);
+        if(claims == null)
+            throw new GeneralException(ErrorCode.DATA_ACCESS_ERROR, "사용자 인증 정보를 불러올 수 없습니다");
         Collection<? extends GrantedAuthority> authorities =
                 Arrays.stream(new String[]{claims.get("role").toString()})
                         .map(SimpleGrantedAuthority::new)
@@ -87,7 +91,7 @@ public class JwtTokenUtils {
      //       throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Invalid JWT token.");
         } catch (ExpiredJwtException e) {
             log.info("Expired JWT token.---------------");
-     //       throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Expired JWT token.");
+            throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Expired JWT token.");
         } catch (UnsupportedJwtException e) {
             log.info("Unsupported JWT token.");
        //     throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Unsupported JWT token.");
@@ -100,19 +104,26 @@ public class JwtTokenUtils {
 
     public boolean validateToken(String jwtToken) {
         try {
-            return !getTokenClaims(jwtToken).getExpiration().before(new Date());
+            Claims claims = getTokenClaims(jwtToken);
+            if (claims == null)
+                return false;
+            return !claims.getExpiration().before(new Date());
         }catch (Exception e){
             return false;
         }
     }
 
-    private Long getUserSeq(String token) {
-        return Long.valueOf(String.valueOf(getTokenClaims(token).get("userSeq")));
+    private Long getUserSeq(String jwtToken) {
+        Claims claims = getTokenClaims(jwtToken);
+        if (claims == null)
+            throw new GeneralException(ErrorCode.DATA_ACCESS_ERROR, "사용자 인증 정보를 불러올 수 없습니다");
+
+        return Long.valueOf(String.valueOf(getTokenClaims(jwtToken).get("userSeq")));
     }
 
     public Long getUserSeq(HttpServletRequest request){
-        String token = request.getHeader("Auth");
-        return Long.valueOf(String.valueOf(getTokenClaims(token).get("userSeq")));
+        String jwtToken = request.getHeader("Auth");
+        return getUserSeq(jwtToken);
     }
 
 }
