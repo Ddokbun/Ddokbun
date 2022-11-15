@@ -76,13 +76,13 @@
 
 ## 🖇️ 아키텍처
 
-<img src="/uploads/055a53f56c83bd6436ed7dd3aa7002bd/Group_247.png"  width="600">
+<img src="/uploads/055a53f56c83bd6436ed7dd3aa7002bd/Group_247.png"  width="800">
      
 <br>   <br>
 
 ## 🖇️ 기술 스택
 
-<img src="/uploads/e72d7d98039cddad56c97c34a6ad1276/Ddokbun_기술스택.png"  width="600">
+<img src="/uploads/e72d7d98039cddad56c97c34a6ad1276/Ddokbun_기술스택.png"  width="800">
 
 <br>   <br>
 
@@ -116,8 +116,88 @@
 
 <br>
 
- 
-        
+## ✔ 프로젝트 파일 구조
+
+
+### Frontend
+
+```
+csafy-frontend
+  ├── node_modules
+  ├── public
+  └── src
+      ├── components
+      │   ├── atoms
+      │   ├── common
+      │   ├── companyClassification
+      │   ├── Home
+      │   └── myPage
+      ├── pages
+      │   ├── handler
+      │   └── StudyPage
+      ├── recoils
+      └── utils
+
+```
+
+### Backend
+
+```
+backend-flask
+backend
+  ├── auth-service
+  │   ├── api
+  │   ├── clinet
+  │   ├── config
+  │   ├── dto
+  │   ├── entity
+  │   ├── exception
+  │   ├── info
+  │   ├── error
+  │   ├── repository
+  │   ├── service
+  │   └── util
+  ├── chat-service
+  │   ├── api
+  │   ├── clinet
+  │   ├── config
+  │   ├── dto
+  │   ├── error
+  │   ├── repository
+  │   └── service
+  ├── cs-service
+  │   ├── api
+  │   ├── clinet
+  │   ├── controller
+  │   ├── dto
+  │   ├── entity
+  │   ├── repository
+  │   ├── scheduler
+  │   └── service
+  ├── pay-service
+  │   ├── client
+  │   ├── controller
+  │   ├── dto
+  │   └── service
+  ├── user-service
+  │   ├── api
+  │   ├── clinet
+  │   ├── config
+  │   ├── dto
+  │   ├── entity
+  │   ├── exception
+  │   ├── info
+  │   ├── repository
+  │   ├── service
+  │   └── util
+  ├── eureka
+  └── gateway
+      └── config
+```
+
+
+
+
 
  ## ✔️ 주요 기능
 
