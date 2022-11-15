@@ -122,21 +122,64 @@
 ### Frontend
 
 ```
-csafy-frontend
-  ├── node_modules
+frontend
+  ├── apis
+  ├── assets
+  │    ├── commerce
+  │    ├── fonts
+  │    ├── icon
+  │    └── onboarding
+  ├── common
+  │    ├── Button
+  │    ├── Cards
+  │    ├── Carousel
+  │    ├── DatePick
+  │    ├── Dot
+  │    ├── GetPostsModal
+  │    ├── Graph
+  │    ├── Input
+  │    ├── Labels
+  │    ├── Login
+  │    ├── Modal
+  │    ├── NavCard
+  │    ├── Navbar
+  │    ├── PageTitle
+  │    └── Spinner
+  ├── components 
+  │    ├── Flower
+  │    ├── admin
+  │    ├── commerce
+  │    ├── manage
+  │    ├── mypage
+  │    ├── search
+  │    └── welcome
+  ├── pages
+  │    ├── admin
+  │    ├── commerce
+  │    ├── login
+  │    ├── manage
+  │    ├── manage/[userseq]
+  │    ├── search
+  │    ├── test
+  │    └── welcome
   ├── public
-  └── src
-      ├── components
-      │   ├── atoms
-      │   ├── common
-      │   ├── companyClassification
-      │   ├── Home
-      │   └── myPage
-      ├── pages
-      │   ├── handler
-      │   └── StudyPage
-      ├── recoils
-      └── utils
+  │    ├── icons
+  │    └── models
+  ├── store  
+  ├── styles
+  │    ├── animations
+  │    ├── commerce
+  │    ├── manage
+  │    ├── manage/[userseq]
+  │    ├── search
+  │    ├── temp
+  │    └── welcome
+  ├── types
+  │    ├── admin
+  │    ├── commerce
+  │    └── search
+  └── utils
+
 
 ```
 
