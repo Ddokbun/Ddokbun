@@ -6,6 +6,7 @@ const initialState = {
   plantNickname: "",
   isAuto: "",
   waterCycle: "",
+  plantName: "",
 };
 
 const manageSlice = createSlice({
