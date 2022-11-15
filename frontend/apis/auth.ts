@@ -28,12 +28,7 @@ export const Googlelogin = async (login_code?: string[] | string) => {
       method: "GET",
       url: path + login_code,
     });
-    const accessToken = res.data.content.jwtToken;
-    const { userSeq } = res.data.content;
-    AXIOS.defaults.headers.common["Authorization"] = `${accessToken}`;
-    console.log("성공입니다", res);
-    setCookie("token", accessToken);
-    router.push(`/manage/${userSeq}`);
+
     return res.data;
   } catch (error) {
     console.log(error);

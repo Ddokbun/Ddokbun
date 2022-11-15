@@ -20,11 +20,11 @@ import { RootState } from "../../store";
 const Navbar = () => {
   const ref = useRef<HTMLDivElement>(null);
   const userseq = useSelector((state: RootState) => state.authSlice.userSeq);
+  console.log(userseq, "adfasdfasdfasdf");
+
   const [slider, setSlider] = useState(false);
   const [shopCate, setShopCate] = useState(false);
   const [shopHover, setShopHover] = useState(false);
-
-  console.log(userseq, "asdfasdf");
 
   const toggleButton = () => {
     if (ref.current?.classList.contains("open")) {
@@ -83,7 +83,7 @@ const Navbar = () => {
             <Link href={"/welcome"}>Ddokbbun</Link>
           </div>
           <div className="menu-wrap">
-            <Link href={`/manage/145`}>
+            <Link href={`/manage/${userseq}`}>
               <a>IoT</a>
             </Link>
             <Link href={"/commerce"}>
@@ -96,7 +96,9 @@ const Navbar = () => {
           <div className="img_wrap">
             <Search />
             <Bag />
-            <User viewBox="0 0 512 512" />
+            <Link href={`/mypage/${userseq}`}>
+              <User viewBox="0 0 512 512" />
+            </Link>
           </div>
         </div>
         <ShopHoverNav
