@@ -88,7 +88,7 @@ export const NabCategoryAni = {
   open: {
     opacity: 1,
 
-    height: "160px",
+    height: "250px",
     transition: {
       duration: 0.5,
       opacity: {
