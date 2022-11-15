@@ -16,6 +16,7 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import Head from "next/head";
 import firebase from "firebase";
 import { getToken, setToken } from "../apis/firebase";
+import type { AppContext } from "next/dist/pages/_app";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCwdWKZo4h03IqLGmInSPIsDtArvtIJzpA",
@@ -27,7 +28,7 @@ const firebaseConfig = {
   measurementId: "G-PZ8KF65XZ7",
 };
 
-const MyApp: FC<AppProps> = ({ Component, ...rest }) => {
+const MyApp = ({ Component, ...rest }: AppProps) => {
   if (!firebase.apps.length) {
     firebase.initializeApp(firebaseConfig);
   }

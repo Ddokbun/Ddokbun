@@ -46,7 +46,7 @@ export const Wrapper = styled.div`
     }
   }
 
-  .img_wrap {
+  .img-wrap {
     display: flex;
     gap: 30px;
     justify-content: space-evenly;
@@ -199,6 +199,21 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 1024px) {
+    .img-wrap {
+      padding-right: 40px;
+      display: flex;
+      gap: 30px;
+      justify-content: flex-end;
+      align-items: center;
+      svg {
+        :nth-child(1) {
+          display: none;
+        }
+        :nth-child(3) {
+          display: none;
+        }
+      }
+    }
     .wrapper {
       padding: 0px 40px;
     }
@@ -269,6 +284,9 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 600px) {
+    .img-wrap {
+      padding-right: 0px;
+    }
     .wrapper {
       padding: 0px 10px;
     }
@@ -307,14 +325,31 @@ export const Slider = styled(motion.div)`
     }
   }
   .drop-down {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
     p {
-      padding: 0px 4px;
-      margin: 10px 0px;
+      padding-left: 10px;
+      margin: 10px 0px 0px;
       font-size: 18px;
       color: ${props => props.theme.color.darkGreen};
       font-weight: 600;
       font-family: ${props => props.theme.font.TextFont2};
       cursor: pointer;
+    }
+
+    span {
+      padding-left: 20px;
+      font-family: ${props => props.theme.font.TextFont2};
+      font-size: 15px;
+      color: ${props => props.theme.color.darkGreen};
+      svg {
+        display: inline;
+        fill: ${props => props.theme.color.darkGreen};
+
+        width: 5px;
+        height: 5px;
+      }
     }
   }
 `;
@@ -343,6 +378,37 @@ export const ShopHoverNav = styled(motion.div)`
       height: 100%;
       position: relative;
       grid-area: 1 / 1 / 4 / 2;
+    }
+
+    .grid-bottom {
+      cursor: pointer;
+      margin: auto;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      grid-area: 3 / 2 / 4 / 4;
+      /* background-color: ${props => props.theme.color.mainGreen}; */
+      .contents {
+        width: 100%;
+
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        h1 {
+          width: 100%;
+          text-shadow: 2px 2px 2px gray;
+          text-align: center;
+          color: ${props => props.theme.color.whiteGray};
+          font-family: ${props => props.theme.font.TextFont2};
+          font-size: 24px;
+
+          span {
+            color: #f8ca2a;
+          }
+        }
+      }
     }
 
     h3 {
