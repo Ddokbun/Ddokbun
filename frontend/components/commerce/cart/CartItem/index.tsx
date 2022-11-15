@@ -76,10 +76,15 @@ const CartItem: React.FC<{
   return (
     <Wrapper>
       <div className="grid-left">
-        <Image src={item.imageUrl as string} layout="fill" objectFit="cover" />
+        <Image
+          src={item.imageUrl as string}
+          layout="fill"
+          objectFit="contain"
+        />
       </div>
       <div className="grid-center">
         <h2>{item.itemName}</h2>
+        <h3>{item.itemEnName}</h3>
         {isCart && (
           <div className="count">
             <div onClick={onCountHandler} className="handler">
