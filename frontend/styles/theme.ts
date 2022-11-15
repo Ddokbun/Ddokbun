@@ -32,4 +32,8 @@ export const Theme: DefaultTheme = {
     whiteGray: "#f7f7f7",
     darkGray: "#ececec",
   },
+  size: {
+    h2Web: "30px",
+    h2Mobile: "25px",
+  },
 };

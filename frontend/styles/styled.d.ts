@@ -24,5 +24,10 @@ declare module "styled-components" {
       whiteGray: string;
       darkGray: string;
     };
+
+    size: {
+      h2Web: string;
+      h2Mobile: string;
+    };
   }
 }
