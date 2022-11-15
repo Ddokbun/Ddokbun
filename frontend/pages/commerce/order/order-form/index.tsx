@@ -14,11 +14,7 @@ import { useSelector } from "react-redux";
 import { context } from "@react-three/fiber";
 import { AppContext } from "next/dist/pages/_app";
 
-interface Iprops {
-  isMobile: boolean;
-}
-
-const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
+const OrderForm: NextPage = () => {
   const [name, setName] = useState("");
   const [phoneHead, setPhoneHead] = useState("010");
   const [phoneBody, setPhoneBody] = useState("");
@@ -57,8 +53,6 @@ const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
     NewOrder.map(item => {
       setItemSeq(val => val + `${item.itemSeq},`);
     });
-
-    console.log(isMobile);
   }, []);
   const postOrder = async () => {
     console.log(item_seq);
@@ -196,7 +190,6 @@ const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
               setPhoneHead={setPhoneHead}
               setPhoneBody={setPhoneBody}
               setPhoneTail={setPhoneTail}
-              isMobile={isMobile}
             />
           </div>
           <div className="row">
@@ -213,11 +206,3 @@ const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
 };
 
 export default OrderForm;
-
-export const getServerSideProps: GetServerSideProps = async context => {
-  return {
-    props: {
-      isMobile: !(context.req.headers["user-agent"]?.indexOf("Mobi") === -1),
-    },
-  };
-};

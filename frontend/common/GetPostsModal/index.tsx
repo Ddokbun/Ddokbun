@@ -1,5 +1,5 @@
 import React, { Dispatch, SetStateAction, useEffect, useState } from "react";
-import DaumPostcode from "react-daum-postcode";
+
 import DaumPostcodeEmbed from "react-daum-postcode";
 import { Wrapper } from "./styles";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
