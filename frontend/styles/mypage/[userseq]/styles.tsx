@@ -26,7 +26,6 @@ export const Wrapper = styled(motion.section)`
 
   table {
     width: 100%;
-    /* border-top: 1px solid #444444; */
     border-collapse: collapse;
   }
   th {
@@ -44,12 +43,15 @@ export const Wrapper = styled(motion.section)`
     }
     .button-container {
       text-align: center;
+      height: 55px;
     }
     table {
       width: 100%;
     }
     th {
-      font-size: 14px;
+      font-size: 16px;
+      padding: 5px;
+      word-break: keep-all;
       :nth-child(2) {
         display: none;
       }
@@ -58,6 +60,11 @@ export const Wrapper = styled(motion.section)`
       :nth-child(3) {
         display: none;
       }
+    }
+    .info {
+      text-align: left;
+      word-break: keep-all;
+      padding-left: 5%;
     }
   }
 `;
