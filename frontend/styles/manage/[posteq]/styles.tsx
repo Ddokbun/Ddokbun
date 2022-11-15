@@ -2,12 +2,13 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   margin: 5% auto;
-  max-width: 1240px;
+  max-width: 1500px;
   width: 100%;
   background-color: "#fafafa";
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   position: relative;
+  grid-gap: 5%;
 
   .title {
     color: ${props => props.theme.color.mainGreen};
@@ -47,7 +48,7 @@ export const RightSection = styled.section`
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   background-color: #fffafa;
   border-top-left-radius: 16px;
-  min-height: 100vh;
+  min-height: 90vh;
 
   h2 {
     font-family: ${props => props.theme.font.TitleFont};
@@ -80,6 +81,7 @@ export const RightSection = styled.section`
     margin: 5%;
     padding-bottom: 2%;
     border-bottom: 1px solid #ccc;
+    word-break: keep-all;
   }
 
   .info {
@@ -121,6 +123,9 @@ export const RightSection = styled.section`
 
     .status-image-container {
       max-width: 50px;
+    }
+    .info {
+      width: 75%;
     }
   }
 `;

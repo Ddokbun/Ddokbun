@@ -64,6 +64,7 @@ const PlantCare: NextPage = () => {
     waterCycle: 0,
     waterHeight: 0,
     waterSupply: [],
+    plantSeq: 0,
   });
   const onWateringHandler = async () => {
     const res = await watering(potseq!);
@@ -107,7 +108,7 @@ const PlantCare: NextPage = () => {
       <RightSection>
         <div className="image-container">
           <Image
-            src={`https://ddokbun.com/api/resources/s3?plantSeq=${1}`}
+            src={`https://ddokbun.com/api/resources/s3?plantSeq=${plantStatus.plantSeq}`}
             alt="식물 이미지"
             width={"100%"}
             height={"100%"}

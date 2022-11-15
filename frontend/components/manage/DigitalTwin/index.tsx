@@ -2,11 +2,8 @@ import React, { FC, lazy, Suspense, useEffect, useState } from "react";
 import AutoToggle from "../AutoToggle";
 import { Wrapper } from "./styles";
 import { Canvas } from "@react-three/fiber";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
 import Rain from "../Rain";
 import Watering from "../../../assets/icon/watering-can.svg";
-import Image from "next/image";
 import Spinner from "../../../common/Spinner";
 
 const Three = lazy(() => import("../Three"));
@@ -18,9 +15,6 @@ interface Props {
 
 const DigitalTwin: FC<Props> = ({ light, onWateringHandler }) => {
   const [isMounted, setIsMounted] = useState(false);
-  const plantNickname = useSelector(
-    (state: RootState) => state.manage.plantNickname,
-  );
   const [isAnimated, setIsAnimated] = useState(false);
 
   useEffect(() => {

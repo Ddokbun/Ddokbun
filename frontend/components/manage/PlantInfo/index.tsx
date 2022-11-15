@@ -29,7 +29,7 @@ const PlantInfo: FC<Props> = ({ plantStatus }) => {
     {
       src: thermometer,
       grow: `적정 온도는 ${plantStatus.minTemperature} ~ ${plantStatus.maxTemperature}도 예요.`,
-      current: `현재온도는 ${plantStatus.temperature}예요`,
+      current: `현재온도는 ${plantStatus.temperature}로 ${currentStatus.temp}`,
     },
     {
       src: water,
@@ -81,7 +81,7 @@ const PlantInfo: FC<Props> = ({ plantStatus }) => {
     }
 
     setCurrentStatus({ light, humid, temp, soilhumid });
-  }, [plantStatus, currentStatus]);
+  }, [plantStatus]);
 
   const plantInfo = plantInfos.map(item => {
     return (
