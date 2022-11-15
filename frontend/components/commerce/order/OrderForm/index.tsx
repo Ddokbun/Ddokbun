@@ -31,11 +31,16 @@ interface OrderProps {
   setPhoneTail: Dispatch<SetStateAction<string>>;
 }
 
-const OrderFormComponent: React.FC<OrderProps> = props => {
+interface OrderFormProps extends OrderProps {
+  isMobile: boolean;
+}
+
+const OrderFormComponent: React.FC<OrderFormProps> = props => {
   const [openPostcode, setOpenPostcode] = React.useState<boolean>(false);
   const handleSetPostcode = () => {
     setOpenPostcode(val => !val);
   };
+  console.log(props.isMobile);
 
   /** 폼 인풋 검사 */
   const onChangeHandler = {
