@@ -3,10 +3,11 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   .img-wrap {
     position: relative;
-    height: 500px;
+    overflow: hidden;
+    width: 100%;
+    height: 400px;
     z-index: -1;
-    margin: auto;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
   }
   .wrap {
     margin: auto;
@@ -34,7 +35,36 @@ export const Wrapper = styled.div`
       margin: auto;
     }
   }
+
   @media screen and (max-width: 600px) {
-    height: 500px;
+    .img-wrap {
+      height: 400px;
+      position: relative;
+    }
+    .wrap {
+      margin: auto;
+      position: absolute;
+      top: 40%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      h2 {
+        padding-top: 30px;
+        font-size: 60px;
+      }
+      .button-wrap {
+        display: block;
+        margin: auto;
+        justify-content: center;
+        align-items: center;
+      }
+      button {
+        box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+        margin-top: 10px;
+        color: black;
+        width: 100%;
+        border-radius: 5px;
+        background-color: #f7f7f7;
+      }
+    }
   }
 `;
