@@ -43,7 +43,7 @@ export const Wrapper = styled.div`
     margin-bottom: 200px;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     display: grid;
     margin: auto;
     max-width: 1250px;
@@ -87,7 +87,7 @@ export const Wrapper = styled.div`
     }
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     grid-gap: 100px;
 
     padding: 50px 25px;

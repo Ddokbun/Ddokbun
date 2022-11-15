@@ -32,7 +32,7 @@ const Modal: FC<Props> = ({ onClose, children, title, onSubmitHandler }) => {
               자동물주기 설정
             </SubmitButton>
           )}
-          <CancelButton onClick={onClose}>취소</CancelButton>
+          <CancelButton onClick={onClose}>닫기</CancelButton>
         </footer>
       </section>
     </Wrapper>

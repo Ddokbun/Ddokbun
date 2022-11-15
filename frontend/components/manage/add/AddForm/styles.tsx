@@ -36,7 +36,7 @@ export const Wrapper = styled(motion.form)`
     width: 100%;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     .grid {
       grid-template-columns: repeat(1, 90%);
       justify-content: center;

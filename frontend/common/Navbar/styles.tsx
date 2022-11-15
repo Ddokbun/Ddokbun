@@ -1,27 +1,88 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
-
+import Plant1 from "../../assets/commerce/plants/plant1.jpg";
 export const Wrapper = styled.div`
-  position: sticky;
-  z-index: 1;
-  top: 0;
   width: 100%;
-  height: 50px;
-  background-color: ${props => props.theme.color.black};
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 0px 10px;
-  font-family: ${props => props.theme.font.EnglishFont};
-  font-size: 18px;
+  position: sticky;
+  height: 80px;
+  top: 0;
+  background-color: #fafafa;
+  z-index: 999;
+  .wrapper {
+    margin: auto;
+    width: 100%;
+    max-width: 1500px;
+
+    height: 100%;
+
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0px 50px;
+
+    font-family: ${props => props.theme.font.EnglishFont};
+    font-size: 18px;
+  }
   .logo {
-    order: -1;
-    color: ${props => props.theme.color.ivory};
-    font-size: 25px;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%, 0%);
+    color: ${props => props.theme.color.darkGreen};
+    font-size: 40px;
   }
 
-  .nav_svg {
-    display: none;
-    cursor: pointer;
+  .menu-wrap {
+    display: flex;
+    height: 100%;
+    gap: 50px;
+    font-size: 18px;
+    color: ${props => props.theme.color.black};
+
+    a {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
+  }
+
+  .img_wrap {
+    display: flex;
+    gap: 30px;
+    justify-content: space-evenly;
+    align-items: center;
+
+    svg {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+      path {
+        fill: transparent;
+        stroke: ${props => props.theme.color.darkGreen};
+        stroke-width: 3;
+      }
+      :nth-child(1) {
+        width: 20px;
+        height: 20px;
+        path {
+          fill: ${props => props.theme.color.darkGreen};
+          stroke-width: 0.1;
+        }
+      }
+      :nth-child(3) {
+        width: 20px;
+        height: 20px;
+      }
+    }
+
+    .user_svg__user {
+      width: 25px;
+      path {
+        fill: ${props => props.theme.color.darkGreen};
+        stroke: ${props => props.theme.color.darkGreen};
+        stroke-width: 20;
+      }
+    }
   }
 
   .menu {
@@ -29,7 +90,8 @@ export const Wrapper = styled.div`
       display: flex;
       flex-direction: row;
       align-items: center;
-      color: ${props => props.theme.color.ivory};
+      font-size: 24px;
+      color: ${props => props.theme.color.darkGreen};
       li {
         margin: 20px;
         cursor: pointer;
@@ -37,9 +99,109 @@ export const Wrapper = styled.div`
     }
   }
 
-  @media screen and (${props => props.theme.mobile}) {
-    position: sticky;
-    padding: 0px 0px;
+  .icon-wrapper {
+    display: none;
+    align-items: center;
+  }
+  #nav-icon2 {
+    cursor: pointer;
+    width: 30px;
+    height: 25px;
+    position: relative;
+  }
+
+  #nav-icon2 span {
+    display: block;
+    position: absolute;
+    height: 5px;
+    width: 50%;
+    background: ${props => props.theme.color.darkGreen};
+    opacity: 1;
+    -webkit-transform: rotate(0deg);
+    -moz-transform: rotate(0deg);
+    -o-transform: rotate(0deg);
+    transform: rotate(0deg);
+    -webkit-transition: 0.25s ease-in-out;
+    -moz-transition: 0.25s ease-in-out;
+    -o-transition: 0.25s ease-in-out;
+    transition: 0.25s ease-in-out;
+  }
+
+  #nav-icon2 span:nth-child(even) {
+    left: 50%;
+    border-radius: 0 9px 9px 0;
+  }
+
+  #nav-icon2 span:nth-child(odd) {
+    left: 0px;
+    border-radius: 9px 0 0 9px;
+  }
+
+  #nav-icon2 span:nth-child(1),
+  #nav-icon2 span:nth-child(2) {
+    top: 0px;
+  }
+
+  #nav-icon2 span:nth-child(3),
+  #nav-icon2 span:nth-child(4) {
+    top: 10px;
+  }
+
+  #nav-icon2 span:nth-child(5),
+  #nav-icon2 span:nth-child(6) {
+    top: 20px;
+  }
+
+  #nav-icon2.open span:nth-child(1),
+  #nav-icon2.open span:nth-child(6) {
+    -webkit-transform: rotate(45deg);
+    -moz-transform: rotate(45deg);
+    -o-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+
+  #nav-icon2.open span:nth-child(2),
+  #nav-icon2.open span:nth-child(5) {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+  }
+
+  #nav-icon2.open span:nth-child(1) {
+    left: 5px;
+    top: 7px;
+  }
+
+  #nav-icon2.open span:nth-child(2) {
+    left: calc(50% - 5px);
+    top: 7px;
+  }
+
+  #nav-icon2.open span:nth-child(3) {
+    left: -50%;
+    opacity: 0;
+  }
+
+  #nav-icon2.open span:nth-child(4) {
+    left: 100%;
+    opacity: 0;
+  }
+
+  #nav-icon2.open span:nth-child(5) {
+    left: 5px;
+    top: 12px;
+  }
+
+  #nav-icon2.open span:nth-child(6) {
+    left: calc(50% - 5px);
+    top: 12px;
+  }
+
+  @media screen and (max-width: 1024px) {
+    .wrapper {
+      padding: 0px 40px;
+    }
 
     .menu {
       display: none;
@@ -52,25 +214,170 @@ export const Wrapper = styled.div`
       font-size: 30px;
       order: 0;
     }
+    .icon-wrapper {
+      display: flex;
+      align-items: center;
+    }
 
+    .menu-wrap {
+      display: none;
+    }
     .img_wrap {
       height: 100%;
-      width: 50px;
+      width: 100px;
+      gap: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
     }
-
-    .bag {
-      width: 30px;
-
-      fill: ${props => props.theme.color.ivory};
-      stroke: ${props => props.theme.color.ivory};
+    #nav-icon2 {
+      cursor: pointer;
+      width: 25px;
+      height: 20px;
+      position: relative;
     }
 
-    .left_arrow {
-      width: 30px;
-      fill: ${props => props.theme.color.ivory};
+    #nav-icon2 span {
+      height: 3px;
+      width: 50%;
+    }
+
+    #nav-icon2 span:nth-child(3),
+    #nav-icon2 span:nth-child(4) {
+      top: 8px;
+    }
+
+    #nav-icon2 span:nth-child(5),
+    #nav-icon2 span:nth-child(6) {
+      top: 16px;
+    }
+
+    #nav-icon2.open span:nth-child(1) {
+      left: 5px;
+      top: 7px;
+    }
+
+    #nav-icon2.open span:nth-child(5) {
+      left: 5px;
+      top: 10px;
+    }
+
+    #nav-icon2.open span:nth-child(6) {
+      left: calc(50% - 5px);
+      top: 10px;
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .wrapper {
+      padding: 0px 10px;
+    }
+  }
+`;
+
+export const Slider = styled(motion.div)`
+  padding: 20px;
+  top: 80px;
+  transform: translateX(-100%);
+  opacity: 1;
+  position: fixed;
+  background-color: #fafafa;
+  z-index: 999;
+  width: 100%;
+  height: calc(100vh - 80px);
+  .menu {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+  }
+  .title {
+    heiggt: 40px;
+    margin: 12px 0px;
+    color: ${props => props.theme.color.darkGreen};
+    padding-bottom: 2px;
+    border-bottom: 1px solid ${props => props.theme.color.darkGreen};
+    font-size: 24px;
+    font-family: ${props => props.theme.font.TextFont2};
+    font-weight: 600;
+    :hover {
+      cursor: pointer;
+    }
+    :nth-child(3) {
+      margin-top: 20px;
+    }
+  }
+  .drop-down {
+    p {
+      padding: 0px 4px;
+      margin: 10px 0px;
+      font-size: 18px;
+      color: ${props => props.theme.color.darkGreen};
+      font-weight: 600;
+      font-family: ${props => props.theme.font.TextFont2};
+      cursor: pointer;
+    }
+  }
+`;
+
+export const ShopHoverNav = styled(motion.div)`
+  margin: auto;
+  width: 100%;
+  height: 320px;
+  z-index: 1;
+  max-width: 1500px;
+  position: sticky;
+  background-color: #fafafa;
+
+  .grid-wrapper {
+    padding: 10px 40px 20px;
+    width: 100%;
+    height: 100%;
+    display: grid;
+    grid-gap: 30px;
+    grid-row-gap: 20px;
+    grid-template-rows: 1fr 1fr 1fr;
+    grid-template-columns: 2fr 1.5fr 1.5fr;
+
+    .gird-left {
+      width: 100%;
+      height: 100%;
+      position: relative;
+      grid-area: 1 / 1 / 4 / 2;
+    }
+
+    h3 {
+      top: 20px;
+      left: 30px;
+      font-size: 40px;
+      letter-spacing: 1px;
+      position: absolute;
+      font-family: ${props => props.theme.font.EnglishFont};
+    }
+
+    p {
+      top: 90px;
+      left: 35px;
+
+      font-size: 20px;
+      letter-spacing: 1px;
+      position: absolute;
+      font-family: ${props => props.theme.font.TextFont2};
+    }
+    .button {
+      background-color: black;
+      cursor: pointer;
+      width: 90%;
+      height: 40px;
+      bottom: 20px;
+      left: 50%;
+      transform: translate(-50%, 0);
+      color: #e8e8e4;
+      font-size: 20px;
+      letter-spacing: 1px;
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
   }
 `;

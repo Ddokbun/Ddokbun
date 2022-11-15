@@ -142,7 +142,7 @@ export const watering = async (potSeq: string | string[]) => {
 
 export const changeWateringStatus = async (
   potSeq: string,
-  waterPeriod: number,
+  waterPeriod: string,
 ) => {
   const url = `pot/${potSeq}/water/${waterPeriod}`;
   try {
@@ -153,4 +153,26 @@ export const changeWateringStatus = async (
 
     console.log(res);
   } catch (error) {}
+};
+
+export const fetchWateringLogs = async (
+  potSeq: string | string[],
+  year: number,
+  month: number,
+) => {
+  const url = `/pot/${potSeq}/water`;
+  try {
+    const res = await AXIOS({
+      method: "get",
+      url,
+      params: {
+        year,
+        month,
+      },
+    });
+
+    return res.data.content;
+  } catch (error) {
+    console.log(error);
+  }
 };

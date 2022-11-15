@@ -2,7 +2,8 @@ server:
   port: 8080
   servlet:
     context-path: "/api"
-
+  tomcat:
+    max-http-form-post-size: 100MB
 
 spring:
   batch:
@@ -12,26 +13,19 @@ spring:
       enabled: false
   servlet:
     multipart:
-      max-file-size: 50MB
-      max-request-size: 50MB
+      max-file-size: 100MB
+      max-request-size: 100MB
   config:
     import:
       - 'classpath:application-fcm.yml'
       - 'classpath:application-aws.yml'
+      - 'classpath:application-oauth.yml'
+      - 'classpath:application-kafka.yml'
   profiles:
     default: local
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
-  kafka:
-    producer:
-      bootstrap-servers:
-        - k7d208.p.ssafy.io:8992
-        - k7d208.p.ssafy.io:8993
-        - k7d208.p.ssafy.io:8994
-      key-serializer: org.apache.kafka.common.serialization.StringSerializer
-      value-serializer: org.apache.kafka.common.serialization.StringSerializer
-
 logging:
   level:
     root: info

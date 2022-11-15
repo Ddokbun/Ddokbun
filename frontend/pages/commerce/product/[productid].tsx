@@ -15,6 +15,7 @@ import RelatedProducts from "../../../components/commerce/products/[product-id]/
 import { wrapper } from "../../../store";
 import { setRelatedItemList } from "../../../store/commerce";
 import { useRouter } from "next/router";
+import { useSelector } from "react-redux";
 
 interface IParams {
   productid: number;
@@ -32,24 +33,26 @@ const Product: NextPage<{ data: ItemObject }> = ({ data }) => {
   }, [seqid]);
   return (
     <Wrapper>
-      <ProductSellCard
-        itemSeq={data.itemSeq}
-        itemName={data.itemName}
-        itemEnName={data.itemEnName}
-        itemPicture={data.itemPicture}
-        itemPrice={data.itemPrice}
-        tags={data.plant?.recRate.split(",")}
-        originPlace={data.plant?.originPlace}
-        plantZRName={data.plant?.plantZRName}
-        growthWidth={data.plant?.growthWidth}
-        growthHeight={data.plant?.growthHeight}
-      />
-      <ProductCare
-        itemInfo={data.itemInfo}
-        water={data.plant?.waterCycle as number}
-        humid={data.plant?.growthHumid as string}
-      />
-      <RelatedProducts />
+      <div className="contents">
+        <ProductSellCard
+          itemSeq={data.itemSeq}
+          itemName={data.itemName}
+          itemEnName={data.itemEnName}
+          itemPicture={data.itemPicture}
+          itemPrice={data.itemPrice}
+          tags={data.plant?.recRate.split(",")}
+          originPlace={data.plant?.originPlace}
+          plantZRName={data.plant?.plantZRName}
+          growthWidth={data.plant?.growthWidth}
+          growthHeight={data.plant?.growthHeight}
+        />
+        <ProductCare
+          itemInfo={data.itemInfo}
+          water={data.plant?.waterCycle as number}
+          humid={data.plant?.growthHumid as string}
+        />
+        <RelatedProducts />
+      </div>
     </Wrapper>
   );
 };
@@ -80,7 +83,7 @@ export const getStaticProps: GetStaticProps = wrapper.getStaticProps(
     const { productid } = context.params as IProps;
     const data = await fetchProductDetail(productid);
     const { content } = await fetchRelatedProducts(productid);
-    store.dispatch(setRelatedItemList(content));
+    store.dispatch(setRelatedItemList({ data: content }));
 
     return {
       props: {

@@ -1,5 +1,6 @@
-import React, { useRef } from "react";
-import { ResponsiveWrapper, Wrapper } from "./styles";
+import React, { useRef, useState } from "react";
+import { ResponsiveWrapper } from "./styles";
+import { motion } from "framer-motion";
 
 import Temp from "../../../assets/temp2.png";
 import Image from "next/image";
@@ -15,85 +16,53 @@ const ProductCard: React.FC<{
   isResponsive: boolean;
 }> = ({ item, isResponsive }) => {
   const ref = useRef(null);
+  const [isHovered, setHovered] = useState(false);
   const isInView = useInView(ref, { once: true });
-  console.log(isInView);
+
+  const MouseHoverHandler = () => {
+    setHovered(true);
+  };
+  const MouseLeaveHandler = () => {
+    setHovered(false);
+  };
+
+  const None = {};
 
   return (
     <>
-      {isResponsive ? (
-        <>
-          <Link href={`/commerce/product/${item?.itemSeq}`}>
-            <ResponsiveWrapper
-              ref={ref}
-              variants={CardHover}
-              whileHover={isInView ? "hover" : ""}
-              initial="start"
-              animate={isInView ? "end" : ""}
-            >
-              <div className="img-wrap">
-                <Image
-                  src={item.itemImage}
-                  objectFit="cover"
-                  layout="fill"
-                  alt="임시상품이미지"
-                />
-              </div>
-              <div className="text-wrap">
-                <div className="title">
-                  <h3>{item.itemEnName}</h3>
-                  <h2>{item.itemName}</h2>
-                </div>
-                <div className="tag-wrap">
-                  {item.tags.map((tag, idx) => {
-                    return <ProductLabel key={idx}>{tag}</ProductLabel>;
-                  })}
-                </div>
-
-                <div className="text-wrap-bottom">
-                  <h3>
-                    ₩{" "}
-                    {item.itemPrice
-                      .toString()
-                      .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-                  </h3>
-                  <BuyTextButton id={item.itemSeq} />
-                </div>
-              </div>
-            </ResponsiveWrapper>
-          </Link>
-        </>
-      ) : (
-        <Link href={`/commerce/product/${item?.itemSeq}`}>
-          <Wrapper variants={CardHover} whileHover="hover">
-            <div className="img-wrap">
-              <Image
-                src={item.itemImage != "plant/2.jpg" ? item.itemImage : Temp}
-                objectFit="contain"
-                layout="fill"
-                alt="임시상품이미지"
-              />
+      <Link href={`/commerce/product/${item?.itemSeq}`}>
+        <ResponsiveWrapper
+          variants={isResponsive ? CardHover : None}
+          ref={ref}
+          initial="start"
+          animate={isInView ? "end" : ""}
+          onMouseEnter={MouseHoverHandler}
+          onMouseLeave={MouseLeaveHandler}
+        >
+          <motion.div
+            initial={false}
+            animate={{ scale: isHovered ? 1.2 : 1 }}
+            className="img-wrap"
+          >
+            <Image
+              src={item.itemImage}
+              objectFit="cover"
+              layout="fill"
+              alt="임시상품이미지"
+            />
+          </motion.div>
+          <div className="text-wrap">
+            <div className="title">
+              <p>{item.itemEnName}</p>
+              <h2>{item.itemName}</h2>
             </div>
-            <div className="text-wrap">
-              <div className="title">
-                <h2>{item?.itemName}</h2>
-                <h3>{item?.itemEnName}</h3>
-              </div>
-              <div className="tag-wrap">
-                {item?.tags.map((tag, idx) => {
-                  return <ProductLabel key={idx}>{tag}</ProductLabel>;
-                })}
-              </div>
-              <h3>
-                ₩{" "}
-                {item?.itemPrice
-                  .toString()
-                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
-              </h3>
-              <BuyTextButton id={item?.itemSeq} />
-            </div>
-          </Wrapper>
-        </Link>
-      )}
+            <h3>
+              ₩{" "}
+              {item.itemPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </h3>
+          </div>
+        </ResponsiveWrapper>
+      </Link>
     </>
   );
 };

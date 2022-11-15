@@ -19,7 +19,7 @@ export const PriceTextButtonStyle = styled.div`
     height: 15px;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     h3 {
       font-size: 30px !important;
     }
@@ -32,7 +32,7 @@ export const PriceTextButtonStyle = styled.div`
 `;
 
 export const PriceButtonStyle = styled.div`
-  width: 250px;
+  width: 100%;
   height: 50px;
   border-radius: 2px;
   display: flex;
@@ -52,7 +52,7 @@ export const PriceButtonStyle = styled.div`
     letter-spacing: 5px;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     width: 60vw;
     font-size: 36px;
     svg {
@@ -63,7 +63,7 @@ export const PriceButtonStyle = styled.div`
 `;
 
 export const BuyListButtonStyle = styled.div`
-  width: 100px;
+  width: 100%;
   height: 50px;
   border-radius: 2px;
   display: flex;
@@ -80,7 +80,7 @@ export const BuyListButtonStyle = styled.div`
     height: 40px;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     font-size: 36px;
     z-index: 2;
     width: 30vw;
@@ -95,7 +95,7 @@ export const SubmitButtonStyle = styled.button`
   margin: 1%;
   width: 40%;
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     width: 40%;
     height: 100%;
     padding: 2% 0 2%;
@@ -110,7 +110,12 @@ export const CancelButtonStyle = styled.button`
   margin: 1%;
   width: 40%;
 
-  @media screen and (${props => props.theme.mobile}) {
+  :hover {
+    background-color: ${props => props.theme.color.mainGreen};
+    color: white;
+  }
+
+  @media screen and (max-width: 600px) {
     width: 40%;
     height: 100%;
     padding: 2% 0 2%;
@@ -129,7 +134,7 @@ export const SearchButtonStyle = styled.button`
   height: 150px;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     width: 90px;
     height: 90px;
     border-radius: 10px;
@@ -152,7 +157,7 @@ export const LoginButtonStyle = styled.div`
 
   font-family: ${props => props.theme.font.TitleFont};
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     width: 350px;
     height: 50px;
     font-size: 15px;
@@ -171,24 +176,24 @@ export const StatusButtonStyle = styled.li<StatusButtonType>`
   height: 60px;
   border-radius: 16px;
   font-size: 16px;
-  background-color: ${props =>
-    props.isActive ? props.backgroundHover : props.backgroundColor};
-  color: ${props => props.textColor};
+  color: ${props =>
+    props.isActive ? props.theme.color.darkGreen : props.textColor};
   display: flex;
   margin: 10px;
   justify-content: center;
   align-items: center;
+  font-family: ${props => props.theme.font.TextFont2};
 
   :hover {
     cursor: pointer;
-    background-color: ${props => props.backgroundHover};
+    color: ${props => props.theme.color.darkGreen};
   }
 
   span {
     margin: 3%;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     width: 100px;
     font-size: 12px;
   }

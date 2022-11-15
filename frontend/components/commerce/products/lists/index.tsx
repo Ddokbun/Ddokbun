@@ -5,15 +5,20 @@ import ProductCard from "../../../../common/Cards/ProductCard";
 import { ListArray } from "../../../../types/commerce/list.interface";
 
 const ProductList: React.FC<{ data: ListArray }> = ({ data }) => {
+  console.log(data);
+
   return (
     <GridWrapper>
-      <>
-        {data.map(item => {
-          return (
-            <ProductCard key={item.itemSeq} item={item} isResponsive={true} />
-          );
-        })}
-      </>
+      <p className="p-title">total : {data.length} </p>
+      <div className="grid">
+        <>
+          {data.map(item => {
+            return (
+              <ProductCard key={item.itemSeq} item={item} isResponsive={true} />
+            );
+          })}
+        </>
+      </div>
     </GridWrapper>
   );
 };

@@ -21,8 +21,15 @@ export const Wrapper = styled.div`
     margin: auto;
     justify-content: center;
   }
+  .camera {
+    margin-left: 10px;
+    padding: 13px;
+    border-radius: 10px;
+    background-color: ${props => props.theme.color.darkGreen};
+    color: ${props => props.theme.color.ivory};
+  }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     h2 {
       font-family: ${props => props.theme.font.TitleFont};
       font-size: 35px;

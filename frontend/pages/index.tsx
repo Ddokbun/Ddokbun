@@ -15,7 +15,6 @@ const Home: NextPage = () => {
             url: "https://example.com",
           }}
         />
-        <title>똑분 - Ddokbun</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 

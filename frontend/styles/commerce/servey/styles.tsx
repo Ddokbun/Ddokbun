@@ -57,7 +57,7 @@ export const Wrapper = styled.div`
     }
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     position: relative;
     width: 100%;
     min-width: 0px;

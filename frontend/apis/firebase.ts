@@ -1,6 +1,7 @@
 import firebase from "firebase/app";
+import AXIOS from ".";
 
-export async function getToken() {
+export const getToken = async () => {
   if (firebase.apps.length) {
     const messaging = firebase.messaging();
     return await messaging.getToken({
@@ -21,4 +22,16 @@ export async function getToken() {
       vapidKey: process.env.NEXT_PUBLIC_FIREBASE_MESSAGING_VAPID_KEY,
     });
   }
-}
+};
+
+export const setToken = async (token: string) => {
+  const url = `/alarm`;
+  try {
+    const res = await AXIOS({
+      url,
+      method: "POST",
+      data: { token },
+    });
+    console.log(res.data);
+  } catch (error) {}
+};

@@ -23,20 +23,19 @@ const ProductSellCard: React.FC<SellItemObject> = props => {
           objectFit="contain"
           layout="fill"
           src={props.itemPicture}
-          alt="임시상품이미지"
+          alt="상품이미지"
         />
       </div>
       <div className="text-wrap">
         <div className="text-top">
-          <h3>{props.itemEnName}</h3>
           <h2>{props.itemName}</h2>
+          <h3>{props.itemEnName}</h3>
           <div className="tag-wrap">
             {props.tags?.map((tag, idx) => {
               return <ProductLabel key={idx}>{tag}</ProductLabel>;
             })}
           </div>
         </div>
-
         <h3>
           ₩ {props.itemPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         </h3>

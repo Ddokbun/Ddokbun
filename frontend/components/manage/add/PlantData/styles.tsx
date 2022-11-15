@@ -18,7 +18,7 @@ export const Wrapper = styled.div`
     margin: 5% 0;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     grid-template-columns: repeat(2, 1fr);
   }
 `;
