@@ -20,6 +20,8 @@ import { RootState } from "../../store";
 const Navbar = () => {
   const ref = useRef<HTMLDivElement>(null);
   const userseq = useSelector((state: RootState) => state.authSlice.userSeq);
+  console.log(userseq, "adfasdfasdfasdf");
+
   const [slider, setSlider] = useState(false);
   const [shopCate, setShopCate] = useState(false);
   const [shopHover, setShopHover] = useState(false);
@@ -92,9 +94,13 @@ const Navbar = () => {
           </div>
 
           <div className="img_wrap">
-            <Search />
+            <Link href={"/search"}>
+              <Search />
+            </Link>
             <Bag />
-            <User viewBox="0 0 512 512" />
+            <Link href={`/mypage/${userseq}`}>
+              <User viewBox="0 0 512 512" />
+            </Link>
           </div>
         </div>
         <ShopHoverNav

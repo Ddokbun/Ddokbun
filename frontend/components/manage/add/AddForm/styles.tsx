@@ -7,9 +7,27 @@ export const Wrapper = styled(motion.form)`
   /* padding-left: 5%; */
   margin-top: 1%;
 
+  .link-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    margin: 2% 0 4%;
+    font-family: ${props => props.theme.font.TextFont2};
+    span {
+      margin-right: 1%;
+    }
+  }
+
+  a {
+    font-size: 16px;
+    color: ${props => props.theme.color.mainGreen};
+  }
+
   .grid {
     display: grid;
     grid-template-columns: repeat(2, 50%);
+    margin-top: 1%;
   }
 
   .calander-container {
