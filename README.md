@@ -88,29 +88,41 @@
 
 ## 🖇️ 개발 환경
 
+<br>
+
+- FrontEnd
+   - 건녕님이 고칠거에요
+   - 건녕님이 수정할거에요요
+
+
 - BackEnd
-
-   - Spring Boot 2.7.2
+   - Spring Boot 2.7.5
    - Spring Data JPA
-   - Spring Validation
+   - Spring Security
    - Java 11
-   - QueryDSL 5.0
-   - Lombok 1.18.24
-   - Firebase 8.x
-   - Gradle 7.4.x
-   - Swagger 3.x
+   - QueryDSL
+   - Firebase
+   - Redis
+   - Kafka
+   - MySQL
+   - Spark
+   - Yarn
+   - YOLO v5
+   - Scikit Learn
+   - Pytorch
 
-- DB
-
-   - MySQL 8.0.29 
+- IoT
+   - Rasbian
 
 - CI/CD
-
    - AWS EC2
    - Docker
    - Jenkins
+   - nginx
+   - certbot
 
 - IDE
+   - VS Code
    - IntelliJ
    - MySQL Workbench 8.0
 
