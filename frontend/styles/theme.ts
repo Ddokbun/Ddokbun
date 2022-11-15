@@ -30,5 +30,6 @@ export const Theme: DefaultTheme = {
     ivory: "#F0EBCE",
     ivoryHover: "#FFFBE7",
     whiteGray: "#f7f7f7",
+    darkGray: "#ececec",
   },
 };
