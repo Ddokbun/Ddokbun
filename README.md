@@ -186,55 +186,67 @@ frontend
 ### Backend
 
 ```
-backend-flask
 backend
-  ├── auth-service
+  ├── ddokbun-batch
+  │   ├── conf
+  │   └── run
+  ├── ddokbun
   │   ├── api
-  │   ├── clinet
   │   ├── config
-  │   ├── dto
-  │   ├── entity
+  │   ├── domain
+  │   │   ├── ai
+  │   │   │   ├── dto
+  │   │   │   └── service
+  │   │   ├── alarm
+  │   │   │   ├── dto
+  │   │   │   ├── entity
+  │   │   │   ├── repository
+  │   │   │   ├── res
+  │   │   │   └── service
+  │   │   ├── auth
+  │   │   │   ├── dto
+  │   │   │   └── service
+  │   │   ├── cart
+  │   │   │   ├── dto
+  │   │   │   ├── entity
+  │   │   │   ├── repository
+  │   │   │   └── service
+  │   │   ├── order
+  │   │   │   ├── dto
+  │   │   │   ├── entity
+  │   │   │   ├── repository
+  │   │   │   └── service
+  │   │   ├── plant
+  │   │   │   ├── dto
+  │   │   │   ├── entity
+  │   │   │   ├── repository
+  │   │   │   └── service
+  │   │   ├── product
+  │   │   │   ├── dto
+  │   │   │   ├── entity
+  │   │   │   ├── repository
+  │   │   │   └── service
+  │   │   ├── s3
+  │   │   │   ├── dto
+  │   │   │   └── service
+  │   │   ├── survey
+  │   │   │   ├── dto
+  │   │   │   ├── entity
+  │   │   │   ├── repository
+  │   │   │   └── service
+  │   │   └── user
+  │   │   │   ├── dto
+  │   │   │   ├── entity
+  │   │   │   ├── repository
+  │   │   │   └── service
   │   ├── exception
-  │   ├── info
-  │   ├── error
-  │   ├── repository
-  │   ├── service
-  │   └── util
-  ├── chat-service
-  │   ├── api
-  │   ├── clinet
-  │   ├── config
-  │   ├── dto
-  │   ├── error
-  │   ├── repository
-  │   └── service
-  ├── cs-service
-  │   ├── api
-  │   ├── clinet
-  │   ├── controller
-  │   ├── dto
-  │   ├── entity
-  │   ├── repository
-  │   ├── scheduler
-  │   └── service
-  ├── pay-service
-  │   ├── client
-  │   ├── controller
-  │   ├── dto
-  │   └── service
-  ├── user-service
-  │   ├── api
-  │   ├── clinet
-  │   ├── config
-  │   ├── dto
-  │   ├── entity
-  │   ├── exception
-  │   ├── info
-  │   ├── repository
-  │   ├── service
-  │   └── util
-  ├── eureka
-  └── gateway
+  │   ├── schedule
+  │   └── utils
+  │       ├── auth
+  │       ├── fcm
+  │       └── string
+  └── ddokbun_consumer
+      ├── env
       └── config
 ```
 
