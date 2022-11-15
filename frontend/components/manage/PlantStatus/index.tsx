@@ -1,10 +1,10 @@
 import React, { Suspense, useEffect, useState } from "react";
 import { StatusButton } from "../../../common/Button";
 import { Wrapper } from "./styles";
-import temperature from "../../../assets/icon/temperature.png";
-import illuminance from "../../../assets/icon/illuminance.png";
-import humidity from "../../../assets/icon/humidity.png";
-import soil from "../../../assets/icon/soil.png";
+import temperature from "../../../assets/icon/thermometer.png";
+import illuminance from "../../../assets/icon/sun.png";
+import humidity from "../../../assets/icon/water.png";
+import soil from "../../../assets/icon/soilhumidity.png";
 import { Theme } from "../../../styles/theme";
 import LineGraph from "../LineGraph";
 import { fetchLogs } from "../../../apis/manage";

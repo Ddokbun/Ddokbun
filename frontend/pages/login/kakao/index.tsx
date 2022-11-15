@@ -2,6 +2,7 @@ import type { NextPage } from "next";
 import React, { useEffect } from "react";
 import { Router, useRouter } from "next/router";
 import { Kakaologin } from "../../../apis/auth";
+import Spinner from "../../../common/Spinner";
 
 const KakaoLogin: NextPage = () => {
   const router = useRouter();
@@ -23,7 +24,7 @@ const KakaoLogin: NextPage = () => {
   return (
     <div>
       <main>
-        <h1>카카오 로그인 하는 중</h1>
+        <Spinner />
       </main>
     </div>
   );
