@@ -15,7 +15,6 @@ export const Wrapper = styled(motion.section)`
   h2 {
     font-family: ${props => props.theme.font.TextFont2};
     font-size: 24px;
-    margin-bottom: 5%;
-    
+    margin-top: 5%;
   }
 `;

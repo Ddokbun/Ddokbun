@@ -177,17 +177,17 @@ export const StatusButtonStyle = styled.li<StatusButtonType>`
   height: 60px;
   border-radius: 16px;
   font-size: 16px;
-  background-color: ${props =>
-    props.isActive ? props.backgroundHover : props.backgroundColor};
-  color: ${props => props.textColor};
+  color: ${props =>
+    props.isActive ? props.theme.color.darkGreen : props.textColor};
   display: flex;
   margin: 10px;
   justify-content: center;
   align-items: center;
+  font-family: ${props => props.theme.font.TextFont2};
 
   :hover {
     cursor: pointer;
-    background-color: ${props => props.backgroundHover};
+    color: ${props => props.theme.color.darkGreen};
   }
 
   span {

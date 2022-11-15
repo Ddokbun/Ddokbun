@@ -1,6 +1,7 @@
 package com.harryporter.ddokbun.domain.auth.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.harryporter.ddokbun.domain.auth.dto.*;
 import com.harryporter.ddokbun.domain.user.dto.UserDto;
@@ -46,7 +47,12 @@ public class GoogleService {
 
         }
         GoogleAccessToken accessToken = getGoogleAuthTokenByCode(decodedCode);
+        if(accessToken==null)
+            throw new GeneralException(ErrorCode.DATA_ACCESS_ERROR,"Access Token을 받아오지 못했습니다.");
+
         GoogleProfile googleProfile = getGoogleProfileByAccessToken(accessToken);
+        if(googleProfile==null)
+            throw new GeneralException(ErrorCode.DATA_ACCESS_ERROR,"구글 프로필을 받아오지 못했습니다.");
 
         UserDto userDto = userService.signup(new UserSocialDto(googleProfile));
 
@@ -91,7 +97,10 @@ public class GoogleService {
 
             return googleOAuthToken;
 
-        } catch (JsonProcessingException e) {
+        } catch (JsonMappingException e) {
+            e.printStackTrace();
+            return null;
+        } catch ( JsonProcessingException e){
             e.printStackTrace();
             return null;
         }

@@ -5,7 +5,11 @@ import { StatusButton } from "../../../common/Button";
 import PageTitle from "../../../common/PageTitle";
 import SearchCardList from "../../../components/manage/add/search/SearchCardList";
 import DeliveryCardList from "../../../components/mypage/DeliveryCardList";
-import { Wrapper } from "../../../styles/mypage/[userseq]/styles";
+import {
+  ManageHomeAni,
+  WrapperVar,
+} from "../../../styles/animations/animation";
+import { Line, Wrapper } from "../../../styles/mypage/[userseq]/styles";
 import { Theme } from "../../../styles/theme";
 import Manage from "../../manage/[userseq]";
 
@@ -105,17 +109,30 @@ const MyPage: NextPage = () => {
         onClick={onFetchDeliveryHandler}
         backgroundColor={Theme.color.brown}
         backgroundHover={Theme.color.brownHover}
-        textColor={"white"}
+        textColor={"#cccccc"}
       />
     );
   });
 
   return (
-    <Wrapper>
-      <PageTitle isLink={false}>마이페이지</PageTitle>
-      <div className="button-container">{buttons}</div>
-
-      {data && <DeliveryCardList data={data} />}
+    <Wrapper variants={ManageHomeAni} initial="out" animate="in" exit="out">
+      <PageTitle mypage isLink={false}>
+        <div>
+          <h1>주문내역 조회</h1>
+          <div className="button-container">{buttons}</div>
+        </div>
+      </PageTitle>
+      <table>
+        <thead>
+          <tr>
+            <th>상품정보</th>
+            <th>주문일자</th>
+            <th>주문번호</th>
+            <th>주문금액(수량)</th>
+          </tr>
+        </thead>
+        <tbody>{data && <DeliveryCardList data={data} />}</tbody>
+      </table>
       <Manage />
     </Wrapper>
   );

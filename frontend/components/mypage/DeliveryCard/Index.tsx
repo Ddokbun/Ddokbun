@@ -58,22 +58,29 @@ const DeliveryCard: FC<Props> = ({ data }) => {
           )}
         </Modal>
       )}
-      <div>
+      <td className="image-container">
         <Image
+          className="image"
           width={"100%"}
           height={"100%"}
           src={data.itemlist[0].itemPicture}
         />
-      </div>
-      <div className="infos">
-        <p>{data.orderName}</p>
-        <p>{data.orderPrice}원</p>
-        <p>{orderedDate}</p>
-        <div className="button-container">
-          <button onClick={showDeliveryStatus}>배송조회</button>
+        <div className="info">
+          <p>{data.orderName}</p>
+          <p>{data.orderQuantity}개</p>
           <button onClick={showOrderDetails}>상세보기</button>
         </div>
-      </div>
+      </td>
+      <td>
+        <p>{orderedDate}</p>
+      </td>
+      <td>
+        <p>{data.orderWaybillNumber}</p>
+        <button onClick={showDeliveryStatus}>배송조회</button>
+      </td>
+      <td>
+        <p>{data.orderPrice}원</p>
+      </td>
     </Wrapper>
   );
 };

@@ -3,15 +3,14 @@ import styled from "styled-components";
 
 export const Wrapper = styled(motion.section)`
   display: flex;
-  justify-content: center;
+  /* justify-content: center; */
   width: 100%;
   position: relative;
   border-bottom-width: 2px;
-  border-bottom-color: ${props => props.theme.color.darkGreen};
-  margin-bottom: 5%;
+  border-bottom-color: ${props => props.theme.color.black};
 
   h1 {
-    color: ${props => props.theme.color.mainGreen};
+    color: ${props => props.theme.color.darkGreen};
     font-size: 36px;
     font-family: ${props => props.theme.font.TitleFont};
   }
@@ -29,6 +28,7 @@ export const Wrapper = styled(motion.section)`
       padding-left: 3%;
       display: flex;
       justify-content: space-between;
+      height: 50%;
     }
     .add-btn-container {
       display: flex;
