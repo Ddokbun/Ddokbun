@@ -86,7 +86,14 @@ const PlantInfo: FC<Props> = ({ plantStatus }) => {
   const plantInfo = plantInfos.map(item => {
     return (
       <div className="line">
-        <Image src={item.src} width={"100%"} height={"100%"} />
+        <div className="status-image-container">
+          <Image
+            className="status-image"
+            src={item.src}
+            width={"100%"}
+            height={"100%"}
+          />
+        </div>
         <div className="info">
           <p>{item.grow}</p>
           <p>{item.current}</p>

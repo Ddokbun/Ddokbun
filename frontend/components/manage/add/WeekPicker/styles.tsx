@@ -54,7 +54,16 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 600px) {
-    width: 85%;
-    margin: 3%;
+    width: 70%;
+    margin: auto;
+
+    .week {
+      font-size: 18px;
+      width: 24px;
+    }
+    .day {
+      font-size: 18px;
+      width: 20px;
+    }
   }
 `;

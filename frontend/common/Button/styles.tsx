@@ -194,9 +194,4 @@ export const StatusButtonStyle = styled.li<StatusButtonType>`
     margin: 3%;
     padding-left: 12px;
   }
-
-  @media screen and (max-width: 600px) {
-    width: 100px;
-    font-size: 12px;
-  }
 `;

@@ -114,7 +114,8 @@ const PlantCare: NextPage = () => {
           />
         </div>
         <h2>{plantNickname}</h2>
-        <h3>스투키 - Sansevieria cylindrica</h3>
+        <h3>스투키</h3>
+        <p>Sansevieria cylindrica</p>
         <PlantInfo plantStatus={plantStatus} />
         <WeekPicker
           showDetailHandler={showDetailHandler}

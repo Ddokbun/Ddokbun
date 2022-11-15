@@ -88,6 +88,8 @@ export const RightSection = styled.section`
 
   p {
     font-family: ${props => props.theme.font.TextFont2};
+    color: ${props => props.theme.color.black};
+    padding-left: 4%;
   }
 
   .logs {
@@ -95,11 +97,30 @@ export const RightSection = styled.section`
   }
 
   @media screen and (max-width: 600px) {
+    position: absolute;
+    top: 900px;
+    width: 95%;
+    min-height: 90vh;
+
     h2 {
-      font-size: 24px;
+      font-size: 18px;
     }
     h3 {
       font-size: 16px;
+    }
+
+    .image-container {
+      max-width: 50%;
+    }
+
+    p {
+      font-family: ${props => props.theme.font.TextFont2};
+      color: ${props => props.theme.color.black};
+      padding-left: 4%;
+    }
+
+    .status-image-container {
+      max-width: 50px;
     }
   }
 `;
