@@ -49,17 +49,17 @@ const OrderFormComponent: React.FC<OrderProps> = props => {
       props.setTailEmail(e.target.value);
     },
     phoneHead: (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (isNaN(e.target.value) === false && e.target.value.length < 4) {
+      if (isNaN(e.target.value) === false && e.target.value.length <= 4) {
         props.setPhoneHead(e.target.value);
       }
     },
     phoneBody: (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (isNaN(e.target.value) === false && e.target.value.length < 4) {
+      if (isNaN(e.target.value) === false && e.target.value.length <= 4) {
         props.setPhoneBody(e.target.value);
       }
     },
     phoneTail: (e: React.ChangeEvent<HTMLInputElement>) => {
-      if (isNaN(e.target.value) === false && e.target.value.length < 4) {
+      if (isNaN(e.target.value) === false && e.target.value.length <= 4) {
         props.setPhoneTail(e.target.value);
       }
     },

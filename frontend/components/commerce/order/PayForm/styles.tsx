@@ -7,11 +7,12 @@ export const Wrapper = styled.div`
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 40px;
-    padding: 43px 5px;
+    padding: 45px 5px;
     grid-gap: 50px;
-
     margin-bottom: 30px;
+
     .button {
+      margin: 0px;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -27,7 +28,6 @@ export const Wrapper = styled.div`
 
     .now {
       background-color: ${props => props.theme.color.darkGreen};
-
       outline: 3px solid #f8ca2a;
     }
   }
@@ -57,32 +57,18 @@ export const Wrapper = styled.div`
     }
   }
 
-  @media screen and (max-width: 1000px) {
+  @media screen and (max-width: 600px) {
     .button-wrap {
       width: 100%;
       display: grid;
-      grid-template-columns: 1fr;
-      grid-template-rows: 45px 45px;
-      padding: 20px 5px;
-      grid-gap: 50px;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 45px;
+      padding: 35px 5px;
+      grid-gap: 10px;
       margin: 10px 0px 20px;
       .button {
         font-family: ${props => props.theme.font.TextFont2};
-        font-size: 20px;
-      }
-    }
-    p {
-      font-size: 20px;
-    }
-
-    li {
-      font-size: 18px;
-    }
-
-    .flex {
-      .button {
-        height: 50px;
-        width: 500px;
+        font-size: 15px;
       }
     }
   }
