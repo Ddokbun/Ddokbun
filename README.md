@@ -7,14 +7,14 @@
 
 <br>
 
-## 🐮 **Introduce**
+## 🪴 **Introduce**
 
 > **DDOKBUN**은 스마트 화분을 통해 식물 관리 서비스를 제공하고, 식물, 화분을 판매하는 E커머스 플랫폼입니다.<br>
 > 사용자는 본인의 LIFE 스타일에 맞게 식물을 추천받을 수 있으며, 화분 관리 시스템을 통해 효율적으로 식물을 관리할 수 있습니다.
 
 <br>
 
-### 🎥 소개 영상
+## 🎥 **소개 영상**
 
 - [UCC 바로가기]()
 
@@ -23,36 +23,36 @@
 
 ## 🕘 **프로젝트 진행 기간**
 
-> **2022.09.29(월) ~ 2022.10.07(금)**
+-  **2022.10.10(월) ~ 2022.11.18(금)**
 
 <br>
 
 
-## 🐧 **팀원**
+## 🌱 **Team**
 <table>
  <tr>
-    <td align="center"><a href=""><img src="" alt=""></td>
-    <td align="center"><a href=""><img src="" alt=""></td>
-    <td align="center"><a href=""><img src=""  alt=""></td>
-    <td align="center"><a href=""><img src="" alt=""></td>
     <td align="center"><a href="https://github.com/Jaehwany"><img src="https://avatars.githubusercontent.com/Jaehwany" width="80px;" alt=""></td>
-    <td align="center"><a href=""><img src="" alt=""></td>
+    <td align="center"><a href="https://github.com/Jaehwany"><img src="https://avatars.githubusercontent.com/Jaehwany" width="80px;" alt=""></td>
+    <td align="center"><a href="https://github.com/Jaehwany"><img src="https://avatars.githubusercontent.com/Jaehwany" width="80px;" alt=""></td>
+    <td align="center"><a href="https://github.com/Jaehwany"><img src="https://avatars.githubusercontent.com/Jaehwany" width="80px;" alt=""></td>
+    <td align="center"><a href="https://github.com/Jaehwany"><img src="https://avatars.githubusercontent.com/Jaehwany" width="80px;" alt=""></td>
+    <td align="center"><a href="https://github.com/Jaehwany"><img src="https://avatars.githubusercontent.com/Jaehwany" width="80px;" alt=""></td>
   </tr>
   <tr>
-    <td align="center">팀장, Infra</td>
+    <td align="center">팀장, Frontend</td>
     <td align="center">Frontend</td>
     <td align="center">Frontend</td>
-    <td align="center">Solidity</td>
     <td align="center">Backend</td>
-    <td align="center">Unity</td>
+    <td align="center">Backend</td>
+    <td align="center">Backend</td>
   </tr>
      <tr>
-    <td align="center"><a href="https://github.com/"><sub><b>이청</b></td>
-    <td align="center"><a href="https://github.com/"><sub><b>권성호</b></td>
-    <td align="center"><a href="https://github.com/"><sub>김채리</b></td>
-    <td align="center"><a href="https://github.com/"><sub><b>양요셉</b></td>
-    <td align="center"><a href="https://github.com/Jaehwany"><sub><b>이재환</b></td>
-    <td align="center"><a href="https://github.com/"><sub><b>한유빈</b></td>
+    <td align="center"><a href="https://github.com/"><sub><b>신혜원</b></td>
+    <td align="center"><a href="https://github.com/"><sub><b>김채리</b></td>
+    <td align="center"><a href="https://github.com/"><sub>허건녕</b></td>
+    <td align="center"><a href="https://github.com/"><sub><b>손광진</b></td>
+    <td align="center"><a href="https://github.com/"><sub><b>이동욱</b></td>
+    <td align="center"><a href="https://github.com/"><sub><b>이재환</b></td>
   </tr>
 
 </table>
@@ -61,8 +61,7 @@
 
 ### 📍 PPT
 
-- **[중간 발표 PPT]()**
-
+- **[중간 발표 PPT]()**  
 - **[최종 발표 PPT]()**
 
 <br>
@@ -70,18 +69,11 @@
 ### 🧾 프로젝트 산출물
 
 - [ERD]()
-- [API]()
+- [API 명세서]()
 - [와이어프레임]()
 
 <br>   
      
-## 🏴 **협업 환경**
-
-<br>
-
-![image](https://user-images.githubusercontent.com/97875998/186790445-ba6f2fe5-2aea-43fb-b7e6-bbbb1ce1b611.png)
-
-<br>
 
 ## 🏴 아키텍처
 
