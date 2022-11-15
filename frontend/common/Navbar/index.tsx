@@ -94,7 +94,9 @@ const Navbar = () => {
           </div>
 
           <div className="img_wrap">
-            <Search />
+            <Link href={"/search"}>
+              <Search />
+            </Link>
             <Bag />
             <Link href={`/mypage/${userseq}`}>
               <User viewBox="0 0 512 512" />
