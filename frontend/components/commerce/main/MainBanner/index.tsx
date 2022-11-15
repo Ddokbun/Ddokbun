@@ -12,7 +12,6 @@ const MainBanner = () => {
           <Link href={"commerce/survey"}>
             <button>Survey</button>
           </Link>
-
           <button>View all</button>
         </div>
       </div>
@@ -21,7 +20,7 @@ const MainBanner = () => {
           src={MainImg}
           alt="커머스 메인 배너 이미지 입니다."
           layout="fill"
-          objectFit="contain"
+          objectFit="cover"
         />
       </div>
     </Wrapper>
