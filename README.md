@@ -82,7 +82,7 @@
 
 ## 🖇️ 기술 스택
 
-<img src="/uploads/e72d7d98039cddad56c97c34a6ad1276/Ddokbun_기술스택.png"  width="800">
+<img src="/uploads/e6c2f46f098268cb37eb262d3a12d7b9/Ddokbun_기술스택.png"  width="800">
 
 <br>   <br>
 
