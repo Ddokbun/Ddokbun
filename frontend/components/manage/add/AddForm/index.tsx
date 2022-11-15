@@ -12,7 +12,7 @@ import { useSelector } from "react-redux";
 import { RootState } from "../../../../store";
 import { fetchPlantData, fetchRegisterPot } from "../../../../apis/manage";
 import PlantData from "../PlantData";
-import { EleVar } from "../../../../styles/animations/animation";
+import Link from "next/link";
 
 export interface PlantDataType {
   growthHumid: string;
@@ -120,7 +120,11 @@ const AddForm = () => {
   }, [plantSeq]);
 
   return (
-    <Wrapper variants={EleVar}>
+    <Wrapper>
+      <div className="link-container">
+        <span>'똑분'이 있어야 등록이 가능해요.</span>
+        <Link href={"/commerce"}>식물 추천받고 화분을 구매해보세요.</Link>
+      </div>
       <div className="grid">
         <SearchInput
           setSearchInput={null}

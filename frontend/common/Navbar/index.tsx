@@ -24,6 +24,8 @@ const Navbar = () => {
   const [shopCate, setShopCate] = useState(false);
   const [shopHover, setShopHover] = useState(false);
 
+  console.log(userseq, "asdfasdf");
+
   const toggleButton = () => {
     if (ref.current?.classList.contains("open")) {
       ref.current.classList.remove("open");
@@ -81,7 +83,7 @@ const Navbar = () => {
             <Link href={"/welcome"}>Ddokbbun</Link>
           </div>
           <div className="menu-wrap">
-            <Link href={`/manage/${userseq}`}>
+            <Link href={`/manage/145`}>
               <a>IoT</a>
             </Link>
             <Link href={"/commerce"}>
