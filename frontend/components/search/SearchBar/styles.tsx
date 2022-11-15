@@ -55,6 +55,7 @@ export const Wrapper = styled.div`
       justify-content: center;
       align-items: center;
       h3 {
+        font-family: ${props => props.theme.font.TextFont2};
         margin-left: 20px;
         display: block;
       }

@@ -2,6 +2,7 @@ import router from "next/router";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
 import { fetchItemSeq, postPicture } from "../../../../../apis/search";
+import { Wrapper } from "./styles";
 
 const base64toFile = (base_data: any, filename: any) => {
   var arr = base_data.split(","),
@@ -19,7 +20,6 @@ const base64toFile = (base_data: any, filename: any) => {
 
 const CameraCompo = () => {
   const [image, setImage] = useState("");
-
   const webcamRef = useRef<any>(null);
   const capture = useCallback(() => {
     const imageSrc = webcamRef.current.getScreenshot();
@@ -31,27 +31,50 @@ const CameraCompo = () => {
     const data = postPicture(imagePost);
     const res = fetchItemSeq(await data);
     const plantSeq = await res;
-    router.push(`/commerce/product/${plantSeq}`);
+    if (plantSeq === undefined) {
+      alert("해당하는 값을 찾지 못했습니다.");
+      router.push(`/search`);
+    } else {
+      router.push(`/commerce/product/${plantSeq}`);
+    }
+  };
+  const ResetFile = () => {
+    setImage("");
   };
 
+  if (image === "") {
+    return (
+      <Wrapper>
+        <div className="webcam">
+          <Webcam
+            audio={false}
+            height={720}
+            ref={webcamRef}
+            screenshotFormat="image/jpeg"
+            videoConstraints={{
+              facingMode: "environment",
+            }}
+            onUserMediaError={() =>
+              window.alert("카메라 기기에 접근할 수 없습니다.")
+            }
+          />
+        </div>
+        <div className="capture-button">
+          <button onClick={capture}>촬영하기</button>
+        </div>
+      </Wrapper>
+    );
+  }
   return (
-    <div>
-      <Webcam
-        audio={false}
-        height={720}
-        ref={webcamRef}
-        screenshotFormat="image/jpeg"
-        videoConstraints={{
-          facingMode: "environment",
-        }}
-        onUserMediaError={() =>
-          window.alert("카메라 기기에 접근할 수 없습니다.")
-        }
-      />
-      <button onClick={capture}>캡쳐</button>
-      <img src={image} />
-      <button onClick={postFile}>전송하기</button>
-    </div>
+    <Wrapper>
+      <div className="webcam">
+        <img src={image} />
+      </div>
+      <div className="capture-button">
+        <button onClick={ResetFile}>재촬영하기</button>
+        <button onClick={postFile}>전송하기</button>
+      </div>
+    </Wrapper>
   );
 };
 

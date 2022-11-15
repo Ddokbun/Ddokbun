@@ -63,6 +63,24 @@ export const Wrapper = styled.div`
       .pot-img {
         margin: 20px 0px 40px 0px;
       }
+      .img-01 {
+        position: relative;
+        width: 30vw;
+        height: 20vh;
+        margin: 10px;
+      }
+      .img-02 {
+        position: relative;
+        width: 30vw;
+        height: 20vh;
+        margin: 10px;
+      }
+      .img-03 {
+        position: relative;
+        width: 30vw;
+        height: 20vh;
+        margin: 10px;
+      }
     }
   }
 `;
