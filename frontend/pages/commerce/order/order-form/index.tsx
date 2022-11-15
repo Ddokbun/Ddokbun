@@ -76,7 +76,6 @@ const OrderForm: NextPage = () => {
       console.log(res.orderSeq);
 
       if (payType === 1) {
-        alert("올 ㅋ");
         postKakaoPay(res.orderSeq, total_amount, item_name);
       } else {
         alert("네이버준비중");
@@ -87,19 +86,29 @@ const OrderForm: NextPage = () => {
   };
   /** 폼 유효성 검사 */
   const onSubmitHandler = () => {
-    setFlag(0);
     if (name) {
-      setNameError("");
+      const reg = /[\s\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
+      if (name.length > 20 || reg.test(name) === true) {
+        setNameError("특수문자를 제거해주세요");
+        alert("주문 정보를 확인해주세요");
+        return;
+      } else {
+        setNameError("");
+      }
     } else {
       setNameError("이름을 입력해주세요");
-      setFlag(1);
       alert("주문 정보를 확인해주세요");
       return;
     }
 
     if (phoneHead && phoneBody && phoneTail) {
       const fullPhone = phoneHead + phoneBody + phoneTail;
-      console.log(fullPhone);
+      const reg = /^[0-9]+$/;
+      if (fullPhone.length > 12 || reg.test(fullPhone) !== true) {
+        setPhoneError("올바른 전화번호를 입력해주세요");
+        alert("주문 정보를 확인해주세요");
+        return;
+      }
 
       setPhoneError("");
     } else {
@@ -111,11 +120,19 @@ const OrderForm: NextPage = () => {
 
     if (mailHead && mailTail) {
       const fullEmail = mailHead + "@" + mailTail;
-      console.log(fullEmail);
-      setMailError("");
+      const reg =
+        /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+      if (reg.test(fullEmail) === true) {
+        setMailError("");
+      } else {
+        setMailError("올바른 이메일을 입력해주세요");
+
+        alert("주문 정보를 확인해주세요");
+        return;
+      }
     } else {
       setMailError("올바른 이메일을 입력해주세요");
-      setFlag(1);
+
       alert("주문 정보를 확인해주세요");
       return;
     }
@@ -123,8 +140,7 @@ const OrderForm: NextPage = () => {
     if (post && detailPost && additionalPost) {
       setPostError("");
     } else {
-      setPostError("올바른 주소를 입력해주세요");
-      setFlag(1);
+      setPostError("상세 주소를 입력해주세요");
       alert("주문 정보를 확인해주세요");
       return;
     }

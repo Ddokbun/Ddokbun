@@ -23,7 +23,9 @@ export const Wrapper = styled.div`
   }
 
   .error {
+    font-family: ${props => props.theme.font.TextFont2};
     height: 20px;
+    color: ${props => props.theme.color.red};
   }
   .flex-form {
     padding: 10px 30px;
@@ -34,6 +36,7 @@ export const Wrapper = styled.div`
   .grid {
     width: 100%;
     display: grid;
+    margin-bottom: 10px;
     grid-template-columns: 1fr;
     grid-template-rows: auto 44px;
     grid-gap: 5px;
@@ -47,6 +50,8 @@ export const Wrapper = styled.div`
     width: 100%;
   }
   .phone-num input {
+    display: flex;
+    justify-content: center;
     width: 30%;
   }
 
