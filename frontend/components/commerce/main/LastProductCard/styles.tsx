@@ -20,7 +20,6 @@ export const Wrapper = styled.div`
       height: 600px;
     }
     .img-02 {
-      background-color: red;
       position: relative;
       width: 100%;
       height: 290px;
