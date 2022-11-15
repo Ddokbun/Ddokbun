@@ -79,12 +79,12 @@ export const Wrapper = styled.div`
       background: linear-gradient(
         21deg,
         rgba(25, 25, 25, 1) 0%,
-        rgba(0, 212, 255, 0) 100%
+        rgba(0, 212, 255, 0) 60%
       );
       .font-wrap {
         padding: 1px;
         h2 {
-          font-size: 40px;
+          font-size: 35px;
           margin: 5px;
         }
         h3 {

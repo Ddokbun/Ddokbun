@@ -8,6 +8,7 @@ import { MainPlant } from "../../types/commerce/home.interface";
 import MainProductCard from "../../components/commerce/main/MainProductCard";
 import MainBanner from "../../components/commerce/main/MainBanner";
 import PotBanner from "../../components/commerce/main/PotBanner";
+import LastProductCard from "../../components/commerce/main/LastProductCard";
 
 export const getStaticProps: GetStaticProps = async context => {
   const res = await getMainProduct();
@@ -25,10 +26,10 @@ const Commerce: NextPage<{ data: MainPlant }> = ({ data }) => {
       <MainBanner />
       <MainProductCard data={data.slice(0, 3)} />
       <PotBanner />
-      <MainProductCard data={data.slice(3, 8)} />
+      <MainProductCard data={data.slice(3, 9)} />
       <SurveyBanner />
       {/* <IoTSurvey /> */}
-      <MainProductCard data={data.slice(8, 12)} />
+      <LastProductCard data={data.slice(9, 12)} />
     </Wrapper>
   );
 };
