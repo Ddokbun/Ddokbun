@@ -6,13 +6,15 @@ import PotImg from "../../../../assets/smart-pot.jpg";
 const PotBanner = () => {
   return (
     <Wrapper>
-      <div className="img-wrap">
-        <Image
-          src={PotImg}
-          alt="커머스 메인 배너 이미지 입니다."
-          layout="fill"
-          objectFit="contain"
-        />
+      <div className="content-wrap">
+        <div className="img-wrap">
+          <Image
+            src={PotImg}
+            alt="커머스 메인 배너 이미지 입니다."
+            layout="fill"
+            objectFit="contain"
+          />
+        </div>
       </div>
       <div className="text-wrap">
         <div className="text">

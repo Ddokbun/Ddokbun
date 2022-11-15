@@ -4,16 +4,21 @@ export const Wrapper = styled.div`
   display: flex;
   background-color: #e9e9e9;
   margin-bottom: 10px;
-  .img-wrap {
-    position: relative;
-    height: 500px;
-    width: 500px;
-    overflow: hidden;
+  .content-wrap {
+    width: 45%;
+
+    .img-wrap {
+      position: relative;
+      height: 500px;
+      width: 100%;
+      overflow: hidden;
+    }
   }
   .text-wrap {
     display: flex;
     align-items: center;
     margin-left: 70px;
+    width: 60%;
     h2 {
       font-size: 35px;
       margin-bottom: 25px;
@@ -36,12 +41,26 @@ export const Wrapper = styled.div`
       }
     }
   }
+  @media screen and (max-width: 1024px) {
+    .content-wrap {
+      width: 70%;
+    }
+  }
 
   @media screen and (max-width: 600px) {
     display: block;
-    .img-wrap {
-      margin-bottom: 20px;
+    .content-wrap {
+      width: 100%;
+
+      .img-wrap {
+        position: relative;
+        height: 500px;
+        width: 100%;
+        overflow: hidden;
+        margin-bottom: 20px;
+      }
     }
+
     .text-wrap {
       display: block;
       margin: 20px auto;
