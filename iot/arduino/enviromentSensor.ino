@@ -6,7 +6,7 @@
 #define ERORR_VALUE -999
 #define MOTOR_PIN 10
 #define MOTOR_TIME 1000
-#define LOOP_TIME 3000
+#define LOOP_TIME 10000
 
 DHT dht(DHTPIN, DHTTYPE);
 
@@ -16,8 +16,6 @@ unsigned long loopTime = 0;
 unsigned long addTime = 0;
 unsigned long afterTime = 0;
 
-unsigned long motorLoopTime = 0;
-unsigned long motorAddTime = 0;
 
 unsigned long motorLoopTime = 0;
 unsigned long motorAddTime = 0;
