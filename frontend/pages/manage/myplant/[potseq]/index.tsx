@@ -65,6 +65,8 @@ const PlantCare: NextPage = () => {
     waterHeight: 0,
     waterSupply: [],
     plantSeq: 0,
+    plantName: "",
+    plantEnName: "",
   });
   const onWateringHandler = async () => {
     const res = await watering(potseq!);
@@ -115,8 +117,8 @@ const PlantCare: NextPage = () => {
           />
         </div>
         <h2>{plantNickname}</h2>
-        <h3>스투키</h3>
-        <p>Sansevieria cylindrica</p>
+        <h3>{plantStatus.plantName}</h3>
+        <p>{plantStatus.plantEnName}</p>
         <PlantInfo plantStatus={plantStatus} />
         <WeekPicker
           showDetailHandler={showDetailHandler}

@@ -57,8 +57,11 @@ export const Wrapper = styled(motion.section)`
       }
     }
     td {
-      :nth-child(3) {
+      :nth-child(2) {
         display: none;
+      }
+      :nth-child(3) {
+        width: 25%;
       }
     }
     .info {
