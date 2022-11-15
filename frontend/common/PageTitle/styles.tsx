@@ -23,16 +23,14 @@ export const Wrapper = styled(motion.section)`
   }
 
   @media screen and (max-width: 600px) {
-    * {
-      width: 98%;
-      padding-left: 3%;
-      display: flex;
-      justify-content: space-between;
-      height: 50%;
-    }
+    width: 98%;
+    padding-left: 3%;
+    display: flex;
+    flex-direction: column;
+    height: 50%;
     .add-btn-container {
       display: flex;
-      position: relative;
+      position: absolute;
       align-items: flex-end;
       justify-content: flex-end;
       width: 200px;

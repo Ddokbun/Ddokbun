@@ -1,15 +1,11 @@
 import { FC, useEffect, useState } from "react";
 import { Wrapper } from "./styles";
 import Image from "next/image";
-import { TextBtn } from "../../../common/Button";
 import { PlantListType } from "../../../pages/manage/[userseq]";
 import { useRouter } from "next/router";
-import { CardHover } from "../../../styles/animations/animation";
-import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { manageActions } from "../../../store/manage";
 import { fetchCurrentStatus } from "../../../apis/manage";
-import Link from "next/link";
 
 const CardItem: FC<PlantListType> = plant => {
   //   식물이름, 식물 pk, 식물 이미지
