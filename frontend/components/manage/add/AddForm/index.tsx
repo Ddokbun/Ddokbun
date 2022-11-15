@@ -13,6 +13,7 @@ import { RootState } from "../../../../store";
 import { fetchPlantData, fetchRegisterPot } from "../../../../apis/manage";
 import PlantData from "../PlantData";
 import Link from "next/link";
+import Swal from "sweetalert2";
 
 export interface PlantDataType {
   growthHumid: string;
@@ -74,11 +75,11 @@ const AddForm = () => {
 
   const onRegisterHandler = async (): Promise<void> => {
     if (!inputValues.current.plantNickname) {
-      //닉네임 확인
+      Swal.fire("닉네임을 입력해주세요");
     } else if (!inputValues.current.potSerial) {
-      // 씨리얼 넘버 확인
+      Swal.fire("씨리얼 넘버를 입력해주세요.");
     } else if (!inputValues.current.waterSupply) {
-      // 물준날 확인
+      Swal.fire("마지막으로 물 준 일자를 확인해주세요.");
     }
 
     console.log(inputValues.current);
@@ -87,7 +88,7 @@ const AddForm = () => {
     if (res?.status === 201) {
       router.push(`/manage/${res.potSeq}`);
     } else {
-      alert("다시 한번 확인해주세요.");
+      Swal.fire("혹시 화분을 아직 구매하지 않으셨나요?");
     }
   };
 
