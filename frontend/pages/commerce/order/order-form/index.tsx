@@ -142,44 +142,48 @@ const OrderForm: NextPage = () => {
 
   return (
     <Wrapper>
-      <div className="row">
-        <h1>Buy List</h1>
-        <CartList setOrderTotal={setOrderTotal} />
+      <div className="contents">
+        <div className="row">
+          <h1>Buy List</h1>
+          <CartList setOrderTotal={setOrderTotal} />
+        </div>
       </div>
-      <div className="row">
-        <h1 className="sub-title">Order Information</h1>
-        <OrderFormComponent
-          name={name}
-          phoneHead={phoneHead}
-          phoneBody={phoneBody}
-          phoneTail={phoneTail}
-          mailHead={mailHead}
-          mailTail={mailTail}
-          post={post}
-          detailPost={detailPost}
-          additionalPost={additionalPost}
-          nameError={nameError}
-          phoneError={phoneError}
-          mailError={mailError}
-          postError={postEroor}
-          setName={setName}
-          setHeadEmail={setHeadEmail}
-          setTailEmail={setTailEmail}
-          setPost={setPost}
-          setDetailPost={setDetailPost}
-          setAdditionalPost={setAdditionalPost}
-          setPhoneHead={setPhoneHead}
-          setPhoneBody={setPhoneBody}
-          setPhoneTail={setPhoneTail}
-        />
-      </div>
-      <div className="row">
-        <h1 className="sub-title">Payment Method</h1>
-        <PayFormComponent setPayType={setPayType} />
-      </div>
-      <div className="row">
-        <div className="button" onClick={onSubmitHandler}>
-          PAYMENT
+      <div className="background">
+        <div className="pay-grid">
+          <div className="row">
+            <h1 className="sub-title">Order Information</h1>
+            <OrderFormComponent
+              name={name}
+              phoneHead={phoneHead}
+              phoneBody={phoneBody}
+              phoneTail={phoneTail}
+              mailHead={mailHead}
+              mailTail={mailTail}
+              post={post}
+              detailPost={detailPost}
+              additionalPost={additionalPost}
+              nameError={nameError}
+              phoneError={phoneError}
+              mailError={mailError}
+              postError={postEroor}
+              setName={setName}
+              setHeadEmail={setHeadEmail}
+              setTailEmail={setTailEmail}
+              setPost={setPost}
+              setDetailPost={setDetailPost}
+              setAdditionalPost={setAdditionalPost}
+              setPhoneHead={setPhoneHead}
+              setPhoneBody={setPhoneBody}
+              setPhoneTail={setPhoneTail}
+            />
+          </div>
+          <div className="row">
+            <h1 className="sub-title">Payment Method</h1>
+            <PayFormComponent setPayType={setPayType} />
+          </div>
+          <div className="button" onClick={onSubmitHandler}>
+            PAYMENT
+          </div>
         </div>
       </div>
     </Wrapper>

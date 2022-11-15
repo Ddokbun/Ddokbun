@@ -98,6 +98,7 @@ const Navbar = () => {
           </div>
         </div>
         <ShopHoverNav
+          initial={false}
           variants={shopHoverAni}
           animate={{ display: shopHover ? "block" : "none" }}
           onMouseEnter={handleShopEnter}
