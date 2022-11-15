@@ -1,15 +1,22 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(motion.div)`
   width: 100%;
   height: 100%;
   padding: 0px 0px;
   display: grid;
   grid-template-rows: 1fr;
   grid-template-columns: 100px 1fr;
-  gap: 16px;
+  grid-gap: 10px;
+  cursor: pointer;
   .grid-left {
     position: relative;
+    .img-wrap {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
   }
 
   .grid-right {
@@ -20,14 +27,16 @@ export const Wrapper = styled.div`
     height: 100%;
 
     h3 {
-      font-size: 26px;
+      font-size: 18px;
       position: static;
+      word-break: keep-all;
+
       font-family: ${props => props.theme.font.EnglishFont};
     }
 
     p {
-      padding-left: 2px;
-      font-size: 18px;
+      word-break: keep-all;
+      font-size: 12px;
       position: static;
       font-family: ${props => props.theme.font.TextFont2};
     }
