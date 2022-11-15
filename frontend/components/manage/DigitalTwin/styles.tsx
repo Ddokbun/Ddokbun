@@ -18,7 +18,7 @@ export const Wrapper = styled.div<Props>`
   .twin-background {
     position: relative;
     /* width: 100%; */
-    /* height: 500px; */
+    height: 1000px;
     /* border-radius: 16px; */
     /* background-color: ${props => props.theme.color.ivoryHover}; */
     /* background-color: #fffafa; */
@@ -52,6 +52,9 @@ export const Wrapper = styled.div<Props>`
 
     h2 {
       font-size: 16px;
+    }
+    .twin-background {
+      height: 500px;
     }
   }
 

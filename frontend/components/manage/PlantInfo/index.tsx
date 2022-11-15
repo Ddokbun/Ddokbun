@@ -81,7 +81,7 @@ const PlantInfo: FC<Props> = ({ plantStatus }) => {
     }
 
     setCurrentStatus({ light, humid, temp, soilhumid });
-  }, []);
+  }, [plantStatus, currentStatus]);
 
   const plantInfo = plantInfos.map(item => {
     return (

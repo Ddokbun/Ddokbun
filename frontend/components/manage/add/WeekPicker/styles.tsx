@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 500px;
-  margin: 4%;
+  margin: auto;
 
   .month-container {
     display: flex;

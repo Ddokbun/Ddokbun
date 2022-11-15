@@ -40,7 +40,7 @@ export const Wrapper = styled.div`
 
 export const LeftSection = styled.section`
   justify-content: center;
-  min-height: 100vh;
+  background-color: #fffafa;
 `;
 
 export const RightSection = styled.section`
@@ -88,6 +88,10 @@ export const RightSection = styled.section`
 
   p {
     font-family: ${props => props.theme.font.TextFont2};
+  }
+
+  .logs {
+    text-align: center;
   }
 
   @media screen and (max-width: 600px) {

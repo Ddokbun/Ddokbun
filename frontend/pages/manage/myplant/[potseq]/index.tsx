@@ -102,6 +102,7 @@ const PlantCare: NextPage = () => {
           light={plantStatus.light}
           onWateringHandler={onWateringHandler}
         />
+        <PlantStatus />
       </LeftSection>
       <RightSection>
         <div className="image-container">
@@ -115,12 +116,11 @@ const PlantCare: NextPage = () => {
         <h2>{plantNickname}</h2>
         <h3>스투키 - Sansevieria cylindrica</h3>
         <PlantInfo plantStatus={plantStatus} />
-        {/* <WeekPicker
+        <WeekPicker
           showDetailHandler={showDetailHandler}
           setWateringLogs={setWateringLogs}
         />
-        {wateringLogs !== "" && wateringLogs}
-        <PlantStatus /> */}
+        <p className="logs">{wateringLogs !== "" && wateringLogs}</p>
       </RightSection>
     </Wrapper>
   );
