@@ -32,6 +32,7 @@ export const PriceTextButtonStyle = styled.div`
 `;
 
 export const PriceButtonStyle = styled.div`
+  margin: auto;
   width: 100%;
   height: 50px;
   border-radius: 2px;
