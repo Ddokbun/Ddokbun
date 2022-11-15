@@ -1,5 +1,4 @@
 # <img src="/uploads/3451fd1b3e4ff74ac5172b7d1b4960c8/image.png" align="left" width="40" height="40"> &nbsp; DDOKBUN - IoT 화분 관리 및 식물 E-커머스 플랫폼
-<br>
 
 > <h3> 똑똑한 화분, 똑분이
 
@@ -28,7 +27,7 @@
 <br>
 
 
-## 🌱 **Team**
+## ☃️ **Team**
 <table>
  <tr>
     <td align="center"><a href="https://github.com/Jaehwany"><img src="https://avatars.githubusercontent.com/Jaehwany" width="80px;" alt=""></td>
@@ -59,30 +58,32 @@
      
 <br>     
 
-### 📍 PPT
 
-- **[중간 발표 PPT]()**  
-- **[최종 발표 PPT]()**
 
-<br>
+## 🧾 프로젝트 산출물
 
-### 🧾 프로젝트 산출물
-
-- [ERD]()
+- **[ERD]()**
 - [API 명세서]()
-- [와이어프레임]()
-
+- **[와이어프레임]()**
+- [중간 발표 PPT]()  
+- **[최종 발표 PPT]()**
+- **[포팅 매뉴얼]()**
 <br>   
      
 
-## 🏴 아키텍처
+## 🖇️ 아키텍처
 
-
-![image]()
+<img src="/uploads/055a53f56c83bd6436ed7dd3aa7002bd/Group_247.png"  width="600">
      
-<br>   
+<br>   <br>
 
-## 🏴 개발 환경
+## 🖇️ 기술 스택
+
+<img src="/uploads/e72d7d98039cddad56c97c34a6ad1276/Ddokbun_기술스택.png"  width="600">
+
+<br>   <br>
+
+## 🖇️ 개발 환경
 
 - BackEnd
 
@@ -115,7 +116,7 @@
  
         
 
- ## 🏴 주요 기능
+ ## 🖇️ 주요 기능
 
 - **1111**
 
@@ -137,7 +138,7 @@
 
 </br></br>
 
- ## 🏴 서비스 
+ ## 🖇️ 서비스 
 
 </br>
 
