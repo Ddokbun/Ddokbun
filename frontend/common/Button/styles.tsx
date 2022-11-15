@@ -176,7 +176,7 @@ export const StatusButtonStyle = styled.li<StatusButtonType>`
   width: 120px;
   height: 60px;
   border-radius: 16px;
-  font-size: ${props => (props.isActive ? "16px" : "14px")};
+  font-size: ${props => (props.isActive ? "18px" : "14px")};
   color: ${props =>
     props.isActive ? props.theme.color.darkGreen : props.textColor};
   display: flex;
@@ -185,6 +185,7 @@ export const StatusButtonStyle = styled.li<StatusButtonType>`
   align-items: center;
   font-family: ${props => props.theme.font.TextFont2};
   font-weight: ${props => (props.isActive ? "bold" : null)};
+  word-break: keep-all;
 
   :hover {
     cursor: pointer;
