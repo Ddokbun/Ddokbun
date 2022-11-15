@@ -1,1 +1,3 @@
-python3 /home/ddokbun/iot/SerialToArduino.py&
+pwd
+whoami
+python3 /home/ddokbun/iot/SerialToArduino.py
