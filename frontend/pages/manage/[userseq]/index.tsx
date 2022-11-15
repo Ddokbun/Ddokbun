@@ -19,6 +19,7 @@ import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { useSelect } from "@react-three/drei";
 import { useSelector } from "react-redux";
+import Spinner from "../../../common/Spinner";
 
 const DynamicCardlist = dynamic(
   () => import("../../../components/manage/CardList"),
