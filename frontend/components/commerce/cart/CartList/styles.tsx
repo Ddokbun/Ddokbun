@@ -35,10 +35,29 @@ export const Wrapper = styled.div`
       grid-column: 3 / 4;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
       h3 {
         letter-spacing: 2px;
         font-size: 25px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    .subtotal {
+      .subtotal-left {
+        h3 {
+          font-size: 18px;
+          letter-spacing: 2px;
+          padding-right: 30px;
+        }
+      }
+      .subtotal-right {
+        padding-right: 3px;
+        h3 {
+          letter-spacing: 2px;
+          font-size: 18px;
+        }
       }
     }
   }

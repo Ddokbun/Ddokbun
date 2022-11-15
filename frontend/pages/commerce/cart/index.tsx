@@ -11,27 +11,29 @@ const Cart: NextPage = () => {
   const selector = useSelector((state: StoreState) => state.cartList);
   return (
     <Wrapper>
-      {selector.length > 0 ? (
-        <>
-          <h1>My Cart</h1>
-          <CartList />
+      <div className="carts">
+        {selector.length > 0 ? (
+          <>
+            <h1>My Cart</h1>
+            <CartList />
 
-          <div className="button-wrap">
-            <Link href={"/commerce/order/order-form"}>
-              <div className="shop">CHECKOUT</div>
-            </Link>
-          </div>
-        </>
-      ) : (
-        <>
-          <div className="alert">
-            <h3>장바구니가 비었습니다.</h3>
-            <Link href={"/commerce"}>
-              <div className="shop">Continue shopping</div>
-            </Link>
-          </div>
-        </>
-      )}
+            <div className="button-wrap">
+              <Link href={"/commerce/order/order-form"}>
+                <div className="shop">CHECKOUT</div>
+              </Link>
+            </div>
+          </>
+        ) : (
+          <>
+            <div className="alert">
+              <h3>장바구니가 비었습니다.</h3>
+              <Link href={"/commerce"}>
+                <div className="shop">Continue shopping</div>
+              </Link>
+            </div>
+          </>
+        )}
+      </div>
 
       <div className="card-wrap">
         <SmartPotCard price={36000} />
