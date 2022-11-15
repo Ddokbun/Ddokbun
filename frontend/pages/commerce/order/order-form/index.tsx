@@ -196,9 +196,9 @@ const OrderForm: NextPage = () => {
           <div className="row">
             <h1 className="sub-title">Payment Method</h1>
             <PayFormComponent setPayType={setPayType} />
-          </div>
-          <div className="button" onClick={onSubmitHandler}>
-            PAYMENT
+            <div className="button" onClick={onSubmitHandler}>
+              PAYMENT
+            </div>
           </div>
         </div>
       </div>

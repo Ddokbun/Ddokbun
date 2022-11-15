@@ -20,6 +20,11 @@ export const Wrapper = styled.div`
       font-size: ${props => props.theme.size.h2Web};
       margin-bottom: 5px;
     }
+
+    :nth-child(2) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   .sub-title {
@@ -33,12 +38,14 @@ export const Wrapper = styled.div`
     display: grid;
     margin: auto;
     grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: auto;
   }
 
   .button {
-    margin: auto;
-    height: 55px;
-    width: 400px;
+    margin-top: auto;
+    margin-bottom: 50px;
+    width: 100%;
+    padding: 8px 0px;
     display: flex;
     justify-content: center;
     align-items: center;

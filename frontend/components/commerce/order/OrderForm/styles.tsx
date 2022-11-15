@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   span {
     display: flex;
     align-items: center;
-    font-size: 20px;
+    font-size: 20p#x;
     font-family: ${props => props.theme.font.TextFont2};
   }
   label {
@@ -29,6 +29,7 @@ export const Wrapper = styled.div`
   }
   .flex-form {
     padding: 10px 30px;
+
     width: 100%;
     display: flex;
     flex-direction: column;
@@ -58,9 +59,15 @@ export const Wrapper = styled.div`
   .email input {
     width: 45%;
   }
-
+  .address {
+    height: auto;
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    grid-gap: 5px;
+  }
   .address-grid {
     with: 100%;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 150px;
     grid-template-rows: 44px 44px 44px;
