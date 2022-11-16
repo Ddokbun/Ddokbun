@@ -145,6 +145,7 @@ export const postKakaoPay = async (
   partner_user_id: string,
   total_amount: number,
   item_name: string,
+  isMobile: boolean,
 ) => {
   const route = Router;
   const url = "https://kapi.kakao.com/v1/payment/ready";
@@ -175,7 +176,11 @@ export const postKakaoPay = async (
     console.log(res.data);
     setCookie("tid", res.data.tid);
 
-    await route.push(res.data.next_redirect_pc_url);
+    if (isMobile === true) {
+      await route.push(res.data.next_redirect_mobile_url);
+    } else {
+      await route.push(res.data.next_redirect_pc_url);
+    }
 
     return res.data;
   } catch (error) {
