@@ -37,6 +37,7 @@ const SearchBar: React.FC<{ plants: PlantListArray }> = ({ plants }) => {
         <Link href={"search/ai-search"}>
           <div className="camera">
             <FontAwesomeIcon icon={faCamera} size="2x"></FontAwesomeIcon>
+            <h3>사진으로 검색하기</h3>
           </div>
         </Link>
       </div>

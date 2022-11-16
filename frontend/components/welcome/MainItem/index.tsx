@@ -26,7 +26,7 @@ const MainItem = () => {
         <div className="login-button">
           <KakaoLogin></KakaoLogin>
           <GoogleLogin></GoogleLogin>
-          <LoginButton path="/search/camera" />
+          <LoginButton path="/commerce" />
         </div>
       </div>
     </Wrapper>
