@@ -200,7 +200,7 @@ export const Wrapper = styled.div`
 
   @media screen and (max-width: 1024px) {
     .img-wrap {
-      padding-right: 40px;
+      padding-right: 0px;
       display: flex;
       gap: 30px;
       justify-content: flex-end;
@@ -304,11 +304,14 @@ export const Slider = styled(motion.div)`
   width: 100%;
   height: calc(100vh - 80px);
   .menu {
+    z-index: 10;
     display: flex;
     width: 100%;
     flex-direction: column;
   }
   .title {
+    z-index: 2;
+    width: 100%;
     heiggt: 40px;
     margin: 12px 0px;
     color: ${props => props.theme.color.darkGreen};
@@ -325,6 +328,7 @@ export const Slider = styled(motion.div)`
     }
   }
   .drop-down {
+    z-index: 1;
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -339,6 +343,7 @@ export const Slider = styled(motion.div)`
     }
 
     span {
+      cursor: pointer;
       padding-left: 20px;
       font-family: ${props => props.theme.font.TextFont2};
       font-size: 15px;
@@ -387,10 +392,11 @@ export const ShopHoverNav = styled(motion.div)`
       height: 100%;
       position: relative;
       grid-area: 3 / 2 / 4 / 4;
-      /* background-color: ${props => props.theme.color.mainGreen}; */
+      overflow: hidden;
+      transition: all linear 0.1s;
+
       .contents {
         width: 100%;
-
         position: absolute;
         top: 50%;
         left: 50%;
@@ -398,14 +404,14 @@ export const ShopHoverNav = styled(motion.div)`
         display: flex;
         h1 {
           width: 100%;
-          text-shadow: 2px 2px 2px gray;
+          text-shadow: 2px 2px 2px black;
           text-align: center;
           color: ${props => props.theme.color.whiteGray};
           font-family: ${props => props.theme.font.TextFont2};
           font-size: 24px;
 
           span {
-            color: #f8ca2a;
+            color: #ffc800;
           }
         }
       }

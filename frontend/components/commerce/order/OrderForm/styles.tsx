@@ -68,7 +68,7 @@ export const Wrapper = styled.div`
     margin-bottom: 10px;
   }
   .address-grid {
-    with: 100%;
+    width: 100%;
     height: 100%;
     display: grid;
     grid-template-columns: 1fr 150px;
@@ -96,6 +96,7 @@ export const Wrapper = styled.div`
     border-radius: 5px;
     letter-spacing: 1.5px;
     cursor: pointer;
+    white-space: nowrap;
   }
 
   @media screen and (max-width: 900px) {
@@ -120,14 +121,15 @@ export const Wrapper = styled.div`
       grid-gap: 5px;
     }
     .address-grid {
-      with: 100%;
       height: 100%;
       display: grid;
-      grid-template-columns: 1fr auto;
+      grid-template-columns: 3fr auto;
       grid-template-rows: 44px 44px 44px auto;
       grid-gap: 8px;
-
-
-
+    }
+    .toggle-button {
+      white-space: nowrap;
+      font-size: 13px;
+    }
   }
 `;
