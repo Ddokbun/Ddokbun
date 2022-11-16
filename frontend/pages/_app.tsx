@@ -16,7 +16,6 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import Head from "next/head";
 import firebase from "firebase";
 import { getToken, setToken } from "../apis/firebase";
-import type { AppContext } from "next/dist/pages/_app";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCwdWKZo4h03IqLGmInSPIsDtArvtIJzpA",
@@ -38,22 +37,22 @@ const MyApp = ({ Component, ...rest }: AppProps) => {
       if (request === "granted") {
         const token = await getToken();
         await setToken(token);
-        const messaging = firebase.messaging();
+        // const messaging = firebase.messaging();
 
-        messaging.onMessage((payload: any) => {
-          const notificationTitle = payload.notification.title;
-          const notificationOptions = {
-            body: payload.notification.body,
-            icon: "/icon.png",
-          };
+        // messaging.onMessage((payload: any) => {
+        //   const notificationTitle = payload.notification.title;
+        //   const notificationOptions = {
+        //     body: payload.notification.body,
+        //     icon: "/icon.png",
+        //   };
 
-          console.log(payload, "포어그라운드");
+        //   console.log(payload, "포어그라운드");
 
-          const notif = new Notification(
-            notificationTitle,
-            notificationOptions,
-          );
-        });
+        //   const notif = new Notification(
+        //     notificationTitle,
+        //     notificationOptions,
+        //   );
+        // });
         console.log(token, "토큰토큰");
       }
     };
