@@ -158,9 +158,9 @@ export const postKakaoPay = async (
     total_amount,
     vat_amount: 200,
     tax_free_amount: 0,
-    approval_url: "http://localhost:3000/commerce/order/complete",
-    fail_url: "http://localhost:3000/commerce/order/cancled",
-    cancel_url: "http://localhost:3000/commerce/order/cancled",
+    approval_url: "https://ddokbun.com/commerce/order/complete",
+    fail_url: "https://ddokbun.com/commerce/order/cancled",
+    cancel_url: "https://ddokbun.com/commerce/order/cancled",
   };
 
   try {
@@ -168,7 +168,7 @@ export const postKakaoPay = async (
       url,
       method: "POST",
       headers: {
-        Authorization: "KakaoAK 46b639c2f7c3f7a7cff1606b75f90b83",
+        Authorization: `KakaoAK ${process.env.NEXT_PUBLIC_KAKAO_PAY}`,
         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
       },
       params,
