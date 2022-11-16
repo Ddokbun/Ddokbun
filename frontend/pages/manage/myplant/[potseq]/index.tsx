@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { fetchCurrentStatus, watering } from "../../../../apis/manage";
@@ -19,6 +19,7 @@ import { RootState } from "../../../../store";
 import PlantInfo from "../../../../components/manage/PlantInfo";
 import { getDateDiff } from "../../../../utils/getDateDiff";
 import Image from "next/image";
+import { checkAuthentication } from "../../../../utils/protectedRouter";
 
 export interface LogsType {
   [name: string]: string;
@@ -131,3 +132,25 @@ const PlantCare: NextPage = () => {
 };
 
 export default PlantCare;
+
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+  req,
+  res,
+}) => {
+  const isAuthenticated = await checkAuthentication(query, req, res);
+  console.log(isAuthenticated);
+
+  if (isAuthenticated) {
+    return {
+      props: {},
+    };
+  } else {
+    return {
+      redirect: {
+        destination: "/commerce",
+      },
+      props: {},
+    };
+  }
+};
