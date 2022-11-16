@@ -10,9 +10,9 @@ const PotBanner = () => {
         <div className="img-wrap">
           <Image
             src={PotImg}
-            alt="커머스 메인 배너 이미지 입니다."
+            alt="스마트 화분 이미지"
             layout="fill"
-            objectFit="contain"
+            objectFit="cover"
           />
         </div>
       </div>
