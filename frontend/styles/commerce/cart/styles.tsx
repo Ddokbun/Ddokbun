@@ -28,6 +28,7 @@ export const Wrapper = styled.div`
       flex-direction: column;
       gap: 20px;
       h3 {
+        font-size: 40px;
         font-family: ${props => props.theme.font.TextFont2};
       }
     }
@@ -36,8 +37,8 @@ export const Wrapper = styled.div`
       text-align: center;
       letter-spacing: 2px;
       margin-top: 30px;
-      width: 180px;
-      padding: 5px 0px;
+
+      padding: 10px 20px;
       font-size: 15px;
       border-radius: 5px;
       margin: auto;

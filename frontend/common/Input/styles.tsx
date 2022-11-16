@@ -78,6 +78,9 @@ export const SearchInputWrapper = styled.div`
     ::placeholder {
       color: ${props => props.theme.color.darkGreen};
     }
+    :hover {
+      cursor: pointer;
+    }
   }
 
   @media screen and (max-width: 600px) {

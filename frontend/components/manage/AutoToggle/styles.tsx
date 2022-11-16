@@ -11,6 +11,7 @@ export const Wrapper = styled.div<Props>`
   width: 50px;
   display: flex;
   flex-direction: column;
+  margin-right: 2rem;
 
   .toggle {
     width: 40px;
@@ -44,8 +45,9 @@ export const Wrapper = styled.div<Props>`
   .toggle-status {
     font-size: 16px;
     color: ${props => props.theme.color.mainGreen};
+    font-family: ${props => props.theme.font.TextFont2};
     transition: all 0.5s ease-in-out;
     /* text-align: center; */
-    width: 200px
+    width: 200px;
   }
 `;

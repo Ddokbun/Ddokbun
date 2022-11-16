@@ -42,4 +42,8 @@ export const Wrapper = styled(motion.div)`
       color: ${props => props.theme.color.mainGreen};
     }
   }
+
+  @media screen and (max-width: 600px) {
+    height: 80%;
+  }
 `;

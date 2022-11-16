@@ -23,13 +23,13 @@ interface DeliveryStatus {
 const deliveryStatus: DeliveryStatus[] = [
   {
     statusCode: 0,
-    title: "결제 대기",
+    title: "결제대기",
     src: null,
     status: "READY",
   },
   {
     statusCode: 1,
-    title: "상품 준비",
+    title: "상품준비",
     src: null,
     status: "PAYCOMPLETE",
   },

@@ -14,8 +14,15 @@ const authSlice = createSlice({
     setEnt(state, action) {
       return { ...action.payload.setEnt };
     },
+    setUserInfo(state, action) {
+
+      return {
+        ...state,
+        ...action.payload,
+      };
+    },
   },
 });
 
-export const ent = authSlice.actions;
+export const authActions = authSlice.actions;
 export default authSlice.reducer;

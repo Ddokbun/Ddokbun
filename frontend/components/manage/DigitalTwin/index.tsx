@@ -2,11 +2,9 @@ import React, { FC, lazy, Suspense, useEffect, useState } from "react";
 import AutoToggle from "../AutoToggle";
 import { Wrapper } from "./styles";
 import { Canvas } from "@react-three/fiber";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../store";
 import Rain from "../Rain";
 import Watering from "../../../assets/icon/watering-can.svg";
-import Image from "next/image";
+import Spinner from "../../../common/Spinner";
 
 const Three = lazy(() => import("../Three"));
 
@@ -17,9 +15,6 @@ interface Props {
 
 const DigitalTwin: FC<Props> = ({ light, onWateringHandler }) => {
   const [isMounted, setIsMounted] = useState(false);
-  const plantNickname = useSelector(
-    (state: RootState) => state.manage.plantNickname,
-  );
   const [isAnimated, setIsAnimated] = useState(false);
 
   useEffect(() => {
@@ -46,7 +41,6 @@ const DigitalTwin: FC<Props> = ({ light, onWateringHandler }) => {
   return (
     <Wrapper light={100 - light * 20}>
       <div className="top-container">
-        <h2>{plantNickname}</h2>
         <AutoToggle />
       </div>
       <div className="twin-background">
@@ -55,7 +49,7 @@ const DigitalTwin: FC<Props> = ({ light, onWateringHandler }) => {
           <p className="tooltip-text">물 주려면 클릭!</p>
         </div>
         {!isMounted ? null : (
-          <Suspense fallback={null}>
+          <Suspense fallback={<Spinner />}>
             {isAnimated && <Rain />}
             <Canvas id="digital-twin">
               <Three isAnimated={isAnimated} />
