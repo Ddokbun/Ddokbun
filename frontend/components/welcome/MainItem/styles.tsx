@@ -1,12 +1,12 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-export const Wrapper = styled(motion.div)`
+export const Wrapper = styled.div`
   background-color: ${props => props.theme.color.black};
   .banner-wrap {
     position: relative;
     .fill-img {
-      height: 100vh;
+      height: 800px;
       position: "relative";
     }
     .title {
@@ -46,7 +46,7 @@ export const Wrapper = styled(motion.div)`
     height: 45px;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (${props => props.theme.mobile}) {
     .banner-wrap {
       position: relative;
 

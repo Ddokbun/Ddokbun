@@ -8,7 +8,7 @@ export const Wrapper = styled.div`
   }
   @media screen and (max-width: 600px) {
     h2 {
-      font-size: 20px;
+      font-size: 30px;
     }
   }
 `;

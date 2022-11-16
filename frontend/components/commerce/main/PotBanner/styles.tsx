@@ -54,7 +54,8 @@ export const Wrapper = styled.div`
 
       .img-wrap {
         position: relative;
-        height: 500px;
+        top: 0;
+        height: 400px;
         width: 100%;
         overflow: hidden;
         margin-bottom: 20px;
