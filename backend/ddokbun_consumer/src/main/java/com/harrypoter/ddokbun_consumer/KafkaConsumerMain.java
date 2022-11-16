@@ -32,8 +32,8 @@ public class KafkaConsumerMain {
         log.info("컨슘 메세지 : {}",in);
         envDataService.saveEnvData(in,ts);
 
-        System.out.println("========================================================");
-        System.out.println(in);
-        System.out.println("--------------------------------------------------------");
+        log.info("========================================================");
+        log.info(in);
+        log.info("--------------------------------------------------------");
     }
 }
