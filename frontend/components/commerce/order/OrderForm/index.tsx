@@ -1,6 +1,6 @@
 import React, { useState, Dispatch, SetStateAction } from "react";
 import GetPost from "../../../../common/GetPostsModal";
-import { InputRow, Wrapper } from "./styles";
+import { Wrapper } from "./styles";
 
 interface OrderProps {
   name: string;
@@ -49,18 +49,32 @@ const OrderFormComponent: React.FC<OrderProps> = props => {
       props.setTailEmail(e.target.value);
     },
     phoneHead: (e: React.ChangeEvent<HTMLInputElement>) => {
-      props.setPhoneHead(e.target.value);
+      if (
+        isNaN(e.target.value as any) === false &&
+        e.target.value.length <= 4
+      ) {
+        props.setPhoneHead(e.target.value);
+      }
     },
     phoneBody: (e: React.ChangeEvent<HTMLInputElement>) => {
-      props.setPhoneBody(e.target.value);
+      if (
+        isNaN(e.target.value as any) === false &&
+        e.target.value.length <= 4
+      ) {
+        props.setPhoneBody(e.target.value);
+      }
     },
     phoneTail: (e: React.ChangeEvent<HTMLInputElement>) => {
-      props.setPhoneTail(e.target.value);
+      if (
+        isNaN(e.target.value as any) === false &&
+        e.target.value.length <= 4
+      ) {
+        props.setPhoneTail(e.target.value);
+      }
     },
 
     post: (e: string) => {
       console.log("post", e);
-
       props.setPost(e);
       console.log("props post", props.post);
     },
@@ -76,16 +90,15 @@ const OrderFormComponent: React.FC<OrderProps> = props => {
 
   return (
     <Wrapper>
-      <form className="grid-form">
-        <InputRow maxWidth="250px">
-          <label htmlFor="name">이름</label>
+      <form className="flex-form">
+        <div className="name grid">
+          <label htmlFor="name ">이름</label>
           <input id="name" onChange={onChangeHandler.name} value={props.name} />
-          <p>{props.nameError}</p>
-        </InputRow>
-
-        <InputRow maxWidth="100px">
-          <label htmlFor="name">휴대전화</label>
-          <div className="phone-num">
+          <p className="error">{props.nameError}</p>
+        </div>
+        <div className="grid phone">
+          <label htmlFor="phone">휴대전화</label>
+          <div className="phone-num flex-box">
             <input
               type="text"
               onChange={onChangeHandler.phoneHead}
@@ -104,11 +117,12 @@ const OrderFormComponent: React.FC<OrderProps> = props => {
               value={props.phoneTail}
             />
           </div>
-          <p>{props.phoneError}</p>
-        </InputRow>
-        <InputRow maxWidth={"740px"}>
+          <p className="error">{props.phoneError}</p>
+        </div>
+
+        <div className="grid email">
           <label htmlFor="email">이메일</label>
-          <div className="email">
+          <div className="email flex-box">
             <input
               id="email-1"
               onChange={onChangeHandler.emailHead}
@@ -123,11 +137,11 @@ const OrderFormComponent: React.FC<OrderProps> = props => {
               type="text"
             />
           </div>
-          <p>{props.mailError}</p>
-        </InputRow>
-        <InputRow maxWidth={"100%"}>
+          <p className="error">{props.mailError}</p>
+        </div>
+        <div className="grid address">
           <label htmlFor="name">주소</label>
-          <div className="address">
+          <div className="address-grid">
             <input
               className="nofocus"
               value={props.post}
@@ -135,6 +149,9 @@ const OrderFormComponent: React.FC<OrderProps> = props => {
               type="text"
               readOnly
             />
+            <div className="toggle-button" onClick={handleSetPostcode}>
+              주소검색
+            </div>
             <input
               value={props.detailPost}
               className="nofocus"
@@ -147,9 +164,6 @@ const OrderFormComponent: React.FC<OrderProps> = props => {
               value={props.additionalPost}
               placeholder="상세주소를 입력해주세요"
             />
-            <div className="toggle-button" onClick={handleSetPostcode}>
-              주소검색
-            </div>
             {openPostcode && (
               <GetPost
                 getPost={onChangeHandler.post}
@@ -157,9 +171,9 @@ const OrderFormComponent: React.FC<OrderProps> = props => {
                 handleSetPostcode={handleSetPostcode}
               />
             )}
+            <p className="error">{props.postError}</p>
           </div>
-          <p>{props.postError}</p>
-        </InputRow>
+        </div>
       </form>
     </Wrapper>
   );
