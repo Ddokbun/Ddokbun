@@ -1,10 +1,16 @@
 package com.harryporter.ddokbun;
 
+import com.harryporter.ddokbun.api.AlarmController;
+import com.harryporter.ddokbun.domain.alarm.service.AlarmService;
 import com.harryporter.ddokbun.domain.plant.repository.PotRepository;
 import com.harryporter.ddokbun.domain.plant.service.PotService;
+import com.harryporter.ddokbun.domain.user.dto.UserDto;
+import com.harryporter.ddokbun.domain.user.entity.User;
+import com.harryporter.ddokbun.domain.user.repository.UserRepository;
 import com.harryporter.ddokbun.schedule.BatchProcessor;
 import com.harryporter.ddokbun.utils.fcm.FCMMessageDto;
 import com.harryporter.ddokbun.utils.fcm.FCMService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.JobParametersInvalidException;
 import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
@@ -85,5 +91,21 @@ class DdokbunApplicationTests {
 	void updatePotWaterApplyTest(){
 
 		potService.applyWater("0000000000",145L);
+	}
+
+	@Autowired
+	AlarmService alarmService;
+	@Autowired
+	UserRepository userRepository;
+	@Test
+	void givenUserWhenAlarmSetThenEqauls(){
+
+		UserDto user = new UserDto();
+		user.setUserSeq(1L);
+		alarmService.setToken("testToken",user);
+
+		User userEntity = userRepository.findById(user.getUserSeq()).get();
+
+		Assertions.assertEquals("testToken",userEntity.getAlarmToken());
 	}
 }
