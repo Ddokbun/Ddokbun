@@ -40,8 +40,11 @@ public class AIController {
         }catch (IOException e){
             throw  new GeneralException("정상적으로 식물을 찾지 못했습니다.");
         }
-
+        log.info("보내기 완료");
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
+
+    // 클러스터 연결할 부분
+
 
 }

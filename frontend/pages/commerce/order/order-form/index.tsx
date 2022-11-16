@@ -11,8 +11,10 @@ import { useDispatch } from "react-redux";
 import { StoreState, wrapper } from "../../../../store";
 import { useSelect } from "@react-three/drei";
 import { useSelector } from "react-redux";
+import { context } from "@react-three/fiber";
+import { AppContext } from "next/dist/pages/_app";
 
-const OrderForm: NextPage = () => {
+const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
   const [name, setName] = useState("");
   const [phoneHead, setPhoneHead] = useState("010");
   const [phoneBody, setPhoneBody] = useState("");
@@ -36,6 +38,7 @@ const OrderForm: NextPage = () => {
   const [total_amount, setOrderTotal] = useState(0);
   const [item_name, setItemName] = useState("");
   const [item_seq, setItemSeq] = useState("");
+
   const orderItems = useSelector((state: StoreState) => state.cartList);
 
   useEffect(() => {
@@ -51,9 +54,6 @@ const OrderForm: NextPage = () => {
     NewOrder.map(item => {
       setItemSeq(val => val + `${item.itemSeq},`);
     });
-
-    console.log(item_seq);
-    console.log(item_name);
   }, []);
   const postOrder = async () => {
     console.log(item_seq);
@@ -76,8 +76,7 @@ const OrderForm: NextPage = () => {
       console.log(res.orderSeq);
 
       if (payType === 1) {
-        alert("올 ㅋ");
-        postKakaoPay(res.orderSeq, total_amount, item_name);
+        postKakaoPay(res.orderSeq, total_amount, item_name, isMobile);
       } else {
         alert("네이버준비중");
       }
@@ -87,19 +86,29 @@ const OrderForm: NextPage = () => {
   };
   /** 폼 유효성 검사 */
   const onSubmitHandler = () => {
-    setFlag(0);
     if (name) {
-      setNameError("");
+      const reg = /[\s\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
+      if (name.length > 20 || reg.test(name) === true) {
+        setNameError("특수문자를 제거해주세요");
+        alert("주문 정보를 확인해주세요");
+        return;
+      } else {
+        setNameError("");
+      }
     } else {
       setNameError("이름을 입력해주세요");
-      setFlag(1);
       alert("주문 정보를 확인해주세요");
       return;
     }
 
     if (phoneHead && phoneBody && phoneTail) {
       const fullPhone = phoneHead + phoneBody + phoneTail;
-      console.log(fullPhone);
+      const reg = /^[0-9]+$/;
+      if (fullPhone.length > 12 || reg.test(fullPhone) !== true) {
+        setPhoneError("올바른 전화번호를 입력해주세요");
+        alert("주문 정보를 확인해주세요");
+        return;
+      }
 
       setPhoneError("");
     } else {
@@ -111,11 +120,19 @@ const OrderForm: NextPage = () => {
 
     if (mailHead && mailTail) {
       const fullEmail = mailHead + "@" + mailTail;
-      console.log(fullEmail);
-      setMailError("");
+      const reg =
+        /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i;
+      if (reg.test(fullEmail) === true) {
+        setMailError("");
+      } else {
+        setMailError("올바른 이메일을 입력해주세요");
+
+        alert("주문 정보를 확인해주세요");
+        return;
+      }
     } else {
       setMailError("올바른 이메일을 입력해주세요");
-      setFlag(1);
+
       alert("주문 정보를 확인해주세요");
       return;
     }
@@ -123,8 +140,7 @@ const OrderForm: NextPage = () => {
     if (post && detailPost && additionalPost) {
       setPostError("");
     } else {
-      setPostError("올바른 주소를 입력해주세요");
-      setFlag(1);
+      setPostError("상세 주소를 입력해주세요");
       alert("주문 정보를 확인해주세요");
       return;
     }
@@ -142,44 +158,48 @@ const OrderForm: NextPage = () => {
 
   return (
     <Wrapper>
-      <div className="row">
-        <h1>Buy List</h1>
-        <CartList setOrderTotal={setOrderTotal} />
+      <div className="contents">
+        <div className="row">
+          <h1>Buy List</h1>
+          <CartList setOrderTotal={setOrderTotal} />
+        </div>
       </div>
-      <div className="row">
-        <h1 className="sub-title">Order Information</h1>
-        <OrderFormComponent
-          name={name}
-          phoneHead={phoneHead}
-          phoneBody={phoneBody}
-          phoneTail={phoneTail}
-          mailHead={mailHead}
-          mailTail={mailTail}
-          post={post}
-          detailPost={detailPost}
-          additionalPost={additionalPost}
-          nameError={nameError}
-          phoneError={phoneError}
-          mailError={mailError}
-          postError={postEroor}
-          setName={setName}
-          setHeadEmail={setHeadEmail}
-          setTailEmail={setTailEmail}
-          setPost={setPost}
-          setDetailPost={setDetailPost}
-          setAdditionalPost={setAdditionalPost}
-          setPhoneHead={setPhoneHead}
-          setPhoneBody={setPhoneBody}
-          setPhoneTail={setPhoneTail}
-        />
-      </div>
-      <div className="row">
-        <h1 className="sub-title">Payment Method</h1>
-        <PayFormComponent setPayType={setPayType} />
-      </div>
-      <div className="row">
-        <div className="button" onClick={onSubmitHandler}>
-          PAYMENT
+      <div className="background">
+        <div className="pay-grid">
+          <div className="row">
+            <h1 className="sub-title">Order Information</h1>
+            <OrderFormComponent
+              name={name}
+              phoneHead={phoneHead}
+              phoneBody={phoneBody}
+              phoneTail={phoneTail}
+              mailHead={mailHead}
+              mailTail={mailTail}
+              post={post}
+              detailPost={detailPost}
+              additionalPost={additionalPost}
+              nameError={nameError}
+              phoneError={phoneError}
+              mailError={mailError}
+              postError={postEroor}
+              setName={setName}
+              setHeadEmail={setHeadEmail}
+              setTailEmail={setTailEmail}
+              setPost={setPost}
+              setDetailPost={setDetailPost}
+              setAdditionalPost={setAdditionalPost}
+              setPhoneHead={setPhoneHead}
+              setPhoneBody={setPhoneBody}
+              setPhoneTail={setPhoneTail}
+            />
+          </div>
+          <div className="row">
+            <h1 className="sub-title">Payment Method</h1>
+            <PayFormComponent setPayType={setPayType} />
+            <div className="button" onClick={onSubmitHandler}>
+              PAYMENT
+            </div>
+          </div>
         </div>
       </div>
     </Wrapper>
@@ -187,3 +207,11 @@ const OrderForm: NextPage = () => {
 };
 
 export default OrderForm;
+
+export const getServerSideProps: GetServerSideProps = async context => {
+  return {
+    props: {
+      isMobile: !(context.req.headers["user-agent"]?.indexOf("Mobi") === -1),
+    },
+  };
+};

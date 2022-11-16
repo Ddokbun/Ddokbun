@@ -4,7 +4,6 @@ export const Wrapper = styled.div`
   background-color: ${props => props.theme.color.brown};
   color: white;
   padding: 20px;
-  height: 100vh;
   .subcontent-wrap {
     width: 100%;
     .title {
@@ -58,7 +57,7 @@ export const Wrapper = styled.div`
     }
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (${props => props.theme.mobile}) {
     .subcontent-wrap {
       width: 100%;
       .title {

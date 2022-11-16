@@ -62,6 +62,7 @@ export const Wrapper = styled(motion.div)<{ isDelivery: boolean }>`
     .image-container {
       border-radius: 8px;
       margin: 5% 0 0 5%;
+      width: 70%;
     }
     .image {
       border-radius: 5%;

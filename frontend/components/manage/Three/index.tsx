@@ -27,17 +27,18 @@ const Three: FC<Props> = ({ isAnimated }) => {
   return (
     <>
       {/* 카메라 */}
-      <PerspectiveCamera makeDefault position={[2, 10, 6.5]} />
+      <PerspectiveCamera makeDefault position={[2, 7, 8.5]} />
       <OrbitControls
-      // ref={orbitControlsRef}
-      // minPolarAngle={angleToRadians(50)}
-      // maxPolarAngle={angleToRadians(80)}
+        enableZoom={false}
+        // ref={orbitControlsRef}
+        // minPolarAngle={angleToRadians(50)}
+        // maxPolarAngle={angleToRadians(80)}
       />
       {/* 모델 */}
       <Flower isAnimated={isAnimated} />
       {/* 조명 */}
       <ambientLight args={["#fcfbf3", 1]} />
-      <directionalLight args={[0xffffff, 1]} />
+      <directionalLight args={[0xffffff, 0.5]} castShadow />
     </>
   );
 };

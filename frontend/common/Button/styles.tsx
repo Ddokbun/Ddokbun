@@ -32,6 +32,7 @@ export const PriceTextButtonStyle = styled.div`
 `;
 
 export const PriceButtonStyle = styled.div`
+  margin: auto;
   width: 100%;
   height: 50px;
   border-radius: 2px;
@@ -175,7 +176,7 @@ export const StatusButtonStyle = styled.li<StatusButtonType>`
   width: 120px;
   height: 60px;
   border-radius: 16px;
-  font-size: 16px;
+  font-size: ${props => (props.isActive ? "18px" : "14px")};
   color: ${props =>
     props.isActive ? props.theme.color.darkGreen : props.textColor};
   display: flex;
@@ -183,6 +184,8 @@ export const StatusButtonStyle = styled.li<StatusButtonType>`
   justify-content: center;
   align-items: center;
   font-family: ${props => props.theme.font.TextFont2};
+  font-weight: ${props => (props.isActive ? "bold" : null)};
+  word-break: keep-all;
 
   :hover {
     cursor: pointer;
@@ -191,10 +194,6 @@ export const StatusButtonStyle = styled.li<StatusButtonType>`
 
   span {
     margin: 3%;
-  }
-
-  @media screen and (max-width: 600px) {
-    width: 100px;
-    font-size: 12px;
+    padding-left: 12px;
   }
 `;

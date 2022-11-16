@@ -5,7 +5,7 @@ import { useDispatch } from "react-redux";
 import { fetchItemSeq } from "../../../../../apis/search";
 import { Plants } from "../../../../../pages/manage/add/search";
 import { manageActions } from "../../../../../store/manage";
-import { EleVar } from "../../../../../styles/animations/animation";
+import { EleVar, ManageHomeAni } from "../../../../../styles/animations/animation";
 import { Wrapper } from "./styles";
 
 interface Props extends Plants {
@@ -33,7 +33,6 @@ const SearchCardItem: React.FC<Props> = ({
 
   const onFetchPlantSeqHandler = () => {
     if (router.query.path === "search") {
-
       router.push(`/commerce/product/${item}`);
       console.log(router.query);
       return;
@@ -52,7 +51,10 @@ const SearchCardItem: React.FC<Props> = ({
     <Wrapper
       onClick={onFetchPlantSeqHandler}
       isDelivery={isDelivery}
-      variants={EleVar}
+      variants={ManageHomeAni}
+      initial="out"
+      animate="in"
+      exit="out"
     >
       <div className="image-container">
         <Image
