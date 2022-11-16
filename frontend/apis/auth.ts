@@ -27,3 +27,20 @@ export const Googlelogin = async (login_code?: string[] | string) => {
     console.log(error);
   }
 };
+
+export const getUserSeq = async (token?: string) => {
+  const url = `user`;
+  try {
+    const res = await AXIOS({
+      method: "get",
+      url,
+      headers: {
+        authorization: token,
+      },
+    });
+
+    return res.data.content.userSeq;
+  } catch (error) {
+    console.log(error);
+  }
+};
