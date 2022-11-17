@@ -6,7 +6,7 @@ export const Wrapper = styled(motion.div)<{ isDelivery: boolean }>`
   width: ${props => (props.isDelivery ? "90%" : "35%")};
   height: ${props => (props.isDelivery ? "80%" : "100%")};
   border-radius: 16px;
-  margin: 3%;
+  margin: 2%;
   display: grid;
   grid-template-columns: auto 1fr;
   grid-template-rows: repeat(1, 100%);

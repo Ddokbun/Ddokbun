@@ -28,6 +28,7 @@ export const Wrapper = styled.div`
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
+    margin-top: 10%;
 
     .info-container {
       width: 50%;
@@ -38,6 +39,7 @@ export const Wrapper = styled.div`
     }
     .text-info {
       display: flex;
+      padding-left: 4px;
 
       p {
         font-size: 12px;

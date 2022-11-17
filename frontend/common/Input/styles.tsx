@@ -45,6 +45,7 @@ export const BasicInput = styled.div`
     width: 100%;
     .label-basic {
       font-size: 18px;
+      margin: 0% 5%;
     }
     .input-basic {
       font-size: 14px;
@@ -61,7 +62,7 @@ export const SearchInputWrapper = styled.div`
   position: relative;
   font-family: "DM Serif Display", serif;
   background-color: #c9c9c9;
-  border-radius: 16px;
+  border-radius: 8px;
   border: 1px solid grey;
   color: ${props => props.theme.color.darkGreen};
   font-family: ${props => props.theme.font.TextFont2};
@@ -136,7 +137,7 @@ export const DateInputStyle = styled.div`
   }
 
   @media screen and (max-width: 600px) {
-    width: 100%;
+    margin: 5%;
     .label-basic {
       font-size: 18px;
     }
