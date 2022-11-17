@@ -37,7 +37,7 @@ export const PriceButtonStyle = styled.div`
   height: 50px;
   border-radius: 2px;
   display: flex;
-  background-color: ${props => props.theme.color.mainGreen};
+  background-color: ${props => props.theme.color.darkGreen};
   cursor: pointer;
   align-items: center;
   justify-content: center;
@@ -51,6 +51,10 @@ export const PriceButtonStyle = styled.div`
   }
   h3 {
     letter-spacing: 5px;
+  }
+  transition: all ease-in 0.3s;
+  :hover {
+    background-color: ${props => props.theme.color.mainGreen};
   }
 
   @media screen and (max-width: 600px) {
@@ -79,6 +83,10 @@ export const BuyListButtonStyle = styled.div`
     fill: ${props => props.theme.color.black};
     width: 40px;
     height: 40px;
+  }
+  transition: all ease-in 0.3s;
+  :hover {
+    background-color: ${props => props.theme.color.ivoryHover};
   }
 
   @media screen and (max-width: 600px) {

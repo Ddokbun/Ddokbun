@@ -39,7 +39,8 @@ const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
   const [item_name, setItemName] = useState("");
   const [item_seq, setItemSeq] = useState("");
 
-  const orderItems = useSelector((state: StoreState) => state.cartList);
+  const orderItems = useSelector((state: StoreState) => state.orderListSlice);
+  console.log("why", orderItems);
 
   useEffect(() => {
     const NewOrder = orderItems.filter(item => {
@@ -73,7 +74,6 @@ const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
       );
 
       setCookie("orderSeq", res.orderSeq);
-      console.log(res.orderSeq);
 
       if (payType === 1) {
         postKakaoPay(res.orderSeq, total_amount, item_name, isMobile);
@@ -161,7 +161,7 @@ const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
       <div className="contents">
         <div className="row">
           <h1>Buy List</h1>
-          <CartList setOrderTotal={setOrderTotal} />
+          <CartList setOrderTotal={setOrderTotal} flag={"order"} />
         </div>
       </div>
       <div className="background">
