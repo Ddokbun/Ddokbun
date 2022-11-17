@@ -66,7 +66,11 @@ const Servey: NextPage<{ surveys: ISurveyItem[] }> = ({ surveys }) => {
   return (
     <>
       {complete ? (
-        <SurveyComplete items={surveyComplete} />
+        <SurveyComplete
+          items={surveyComplete}
+          setComplete={setComplete}
+          setAnswer={setAnswer}
+        />
       ) : (
         <Wrapper>
           <div className="contents">

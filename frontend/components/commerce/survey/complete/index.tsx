@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import Link from "next/dist/client/link";
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import ProductCard from "../../../../common/Cards/ProductCard";
 import { EleVar, WrapperVar } from "../../../../styles/animations/animation";
 import { ItemObject } from "../../../../types/commerce/detail.interface";
@@ -22,7 +22,16 @@ export const EleVVar = {
   },
 };
 
-const SurveyComplete: React.FC<{ items: ListObjectItem[] }> = ({ items }) => {
+const SurveyComplete: React.FC<{
+  items: ListObjectItem[];
+  setComplete: Dispatch<SetStateAction<boolean>>;
+  setAnswer: Dispatch<SetStateAction<number[]>>;
+}> = ({ items, setComplete, setAnswer }) => {
+  const handleSetComplete = () => {
+    setComplete(false);
+    setAnswer([0, 0, 0, 0]);
+    window.scrollTo({ top: 0 });
+  };
   return (
     <Wrapper>
       <div className="contents-box">
@@ -43,9 +52,10 @@ const SurveyComplete: React.FC<{ items: ListObjectItem[] }> = ({ items }) => {
             );
           })}
         </motion.div>
-        <Link href={"/commerce/survey"}>
-          <div className="button">다시 검사하기</div>
-        </Link>
+
+        <div onClick={handleSetComplete} className="button">
+          다시 검사하기
+        </div>
       </div>
     </Wrapper>
   );

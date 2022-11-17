@@ -15,12 +15,6 @@ const Footer: React.FC = () => {
           <p>FrontEnd 김채리 신혜원 허건녕</p>
           <p>BackEnd 손광진 이동욱 이재환</p>
         </div>
-        {/* <div className="grid-right">
-          <div className="img-wrap">
-            <Image objectFit="contain" layout="fill" src={Logo} />
-          </div>
-          <div className="text-wrap">당신의 가드닝을 함께하세요</div>
-        </div> */}
 
         {/* <div className="grid-right">
           <div className="col">

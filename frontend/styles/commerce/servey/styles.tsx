@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 100%;
+  padding-bottom: 50px;
 
   background-color: ${props => props.theme.color.whiteGray};
   .survey {

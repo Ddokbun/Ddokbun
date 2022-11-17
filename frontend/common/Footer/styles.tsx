@@ -27,7 +27,6 @@ export const Wrapper = styled.div`
     }
     .grid-left {
       opacity: 0.6;
-
       color: ${props => props.theme.color.black};
       display: flex;
       flex-direction: column;
@@ -36,28 +35,36 @@ export const Wrapper = styled.div`
         font-family: ${props => props.theme.font.TextFont2};
       }
     }
+  }
 
-    .grid-right {
-      position: relative;
-      .img-wrap {
-        top: 50%;
-        left: 100px;
-        transform: translate(-50%, -50%);
-        position: relative;
-        height: 300px;
-        width: 300px;
-      }
-      .text-wrap {
-        position: absolute;
-        font-family: ${props => props.theme.font.TextFont2};
-        color: ${props => props.theme.color.black};
-        wrap: nowrap;
-        font-size: 30px;
+  @media screen and (max-width: 600px) {
+    .foot {
+      padding: 50px 10px;
+
+      gap: 20px;
+
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr;
+      h1 {
         font-weight: 600;
+        font-size: 25px;
+        margin-bottom: 20px;
+      }
+
+      h2 {
+        margin-bottom: 5px;
+        font-size: 20px;
+      }
+      .grid-left {
         opacity: 0.6;
-        transform: translate(0%, -50%);
-        top: 50%;
-        left: 150px;
+        color: ${props => props.theme.color.black};
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        * {
+          font-family: ${props => props.theme.font.TextFont2};
+        }
       }
     }
   }
