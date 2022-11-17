@@ -25,6 +25,9 @@ export const Wrapper = styled.div`
       margin-bottom: 5px;
       font-size: 20px;
     }
+    p {
+      font-size: 18px;
+    }
     .grid-left {
       opacity: 0.6;
       color: ${props => props.theme.color.black};
@@ -44,16 +47,16 @@ export const Wrapper = styled.div`
       gap: 20px;
 
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 2fr 1fr;
       grid-template-rows: 1fr;
       h1 {
         font-weight: 600;
-        font-size: 25px;
+        font-size: 20px;
         margin-bottom: 20px;
       }
 
       h2 {
-        margin-bottom: 5px;
+        margin-bottom: 50px;
         font-size: 20px;
       }
       .grid-left {
