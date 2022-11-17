@@ -35,5 +35,8 @@ export const Wrapper = styled(motion.section)`
       justify-content: flex-end;
       width: 200px;
     }
+    h1 {
+      font-size: 24px;
+    }
   }
 `;

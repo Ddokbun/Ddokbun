@@ -97,27 +97,12 @@ export const BuyListButtonStyle = styled.div`
 `;
 
 export const SubmitButtonStyle = styled.button`
-  background-color: ${props => props.theme.color.mainGreen};
-  color: #fbfbfb;
-  border-radius: 12px;
-  padding: 3% 0 3%;
-  margin: 1%;
-  width: 40%;
-
-  @media screen and (max-width: 600px) {
-    width: 40%;
-    height: 100%;
-    padding: 2% 0 2%;
-  }
-`;
-
-export const CancelButtonStyle = styled.button`
   background-color: ${props => props.theme.color.darkGreen};
-  color: #7a887a;
-  border-radius: 12px;
+  color: #fbfbfb;
   padding: 3% 0 3%;
   margin: 1%;
-  width: 40%;
+  width: 50%;
+  font-family: ${props => props.theme.font.TextFont2};
 
   :hover {
     background-color: ${props => props.theme.color.mainGreen};
@@ -125,7 +110,27 @@ export const CancelButtonStyle = styled.button`
   }
 
   @media screen and (max-width: 600px) {
-    width: 40%;
+    width: 80%;
+    height: 100%;
+    padding: 2% 0 2%;
+  }
+`;
+
+export const CancelButtonStyle = styled.button`
+  background-color: ${props => props.theme.color.black};
+  color: #7a887a;
+  padding: 3% 0 3%;
+  margin: 1%;
+  width: 50%;
+  font-family: ${props => props.theme.font.TextFont2};
+
+  :hover {
+    background-color: #2c5841;
+    color: ${props => props.theme.color.darkGray};
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 80%;
     height: 100%;
     padding: 2% 0 2%;
   }

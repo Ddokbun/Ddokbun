@@ -135,6 +135,9 @@ export const watering = async (potSeq: string | string[]) => {
     const res = await AXIOS({
       method: "post",
       url,
+      params: {
+        value: 30,  
+      },
     });
     console.log(res);
 
