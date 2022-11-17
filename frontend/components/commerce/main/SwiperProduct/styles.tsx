@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   color: #000000;
-  margin-bottom: 30px;
+  margin-bottom: 50px;
   h2 {
     font-size: 50px;
   }

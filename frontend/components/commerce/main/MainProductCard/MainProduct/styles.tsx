@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.color.brown};
   color: white;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
   .pot-img {
     display: grid;
     grid-template-columns: 1fr 1fr;

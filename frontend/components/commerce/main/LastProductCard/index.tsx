@@ -8,16 +8,19 @@ const LastProductCard: React.FC<{ data: MainPlant }> = ({ data }) => {
     <Wrapper>
       <h2>Plant collection</h2>
       <div className="img-wrap">
-        <Link href={`commerce/product/${data[0].itemSeq}`}>
-          <div className="img-01">
-            <Image
-              src={data[0].imgPath}
-              layout="fill"
-              objectFit="cover"
-            ></Image>
-          </div>
-        </Link>
-        <div className="img-position">
+        <div className="card-1">
+          <Link href={`commerce/product/${data[0].itemSeq}`}>
+            <div className="img-01">
+              <Image
+                src={data[0].imgPath}
+                layout="fill"
+                objectFit="cover"
+              ></Image>
+            </div>
+          </Link>
+          <div className="card-compo"></div>
+        </div>
+        <div className="card-1">
           <Link href={`commerce/product/${data[1].itemSeq}`}>
             <div className="img-02">
               <Image
@@ -27,6 +30,9 @@ const LastProductCard: React.FC<{ data: MainPlant }> = ({ data }) => {
               ></Image>
             </div>
           </Link>
+          <div className="card-compo"></div>
+        </div>
+        <div className="card-1">
           <Link href={`commerce/product/${data[2].itemSeq}`}>
             <div className="img-03">
               <Image
@@ -36,6 +42,7 @@ const LastProductCard: React.FC<{ data: MainPlant }> = ({ data }) => {
               ></Image>
             </div>
           </Link>
+          <div className="card-compo"></div>
         </div>
       </div>
     </Wrapper>

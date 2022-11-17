@@ -29,7 +29,6 @@ const Commerce: NextPage<{ data: MainPlant }> = ({ data }) => {
       <SwiperProduct data={data.slice(2, 9)} />
       <MainProductCard data={data.slice(0, 2)} />
       <SurveyBanner />
-      {/* <IoTSurvey /> */}
       <LastProductCard data={data.slice(9, 12)} />
     </Wrapper>
   );
