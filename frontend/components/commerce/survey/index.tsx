@@ -11,16 +11,19 @@ import { motion } from "framer-motion";
 import { ISurvey, ISurveyItem } from "../../../types/commerce/survey.interface";
 import Check from "../../../assets/icon/check.svg";
 
-const ServeyForm: React.FC<{
-  survey: ISurveyItem;
-  level: number;
-  answer: number[];
-  setLevel: Dispatch<SetStateAction<number>>;
-  setAnswerHandler: (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
-    idx: number,
-  ) => void;
-}> = ({ survey, level, setLevel, setAnswerHandler, answer }) => {
+const ServeyForm = React.forwardRef<
+  React.RefObject<HTMLDivElement>,
+  {
+    survey: ISurveyItem;
+    level: number;
+    answer: number[];
+    setLevel: Dispatch<SetStateAction<number>>;
+    setAnswerHandler: (
+      event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+      idx: number,
+    ) => void;
+  }
+>(({ survey, level, setLevel, setAnswerHandler, answer }, ref) => {
   return (
     <FormWrapper variants={WrapperVar} initial="start" animate="end">
       <div className="form-wrap">
@@ -29,14 +32,16 @@ const ServeyForm: React.FC<{
           Q{level + 1}. {survey.survey.surveyContent}
         </h1>
 
-        <div className="wrap">
+        <div ref={ref as any} className="wrap">
           {survey.surveySelectList.map((item, idx) => {
             return (
               <div
                 id={String(idx + 1)}
                 key={idx}
                 onClick={event => setAnswerHandler(event, level)}
-                className="selector"
+                className={
+                  answer[level] === idx + 1 ? "selector now" : "selector"
+                }
               >
                 {item.surveySelectContent}
               </div>
@@ -46,6 +51,6 @@ const ServeyForm: React.FC<{
       </div>
     </FormWrapper>
   );
-};
+});
 
 export default ServeyForm;
