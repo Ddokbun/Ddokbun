@@ -42,6 +42,7 @@ const DeliveryCard: FC<Props> = ({ data }) => {
     const details = data.itemlist.map(item => item);
     setOrderDetailData(details);
   }, []);
+  console.log(data);
 
   return (
     <Wrapper>
@@ -76,7 +77,9 @@ const DeliveryCard: FC<Props> = ({ data }) => {
       </td>
       <td>
         <p>{data.orderWaybillNumber}</p>
-        <button onClick={showDeliveryStatus}>배송조회</button>
+        {data.orderStatus !== "READY" && data.orderStatus !== "PAYCOMPLETE" && (
+          <button onClick={showDeliveryStatus}>배송조회</button>
+        )}
       </td>
       <td>
         <p>{data.orderPrice}원</p>

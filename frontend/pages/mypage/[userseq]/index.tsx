@@ -122,7 +122,7 @@ const MyPage: NextPage = () => {
     <Wrapper variants={ManageHomeAni} initial="out" animate="in" exit="out">
       <PageTitle mypage isLink={false}>
         <div>
-          <h1>주문내역 조회</h1>
+          <h1>Order List</h1>
           <div className="button-container">{buttons}</div>
         </div>
       </PageTitle>
