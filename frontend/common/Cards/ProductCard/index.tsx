@@ -45,7 +45,7 @@ const ProductCard: React.FC<{
             className="img-wrap"
           >
             <Image
-              src={item.itemImage}
+              src={item.itemImage as string}
               objectFit="cover"
               layout="fill"
               alt="임시상품이미지"
@@ -57,7 +57,9 @@ const ProductCard: React.FC<{
             </div>
             <h3>
               ₩{" "}
-              {item.itemPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              {(item.itemPrice as number)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
             </h3>
           </div>
         </ResponsiveWrapper>
