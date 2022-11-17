@@ -3,8 +3,9 @@ import AutoToggle from "../AutoToggle";
 import { Wrapper } from "./styles";
 import { Canvas } from "@react-three/fiber";
 import Rain from "../Rain";
-import Watering from "../../../assets/icon/watering-can.svg";
+import Watering from "../../../assets/icon/watering-can.png";
 import Spinner from "../../../common/Spinner";
+import Image from "next/image";
 
 const Three = lazy(() => import("../Three"));
 
@@ -45,7 +46,7 @@ const DigitalTwin: FC<Props> = ({ light, onWateringHandler }) => {
       </div>
       <div className="twin-background">
         <div className="svg-container tooltip" onClick={onShowAnimationHandler}>
-          <Watering viewBox="0 0 512 512" />
+          <Image src={Watering} />
           <p className="tooltip-text">물 주려면 클릭!</p>
         </div>
         {!isMounted ? null : (
