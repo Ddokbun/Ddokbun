@@ -25,7 +25,6 @@ import { RootState } from "../../store";
 const Navbar = () => {
   const ref = useRef<HTMLDivElement>(null);
   const userseq = useSelector((state: RootState) => state.authSlice.userSeq);
-  console.log(userseq, "adfasdfasdfasdf");
 
   const [slider, setSlider] = useState(false);
   const [shopCate, setShopCate] = useState(false);

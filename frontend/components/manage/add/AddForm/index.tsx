@@ -135,8 +135,8 @@ const AddForm = () => {
         />
         <Input
           saveInput={saveInput}
-          label="Serial Number"
-          placeholder=" Input"
+          label="씨리얼 넘버"
+          placeholder="똑분 하단의 Serial Number를 기재해주세요"
           type="text"
           identifier="potSerial"
           image={null}
@@ -144,8 +144,8 @@ const AddForm = () => {
         />
         <Input
           saveInput={saveInput}
-          label="식물 이름"
-          placeholder=" Input"
+          label="식물 닉네임"
+          placeholder="자신만의 식물 별명을 알려주세요"
           type="text"
           identifier="plantNickname"
           image={null}
