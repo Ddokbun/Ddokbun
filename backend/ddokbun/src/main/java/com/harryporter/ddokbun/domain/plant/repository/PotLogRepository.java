@@ -12,6 +12,6 @@ public interface PotLogRepository extends JpaRepository<PotLog, Long> {
 //    @Query(value = "select a.temperature, a.temperature from PotLog a where a.pot.potSerial = :potSerial order by a.createdTime desc  ")
 //    PotTemperatureLogResponse findTemperatureLog();
 
-    List<PotLog> findTop30ByPot_PotSerialOrderByCreatedTimeDesc(String potSerial);
+    List<PotLog> findTop144ByPot_PotSerialOrderByCreatedTimeDesc(String potSerial);
     void deleteAllByPot_PotSerial(String potSerial);
 }
