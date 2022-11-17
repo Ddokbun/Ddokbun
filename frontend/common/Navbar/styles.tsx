@@ -396,6 +396,14 @@ export const ShopHoverNav = styled(motion.div)`
       transition: all linear 0.1s;
 
       .contents {
+        display: flex;
+        align-items: center;
+        height: 100%;
+        background: linear-gradient(
+          21deg,
+          rgba(25, 25, 25, 1) 0%,
+          rgba(0, 212, 255, 0) 100%
+        );
         width: 100%;
         position: absolute;
         top: 50%;

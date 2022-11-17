@@ -3,7 +3,12 @@ import { createWrapper, HYDRATE } from "next-redux-wrapper";
 import { AnyAction, combineReducers } from "redux";
 import authSlice from "./auth";
 import manage from "./manage";
-import { CartListSlice, CommerceState, RelatedProductSlice } from "./commerce";
+import {
+  CartListSlice,
+  CommerceState,
+  RelatedProductSlice,
+  OrderListSlice,
+} from "./commerce";
 import {
   persistStore,
   persistReducer,
@@ -19,6 +24,7 @@ import localstorage from "redux-persist/lib/storage"; //sessionstorage나 locals
 import { ListArray, ListObjectItem } from "../types/commerce/list.interface";
 
 export interface StoreState {
+  orderListSlice: ListObjectItem[];
   relatedProductSlice: ListObjectItem[];
   cartList: ListArray;
   authSlice: any;
@@ -31,6 +37,7 @@ const combinedReducer = combineReducers({
   authSlice,
   cartList: CartListSlice.reducer,
   relatedProductSlice: RelatedProductSlice.reducer,
+  orderListSlice: OrderListSlice.reducer,
 });
 
 const rootReducers = (
@@ -52,7 +59,7 @@ const rootReducers = (
 const persistConfig = {
   key: "root",
   storage: localstorage,
-  whitelist: ["cartList", "manage", "authSlice"],
+  whitelist: ["cartList", "manage", "authSlice", "orderListSlice"],
 };
 
 const persistedReducer = persistReducer<any>(persistConfig, rootReducers);
