@@ -53,6 +53,13 @@ public class Item {
     @OneToOne(fetch = FetchType.LAZY)
     private Plant plant;
 
+    @Column(name="view_count",columnDefinition = "INTEGER UNSIGNED")
+    private Integer viewCount;
+
+    public void increaseViewCount(Item item){
+        this.viewCount++;
+    }
+
     public void changeItem(Item item){
         this.itemName=item.getItemName();
         this.itemInfo=item.getItemInfo();

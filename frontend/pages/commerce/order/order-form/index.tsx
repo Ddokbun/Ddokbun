@@ -14,7 +14,7 @@ import { useSelector } from "react-redux";
 import { context } from "@react-three/fiber";
 import { AppContext } from "next/dist/pages/_app";
 
-const OrderForm: NextPage = () => {
+const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
   const [name, setName] = useState("");
   const [phoneHead, setPhoneHead] = useState("010");
   const [phoneBody, setPhoneBody] = useState("");
@@ -38,6 +38,7 @@ const OrderForm: NextPage = () => {
   const [total_amount, setOrderTotal] = useState(0);
   const [item_name, setItemName] = useState("");
   const [item_seq, setItemSeq] = useState("");
+
   const orderItems = useSelector((state: StoreState) => state.cartList);
 
   useEffect(() => {
@@ -75,7 +76,7 @@ const OrderForm: NextPage = () => {
       console.log(res.orderSeq);
 
       if (payType === 1) {
-        postKakaoPay(res.orderSeq, total_amount, item_name);
+        postKakaoPay(res.orderSeq, total_amount, item_name, isMobile);
       } else {
         alert("네이버준비중");
       }
@@ -206,3 +207,11 @@ const OrderForm: NextPage = () => {
 };
 
 export default OrderForm;
+
+export const getServerSideProps: GetServerSideProps = async context => {
+  return {
+    props: {
+      isMobile: !(context.req.headers["user-agent"]?.indexOf("Mobi") === -1),
+    },
+  };
+};

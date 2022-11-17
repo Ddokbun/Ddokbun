@@ -3,13 +3,13 @@
 import serial # communication with arduino
 import json # validate, data transport arduino, process
 from threading import Thread
-
+import time
 from ConsumerMotorAction import * # consumer kafka
 from ProducerData import sendData 
 lever = 0;
 ser= None
 keyString = None
-
+th1=None
 state_motor_state = None;
 
 def validatearuinodata(data):
@@ -52,6 +52,9 @@ def serial_process(ser):
                     f = open('/home/ddokbun/iot/envDataShare.txt','w+')
                     f.write(data+"\n")
                     f.close()
+            if th1 == None or th1.is_alive()==False:
+                print("exit cuz consumer thread dead")
+                exit()
         except KeyboardInterrupt:
             print("ctrl + c process exit")
             exit()
@@ -104,6 +107,7 @@ if __name__=='__main__':
 
     th1 = Thread(target=consumeMotorAction,args=(keyString,motorValueReciver))    
     th1.start()
+   
     # 첫번째 매개변수에 대한 토픽에 대해 구독한다.
     print("start Serial Process");
     serial_process(ser);

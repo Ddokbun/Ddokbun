@@ -6,24 +6,24 @@ import org.springframework.data.redis.core.ZSetOperations;
 
 @Data
 public class ClickRankDto {
-    private long rankItemSeq;
+    private long ItemSeq;
     private double clickCount;
-    private String rankItemName;
-    private String rankItemEnName;
-    private int rankItemPrice;
+    private String ItemName;
+    private String ItemEnName;
+    private int ItemPrice;
     private String imgPath;
     private long plantSeq;
 
 
 
-    public static ClickRankDto convertToClickRankDto(ZSetOperations.TypedTuple<String> stringTypedTuple, Item item) {
+    public static ClickRankDto convertToClickRankDto(Item item) {
         if(item==null) return null;
         ClickRankDto clickRankDto = new ClickRankDto();
-        clickRankDto.rankItemSeq = Long.parseLong(stringTypedTuple.getValue());
-        clickRankDto.clickCount=stringTypedTuple.getScore();
-        clickRankDto.rankItemName=item.getItemName();
-        clickRankDto.rankItemEnName=item.getItemEnName();
-        clickRankDto.rankItemPrice=item.getItemPrice();
+        clickRankDto.ItemSeq = item.getItemSeq();
+        clickRankDto.clickCount=item.getViewCount();
+        clickRankDto.ItemName=item.getItemName();
+        clickRankDto.ItemEnName=item.getItemEnName();
+        clickRankDto.ItemPrice=item.getItemPrice();
         clickRankDto.imgPath=item.getItemPicture();
         clickRankDto.plantSeq=item.getPlant().getPlantSeq();
         return clickRankDto;

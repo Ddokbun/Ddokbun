@@ -16,11 +16,7 @@ import {
 } from "redux-persist";
 import localstorage from "redux-persist/lib/storage"; //sessionstorage나 localstorage 중에 선택
 
-import {
-  ListArray,
-  ListObjectItem,
-  ProductLists,
-} from "../types/commerce/list.interface";
+import { ListArray, ListObjectItem } from "../types/commerce/list.interface";
 
 export interface StoreState {
   relatedProductSlice: ListObjectItem[];
@@ -56,7 +52,7 @@ const rootReducers = (
 const persistConfig = {
   key: "root",
   storage: localstorage,
-  whitelist: ["cartList", "manage"],
+  whitelist: ["cartList", "manage", "authSlice"],
 };
 
 const persistedReducer = persistReducer<any>(persistConfig, rootReducers);
