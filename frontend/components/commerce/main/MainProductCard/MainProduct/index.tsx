@@ -9,7 +9,7 @@ const MainProduct: React.FC<{
   return (
     <Wrapper>
       <div className="subcontent-wrap">
-        <Link href={"/commerce/list/초보집사"}>
+        <Link href={`/commerce/product/${item.itemSeq}`}>
           <div className="pot-img">
             <div className="pot-img-front">
               <Image
@@ -31,7 +31,7 @@ const MainProduct: React.FC<{
                     .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
                 </h3>
                 <div className="button">
-                  <Link href={"/commerce/list/초보집사"}>
+                  <Link href={`/commerce/product/${item.itemSeq}`}>
                     <div className="button-wrap">바로가기</div>
                   </Link>
                 </div>
