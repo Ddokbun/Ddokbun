@@ -22,6 +22,7 @@ export const BasicInput = styled.div`
   .label-basic {
     display: flex;
     flex-direction: column;
+    font-size: 24px;
   }
 
   .input-basic {
@@ -29,19 +30,24 @@ export const BasicInput = styled.div`
     border-bottom: 1px solid;
     border-bottom-color: ${props => props.theme.color.ivory};
     background-color: #fafafa;
+    font-size: 16px;
   }
 
+  input:focus {
+    outline: none;
+  }
   .input-search {
     background-color: ${props => props.theme.color.ivory};
     border-radius: 16px;
   }
 
   @media screen and (max-width: 600px) {
-    input {
-      width: 90%;
+    width: 100%;
+    .label-basic {
+      font-size: 18px;
     }
-    label {
-      width: 90%;
+    .input-basic {
+      font-size: 14px;
     }
   }
 `;
@@ -84,7 +90,7 @@ export const SearchInputWrapper = styled.div`
   }
 
   @media screen and (max-width: 600px) {
-    width: 100%;
+    width: 90%;
     margin-bottom: 10%;
 
     input {
@@ -113,6 +119,7 @@ export const DateInputStyle = styled.div`
   .label-basic {
     display: flex;
     flex-direction: column;
+    font-size: 24px;
   }
 
   .icon {
@@ -122,5 +129,19 @@ export const DateInputStyle = styled.div`
     width: 30px;
     height: 30px;
     /* z-index: -1; */
+  }
+
+  input:focus {
+    outline: none;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 100%;
+    .label-basic {
+      font-size: 18px;
+    }
+    .input-basic {
+      font-size: 14px;
+    }
   }
 `;

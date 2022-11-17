@@ -64,12 +64,6 @@ export const SearchInput: React.FC<{
     if (setSearchInput) {
       setSearchInput(event.target.value);
     }
-
-    // startTransition(() => {
-    //   // 저장set
-    //   if (setSearchInput) {
-    //   }
-    // });
   };
 
   return (
