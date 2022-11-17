@@ -20,6 +20,7 @@ import { useDispatch } from "react-redux";
 import { useSelect } from "@react-three/drei";
 import { useSelector } from "react-redux";
 import Spinner from "../../../common/Spinner";
+import { checkAuthentication } from "../../../utils/protectedRouter";
 
 const DynamicCardlist = dynamic(
   () => import("../../../components/manage/CardList"),
@@ -73,3 +74,25 @@ const Manage: NextPage = () => {
 };
 
 export default Manage;
+
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+  req,
+  res,
+}) => {
+  const isAuthenticated = await checkAuthentication(query, req, res);
+  console.log(isAuthenticated);
+
+  if (isAuthenticated) {
+    return {
+      props: {},
+    };
+  } else {
+    return {
+      redirect: {
+        destination: "/commerce",
+      },
+      props: {},
+    };
+  }
+};

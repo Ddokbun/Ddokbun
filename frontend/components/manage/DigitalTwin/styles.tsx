@@ -58,7 +58,7 @@ export const Wrapper = styled.div<Props>`
     }
   }
 
-  svg {
+  .svg-container {
     position: absolute;
     top: 32px;
     right: 16px;
@@ -66,11 +66,6 @@ export const Wrapper = styled.div<Props>`
     height: 64px;
     z-index: 2;
     cursor: pointer;
-    path {
-      fill: ${props => props.theme.color.darkGreen};
-      stroke: ${props => props.theme.color.darkGreen};
-      stroke-width: 3;
-    }
   }
 
   .tooltip {
@@ -81,15 +76,16 @@ export const Wrapper = styled.div<Props>`
   .tooltip-text {
     display: none;
     position: absolute;
+    min-width: 100px;
     max-width: 200px;
     border: 1px solid;
-    border-radius: 5px;
-    padding: 5px;
+    border-radius: 6px;
+    padding: 2px;
     font-size: 0.8em;
     color: white;
     background: ${props => props.theme.color.darkGreen};
-    top: 100px;
-    right: 6px;
+    top: 80px;
+    right: 0px;
   }
 
   .tooltip:hover .tooltip-text {
