@@ -45,7 +45,12 @@ public class KakaoService {
     public OAuthRes kakaoLogin(String code){
         log.info("카카오 로그인 파이프라인 진입 :: 인가 코드 : {}", code);
         KakaoAccessToken accessToken = getKakaoAuthTokenByCode(code);
+        if(accessToken==null)
+            throw new GeneralException(ErrorCode.DATA_ACCESS_ERROR,"Access Token을 받아오지 못했습니다.");
+
         KakaoProfile kakaoProfile = getKakaoProfileByAccessToken(accessToken);
+        if(kakaoProfile==null)
+            throw new GeneralException(ErrorCode.DATA_ACCESS_ERROR,"카카오 프로필을 받아오지 못했습니다.");
 
         if(kakaoProfile.getKakao_account().getEmail()==null){
             log.info("이메일 미등록 오류 :: Access Token : {}", accessToken);

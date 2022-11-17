@@ -12,6 +12,7 @@ import {
   TimeScale,
 } from "chart.js";
 import "chartjs-adapter-date-fns";
+import { Theme } from "../../../styles/theme";
 
 export interface LogsType {
   [name: string]: string;
@@ -24,7 +25,6 @@ interface Props {
 }
 
 const LineGraph: FC<Props> = ({ labels, data, label }) => {
-
   Chart.register(
     CategoryScale,
     LinearScale,
@@ -42,8 +42,8 @@ const LineGraph: FC<Props> = ({ labels, data, label }) => {
         label,
         data,
         fill: true,
-        backgroundColor: "rgba(75,192,192,0.2)",
-        borderColor: "#92ECEE",
+        backgroundColor: `${Theme.color.black}`,
+        borderColor: `${Theme.color.black}`,
       },
     ],
   };
@@ -69,8 +69,8 @@ const LineGraph: FC<Props> = ({ labels, data, label }) => {
       x: {
         type: "time" as const,
         time: {
-          // unit: "day" as const,
-          // parser: "yy:mm:dd" as const,
+          unit: "day" as const,
+          parser: "yy:mm:dd" as const,
         },
       },
     },
@@ -79,7 +79,6 @@ const LineGraph: FC<Props> = ({ labels, data, label }) => {
       axis: "y" as const,
     },
   };
-
 
   return (
     <Wrapper>

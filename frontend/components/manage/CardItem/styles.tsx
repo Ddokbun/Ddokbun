@@ -2,40 +2,48 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const Wrapper = styled(motion.div)`
-  border-color: ${props => props.theme.color.brown};
-  width: 90%;
-  border-width: 3px;
-  border-radius: 20px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  margin-bottom: 10%;
-
-  .btnContainer {
-    position: absolute;
-    bottom: 18px;
-    right: 18px;
-  }
+  border-radius: 16px;
   .image {
+    border-radius: 16px;
+    :hover {
+      cursor: pointer;
+    }
+  }
+  .info {
     display: flex;
+    align-items: center;
+    flex-direction: column;
     justify-content: center;
-    border-top-left-radius: 16px;
-    border-top-right-radius: 16px;
-  }
-  .image:hover {
-    cursor: pointer;
-  }
-  h2 {
-    color: ${props => props.theme.color.brown};
-    font-weight: bold;
-    font-size: 28px;
-    margin: 6%;
-    font-family: ${props => props.theme.font.TextFont2};
+    margin: 0 2%;
+    position: relative;
+    width: 250px;
+    h2 {
+      color: ${props => props.theme.color.black};
+      font-family: ${props => props.theme.font.SubTitleFont};
+    }
+    h3 {
+      font-family: ${props => props.theme.font.TextFont2};
+      color: ${props => props.theme.color.black};
+    }
+    p {
+      color: ${props => props.theme.color.black};
+      font-family: ${props => props.theme.font.TextFont2};
+    }
+    button {
+      position: absolute;
+      bottom: 5%;
+      right: 5%;
+      font-family: ${props => props.theme.font.TextFont2};
+      color: ${props => props.theme.color.darkGreen};
+    }
+    button:hover {
+      color: ${props => props.theme.color.mainGreen};
+    }
   }
 
-  @media screen and (${props => props.theme.mobile}) {
-    width: 90%;
-    display: flex;
+  @media screen and (max-width: 600px) {
+    height: 80%;
   }
 `;

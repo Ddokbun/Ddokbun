@@ -21,10 +21,27 @@ export const Wrapper = styled.div`
     }
     .pot-img {
       display: flex;
+      justify-content: center;
+      align-items: center;
       margin: 40px 0px 60px 0px;
-      .banner-img {
-        max-height: 100px;
-      }
+    }
+    .img-01 {
+      position: relative;
+      width: 30vw;
+      height: 50vh;
+      margin: 10px;
+    }
+    .img-02 {
+      position: relative;
+      width: 30vw;
+      height: 50vh;
+      margin: 10px;
+    }
+    .img-03 {
+      position: relative;
+      width: 30vw;
+      height: 50vh;
+      margin: 10px;
     }
   }
 
@@ -45,6 +62,24 @@ export const Wrapper = styled.div`
       }
       .pot-img {
         margin: 20px 0px 40px 0px;
+      }
+      .img-01 {
+        position: relative;
+        width: 30vw;
+        height: 20vh;
+        margin: 10px;
+      }
+      .img-02 {
+        position: relative;
+        width: 30vw;
+        height: 20vh;
+        margin: 10px;
+      }
+      .img-03 {
+        position: relative;
+        width: 30vw;
+        height: 20vh;
+        margin: 10px;
       }
     }
   }

@@ -8,6 +8,10 @@ import java.time.LocalDate;
 @Data
 public class PotDetailResponse {
 
+    private Long plantSeq;
+    private String plantName;
+    private String plantEnName;
+    private String imgUrl;
     private Integer maxTemperature;
     private Integer minTemperature;
     private String growHumid;
@@ -22,12 +26,15 @@ public class PotDetailResponse {
 
     private Integer waterPeriod;
     private LocalDate waterSupply;
-    private Long plantSeq;
+
+    private String plantNickname;
+
 
     public static PotDetailResponse of(Pot pot){
 
         PotDetailResponse temp = new PotDetailResponse();
 
+        temp.plantNickname = pot.getPlantNickname();
         temp.temperature = pot.getTemperature();
         temp.humidity = pot.getHumidity();
         temp.soilHumidity = pot.getSoilHumidity();
@@ -44,6 +51,9 @@ public class PotDetailResponse {
             temp.growHumid = pot.getPlant().getGrowthHumid();
             temp.lightType = pot.getPlant().getLightType();
             temp.waterCycle = pot.getPlant().getWaterCycle();
+            temp.plantName=pot.getPlant().getPlantName();
+            temp.plantEnName=pot.getPlant().getPlantNeName();
+            temp.imgUrl="https://ddokbun.com/api/resources/s3?plantSeq="+pot.getPlant().getPlantSeq();
         }
         return temp;
 

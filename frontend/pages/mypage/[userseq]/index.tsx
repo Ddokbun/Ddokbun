@@ -1,12 +1,18 @@
-import { NextPage } from "next";
+import { getCookie } from "cookies-next";
+import { GetServerSideProps, NextPage } from "next";
+import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
-import { DeliveriesType, fetchDeliveries } from "../../../apis/commerce";
+import { useSelector } from "react-redux";
+import { getUserSeq } from "../../../apis/auth";
+import { fetchDeliveries } from "../../../apis/commerce";
 import { StatusButton } from "../../../common/Button";
 import PageTitle from "../../../common/PageTitle";
-import SearchCardList from "../../../components/manage/add/search/SearchCardList";
 import DeliveryCardList from "../../../components/mypage/DeliveryCardList";
+import { RootState } from "../../../store";
+import { ManageHomeAni } from "../../../styles/animations/animation";
 import { Wrapper } from "../../../styles/mypage/[userseq]/styles";
 import { Theme } from "../../../styles/theme";
+import { checkAuthentication } from "../../../utils/protectedRouter";
 import Manage from "../../manage/[userseq]";
 
 interface DeliveryStatus {
@@ -19,13 +25,13 @@ interface DeliveryStatus {
 const deliveryStatus: DeliveryStatus[] = [
   {
     statusCode: 0,
-    title: "결제 대기",
+    title: "결제대기",
     src: null,
     status: "READY",
   },
   {
     statusCode: 1,
-    title: "상품 준비",
+    title: "상품준비",
     src: null,
     status: "PAYCOMPLETE",
   },
@@ -71,6 +77,8 @@ export interface OrderItemTypes {
 const MyPage: NextPage = () => {
   const [activeIndex, setActiveIndex] = useState(-1);
   const [data, setData] = useState<OrderItemTypes[]>();
+  const userseq = useSelector((state: RootState) => state.authSlice.userSeq);
+  const router = useRouter();
 
   const onFetchDeliveryHandler = (code: number) => {
     setActiveIndex(code);
@@ -105,20 +113,54 @@ const MyPage: NextPage = () => {
         onClick={onFetchDeliveryHandler}
         backgroundColor={Theme.color.brown}
         backgroundHover={Theme.color.brownHover}
-        textColor={"white"}
+        textColor={"#cccccc"}
       />
     );
   });
 
   return (
-    <Wrapper>
-      <PageTitle isLink={false}>마이페이지</PageTitle>
-      <div className="button-container">{buttons}</div>
-
-      {data && <DeliveryCardList data={data} />}
+    <Wrapper variants={ManageHomeAni} initial="out" animate="in" exit="out">
+      <PageTitle mypage isLink={false}>
+        <div>
+          <h1>주문내역 조회</h1>
+          <div className="button-container">{buttons}</div>
+        </div>
+      </PageTitle>
+      <table>
+        <thead>
+          <tr>
+            <th>상품정보</th>
+            <th>주문일자</th>
+            <th>주문번호</th>
+            <th>주문금액(수량)</th>
+          </tr>
+        </thead>
+        <tbody>{data && <DeliveryCardList data={data} />}</tbody>
+      </table>
       <Manage />
     </Wrapper>
   );
 };
 
 export default MyPage;
+
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+  req,
+  res,
+}) => {
+  
+  const isAuthenticated = await checkAuthentication(query, req, res);
+  if (isAuthenticated) {
+    return {
+      props: {},
+    };
+  } else {
+    return {
+      redirect: {
+        destination: "/commerce",
+      },
+      props: {},
+    };
+  }
+};

@@ -2,9 +2,10 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   width: 500px;
-  margin: 4%;
+  margin: auto;
 
   .month-container {
+    margin-top: 5%;
     display: flex;
     /* flex-direction: row; */
     color: #007aff;
@@ -18,12 +19,8 @@ export const Wrapper = styled.div`
   }
 
   .week {
-    margin: 5%;
     font-size: 24px;
-    width: 13px;
-  }
-
-  .button-container {
+    padding: 6% 6% 0;
   }
 
   .button {
@@ -37,7 +34,10 @@ export const Wrapper = styled.div`
   }
 
   .selected {
-    color: ${props => props.theme.color.mainGreen};
+    p {
+      color: ${props => props.theme.color.mainGreen};
+      border-bottom: 2px solid ${props => props.theme.color.mainGreen};
+    }
   }
 
   .today {
@@ -45,16 +45,23 @@ export const Wrapper = styled.div`
   }
 
   .day {
-    margin: 5%;
     font-size: 24px;
+    padding: 5%;
   }
 
   .day:hover {
     cursor: pointer;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
-    width: 85%;
-    margin: 3%;
+  @media screen and (max-width: 600px) {
+    width: 70%;
+    margin: auto;
+
+    .week {
+      font-size: 18px;
+    }
+    .day {
+      font-size: 18px;
+    }
   }
 `;

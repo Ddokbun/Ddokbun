@@ -1,24 +1,47 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  display: grid;
-  justify-content: center;
+  display: flex;
+  justify-content: space-evenly;
   margin: 5%;
-  grid-template-columns: repeat(2, 35%);
   font-family: ${props => props.theme.font.TextFont2};
   padding-left: 4px;
 
   .info-container {
     display: flex;
-    /* flex-direction: row; */
     justify-content: flex-start;
     align-items: center;
-    /* width: 200px; */
     text-align: center;
-    margin: 5% 0;
+
+    p {
+      font-family: ${props => props.theme.font.TextFont2};
+      font-size: 18px;
+    }
   }
 
-  @media screen and (${props => props.theme.mobile}) {
-    grid-template-columns: repeat(2, 1fr);
+  .text-info {
+    display: flex;
+    padding-left: 16px;
+  }
+
+  @media screen and (max-width: 600px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+
+    .info-container {
+      width: 50%;
+    }
+    .image-container {
+      width: 50px;
+      margin-right: 1%;
+    }
+    .text-info {
+      display: flex;
+
+      p {
+        font-size: 12px;
+      }
+    }
   }
 `;

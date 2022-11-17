@@ -1,10 +1,9 @@
 import React, { FC, useEffect, useState } from "react";
 import { Wrapper } from "./styles";
-import Temper from "../../../../assets/commerce/temper.png";
-import Water from "../../../../assets/commerce/water.png";
-import Humid from "../../../../assets/commerce/humid.png";
-import WaterBottle from "../../../../assets/icon/waterbottle.png";
-import Sun from "../../../../assets/icon/illuminance.png";
+import Temper from "../../../../assets/icon/thermometer.png";
+import Water from "../../../../assets/icon/water.png";
+import WaterBottle from "../../../../assets/icon/soilhumidity.png";
+import Sun from "../../../../assets/icon/sun.png";
 import Image, { StaticImageData } from "next/image";
 import { PlantDataType } from "../AddForm";
 
@@ -40,21 +39,29 @@ const imageDatas: { [key: string]: ImageDataType } = {
     contents: "생육습도 : ",
   },
 };
+export const lightTypes = [null, "음지", "반음지", "반그늘", "반양지", "양지"];
 
 const PlantData: FC<Props> = ({ data }) => {
-  const lightTypes = [null, "음지", "반음지", "반그늘", "반양지", "양지"];
-
   const [plantInfos, setPlantInfos] = useState(data);
   const infos = Object.entries(plantInfos).map(entry => {
     return (
       <div key={entry[0]} className="info-container">
-        <Image src={imageDatas[entry[0]].src} alt={imageDatas[entry[0]].alt} />
-        <span>{imageDatas[entry[0]].contents + " "}</span>
-        {entry[0] === "lightType" ? (
-          <span>{lightTypes[Number(entry[1])]}</span>
-        ) : (
-          <span>{entry[1]}</span>
-        )}
+        <div className="image-container">
+          <Image
+            src={imageDatas[entry[0]].src}
+            alt={imageDatas[entry[0]].alt}
+            width={"100%"}
+            height={"100%"}
+          />
+        </div>
+        <div className="text-info">
+          <p>{imageDatas[entry[0]].contents + " "}</p>
+          {entry[0] === "lightType" ? (
+            <p>{lightTypes[Number(entry[1])]}</p>
+          ) : (
+            <p>{entry[1]}</p>
+          )}
+        </div>
       </div>
     );
   });

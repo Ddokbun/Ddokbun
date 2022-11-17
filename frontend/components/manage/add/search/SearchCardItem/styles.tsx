@@ -52,7 +52,7 @@ export const Wrapper = styled(motion.div)<{ isDelivery: boolean }>`
     font-size: 12px;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     width: 90%;
     height: 100px;
     display: grid;
@@ -62,6 +62,7 @@ export const Wrapper = styled(motion.div)<{ isDelivery: boolean }>`
     .image-container {
       border-radius: 8px;
       margin: 5% 0 0 5%;
+      width: 70%;
     }
     .image {
       border-radius: 5%;

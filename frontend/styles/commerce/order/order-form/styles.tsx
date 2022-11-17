@@ -1,125 +1,94 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  display: grid;
-  margin: auto;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto auto;
-  grid-gap: 100px;
-  max-width: 1250px;
   width: 100%;
-  height: 500px;
-  padding: 50px 50px;
-  .row {
-    width: 100%;
+  .background {
+    background-color: ${props => props.theme.color.whiteGray};
   }
-  .row h1 {
-    color: ${props => props.theme.color.mainGreen};
-    margin: 0px !important;
-    padding: 0px;
-    font-size: 50px;
-    margin-bottom: 20px;
-    font-weight: 500;
+  .contents {
+    display: grid;
+    margin: auto;
+    max-width: 1500px;
+    width: 100%;
+    padding: 50px 50px 50px;
+  }
+
+  .row {
+    h1 {
+      color: ${props => props.theme.color.black};
+      padding: 0px;
+      font-size: ${props => props.theme.size.h2Web};
+      margin-bottom: 5px;
+    }
+
+    :nth-child(2) {
+      display: flex;
+      flex-direction: column;
+    }
   }
 
   .sub-title {
-    margin: 0px;
-    border-bottom: 3px solid ${props => props.theme.color.darkGreen};
+    border-bottom: 2px solid ${props => props.theme.color.darkGray};
   }
-  .button {
+
+  .pay-grid {
+    max-width: 1500px;
+    width: 100%;
+    padding: 50px 50px 50px;
+    display: grid;
     margin: auto;
-    height: 55px;
-    width: 500px;
+    grid-template-columns: 1.5fr 1fr;
+    grid-template-rows: auto;
+  }
+
+  .button {
+    margin-top: auto;
+    margin-bottom: 50px;
+    width: 100%;
+    padding: 8px 0px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-family: ${props => props.theme.font.TextFont2};
     letter-spacing: 7px;
-    font-size: 25px;
+    font-size: 20px;
     cursor: pointer;
-    color: ${props => props.theme.color.ivory};
-    /* background-color: rgba(37, 63, 47, 0.8); */
+    color: ${props => props.theme.color.whiteGray};
     background-color: ${props => props.theme.color.darkGreen};
-    margin-bottom: 200px;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
-    display: grid;
-    margin: auto;
-    max-width: 1250px;
-    grid-template-columns: 1fr;
-    grid-template-rows: auto auto;
-    grid-gap: 100px;
-    width: 100%;
-    height: 500px;
-    padding: 50px 50px;
+  @media screen and (max-width: 900px) {
     .row {
+      h1 {
+        padding-left: 5px;
+      }
+    }
+    .contents {
+      display: grid;
+      padding: 30px 10px;
+    }
+
+    .pay-grid {
       width: 100%;
-    }
-    .row h1 {
-      color: ${props => props.theme.color.mainGreen};
-      margin: 0px !important;
-      padding: 0px;
-      font-size: 50px;
-      margin-bottom: 20px;
-      font-weight: 500;
+      padding: 50px 10px 50px;
+      grid-template-columns: 1fr;
+      grid-template-rows: auto auto;
     }
 
-    .sub-title {
-      margin: 0px;
-      border-bottom: 3px solid ${props => props.theme.color.darkGreen};
-    }
     .button {
-      margin: auto;
-      height: 55px;
-      width: 400px;
+      margin-top: 30px;
+      margin-bottom: 50px;
+      width: 100%;
+      padding: 8px 0px;
       display: flex;
       justify-content: center;
       align-items: center;
       font-family: ${props => props.theme.font.TextFont2};
       letter-spacing: 7px;
-      font-size: 25px;
+      font-size: 20px;
       cursor: pointer;
-      color: ${props => props.theme.color.ivory};
-      /* background-color: rgba(37, 63, 47, 0.8); */
+      color: ${props => props.theme.color.whiteGray};
       background-color: ${props => props.theme.color.darkGreen};
-      margin-bottom: 200px;
-    }
-  }
-
-  @media screen and (${props => props.theme.mobile}) {
-    grid-gap: 100px;
-
-    padding: 50px 25px;
-
-    .row h1 {
-      color: ${props => props.theme.color.mainGreen};
-      margin: 0px !important;
-      padding: 0px;
-      font-size: 50px;
-      margin-bottom: 20px;
-      font-weight: 500;
-    }
-
-    .sub-title {
-      margin: 0px;
-      border-bottom: 3px solid ${props => props.theme.color.darkGreen};
-    }
-    .button {
-      margin: auto;
-      height: 55px;
-      width: 400px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: ${props => props.theme.font.TextFont2};
-      letter-spacing: 7px;
-      font-size: 25px;
-      cursor: pointer;
-      color: ${props => props.theme.color.ivory};
-      /* background-color: rgba(37, 63, 47, 0.8); */
-      background-color: ${props => props.theme.color.darkGreen};
-      margin-bottom: 200px;
     }
   }
 `;

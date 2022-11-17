@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { FC } from "react";
 import { Wrapper } from "./styles";
 import { OrderItemTypes } from "../../../pages/mypage/[userseq]";
@@ -13,7 +12,7 @@ const DeliveryCardList: FC<Props> = ({ data }) => {
     return <DeliveryCard data={DeliveryInfos} />;
   });
 
-  return <Wrapper>{DeliveryCards}</Wrapper>;
+  return <>{DeliveryCards}</>;
 };
 
 export default DeliveryCardList;

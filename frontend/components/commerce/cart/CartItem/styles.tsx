@@ -3,40 +3,45 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
-  padding: 10px;
-  display: flex;
   background-color: #fafafa;
 
   display: grid;
-  grid-template-columns: 180px 1fr 200px;
+  grid-template-columns: 180px 1fr auto;
   grid-template-rows: 1fr;
-  grid-gap: 10px;
+  padding: 20px 0px;
 
   .grid-left {
     position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    transform: translateX(-15px);
   }
 
   .grid-center {
     position: relative;
-    padding: 10px 20px;
+    padding: 0px 0px;
+    transform: translateX(-25px);
     h2 {
-      font-size: 30px;
+      font-size: 20px;
       font-family: ${props => props.theme.font.TitleFont};
-      color: ${props => props.theme.color.darkGreen};
+      color: ${props => props.theme.color.black};
+      line-height: 20px;
+      word-break: keep-all;
+      margin-bottom: 5px;
+    }
+    h3 {
+      line-height: 12px;
+      font-size: 10px;
+      font-family: ${props => props.theme.font.TitleFont};
+      color: ${props => props.theme.color.black};
     }
     .count {
       position: absolute;
-      bottom: 10px;
-      right: 10px;
+      bottom: 5px;
+      right: 5px;
 
-      font-size: 19px;
+      font-size: 18px;
       font-weight: 600;
       display: flex;
       gap: 8px;
-
       .handler {
         cursor: pointer;
       }
@@ -49,83 +54,48 @@ export const Wrapper = styled.div`
     justify-content: center;
     svg {
       top: -5px;
-      right: -10px;
-      width: 25px;
-      height: 25px;
+      right: 0px;
+      width: 15px;
+      height: 15px;
       position: absolute;
       path {
-        fill: ${props => props.theme.color.darkGreen};
+        fill: ${props => props.theme.color.black};
       }
     }
-    padding: 5px 20px 0px 0px;
+    padding: 5px 30px 0px 0px;
     h2 {
-      font-size: 35px;
+      font-size: 20px;
       font-family: ${props => props.theme.font.EnglishFont};
-      color: ${props => props.theme.color.darkGreen};
+      color: ${props => props.theme.color.black};
     }
   }
-  @media screen and (${props => props.theme.tablet}) {
-    padding: 5px;
-    display: flex;
-    display: grid;
-    grid-template-columns: 180px 1fr;
-    grid-template-rows: 100px auto;
-    grid-gap: 10px;
-    position: relative;
-    .grid-left {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      grid-area: 1 / 1/ 3/ 2;
-    }
 
-    .grid-center {
+  @media screen and (max-width: 600px) {
+    .grid-left {
       position: relative;
-      padding: 20px 10px;
+      transform: translateX(-30px);
+    }
+    .grid-center {
+      transform: translateX(-40px);
       h2 {
-        font-size: 30px;
-        font-family: ${props => props.theme.font.TitleFont};
-        color: ${props => props.theme.color.darkGreen};
+        font-size: 18px;
+        word-break: keep-all;
       }
       .count {
         position: absolute;
-        height: 20px;
-        left: 10px;
-
-        top: 60px;
-        font-size: 19px;
-        font-weight: 600;
-        display: flex;
-        gap: 8px;
-
-        .handler {
-          cursor: pointer;
-        }
+        bottom: 40px;
+        right: -75px;
+        font-size: 13px;
       }
     }
     .grid-right {
+      position: relative;
       display: flex;
-      justify-content: flex-end;
-      svg {
-        cursor: pointer;
-        top: -100px;
-        right: 0px;
-        width: 25px;
-        height: 25px;
-        position: absolute;
-        path {
-          fill: ${props => props.theme.color.darkGreen};
-        }
-      }
-      position: absolute;
-      grid-area: 2 / 2 / 3 / 3;
-      padding: 10px 20px;
-      bottom: 10px;
-      right: 10px;
+      align-items: flex-end;
+      justify-content: center;
+      padding: 5px 3px 0px 0px;
       h2 {
-        font-size: 25px;
-        font-family: ${props => props.theme.font.EnglishFont};
-        color: ${props => props.theme.color.darkGreen};
+        font-size: 15px;
       }
     }
   }

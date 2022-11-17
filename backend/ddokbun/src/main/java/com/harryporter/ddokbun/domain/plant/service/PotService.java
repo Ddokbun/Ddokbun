@@ -110,7 +110,7 @@ public class PotService {
 
     //물을 준다.
     @Transactional
-    public void applyWater(String potSerial, Long userSeq){
+    public void applyWater(String potSerial, Integer value, Long userSeq){
         User user = userRepository.findById(userSeq).orElseThrow(
                 ()-> new GeneralException(ErrorCode.NOT_FOUND,"사용자를 찾을 수 없습니다.")
         );
@@ -127,18 +127,16 @@ public class PotService {
             potEntity.potWaterApllyChange(LocalDate.now());
 
             //카프카 브로커로 모터 동작하라고 알려준다.
-            boolean result = waterApplyUtil.sendMotorAction(MotorActionDto.of(potSerial),
+            boolean result = waterApplyUtil.sendMotorAction(MotorActionDto.of(potSerial,value),
                     new ListenableFutureCallback<SendResult<String, String>>() {
                         @Override
                         public void onFailure(Throwable ex) {
-                            log.info("{} : {}",ex.getMessage(),ex.getCause().toString());
+                            log.info("물주기 실패 : {} : {}",ex.getMessage(),ex.getCause().toString());
                         }
 
                         @Override
                         public void onSuccess(SendResult<String, String> result) {
-
                             log.info("물 주기 성공");
-
                         }
                     });
 

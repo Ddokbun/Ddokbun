@@ -14,16 +14,19 @@ const RecommendPlant: React.FC<{ data: ListObjectItem }> = ({ data }) => {
         <h2>오늘의 식물</h2>
       </div>
       <div className="img-wrap">
-        <Link href={`/commerce/product/${data?.itemSeq}`}>
+        <div className="hot-plant">
           <Image
-            // src={Temp}
             src={`${url}`}
-            alt="임시상품이미지"
-            className="img"
-            width={500}
-            height={500}
+            alt="오늘의 식물 이미지"
+            layout="fill"
+            objectFit="cover"
           />
-        </Link>
+          <Link href={`/commerce/product/${data?.itemSeq}`}>
+            <div className="opacity">
+              <h2>{data?.itemName}</h2>
+            </div>
+          </Link>
+        </div>
       </div>
     </Wrapper>
   );

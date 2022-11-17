@@ -5,7 +5,7 @@ import { Wrapper } from "../../../../styles/manage/add/search/styles";
 import { StaticImageData } from "next/image";
 import { fetchAllPlantsList } from "../../../../apis/manage";
 import { NextPage } from "next";
-import { WrapperVar } from "../../../../styles/animations/animation";
+import { ManageHomeAni, WrapperVar } from "../../../../styles/animations/animation";
 
 export interface SearchPlantType {
   image: StaticImageData;
@@ -47,7 +47,7 @@ const SearchPlant: NextPage<{ plants: Plants[] }> = ({ plants }) => {
   }, [plants, searchInput]);
 
   return (
-    <Wrapper variants={WrapperVar} initial="start" animate="end">
+    <Wrapper variants={ManageHomeAni} initial="out" animate="in" exit="out">
       <SearchInput
         placeholder="찾는 식물 이름을 검색해주세요."
         disabled={false}

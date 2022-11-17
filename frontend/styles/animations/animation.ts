@@ -5,7 +5,7 @@ export const CardHover = {
 
   start: {
     opacity: 0,
-    y: 5,
+    y: 10,
   },
 
   end: {
@@ -13,7 +13,7 @@ export const CardHover = {
     y: 0,
     transition: {
       default: {
-        duration: 0.2,
+        duration: 1,
       },
       opacity: {
         duration: 1,
@@ -44,7 +44,7 @@ export const WrapperVar = {
       type: "spring",
       duration: 3,
       bounce: 0.5,
-      delayChildren: 0.3,
+      delayChildren: 1,
       staggerChildren: 0.5,
     },
   },
@@ -58,6 +58,9 @@ export const EleVar = {
   end: {
     opacity: 1,
     y: 0,
+    transition: {
+      duration: 0.5,
+    },
   },
 };
 
@@ -88,7 +91,7 @@ export const NabCategoryAni = {
   open: {
     opacity: 1,
 
-    height: "160px",
+    height: "250px",
     transition: {
       duration: 0.5,
       opacity: {
@@ -107,3 +110,22 @@ export const NabCategoryAni = {
     },
   },
 };
+
+export const ManageHomeAni = {
+  out: {
+    opacity: 0,
+    y: 40,
+    transition: {
+      duration: 0.75,
+    },
+  },
+  in: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.75,
+      delay: 0.5,
+    },
+  },
+};
+

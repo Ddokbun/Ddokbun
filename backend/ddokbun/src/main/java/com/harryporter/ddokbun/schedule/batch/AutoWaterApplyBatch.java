@@ -2,12 +2,9 @@ package com.harryporter.ddokbun.schedule.batch;
 
 import com.harryporter.ddokbun.domain.alarm.dto.AlarmMessageDto;
 import com.harryporter.ddokbun.domain.alarm.service.AlarmService;
-import com.harryporter.ddokbun.domain.plant.dto.MotorActionDto;
 import com.harryporter.ddokbun.domain.plant.entity.Pot;
-import com.harryporter.ddokbun.domain.plant.entity.WaterApply;
 import com.harryporter.ddokbun.domain.plant.repository.WaterApplyRepository;
 import com.harryporter.ddokbun.domain.plant.service.PotService;
-import com.harryporter.ddokbun.domain.plant.service.WaterApplyUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.batch.core.*;
 import org.springframework.batch.core.configuration.annotation.*;
@@ -21,7 +18,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.util.concurrent.ListenableFutureCallback;
 
 import javax.persistence.EntityManagerFactory;
 import java.time.LocalDate;
@@ -108,7 +104,7 @@ public class AutoWaterApplyBatch {
                 if (!localDate.plusDays(period).isAfter(LocalDate.parse(date))) {
                     //물주기 + 물 마지막으로 줫던 일 == 현재 라면 물을 줘야함
 
-                    potService.applyWater(pot.getPotSerial(), pot.getUser().getUserSeq());
+                    potService.applyWater(pot.getPotSerial(), 50, pot.getUser().getUserSeq());
                     pot.potWaterApllyChange(LocalDate.parse(date));
 
                     String title = String.format("자동 물주기");

@@ -8,13 +8,19 @@ import PageTitle from "../../../common/PageTitle";
 import CardList from "../../../components/manage/CardList";
 import { wrapper } from "../../../store";
 import { setAllCartLists } from "../../../store/commerce";
-import { EleVar, WrapperVar } from "../../../styles/animations/animation";
+import {
+  EleVar,
+  ManageHomeAni,
+  WrapperVar,
+} from "../../../styles/animations/animation";
 import { Wrapper } from "../../../styles/manage/styles";
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import { useDispatch } from "react-redux";
 import { useSelect } from "@react-three/drei";
 import { useSelector } from "react-redux";
+import Spinner from "../../../common/Spinner";
+import { checkAuthentication } from "../../../utils/protectedRouter";
 
 const DynamicCardlist = dynamic(
   () => import("../../../components/manage/CardList"),
@@ -46,20 +52,20 @@ const Manage: NextPage = () => {
   }, []);
 
   return (
-    <Wrapper variants={WrapperVar} initial="start" animate="end">
-      <PageTitle isLink>My Plants</PageTitle>
+    <Wrapper variants={ManageHomeAni} initial="out" animate="in" exit="out">
+      <PageTitle isLink mypage={false}>
+        <h1>My Plants</h1>
+      </PageTitle>
       {plantsList ? (
         <>
-          <motion.h2 variants={EleVar}>
-            관리 원하시는 화분을 클릭해주세요
-          </motion.h2>
+          <h2>관리 원하시는 화분을 클릭해주세요</h2>
           <DynamicCardlist plantsList={plantsList} />
         </>
       ) : (
         <>
-          <motion.h2 variants={EleVar}>화분이 아직 없으신가요?</motion.h2>
+          <h2>화분이 아직 없으신가요?</h2>
           <Link href={"/manage/add"}>
-            <motion.h3 variants={EleVar}>화분 추가하기</motion.h3>
+            <h3>화분 추가하기</h3>
           </Link>
         </>
       )}
@@ -68,3 +74,25 @@ const Manage: NextPage = () => {
 };
 
 export default Manage;
+
+export const getServerSideProps: GetServerSideProps = async ({
+  query,
+  req,
+  res,
+}) => {
+  const isAuthenticated = await checkAuthentication(query, req, res);
+  console.log(isAuthenticated);
+
+  if (isAuthenticated) {
+    return {
+      props: {},
+    };
+  } else {
+    return {
+      redirect: {
+        destination: "/commerce",
+      },
+      props: {},
+    };
+  }
+};

@@ -21,6 +21,13 @@ declare module "styled-components" {
       brown: string;
       brownHover: string;
       ivoryHover: string;
+      whiteGray: string;
+      darkGray: string;
+    };
+
+    size: {
+      h2Web: string;
+      h2Mobile: string;
     };
   }
 }

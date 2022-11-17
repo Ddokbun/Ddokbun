@@ -9,7 +9,7 @@ const ProductList: React.FC<{ data: ListArray }> = ({ data }) => {
 
   return (
     <GridWrapper>
-      <p>total : {data.length} </p>
+      <p className="p-title">total : {data.length} </p>
       <div className="grid">
         <>
           {data.map(item => {

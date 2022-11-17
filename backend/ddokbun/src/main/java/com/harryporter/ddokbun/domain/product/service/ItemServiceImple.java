@@ -257,24 +257,36 @@ public class ItemServiceImple implements ItemService{
 
 
     @Override
+    @Transactional(value = Transactional.TxType.REQUIRED)
     public String click(long itemSeq){
         log.info("조회수 증가 Service :: itemSeq : {}", itemSeq);
-        String key = "rank";
-        ZSetOperations<String, String> ZSetOperations = redisTemplate.opsForZSet();
-        ZSetOperations.incrementScore(key, itemSeq+"", 1);
-        log.info("조회수 증가 Success :: {} score +1", itemSeq);
+        Item item = itemRepository.findById(itemSeq).orElseThrow(
+                ()-> new GeneralException(ErrorCode.NOT_FOUND,"상품을 찾을 수 없습니다."));
+
+        item.increaseViewCount(item);
+
+//        String key = "rank";
+//        ZSetOperations<String, String> ZSetOperations = redisTemplate.opsForZSet();
+//        ZSetOperations.incrementScore(key, itemSeq+"", 1);
+        log.info("조회수 증가 Success :: {} score +1", item.getViewCount());
         return "Success";
     }
 
     @Override
     public List<ClickRankDto> SearchRankList() {
         log.info("인기 식물 조회 Service :: 1 - 10등까지");
-        String key = "rank";
-        ZSetOperations<String, String> ZSetOperations = redisTemplate.opsForZSet();
-        Set<ZSetOperations.TypedTuple<String>> typedTuples = ZSetOperations.reverseRangeWithScores(key, 0, 9);
-        List<ClickRankDto> list = typedTuples.stream()
-                .map(tuple->ClickRankDto.convertToClickRankDto(tuple, itemRepository.findById(Long.parseLong(tuple.getValue())).orElse(null)))
+        List<Item> items = itemRepository.findTop10ByOrderByViewCountDesc();
+        List<ClickRankDto> list = items.stream()
+                .map(item -> ClickRankDto.convertToClickRankDto(item))
                 .collect(Collectors.toList());
+//        String key = "rank";
+//        ZSetOperations<String, String> ZSetOperations = redisTemplate.opsForZSet();
+//        Set<ZSetOperations.TypedTuple<String>> typedTuples = ZSetOperations.reverseRangeWithScores(key, 0, 9);
+//        if(typedTuples == null)
+//            return null;
+//        List<ClickRankDto> list = typedTuples.stream()
+//                .map(tuple->ClickRankDto.convertToClickRankDto(tuple, itemRepository.findById(Long.parseLong(tuple.getValue())).orElse(null)))
+//                .collect(Collectors.toList());
         log.info("인기 식물 조회 Success :: 인기 식물 목록 Size : {}",list.size());
         return list;
     }
