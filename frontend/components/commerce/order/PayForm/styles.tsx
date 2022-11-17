@@ -63,7 +63,7 @@ export const Wrapper = styled.div`
       display: grid;
       grid-template-columns: 1fr 1fr;
       grid-template-rows: 45px;
-      padding: 35px 5px;
+      padding: 10px 5px 25px;
       grid-gap: 10px;
       margin: 10px 0px 20px;
       .button {

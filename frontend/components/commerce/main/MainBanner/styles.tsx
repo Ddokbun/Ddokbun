@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  margin-bottom: 50px;
   .wrap {
     .img-wrap {
       position: relative;

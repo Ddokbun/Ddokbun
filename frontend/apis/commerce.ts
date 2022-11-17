@@ -436,7 +436,7 @@ export const fetchSurveyComplete = async (answerList: number[]) => {
       url,
       method: "POST",
       data: {
-        answerList: [1, 1, 1, 1],
+        answerList,
       },
     });
     return data.content;

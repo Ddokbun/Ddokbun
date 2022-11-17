@@ -5,74 +5,102 @@ import Image from "next/image";
 import ServeyForm from "../../../components/commerce/survey";
 import Dot from "../../../common/Dot";
 import { fetchServeyList, fetchSurveyComplete } from "../../../apis/commerce";
-import { SetStateAction, useEffect, useState } from "react";
+import React, { SetStateAction, useEffect, useRef, useState } from "react";
 import { ISurvey, ISurveyItem } from "../../../types/commerce/survey.interface";
 import SurveyComplete from "../../../components/commerce/survey/complete";
 
+type IRefs = {
+  id: any;
+};
+
 const Servey: NextPage<{ surveys: ISurveyItem[] }> = ({ surveys }) => {
-  const [answer, setAnswer] = useState<number[]>([]);
+  const [answer, setAnswer] = useState<number[]>([0, 0, 0, 0]);
   const [surveyComplete, setSurveyComplete] = useState([]);
   const [level, setLevel] = useState(0);
+  const [complete, setComplete] = useState(false);
+  const refs = Array(5)
+    .fill(null)
+    .map(item => React.createRef());
 
   const setAnswerHandler = async (
-    event: React.MouseEvent<HTMLLIElement, MouseEvent>,
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>,
+    idx: number,
   ) => {
-    const nowAnswer = parseInt(event.currentTarget.id);
-
+    const temp = (event.target as HTMLDivElement).id;
     setAnswer(val => {
-      return [...val.slice(0, level), nowAnswer, ...val.slice(level + 1)];
+      console.log(temp);
+      if (idx < 4) {
+        (refs[idx].current as any).scrollIntoView({ behavior: "smooth" });
+      }
+
+      return [...val.slice(0, idx), parseInt(temp), ...val.slice(idx + 1)];
     });
-    switch (level < 3) {
-      case true:
+  };
+
+  const fetchAnswer = async () => {
+    let flag = 1;
+    console.log(answer);
+    for (let i = 0; i < 4; i++) {
+      if (answer[i] === 0) {
+        console.log(i);
+
+        flag = 0;
+        (refs[i].current as any).scrollIntoView({
+          block: "center",
+          behavior: "smooth",
+        });
         return;
-      case false: {
-        const data = await fetchSurveyComplete(answer);
-        setSurveyComplete(data);
       }
     }
+
+    // if (flag === 0) {
+    //   return null;
+    // }
+    const data = await fetchSurveyComplete(answer);
+    console.log(data);
+    setSurveyComplete(data);
+    setComplete(true);
+    window.scrollTo({ top: 0 });
   };
 
   return (
-    <Wrapper>
-      <Image
-        className="plz"
-        src={BackgroudImage}
-        layout="fill"
-        alt="설문조사 배경이미지"
-      />
-      <div className="gradation"></div>
-
-      {level != 4 ? (
-        <div className="survey-wrapper">
-          <div className="survey">
-            <div className="dots">
-              <Dot now={level == 0 ? true : false} />
-              <Dot now={level == 1 ? true : false} />
-              <Dot now={level == 2 ? true : false} />
-              <Dot now={level == 3 ? true : false} />
-            </div>
-            {surveys.map((item, idx) => {
-              return level == idx ? (
-                <ServeyForm
-                  key={idx}
-                  survey={item}
-                  level={level}
-                  setLevel={setLevel}
-                  answer={answer}
-                  setAnswerHandler={setAnswerHandler}
-                />
-              ) : null;
-            })}
-          </div>
-        </div>
+    <>
+      {complete ? (
+        <SurveyComplete
+          items={surveyComplete}
+          setComplete={setComplete}
+          setAnswer={setAnswer}
+        />
       ) : (
-        <SurveyComplete items={surveyComplete} />
+        <Wrapper>
+          <div className="contents">
+            <div className="survey">
+              {surveys.map((item, idx) => {
+                return (
+                  <ServeyForm
+                    ref={refs[idx] as any}
+                    key={idx}
+                    survey={item}
+                    level={idx}
+                    setLevel={setLevel}
+                    answer={answer}
+                    setAnswerHandler={setAnswerHandler}
+                  />
+                );
+              })}
+            </div>
+            <div className="button" onClick={fetchAnswer}>
+              추천받기
+            </div>
+          </div>
+        </Wrapper>
       )}
-    </Wrapper>
+    </>
   );
 };
 
 export default Servey;
+``;
 
 export const getStaticProps: GetStaticProps = async () => {
   const surveys = await fetchServeyList();
