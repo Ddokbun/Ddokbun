@@ -22,6 +22,7 @@ export interface LogsType {
 }
 
 export interface currentStatus {
+  plantNickname: string;
   plantEnName: string;
   plantName: string;
   growHumid: string;
@@ -36,6 +37,7 @@ export interface currentStatus {
   waterCycle: number;
   waterHeight: number;
   waterSupply: number[];
+  plantSeq: number;
 }
 
 interface Props {
@@ -45,10 +47,11 @@ interface Props {
 const PlantCare: NextPage<Props> = ({ data }) => {
   const { potseq } = useRouter().query;
   const [tab, setTab] = useState(0);
+  console.log(data);
 
-  const plantNickname = useSelector(
-    (state: RootState) => state.manage.plantNickname,
-  );
+  // const plantNickname = useSelector(
+  //   (state: RootState) => state.manage.plantNickname,
+  // );
   const dispatch = useDispatch();
   const [plantStatus, setPlantStatus] = useState(data);
   const onWateringHandler = async () => {
@@ -79,7 +82,7 @@ const PlantCare: NextPage<Props> = ({ data }) => {
   return (
     <Wrapper>
       <LeftSection>
-        <h2>{plantNickname}</h2>
+        <h2>{plantStatus.plantNickname}</h2>
         <DigitalTwin
           light={plantStatus?.light}
           onWateringHandler={onWateringHandler}

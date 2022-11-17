@@ -85,7 +85,7 @@ const PlantInfo: FC<Props> = ({ plantStatus }) => {
 
   const plantInfo = plantInfos.map(item => {
     return (
-      <div className="line">
+      <div className="line" key={item.grow}>
         <div className="status-image-container">
           <Image
             className="status-image"

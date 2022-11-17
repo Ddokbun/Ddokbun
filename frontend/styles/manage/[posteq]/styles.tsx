@@ -11,7 +11,7 @@ export const Wrapper = styled.div`
   position: relative;
   grid-gap: 5%;
   h2 {
-    font-family: ${props => props.theme.font.TitleFont};
+    font-family: ${props => props.theme.font.SubTitleFont};
     color: ${props => props.theme.color.black};
     font-size: 36px;
     padding: 4% 0% 0% 4%;
@@ -40,8 +40,9 @@ export const LeftSection = styled.section`
 `;
 
 export const RightSection = styled(motion.section)`
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  background-color: #fffafa;
+  box-shadow: rgba(0, 0, 0, 0.35) -5px 0px 5px -1px;
+  background: linear-gradient(to right, #fffafa, #fafafa);
+  /* background-color: #fffafa; */
   border-top-left-radius: 16px;
   min-height: 85vh;
   height: fit-content;
@@ -113,7 +114,7 @@ export const RightSection = styled(motion.section)`
     display: flex;
     align-items: center;
     justify-content: space-around;
-    margin: 5%;
+    margin: 10%;
     padding-bottom: 2%;
     border-bottom: 1px solid #ccc;
     word-break: keep-all;
@@ -139,9 +140,9 @@ export const RightSection = styled(motion.section)`
 
   @media screen and (max-width: 600px) {
     position: absolute;
-    top: 80vh;
+    top: 500px;
     width: 95%;
-    min-height: 90vh;
+    min-height: 580px;
 
     h2 {
       font-size: 18px;

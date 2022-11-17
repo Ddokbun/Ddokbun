@@ -87,7 +87,7 @@ export const fetchCurrentStatus = async (
   } catch (error) {
     const err = error as AxiosError;
     console.log(err.response);
-    return err.response?.status
+    return err.response?.status;
   }
 };
 
@@ -136,9 +136,12 @@ export const watering = async (potSeq: string | string[]) => {
       method: "post",
       url,
     });
+    console.log(res);
 
     return res;
-  } catch (error) {}
+  } catch (error) {
+    console.log(error);
+  }
 };
 
 export const changeWateringStatus = async (

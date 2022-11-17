@@ -56,7 +56,7 @@ const WeekPicker: FC<Props> = ({ setWateringLogs }) => {
     }
   };
 
-  const onDateClickHandle = (day: Date, dayStr: any) => {
+  const onDateClickHandle = (day: Date) => {
     setSelectedDate(day);
   };
 
@@ -106,11 +106,10 @@ const WeekPicker: FC<Props> = ({ setWateringLogs }) => {
         const cloneDay = day;
         days.push(
           <div
-            key={day.toString()}
+            key={day.toString() + "1"}
             className={`day ${isSameDay(day, selectedDate) ? "selected" : ""}`}
             onClick={() => {
-              const dayStr = format(cloneDay, "ccc dd MMM yy");
-              onDateClickHandle(cloneDay, dayStr);
+              onDateClickHandle(cloneDay);
             }}
           >
             <p className="day">{formattedDate}</p>
