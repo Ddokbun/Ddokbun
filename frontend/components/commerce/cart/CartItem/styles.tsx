@@ -83,9 +83,15 @@ export const Wrapper = styled.div`
       }
       .count {
         position: absolute;
-        bottom: 40px;
-        right: -75px;
-        font-size: 13px;
+        bottom: 0px;
+        right: 0px;
+
+        .dhandler {
+          font-size: 20px;
+
+          cursor: pointer;
+          z-index: 3;
+        }
       }
     }
     .grid-right {
@@ -95,7 +101,7 @@ export const Wrapper = styled.div`
       justify-content: center;
       padding: 5px 3px 0px 0px;
       h2 {
-        font-size: 15px;
+        font-size: 18px;
       }
     }
   }
