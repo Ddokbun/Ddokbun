@@ -1,5 +1,5 @@
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
-import { FC, useRef } from "react";
+import { FC } from "react";
 import Flower from "../../Flower";
 
 interface Props {
@@ -14,26 +14,11 @@ const Three: FC<Props> = ({ isAnimated }) => {
 
   const angleToRadians = (angle: number) => (Math.PI / 180) * angle;
 
-  const orbitControlsRef = useRef<any>(null);
-  // useFrame(state => {
-  //   if (orbitControlsRef.current) {
-  //     const { x, y } = state.mouse;
-  //     orbitControlsRef.current.setAzimuthalAngle?.(-angleToRadians(90) * x);
-  //     orbitControlsRef.current.setPolarAngle?.((y + 0.5) * angleToRadians(90));
-  //     orbitControlsRef.current.update?.();
-  //   }
-  // });
-
   return (
     <>
       {/* 카메라 */}
       <PerspectiveCamera makeDefault position={[2, 7, 8.5]} />
-      <OrbitControls
-        enableZoom={false}
-        // ref={orbitControlsRef}
-        // minPolarAngle={angleToRadians(50)}
-        // maxPolarAngle={angleToRadians(80)}
-      />
+      <OrbitControls enableZoom={false} />
       {/* 모델 */}
       <Flower isAnimated={isAnimated} />
       {/* 조명 */}

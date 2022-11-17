@@ -1,5 +1,5 @@
 import * as THREE from "three";
-import React, { FC, useEffect, useRef } from "react";
+import { FC, useEffect, useRef } from "react";
 import { useGLTF, useAnimations } from "@react-three/drei";
 import { GLTF } from "three-stdlib";
 
@@ -35,11 +35,8 @@ const Flower: FC<Props> = ({ isAnimated }) => {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const group = useRef<any>();
   const { nodes, materials, animations }: any = useGLTF("/models/model.glb");
-  console.log(animations[0]);
 
   const { actions } = useAnimations(animations, group);
-  console.log(actions, "asdasdfasdf");
-  console.log(actions["Cacti Baby Dance"]);
 
   useEffect(() => {
     actions["Cacti Baby Dance"]?.play();

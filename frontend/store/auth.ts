@@ -15,7 +15,6 @@ const authSlice = createSlice({
       return { ...action.payload.setEnt };
     },
     setUserInfo(state, action) {
-
       return {
         ...state,
         ...action.payload,
