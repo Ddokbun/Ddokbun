@@ -82,7 +82,9 @@ const DeliveryCard: FC<Props> = ({ data }) => {
         )}
       </td>
       <td>
-        <p>{data.orderPrice}원</p>
+        <p>
+          {data.orderPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+        </p>
       </td>
     </Wrapper>
   );
