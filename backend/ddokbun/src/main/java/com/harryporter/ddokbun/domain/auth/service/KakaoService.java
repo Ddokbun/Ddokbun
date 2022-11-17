@@ -103,7 +103,6 @@ public class KakaoService {
             return kakaoOAuthToken;
 
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
             return null;
         }
     }
@@ -129,10 +128,10 @@ public class KakaoService {
         KakaoProfile kakaoProfile = null;
         try {
             kakaoProfile = objectMapper.readValue(response2.getBody(),KakaoProfile.class);
+
         } catch (JsonMappingException e) {
-            e.printStackTrace();
+
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
         }
 
         return kakaoProfile;
