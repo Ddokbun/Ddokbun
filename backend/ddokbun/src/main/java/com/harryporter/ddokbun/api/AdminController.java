@@ -119,7 +119,7 @@ public class AdminController {
         if(!userDto.getUserRole().equals("ROLE_ADMIN"))
             throw new GeneralException(ErrorCode.BAD_REQUEST,"관리자 계정이 아닙니다");
         log.info("관리자 :: 사용자 주문내역 상태 변경 API");
-        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("사용자 주문 상태 변경에 성공했습니다",orderService.updateOrderStatus(orderStatusDto));
+        ResponseFrame<?> res =  ResponseFrame.ofOKResponse("사용자 주문 상태 변경에 성공했습니다",orderService.updateOrderStatus(orderStatusDto,userDto));
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 

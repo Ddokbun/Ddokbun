@@ -48,7 +48,7 @@ public class OrderController {
     public ResponseEntity<?> updatePayComplete(@PathVariable long orderSeq, @ApiIgnore @AuthenticationPrincipal UserDto userDto){
         log.info("주문 결제 완료 API");
         ResponseFrame<?> res =  ResponseFrame.ofOKResponse(
-                "주문 결제 완료 상태 변경에 성공했습니다",orderService.updateOrderStatus(new OrderStatusDto(orderSeq, "paycomplete")));
+                "주문 결제 완료 상태 변경에 성공했습니다",orderService.updateOrderStatus(new OrderStatusDto(orderSeq, "paycomplete"),userDto));
         return new ResponseEntity<>(res, HttpStatus.OK);
     }
 

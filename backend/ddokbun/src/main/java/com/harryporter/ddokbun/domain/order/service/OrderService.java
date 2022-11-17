@@ -7,6 +7,7 @@ import com.harryporter.ddokbun.domain.order.dto.response.AdminOrderDto;
 import com.harryporter.ddokbun.domain.order.dto.response.OrderDateDto;
 import com.harryporter.ddokbun.domain.order.dto.response.OrderDetailDto;
 import com.harryporter.ddokbun.domain.order.dto.response.OrderListItemDto;
+import com.harryporter.ddokbun.domain.user.dto.UserDto;
 import org.springframework.data.domain.Pageable;
 
 import java.util.List;
@@ -21,7 +22,8 @@ public interface OrderService {
 
     List<AdminOrderDto> getTotalOrderList(Pageable pageable);
 
-    String updateOrderStatus(OrderStatusDto orderStatusDto);
+
+    String updateOrderStatus(OrderStatusDto orderStatusDto, UserDto userDto);
 
     List<OrderDateDto> getOrderCountByDate();
 }
