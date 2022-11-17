@@ -162,6 +162,19 @@ export const postKakaoPay = async (
     fail_url: "https://ddokbun.com/commerce/order/cancled",
     cancel_url: "https://ddokbun.com/commerce/order/cancled",
   };
+  // const params = {
+  //   cid: "TC0ONETIME",
+  //   partner_order_id: "똑분 Ddokbun",
+  //   partner_user_id,
+  //   item_name,
+  //   quantity: 1,
+  //   total_amount,
+  //   vat_amount: 200,
+  //   tax_free_amount: 0,
+  //   approval_url: "https://localhost:3001/commerce/order/complete",
+  //   fail_url: "https://localhost:3001/commerce/order/cancled",
+  //   cancel_url: "https://localhost:3001/commerce/order/cancled",
+  // };
 
   try {
     const res = await axios({
@@ -236,7 +249,6 @@ export const approveKakaoPay = async (
 
 export const fetchCartList = async (token?: string) => {
   const url = "cart";
-  console.log(token);
 
   try {
     const data = await AXIOS({

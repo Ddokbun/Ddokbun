@@ -14,6 +14,7 @@ import { Wrapper } from "../../../../styles/commerce/order/complete/styles";
 import {
   approveKakaoPay,
   deleteCart,
+  fetchCartList,
   fetchOrderInfo,
   fetchPriorityProduct,
   fetchRelatedProducts,
@@ -23,7 +24,12 @@ import {
   ListArray,
   ListObjectItem,
 } from "../../../../types/commerce/list.interface";
-import { deleteCartList } from "../../../../store/commerce";
+import {
+  deleteCartList,
+  deleteOrderList,
+  setAllCartLists,
+  setAllOrderLists,
+} from "../../../../store/commerce";
 import { useDispatch } from "react-redux";
 
 export const getServerSideProps: GetServerSideProps = async ({
@@ -86,15 +92,12 @@ const Complete: NextPage<IOrder> = ({ payObj }) => {
       const data = await fetchRelatedProducts(
         String(payObj.itemIdx[0].itemSeq),
       );
+      const carts = await fetchCartList();
+      dispatch(setAllCartLists(carts));
       setRelatedList(data.content);
     };
 
-    payObj.itemIdx.reduce((prev, item) => {
-      return prev.then(async () => {
-        const data = await deleteCart(item.itemSeq);
-        dispatch(deleteCartList(item.itemSeq));
-      });
-    }, Promise.resolve());
+    dispatch(setAllOrderLists([]));
 
     console.log(payObj.itemIdx);
 

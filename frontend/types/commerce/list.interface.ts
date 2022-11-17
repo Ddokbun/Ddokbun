@@ -7,8 +7,8 @@ export type ListObjectItem = {
   itemSeq: number;
   itemName: string;
   itemEnName: string;
-  itemPrice: number;
-  itemImage: string;
+  itemPrice?: number;
+  itemImage?: string;
   tags?: string[];
   price?: number;
   quantity?: number;
