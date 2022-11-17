@@ -2,119 +2,91 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const FormWrapper = styled(motion.div)`
-  position: relative;
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: auto 4fr 50px;
-  padding: 0px 5% 5%;
-  gap: 5%;
   width: 100%;
-
-  .button-wrap {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    align-self: center;
-    justify-content: space-between;
-
-    .button {
-      font-family: ${props => props.theme.font.TextFont1};
-      letter-spacing: 10px;
-      font-size: 20px;
-      padding: 0px 30px;
-      border-radius: 5px;
-      border: 3px solid ${props => props.theme.color.ivory};
-    }
+  margin: 20px 0px;
+  .now {
+    outline: 2px solid #e1b12c;
+    background-color: ${props => props.theme.color.darkGray};
   }
-
+  .form-wrap {
+    margin: auto;
+    width: 800px;
+    padding-bottom: 50px;
+    border-bottom: 2px solid ${props => props.theme.color.darkGray};
+  }
   h1 {
+    margin: 0px 0px;
+    text-align: center;
+    font-family: ${props => props.theme.font.TextFont2};
+    font-size: 30px;
     font-weight: 600;
-    word-break: keep-all;
-    font-size: min(40px, 3.5vw);
-    font-family: ${props => props.theme.font.TextFont1};
   }
-  ul {
+
+  .wrap {
+    margin: 60px 0px 30px;
+    width: 100%;
     display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    width: 40%;
-    margin-left: auto;
-  }
+    justify-content: space-around;
 
-  ul li {
-    font-family: ${props => props.theme.font.TextFont1};
-    font-size: min(30px, 3vw);
-  }
-  @media screen and (max-width: 600px) {
-    position: relative;
-
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 4fr 50px;
-    padding: 0px 5% 5%;
-    gap: 1%;
-
-    .button-wrap {
-      align-self: center;
-      width: 100%;
+    .selector {
+      cursor: pointer;
+      border-radius: 4px;
+      text-align: center;
+      word-break: keep-all;
+      box-shadow: 2px 2px 3px 2px ${props => props.theme.color.darkGray};
+      width: 150px;
       display: flex;
+      padding: 20px 0px;
+      justify-content: center;
+      align-items: center;
+      font-size: 20px;
+      font-family: ${props => props.theme.font.TextFont2};
 
-      .button {
-        font-family: ${props => props.theme.font.TextFont1};
-        letter-spacing: 5px;
-        font-size: 20px;
-        padding: 10px 50px;
-        border-radius: 5px;
-        border: 3px solid ${props => props.theme.color.ivory};
+      :hover {
+        background-color: ${props => props.theme.color.darkGray};
       }
     }
-
-    h1 {
-      font-weight: 600;
-      word-break: keep-all;
-      font-size: 35px;
-      font-family: ${props => props.theme.font.TextFont1};
-    }
-    ul {
-      display: flex;
-      flex-direction: column;
-      justify-content: space-evenly;
-      width: 40%;
-      margin-left: auto;
-    }
-
-    ul li {
-      position: relative;
-      font-family: ${props => props.theme.font.TextFont1};
-      font-size: 30px;
-    }
   }
-`;
 
-export const Svg = styled.svg`
-  position: absolute;
-  stroke-linecap: round;
-  transform: translate(-50px, -5px);
-  height: 50px;
-  width: 50px;
-
-  fill: none;
-  stroke: #ffffff;
-  stroke-width: 4px;
-  stroke-miterlimit: 10;
-  stroke-dashoffset: 0;
-  stroke-dasharray: 60;
-  /* @keyframes dash {
-    from {
-      stroke-dashoffset: 60;
+  @media screen and (max-width: 900px) {
+    .form-wrap {
+      margin: auto;
+      width: 100%;
+      padding: 0px 20px 50px;
+      border-bottom: 2px solid ${props => props.theme.color.darkGray};
     }
-    to {
-      stroke-dashoffset: 0;
+    h1 {
+      margin: 0px 0px;
+      text-align: center;
+      font-family: ${props => props.theme.font.TextFont2};
+      font-size: 20px;
+      font-weight: 600;
     }
-  } */
-  .st1 {
-    stroke: #000000;
-    stroke-width: 10;
 
-    animation: dash 1s linear alternate 1;
+    .wrap {
+      margin: 60px 0px 30px;
+      width: 100%;
+      display: flex;
+      justify-content: space-around;
+
+      .selector {
+        cursor: pointer;
+        border-radius: 4px;
+        text-align: center;
+        word-break: keep-all;
+        box-shadow: 2px 2px 3px 2px ${props => props.theme.color.darkGray};
+        width: 120px;
+        display: flex;
+        padding: 10px 0px;
+        justify-content: center;
+        align-items: center;
+        font-size: 15px;
+        font-family: ${props => props.theme.font.TextFont2};
+
+        :hover {
+          background-color: ${props => props.theme.color.darkGray};
+        }
+      }
+    }
   }
 `;
