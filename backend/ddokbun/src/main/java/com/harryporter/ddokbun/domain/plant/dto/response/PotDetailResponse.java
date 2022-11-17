@@ -27,11 +27,14 @@ public class PotDetailResponse {
     private Integer waterPeriod;
     private LocalDate waterSupply;
 
+    private String plantNickname;
+
 
     public static PotDetailResponse of(Pot pot){
 
         PotDetailResponse temp = new PotDetailResponse();
 
+        temp.plantNickname = pot.getPlantNickname();
         temp.temperature = pot.getTemperature();
         temp.humidity = pot.getHumidity();
         temp.soilHumidity = pot.getSoilHumidity();
