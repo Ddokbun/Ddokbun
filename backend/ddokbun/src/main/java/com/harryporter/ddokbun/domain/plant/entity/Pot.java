@@ -72,6 +72,9 @@ public class Pot {
     @Column(name="water_period")
     private Integer waterPeriod;
 
+    @Column(name = "rec_plant")
+    private String RecPlant;
+
     // 식물
     @JoinColumn(name = "plant_seq", nullable = true)
     @ManyToOne(fetch = FetchType.LAZY)

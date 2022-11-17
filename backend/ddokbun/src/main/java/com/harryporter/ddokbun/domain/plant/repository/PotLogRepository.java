@@ -1,6 +1,7 @@
 package com.harryporter.ddokbun.domain.plant.repository;
 
 import com.harryporter.ddokbun.domain.plant.dto.response.PotTemperatureLogResponse;
+import com.harryporter.ddokbun.domain.plant.entity.Plant;
 import com.harryporter.ddokbun.domain.plant.entity.Pot;
 import com.harryporter.ddokbun.domain.plant.entity.PotLog;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -14,4 +15,5 @@ public interface PotLogRepository extends JpaRepository<PotLog, Long> {
 
     List<PotLog> findTop30ByPot_PotSerialOrderByCreatedTimeDesc(String potSerial);
     void deleteAllByPot_PotSerial(String potSerial);
+
 }
