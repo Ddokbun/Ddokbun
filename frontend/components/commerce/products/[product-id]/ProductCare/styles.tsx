@@ -15,6 +15,7 @@ export const Wrapper = styled.div`
     font-family: ${props => props.theme.font.TextFont2};
     font-size: 20px;
     margin-bottom: 100px;
+    word-break: keep-all;
   }
 
   @media screen and (max-width: 600px) {

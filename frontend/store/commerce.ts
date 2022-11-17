@@ -63,11 +63,32 @@ export const CartListSlice = createSlice({
   },
 });
 
+export const OrderListSlice = createSlice({
+  name: "OrderList",
+  initialState: [] as ListObjectItem[],
+  reducers: {
+    setAllOrderLists: (state, action) => {
+      return action.payload;
+    },
+
+    deleteOrderList: (state, action) => {
+      const temp = current(state).map((item: ListObjectItem) => {
+        if (item && item.itemSeq !== parseInt(action.payload)) {
+          return item;
+        }
+      });
+      return temp as ListObjectItem[];
+    },
+  },
+});
 export const { setAllCartLists, setCartLists, putCartItem, deleteCartList } =
   CartListSlice.actions;
+
+export const { setAllOrderLists, deleteOrderList } = OrderListSlice.actions;
 export const { setRelatedItemList } = RelatedProductSlice.actions;
 
 export interface CommerceState {
   CartListSlice: ListArray;
   relatedProductSlice: ListArray;
+  OrderListSlice: ListArray;
 }

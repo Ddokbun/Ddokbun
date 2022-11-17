@@ -9,12 +9,18 @@ import { StoreState } from "../../../../store";
 
 interface Item {
   setOrderTotal?: Dispatch<SetStateAction<number>>;
+  flag?: string;
 }
 
-const CartList: React.FC<Item> = ({ setOrderTotal }) => {
+const CartList: React.FC<Item> = ({ setOrderTotal, flag }) => {
   const [total, setTotal] = useState(0);
   const dispatch = useDispatch();
-  const selector = useSelector((state: StoreState) => state.cartList);
+  const selector =
+    flag === "order"
+      ? useSelector((state: StoreState) => state.orderListSlice)
+      : useSelector((state: StoreState) => state.cartList);
+
+  console.log(selector);
 
   useEffect(() => {
     let temp = 0;
