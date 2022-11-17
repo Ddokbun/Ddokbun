@@ -6,6 +6,7 @@ import { ListObjectItem } from "../../../../../types/commerce/home.interface";
 const SwiperItem: React.FC<{
   item: ListObjectItem;
 }> = ({ item }) => {
+  console.log(item);
   return (
     <Wrapper>
       <div className="subcontent-wrap">
@@ -18,6 +19,15 @@ const SwiperItem: React.FC<{
               layout="fill"
               objectFit="cover"
             />
+            <div className="item-name">
+              <h2>{item.itemName}</h2>
+              <h3>
+                ₩{" "}
+                {item.itemPrice
+                  .toString()
+                  .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+              </h3>
+            </div>
           </div>
         </Link>
       </div>
