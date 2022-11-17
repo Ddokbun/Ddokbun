@@ -1,11 +1,16 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  width: 100%;
+  margin: 10px;
   .img-wrap {
-    width: 100%;
+    width: 90%;
+    margin: auto;
+    :hover {
+      cursor: pointer;
+    }
     .card-1 {
-      width: 40vh;
-      margin: 20px;
+      width: 100%;
       .img-01 {
         position: relative;
         width: 100%;
@@ -34,6 +39,7 @@ export const Wrapper = styled.div`
       }
     }
   }
+
   @media screen and (max-width: 600px) {
     .img-wrap {
       .card-1 {

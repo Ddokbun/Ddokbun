@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   color: #000000;
   margin-bottom: 50px;
   h2 {
+    margin-left: 7px;
     font-size: 50px;
   }
 

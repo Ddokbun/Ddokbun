@@ -6,6 +6,9 @@ export const Wrapper = styled.div`
     width: 98%;
     height: 400px;
     margin-right: 10px;
+    :hover {
+      cursor: pointer;
+    }
   }
   .item-name {
     position: absolute;

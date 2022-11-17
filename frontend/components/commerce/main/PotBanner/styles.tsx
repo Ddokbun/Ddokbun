@@ -4,6 +4,9 @@ export const Wrapper = styled.div`
   margin-bottom: 50px;
   display: flex;
   background-color: #e9e9e9;
+  :hover {
+    cursor: pointer;
+  }
   .content-wrap {
     width: 45%;
 
