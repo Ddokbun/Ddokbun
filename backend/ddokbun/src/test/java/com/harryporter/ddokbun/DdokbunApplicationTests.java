@@ -1,6 +1,5 @@
 package com.harryporter.ddokbun;
 
-import com.harryporter.ddokbun.api.AlarmController;
 import com.harryporter.ddokbun.domain.alarm.service.AlarmService;
 import com.harryporter.ddokbun.domain.plant.repository.PotRepository;
 import com.harryporter.ddokbun.domain.plant.service.PotService;
@@ -19,7 +18,6 @@ import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -90,7 +88,7 @@ class DdokbunApplicationTests {
 	@Test
 	void updatePotWaterApplyTest(){
 
-		potService.applyWater("0000000000",145L);
+		potService.applyWater("0000000000", value, 145L);
 	}
 
 	@Autowired
