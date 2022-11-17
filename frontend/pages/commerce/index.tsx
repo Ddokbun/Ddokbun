@@ -13,23 +13,29 @@ import SwiperProduct from "../../components/commerce/main/SwiperProduct";
 
 export const getStaticProps: GetStaticProps = async context => {
   const res = await getMainProduct();
+  const hotplant = await fetchHotPlant();
+  const hotitem = hotplant.content;
   const data = res.content;
   return {
     props: {
       data,
+      hotitem,
     },
   };
 };
 
-const Commerce: NextPage<{ data: MainPlant }> = ({ data }) => {
+const Commerce: NextPage<{ data: MainPlant; hotitem: MainPlant }> = ({
+  data,
+  hotitem,
+}) => {
   return (
     <Wrapper>
       <MainBanner />
       <PotBanner />
-      <SwiperProduct data={data.slice(2, 9)} />
+      {/* <SwiperProduct data={data.slice(2, 9)} /> */}
+      <SwiperProduct data={hotitem} />
       <MainProductCard data={data.slice(0, 2)} />
       <SurveyBanner />
-      {/* <IoTSurvey /> */}
       <LastProductCard data={data.slice(9, 12)} />
     </Wrapper>
   );

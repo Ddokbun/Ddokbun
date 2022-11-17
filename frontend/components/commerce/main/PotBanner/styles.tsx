@@ -1,9 +1,12 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  margin-bottom: 50px;
   display: flex;
   background-color: #e9e9e9;
-  margin-bottom: 10px;
+  :hover {
+    cursor: pointer;
+  }
   .content-wrap {
     width: 45%;
 
@@ -40,8 +43,6 @@ export const Wrapper = styled.div`
         font-size: 14px;
       }
     }
-  }
-  @media screen and (max-width: 1024px) {
     .content-wrap {
       width: 70%;
     }
@@ -51,29 +52,30 @@ export const Wrapper = styled.div`
     display: block;
     .content-wrap {
       width: 100%;
-
       .img-wrap {
         position: relative;
         top: 0;
-        height: 400px;
+        height: 350px;
         width: 100%;
         overflow: hidden;
-        margin-bottom: 20px;
+        margin-bottom: 10px;
       }
     }
 
     .text-wrap {
       display: block;
-      margin: 20px auto;
+      margin: 10px auto;
+      width: 90%;
       text-align: center;
       .text {
         padding-bottom: 20px;
       }
 
       h2 {
-        font-size: 28px;
+        font-size: 24px;
       }
       h3 {
+        font-size: 13px;
       }
     }
   }
