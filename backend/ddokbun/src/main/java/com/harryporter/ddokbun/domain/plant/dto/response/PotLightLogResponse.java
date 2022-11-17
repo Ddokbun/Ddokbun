@@ -12,7 +12,7 @@ public class PotLightLogResponse {
 
     public static PotLightLogResponse of(PotLog potLog){
         PotLightLogResponse temp = new PotLightLogResponse();
-        temp.light = potLog.getTemperature();
+        temp.light = potLog.getLight();
         temp.createdTime = potLog.getCreatedTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
         return temp;
