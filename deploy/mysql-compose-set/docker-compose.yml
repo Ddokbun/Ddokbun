@@ -10,7 +10,7 @@ services:
       MYSQL_USER: ddokbun
       MYSQL_PASSWORD: dd123
       MYSQL_ROOT_PASSWORD: dd123
-      TZ: Asiz/Seoul
+      TZ: Asia/Seoul
     command:
       - --character-set-server=utf8mb4
       - --collation-server=utf8mb4_unicode_ci

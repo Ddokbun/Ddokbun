@@ -6,19 +6,19 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class PictureresultResponse {
+public class ResultResponse {
     private Long plantSeq;
     private String plantName;
 
-    public static PictureresultResponse setPictureResultResponse(Plant plant){
-        PictureresultResponse pictureresultResponse = new PictureresultResponse();
+    public static ResultResponse setResultResponse(Plant plant){
+        ResultResponse pictureresultResponse = new ResultResponse();
         pictureresultResponse.plantSeq = plant.getPlantSeq();
         pictureresultResponse.plantName = plant.getPlantName();
         return  pictureresultResponse;
     }
 
-    public static PictureresultResponse setNullPictureResultResponse(){
-        PictureresultResponse pictureresultResponse = new PictureresultResponse();
+    public static ResultResponse setNullResultResponse(){
+        ResultResponse pictureresultResponse = new ResultResponse();
         pictureresultResponse.plantSeq = null;
         pictureresultResponse.plantName = null;
         return pictureresultResponse;
