@@ -91,8 +91,14 @@ public class GoogleService {
 
             return googleOAuthToken;
 
+<<<<<<< Updated upstream
         } catch (JsonProcessingException e) {
             e.printStackTrace();
+=======
+        } catch (JsonMappingException e) {
+            return null;
+        } catch ( JsonProcessingException e){
+>>>>>>> Stashed changes
             return null;
         }
     }
@@ -119,7 +125,6 @@ public class GoogleService {
         try {
             googleProfile = objectMapper.readValue(response2.getBody(),GoogleProfile.class);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
         }
 
         return googleProfile;

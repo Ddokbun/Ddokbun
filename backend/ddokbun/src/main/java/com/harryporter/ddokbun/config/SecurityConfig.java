@@ -69,17 +69,4 @@ public class SecurityConfig {
         return http.build();
     }
 
-    @Bean
-    public  CorsConfigurationSource corsConfigurationSource() {
-        CorsConfiguration config = new CorsConfiguration();
-        config.setAllowedOrigins(Arrays.asList("https://k7d208.p.ssafy.io","http://localhost:3000"));
-        config.addAllowedHeader("*");//헤더에 아무거나 넣어도 된다.
-        config.addAllowedMethod("*");//메소드 모두 허용한다.
-        config.setAllowCredentials(true);//쿠키 보내도 된다.
-
-        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-        source.registerCorsConfiguration("/**", config); //모든 요청 경로에 허용한다.
-        return source;
-    }
-
 }
