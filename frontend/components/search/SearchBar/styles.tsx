@@ -65,7 +65,6 @@ export const Wrapper = styled.div`
 
 export const ModalWapper = styled.div`
   padding: 0 30px;
-  background-color: #fafafa;
   margin: 5% auto;
   max-width: 1240px;
   width: 100%;
