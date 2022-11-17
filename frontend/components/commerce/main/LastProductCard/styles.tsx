@@ -4,6 +4,7 @@ export const Wrapper = styled.div`
   color: #000000;
   margin-bottom: 50px;
   h2 {
+    margin-left: 10px;
     font-size: 50px;
   }
   .img-wrap {
@@ -28,8 +29,22 @@ export const Wrapper = styled.div`
       }
       .card-compo {
         width: 100%;
-        height: 110px;
-        background-color: #eeeeee;
+        height: 42px;
+        background-color: ${props => props.theme.color.whiteGray};
+        display: flex;
+        justify-content: space-between;
+        h3 {
+          padding: 8px;
+          font-size: 18px;
+          font-family: ${props => props.theme.font.TitleFont};
+          color: ${props => props.theme.color.black};
+        }
+        h4 {
+          padding: 8px;
+          font-size: 17px;
+          font-family: ${props => props.theme.font.TitleFont};
+          color: #6e6e6e;
+        }
       }
       .img-03 {
         position: relative;
