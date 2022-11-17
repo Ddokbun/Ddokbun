@@ -53,7 +53,6 @@ const ProductCard: React.FC<{
           </motion.div>
           <div className="text-wrap">
             <div className="title">
-              <p>{item.itemEnName}</p>
               <h2>{item.itemName}</h2>
             </div>
             <h3>

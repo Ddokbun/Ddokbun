@@ -44,7 +44,7 @@ export const WrapperVar = {
       type: "spring",
       duration: 3,
       bounce: 0.5,
-      delayChildren: 0.3,
+      delayChildren: 1,
       staggerChildren: 0.5,
     },
   },
@@ -58,6 +58,9 @@ export const EleVar = {
   end: {
     opacity: 1,
     y: 0,
+    transition: {
+      duration: 0.5,
+    },
   },
 };
 
@@ -125,3 +128,4 @@ export const ManageHomeAni = {
     },
   },
 };
+

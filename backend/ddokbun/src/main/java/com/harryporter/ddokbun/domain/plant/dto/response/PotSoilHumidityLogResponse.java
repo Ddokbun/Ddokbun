@@ -12,7 +12,7 @@ public class PotSoilHumidityLogResponse {
 
     public static PotSoilHumidityLogResponse of(PotLog potLog){
         PotSoilHumidityLogResponse temp = new PotSoilHumidityLogResponse();
-        temp.soilHumidity = potLog.getTemperature();
+        temp.soilHumidity = potLog.getSoilHumidity();
         temp.createdTime = potLog.getCreatedTime().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss"));
 
         return temp;

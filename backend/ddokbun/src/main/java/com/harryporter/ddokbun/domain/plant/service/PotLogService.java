@@ -50,7 +50,7 @@ public class PotLogService {
             throw new GeneralException(ErrorCode.BAD_REQUEST);
         }
 
-        List<PotLog> potLogList = potLogRepository.findTop30ByPot_PotSerialOrderByCreatedTimeDesc(potSerial);
+        List<PotLog> potLogList = potLogRepository.findTop72ByPot_PotSerialOrderByCreatedTimeDesc(potSerial);
         log.info("화분 온도 로그를 받아오는데 성공했습니다.{}", potLogList);
         return potLogList.stream().map(PotTemperatureLogResponse::of).collect(Collectors.toList());
     }
@@ -67,7 +67,7 @@ public class PotLogService {
             throw new GeneralException(ErrorCode.BAD_REQUEST);
         }
 
-        List<PotLog> potLogList = potLogRepository.findTop30ByPot_PotSerialOrderByCreatedTimeDesc(potSerial);
+        List<PotLog> potLogList = potLogRepository.findTop72ByPot_PotSerialOrderByCreatedTimeDesc(potSerial);
         log.info("화분 광량 로그를 받아오는데 성공했습니다.{}", potLogList);
         return potLogList.stream().map(PotLightLogResponse::of).collect(Collectors.toList());
     }
@@ -87,7 +87,7 @@ public class PotLogService {
         }
         log.info("33");
 
-        List<PotLog> potLogList = potLogRepository.findTop30ByPot_PotSerialOrderByCreatedTimeDesc(potSerial);
+        List<PotLog> potLogList = potLogRepository.findTop72ByPot_PotSerialOrderByCreatedTimeDesc(potSerial);
         log.info("화분 습도 로그를 받아오는데 성공했습니다.{}", potLogList);
         return potLogList.stream().map(PotHumidityLogResponse::of).collect(Collectors.toList());
     }
@@ -104,7 +104,7 @@ public class PotLogService {
             throw new GeneralException(ErrorCode.BAD_REQUEST);
         }
 
-        List<PotLog> potLogList = potLogRepository.findTop30ByPot_PotSerialOrderByCreatedTimeDesc(potSerial);
+        List<PotLog> potLogList = potLogRepository.findTop72ByPot_PotSerialOrderByCreatedTimeDesc(potSerial);
         log.info("화분 토양습도 로그를 받아오는데 성공했습니다.{}", potLogList);
         return potLogList.stream().map(PotSoilHumidityLogResponse::of).collect(Collectors.toList());
     }

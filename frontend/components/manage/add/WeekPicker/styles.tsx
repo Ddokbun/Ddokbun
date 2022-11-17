@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   margin: auto;
 
   .month-container {
+    margin-top: 5%;
     display: flex;
     /* flex-direction: row; */
     color: #007aff;
@@ -18,12 +19,8 @@ export const Wrapper = styled.div`
   }
 
   .week {
-    margin: 5%;
     font-size: 24px;
-    width: 13px;
-  }
-
-  .button-container {
+    padding: 6% 6% 0;
   }
 
   .button {
@@ -37,7 +34,10 @@ export const Wrapper = styled.div`
   }
 
   .selected {
-    color: ${props => props.theme.color.mainGreen};
+    p {
+      color: ${props => props.theme.color.mainGreen};
+      border-bottom: 2px solid ${props => props.theme.color.mainGreen};
+    }
   }
 
   .today {
@@ -45,8 +45,8 @@ export const Wrapper = styled.div`
   }
 
   .day {
-    margin: 5%;
     font-size: 24px;
+    padding: 5%;
   }
 
   .day:hover {
@@ -59,11 +59,9 @@ export const Wrapper = styled.div`
 
     .week {
       font-size: 18px;
-      width: 24px;
     }
     .day {
       font-size: 18px;
-      width: 20px;
     }
   }
 `;

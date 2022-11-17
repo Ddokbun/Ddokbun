@@ -16,6 +16,8 @@ import "@fortawesome/fontawesome-svg-core/styles.css";
 import Head from "next/head";
 import firebase from "firebase";
 import { getToken, setToken } from "../apis/firebase";
+import type { AppContext } from "next/dist/pages/_app";
+import Footer from "../common/Footer/index";
 
 const firebaseConfig = {
   apiKey: "AIzaSyCwdWKZo4h03IqLGmInSPIsDtArvtIJzpA",
@@ -56,7 +58,7 @@ const MyApp = ({ Component, ...rest }: AppProps) => {
         console.log(token, "토큰토큰");
       }
     };
-    getMessageToken();
+    // getMessageToken();
   }, []);
 
   const { store, props } = wrapper.useWrappedStore(rest);
@@ -81,6 +83,7 @@ const MyApp = ({ Component, ...rest }: AppProps) => {
             {!isOnboarding && !isAdmin && <Navbar />}
             <GlobalStyle />
             <Component {...props.pageProps} />
+            <Footer />
           </ThemeProvider>
         </PersistGate>
       </Provider>

@@ -25,7 +25,7 @@ export const ResponsiveWrapper = styled(motion.div)`
   .text-wrap {
     background-color: #f7f7f7;
     z-index: 1;
-    padding: 15px 10px;
+    padding: 5px 10px;
     width: 100%;
     height: 100%;
     gap: 5px;
@@ -45,7 +45,7 @@ export const ResponsiveWrapper = styled(motion.div)`
     }
     h3 {
       font-family: ${props => props.theme.font.EnglishFont};
-      font-size: 15px;
+      font-size: 18px;
       word-break: keep-all;
       width: 80px;
       text-align: right;
@@ -65,7 +65,7 @@ export const ResponsiveWrapper = styled(motion.div)`
     position: relative;
 
     .text-wrap {
-      padding: 20px 10px;
+      padding: 5px 10px;
       position: relative;
       gap: 5px;
       display: flex;
