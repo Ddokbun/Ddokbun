@@ -1,7 +1,7 @@
 import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
-import { fetchCurrentStatus, watering } from "../../../../apis/manage";
+import { watering } from "../../../../apis/manage";
 import DigitalTwin from "../../../../components/manage/DigitalTwin";
 import {
   LeftSection,
@@ -13,12 +13,8 @@ import { manageActions } from "../../../../store/manage";
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../store";
-import { getDateDiff } from "../../../../utils/getDateDiff";
 import Image from "next/image";
-import {
-  checkAuthentication,
-  checkMyPot,
-} from "../../../../utils/protectedRouter";
+import { checkMyPot } from "../../../../utils/protectedRouter";
 import TabContents from "../../../../components/manage/TabContents";
 
 export interface LogsType {
@@ -26,8 +22,8 @@ export interface LogsType {
 }
 
 export interface currentStatus {
-  plantEnName: ReactNode;
-  plantName: ReactNode;
+  plantEnName: string;
+  plantName: string;
   growHumid: string;
   humidity: number;
   isAuto: string;
@@ -47,15 +43,13 @@ interface Props {
 }
 
 const PlantCare: NextPage<Props> = ({ data }) => {
-  console.log(data);
-
   const { potseq } = useRouter().query;
   const [tab, setTab] = useState(0);
 
   const plantNickname = useSelector(
     (state: RootState) => state.manage.plantNickname,
   );
-
+  const dispatch = useDispatch();
   const [plantStatus, setPlantStatus] = useState(data);
   const onWateringHandler = async () => {
     const res = await watering(potseq!);
@@ -71,12 +65,7 @@ const PlantCare: NextPage<Props> = ({ data }) => {
     setTab(index);
   };
 
-  const dispatch = useDispatch();
   useEffect(() => {
-    if (!potseq) {
-      return;
-    }
-
     const getInitialData = async () => {
       const request = await Notification.requestPermission();
       if (!request) {
@@ -111,13 +100,13 @@ const PlantCare: NextPage<Props> = ({ data }) => {
           <div className="pointer-container">
             <p
               className={!tab ? "selected" : ""}
-              onClick={onChangeTabHandler.bind(this, 0)}
+              onClick={() => onChangeTabHandler(0)}
             >
               정보 보기
             </p>
             <p
               className={tab ? "selected" : ""}
-              onClick={onChangeTabHandler.bind(this, 1)}
+              onClick={() => onChangeTabHandler(1)}
             >
               기록 보기
             </p>
@@ -149,4 +138,3 @@ export const getServerSideProps: GetServerSideProps = async ({
     };
   }
 };
-// };

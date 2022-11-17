@@ -22,7 +22,6 @@ const WeekPicker: FC<Props> = ({ setWateringLogs }) => {
   const [currentWeek, setCurrentWeek] = useState(getWeek(currentMonth));
   const [selectedDate, setSelectedDate] = useState(new Date());
   const { potseq } = useRouter().query;
-  console.log(selectedDate, "selectedDate");
 
   useEffect(() => {
     if (!selectedDate || !potseq) {
@@ -36,7 +35,6 @@ const WeekPicker: FC<Props> = ({ setWateringLogs }) => {
       const logs = dataList.filter(
         item => item[0] === year && item[1] === month && item[2] === date,
       );
-      console.log(dataList, logs);
 
       if (logs.length) {
         setWateringLogs(`${year}년 ${month}월 ${date}일에 물을 주었네요`);

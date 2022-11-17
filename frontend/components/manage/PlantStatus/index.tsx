@@ -63,7 +63,6 @@ const PlantStatus = () => {
     }
     const getInitialData = async () => {
       const logDatas: LogsType[] = await fetchLogs(logTitle, potseq);
-      console.log(logDatas);
 
       const getLogDatas: string[] = logDatas?.map(logData => {
         return logData[plantStatus[activeIndex].params];
