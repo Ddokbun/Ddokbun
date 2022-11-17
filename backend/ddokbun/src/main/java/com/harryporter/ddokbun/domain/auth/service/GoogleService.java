@@ -1,6 +1,7 @@
 package com.harryporter.ddokbun.domain.auth.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.harryporter.ddokbun.domain.auth.dto.*;
 import com.harryporter.ddokbun.domain.user.dto.UserDto;
@@ -91,14 +92,9 @@ public class GoogleService {
 
             return googleOAuthToken;
 
-<<<<<<< Updated upstream
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
-=======
         } catch (JsonMappingException e) {
             return null;
         } catch ( JsonProcessingException e){
->>>>>>> Stashed changes
             return null;
         }
     }

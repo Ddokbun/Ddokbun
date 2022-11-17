@@ -1,6 +1,7 @@
 package com.harryporter.ddokbun.domain.auth.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.harryporter.ddokbun.domain.auth.dto.KakaoAccessToken;
 import com.harryporter.ddokbun.domain.auth.dto.KakaoProfile;
@@ -122,10 +123,9 @@ public class KakaoService {
         KakaoProfile kakaoProfile = null;
         try {
             kakaoProfile = objectMapper.readValue(response2.getBody(),KakaoProfile.class);
-<<<<<<< Updated upstream
-=======
+
         } catch (JsonMappingException e) {
->>>>>>> Stashed changes
+
         } catch (JsonProcessingException e) {
         }
 
