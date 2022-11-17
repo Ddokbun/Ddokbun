@@ -1,9 +1,12 @@
 import type { NextPage } from "next";
-import React, { useEffect } from "react";
+import { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useDispatch } from "react-redux";
-import { ent } from "../../../store/auth";
+import { authActions } from "../../../store/auth";
 import { Googlelogin } from "../../../apis/auth";
+import Spinner from "../../../common/Spinner";
+import { setCookie } from "cookies-next";
+import AXIOS from "../../../apis";
 
 const Home: NextPage = () => {
   const router = useRouter();
@@ -11,13 +14,25 @@ const Home: NextPage = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    Googlelogin(login_code);
+    const login = async () => {
+      const res = await Googlelogin(login_code);
+      if (res?.code === 200) {
+        const accessToken = res.content.jwtToken;
+        const { userSeq } = res.content;
+        setCookie("token", accessToken);
+        AXIOS.defaults.headers.common["Authorization"] = `${accessToken}`;
+        dispatch(authActions.setUserInfo({ accessToken, userSeq }));
+        router.push(`/manage/${userSeq}`);
+      }
+    };
+
+    login();
   }, [login_code]);
 
   return (
     <div>
       <main>
-        <h1>구글 로그인 하는 중</h1>
+        <Spinner />
       </main>
     </div>
   );

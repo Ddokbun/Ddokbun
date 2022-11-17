@@ -1,9 +1,9 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background-color: ${props => props.theme.color.brown};
-  color: white;
-  margin-bottom: 10px;
+  background-color: ${props => props.theme.color.darkGray};
+  color: #262626;
+  margin-bottom: 50px;
   .pot-img {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -21,7 +21,7 @@ export const Wrapper = styled.div`
     .font-wrap {
       padding: 30px;
       h2 {
-        font-size: 50px;
+        font-size: 40px;
         margin: 20px;
         font-family: ${props => props.theme.font.TextFont2};
       }
@@ -47,13 +47,15 @@ export const Wrapper = styled.div`
       text-align: center;
       width: 250px;
       height: 50px;
-      border-width: 2px;
+      border: 1px solid #262626;
+
       :hover {
         cursor: pointer;
       }
     }
   }
   @media screen and (max-width: 600px) {
+    color: white;
     .pot-img {
       display: flex;
       justify-content: center;
@@ -67,31 +69,33 @@ export const Wrapper = styled.div`
     }
     .pot-img-front {
       position: relative;
-      width: 500px;
+      width: 100%;
       height: 500px;
     }
     .pot-img-back {
       position: absolute;
-      width: 500px;
+      width: 100%;
       height: 500px;
       display: flex;
       align-items: flex-end;
-      justify-content: flex-start;
       background: linear-gradient(
         21deg,
         rgba(25, 25, 25, 1) 0%,
-        rgba(0, 212, 255, 0) 100%
+        rgba(0, 212, 255, 0) 60%
       );
       .font-wrap {
-        padding: 30px;
+        padding: 1px;
         h2 {
-          font-size: 50px;
+          font-size: 35px;
+          margin: 2px;
         }
         h3 {
-          font-size: 30px;
+          font-size: 25px;
+          margin: 0px 0px 25px 0px;
         }
         h4 {
-          font-size: 18px;
+          font-size: 15px;
+          margin: 0px 0px 20px 0px;
         }
       }
       .button {

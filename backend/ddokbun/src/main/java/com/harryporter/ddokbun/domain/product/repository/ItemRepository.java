@@ -42,4 +42,7 @@ public interface ItemRepository extends JpaRepository<Item,Long> {
     List<Item> findAllBy(Pageable pageable);
 
     Optional<Item> findByPlant(Plant plant);
+
+
+    List<Item> findTop10ByOrderByViewCountDesc();
 }

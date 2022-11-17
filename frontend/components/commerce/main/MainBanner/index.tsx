@@ -7,22 +7,23 @@ const MainBanner = () => {
   return (
     <Wrapper>
       <div className="wrap">
-        <h2>Commerce</h2>
-        <div className="button-wrap">
-          <Link href={"commerce/survey"}>
-            <button>Survey</button>
-          </Link>
-
-          <button>View all</button>
+        <div className="img-wrap">
+          <Image
+            src={MainImg}
+            alt="커머스 메인 배너 이미지 입니다."
+            layout="fill"
+            objectFit="cover"
+          />
+          <div className="wrap-front">
+            <h2>Commerce</h2>
+            <div className="button-wrap">
+              <Link href={"commerce/survey"}>
+                <button>Survey</button>
+              </Link>
+              <button>View all</button>
+            </div>
+          </div>
         </div>
-      </div>
-      <div className="img-wrap">
-        <Image
-          src={MainImg}
-          alt="커머스 메인 배너 이미지 입니다."
-          layout="fill"
-          objectFit="contain"
-        />
       </div>
     </Wrapper>
   );

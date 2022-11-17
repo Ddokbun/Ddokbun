@@ -145,6 +145,7 @@ export const postKakaoPay = async (
   partner_user_id: string,
   total_amount: number,
   item_name: string,
+  isMobile: boolean,
 ) => {
   const route = Router;
   const url = "https://kapi.kakao.com/v1/payment/ready";
@@ -157,9 +158,9 @@ export const postKakaoPay = async (
     total_amount,
     vat_amount: 200,
     tax_free_amount: 0,
-    approval_url: "http://localhost:3000/commerce/order/complete",
-    fail_url: "http://localhost:3000/commerce/order/cancled",
-    cancel_url: "http://localhost:3000/commerce/order/cancled",
+    approval_url: "https://ddokbun.com/commerce/order/complete",
+    fail_url: "https://ddokbun.com/commerce/order/cancled",
+    cancel_url: "https://ddokbun.com/commerce/order/cancled",
   };
 
   try {
@@ -167,7 +168,7 @@ export const postKakaoPay = async (
       url,
       method: "POST",
       headers: {
-        Authorization: "KakaoAK 46b639c2f7c3f7a7cff1606b75f90b83",
+        Authorization: `KakaoAK ${process.env.NEXT_PUBLIC_KAKAO_PAY}`,
         "Content-Type": "application/x-www-form-urlencoded;charset=utf-8",
       },
       params,
@@ -175,7 +176,11 @@ export const postKakaoPay = async (
     console.log(res.data);
     setCookie("tid", res.data.tid);
 
-    await route.push(res.data.next_redirect_pc_url);
+    if (isMobile === true) {
+      await route.push(res.data.next_redirect_mobile_url);
+    } else {
+      await route.push(res.data.next_redirect_pc_url);
+    }
 
     return res.data;
   } catch (error) {
@@ -431,7 +436,7 @@ export const fetchSurveyComplete = async (answerList: number[]) => {
       url,
       method: "POST",
       data: {
-        answerList: [1, 1, 1, 1],
+        answerList,
       },
     });
     return data.content;

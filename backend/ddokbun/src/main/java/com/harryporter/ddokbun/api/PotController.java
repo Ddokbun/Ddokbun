@@ -100,9 +100,12 @@ public class PotController {
 
     @ApiOperation(value = "수동 물주기")
     @RequestMapping(value = "/{potSeq}/water", method = RequestMethod.POST)
-    public ResponseEntity<?> potWaterApply(@PathVariable("potSeq") String potSeq, @ApiIgnore @AuthenticationPrincipal UserDto principal) {
+    public ResponseEntity<?> potWaterApply(@PathVariable("potSeq") String potSeq,@RequestParam(value = "value",required = false) Integer value, @ApiIgnore @AuthenticationPrincipal UserDto principal) {
         log.info("화분 수동 물주기 컨트롤러 진입 :: 화분시리얼 {}", potSeq);
-        potService.applyWater(potSeq, principal.getUserSeq());
+        if ( value == null){
+            value = 50;
+        }
+        potService.applyWater(potSeq, value,principal.getUserSeq());
 
         log.info("화분 수동 물주기 완료 :: 물준 일자 : {}", LocalDate.now());
         ResponseFrame<?> responseFrame = ResponseFrame.ofOKResponse("화분에 물을 주는데 성공했습니다.", null);

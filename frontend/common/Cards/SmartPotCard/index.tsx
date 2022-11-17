@@ -12,7 +12,12 @@ const SmartPotCard: React.FC<SmartPotProps> = ({ price }) => {
     <Wrapper>
       <h2>Smart Flower Pot</h2>
       <div className="img-wrap">
-        <Image src={Temp} alt="임시 스마트화분 이미지입니다" />
+        <Image
+          layout="fill"
+          objectFit="contain"
+          src={Temp}
+          alt="임시 스마트화분 이미지입니다"
+        />
       </div>
       <h4>Premium Smart Flower Pot</h4>
       <p>₩ {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</p>

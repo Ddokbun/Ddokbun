@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   background-color: ${props => props.theme.color.black};
   color: white;
   padding: 60px;
-  margin-bottom: 10px;
+  margin-bottom: 50px;
   .font-wrap {
     display: flex;
     justify-content: center;

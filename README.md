@@ -72,79 +72,244 @@
 - [와이어프레임]()
 - [포팅 매뉴얼]()
 <br>   
+
+
+
+ ## ✔️ 주요 기능
+
+- **기능 1111**
+
+ 
+<br>
+
+- **기능 2222**
+
+<br>
+
+- **기능 3333**
+
+<br>
+
+
+- **기능 4444**
+
+
+
+<br><br>
      
 
 ## 🖇️ 아키텍처
 
-<img src="/uploads/055a53f56c83bd6436ed7dd3aa7002bd/Group_247.png"  width="600">
+<img src="/uploads/055a53f56c83bd6436ed7dd3aa7002bd/Group_247.png"  width="800">
      
 <br>   <br>
 
 ## 🖇️ 기술 스택
 
-<img src="/uploads/e72d7d98039cddad56c97c34a6ad1276/Ddokbun_기술스택.png"  width="600">
+<img src="/uploads/e6c2f46f098268cb37eb262d3a12d7b9/Ddokbun_기술스택.png"  width="800">
 
 <br>   <br>
 
 ## 🖇️ 개발 환경
 
+<br>
+
+- FrontEnd
+   - 건녕님이 고칠거에요
+   - 건녕님이 수정할거에요요
+
+
 - BackEnd
-
-   - Spring Boot 2.7.2
+   - Spring Boot 2.7.5
    - Spring Data JPA
-   - Spring Validation
+   - Spring Security
    - Java 11
-   - QueryDSL 5.0
-   - Lombok 1.18.24
-   - Firebase 8.x
-   - Gradle 7.4.x
-   - Swagger 3.x
+   - QueryDSL
+   - Firebase
+   - Redis
+   - Kafka
+   - MySQL
+   - Spark
+   - Yarn
+   - YOLO v5
+   - Scikit Learn
+   - Pytorch
 
-- DB
-
-   - MySQL 8.0.29 
+- IoT
+   - Rasbian
 
 - CI/CD
-
    - AWS EC2
    - Docker
    - Jenkins
+   - nginx
+   - certbot
 
 - IDE
+   - VS Code
    - IntelliJ
    - MySQL Workbench 8.0
 
+<br><br>
+
+## ✔ 프로젝트 파일 구조
+
+
+### Frontend
+
+```
+frontend
+  ├── apis
+  ├── assets
+  │    ├── commerce
+  │    ├── fonts
+  │    ├── icon
+  │    └── onboarding
+  ├── common
+  │    ├── Button
+  │    ├── Cards
+  │    ├── Carousel
+  │    ├── DatePick
+  │    ├── Dot
+  │    ├── GetPostsModal
+  │    ├── Graph
+  │    ├── Input
+  │    ├── Labels
+  │    ├── Login
+  │    ├── Modal
+  │    ├── NavCard
+  │    ├── Navbar
+  │    ├── PageTitle
+  │    └── Spinner
+  ├── components 
+  │    ├── Flower
+  │    ├── admin
+  │    ├── commerce
+  │    ├── manage
+  │    ├── mypage
+  │    ├── search
+  │    └── welcome
+  ├── pages
+  │    ├── admin
+  │    ├── commerce
+  │    ├── login
+  │    ├── manage
+  │    ├── manage/[userseq]
+  │    ├── search
+  │    ├── test
+  │    └── welcome
+  ├── public
+  │    ├── icons
+  │    └── models
+  ├── store  
+  ├── styles
+  │    ├── animations
+  │    ├── commerce
+  │    ├── manage
+  │    ├── manage/[userseq]
+  │    ├── search
+  │    ├── temp
+  │    └── welcome
+  ├── types
+  │    ├── admin
+  │    ├── commerce
+  │    └── search
+  └── utils
+
+
+```
+
+### Backend
+
+```
+backend
+  ├── ddokbun-batch
+  │   ├── conf
+  │   └── run
+  ├── ddokbun
+  │   ├── api
+  │   ├── config
+  │   ├── domain
+  │   │   ├── ai
+  │   │   │   ├── dto
+  │   │   │   └── service
+  │   │   ├── alarm
+  │   │   │   ├── dto
+  │   │   │   ├── entity
+  │   │   │   ├── repository
+  │   │   │   ├── res
+  │   │   │   └── service
+  │   │   ├── auth
+  │   │   │   ├── dto
+  │   │   │   └── service
+  │   │   ├── cart
+  │   │   │   ├── dto
+  │   │   │   ├── entity
+  │   │   │   ├── repository
+  │   │   │   └── service
+  │   │   ├── order
+  │   │   │   ├── dto
+  │   │   │   ├── entity
+  │   │   │   ├── repository
+  │   │   │   └── service
+  │   │   ├── plant
+  │   │   │   ├── dto
+  │   │   │   ├── entity
+  │   │   │   ├── repository
+  │   │   │   └── service
+  │   │   ├── product
+  │   │   │   ├── dto
+  │   │   │   ├── entity
+  │   │   │   ├── repository
+  │   │   │   └── service
+  │   │   ├── s3
+  │   │   │   ├── dto
+  │   │   │   └── service
+  │   │   ├── survey
+  │   │   │   ├── dto
+  │   │   │   ├── entity
+  │   │   │   ├── repository
+  │   │   │   └── service
+  │   │   └── user
+  │   │   │   ├── dto
+  │   │   │   ├── entity
+  │   │   │   ├── repository
+  │   │   │   └── service
+  │   ├── exception
+  │   ├── schedule
+  │   └── utils
+  │       ├── auth
+  │       ├── fcm
+  │       └── string
+  └── ddokbun_consumer
+      ├── env
+      └── config
+```
+
+### IoT
+
+```
+iot
+  ├── arduino
+  └── raspberry
+```
+
+<br>
 <br>
 
- 
-        
-
- ## ✔️ 주요 기능
-
-- **1111**
-
- 
-
-
-- **222**
 
 
 
-- **333**
+ ## ✔️ 서비스 화면
+
+<br>
+
+> GIF 도배하기
 
 
+> GIF 도배하기
 
+> GIF 도배하기
 
-- **444**
-
-
-
-</br></br>
-
- ## ✔️ 서비스 
-
-</br>
-
-> **111** - 111111111
-
+> GIF 도배하기
 
