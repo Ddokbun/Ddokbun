@@ -37,7 +37,6 @@ public class WaterApplyUtil {
           return true;
 
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
             return false;
         }
 

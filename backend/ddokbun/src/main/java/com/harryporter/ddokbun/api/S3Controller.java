@@ -62,14 +62,12 @@ public class S3Controller {
             os.flush();
         } catch (IOException e) {
             log.info("스트림 전송 중 에러");
-            e.printStackTrace();
         }finally {
 
             try {
                 bis.close();
                 s3od.close();
             } catch (Exception e) {
-                e.printStackTrace();
             }
 
             log.info("성공적 스트림 반환 :: 길이 : {}",size);
