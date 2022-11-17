@@ -140,7 +140,7 @@ const OrderFormComponent: React.FC<OrderProps> = props => {
           <p className="error">{props.mailError}</p>
         </div>
         <div className="address">
-          <label htmlFor="name">주소</label>
+          <label htmlFor="address">주소</label>
           <div className="address-grid">
             <input
               className="nofocus"

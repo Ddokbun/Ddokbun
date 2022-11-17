@@ -28,6 +28,7 @@ export const Wrapper = styled.div`
     color: ${props => props.theme.color.red};
   }
   .flex-form {
+    height: 100%;
     padding: 10px 30px;
 
     width: 100%;
@@ -99,7 +100,7 @@ export const Wrapper = styled.div`
     white-space: nowrap;
   }
 
-  @media screen and (max-width: 900px) {
+  @media screen and (max-width: 600px) {
     width: 100%;
 
     .flex-form {
