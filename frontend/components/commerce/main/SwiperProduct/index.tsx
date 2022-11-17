@@ -9,6 +9,7 @@ import "swiper/css/navigation";
 import SwiperItem from "./SwiperItem";
 
 const SwiperProduct: React.FC<{ data: MainPlant }> = ({ data }) => {
+  console.log(data);
   return (
     <Wrapper>
       <h2>Best Sellers</h2>

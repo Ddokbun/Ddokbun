@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
     background: linear-gradient(
       21deg,
       rgba(25, 25, 25, 1) 0%,
-      rgba(0, 212, 255, 0) 60%
+      rgba(0, 212, 255, 0) 50%
     );
     display: flex;
     align-items: flex-end;
