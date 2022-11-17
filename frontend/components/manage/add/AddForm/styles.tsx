@@ -56,9 +56,9 @@ export const Wrapper = styled(motion.form)`
 
   @media screen and (max-width: 600px) {
     .grid {
-      grid-template-columns: repeat(1, 90%);
-      justify-content: center;
-      margin: auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
     .button-container {
@@ -66,6 +66,10 @@ export const Wrapper = styled(motion.form)`
 
       display: flex;
       justify-content: space-between;
+    }
+    .calander-container {
+      width: 100%;
+      margin-bottom: 5%;
     }
   }
 `;

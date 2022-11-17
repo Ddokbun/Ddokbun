@@ -15,4 +15,7 @@ export const DatePickerWrapper = styled(ReactDatePicker)`
   border-bottom: 1px solid;
   border-bottom-color: ${props => props.theme.color.ivory};
   background-color: #fafafa;
+  @media screen and (max-width: 600px) {
+    font-size: 14px;
+  }
 `;

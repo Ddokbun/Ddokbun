@@ -58,6 +58,7 @@ export const RightSection = styled(motion.section)`
   .image-container {
     display: flex;
     justify-content: space-between;
+    margin: 3% 0% 0% 3%;
   }
 
   .text-container {

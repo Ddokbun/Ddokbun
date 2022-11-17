@@ -8,7 +8,7 @@ const addPlant = () => {
   return (
     <Wrapper variants={ManageHomeAni} initial="out" animate="in" exit="out">
       <PageTitle isLink={false} mypage={false}>
-        <h1>나의 식물 등록</h1>
+        <h1>Register</h1>
       </PageTitle>
       <AddForm />
     </Wrapper>
