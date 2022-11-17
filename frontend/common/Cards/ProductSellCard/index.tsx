@@ -16,7 +16,6 @@ interface SellItemObject extends ItemObject {
 }
 
 const ProductSellCard: React.FC<SellItemObject> = props => {
-  console.log(props);
   const data = {
     itemSeq: props.itemSeq,
     itemName: props.itemName,
