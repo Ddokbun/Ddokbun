@@ -87,6 +87,7 @@ export const fetchCurrentStatus = async (
   } catch (error) {
     const err = error as AxiosError;
     console.log(err.response);
+    return err.response?.status
   }
 };
 

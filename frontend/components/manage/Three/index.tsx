@@ -29,10 +29,10 @@ const Three: FC<Props> = ({ isAnimated }) => {
       {/* 카메라 */}
       <PerspectiveCamera makeDefault position={[2, 7, 8.5]} />
       <OrbitControls
-        enableZoom={false}
-        // ref={orbitControlsRef}
-        // minPolarAngle={angleToRadians(50)}
-        // maxPolarAngle={angleToRadians(80)}
+      enableZoom={false}
+      // ref={orbitControlsRef}
+      // minPolarAngle={angleToRadians(50)}
+      // maxPolarAngle={angleToRadians(80)}
       />
       {/* 모델 */}
       <Flower isAnimated={isAnimated} />

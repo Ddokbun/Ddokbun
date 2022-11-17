@@ -38,7 +38,7 @@ const PlantInfo: FC<Props> = ({ plantStatus }) => {
     },
     {
       src: soilhumidity,
-      grow: `적정 물주기는 ${plantStatus.waterCycle}일`,
+      grow: `적정 물주기는 ${plantStatus.waterCycle}일이예요.`,
       current: `${currentStatus.soilhumid}`,
     },
   ];
@@ -77,7 +77,7 @@ const PlantInfo: FC<Props> = ({ plantStatus }) => {
     } else {
       soilhumid = `${waterSupply}일에 물을 줬으니, ${
         Math.round(wateringDateDiff) * -1
-      }일 후에 물을 주면 되요. 😊`;
+      }일 후에 물을 주면 돼요.😊`;
     }
 
     setCurrentStatus({ light, humid, temp, soilhumid });

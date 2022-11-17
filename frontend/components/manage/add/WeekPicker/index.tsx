@@ -14,11 +14,10 @@ import { fetchWateringLogs } from "../../../../apis/manage";
 import { useRouter } from "next/router";
 
 interface Props {
-  showDetailHandler: Dispatch<SetStateAction<boolean>>;
   setWateringLogs: Dispatch<SetStateAction<string>>;
 }
 
-const WeekPicker: FC<Props> = ({ showDetailHandler, setWateringLogs }) => {
+const WeekPicker: FC<Props> = ({ setWateringLogs }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [currentWeek, setCurrentWeek] = useState(getWeek(currentMonth));
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -61,7 +60,6 @@ const WeekPicker: FC<Props> = ({ showDetailHandler, setWateringLogs }) => {
 
   const onDateClickHandle = (day: Date, dayStr: any) => {
     setSelectedDate(day);
-    showDetailHandler(dayStr);
   };
 
   const renderHeader = () => {
@@ -111,13 +109,7 @@ const WeekPicker: FC<Props> = ({ showDetailHandler, setWateringLogs }) => {
         days.push(
           <div
             key={day.toString()}
-            className={`day ${
-              isSameDay(day, new Date())
-                ? "today"
-                : isSameDay(day, selectedDate)
-                ? "selected"
-                : ""
-            }`}
+            className={`day ${isSameDay(day, selectedDate) ? "selected" : ""}`}
             onClick={() => {
               const dayStr = format(cloneDay, "ccc dd MMM yy");
               onDateClickHandle(cloneDay, dayStr);

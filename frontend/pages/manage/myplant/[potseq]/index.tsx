@@ -2,10 +2,7 @@ import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { fetchCurrentStatus, watering } from "../../../../apis/manage";
-import SimpleGraph from "../../../../common/Graph/SimpleGraph";
-import WeekPicker from "../../../../components/manage/add/WeekPicker";
 import DigitalTwin from "../../../../components/manage/DigitalTwin";
-import PlantStatus from "../../../../components/manage/PlantStatus";
 import {
   LeftSection,
   RightSection,
@@ -16,16 +13,21 @@ import { manageActions } from "../../../../store/manage";
 import Swal from "sweetalert2";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../store";
-import PlantInfo from "../../../../components/manage/PlantInfo";
 import { getDateDiff } from "../../../../utils/getDateDiff";
 import Image from "next/image";
-import { checkAuthentication } from "../../../../utils/protectedRouter";
+import {
+  checkAuthentication,
+  checkMyPot,
+} from "../../../../utils/protectedRouter";
+import TabContents from "../../../../components/manage/TabContents";
 
 export interface LogsType {
   [name: string]: string;
 }
 
 export interface currentStatus {
+  plantEnName: ReactNode;
+  plantName: ReactNode;
   growHumid: string;
   humidity: number;
   isAuto: string;
@@ -40,35 +42,21 @@ export interface currentStatus {
   waterSupply: number[];
 }
 
-const PlantCare: NextPage = () => {
-  const showDetailHandler = () => {
-    return;
-  };
+interface Props {
+  data: currentStatus;
+}
+
+const PlantCare: NextPage<Props> = ({ data }) => {
+  console.log(data);
 
   const { potseq } = useRouter().query;
-  const [wateringLogs, setWateringLogs] = useState("");
+  const [tab, setTab] = useState(0);
 
   const plantNickname = useSelector(
     (state: RootState) => state.manage.plantNickname,
   );
 
-  const [plantStatus, setPlantStatus] = useState({
-    growHumid: "",
-    humidity: 0,
-    isAuto: "",
-    light: 0,
-    lightType: 0,
-    maxTemperature: 0,
-    minTemperature: 0,
-    soilHumidity: 0,
-    temperature: 0,
-    waterCycle: 0,
-    waterHeight: 0,
-    waterSupply: [],
-    plantSeq: 0,
-    plantName: "",
-    plantEnName: "",
-  });
+  const [plantStatus, setPlantStatus] = useState(data);
   const onWateringHandler = async () => {
     const res = await watering(potseq!);
 
@@ -77,6 +65,10 @@ const PlantCare: NextPage = () => {
         Swal.fire("물 주기가 완료되었어요");
       }, 7000);
     }
+  };
+
+  const onChangeTabHandler = (index: number) => {
+    setTab(index);
   };
 
   const dispatch = useDispatch();
@@ -90,11 +82,7 @@ const PlantCare: NextPage = () => {
       if (!request) {
         alert("물 주기 알림을 받으시려면 알림 설정을 허용해주세요");
       }
-      const res = await fetchCurrentStatus(potseq);
-      console.log(res, "현재상태");
-      setPlantStatus(res);
-      dispatch(manageActions.setPlantInfo(res));
-      console.log(getDateDiff(res.waterSupply.join("-")));
+      dispatch(manageActions.setPlantInfo(data));
     };
     getInitialData();
   }, [potseq]);
@@ -102,11 +90,11 @@ const PlantCare: NextPage = () => {
   return (
     <Wrapper>
       <LeftSection>
+        <h2>{plantNickname}</h2>
         <DigitalTwin
-          light={plantStatus.light}
+          light={plantStatus?.light}
           onWateringHandler={onWateringHandler}
         />
-        <PlantStatus />
       </LeftSection>
       <RightSection>
         <div className="image-container">
@@ -116,16 +104,26 @@ const PlantCare: NextPage = () => {
             width={"100%"}
             height={"100%"}
           />
+          <div className="text-container">
+            <h3>{plantStatus.plantName}</h3>
+            <p>{plantStatus.plantEnName}</p>
+          </div>
+          <div className="pointer-container">
+            <p
+              className={!tab ? "selected" : ""}
+              onClick={onChangeTabHandler.bind(this, 0)}
+            >
+              정보 보기
+            </p>
+            <p
+              className={tab ? "selected" : ""}
+              onClick={onChangeTabHandler.bind(this, 1)}
+            >
+              기록 보기
+            </p>
+          </div>
         </div>
-        <h2>{plantNickname}</h2>
-        <h3>{plantStatus.plantName}</h3>
-        <p>{plantStatus.plantEnName}</p>
-        <PlantInfo plantStatus={plantStatus} />
-        <WeekPicker
-          showDetailHandler={showDetailHandler}
-          setWateringLogs={setWateringLogs}
-        />
-        <p className="logs">{wateringLogs !== "" && wateringLogs}</p>
+        <TabContents tab={tab} plantStatus={plantStatus} />
       </RightSection>
     </Wrapper>
   );
@@ -138,19 +136,17 @@ export const getServerSideProps: GetServerSideProps = async ({
   req,
   res,
 }) => {
-  const isAuthenticated = await checkAuthentication(query, req, res);
-  console.log(isAuthenticated);
+  const plantStatusOrNotMyPot = await checkMyPot(query, req, res);
 
-  if (isAuthenticated) {
+  if (plantStatusOrNotMyPot) {
     return {
-      props: {},
+      props: { data: plantStatusOrNotMyPot },
     };
   } else {
     return {
-      redirect: {
-        destination: "/commerce",
-      },
+      redirect: "/commerce",
       props: {},
     };
   }
 };
+// };
