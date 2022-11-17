@@ -37,9 +37,9 @@ public class AlarmService {
 
         User user =   userRepository.findById(principal.getUserSeq()).orElseThrow(()->new GeneralException(ErrorCode.NOT_FOUND));
         String before = user.getAlarmToken();
-        if(token.compareTo(token) != 0){
+        if(before == null || token.compareTo(before) != 0){
             user.changeAlarmToken(token);
-            fcmService.sendMessage(getFcmMessage(token,"알림 설정",String.format("%s님 환영합니다.")));
+            fcmService.sendMessage(getFcmMessage(token,"알림 설정",String.format("%s님 환영합니다.",user.getUserNickname())));
         }
     }
 

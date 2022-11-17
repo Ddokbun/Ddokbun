@@ -13,39 +13,39 @@ import { useRouter } from "next/router";
 export interface LogsType {
   [name: string]: string;
 }
+const plantStatus = [
+  {
+    statusCode: 0,
+    src: temperature.src,
+    title: "온도",
+    logTitle: "temperature",
+    params: "temperature",
+  },
+  {
+    statusCode: 1,
+    src: illuminance.src,
+    title: "조도",
+    logTitle: "light",
+    params: "light",
+  },
+  {
+    statusCode: 2,
+    src: humidity.src,
+    title: "습도",
+    logTitle: "humid",
+    params: "humidity",
+  },
+  {
+    statusCode: 3,
+    src: soil.src,
+    title: "토양습도",
+    logTitle: "soil-humid",
+    params: "soilHumidity",
+  },
+];
+
 const PlantStatus = () => {
   const [activeIndex, setActiveIndex] = useState(0);
-
-  const plantStatus = [
-    {
-      statusCode: 0,
-      src: temperature.src,
-      title: "온도",
-      logTitle: "temperature",
-      params: "temperature",
-    },
-    {
-      statusCode: 1,
-      src: illuminance.src,
-      title: "조도",
-      logTitle: "light",
-      params: "light",
-    },
-    {
-      statusCode: 2,
-      src: humidity.src,
-      title: "습도",
-      logTitle: "humid",
-      params: "humidity",
-    },
-    {
-      statusCode: 3,
-      src: soil.src,
-      title: "토양습도",
-      logTitle: "soil-humid",
-      params: "soilHumidity",
-    },
-  ];
 
   const [logTitle, setLogTitle] = useState(plantStatus[activeIndex].logTitle);
   const [logs, setLogs] = useState<string[]>();
@@ -63,7 +63,6 @@ const PlantStatus = () => {
     }
     const getInitialData = async () => {
       const logDatas: LogsType[] = await fetchLogs(logTitle, potseq);
-      console.log(logDatas);
 
       const getLogDatas: string[] = logDatas?.map(logData => {
         return logData[plantStatus[activeIndex].params];

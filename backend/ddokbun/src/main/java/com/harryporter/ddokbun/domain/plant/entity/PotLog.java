@@ -42,11 +42,11 @@ public class PotLog {
     private Pot pot;
 
     public PotLog(Pot pot) {
-        this.temperature = 34.2;
-        this.humudity = 32.2;
+        this.temperature = 25.1;
+        this.humudity = 30.0;
         this.soilHumidity = 32.2;
-        this.waterLevel = 32.2;
-        this.light = 32.2;
+        this.waterLevel = 5.0;
+        this.light = 3.0;
         this.createdTime = LocalDateTime.now();
         this.pot = pot;
     }

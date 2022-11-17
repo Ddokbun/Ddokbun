@@ -1,10 +1,15 @@
 package com.harryporter.ddokbun;
 
+import com.harryporter.ddokbun.domain.alarm.service.AlarmService;
 import com.harryporter.ddokbun.domain.plant.repository.PotRepository;
 import com.harryporter.ddokbun.domain.plant.service.PotService;
+import com.harryporter.ddokbun.domain.user.dto.UserDto;
+import com.harryporter.ddokbun.domain.user.entity.User;
+import com.harryporter.ddokbun.domain.user.repository.UserRepository;
 import com.harryporter.ddokbun.schedule.BatchProcessor;
 import com.harryporter.ddokbun.utils.fcm.FCMMessageDto;
 import com.harryporter.ddokbun.utils.fcm.FCMService;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.batch.core.JobParametersInvalidException;
 import org.springframework.batch.core.repository.JobExecutionAlreadyRunningException;
@@ -13,7 +18,6 @@ import org.springframework.batch.core.repository.JobRestartException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import javax.transaction.Transactional;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
@@ -84,6 +88,22 @@ class DdokbunApplicationTests {
 	@Test
 	void updatePotWaterApplyTest(){
 
-		potService.applyWater("0000000000",145L);
+		potService.applyWater("0000000000", value, 145L);
+	}
+
+	@Autowired
+	AlarmService alarmService;
+	@Autowired
+	UserRepository userRepository;
+	@Test
+	void givenUserWhenAlarmSetThenEqauls(){
+
+		UserDto user = new UserDto();
+		user.setUserSeq(1L);
+		alarmService.setToken("testToken",user);
+
+		User userEntity = userRepository.findById(user.getUserSeq()).get();
+
+		Assertions.assertEquals("testToken",userEntity.getAlarmToken());
 	}
 }

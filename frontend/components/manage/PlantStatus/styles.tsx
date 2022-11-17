@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  position: absolute;
-  top: 650px;
+  margin-top: 4%;
   ul {
     display: flex;
     justify-content: space-evenly;

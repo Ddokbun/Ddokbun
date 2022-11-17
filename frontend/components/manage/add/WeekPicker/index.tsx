@@ -14,16 +14,14 @@ import { fetchWateringLogs } from "../../../../apis/manage";
 import { useRouter } from "next/router";
 
 interface Props {
-  showDetailHandler: Dispatch<SetStateAction<boolean>>;
   setWateringLogs: Dispatch<SetStateAction<string>>;
 }
 
-const WeekPicker: FC<Props> = ({ showDetailHandler, setWateringLogs }) => {
+const WeekPicker: FC<Props> = ({ setWateringLogs }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [currentWeek, setCurrentWeek] = useState(getWeek(currentMonth));
   const [selectedDate, setSelectedDate] = useState(new Date());
   const { potseq } = useRouter().query;
-  console.log(selectedDate, "selectedDate");
 
   useEffect(() => {
     if (!selectedDate || !potseq) {
@@ -37,7 +35,6 @@ const WeekPicker: FC<Props> = ({ showDetailHandler, setWateringLogs }) => {
       const logs = dataList.filter(
         item => item[0] === year && item[1] === month && item[2] === date,
       );
-      console.log(dataList, logs);
 
       if (logs.length) {
         setWateringLogs(`${year}년 ${month}월 ${date}일에 물을 주었네요`);
@@ -59,9 +56,8 @@ const WeekPicker: FC<Props> = ({ showDetailHandler, setWateringLogs }) => {
     }
   };
 
-  const onDateClickHandle = (day: Date, dayStr: any) => {
+  const onDateClickHandle = (day: Date) => {
     setSelectedDate(day);
-    showDetailHandler(dayStr);
   };
 
   const renderHeader = () => {
@@ -110,17 +106,10 @@ const WeekPicker: FC<Props> = ({ showDetailHandler, setWateringLogs }) => {
         const cloneDay = day;
         days.push(
           <div
-            key={day.toString()}
-            className={`day ${
-              isSameDay(day, new Date())
-                ? "today"
-                : isSameDay(day, selectedDate)
-                ? "selected"
-                : ""
-            }`}
+            key={day.toString() + "1"}
+            className={`day ${isSameDay(day, selectedDate) ? "selected" : ""}`}
             onClick={() => {
-              const dayStr = format(cloneDay, "ccc dd MMM yy");
-              onDateClickHandle(cloneDay, dayStr);
+              onDateClickHandle(cloneDay);
             }}
           >
             <p className="day">{formattedDate}</p>
