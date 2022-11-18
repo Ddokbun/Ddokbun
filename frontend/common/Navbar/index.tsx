@@ -84,7 +84,7 @@ const Navbar = () => {
           </div>
 
           <div className="logo">
-            <Link href={"/welcome"}>Ddokbbun</Link>
+            <Link href={"/commerce"}>Ddokbbun</Link>
           </div>
           <div className="menu-wrap">
             <Link href={`/manage/${userseq}`}>
