@@ -3,23 +3,27 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.color.black};
   color: white;
-  padding: 60px;
   margin-bottom: 50px;
+  .img-wrap {
+    width: 100%;
+    height: 300px;
+    position: relative;
+  }
   .font-wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    width: 100%;
+    height: 300px;
+    background: linear-gradient(
+      1deg,
+      rgba(25, 25, 25, 1) 0%,
+      rgba(0, 255, 255, 0) 60%
+    );
+    position: absolute;
     text-align: center;
     h2 {
       font-size: 50px;
       font-family: ${props => props.theme.font.TextFont2};
     }
     margin-bottom: 50px;
-  }
-  .button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
   }
   .button-wrap {
     font-family: ${props => props.theme.font.TextFont2};
