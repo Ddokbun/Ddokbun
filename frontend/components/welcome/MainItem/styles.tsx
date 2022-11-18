@@ -46,7 +46,7 @@ export const Wrapper = styled.div`
     height: 45px;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     .banner-wrap {
       position: relative;
 
