@@ -1,8 +1,5 @@
 import { Wrapper } from "./styles";
-import { useEffect, useState } from "react";
 import Image from "next/image";
-import Temp from "../../../assets/temp.jpg";
-import { fetchTodayPlant } from "../../../apis/search";
 import { ListObjectItem } from "../../../types/search/recommend.interface";
 import Link from "next/link";
 
