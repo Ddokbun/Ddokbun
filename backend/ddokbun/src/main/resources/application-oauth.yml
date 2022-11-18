@@ -1,0 +1,20 @@
+spring:
+  security:
+    oauth2:
+      client:
+        registration:
+          kakao:
+            client-id: e7b3aeb0998dc77e6832174667e50b90
+            client-secret: eVwrpF6JJYcPVSRthjAuuWS5yD0vU4oU
+            redirect-uri: https://ddokbun.com/login/kakao
+            authorization-grant-type: authorization_code
+          google:
+            client-id: 127690755793-5kgtvm8bmt7dhacov2qitf3d90h62reb.apps.googleusercontent.com
+            client-secret: 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
+            redirect-uri: https://localhost:3001/login/google
+        provider:
+          kakao:
+            authorization_uri: https://kauth.kakao.com/oauth/authorize
+            token_uri: https://kauth.kakao.com/oauth/token
+            user-info-uri: https://kapi.kakao.com/v2/user/me
+            user_name_attribute: id

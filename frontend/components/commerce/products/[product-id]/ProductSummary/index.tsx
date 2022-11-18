@@ -1,13 +1,22 @@
 import React from "react";
 import { Wrapper } from "./styles";
 
-const ProductSummary: React.FC = () => {
+const ProductSummary: React.FC<{
+  originPlace?: string;
+  plantZRName?: string;
+  growthWidth?: number;
+  growthHeight?: number;
+}> = ({ originPlace, plantZRName, growthWidth, growthHeight }) => {
   return (
     <Wrapper>
       <ul>
-        <li>원산지 : 솔로몬군도, 인도네시아(자바섬)</li>
-        <li>과명 : 천남성과</li>
-        <li>영명 : 스킨다비스, 신답서스</li>
+        {originPlace ? <li>원산지 : {originPlace}</li> : null}
+        {plantZRName ? <li>영명 : {plantZRName}</li> : null}
+        {growthWidth && growthHeight ? (
+          <li>
+            성장 높이 : {growthWidth}cm * {growthHeight}cm
+          </li>
+        ) : null}
       </ul>
     </Wrapper>
   );

@@ -1,7 +1,7 @@
 package com.harryporter.ddokbun.domain.product.repository;
 
 import com.harryporter.ddokbun.domain.plant.entity.QPlant;
-import com.harryporter.ddokbun.domain.product.dto.ItemSearchDto;
+import com.harryporter.ddokbun.domain.product.dto.response.ItemSearchDto;
 import com.harryporter.ddokbun.domain.product.entity.QItem;
 import com.querydsl.core.BooleanBuilder;
 import com.querydsl.core.types.Projections;
@@ -40,8 +40,8 @@ public class ItemRepositoryCustom {
                         item.itemSeq.as("itemSeq"),
                         item.itemName.as("itemName"),
                         item.itemPicture.as("itemImageUrl"),
-                        plant.plantZRName.coalesce("").as("itemEnName"),
-                        plant.recRate.coalesce("").as("recRate"),
+                        plant.plantZRName.coalesce("Pot").as("itemEnName"),
+                        plant.recRate.coalesce("").as("itemLabels"),
                         item.itemPrice.as("itemPrice")
                 )).leftJoin(plant).where(booleanBuilder).fetch();
 

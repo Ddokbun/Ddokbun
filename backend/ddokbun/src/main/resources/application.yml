@@ -2,14 +2,33 @@ server:
   port: 8080
   servlet:
     context-path: "/api"
-
+  tomcat:
+    max-http-form-post-size: 100MB
 
 spring:
+  batch:
+    jdbc:
+      initialize-schema: ALWAYS
+    job:
+      enabled: false
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  config:
+    import:
+      - 'classpath:application-fcm.yml'
+      - 'classpath:application-aws.yml'
+      - 'classpath:application-oauth.yml'
+      - 'classpath:application-kafka.yml'
   profiles:
     default: local
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher
+logging:
+  level:
+    root: info
 
 ---
 spring:
@@ -30,6 +49,7 @@ spring:
     hibernate:
       ddl-auto: update
 
-logging:
-  level:
-    root: info
+  redis:
+    host: ddokbun.com
+    port: 6379
+
