@@ -1,1 +1,1 @@
-{"temperature": 24.5, "humid": 38.0, "light": 3, "soilHumid": 5, "waterLevel": 1, "motorState": 0, "potSid": "0000000000", "simple": 1}
+{"temperature": 25.3, "humid": 36.0, "light": 3, "soilHumid": 5, "waterLevel": 1, "motorState": 0, "potSid": "0000000000", "simple": 1}

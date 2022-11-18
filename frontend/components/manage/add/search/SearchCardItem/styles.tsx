@@ -2,21 +2,24 @@ import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const Wrapper = styled(motion.div)<{ isDelivery: boolean }>`
-  background-color: ${props => props.theme.color.darkGreen};
+  background-color: ${props => props.theme.color.darkGray};
   width: ${props => (props.isDelivery ? "90%" : "35%")};
   height: ${props => (props.isDelivery ? "80%" : "100%")};
   border-radius: 16px;
-  margin: 3%;
+  margin: 2%;
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: auto 1fr;
   grid-template-rows: repeat(1, 100%);
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+
+  grid-gap: 10%;
   :hover {
     cursor: pointer;
   }
 
   .image-container {
     border-radius: 8px;
-    margin: 5% 0 0 5%;
+    display: flex;
   }
   .image {
     border-radius: 5%;
@@ -26,21 +29,19 @@ export const Wrapper = styled(motion.div)<{ isDelivery: boolean }>`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-    grid-column: span 2;
+    align-items: flex-start;
   }
 
   .info > .krName {
     font-weight: bold;
     width: 100%;
-    text-align: center;
+    color: ${props => props.theme.color.black};
     font-family: ${props => props.theme.font.TextFont2};
   }
 
   .info > .egName {
-    text-align: center;
     color: ${props => props.theme.color.brown};
-    font-family: ${props => props.theme.font.TextFont2};
+    font-family: ${props => props.theme.font.EnglishFont};
   }
 
   .delivery {
@@ -56,13 +57,12 @@ export const Wrapper = styled(motion.div)<{ isDelivery: boolean }>`
     width: 90%;
     height: 100px;
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: auto 1fr;
     grid-template-rows: repeat(1, 100px);
+    grid-gap: 3%;
 
     .image-container {
       border-radius: 8px;
-      margin: 5% 0 0 5%;
-      width: 70%;
     }
     .image {
       border-radius: 5%;
@@ -71,8 +71,6 @@ export const Wrapper = styled(motion.div)<{ isDelivery: boolean }>`
     .info {
       display: flex;
       flex-direction: column;
-      justify-content: center;
-      align-items: center;
     }
 
     .info > .krName {
@@ -80,7 +78,7 @@ export const Wrapper = styled(motion.div)<{ isDelivery: boolean }>`
     }
 
     .info > .egName {
-      color: ${props => props.theme.color.ivory};
+      /* color: ${props => props.theme.color.ivory}; */
     }
   }
 `;

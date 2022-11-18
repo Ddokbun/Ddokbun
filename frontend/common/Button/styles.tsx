@@ -37,7 +37,7 @@ export const PriceButtonStyle = styled.div`
   height: 50px;
   border-radius: 2px;
   display: flex;
-  background-color: ${props => props.theme.color.mainGreen};
+  background-color: ${props => props.theme.color.darkGreen};
   cursor: pointer;
   align-items: center;
   justify-content: center;
@@ -51,6 +51,10 @@ export const PriceButtonStyle = styled.div`
   }
   h3 {
     letter-spacing: 5px;
+  }
+  transition: all ease-in 0.3s;
+  :hover {
+    background-color: ${props => props.theme.color.mainGreen};
   }
 
   @media screen and (max-width: 600px) {
@@ -80,6 +84,10 @@ export const BuyListButtonStyle = styled.div`
     width: 40px;
     height: 40px;
   }
+  transition: all ease-in 0.3s;
+  :hover {
+    background-color: ${props => props.theme.color.ivoryHover};
+  }
 
   @media screen and (max-width: 600px) {
     font-size: 36px;
@@ -89,27 +97,12 @@ export const BuyListButtonStyle = styled.div`
 `;
 
 export const SubmitButtonStyle = styled.button`
-  background-color: ${props => props.theme.color.mainGreen};
-  color: #fbfbfb;
-  border-radius: 12px;
-  padding: 3% 0 3%;
-  margin: 1%;
-  width: 40%;
-
-  @media screen and (max-width: 600px) {
-    width: 40%;
-    height: 100%;
-    padding: 2% 0 2%;
-  }
-`;
-
-export const CancelButtonStyle = styled.button`
   background-color: ${props => props.theme.color.darkGreen};
-  color: #7a887a;
-  border-radius: 12px;
+  color: #fbfbfb;
   padding: 3% 0 3%;
   margin: 1%;
-  width: 40%;
+  width: 50%;
+  font-family: ${props => props.theme.font.TextFont2};
 
   :hover {
     background-color: ${props => props.theme.color.mainGreen};
@@ -117,7 +110,27 @@ export const CancelButtonStyle = styled.button`
   }
 
   @media screen and (max-width: 600px) {
-    width: 40%;
+    width: 80%;
+    height: 100%;
+    padding: 2% 0 2%;
+  }
+`;
+
+export const CancelButtonStyle = styled.button`
+  background-color: ${props => props.theme.color.black};
+  color: #7a887a;
+  padding: 3% 0 3%;
+  margin: 1%;
+  width: 50%;
+  font-family: ${props => props.theme.font.TextFont2};
+
+  :hover {
+    background-color: #2c5841;
+    color: ${props => props.theme.color.darkGray};
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 80%;
     height: 100%;
     padding: 2% 0 2%;
   }

@@ -87,11 +87,11 @@ const CartItem: React.FC<{
         <h3>{item.itemEnName}</h3>
         {isCart && (
           <div className="count">
-            <div onClick={onCountHandler} className="handler">
+            <div onClick={onCountHandler} className="dhandler">
               +
             </div>
             <div className="now-cnt">{item.quantity}</div>
-            <div onClick={onCountHandler} className="handler">
+            <div onClick={onCountHandler} className="dhandler">
               -
             </div>
           </div>

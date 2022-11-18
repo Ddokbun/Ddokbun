@@ -31,6 +31,8 @@ const Product: NextPage<{ data: ItemObject }> = ({ data }) => {
     };
     setClick(seqid as string);
   }, [seqid]);
+  console.log(data);
+
   return (
     <Wrapper>
       <div className="contents">
@@ -49,7 +51,12 @@ const Product: NextPage<{ data: ItemObject }> = ({ data }) => {
         <ProductCare
           itemInfo={data.itemInfo}
           water={data.plant?.waterCycle as number}
+          waterInfo={data.plant?.waterInfo}
           humid={data.plant?.growthHumid as string}
+          temper={data.plant?.growthTemperature}
+          temperInfo={data.plant?.temperatureInfo}
+          light={data.plant?.lightType}
+          lightInfo={data.plant?.lightInfo}
         />
         <RelatedProducts />
       </div>

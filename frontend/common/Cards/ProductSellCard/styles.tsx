@@ -67,7 +67,7 @@ export const Wrapper = styled.div`
     background-color: none;
   }
 
-  @media screen and (${props => props.theme.tablet}) {
+  @media screen and (max-width: 1000px) {
     padding: 0px 10px;
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -127,12 +127,12 @@ export const Wrapper = styled.div`
     .text-wrap {
       .text-top {
         h2 {
-          font-size: 40px;
-          line-height: 30px;
+          font-size: 30px;
+          line-height: 20px;
         }
         h3 {
           padding-left: 3px;
-          font-size: 25px;
+          font-size: 20px;
           margin-bottom: 10px;
         }
       }
@@ -145,12 +145,14 @@ export const Wrapper = styled.div`
         z-index: 1;
         position: fixed;
         transform: translate(-50%, 0%);
-        bottom: 50px;
+        bottom: 00px;
         margin-top: 20px;
         left: 50%;
         display: flex;
         justify-content: flex-start;
         gap: 10px;
+        padding: 50px;
+        background-color: ${props => props.theme.color.whiteGray};
       }
     }
   }

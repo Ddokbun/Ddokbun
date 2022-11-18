@@ -4,10 +4,11 @@ export const Wrapper = styled.tr`
   height: 130px;
   border-bottom: 1px solid #ccc;
   .image-container {
-    display: flex;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    grid-gap: 30%;
+    margin: 4%;
     align-items: center;
-    margin: 16px;
-    justify-content: space-around;
   }
   button {
     font-size: 12px;

@@ -16,6 +16,14 @@ interface SellItemObject extends ItemObject {
 }
 
 const ProductSellCard: React.FC<SellItemObject> = props => {
+  const data = {
+    itemSeq: props.itemSeq,
+    itemName: props.itemName,
+    itemEnName: props.itemEnName,
+    price: props.itemPrice,
+    quantity: 1,
+    imageUrl: props.itemPicture,
+  };
   return (
     <Wrapper>
       <div className="img-wrap">
@@ -47,7 +55,7 @@ const ProductSellCard: React.FC<SellItemObject> = props => {
         />
 
         <div className="button-wrap">
-          <BuyButton id={props.itemSeq} />
+          <BuyButton id={props.itemSeq} data={data} />
           <BuyListButton id={props.itemSeq} />
         </div>
       </div>

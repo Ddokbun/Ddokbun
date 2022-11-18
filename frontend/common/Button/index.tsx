@@ -20,9 +20,15 @@ import { useRouter } from "next/router";
 import Image from "next/image";
 import { putCart } from "../../apis/commerce";
 import { useDispatch } from "react-redux";
-import { setAllCartLists, setCartLists } from "../../store/commerce";
+import {
+  setAllCartLists,
+  setAllOrderLists,
+  setCartLists,
+} from "../../store/commerce";
 import { useSelector } from "react-redux";
 import { StoreState } from "../../store";
+import { ItemObject } from "../../types/commerce/detail.interface";
+import { ListObjectItem } from "../../types/commerce/list.interface";
 
 export const TextBtn: React.FC<{
   children: string;
@@ -67,21 +73,19 @@ export const BuyTextButton: React.FC<{ id: number }> = ({ id }) => {
   );
 };
 
-export const BuyButton: React.FC<{ id: number }> = ({ id }) => {
+export const BuyButton: React.FC<{ id: number; data: ListObjectItem }> = ({
+  id,
+  data,
+}) => {
+  const dataArray = [data];
   const route = useRouter();
   const dispatch = useDispatch();
-  const putCartHandler = async (id: number) => {
-    const res = await putCart(id);
-    console.log(res);
-
-    if (res.code === 200) {
-      console.log("here");
-      dispatch(setCartLists(res.content));
-      route.push("/commerce/cart");
-    }
+  const putCartHandler = () => {
+    dispatch(setAllOrderLists(dataArray));
+    route.push("/commerce/order/order-form");
   };
   return (
-    <PriceButtonStyle onClick={() => putCartHandler(id)}>
+    <PriceButtonStyle onClick={putCartHandler}>
       <h3>Buy Now</h3>
     </PriceButtonStyle>
   );

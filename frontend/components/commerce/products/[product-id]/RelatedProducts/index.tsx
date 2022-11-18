@@ -11,7 +11,7 @@ const RelatedProducts: React.FC = () => {
 
   return (
     <Wrapper>
-      <h1>Other Plants</h1>
+      <h1>Similar Plants</h1>
       <Carousel items={relatedItems} />
     </Wrapper>
   );
