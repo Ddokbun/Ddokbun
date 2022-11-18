@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  margin-bottom: 50px;
   h2 {
     font-size: 50px;
     margin-left: 7px;
@@ -49,6 +50,10 @@ export const Wrapper = styled.div`
     }
     .card-wrap {
       display: none;
+    }
+    .img-wrap {
+      margin: 0px;
+      height: 300px;
     }
     .swiper {
       display: block;
