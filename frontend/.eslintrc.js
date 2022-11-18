@@ -12,9 +12,9 @@ module.exports = {
     "eslint:recommended",
     "next",
     "plugin:@typescript-eslint/recommended",
-    "airbnb",
-    "airbnb-typescript",
-    "plugin:prettier/recommended",
+    // "airbnb",
+    // "airbnb-typescript",
+    // "plugin:prettier/recommended",
     "prettier",
   ],
   rules: {
@@ -22,5 +22,6 @@ module.exports = {
     "react/react-in-jsx-scope": "off",
     // ts파일에서 tsx구문 허용(Next.js)
     "react/jsx-filename-extension": [1, { extensions: [".ts", ".tsx"] }], //should add ".ts" if typescript project
+    ignorePatterns: [".eslintrc.js"],
   },
 };

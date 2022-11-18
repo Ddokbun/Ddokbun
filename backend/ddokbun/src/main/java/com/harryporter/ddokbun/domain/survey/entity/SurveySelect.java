@@ -1,13 +1,16 @@
 package com.harryporter.ddokbun.domain.survey.entity;
 
+import lombok.Getter;
+
 import javax.persistence.*;
 
 @Table(name="survey_select")
 @Entity
+@Getter
 public class SurveySelect {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer surveySelectSeq;
 
     @JoinColumn(name = "survey_seq",nullable = false)

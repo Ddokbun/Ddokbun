@@ -1,0 +1,3983 @@
+consume recieve :  0000000000 <function motorValueReciver at 0x7fbe14c1f0>
+<class 'function'>
+start Serial Process
+{"temperature":-999.00,"humid":-999.00,"light":331,"soilHumid":1019,"waterLevel":748,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":331,"soilHumid":1019,"waterLevel":800,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":332,"soilHumid":1019,"waterLevel":814,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":331,"soilHumid":1019,"waterLevel":813,"motorState":0}
+
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+:1,mtrtt"0
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 1 (char 0)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+":5"toSae"}
+
+data process error occured, this sequence reject: 
+ Extra data: line 1 column 5 (char 4)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+aeLve"81,"oortat":}
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 1 (char 0)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+:}
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 1 (char 0)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)consume recieve :  0000000000 <function motorValueReciver at 0x7fae5da160>
+<class 'function'>
+start Serial Process
+Topic: 0000000000, Partition: 0, Offset: 9, Key: None, Value: {"potSerial":"0000000000","action":1,"gauge":50}
+main proccess recive command value from consumer, value :  {'potSerial': '0000000000', 'action': 1, 'gauge': 50}
+send to ardunino motor [active]
+# reciveMessage : 1 50,action : 1,gauge : 50
+
+# reciveMessage : 1 50,action : 1,gauge : 50
+
+# motor active
+
+# motor active
+
+ be changed Motor State : 
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 2 (char 1)
+# motor : 1
+
+# motor : 1
+
+# motor : 50
+
+# motor : 50
+
+# motor : 1
+
+# motor : 1
+
+# motor : 49
+
+# motor : 49
+
+# motor : 1
+
+# motor : 1
+
+# motor : 48
+
+# motor : 48
+
+# motor : 1
+
+# motor : 1
+
+# motor : 47
+
+# motor : 47
+
+# motor : 1
+
+# motor : 1
+
+# motor : 46
+
+# motor : 46
+
+# motor : 1
+
+# motor : 1
+
+# motor : 45
+
+# motor : 45
+
+# motor : 1
+
+# motor : 1
+
+# motor : 44
+
+# motor : 44
+
+# motor : 1
+
+# motor : 1
+
+# motor : 43
+
+# motor : 43
+
+# motor : 1
+
+# motor : 1
+
+# motor : 42
+
+# motor : 42
+
+# motor : 1
+
+# motor : 1
+
+# motor : 41
+
+# motor : 41
+
+# motor : 1
+
+# motor : 1
+
+# motor : 40
+
+# motor : 40
+
+# motor : 1
+
+# motor : 1
+
+# motor : 39
+
+# motor : 39
+
+# motor : 1
+
+# motor : 1
+
+# motor : 38
+
+# motor : 38
+
+# motor : 1
+
+# motor : 1
+
+# motor : 37
+
+# motor : 37
+
+{"temperature":-999.00,"humid":-999.00,"light":402,"soilHumid":957,"waterLevel":647,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 36
+
+# motor : 36
+
+# motor : 1
+
+# motor : 1
+
+# motor : 35
+
+# motor : 35
+
+# motor : 1
+
+# motor : 1
+
+# motor : 34
+
+# motor : 34
+
+# motor : 1
+
+# motor : 1
+
+# motor : 33
+
+# motor : 33
+
+# motor : 1
+
+# motor : 1
+
+# motor : 32
+
+# motor : 32
+
+# motor : 1
+
+# motor : 1
+
+# motor : 31
+
+# motor : 31
+
+# motor : 1
+
+# motor : 1
+
+# motor : 30
+
+# motor : 30
+
+# motor : 1
+
+# motor : 1
+
+# motor : 29
+
+# motor : 29
+
+# motor : 1
+
+# motor : 1
+
+# motor : 28
+
+# motor : 28
+
+# motor : 1
+
+# motor : 1
+
+# motor : 27
+
+# motor : 27
+
+# motor : 1
+
+# motor : 1
+
+# motor : 26
+
+# motor : 26
+
+# motor : 1
+
+# motor : 1
+
+# motor : 25
+
+# motor : 25
+
+# motor : 1
+
+# motor : 1
+
+# motor : 24
+
+# motor : 24
+
+# motor : 1
+
+# motor : 1
+
+# motor : 23
+
+# motor : 23
+
+# motor : 1
+
+# motor : 1
+
+# motor : 22
+
+# motor : 22
+
+{"temperature":-999.00,"humid":-999.00,"light":404,"soilHumid":959,"waterLevel":696,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 21
+
+# motor : 21
+
+# motor : 1
+
+# motor : 1
+
+# motor : 20
+
+# motor : 20
+
+# motor : 1
+
+# motor : 1
+
+# motor : 19
+
+# motor : 19
+
+# motor : 1
+
+# motor : 1
+
+# motor : 18
+
+# motor : 18
+
+# motor : 1
+
+# motor : 1
+
+# motor : 17
+
+# motor : 17
+
+# motor : 1
+
+# motor : 1
+
+# motor : 16
+
+# motor : 16
+
+# motor : 1
+
+# motor : 1
+
+# motor : 15
+
+# motor : 15
+
+# motor : 1
+
+# motor : 1
+
+# motor : 14
+
+# motor : 14
+
+# motor : 1
+
+# motor : 1
+
+# motor : 13
+
+# motor : 13
+
+# motor : 1
+
+# motor : 1
+
+# motor : 12
+
+# motor : 12
+
+# motor : 1
+
+# motor : 1
+
+# motor : 11
+
+# motor : 11
+
+# motor : 1
+
+# motor : 1
+
+# motor : 10
+
+# motor : 10
+
+# motor : 1
+
+# motor : 1
+
+# motor : 9
+
+# motor : 9
+
+# motor : 1
+
+# motor : 1
+
+# motor : 8
+
+# motor : 8
+
+# motor : 1
+
+# motor : 1
+
+# motor : 7
+
+# motor : 7
+
+{"temperature":-999.00,"humid":-999.00,"light":399,"soilHumid":975,"waterLevel":730,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 6
+
+# motor : 6
+
+# motor : 1
+
+# motor : 1
+
+# motor : 5
+
+# motor : 5
+
+# motor : 1
+
+# motor : 1
+
+# motor : 4
+
+# motor : 4
+
+# motor : 1
+
+# motor : 1
+
+# motor : 3
+
+# motor : 3
+
+# motor : 1
+
+# motor : 1
+
+# motor : 2
+
+# motor : 2
+
+# motor : 1
+
+# motor : 1
+
+# motor : 1
+
+# motor : 1
+
+{"temperature":-999.00,"humid":-999.00,"light":380,"soilHumid":1020,"waterLevel":779,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":379,"soilHumid":1020,"waterLevel":795,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":379,"soilHumid":1021,"waterLevel":797,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":379,"soilHumid":1021,"waterLevel":797,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":380,"soilHumid":1021,"waterLevel":795,"motorState":0}
+
+Topic: 0000000000, Partition: 0, Offset: 10, Key: None, Value: {"potSerial":"0000000000","action":1,"gauge":50}
+main proccess recive command value from consumer, value :  {'potSerial': '0000000000', 'action': 1, 'gauge': 50}
+send to ardunino motor [active]
+# reciveMessage : 1 50,action : 1,gauge : 50
+
+# reciveMessage : 1 50,action : 1,gauge : 50
+
+# motor active
+
+# motor active
+
+ be changed Motor State : 
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 2 (char 1)
+# motor : 1
+
+# motor : 1
+
+# motor : 50
+
+# motor : 50
+
+# motor : 1
+
+# motor : 1
+
+# motor : 49
+
+# motor : 49
+
+# motor : 1
+
+# motor : 1
+
+# motor : 48
+
+# motor : 48
+
+# motor : 1
+
+# motor : 1
+
+# motor : 47
+
+# motor : 47
+
+# motor : 1
+
+# motor : 1
+
+# motor : 46
+
+# motor : 46
+
+# motor : 1
+
+# motor : 1
+
+# motor : 45
+
+# motor : 45
+
+# motor : 1
+
+# motor : 1
+
+# motor : 44
+
+# motor : 44
+
+{"temperature":-999.00,"humid":-999.00,"light":409,"soilHumid":934,"waterLevel":739,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 43
+
+# motor : 43
+
+# motor : 1
+
+# motor : 1
+
+# motor : 42
+
+# motor : 42
+
+# motor : 1
+
+# motor : 1
+
+# motor : 41
+
+# motor : 41
+
+# motor : 1
+
+# motor : 1
+
+# motor : 40
+
+# motor : 40
+
+# motor : 1
+
+# motor : 1
+
+# motor : 39
+
+# motor : 39
+
+# motor : 1
+
+# motor : 1
+
+# motor : 38
+
+# motor : 38
+
+# motor : 1
+
+# motor : 1
+
+# motor : 37
+
+# motor : 37
+
+# motor : 1
+
+# motor : 1
+
+# motor : 36
+
+# motor : 36
+
+# motor : 1
+
+# motor : 1
+
+# motor : 35
+
+# motor : 35
+
+# motor : 1
+
+# motor : 1
+
+# motor : 34
+
+# motor : 34
+
+# motor : 1
+
+# motor : 1
+
+# motor : 33
+
+# motor : 33
+
+# motor : 1
+
+# motor : 1
+
+# motor : 32
+
+# motor : 32
+
+# motor : 1
+
+# motor : 1
+
+# motor : 31
+
+# motor : 31
+
+# motor : 1
+
+# motor : 1
+
+# motor : 30
+
+# motor : 30
+
+# motor : 1
+
+# motor : 1
+
+# motor : 29
+
+# motor : 29
+
+# motor : 1
+
+# motor : 1
+
+# motor : 28
+
+# motor : 28
+
+# motor : 1
+
+# motor : 1
+
+# motor : 27
+
+# motor : 27
+
+# motor : 1
+
+# motor : 1
+
+# motor : 26
+
+# motor : 26
+
+# motor : 1
+
+# motor : 1
+
+# motor : 25
+
+# motor : 25
+
+# motor : 1
+
+# motor : 1
+
+# motor : 24
+
+# motor : 24
+
+# motor : 1
+
+# motor : 1
+
+# motor : 23
+
+# motor : 23
+
+# motor : 1
+
+# motor : 1
+
+# motor : 22
+
+# motor : 22
+
+# motor : 1
+
+# motor : 1
+
+# motor : 21
+
+# motor : 21
+
+# motor : 1
+
+# motor : 1
+
+# motor : 20
+
+# motor : 20
+
+# motor : 1
+
+# motor : 1
+
+# motor : 19
+
+# motor : 19
+
+# motor : 1
+
+# motor : 1
+
+# motor : 18
+
+# motor : 18
+
+# motor : 1
+
+# motor : 1
+
+# motor : 17
+
+# motor : 17
+
+# motor : 1
+
+# motor : 1
+
+# motor : 16
+
+# motor : 16
+
+# motor : 1
+
+# motor : 1
+
+# motor : 15
+
+# motor : 15
+
+# motor : 1
+
+# motor : 1
+
+# motor : 14
+
+# motor : 14
+
+# motor : 1
+
+# motor : 1
+
+# motor : 13
+
+# motor : 13
+
+# motor : 1
+
+# motor : 1
+
+# motor : 12
+
+# motor : 12
+
+# motor : 1
+
+# motor : 1
+
+# motor : 11
+
+# motor : 11
+
+# motor : 1
+
+# motor : 1
+
+# motor : 10
+
+# motor : 10
+
+# motor : 1
+
+# motor : 1
+
+# motor : 9
+
+# motor : 9
+
+# motor : 1
+
+# motor : 1
+
+# motor : 8
+
+# motor : 8
+
+# motor : 1
+
+# motor : 1
+
+# motor : 7
+
+# motor : 7
+
+# motor : 1
+
+# motor : 1
+
+# motor : 6
+
+# motor : 6
+
+# motor : 1
+
+# motor : 1
+
+# motor : 5
+
+# motor : 5
+
+# motor : 1
+
+# motor : 1
+
+# motor : 4
+
+# motor : 4
+
+# motor : 1
+
+# motor : 1
+
+# motor : 3
+
+# motor : 3
+
+# motor : 1
+
+# motor : 1
+
+# motor : 2
+
+# motor : 2
+
+# motor : 1
+
+# motor : 1
+
+# motor : 1
+
+# motor : 1
+
+{"temperature":-999.00,"humid":-999.00,"light":380,"soilHumid":1020,"waterLevel":785,"motorState":0}
+
+Topic: 0000000000, Partition: 0, Offset: 11, Key: None, Value: {"potSerial":"0000000000","action":1,"gauge":50}
+main proccess recive command value from consumer, value :  {'potSerial': '0000000000', 'action': 1, 'gauge': 50}
+send to ardunino motor [active]
+# reciveMessage : 1 50,action : 1,gauge : 50
+
+# reciveMessage : 1 50,action : 1,gauge : 50
+
+# motor active
+
+# motor active
+
+ be changed Motor State : 
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 2 (char 1)
+# motor : 1
+
+# motor : 1
+
+# motor : 50
+
+# motor : 50
+
+# motor : 1
+
+# motor : 1
+
+# motor : 49
+
+# motor : 49
+
+# motor : 1
+
+# motor : 1
+
+# motor : 48
+
+# motor : 48
+
+# motor : 1
+
+# motor : 1
+
+# motor : 47
+
+# motor : 47
+
+# motor : 1
+
+# motor : 1
+
+# motor : 46
+
+# motor : 46
+
+# motor : 1
+
+# motor : 1
+
+# motor : 45
+
+# motor : 45
+
+# motor : 1
+
+# motor : 1
+
+# motor : 44
+
+# motor : 44
+
+# motor : 1
+
+# motor : 1
+
+# motor : 43
+
+# motor : 43
+
+# motor : 1
+
+# motor : 1
+
+# motor : 42
+
+# motor : 42
+
+# motor : 1
+
+# motor : 1
+
+# motor : 41
+
+# motor : 41
+
+# motor : 1
+
+# motor : 1
+
+# motor : 40
+
+# motor : 40
+
+# motor : 1
+
+# motor : 1
+
+# motor : 39
+
+# motor : 39
+
+# motor : 1
+
+# motor : 1
+
+# motor : 38
+
+# motor : 38
+
+# motor : 1
+
+# motor : 1
+
+# motor : 37
+
+# motor : 37
+
+# motor : 1
+
+# motor : 1
+
+# motor : 36
+
+# motor : 36
+
+# motor : 1
+
+# motor : 1
+
+# motor : 35
+
+# motor : 35
+
+# motor : 1
+
+# motor : 1
+
+# motor : 34
+
+# motor : 34
+
+# motor : 1
+
+# motor : 1
+
+# motor : 33
+
+# motor : 33
+
+# motor : 1
+
+# motor : 1
+
+# motor : 32
+
+# motor : 32
+
+# motor : 1
+
+# motor : 1
+
+# motor : 31
+
+# motor : 31
+
+# motor : 1
+
+# motor : 1
+
+# motor : 30
+
+# motor : 30
+
+# motor : 1
+
+# motor : 1
+
+# motor : 29
+
+# motor : 29
+
+# motor : 1
+
+# motor : 1
+
+# motor : 28
+
+# motor : 28
+
+# motor : 1
+
+# motor : 1
+
+# motor : 27
+
+# motor : 27
+
+# motor : 1
+
+# motor : 1
+
+# motor : 26
+
+# motor : 26
+
+# motor : 1
+
+# motor : 1
+
+# motor : 25
+
+# motor : 25
+
+# motor : 1
+
+# motor : 1
+
+# motor : 24
+
+# motor : 24
+
+# motor : 1
+
+# motor : 1
+
+# motor : 23
+
+# motor : 23
+
+# motor : 1
+
+# motor : 1
+
+# motor : 22
+
+# motor : 22
+
+# motor : 1
+
+# motor : 1
+
+# motor : 21
+
+# motor : 21
+
+# motor : 1
+
+# motor : 1
+
+# motor : 20
+
+# motor : 20
+
+# motor : 1
+
+# motor : 1
+
+# motor : 19
+
+# motor : 19
+
+# motor : 1
+
+# motor : 1
+
+# motor : 18
+
+# motor : 18
+
+# motor : 1
+
+# motor : 1
+
+# motor : 17
+
+# motor : 17
+
+# motor : 1
+
+# motor : 1
+
+# motor : 16
+
+# motor : 16
+
+# motor : 1
+
+# motor : 1
+
+# motor : 15
+
+# motor : 15
+
+# motor : 1
+
+# motor : 1
+
+# motor : 14
+
+# motor : 14
+
+# motor : 1
+
+# motor : 1
+
+# motor : 13
+
+# motor : 13
+
+# motor : 1
+
+# motor : 1
+
+# motor : 12
+
+# motor : 12
+
+# motor : 1
+
+# motor : 1
+
+# motor : 11
+
+# motor : 11
+
+# motor : 1
+
+# motor : 1
+
+# motor : 10
+
+# motor : 10
+
+# motor : 1
+
+# motor : 1
+
+# motor : 9
+
+# motor : 9
+
+# motor : 1
+
+# motor : 1
+
+# motor : 8
+
+# motor : 8
+
+# motor : 1
+
+# motor : 1
+
+# motor : 7
+
+# motor : 7
+
+# motor : 1
+
+# motor : 1
+
+# motor : 6
+
+# motor : 6
+
+# motor : 1
+
+# motor : 1
+
+# motor : 5
+
+# motor : 5
+
+# motor : 1
+
+# motor : 1
+
+# motor : 4
+
+# motor : 4
+
+# motor : 1
+
+# motor : 1
+
+# motor : 3
+
+# motor : 3
+
+# motor : 1
+
+# motor : 1
+
+# motor : 2
+
+# motor : 2
+
+# motor : 1
+
+# motor : 1
+
+# motor : 1
+
+# motor : 1
+
+{"temperature":-999.00,"humid":-999.00,"light":382,"soilHumid":1020,"waterLevel":813,"motorState":0}
+
+Topic: 0000000000, Partition: 0, Offset: 12, Key: None, Value: {"potSerial":"0000000000","action":1,"gauge":50}
+main proccess recive command value from consumer, value :  {'potSerial': '0000000000', 'action': 1, 'gauge': 50}
+send to ardunino motor [active]
+# reciveMessage : 1 50,action : 1,gauge : 50
+
+# reciveMessage : 1 50,action : 1,gauge : 50
+
+# motor active
+
+# motor active
+
+ be changed Motor State : 
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 2 (char 1)
+# motor : 1
+
+# motor : 1
+
+# motor : 50
+
+# motor : 50
+
+# motor : 1
+
+# motor : 1
+
+Topic: 0000000000, Partition: 0, Offset: 13, Key: None, Value: {"potSerial":"0000000000","action":1,"gauge":50}
+main proccess recive command value from consumer, value :  {'potSerial': '0000000000', 'action': 1, 'gauge': 50}
+send to ardunino motor [active]
+# motor : 49
+
+# motor : 49
+
+# motor : 1
+
+# motor : 1
+
+# motor : 48
+
+# motor : 48
+
+# motor : 1
+
+# motor : 1
+
+# motor : 47
+
+# motor : 47
+
+# motor : 1
+
+# motor : 1
+
+# motor : 46
+
+# motor : 46
+
+Topic: 0000000000, Partition: 0, Offset: 14, Key: None, Value: {"potSerial":"0000000000","action":1,"gauge":50}
+main proccess recive command value from consumer, value :  {'potSerial': '0000000000', 'action': 1, 'gauge': 50}
+send to ardunino motor [active]
+# reciveMessage : 1 50,action : 1,gauge : 50
+
+# reciveMessage : 1 50,action : 1,gauge : 50
+
+# motor active
+
+# motor active
+
+ be changed Motor State : 
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 2 (char 1)
+# motor : 1
+
+# motor : 1
+
+# motor : 95
+
+# motor : 95
+
+Topic: 0000000000, Partition: 0, Offset: 15, Key: None, Value: {"potSerial":"0000000000","action":1,"gauge":50}
+main proccess recive command value from consumer, value :  {'potSerial': '0000000000', 'action': 1, 'gauge': 50}
+send to ardunino motor [active]
+{"temperature":-999.00,"humid":-999.00,"light":407,"soilHumid":940,"waterLevel":752,"motorState":1}
+
+# reciveMessage : 1 50,action : 1,gauge : 50
+
+# reciveMessage : 1 50,action : 1,gauge : 50
+
+# motor active
+
+# motor active
+
+ be changed Motor State : 
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 2 (char 1)
+Topic: 0000000000, Partition: 0, Offset: 16, Key: None, Value: {"potSerial":"0000000000","action":1,"gauge":50}
+main proccess recive command value from consumer, value :  {'potSerial': '0000000000', 'action': 1, 'gauge': 50}
+send to ardunino motor [active]
+# motor : 1
+
+# motor : 1
+
+# motor : 144
+
+# motor : 144
+
+# reciveMessage : 1 50,action : 1,gauge : 50
+
+# reciveMessage : 1 50,action : 1,gauge : 50
+
+# motor active
+
+# motor active
+
+ be changed Motor State : 
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 2 (char 1)
+# motor : 1
+
+# motor : 1
+
+# motor : 193
+
+# motor : 193
+
+# reciveMessage : 1 50,action : 1,gauge : 50
+
+# reciveMessage : 1 50,action : 1,gauge : 50
+
+# motor active
+
+# motor active
+
+ be changed Motor State : 
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 2 (char 1)
+# motor : 1
+
+# motor : 1
+
+# motor : 242
+
+# motor : 242
+
+# motor : 1
+
+# motor : 1
+
+# motor : 241
+
+# motor : 241
+
+# motor : 1
+
+# motor : 1
+
+# motor : 240
+
+# motor : 240
+
+# motor : 1
+
+# motor : 1
+
+# motor : 239
+
+# motor : 239
+
+# motor : 1
+
+# motor : 1
+
+# motor : 238
+
+# motor : 238
+
+# motor : 1
+
+# motor : 1
+
+# motor : 237
+
+# motor : 237
+
+# motor : 1
+
+# motor : 1
+
+# motor : 236
+
+# motor : 236
+
+# motor : 1
+
+# motor : 1
+
+# motor : 235
+
+# motor : 235
+
+# motor : 1
+
+# motor : 1
+
+# motor : 234
+
+# motor : 234
+
+# motor : 1
+
+# motor : 1
+
+# motor : 233
+
+# motor : 233
+
+# motor : 1
+
+# motor : 1
+
+# motor : 232
+
+# motor : 232
+
+# motor : 1
+
+# motor : 1
+
+# motor : 231
+
+# motor : 231
+
+# motor : 1
+
+# motor : 1
+
+# motor : 230
+
+# motor : 230
+
+# motor : 1
+
+# motor : 1
+
+# motor : 229
+
+# motor : 229
+
+# motor : 1
+
+# motor : 1
+
+# motor : 228
+
+# motor : 228
+
+# motor : 1
+
+# motor : 1
+
+# motor : 227
+
+# motor : 227
+
+# motor : 1
+
+# motor : 1
+
+# motor : 226
+
+# motor : 226
+
+# motor : 1
+
+# motor : 1
+
+# motor : 225
+
+# motor : 225
+
+# motor : 1
+
+# motor : 1
+
+# motor : 224
+
+# motor : 224
+
+# motor : 1
+
+# motor : 1
+
+# motor : 223
+
+# motor : 223
+
+# motor : 1
+
+# motor : 1
+
+# motor : 222
+
+# motor : 222
+
+# motor : 1
+
+# motor : 1
+
+# motor : 221
+
+# motor : 221
+
+# motor : 1
+
+# motor : 1
+
+# motor : 220
+
+# motor : 220
+
+# motor : 1
+
+# motor : 1
+
+# motor : 219
+
+# motor : 219
+
+# motor : 1
+
+# motor : 1
+
+# motor : 218
+
+# motor : 218
+
+# motor : 1
+
+# motor : 1
+
+# motor : 217
+
+# motor : 217
+
+# motor : 1
+
+# motor : 1
+
+# motor : 216
+
+# motor : 216
+
+# motor : 1
+
+# motor : 1
+
+# motor : 215
+
+# motor : 215
+
+# motor : 1
+
+# motor : 1
+
+# motor : 214
+
+# motor : 214
+
+# motor : 1
+
+# motor : 1
+
+# motor : 213
+
+# motor : 213
+
+# motor : 1
+
+# motor : 1
+
+# motor : 212
+
+# motor : 212
+
+# motor : 1
+
+# motor : 1
+
+# motor : 211
+
+# motor : 211
+
+# motor : 1
+
+# motor : 1
+
+# motor : 210
+
+# motor : 210
+
+# motor : 1
+
+# motor : 1
+
+# motor : 209
+
+# motor : 209
+
+# motor : 1
+
+# motor : 1
+
+# motor : 208
+
+# motor : 208
+
+# motor : 1
+
+# motor : 1
+
+# motor : 207
+
+# motor : 207
+
+{"temperature":-999.00,"humid":-999.00,"light":403,"soilHumid":954,"waterLevel":730,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 206
+
+# motor : 206
+
+# motor : 1
+
+# motor : 1
+
+# motor : 205
+
+# motor : 205
+
+# motor : 1
+
+# motor : 1
+
+# motor : 204
+
+# motor : 204
+
+# motor : 1
+
+# motor : 1
+
+# motor : 203
+
+# motor : 203
+
+# motor : 1
+
+# motor : 1
+
+# motor : 202
+
+# motor : 202
+
+# motor : 1
+
+# motor : 1
+
+# motor : 201
+
+# motor : 201
+
+# motor : 1
+
+# motor : 1
+
+# motor : 200
+
+# motor : 200
+
+# motor : 1
+
+# motor : 1
+
+# motor : 199
+
+# motor : 199
+
+# motor : 1
+
+# motor : 1
+
+# motor : 198
+
+# motor : 198
+
+# motor : 1
+
+# motor : 1
+
+# motor : 197
+
+# motor : 197
+
+# motor : 1
+
+# motor : 1
+
+# motor : 196
+
+# motor : 196
+
+# motor : 1
+
+# motor : 1
+
+# motor : 195
+
+# motor : 195
+
+# motor : 1
+
+# motor : 1
+
+# motor : 194
+
+# motor : 194
+
+# motor : 1
+
+# motor : 1
+
+# motor : 193
+
+# motor : 193
+
+# motor : 1
+
+# motor : 1
+
+# motor : 192
+
+# motor : 192
+
+{"temperature":-999.00,"humid":-999.00,"light":399,"soilHumid":966,"waterLevel":743,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 191
+
+# motor : 191
+
+# motor : 1
+
+# motor : 1
+
+# motor : 190
+
+# motor : 190
+
+# motor : 1
+
+# motor : 1
+
+# motor : 189
+
+# motor : 189
+
+# motor : 1
+
+# motor : 1
+
+# motor : 188
+
+# motor : 188
+
+# motor : 1
+
+# motor : 1
+
+# motor : 187
+
+# motor : 187
+
+# motor : 1
+
+# motor : 1
+
+# motor : 186
+
+# motor : 186
+
+# motor : 1
+
+# motor : 1
+
+# motor : 185
+
+# motor : 185
+
+# motor : 1
+
+# motor : 1
+
+# motor : 184
+
+# motor : 184
+
+# motor : 1
+
+# motor : 1
+
+# motor : 183
+
+# motor : 183
+
+# motor : 1
+
+# motor : 1
+
+# motor : 182
+
+# motor : 182
+
+# motor : 1
+
+# motor : 1
+
+# motor : 181
+
+# motor : 181
+
+# motor : 1
+
+# motor : 1
+
+# motor : 180
+
+# motor : 180
+
+# motor : 1
+
+# motor : 1
+
+# motor : 179
+
+# motor : 179
+
+# motor : 1
+
+# motor : 1
+
+# motor : 178
+
+# motor : 178
+
+# motor : 1
+
+# motor : 1
+
+# motor : 177
+
+# motor : 177
+
+{"temperature":-999.00,"humid":-999.00,"light":407,"soilHumid":960,"waterLevel":717,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 176
+
+# motor : 176
+
+# motor : 1
+
+# motor : 1
+
+# motor : 175
+
+# motor : 175
+
+# motor : 1
+
+# motor : 1
+
+# motor : 174
+
+# motor : 174
+
+# motor : 1
+
+# motor : 1
+
+# motor : 173
+
+# motor : 173
+
+# motor : 1
+
+# motor : 1
+
+# motor : 172
+
+# motor : 172
+
+# motor : 1
+
+# motor : 1
+
+# motor : 171
+
+# motor : 171
+
+# motor : 1
+
+# motor : 1
+
+# motor : 170
+
+# motor : 170
+
+# motor : 1
+
+# motor : 1
+
+# motor : 169
+
+# motor : 169
+
+# motor : 1
+
+# motor : 1
+
+# motor : 168
+
+# motor : 168
+
+# motor : 1
+
+# motor : 1
+
+# motor : 167
+
+# motor : 167
+
+# motor : 1
+
+# motor : 1
+
+# motor : 166
+
+# motor : 166
+
+# motor : 1
+
+# motor : 1
+
+# motor : 165
+
+# motor : 165
+
+# motor : 1
+
+# motor : 1
+
+# motor : 164
+
+# motor : 164
+
+# motor : 1
+
+# motor : 1
+
+# motor : 163
+
+# motor : 163
+
+# motor : 1
+
+# motor : 1
+
+# motor : 162
+
+# motor : 162
+
+{"temperature":-999.00,"humid":-999.00,"light":389,"soilHumid":983,"waterLevel":748,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 161
+
+# motor : 161
+
+# motor : 1
+
+# motor : 1
+
+# motor : 160
+
+# motor : 160
+
+# motor : 1
+
+# motor : 1
+
+# motor : 159
+
+# motor : 159
+
+# motor : 1
+
+# motor : 1
+
+# motor : 158
+
+# motor : 158
+
+# motor : 1
+
+# motor : 1
+
+# motor : 157
+
+# motor : 157
+
+# motor : 1
+
+# motor : 1
+
+# motor : 156
+
+# motor : 156
+
+# motor : 1
+
+# motor : 1
+
+# motor : 155
+
+# motor : 155
+
+# motor : 1
+
+# motor : 1
+
+# motor : 154
+
+# motor : 154
+
+# motor : 1
+
+# motor : 1
+
+# motor : 153
+
+# motor : 153
+
+# motor : 1
+
+# motor : 1
+
+# motor : 152
+
+# motor : 152
+
+# motor : 1
+
+# motor : 1
+
+# motor : 151
+
+# motor : 151
+
+# motor : 1
+
+# motor : 1
+
+# motor : 150
+
+# motor : 150
+
+# motor : 1
+
+# motor : 1
+
+# motor : 149
+
+# motor : 149
+
+# motor : 1
+
+# motor : 1
+
+# motor : 148
+
+# motor : 148
+
+# motor : 1
+
+# motor : 1
+
+# motor : 147
+
+# motor : 147
+
+{"temperature":-999.00,"humid":-999.00,"light":412,"soilHumid":981,"waterLevel":757,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 146
+
+# motor : 146
+
+# motor : 1
+
+# motor : 1
+
+# motor : 145
+
+# motor : 145
+
+# motor : 1
+
+# motor : 1
+
+# motor : 144
+
+# motor : 144
+
+# motor : 1
+
+# motor : 1
+
+# motor : 143
+
+# motor : 143
+
+# motor : 1
+
+# motor : 1
+
+# motor : 142
+
+# motor : 142
+
+# motor : 1
+
+# motor : 1
+
+# motor : 141
+
+# motor : 141
+
+# motor : 1
+
+# motor : 1
+
+# motor : 140
+
+# motor : 140
+
+# motor : 1
+
+# motor : 1
+
+# motor : 139
+
+# motor : 139
+
+# motor : 1
+
+# motor : 1
+
+# motor : 138
+
+# motor : 138
+
+# motor : 1
+
+# motor : 1
+
+# motor : 137
+
+# motor : 137
+
+# motor : 1
+
+# motor : 1
+
+# motor : 136
+
+# motor : 136
+
+# motor : 1
+
+# motor : 1
+
+# motor : 135
+
+# motor : 135
+
+# motor : 1
+
+# motor : 1
+
+# motor : 134
+
+# motor : 134
+
+# motor : 1
+
+# motor : 1
+
+# motor : 133
+
+# motor : 133
+
+# motor : 1
+
+# motor : 1
+
+# motor : 132
+
+# motor : 132
+
+{"temperature":-999.00,"humid":-999.00,"light":414,"soilHumid":991,"waterLevel":767,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 131
+
+# motor : 131
+
+# motor : 1
+
+# motor : 1
+
+# motor : 130
+
+# motor : 130
+
+# motor : 1
+
+# motor : 1
+
+# motor : 129
+
+# motor : 129
+
+# motor : 1
+
+# motor : 1
+
+# motor : 128
+
+# motor : 128
+
+# motor : 1
+
+# motor : 1
+
+# motor : 127
+
+# motor : 127
+
+# motor : 1
+
+# motor : 1
+
+# motor : 126
+
+# motor : 126
+
+# motor : 1
+
+# motor : 1
+
+# motor : 125
+
+# motor : 125
+
+# motor : 1
+
+# motor : 1
+
+# motor : 124
+
+# motor : 124
+
+# motor : 1
+
+# motor : 1
+
+# motor : 123
+
+# motor : 123
+
+# motor : 1
+
+# motor : 1
+
+# motor : 122
+
+# motor : 122
+
+# motor : 1
+
+# motor : 1
+
+# motor : 121
+
+# motor : 121
+
+# motor : 1
+
+# motor : 1
+
+# motor : 120
+
+# motor : 120
+
+# motor : 1
+
+# motor : 1
+
+# motor : 119
+
+# motor : 119
+
+# motor : 1
+
+# motor : 1
+
+# motor : 118
+
+# motor : 118
+
+# motor : 1
+
+# motor : 1
+
+# motor : 117
+
+# motor : 117
+
+{"temperature":-999.00,"humid":-999.00,"light":412,"soilHumid":978,"waterLevel":780,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 116
+
+# motor : 116
+
+# motor : 1
+
+# motor : 1
+
+# motor : 115
+
+# motor : 115
+
+# motor : 1
+
+# motor : 1
+
+# motor : 114
+
+# motor : 114
+
+# motor : 1
+
+# motor : 1
+
+# motor : 113
+
+# motor : 113
+
+# motor : 1
+
+# motor : 1
+
+# motor : 112
+
+# motor : 112
+
+# motor : 1
+
+# motor : 1
+
+# motor : 111
+
+# motor : 111
+
+# motor : 1
+
+# motor : 1
+
+# motor : 110
+
+# motor : 110
+
+# motor : 1
+
+# motor : 1
+
+# motor : 109
+
+# motor : 109
+
+# motor : 1
+
+# motor : 1
+
+# motor : 108
+
+# motor : 108
+
+# motor : 1
+
+# motor : 1
+
+# motor : 107
+
+# motor : 107
+
+# motor : 1
+
+# motor : 1
+
+# motor : 106
+
+# motor : 106
+
+# motor : 1
+
+# motor : 1
+
+# motor : 105
+
+# motor : 105
+
+# motor : 1
+
+# motor : 1
+
+# motor : 104
+
+# motor : 104
+
+# motor : 1
+
+# motor : 1
+
+# motor : 103
+
+# motor : 103
+
+# motor : 1
+
+# motor : 1
+
+# motor : 102
+
+# motor : 102
+
+{"temperature":-999.00,"humid":-999.00,"light":402,"soilHumid":987,"waterLevel":779,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 101
+
+# motor : 101
+
+# motor : 1
+
+# motor : 1
+
+# motor : 100
+
+# motor : 100
+
+# motor : 1
+
+# motor : 1
+
+# motor : 99
+
+# motor : 99
+
+# motor : 1
+
+# motor : 1
+
+# motor : 98
+
+# motor : 98
+
+# motor : 1
+
+# motor : 1
+
+# motor : 97
+
+# motor : 97
+
+# motor : 1
+
+# motor : 1
+
+# motor : 96
+
+# motor : 96
+
+# motor : 1
+
+# motor : 1
+
+# motor : 95
+
+# motor : 95
+
+# motor : 1
+
+# motor : 1
+
+# motor : 94
+
+# motor : 94
+
+# motor : 1
+
+# motor : 1
+
+# motor : 93
+
+# motor : 93
+
+# motor : 1
+
+# motor : 1
+
+# motor : 92
+
+# motor : 92
+
+# motor : 1
+
+# motor : 1
+
+# motor : 91
+
+# motor : 91
+
+# motor : 1
+
+# motor : 1
+
+# motor : 90
+
+# motor : 90
+
+# motor : 1
+
+# motor : 1
+
+# motor : 89
+
+# motor : 89
+
+# motor : 1
+
+# motor : 1
+
+# motor : 88
+
+# motor : 88
+
+# motor : 1
+
+# motor : 1
+
+# motor : 87
+
+# motor : 87
+
+{"temperature":-999.00,"humid":-999.00,"light":424,"soilHumid":981,"waterLevel":767,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 86
+
+# motor : 86
+
+# motor : 1
+
+# motor : 1
+
+# motor : 85
+
+# motor : 85
+
+# motor : 1
+
+# motor : 1
+
+# motor : 84
+
+# motor : 84
+
+# motor : 1
+
+# motor : 1
+
+# motor : 83
+
+# motor : 83
+
+# motor : 1
+
+# motor : 1
+
+# motor : 82
+
+# motor : 82
+
+# motor : 1
+
+# motor : 1
+
+# motor : 81
+
+# motor : 81
+
+# motor : 1
+
+# motor : 1
+
+# motor : 80
+
+# motor : 80
+
+# motor : 1
+
+# motor : 1
+
+# motor : 79
+
+# motor : 79
+
+# motor : 1
+
+# motor : 1
+
+# motor : 78
+
+# motor : 78
+
+# motor : 1
+
+# motor : 1
+
+# motor : 77
+
+# motor : 77
+
+# motor : 1
+
+# motor : 1
+
+# motor : 76
+
+# motor : 76
+
+# motor : 1
+
+# motor : 1
+
+# motor : 75
+
+# motor : 75
+
+# motor : 1
+
+# motor : 1
+
+# motor : 74
+
+# motor : 74
+
+# motor : 1
+
+# motor : 1
+
+# motor : 73
+
+# motor : 73
+
+# motor : 1
+
+# motor : 1
+
+# motor : 72
+
+# motor : 72
+
+{"temperature":-999.00,"humid":-999.00,"light":415,"soilHumid":967,"waterLevel":753,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 71
+
+# motor : 71
+
+# motor : 1
+
+# motor : 1
+
+# motor : 70
+
+# motor : 70
+
+# motor : 1
+
+# motor : 1
+
+# motor : 69
+
+# motor : 69
+
+# motor : 1
+
+# motor : 1
+
+# motor : 68
+
+# motor : 68
+
+# motor : 1
+
+# motor : 1
+
+# motor : 67
+
+# motor : 67
+
+# motor : 1
+
+# motor : 1
+
+# motor : 66
+
+# motor : 66
+
+# motor : 1
+
+# motor : 1
+
+# motor : 65
+
+# motor : 65
+
+# motor : 1
+
+# motor : 1
+
+# motor : 64
+
+# motor : 64
+
+# motor : 1
+
+# motor : 1
+
+# motor : 63
+
+# motor : 63
+
+# motor : 1
+
+# motor : 1
+
+# motor : 62
+
+# motor : 62
+
+# motor : 1
+
+# motor : 1
+
+# motor : 61
+
+# motor : 61
+
+# motor : 1
+
+# motor : 1
+
+# motor : 60
+
+# motor : 60
+
+# motor : 1
+
+# motor : 1
+
+# motor : 59
+
+# motor : 59
+
+# motor : 1
+
+# motor : 1
+
+# motor : 58
+
+# motor : 58
+
+# motor : 1
+
+# motor : 1
+
+# motor : 57
+
+# motor : 57
+
+{"temperature":-999.00,"humid":-999.00,"light":366,"soilHumid":957,"waterLevel":755,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 56
+
+# motor : 56
+
+# motor : 1
+
+# motor : 1
+
+# motor : 55
+
+# motor : 55
+
+# motor : 1
+
+# motor : 1
+
+# motor : 54
+
+# motor : 54
+
+# motor : 1
+
+# motor : 1
+
+# motor : 53
+
+# motor : 53
+
+# motor : 1
+
+# motor : 1
+
+# motor : 52
+
+# motor : 52
+
+# motor : 1
+
+# motor : 1
+
+# motor : 51
+
+# motor : 51
+
+# motor : 1
+
+# motor : 1
+
+# motor : 50
+
+# motor : 50
+
+# motor : 1
+
+# motor : 1
+
+# motor : 49
+
+# motor : 49
+
+# motor : 1
+
+# motor : 1
+
+# motor : 48
+
+# motor : 48
+
+# motor : 1
+
+# motor : 1
+
+# motor : 47
+
+# motor : 47
+
+# motor : 1
+
+# motor : 1
+
+# motor : 46
+
+# motor : 46
+
+# motor : 1
+
+# motor : 1
+
+# motor : 45
+
+# motor : 45
+
+# motor : 1
+
+# motor : 1
+
+# motor : 44
+
+# motor : 44
+
+# motor : 1
+
+# motor : 1
+
+# motor : 43
+
+# motor : 43
+
+# motor : 1
+
+# motor : 1
+
+# motor : 42
+
+# motor : 42
+
+{"temperature":-999.00,"humid":-999.00,"light":372,"soilHumid":972,"waterLevel":762,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 41
+
+# motor : 41
+
+# motor : 1
+
+# motor : 1
+
+# motor : 40
+
+# motor : 40
+
+# motor : 1
+
+# motor : 1
+
+# motor : 39
+
+# motor : 39
+
+# motor : 1
+
+# motor : 1
+
+# motor : 38
+
+# motor : 38
+
+# motor : 1
+
+# motor : 1
+
+# motor : 37
+
+# motor : 37
+
+# motor : 1
+
+# motor : 1
+
+# motor : 36
+
+# motor : 36
+
+# motor : 1
+
+# motor : 1
+
+# motor : 35
+
+# motor : 35
+
+# motor : 1
+
+# motor : 1
+
+# motor : 34
+
+# motor : 34
+
+# motor : 1
+
+# motor : 1
+
+# motor : 33
+
+# motor : 33
+
+# motor : 1
+
+# motor : 1
+
+# motor : 32
+
+# motor : 32
+
+# motor : 1
+
+# motor : 1
+
+# motor : 31
+
+# motor : 31
+
+# motor : 1
+
+# motor : 1
+
+# motor : 30
+
+# motor : 30
+
+# motor : 1
+
+# motor : 1
+
+# motor : 29
+
+# motor : 29
+
+# motor : 1
+
+# motor : 1
+
+# motor : 28
+
+# motor : 28
+
+# motor : 1
+
+# motor : 1
+
+# motor : 27
+
+# motor : 27
+
+{"temperature":-999.00,"humid":-999.00,"light":366,"soilHumid":976,"waterLevel":762,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 26
+
+# motor : 26
+
+# motor : 1
+
+# motor : 1
+
+# motor : 25
+
+# motor : 25
+
+# motor : 1
+
+# motor : 1
+
+# motor : 24
+
+# motor : 24
+
+# motor : 1
+
+# motor : 1
+
+# motor : 23
+
+# motor : 23
+
+# motor : 1
+
+# motor : 1
+
+# motor : 22
+
+# motor : 22
+
+# motor : 1
+
+# motor : 1
+
+# motor : 21
+
+# motor : 21
+
+# motor : 1
+
+# motor : 1
+
+# motor : 20
+
+# motor : 20
+
+# motor : 1
+
+# motor : 1
+
+# motor : 19
+
+# motor : 19
+
+# motor : 1
+
+# motor : 1
+
+# motor : 18
+
+# motor : 18
+
+# motor : 1
+
+# motor : 1
+
+# motor : 17
+
+# motor : 17
+
+# motor : 1
+
+# motor : 1
+
+# motor : 16
+
+# motor : 16
+
+# motor : 1
+
+# motor : 1
+
+# motor : 15
+
+# motor : 15
+
+# motor : 1
+
+# motor : 1
+
+# motor : 14
+
+# motor : 14
+
+# motor : 1
+
+# motor : 1
+
+# motor : 13
+
+# motor : 13
+
+# motor : 1
+
+# motor : 1
+
+# motor : 12
+
+# motor : 12
+
+{"temperature":-999.00,"humid":-999.00,"light":324,"soilHumid":1021,"waterLevel":795,"motorState":1}
+
+# motor : 1
+
+# motor : 1
+
+# motor : 11
+
+# motor : 11
+
+# motor : 1
+
+# motor : 1
+
+# motor : 10
+
+# motor : 10
+
+# motor : 1
+
+# motor : 1
+
+# motor : 9
+
+# motor : 9
+
+# motor : 1
+
+# motor : 1
+
+# motor : 8
+
+# motor : 8
+
+# motor : 1
+
+# motor : 1
+
+# motor : 7
+
+# motor : 7
+
+# motor : 1
+
+# motor : 1
+
+# motor : 6
+
+# motor : 6
+
+# motor : 1
+
+# motor : 1
+
+# motor : 5
+
+# motor : 5
+
+# motor : 1
+
+# motor : 1
+
+# motor : 4
+
+# motor : 4
+
+# motor : 1
+
+# motor : 1
+
+# motor : 3
+
+# motor : 3
+
+# motor : 1
+
+# motor : 1
+
+# motor : 2
+
+# motor : 2
+
+# motor : 1
+
+# motor : 1
+
+# motor : 1
+
+# motor : 1
+
+{"temperature":-999.00,"humid":-999.00,"light":415,"soilHumid":1020,"waterLevel":806,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":436,"soilHumid":1020,"waterLevel":799,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":441,"soilHumid":1021,"waterLevel":801,"motorState":0}
+
+ctrl + c process exit
+Exception ignored in: <module 'threading' from '/usr/lib/python3.9/threading.py'>
+Traceback (most recent call last):
+  File "/usr/lib/python3.9/threading.py", line 1428, in _shutdown
+    lock.acquire()
+KeyboardInterrupt: 
+consume recieve :  0000000000 <function motorValueReciver at 0x7fa94d8160>
+<class 'function'>
+start Serial Process
+id":-999.00,"light":409,"soilHumid":342,"waterLevel":734,"motorState":0}
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 1 (char 0)
+evel":731,"motorState":0}
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 1 (char 0)
+{"temperature":-999.00,"humid":-999.00,"light":409,"soilHumid":342,"waterLevel":734,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":409,"soilHumid":397,"waterLevel":732,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":410,"soilHumid":496,"waterLevel":866,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":410,"soilHumid":320,"waterLevel":733,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":411,"soilHumid":341,"waterLevel":733,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":410,"soilHumid":430,"waterLevel":873,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":410,"soilHumid":369,"waterLevel":730,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":411,"soilHumid":492,"waterLevel":886,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":411,"soilHumid":329,"waterLevel":734,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":411,"soilHumid":477,"waterLevel":844,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":410,"soilHumid":453,"waterLevel":884,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":411,"soilHumid":451,"waterLevel":878,"motorState":0}
+
+{"temperature":-999.00,"humid":-999.00,"light":410,"soilHumid":483,"waterLevel":865,"motorState":0}
+
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)consume recieve :  0000000000 <function motorValueReciver at 0x7f98f5c160>
+<class 'function'>
+start Serial Process
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+"30"aeLvl:3,mtrtt"0}
+
+data process error occured, this sequence reject: 
+ Extra data: line 1 column 5 (char 4)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+}
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 1 (char 0)
+{tmeaue:990,hmd-9.0"ih"48"oHi"35"aeLvl:3,moSae:}
+
+data process error occured, this sequence reject: 
+ Expecting property name enclosed in double quotes: line 1 column 2 (char 1)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+8"tLvl:3moSt0
+
+data process error occured, this sequence reject: 
+ Extra data: line 1 column 2 (char 1)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+h"47"olui"35"aeLee"74"ooSae:}
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 1 (char 0)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+d-90"lg",oui3wLl:"rt:
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 1 (char 0)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+"epatr"-990"hm9.iht"4oui:1"aeL88"oS
+
+data process error occured, this sequence reject: 
+ Extra data: line 1 column 9 (char 8)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)consume recieve :  0000000000 <function motorValueReciver at 0x7f94180160>
+<class 'function'>
+start Serial Process
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+ui46"weree"83"toSa":
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 1 (char 0)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+Sae:}
+
+data process error occured, this sequence reject: 
+ Expecting value: line 1 column 1 (char 0)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+1,ote:
+
+data process error occured, this sequence reject: 
+ Extra data: line 1 column 2 (char 1)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+
+
+data process error occured, this sequence reject: 
+ Expecting value: line 2 column 1 (char 1)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+90"ih"0slui"46weLvl8,mote:}
+
+data process error occured, this sequence reject: 
+ Extra data: line 1 column 3 (char 2)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+9.0ih"0olu"3"aeLvl73"oSa:}
+
+data process error occured, this sequence reject: 
+ Extra data: line 1 column 4 (char 3)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+
+
+data process error occured, this sequence reject: 
+ Expecting value: line 2 column 1 (char 2)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+9.""-90"ih48siHm:,ee"72"oSa"}
+
+data process error occured, this sequence reject: 
+ Extra data: line 1 column 2 (char 1)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 
+ device reports readiness to read but returned no data (device disconnected or multiple access on port?)
+data process error occured, this sequence reject: 

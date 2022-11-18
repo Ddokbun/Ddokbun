@@ -1,13 +1,14 @@
 import React from "react";
 import PageTitle from "../../../common/PageTitle";
 import AddForm from "../../../components/manage/add/AddForm";
+import { ManageHomeAni } from "../../../styles/animations/animation";
 import { Wrapper } from "../../../styles/manage/add/styles";
 
 const addPlant = () => {
   return (
-    <Wrapper>
-      <PageTitle isBold={true} isLink={false}>
-        나의 식물 등록
+    <Wrapper variants={ManageHomeAni} initial="out" animate="in" exit="out">
+      <PageTitle isLink={false} mypage={false}>
+        <h1>Register</h1>
       </PageTitle>
       <AddForm />
     </Wrapper>

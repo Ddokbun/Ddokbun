@@ -7,12 +7,13 @@ export const Wrapper = styled.div`
   .swiper {
     width: 100%;
     height: 100%;
+    overflow-x: hidden !important;
   }
 
   .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: #fff;
+    background: none;
 
     /* Center slide text vertically */
     display: -webkit-box;
@@ -29,6 +30,18 @@ export const Wrapper = styled.div`
     align-items: center;
   }
 
+  .swiper-button-next {
+    color: ${props => props.theme.color.mainGreen};
+    @media screen and (max-width: 600px) {
+      visibility: hidden;
+    }
+  }
+  .swiper-button-prev {
+    color: ${props => props.theme.color.mainGreen};
+    @media screen and (max-width: 600px) {
+      visibility: hidden;
+    }
+  }
   .swiper-slide img {
     display: block;
     width: 100%;

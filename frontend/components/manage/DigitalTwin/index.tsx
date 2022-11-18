@@ -1,75 +1,62 @@
-import React, { Suspense, useEffect } from "react";
+import React, { FC, lazy, Suspense, useEffect, useState } from "react";
 import AutoToggle from "../AutoToggle";
 import { Wrapper } from "./styles";
-import Sun from "../../../assets/icon/Sun.svg";
-import Water from "../../../assets/icon/Water.svg";
-import Plant from "../../../assets/3d/plant.gltf";
-import * as THREE from "three";
-import { FBXLoader } from "three/examples/jsm/loaders/FBXLoader";
 import { Canvas } from "@react-three/fiber";
-import Box from "./Box";
-import { createRoot } from "react-dom/client";
-import { GLTFLoader } from "three/examples/jsm/loaders/GLTFLoader";
-import Three from "./Three";
-// import { Model } from "../../../Model";
+import Rain from "../Rain";
+import Watering from "../../../assets/icon/watering-can.png";
+import Spinner from "../../../common/Spinner";
+import Image from "next/image";
 
-const DigitalTwin = () => {
-  // useEffect(() => {
-  //   const camera = new THREE.PerspectiveCamera(
-  //     75,
-  //     window.innerWidth / window.innerHeight,
-  //     0.1,
-  //     1000,
-  //   );
-  //   camera.position.set(0.8, 1.4, 1.0);
-  //   const scene = new THREE.Scene();
+const Three = lazy(() => import("../Three"));
 
-  //   const renderer = new THREE.WebGLRenderer();
-  //   createRoot(document.getElementById("twin")!).render(
-  //     <Canvas>
-  //       <ambientLight />
-  //       <pointLight position={[10, 10, 10]} />
-  //       <Box position={[-1.2, 0, 0]} />
-  //       <Box position={[1.2, 0, 0]} />
-  //     </Canvas>,
-  //   );
-  //   const loader = new GLTFLoader();
-  //   loader.load("../../../assets/3d/plant.gltf", function (gltf) {
-  //     // gltf.scene.traverse(function (child) {
-  //     //     if ((child as THREE.Mesh).isMesh) {
-  //     //         const m = (child as THREE.Mesh)
-  //     //         m.receiveShadow = true
-  //     //         m.castShadow = true
-  //     //     }
-  //     //     if (((child as THREE.Light)).isLight) {
-  //     //         const l = (child as THREE.Light)
-  //     //         l.castShadow = true
-  //     //         l.shadow.bias = -.003
-  //     //         l.shadow.mapSize.width = 2048
-  //     //         l.shadow.mapSize.height = 2048
-  //     //     }
-  //     // })
-  //     scene.add(gltf.scene);
-  //     renderer.render(scene, camera);
-  //   });
-  // }, []);
+interface Props {
+  light: number;
+  onWateringHandler: () => void;
+}
+
+const DigitalTwin: FC<Props> = ({ light, onWateringHandler }) => {
+  const [isMounted, setIsMounted] = useState(false);
+  const [isAnimated, setIsAnimated] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (!isAnimated) {
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setIsAnimated(false);
+    }, 10000);
+
+    return () => clearTimeout(timer);
+  }, [isAnimated]);
+
+  const onShowAnimationHandler = () => {
+    setIsAnimated(true);
+    onWateringHandler();
+  };
 
   return (
-    <Wrapper>
+    <Wrapper light={100 - light * 20}>
       <div className="top-container">
-        <h2>똑분</h2>
         <AutoToggle />
       </div>
       <div className="twin-background">
-        <div className="icon-container">
-          <Sun viewBox="-50 -30 200 200" />
-          <Water className="water" viewBox="-50 -30 200 200" />
+        <div className="svg-container tooltip" onClick={onShowAnimationHandler}>
+          <Image src={Watering} />
+          <p className="tooltip-text">물 주려면 클릭!</p>
         </div>
-        <Canvas className="" id="twin">
-          <Suspense fallback={null}>
-            <Three />
+        {!isMounted ? null : (
+          <Suspense fallback={<Spinner />}>
+            {isAnimated && <Rain />}
+            <Canvas id="digital-twin">
+              <Three isAnimated={isAnimated} />
+            </Canvas>
           </Suspense>
-        </Canvas>
+        )}
       </div>
     </Wrapper>
   );
