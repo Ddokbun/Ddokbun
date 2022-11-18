@@ -35,7 +35,7 @@ const Product: NextPage<{ data: ItemObject }> = ({ data }) => {
 
   return (
     <Wrapper>
-      <div className="contents">
+      <div className="contents-box">
         <ProductSellCard
           itemSeq={data.itemSeq}
           itemName={data.itemName}
