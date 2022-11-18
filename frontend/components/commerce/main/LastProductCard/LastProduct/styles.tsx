@@ -41,7 +41,10 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 600px) {
+    width: 100%;
+    margin: 0px;
     .img-wrap {
+      width: 80%;
       .card-1 {
         width: 100%;
         margin: 0px;
