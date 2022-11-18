@@ -1,61 +1,69 @@
-import React from "react";
-import { ResponsiveWrapper, Wrapper } from "./styles";
+import React, { useRef, useState } from "react";
+import { ResponsiveWrapper } from "./styles";
+import { motion } from "framer-motion";
 
-import Temp from "../../../assets/Temp2.png";
+import Temp from "../../../assets/temp2.png";
 import Image from "next/image";
 import ProductLabel from "../../Labels/ProductsLabel";
-import { PriceButtonStyle } from "../../Button/styles";
 import { BuyTextButton } from "../../Button";
+import { ListObjectItem } from "../../../types/commerce/list.interface";
+import { CardHover } from "../../../styles/animations/animation";
+import Link from "next/link";
+import { useInView } from "framer-motion";
 
-interface CardProps {
-  price: number;
+const ProductCard: React.FC<{
+  item: ListObjectItem;
   isResponsive: boolean;
-}
+}> = ({ item, isResponsive }) => {
+  const ref = useRef(null);
+  const [isHovered, setHovered] = useState(false);
+  const isInView = useInView(ref, { once: true });
 
-const ProductCard: React.FC<CardProps> = ({ price, isResponsive }) => {
+  const MouseHoverHandler = () => {
+    setHovered(true);
+  };
+  const MouseLeaveHandler = () => {
+    setHovered(false);
+  };
+
+  const None = {};
+
   return (
     <>
-      {isResponsive ? (
-        <ResponsiveWrapper>
-          <div className="img-wrap">
+      <Link href={`/commerce/product/${item?.itemSeq}`}>
+        <ResponsiveWrapper
+          variants={isResponsive ? CardHover : None}
+          ref={ref}
+          initial="start"
+          animate={isInView ? "end" : ""}
+          onMouseEnter={MouseHoverHandler}
+          onMouseLeave={MouseLeaveHandler}
+        >
+          <motion.div
+            initial={false}
+            animate={{ scale: isHovered ? 1.2 : 1 }}
+            className="img-wrap"
+          >
             <Image
-              objectFit="contain"
-              src={Temp}
-              layout="responsive"
+              src={item.itemImage as string}
+              objectFit="cover"
+              layout="fill"
               alt="임시상품이미지"
             />
-          </div>
+          </motion.div>
           <div className="text-wrap">
             <div className="title">
-              <h2>임시상품명</h2>
-              <h3>Swiss Chress</h3>
+              <h2>{item.itemName}</h2>
             </div>
-            <ProductLabel>초보집사</ProductLabel>
-            <h3>₩ {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h3>
-            <BuyTextButton />
+            <h3>
+              ₩{" "}
+              {(item.itemPrice as number)
+                .toString()
+                .replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
+            </h3>
           </div>
         </ResponsiveWrapper>
-      ) : (
-        <Wrapper>
-          <div className="img-wrap">
-            <Image
-              objectFit="contain"
-              src={Temp}
-              layout="responsive"
-              alt="임시상품이미지"
-            />
-          </div>
-          <div className="text-wrap">
-            <div className="title">
-              <h2>임시상품명</h2>
-              <h3>Swiss Chress</h3>
-            </div>
-            <ProductLabel>초보집사</ProductLabel>
-            <h3>₩ {price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}</h3>
-            <BuyTextButton />
-          </div>
-        </Wrapper>
-      )}
+      </Link>
     </>
   );
 };

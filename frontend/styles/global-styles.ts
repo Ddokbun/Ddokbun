@@ -3,12 +3,23 @@ import { createGlobalStyle } from "styled-components";
 const GlobalStyle = createGlobalStyle`
   body {
     background-color: #fafafa ;
+
+    //드래그 방지 코드
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none
   }
 
   * {
     margin: 0px;
     padding: 0px;
     box-sizing: border-box;
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+    ::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
   }
 
   a {

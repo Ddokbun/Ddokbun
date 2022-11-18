@@ -1,42 +1,49 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
-  border-color: ${props => props.theme.color.brown};
-  width: 40%;
-  height: 60%;
-  border-width: 3px;
-  border-radius: 20px;
+export const Wrapper = styled(motion.div)`
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  position: relative;
-
-  .btnContainer {
-    position: absolute;
-    bottom: 18px;
-    right: 18px;
-  }
-  .plantImg {
-    width: 320px;
-    height: 440px;
-    display: flex;
-  }
-  h2 {
-    color: ${props => props.theme.color.mainGreen};
-    font-weight: bold;
-    font-size: 28px;
-  }
-
-  @media screen and (${props => props.theme.mobile}) {
-    width: 90%;
-    /* margin: auto; */
-    display: flex;
-
-    .add-btn-container {
-      display: flex;
-      align-items: flex-end;
-      margin: 2%;
+  border-radius: 16px;
+  .image {
+    border-radius: 16px;
+    :hover {
+      cursor: pointer;
     }
+  }
+  .info {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    margin: 0 2%;
+    position: relative;
+    width: 250px;
+    h2 {
+      color: ${props => props.theme.color.black};
+      font-family: ${props => props.theme.font.SubTitleFont};
+    }
+    h3 {
+      font-family: ${props => props.theme.font.TextFont2};
+      color: ${props => props.theme.color.black};
+    }
+    p {
+      color: ${props => props.theme.color.black};
+      font-family: ${props => props.theme.font.TextFont2};
+    }
+    button {
+      position: absolute;
+      bottom: 5%;
+      right: 5%;
+      font-family: ${props => props.theme.font.TextFont2};
+      color: ${props => props.theme.color.darkGreen};
+    }
+    button:hover {
+      color: ${props => props.theme.color.mainGreen};
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    height: 80%;
   }
 `;

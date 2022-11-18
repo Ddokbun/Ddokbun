@@ -1,21 +1,25 @@
 import styled from "styled-components";
 
-interface Props {}
-
-export const Wrapper = styled.div<Props>`
+export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 110px;
-  padding: 5px 0px;
+  width: 80px;
+  padding: 2px 5px;
   border-radius: 5px;
-  color: ${props => props.theme.color.ivory};
-  background-color: ${props => props.theme.color.black};
+  color: ${props => props.theme.color.mainGreen};
+  background-color: ${props => props.theme.color.ivory};
 
   p {
-    line-height: 17px;
-    font-size: 20px;
-    font-weight: 300;
-    font-family: ${props => props.theme.font.TextFont1};
+    font-weight: 600;
+    font-size: 15px;
+    font-family: ${props => props.theme.font.TextFont2};
+  }
+
+  @media screen and (max-width: 1024px) {
+    width: 60px;
+    p {
+      font-size: 12px;
+    }
   }
 `;
