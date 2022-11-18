@@ -218,9 +218,9 @@ const Navbar = () => {
                 <Dot /> 공기정화
               </span>
             </Link>
-            <Link href={"/commerce/list/애완동물"}>
+            <Link href={"/commerce/list/반려동물"}>
               <span>
-                <Dot /> 초보집사
+                <Dot /> 반려동물
               </span>
             </Link>
             <Link href={"/commerce"}>

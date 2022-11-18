@@ -28,12 +28,9 @@ export const Wrapper = styled.div`
     color: ${props => props.theme.color.red};
   }
   .flex-form {
-    height: 100%;
     padding: 10px 30px;
 
     width: 100%;
-    display: flex;
-    flex-direction: column;
   }
   .grid {
     width: 100%;
