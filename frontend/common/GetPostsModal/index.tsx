@@ -38,8 +38,6 @@ const GetPost: React.FC<PropsType> = ({
       }
       fullAddr += extraAddr !== "" ? ` (${extraAddr})` : "";
     }
-    console.log(fullAddr);
-    console.log(data.zonecode);
 
     getPost(data.zonecode);
     getDetailPost(fullAddr);
@@ -48,16 +46,16 @@ const GetPost: React.FC<PropsType> = ({
     // setAddressDetail(fullAddress);
     // setIsOpenPost(false);
   };
-  const postCodeStyle: React.CSSProperties = {
-    display: "block",
-    position: "relative",
-    top: "50%",
-    left: "50%",
-    transform: "translate(-50%,-50%)",
-    width: "600px",
-    height: "500px",
-    padding: "0px 10px 10px",
-  };
+  // const postCodeStyle: React.CSSProperties = {
+  //   display: "block",
+  //   position: "relative",
+  //   top: "50%",
+  //   left: "50%",
+  //   transform: "translate(-50%,-50%)",
+  //   width: "600px",
+  //   height: "500px",
+  //   padding: "0px 10px 10px",
+  // };
 
   return (
     <Wrapper>

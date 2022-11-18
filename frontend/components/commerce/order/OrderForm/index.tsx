@@ -164,17 +164,17 @@ const OrderFormComponent: React.FC<OrderProps> = props => {
               value={props.additionalPost}
               placeholder="상세주소를 입력해주세요"
             />
-            {openPostcode && (
-              <GetPost
-                getPost={onChangeHandler.post}
-                getDetailPost={onChangeHandler.detailPost}
-                handleSetPostcode={handleSetPostcode}
-              />
-            )}
             <p className="error">{props.postError}</p>
           </div>
         </div>
       </form>
+      {openPostcode && (
+        <GetPost
+          getPost={onChangeHandler.post}
+          getDetailPost={onChangeHandler.detailPost}
+          handleSetPostcode={handleSetPostcode}
+        />
+      )}
     </Wrapper>
   );
 };
