@@ -1,8 +1,11 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
   margin: 0 auto;
-  max-width: 1240px;
   width: 100%;
-  background-color: "#fafafa";
+  background-color: "#ac2626";
+  div {
+    scroll-snap-type: y mandatory;
+  }
 `;

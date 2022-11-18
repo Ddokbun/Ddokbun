@@ -1,19 +1,19 @@
 package com.harryporter.ddokbun.domain.plant.entity;
 
-import com.harryporter.ddokbun.domain.order.entity.OrderStatus;
 import com.harryporter.ddokbun.domain.plant.dto.request.RegisterPotRequest;
 import com.harryporter.ddokbun.domain.user.entity.User;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Entity
 @Getter
 @NoArgsConstructor
+@Setter
 public class Pot {
 
     // 화분 일련번호
@@ -63,11 +63,17 @@ public class Pot {
 
     // 최근 물 준 날짜
     @Column(name = "water_supply", nullable = true)
-    private Date waterSupply;
+    private LocalDate waterSupply;
 
     // 물 공급 자동 수동 설정
     @Column(name = "is_auto", columnDefinition = "CHAR(1)")
     private String isAuto;
+
+    @Column(name="water_period")
+    private Integer waterPeriod;
+
+    @Column(name = "rec_plant")
+    private String RecPlant;
 
     // 식물
     @JoinColumn(name = "plant_seq", nullable = true)
@@ -84,13 +90,17 @@ public class Pot {
         this.createdTime = LocalDateTime.now(); //서버 돌아가는 컴퓨터 시간대의 현재
     }
 
-    @Builder
-    public Pot(RegisterPotRequest registerPotRequest, User user, Plant plant){
+
+    public void potChange(RegisterPotRequest registerPotRequest, User user, Plant plant){
         this.potSerial = registerPotRequest.getPotSerial();
         this.plantNickname = registerPotRequest.getPlantNickname();
         this.isAuto = "Y";
         this.waterSupply = registerPotRequest.getWaterSupply();
         this.user = user;
         this.plant = plant;
+    }
+
+    public void potWaterApllyChange(LocalDate localDate) {
+        this.waterSupply = localDate;
     }
 }

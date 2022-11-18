@@ -10,31 +10,34 @@ export const PriceTextButtonStyle = styled.div`
   color: ${props => props.theme.color.brown};
   cursor: pointer;
   align-items: center;
-  gap: 10px;
+  h3 {
+    font-size: 20px !important;
+  }
+  gap: 5px;
   svg {
-    width: 10px;
-    height: 20px;
+    width: 20px;
+    height: 15px;
   }
 
-  @media screen and (${props => props.theme.mobile}) {
-    font-size: 36px;
+  @media screen and (max-width: 600px) {
+    h3 {
+      font-size: 30px !important;
+    }
+    gap: 10px;
     svg {
-      width: 20px;
+      width: 25px;
       height: 30px;
     }
   }
 `;
 
-interface PriceButtonProps {
-  width: string;
-}
-
-export const PriceButtonStyle = styled.div<PriceButtonProps>`
-  width: ${props => props.width || "250px"};
+export const PriceButtonStyle = styled.div`
+  margin: auto;
+  width: 100%;
   height: 50px;
   border-radius: 2px;
   display: flex;
-  background-color: ${props => props.theme.color.mainGreen};
+  background-color: ${props => props.theme.color.darkGreen};
   cursor: pointer;
   align-items: center;
   justify-content: center;
@@ -49,8 +52,12 @@ export const PriceButtonStyle = styled.div<PriceButtonProps>`
   h3 {
     letter-spacing: 5px;
   }
+  transition: all ease-in 0.3s;
+  :hover {
+    background-color: ${props => props.theme.color.mainGreen};
+  }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     width: 60vw;
     font-size: 36px;
     svg {
@@ -61,7 +68,7 @@ export const PriceButtonStyle = styled.div<PriceButtonProps>`
 `;
 
 export const BuyListButtonStyle = styled.div`
-  width: 100px;
+  width: 100%;
   height: 50px;
   border-radius: 2px;
   display: flex;
@@ -77,8 +84,12 @@ export const BuyListButtonStyle = styled.div`
     width: 40px;
     height: 40px;
   }
+  transition: all ease-in 0.3s;
+  :hover {
+    background-color: ${props => props.theme.color.ivoryHover};
+  }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     font-size: 36px;
     z-index: 2;
     width: 30vw;
@@ -86,30 +97,40 @@ export const BuyListButtonStyle = styled.div`
 `;
 
 export const SubmitButtonStyle = styled.button`
-  background-color: ${props => props.theme.color.mainGreen};
+  background-color: ${props => props.theme.color.darkGreen};
   color: #fbfbfb;
-  border-radius: 12px;
   padding: 3% 0 3%;
   margin: 1%;
-  width: 40%;
+  width: 50%;
+  font-family: ${props => props.theme.font.TextFont2};
 
-  @media screen and (${props => props.theme.mobile}) {
-    width: 40%;
+  :hover {
+    background-color: ${props => props.theme.color.mainGreen};
+    color: white;
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 80%;
     height: 100%;
     padding: 2% 0 2%;
   }
 `;
 
 export const CancelButtonStyle = styled.button`
-  background-color: ${props => props.theme.color.darkGreen};
+  background-color: ${props => props.theme.color.black};
   color: #7a887a;
-  border-radius: 12px;
   padding: 3% 0 3%;
   margin: 1%;
-  width: 40%;
+  width: 50%;
+  font-family: ${props => props.theme.font.TextFont2};
 
-  @media screen and (${props => props.theme.mobile}) {
-    width: 40%;
+  :hover {
+    background-color: #2c5841;
+    color: ${props => props.theme.color.darkGray};
+  }
+
+  @media screen and (max-width: 600px) {
+    width: 80%;
     height: 100%;
     padding: 2% 0 2%;
   }
@@ -124,12 +145,15 @@ export const SearchButtonStyle = styled.button`
   padding: 3% 0 3%;
   margin: 1%;
   width: 150px;
-  height: 150px;
+  height: 100px;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+  :hover {
+    background-color: ${props => props.theme.color.darkGray};
+  }
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     width: 90px;
-    height: 90px;
+    height: 60px;
     border-radius: 10px;
     font-size: 15px;
     margin: 1%;
@@ -150,9 +174,42 @@ export const LoginButtonStyle = styled.div`
 
   font-family: ${props => props.theme.font.TitleFont};
 
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     width: 350px;
     height: 50px;
     font-size: 15px;
+  }
+`;
+
+interface StatusButtonType {
+  isActive: boolean;
+  backgroundColor: string;
+  backgroundHover: string;
+  textColor: string;
+}
+
+export const StatusButtonStyle = styled.li<StatusButtonType>`
+  width: 120px;
+  height: 60px;
+  border-radius: 16px;
+  font-size: ${props => (props.isActive ? "18px" : "14px")};
+  color: ${props =>
+    props.isActive ? props.theme.color.darkGreen : props.textColor};
+  display: flex;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+  font-family: ${props => props.theme.font.TextFont2};
+  font-weight: ${props => (props.isActive ? "bold" : null)};
+  word-break: keep-all;
+
+  :hover {
+    cursor: pointer;
+    color: ${props => props.theme.color.darkGreen};
+  }
+
+  span {
+    margin: 3%;
+    padding-left: 12px;
   }
 `;

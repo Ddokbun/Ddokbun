@@ -1,8 +1,7 @@
 package com.harryporter.ddokbun.domain.product.entity;
 
 import com.harryporter.ddokbun.domain.plant.entity.Plant;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -10,17 +9,23 @@ import javax.persistence.*;
 @Entity
 @Getter
 @Setter
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Item {
 
     //상품 일련 번호
     @Id
     @Column(name="item_seq",columnDefinition = "INTEGER UNSIGNED")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long itemSeq;
 
     //상품명
     @Column(name="item_name",columnDefinition = "VARCHAR(30) NOT NULL")
     private String itemName;
+
+    @Column(name="item_en_name",columnDefinition = "VARCHAR(30) NOT NULL")
+    private String itemEnName;
 
     //가격
     @Column
@@ -47,4 +52,22 @@ public class Item {
     @JoinColumn(name = "plant_seq",nullable = true)
     @OneToOne(fetch = FetchType.LAZY)
     private Plant plant;
+
+    @Column(name="view_count",columnDefinition = "INTEGER UNSIGNED")
+    private Integer viewCount;
+
+    public void increaseViewCount(Item item){
+        this.viewCount++;
+    }
+
+    public void changeItem(Item item){
+        this.itemName=item.getItemName();
+        this.itemInfo=item.getItemInfo();
+        this.itemPrice=item.getItemPrice();
+        this.itemStock=item.getItemStock();
+        this.itemPicture=item.getItemPicture();
+        this.itemKind=item.getItemKind();
+        this.plant=item.getPlant();
+
+    }
 }

@@ -1,5 +1,6 @@
 package com.harryporter.ddokbun.domain.plant.entity;
 
+import com.harryporter.ddokbun.domain.plant.dto.PlantDto;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,7 +13,8 @@ import javax.persistence.*;
 public class Plant {
     //식물 일련 번호
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @Column(name="plant_seq")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long plantSeq;
 
     //식물 이름
@@ -20,7 +22,7 @@ public class Plant {
     private String plantName;
 
     //식물 학명
-    @Column(name = "palnt_ne_name", columnDefinition = "VARCHAR(255)")
+    @Column(name = "palnt_ne_name", columnDefinition = "VARCHAR(255)" )
     private String plantNeName;
 
     //식물 영명
@@ -94,15 +96,18 @@ public class Plant {
     private String waterIfno;
 
     //광량
-    @Column(name = "light")
-    private Integer light;
+    @Column(name = "light_type")
+    private Integer lightType;
     //광량 설명
     @Column(name = "light_info")
     private String lightInfo;
 
-    @Column(name = "temperature")
+    @Column(name = "min_temperature")
 
-    private Integer temperature;
+    private Integer minTemperature;
+
+    @Column(name = "max_temperature")
+    private Integer maxTemperature;
     @Column(name = "temperature_info")
     private String temperatureInfo;
     @Column(name = "image_path")
@@ -111,7 +116,11 @@ public class Plant {
     @Column(name = "rec_rate")
     private String recRate;
 
-    public void changePlant(Plant plant){
+    public void changeImgPath(long plantSeq){
+        this.imagePath="plant/"+plantSeq+".jpg";
+    }
+
+    public void changePlant(PlantDto plant){
         this.plantName=plant.getPlantName();
         this.plantNeName=plant.getPlantNeName();
         this.plantZRName=plant.getPlantZRName();
@@ -131,13 +140,15 @@ public class Plant {
         this.manageRequire=plant.getManageRequire();
         this.plantPlace=plant.getPlantPlace();
         this.waterCycle=plant.getWaterCycle();
-        this.waterIfno=plant.getWaterIfno();
-        this.light=plant.getLight();
+        this.waterIfno=plant.getWaterInfo();
+        this.lightType=plant.getLightType();
         this.lightInfo=plant.getLightInfo();
-        this.temperature=plant.getTemperature();
+        this.minTemperature=plant.getMinTemperature();
+        this.maxTemperature=plant.getMaxTemperature();
         this.temperatureInfo=plant.getTemperatureInfo();
         this.imagePath=plant.getImagePath();
         this.recRate=plant.getRecRate();
 
     }
+
 }

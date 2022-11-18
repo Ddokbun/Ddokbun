@@ -1,6 +1,7 @@
 package com.harryporter.ddokbun.domain.auth.service;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.harryporter.ddokbun.domain.auth.dto.*;
 import com.harryporter.ddokbun.domain.user.dto.UserDto;
@@ -11,6 +12,7 @@ import com.harryporter.ddokbun.exception.GeneralException;
 import com.harryporter.ddokbun.utils.auth.JwtTokenUtils;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -29,26 +31,30 @@ import java.nio.charset.StandardCharsets;
 @Slf4j
 public class GoogleService {
     private final UserService userService;
-    public OAuthRes googleLogin(String code){
-        log.info("Login 파이프라인 진입 & 받은 인가코드 : {}",code);
-        String decodedCode="";
 
+    @Value("${spring.security.oauth2.client.registration.google.client-id}")
+    private String clientId;
+    @Value("${spring.security.oauth2.client.registration.google.client-secret}")
+    private String clientSecret;
+    @Value("${spring.security.oauth2.client.registration.google.redirect-uri}")
+    private String redirectUri;
+    public OAuthRes googleLogin(String code){
+        log.info("구글 로그인 파이프라인 진입 :: 인가 코드 : {}", code);
+        String decodedCode="";
         try {
             decodedCode = java.net.URLDecoder.decode(code, StandardCharsets.UTF_8.name());
         } catch (UnsupportedEncodingException e) {
 
         }
-
-        log.info("해독된 인가코드 : {}",decodedCode);
         GoogleAccessToken accessToken = getGoogleAuthTokenByCode(decodedCode);
-
-        log.info("access Token : {}",accessToken.getAccess_token());
+        if(accessToken==null)
+            throw new GeneralException(ErrorCode.DATA_ACCESS_ERROR,"Access Token을 받아오지 못했습니다.");
 
         GoogleProfile googleProfile = getGoogleProfileByAccessToken(accessToken);
+        if(googleProfile==null)
+            throw new GeneralException(ErrorCode.DATA_ACCESS_ERROR,"구글 프로필을 받아오지 못했습니다.");
 
         UserDto userDto = userService.signup(new UserSocialDto(googleProfile));
-        log.info("user nickname : {}",userDto.getUserNickname());
-        log.info("user email : {}",userDto.getUserEmail());
 
         String jwtToken = JwtTokenUtils.generateJwtToken(userDto);
         OAuthRes res = new OAuthRes(jwtToken,userDto.getUserSeq());
@@ -57,17 +63,17 @@ public class GoogleService {
     }
 
     private GoogleAccessToken getGoogleAuthTokenByCode(String code){
-        try{
-            // HTTP Header 생성
+        log.info("구글 Access Token 받아오기 :: 인가 코드 : {}", code);
+        try{// HTTP Header 생성
             HttpHeaders headers = new HttpHeaders();
             headers.add("Content-type","application/x-www-form-urlencoded;charset=utf-8");
 
             // HTTP Body 생성
             MultiValueMap<String, String> body = new LinkedMultiValueMap<>();
             body.add("grant_type","authorization_code");
-            body.add("client_id","127690755793-5kgtvm8bmt7dhacov2qitf3d90h62reb.apps.googleusercontent.com");
-            body.add("redirect_uri","https://k7d208.p.ssafy.io/");
-            body.add("client_secret","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");
+            body.add("client_id",clientId);
+            body.add("redirect_uri",redirectUri);
+            body.add("client_secret",clientSecret);
             body.add("code",code);
 
             // HTTP 요청 보내기 (POST 방식으로)
@@ -84,8 +90,6 @@ public class GoogleService {
             }catch (HttpClientErrorException e){
                 throw new GeneralException(ErrorCode.VALIDATION_ERROR,"Authorization code를 확인하세요.");
             }
-
-
             // HTTP 응답 (JSON) -> 액세스 토큰 파싱
             String responseBody = response.getBody();
             ObjectMapper objectMapper = new ObjectMapper();
@@ -93,13 +97,15 @@ public class GoogleService {
 
             return googleOAuthToken;
 
-        } catch (JsonProcessingException e) {
-            e.printStackTrace();
+        } catch (JsonMappingException e) {
+            return null;
+        } catch ( JsonProcessingException e){
             return null;
         }
     }
 
     private GoogleProfile getGoogleProfileByAccessToken(GoogleAccessToken oAuthToken){
+        log.info("구글 프로필 받아오기 :: Access Token : {}", oAuthToken.getAccess_token());
         // HTTP Header 생성
         HttpHeaders headers2 = new HttpHeaders();
         headers2.add("Authorization", "Bearer "+oAuthToken.getAccess_token());
@@ -120,7 +126,6 @@ public class GoogleService {
         try {
             googleProfile = objectMapper.readValue(response2.getBody(),GoogleProfile.class);
         } catch (JsonProcessingException e) {
-            e.printStackTrace();
         }
 
         return googleProfile;

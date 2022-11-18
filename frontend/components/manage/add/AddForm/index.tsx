@@ -1,8 +1,8 @@
-// import { useRouter } from "next/router";
+import { useRouter } from "next/router";
 import React, { useEffect, useRef, useState } from "react";
 import {
   CancelButton,
-  Register,
+  RegisterType,
   SubmitButton,
 } from "../../../../common/Button";
 import { DateInput, Input, SearchInput } from "../../../../common/Input";
@@ -10,19 +10,30 @@ import { Wrapper } from "./styles";
 import calander from "../../../../assets/icon/calander.png";
 import { useSelector } from "react-redux";
 import { RootState } from "../../../../store";
+import { fetchPlantData, fetchRegisterPot } from "../../../../apis/manage";
+import PlantData from "../PlantData";
+import Link from "next/link";
+import Swal from "sweetalert2";
+
+export interface PlantDataType {
+  growthHumid: string;
+  lightType: number;
+  temperatureRange: number;
+  waterCycle: number;
+}
 
 const AddForm = () => {
-  // const router = useRouter();
+  const router = useRouter();
   const plantSeq = useSelector((state: RootState) => state.manage.plantSeq);
-  const name = useSelector((state: RootState) => state.manage.krName);
+  const name = useSelector((state: RootState) => state.manage.plantName);
 
-  const inputValues: React.MutableRefObject<Register> = useRef({
+  const inputValues: React.MutableRefObject<RegisterType> = useRef({
     potSerial: "",
     plantNickname: "",
     waterSupply: "",
     plantSeq: "",
   });
-
+  const [plantData, setPlantData] = useState<PlantDataType>();
   const [showCalander, setShowCalander] = useState(false);
   const leftPad = (value: number) => {
     if (value >= 10) {
@@ -62,26 +73,37 @@ const AddForm = () => {
     }
   };
 
-  const onRegisterHandler = (): void => {
+  const onRegisterHandler = async (): Promise<void> => {
     if (!inputValues.current.plantNickname) {
-      //닉네임 확인
+      Swal.fire("닉네임을 입력해주세요");
     } else if (!inputValues.current.potSerial) {
-      // 씨리얼 넘버 확인
+      Swal.fire("씨리얼 넘버를 입력해주세요.");
     } else if (!inputValues.current.waterSupply) {
-      // 물준날 확인
+      Swal.fire("마지막으로 물 준 일자를 확인해주세요.");
     }
 
     console.log(inputValues.current);
 
-    // axios
-    // fetchPotRegister(inputValues.current)
-    // if (res.status === 201) {
-    //   router.push(`/manage/${res.potSeq}`)
-    // }
+    const res = await fetchRegisterPot(inputValues.current);
+    if (res?.status === 201) {
+      router.push(`/manage/${res.potSeq}`);
+    } else {
+      Swal.fire("혹시 화분을 아직 구매하지 않으셨나요?");
+    }
   };
 
   const onShowCalanderHandler = () => {
     setShowCalander(prev => !prev);
+  };
+
+  const getPlantData = async (data: string) => {
+    const res = await fetchPlantData(data);
+    setPlantData(res.content);
+    return res.content;
+  };
+
+  const onCancleAddForm = () => {
+    router.back();
   };
 
   useEffect(() => {
@@ -93,10 +115,17 @@ const AddForm = () => {
 
   useEffect(() => {
     inputValues.current.plantSeq = plantSeq;
+    if (inputValues.current.plantSeq) {
+      getPlantData(inputValues.current.plantSeq);
+    }
   }, [plantSeq]);
 
   return (
     <Wrapper>
+      <div className="link-container">
+        <span>'똑분'이 있어야 등록이 가능해요.</span>
+        <Link href={"/commerce"}>식물 추천받고 화분을 구매해보세요.</Link>
+      </div>
       <div className="grid">
         <SearchInput
           setSearchInput={null}
@@ -106,8 +135,8 @@ const AddForm = () => {
         />
         <Input
           saveInput={saveInput}
-          label="Serial Number"
-          placeholder=" Input"
+          label="씨리얼 넘버"
+          placeholder="똑분 하단의 Serial Number를 기재해주세요"
           type="text"
           identifier="potSerial"
           image={null}
@@ -115,38 +144,20 @@ const AddForm = () => {
         />
         <Input
           saveInput={saveInput}
-          label="식물 이름"
-          placeholder=" Input"
+          label="식물 닉네임"
+          placeholder="자신만의 식물 별명을 알려주세요"
           type="text"
           identifier="plantNickname"
           image={null}
           value={inputValues.current.plantNickname}
         />
         <div onClick={onShowCalanderHandler} className="calander-container">
-          {/* <Input
-            saveInput={saveInput}
-            label="마지막 물준날"
-            placeholder={inputValues.current.waterSupply}
-            type="text"
-            identifier="waterSupply"
-            image={calander}
-            value={inputValues.current.waterSupply}
-          /> */}
           <DateInput
             label="마지막 물 준날"
             image={calander}
             saveInput={saveInput}
           />
         </div>
-
-        {/* {showCalander && (
-            <DateInput
-              saveInput={saveInput}
-              onShowCalanderHandler={onShowCalanderHandler}
-            />
-          )} */}
-        {/* <div className="calander-container"> */}
-        {/* </div> */}
       </div>
       <div className="button-container">
         <div className="submit-button-container">
@@ -155,9 +166,10 @@ const AddForm = () => {
           </SubmitButton>
         </div>
         <div className="cancel-button-container">
-          <CancelButton>취소</CancelButton>
+          <CancelButton onClick={onCancleAddForm}>취소</CancelButton>
         </div>
       </div>
+      {plantData && <PlantData data={plantData} />}
     </Wrapper>
   );
 };

@@ -64,23 +64,26 @@ public class PlantDto {
     private String plantPlace;
 
     //실제 물주기
-    private int waterCycle;
+    private Integer waterCycle;
 
     //물주기 설명
-    private String waterIfno;
+    private String waterInfo;
 
     //광량
-    private int light;
+    private Integer lightType;
     //광량 설명
     private String lightInfo;
 
-    //실제물
-    private Integer temperature;
+    //실제 최저 온도
+    private Integer minTemperature;
+
+    // 실제 최고 온도
+    private Integer maxTemperature;
+
     private String temperatureInfo;
     private String imagePath;
     private String recRate;
-
-
+    
     public Plant toEntity(){
         return Plant.builder()
                 .plantName(plantName) //식물 이름
@@ -102,16 +105,18 @@ public class PlantDto {
                 .manageRequire(manageRequire)//관리 요구도
                 .plantPlace(plantPlace)//배치 장소
                 .waterCycle(waterCycle)//물주기
-                .waterIfno(waterIfno)//물 설명
-                .light(light)//광량
+                .waterIfno(waterInfo)//물 설명
+                .lightType(lightType)//광량
                 .lightInfo(lightInfo)//광량 설명
-                .temperature(temperature)//온도
+                .minTemperature(minTemperature)// 최저 온도
+                .maxTemperature(maxTemperature)// 최고 온도
                 .temperatureInfo(temperatureInfo)//온도 설명
                 .imagePath(imagePath)//이미지 저장 경로
                 .recRate(recRate)//추천 유형
                 .build();
     }
     public static PlantDto of(Plant plant){
+        if(plant==null) return null;
         PlantDto temp = PlantDto.builder()
                 .plantSeq(plant.getPlantSeq()) //식물 seq
                 .plantName(plant.getPlantName()) //식물 이름
@@ -133,10 +138,11 @@ public class PlantDto {
                 .manageRequire(plant.getManageRequire())//관리 요구도
                 .plantPlace(plant.getPlantPlace())//배치 장소
                 .waterCycle(plant.getWaterCycle())//물주기
-                .waterIfno(plant.getWaterIfno())//물 설명
-                .light(plant.getLight())//광량
+                .waterInfo(plant.getWaterIfno())//물 설명
+                .lightType(plant.getLightType())//광량
                 .lightInfo(plant.getLightInfo())//광량 설명
-                .temperature(plant.getTemperature())//온도
+                .minTemperature(plant.getMinTemperature())//최저온도
+                .maxTemperature(plant.getMaxTemperature()) //최고온도
                 .temperatureInfo(plant.getTemperatureInfo())//온도 설명
                 .imagePath(plant.getImagePath())//이미지 저장 경로
                 .recRate(plant.getRecRate())//추천 유형

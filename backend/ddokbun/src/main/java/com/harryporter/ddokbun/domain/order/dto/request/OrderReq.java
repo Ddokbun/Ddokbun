@@ -1,6 +1,8 @@
 package com.harryporter.ddokbun.domain.order.dto.request;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
+import com.harryporter.ddokbun.domain.order.entity.Order;
+import com.harryporter.ddokbun.domain.order.entity.OrderStatus;
+import com.harryporter.ddokbun.domain.user.entity.User;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -8,14 +10,15 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Getter
 @Setter
 public class OrderReq {
 
-    @NotNull
-    private Long itemSeq;
+    private String itemSeqList;
+
+    private String orderName;
 
     @NotNull
     @Min(value = 1,message = "주문 수량은 1이상이어야 합니다.")
@@ -46,7 +49,24 @@ public class OrderReq {
     @Size(min = 1,message = "결제 형식을 입력해야합니다.")
     private String orderMethod;
 
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime orderTime;
+
+    public Order toEntity(User user){
+        return Order.builder()
+                .orderName(orderName)
+                .orderAddress(orderAddress)
+                .orderEmail(orderEmail)
+                .orderMethod(orderMethod)
+                .orderPhone(orderPhone)
+                .orderPrice(orderPrice)
+                .orderQuantity(orderQuantity)
+                .orderReciver(orderReceiver)
+                .orderStatus(OrderStatus.READY)
+                .orderWaybillNumber("111-23-12-31-2-1")
+                .orderUserName(orderUserName)
+                .itemSeqList(itemSeqList)
+                .user(user)
+                .build();
+    }
+
 
 }

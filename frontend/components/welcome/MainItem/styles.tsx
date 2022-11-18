@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.color.black};
@@ -28,6 +29,11 @@ export const Wrapper = styled.div`
       top: 70%;
       left: 50%;
       transform: translate(-50%, -50%);
+    }
+    .google-button {
+      width: 350px;
+      height: 50px;
+      margin-bottom: 6px;
     }
   }
   .kakao-btn {

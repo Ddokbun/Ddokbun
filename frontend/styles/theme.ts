@@ -2,10 +2,12 @@ import { DefaultTheme } from "styled-components";
 
 const deviceSize = {
   mobile: "600px",
+  tablet: "1024px",
 };
 
 export const Theme: DefaultTheme = {
   mobile: `(max-width:${deviceSize.mobile})`,
+  tablet: `(max-width:${deviceSize.tablet})`,
 
   font: {
     EnglishFont: "DM Serif Display",
@@ -27,5 +29,11 @@ export const Theme: DefaultTheme = {
     brownHover: "#CEB282",
     ivory: "#F0EBCE",
     ivoryHover: "#FFFBE7",
+    whiteGray: "#f7f7f7",
+    darkGray: "#ececec",
+  },
+  size: {
+    h2Web: "30px",
+    h2Mobile: "25px",
   },
 };

@@ -3,11 +3,21 @@ package com.harryporter.ddokbun.domain.order.dto;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.harryporter.ddokbun.domain.order.entity.Order;
 import com.harryporter.ddokbun.domain.order.entity.OrderStatus;
+import com.harryporter.ddokbun.domain.product.dto.ItemDto;
+import com.harryporter.ddokbun.domain.product.dto.response.ItemSimpleDto;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.List;
 
+@Setter
 @Getter
+@NoArgsConstructor
 public class OrderDto {
     //주문 일련 번호
     private long orderSeq;
@@ -15,7 +25,11 @@ public class OrderDto {
     private long userSeq;
     //상품
     //상품에서 주문내역을 볼 필요는 없으니깐 , 상대편에서 mappedBy는 생략, 관리자가 생기면 추가해야할 듯
-    private long itemSeq;
+    private List<ItemSimpleDto> itemlist;
+
+    private String itemSeqList;
+
+    private String orderName;
     //상품 수량
     private int orderQuantity;
     //상품 가격
@@ -35,16 +49,16 @@ public class OrderDto {
     //결제수단
     private String orderMethod;
     //결제 시간
-    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private LocalDateTime orderTime;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="yyyy-MM-dd HH:mm:ss", timezone = "Asia/Seoul")
+    private Date orderTime;
     //주문 상태
     private OrderStatus orderStatus;
 
     public static OrderDto of(Order order) {
         OrderDto temp = new OrderDto();
         temp.orderSeq = order.getOrderSeq();
+        temp.orderName=order.getOrderName();
         temp.userSeq = order.getUser().getUserSeq();
-        temp.itemSeq = order.getItem().getItemSeq();
         temp.orderQuantity = order.getOrderQuantity();
         temp.orderPrice = order.getOrderPrice();
         temp.orderUserName = order.getOrderUserName();
@@ -56,6 +70,8 @@ public class OrderDto {
         temp.orderMethod = order.getOrderMethod();
         temp. orderTime = order.getOrderTime();
         temp.orderStatus = order.getOrderStatus();
+        temp.itemSeqList= order.getItemSeqList();
+        temp.itemlist=null;
         return temp;
     }
 }

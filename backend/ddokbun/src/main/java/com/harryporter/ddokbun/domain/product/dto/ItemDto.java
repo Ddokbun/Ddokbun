@@ -1,7 +1,10 @@
 package com.harryporter.ddokbun.domain.product.dto;
 
 
+import com.harryporter.ddokbun.domain.plant.entity.Plant;
 import com.harryporter.ddokbun.domain.product.entity.Item;
+import com.harryporter.ddokbun.domain.user.dto.UserDto;
+import com.harryporter.ddokbun.domain.user.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -19,6 +22,8 @@ public class ItemDto {
     private long itemSeq;
     //상품명
     private String itemName;
+
+    private String itemEnName;
     //가격
     private int itemPrice;
     //설명
@@ -39,9 +44,11 @@ public class ItemDto {
                 .itemPrice(item.getItemPrice())
                 .itemStock(item.getItemStock())
                 .itemName(item.getItemName())
+                .itemEnName(item.getItemEnName())
                 .itemPicture(item.getItemPicture())
                 .build();
     }
+
 
     public void copy(ItemDto other){
         this.itemSeq = other.itemSeq;
@@ -51,6 +58,7 @@ public class ItemDto {
         this.itemPicture = other.itemPicture;
         this.itemPrice = other.itemPrice;
         this.itemStock = other.itemStock;
+        this.itemEnName= other.itemEnName;
     }
 
 

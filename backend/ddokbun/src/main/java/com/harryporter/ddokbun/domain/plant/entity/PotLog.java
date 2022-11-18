@@ -1,15 +1,22 @@
 package com.harryporter.ddokbun.domain.plant.entity;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Getter
 public class PotLog {
 
     // 화분로그 번호
     @Id
     @Column(name = "log_seq", columnDefinition = "INTEGER UNSIGNED NOT NULL")
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long logSeq;
 
     @Column(name = "temperature", nullable = false)
@@ -33,4 +40,14 @@ public class PotLog {
     @JoinColumn(name = "pot_serial", nullable = false)
     @ManyToOne(fetch = FetchType.LAZY)
     private Pot pot;
+
+    public PotLog(Pot pot) {
+        this.temperature = 25.1;
+        this.humudity = 30.0;
+        this.soilHumidity = 32.2;
+        this.waterLevel = 5.0;
+        this.light = 3.0;
+        this.createdTime = LocalDateTime.now();
+        this.pot = pot;
+    }
 }

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   margin: 50px 0px 0px;
-  padding: 0px 100px;
+  padding: 0px 40px;
   width: 100%;
   margin-bottom: 60px;
 
@@ -14,23 +14,83 @@ export const Wrapper = styled.div`
   p {
     font-family: ${props => props.theme.font.TextFont2};
     font-size: 20px;
-    margin-bottom: 100px;
+    word-break: keep-all;
   }
-
-  @media screen and (${props => props.theme.mobile}) {
-    margin: 50px 0px 0px;
-    padding: 0px;
+  .flex {
+    display: flex;
+    /* justify-content: center; */
+    align-items: center;
+  }
+  .plant-growth {
+    max-width: 1000px;
+    padding: 50px 30px;
     width: 100%;
-    margin-bottom: 100px;
-
-    h1 {
+    margin: 100px auto;
+    h3 {
       font-family: ${props => props.theme.font.TitleFont};
-      font-size: 40px;
-      margin-bottom: 30px;
+      font-size: 18px;
+      margin-bottom: 5px;
     }
     p {
       font-family: ${props => props.theme.font.TextFont2};
-      font-size: 20px;
+      font-size: 14px;
+      word-break: keep-all;
+    }
+    border-radius: 10px;
+    background-color: ${props => props.theme.color.darkGray};
+    .plant-grid {
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-gap: 30px;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: 1fr 1fr;
+
+      .col {
+        display: grid;
+        grid-template-columns: 50px 1fr;
+        grid-template-rows: 1fr;
+        grid-gap: 20px;
+        width: 100%;
+        height: 100%;
+
+        .content {
+          display: grid;
+          grid-template-columns: 1fr;
+          grid-template-rows: 35px;
+          grid-auto: row;
+        }
+
+        .imgwrap {
+          position: relative;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 600px) {
+    padding: 0px 10px;
+
+    h1 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+    p {
+      font-size: 16px;
+    }
+
+    .plant-growth {
+      padding: 50px 30px;
+      width: 100%;
+      .plant-grid {
+        display: grid;
+        grid-gap: 30px;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        .col {
+          grid-gap: 20px;
+        }
+      }
     }
   }
 `;

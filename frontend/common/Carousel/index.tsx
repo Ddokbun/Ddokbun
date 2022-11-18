@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -11,7 +11,9 @@ import "swiper/css/navigation";
 import { Navigation, Pagination } from "swiper";
 import { Wrapper } from "./styles";
 import ProductCard from "../Cards/ProductCard";
-const Carousel: React.FC = () => {
+import { ListArray, ListObjectItem } from "../../types/commerce/list.interface";
+
+const Carousel: React.FC<{ items: ListObjectItem[] }> = ({ items }) => {
   return (
     <Wrapper>
       <Swiper
@@ -35,24 +37,14 @@ const Carousel: React.FC = () => {
         spaceBetween={30}
         className="mySwiper"
       >
-        <SwiperSlide>
-          <ProductCard isResponsive={false} price={18000} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ProductCard isResponsive={false} price={18000} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ProductCard isResponsive={false} price={18000} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ProductCard isResponsive={false} price={18000} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ProductCard isResponsive={false} price={18000} />
-        </SwiperSlide>
-        <SwiperSlide>
-          <ProductCard isResponsive={false} price={18000} />
-        </SwiperSlide>
+        {items &&
+          items.map(item => {
+            return (
+              <SwiperSlide key={item?.itemSeq}>
+                <ProductCard isResponsive={false} item={item} />
+              </SwiperSlide>
+            );
+          })}
       </Swiper>
     </Wrapper>
   );

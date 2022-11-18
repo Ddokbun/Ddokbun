@@ -1,16 +1,34 @@
-import React from "react";
-import { NextPage } from "next";
+import React, { useEffect, useState } from "react";
+import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { Wrapper } from "../../styles/search/styles";
 import RecommendPlant from "../../components/search/RecommendPlant";
 import SearchBar from "../../components/search/SearchBar";
 import SearchButton from "../../components/search/SearchButton";
+import { PlantArray } from "../../types/search/recommend.interface";
+import { fetchTodayPlant } from "../../apis/search";
+import { fetchAllPlantsList } from "../../apis/manage";
+import { PlantListArray } from "../../types/search/searchbar.interface";
 
-const Search: NextPage = () => {
+export const getStaticProps: GetStaticProps = async context => {
+  const data = await fetchTodayPlant();
+  const plants = await fetchAllPlantsList();
+  return {
+    props: {
+      data,
+      plants,
+    },
+  };
+};
+
+const Search: NextPage<{ data: PlantArray; plants: PlantListArray }> = ({
+  data,
+  plants,
+}) => {
   return (
     <Wrapper>
-      <SearchBar></SearchBar>
+      <SearchBar plants={plants}></SearchBar>
       <SearchButton></SearchButton>
-      <RecommendPlant></RecommendPlant>
+      <RecommendPlant data={data.content[0]}></RecommendPlant>
     </Wrapper>
   );
 };

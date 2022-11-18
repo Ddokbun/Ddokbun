@@ -1,8 +1,6 @@
-import React, { useState } from "react";
+import { Dispatch, FC, SetStateAction, useEffect, useState } from "react";
 import {
   format,
-  subMonths,
-  addMonths,
   startOfWeek,
   addDays,
   isSameDay,
@@ -12,13 +10,40 @@ import {
   subWeeks,
 } from "date-fns";
 import { Wrapper } from "./styles";
+import { fetchWateringLogs } from "../../../../apis/manage";
+import { useRouter } from "next/router";
 
-const WeekPicker: React.FC<{
-  showDetailHandler: React.Dispatch<React.SetStateAction<boolean>>;
-}> = ({ showDetailHandler }) => {
+interface Props {
+  setWateringLogs: Dispatch<SetStateAction<string>>;
+}
+
+const WeekPicker: FC<Props> = ({ setWateringLogs }) => {
   const [currentMonth, setCurrentMonth] = useState(new Date());
   const [currentWeek, setCurrentWeek] = useState(getWeek(currentMonth));
   const [selectedDate, setSelectedDate] = useState(new Date());
+  const { potseq } = useRouter().query;
+
+  useEffect(() => {
+    if (!selectedDate || !potseq) {
+      return;
+    }
+    const getWateringLogs = async () => {
+      const year = selectedDate.getFullYear();
+      const month = selectedDate.getMonth() + 1;
+      const date = selectedDate.getDate();
+      const dataList: any[] = await fetchWateringLogs(potseq, year, month);
+      const logs = dataList.filter(
+        item => item[0] === year && item[1] === month && item[2] === date,
+      );
+
+      if (logs.length) {
+        setWateringLogs(`${year}년 ${month}월 ${date}일에 물을 주었네요`);
+      } else {
+        setWateringLogs("물을 준 이력이 없네요.");
+      }
+    };
+    getWateringLogs();
+  }, [selectedDate, setWateringLogs]);
 
   const changeWeekHandle = (btnType: string) => {
     if (btnType === "prev") {
@@ -31,12 +56,10 @@ const WeekPicker: React.FC<{
     }
   };
 
-  const onDateClickHandle = (day: any, dayStr: any) => {
+  const onDateClickHandle = (day: Date) => {
     setSelectedDate(day);
-    showDetailHandler(dayStr);
   };
 
-  //   007AFF => 버튼
   const renderHeader = () => {
     const dateFormat = "MMMM yyyy";
     return (
@@ -56,16 +79,17 @@ const WeekPicker: React.FC<{
     );
   };
   const renderDays = () => {
-    const dateFormat = "EEE";
+    const dateFormat = "eeeee";
     const days = [];
     const startDate = startOfWeek(currentMonth, { weekStartsOn: 1 });
     for (let i = 0; i < 7; i++) {
       days.push(
-        <div className="week" key={i}>
+        <p className="week" key={i}>
           {format(addDays(startDate, i), dateFormat)}
-        </div>,
+        </p>,
       );
     }
+
     return <div className="week-container">{days}</div>;
   };
   const renderCells = () => {
@@ -82,29 +106,23 @@ const WeekPicker: React.FC<{
         const cloneDay = day;
         days.push(
           <div
-            className={`col cell ${
-              isSameDay(day, new Date())
-                ? "today"
-                : isSameDay(day, selectedDate)
-                ? "selected"
-                : ""
-            }`}
+            key={day.toString() + "1"}
+            className={`day ${isSameDay(day, selectedDate) ? "selected" : ""}`}
             onClick={() => {
-              const dayStr = format(cloneDay, "ccc dd MMM yy");
-              onDateClickHandle(cloneDay, dayStr);
+              onDateClickHandle(cloneDay);
             }}
           >
-            <span className="number">{formattedDate}</span>
-            <span className="bg">{formattedDate}</span>
+            <p className="day">{formattedDate}</p>
           </div>,
         );
         day = addDays(day, 1);
       }
 
-      rows.push(<div className="row">{days}</div>);
+      rows.push(<div className="day-container">{days}</div>);
       days = [];
     }
-    return <div className="body">{rows}</div>;
+
+    return <>{rows}</>;
   };
 
   return (

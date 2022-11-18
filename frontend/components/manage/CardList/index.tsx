@@ -1,29 +1,42 @@
-import React from "react";
-// import CardItem from "../CardItem";
+import { motion } from "framer-motion";
+import { FC } from "react";
+import { Mousewheel, Navigation, Pagination } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { PlantListType } from "../../../pages/manage/[userseq]";
+import CardItem from "../CardItem";
+import { Wrapper } from "./styles";
 
-interface Plants {
-  plantSeq: string;
-  potSeq: string;
-  imagePath: string;
-  nickname: string;
+// Import Swiper styles
+import "swiper/css";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
+interface Props {
+  plantsList: PlantListType[];
 }
 
-const CardList: React.FC<{ plants: Plants[] }> = ({ plants }) => {
-  // 여기서 axios 할지 상위 컴포넌트에서 요청할지 확인필요
-
+const CardList: FC<Props> = ({ plantsList }) => {
   return (
-    <ul>
-      {/* {plants.map(plant => {
-        <li>
-          <CardItem
-            plantSeq={plant.plantSeq}
-            potSeq={plant.potSeq}
-            nickname={plant.plantNickname}
-            src={plant.imagePath}
-          />
-        </li>;
-      })} */}
-    </ul>
+    <Wrapper>
+      <Swiper
+        navigation={true}
+        slidesPerView={1}
+        mousewheel={true}
+        modules={[Navigation, Pagination, Mousewheel]}
+      >
+        {plantsList?.map(plant => {
+          return (
+            <SwiperSlide key={plant.potSerial}>
+              <CardItem
+                plantSeq={plant.plantSeq}
+                potSerial={plant.potSerial}
+                plantNickname={plant.plantNickname}
+              />
+            </SwiperSlide>
+          );
+        })}
+      </Swiper>
+    </Wrapper>
   );
 };
 

@@ -11,4 +11,9 @@ export const Wrapper = styled.div`
     color: ${props => props.theme.color.mainGreen};
     margin-bottom: 50px;
   }
+  @media screen and (max-width: 600px) {
+    h1 {
+      font-size: 35px;
+    }
+  }
 `;

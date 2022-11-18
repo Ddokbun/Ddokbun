@@ -10,7 +10,7 @@ import javax.persistence.*;
 public class SurveySelect {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer surveySelectSeq;
 
     @JoinColumn(name = "survey_seq",nullable = false)

@@ -1,9 +1,11 @@
 import Image, { StaticImageData } from "next/image";
-import React, { useState, useTransition } from "react";
+import React from "react";
 import { BasicInput, DateInputStyle, SearchInputWrapper } from "./styles";
 import search from "../../assets/icon/search.png";
 import { useRouter } from "next/router";
 import DatePick from "../DatePick";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
 
 export const Input: React.FC<{
   type: string;
@@ -17,7 +19,7 @@ export const Input: React.FC<{
   const onInputChangeHandler = (event: React.ChangeEvent<HTMLInputElement>) => {
     saveInput(event.target.value, identifier);
   };
-  const [startDate, setStartDate] = useState(new Date());
+  // const [startDate, setStartDate] = useState(new Date());
 
   return (
     <BasicInput>
@@ -46,29 +48,28 @@ export const SearchInput: React.FC<{
   disabled: boolean;
   setSearchInput: React.Dispatch<React.SetStateAction<string>> | null;
   value: string | undefined;
-}> = ({ placeholder, disabled, setSearchInput, value }) => {
+  path?: string;
+}> = ({ placeholder, disabled, setSearchInput, value, path }) => {
   const router = useRouter();
-  const [isPending, startTransition] = useTransition();
+  // const [isPending, startTransition] = useTransition();
   const onShowSearchHandler = () => {
-    router.push("/manage/add/search");
+    router.push({ pathname: "/manage/add/search", query: { path } });
   };
 
   const onInputChangeHandler: React.ChangeEventHandler<
     HTMLInputElement
   > = event => {
     //
-    startTransition(() => {
-      // 저장set
-      if (setSearchInput) {
-        setSearchInput(event.target.value);
-      }
-    });
+    console.log(event.target.value);
+    if (setSearchInput) {
+      setSearchInput(event.target.value);
+    }
   };
 
   return (
     <SearchInputWrapper onClick={onShowSearchHandler}>
-      <div className={"icon"}>
-        <Image src={search} alt="search-icon" />
+      <div className="icon">
+        <FontAwesomeIcon icon={faMagnifyingGlass} size="2x" />
       </div>
       <input
         disabled={disabled}
@@ -85,7 +86,7 @@ export const SearchInput: React.FC<{
 export const DateInput: React.FC<{
   label: string;
   image: StaticImageData;
-  saveInput: (value: string, identifier: string) => void;
+  saveInput: (value: string | Date, identifier: string) => void;
 }> = ({ label, image, saveInput }) => {
   return (
     <DateInputStyle>

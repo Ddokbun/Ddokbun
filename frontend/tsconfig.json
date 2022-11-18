@@ -20,7 +20,10 @@
     "additional.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "_document.js"
+    "_document.js",
+    "pages/_app.tsx",
+    "pages/sitemap.xml/index.js",
+    "pages/sitemap.xml/index.js"
   ],
   "exclude": ["node_modules"]
 }

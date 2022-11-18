@@ -1,0 +1,19 @@
+cloud:
+  aws:
+    credentials:
+      accessKey: AKIA4FE52JNLLMWYAUM2       # AWS IAM AccessKey 적기
+      secretKey: vdqd6ORlWlMu5ojfgl6FeQgH4IfQv9WbwbxxS3U8   # AWS IAM SecretKey 적기
+    s3:
+      bucket: ddokbun
+    region:
+      static: ap-northeast-2
+    stack:
+      auto: false
+
+# AWS 사용 시 다른 자원 안쓰면 다른 자원 안쓴다고  메세지 뜸
+logging:
+  level:
+    com:
+      amazonaws:
+        util:
+          EC2MetadataUtils: ERROR
