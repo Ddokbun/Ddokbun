@@ -96,9 +96,11 @@ const SearchBar: React.FC<{ plants: PlantListArray }> = ({ plants }) => {
                   onChange={setFile.bind(this)}
                 ></input>
               </div>
-              <SearchBtn color={Theme.color.ivory} path={`search/camera`}>
-                카메라 촬영
-              </SearchBtn>
+              <Link href={`search/camera`}>
+                <div className="camera-button">
+                  <h2>카메라 촬영</h2>
+                </div>
+              </Link>
             </div>
           </ModalWapper>
         </Modal>

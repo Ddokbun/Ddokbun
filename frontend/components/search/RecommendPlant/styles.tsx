@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   background-color: #fafafa;
   padding-bottom: 100px;
   .title {
-    margin: 50px 10px 10px 10px;
+    margin: 30px 10px 10px 10px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -13,7 +13,7 @@ export const Wrapper = styled.div`
   h2 {
     font-family: ${props => props.theme.font.TitleFont};
     font-size: 30px;
-    margin: 30px 0px 10px 0px;
+    margin: 20px 0px 10px 0px;
   }
   .img-wrap {
     display: flex;
@@ -24,6 +24,9 @@ export const Wrapper = styled.div`
       height: 500px;
       border-radius: 10px;
       overflow: hidden;
+      :hover {
+        cursor: pointer;
+      }
     }
     .opacity {
       color: #dedede;
