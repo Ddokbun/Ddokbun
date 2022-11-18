@@ -1,6 +1,6 @@
 import React from "react";
 import { NextPage } from "next";
-import CameraCompo from "../../../../components/search/AISearch/SelectButton/Camera";
+import CameraCompo from "../../../components/search/Camera";
 
 const SearchCamera: NextPage = () => {
   return (

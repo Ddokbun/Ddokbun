@@ -145,12 +145,15 @@ export const SearchButtonStyle = styled.button`
   padding: 3% 0 3%;
   margin: 1%;
   width: 150px;
-  height: 150px;
+  height: 100px;
   box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+  :hover {
+    background-color: ${props => props.theme.color.darkGray};
+  }
 
   @media screen and (max-width: 600px) {
     width: 90px;
-    height: 90px;
+    height: 60px;
     border-radius: 10px;
     font-size: 15px;
     margin: 1%;
