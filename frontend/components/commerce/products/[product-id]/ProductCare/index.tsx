@@ -27,10 +27,6 @@ const ProductCare: React.FC<{
   light,
   lightInfo,
 }) => {
-  const thisHumid = humid.slice(0, -1).split("~");
-  // const avgHumid =
-  //   (parseInt(thisHumid[0].trim()) + parseInt(thisHumid[1].trim())) / 2;
-
   return (
     <Wrapper>
       <h1>식물정보</h1>

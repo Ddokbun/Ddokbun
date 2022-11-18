@@ -3,10 +3,10 @@ import styled from "styled-components";
 export const Wrapper = styled.div`
   background-color: ${props => props.theme.color.whiteGray};
   width: 100%;
-  .contents {
+  .contents-box {
     margin: auto;
     width: 100%;
-    max-width: 1500px;
+    max-width: 1200px;
     display: flex;
     padding-top: 20px;
     flex-direction: column;
