@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FC } from "react";
+import { FC, useEffect, useState } from "react";
 import { Mousewheel, Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { PlantListType } from "../../../pages/manage/[userseq]";
@@ -21,20 +21,24 @@ const CardList: FC<Props> = ({ plantsList }) => {
       <Swiper
         navigation={true}
         slidesPerView={1}
-        mousewheel={true}
-        modules={[Navigation, Pagination, Mousewheel]}
+        modules={[Navigation, Pagination]}
+        spaceBetween={50}
+        centerInsufficientSlides={true}
+        breakpoints={{
+          600: { slidesPerView: 3 },
+        }}
       >
         {plantsList?.map(plant => {
           return (
             <SwiperSlide key={plant.potSerial}>
-              <CardItem
-                plantSeq={plant.plantSeq}
-                potSerial={plant.potSerial}
-                plantNickname={plant.plantNickname}
-              />
+              <CardItem potSerial={plant.potSerial!} />
             </SwiperSlide>
           );
         })}
+        <SwiperSlide key={"add"}>
+          <button className="plant-add-container">
+          </button>
+        </SwiperSlide>
       </Swiper>
     </Wrapper>
   );

@@ -4,12 +4,12 @@ import water from "../../../assets/icon/water.png";
 import sun from "../../../assets/icon/sun.png";
 import thermometer from "../../../assets/icon/thermometer.png";
 import soilhumidity from "../../../assets/icon/soilhumidity.png";
-import { currentStatus } from "../../../pages/manage/myplant/[potseq]";
+import { PlantStatusType } from "../../../pages/manage/myplant/[potseq]";
 import { lightTypes } from "../add/PlantData";
 import { getDateDiff } from "../../../utils/getDateDiff";
 
 interface Props {
-  plantStatus: currentStatus;
+  plantStatus: PlantStatusType;
 }
 
 const PlantInfo: FC<Props> = ({ plantStatus }) => {

@@ -1,13 +1,13 @@
 import { motion } from "framer-motion";
 import { FC, useState } from "react";
-import { currentStatus } from "../../../pages/manage/myplant/[potseq]";
+import { PlantStatusType } from "../../../pages/manage/myplant/[potseq]";
 import WeekPicker from "../add/WeekPicker";
 import PlantInfo from "../PlantInfo";
 import PlantStatus from "../PlantStatus";
 
 interface Props {
   tab: number;
-  plantStatus: currentStatus;
+  plantStatus: PlantStatusType;
 }
 
 const TabContents: FC<Props> = ({ tab, plantStatus }) => {

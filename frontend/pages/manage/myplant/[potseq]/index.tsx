@@ -21,7 +21,7 @@ export interface LogsType {
   [name: string]: string;
 }
 
-export interface currentStatus {
+export interface PlantStatusType {
   plantNickname: string;
   plantEnName: string;
   plantName: string;
@@ -41,17 +41,13 @@ export interface currentStatus {
 }
 
 interface Props {
-  data: currentStatus;
+  data: PlantStatusType;
 }
 
 const PlantCare: NextPage<Props> = ({ data }) => {
   const { potseq } = useRouter().query;
   const [tab, setTab] = useState(0);
-  console.log(data);
 
-  // const plantNickname = useSelector(
-  //   (state: RootState) => state.manage.plantNickname,
-  // );
   const dispatch = useDispatch();
   const [plantStatus, setPlantStatus] = useState(data);
   const onWateringHandler = async () => {
@@ -74,7 +70,6 @@ const PlantCare: NextPage<Props> = ({ data }) => {
       if (!request) {
         alert("물 주기 알림을 받으시려면 알림 설정을 허용해주세요");
       }
-      dispatch(manageActions.setPlantInfo(data));
     };
     getInitialData();
   }, [potseq]);

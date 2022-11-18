@@ -3,52 +3,110 @@ import { Wrapper } from "./styles";
 import Image from "next/image";
 import { PlantListType } from "../../../pages/manage/[userseq]";
 import { useRouter } from "next/router";
+import { fetchCurrentStatus } from "../../../apis/manage";
+import { PlantStatusType } from "../../../pages/manage/myplant/[potseq]";
+import { getDateDiff } from "../../../utils/getDateDiff";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faDroplet,
+  faSun,
+  faTemperature0,
+} from "@fortawesome/free-solid-svg-icons";
 import { useDispatch } from "react-redux";
 import { manageActions } from "../../../store/manage";
-import { fetchCurrentStatus } from "../../../apis/manage";
+import Modal from "../../../common/Modal";
+import { useStore } from "react-redux";
 
-const CardItem: FC<PlantListType> = plant => {
-  //   식물이름, 식물 pk, 식물 이미지
+interface Props {
+  potSerial?: string;
+}
+
+const CardItem: FC<Props> = ({ potSerial }) => {
   const router = useRouter();
+  const [plantStatus, setPlantStatus] = useState<PlantStatusType>();
+  const [waterToBeSupplied, setWaterToBeSupplied] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false);
   const dispatch = useDispatch();
-  const onShowDetailHandler = () => {
-    dispatch(
-      manageActions.setPlantInfo({ plantNickname: plant.plantNickname }),
-    );
-    router.push(`/manage/myplant/${plant.potSerial}`);
+  const closeModal = () => {
+    setModalOpen(false);
   };
-  const [waterSupplied, setWaterSupplied] = useState("");
-
-  console.log(waterSupplied);
-
+  const openModal = () => {
+    setModalOpen(true);
+  };
+  const store = useStore();
+  const onShowDetailHandler = () => {
+    router.push({
+      pathname: `/manage/myplant/${potSerial}`,
+    });
+  };
+  const modalContents = () => {
+    return <>모달콘텐츠</>;
+  };
   useEffect(() => {
-    if (!plant.potSerial) {
+    if (!potSerial) {
       return;
     }
 
     const getInitialData = async () => {
-      const res = await fetchCurrentStatus(plant.potSerial);
-      setWaterSupplied(res.waterSupply.join("-"));
+      const res = await fetchCurrentStatus(potSerial);
+      setPlantStatus(res);
+      setWaterToBeSupplied(
+        Math.round(res.waterCycle - getDateDiff(res.waterSupply.join("-"))),
+      );
     };
     getInitialData();
-  }, [plant.potSerial]);
+  }, [potSerial]);
 
   return (
     <Wrapper>
+      {modalOpen && (
+        <Modal onClose={closeModal} title="화분 환경 기반 추천">
+          {modalContents()}
+        </Modal>
+      )}
       <Image
         onClick={onShowDetailHandler}
-        className="image"
-        // layout="fill"
-        width={450}
-        height={400}
-        src={`https://ddokbun.com/api/resources/s3?plantSeq=${plant.plantSeq}`}
+        className="card-image"
+        loading="lazy"
+        width={"100%"}
+        height={"100%"}
+        src={`https://ddokbun.com/api/resources/s3?plantSeq=${plantStatus?.plantSeq}`}
         alt="식물이미지"
       />
-      <div className="info" style={{ background: "#FFFAFA" }}>
-        <h2>{plant.plantNickname}</h2>
-        <h3>마지막 물 준날</h3>
-        <p>{waterSupplied}</p>
-        <button onClick={onShowDetailHandler}>관리하기</button>
+      <div className="card-text">
+        <h2>{plantStatus?.plantNickname}</h2>
+        <p>{plantStatus?.plantName}</p>
+        <p>{plantStatus?.plantEnName}</p>
+        <p className="date">물 주는 날 : {waterToBeSupplied}일 후</p>
+        <div className="button-container">
+          <button onClick={onShowDetailHandler}>관리하기</button>
+          <button onClick={openModal}>화분 기반 식물 추천</button>
+        </div>
+      </div>
+      <div className="card-stats">
+        <div className="stat">
+          <div className="value">
+            <FontAwesomeIcon icon={faTemperature0} />
+            <p>
+              {plantStatus?.temperature}
+              <sup>o</sup>C
+            </p>
+          </div>
+        </div>
+        <div className="stat middle">
+          <div className="value">
+            <FontAwesomeIcon icon={faDroplet} />
+            <p>{plantStatus?.humidity}%</p>
+          </div>
+        </div>
+        <div className="stat">
+          <div className="value">
+            <FontAwesomeIcon icon={faSun} />
+            <p>{plantStatus?.light! >= 4 && "밝아요"}</p>
+            <p>{plantStatus?.light! == 3 && "적당해요"}</p>
+            <p>{plantStatus?.light! < 3 && "어두워요"}</p>
+          </div>
+        </div>
       </div>
     </Wrapper>
   );

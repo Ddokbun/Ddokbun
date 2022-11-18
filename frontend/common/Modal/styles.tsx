@@ -10,6 +10,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
   button {
     outline: none;
     cursor: pointer;
