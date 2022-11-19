@@ -71,9 +71,3 @@ export const Wrapper = styled(motion.section)`
     }
   }
 `;
-
-export const Line = styled.div`
-  width: 100%;
-  border-width: 1px;
-  border-color: ${props => props.theme.color.black};
-`;

@@ -45,6 +45,7 @@ const Manage: NextPage = () => {
         fetchPlantsList(),
         fetchCartList(),
       ]);
+
       setPlantsList(plantsListData);
       dispatch(setAllCartLists(cartListData));
     };
@@ -56,19 +57,7 @@ const Manage: NextPage = () => {
       <PageTitle isLink mypage={false}>
         <h1>My Plants</h1>
       </PageTitle>
-      {plantsList ? (
-        <>
-          <h2>관리 원하시는 화분을 클릭해주세요</h2>
-          <DynamicCardlist plantsList={plantsList} />
-        </>
-      ) : (
-        <>
-          <h2>화분이 아직 없으신가요?</h2>
-          <Link href={"/manage/add"}>
-            <h3>화분 추가하기</h3>
-          </Link>
-        </>
-      )}
+      {plantsList?.length && <DynamicCardlist plantsList={plantsList} />}
     </Wrapper>
   );
 };

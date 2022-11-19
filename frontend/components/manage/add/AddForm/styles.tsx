@@ -54,6 +54,8 @@ export const Wrapper = styled(motion.form)`
     width: 100%;
   }
 
+
+
   @media screen and (max-width: 600px) {
     .grid {
       display: flex;
