@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import { FC, useEffect, useState } from "react";
 import { fetchSimilarItem } from "../../../apis/commerce";
+import { fetchItemSeq } from "../../../apis/search";
 import { Wrapper } from "./styles";
 
 interface Props {
@@ -18,14 +19,15 @@ interface SimilarItemInfoType {
 const SimilarItem: FC<Props> = ({ potSerial }) => {
   const [similarItemInfo, setSimilarItemInfo] = useState<SimilarItemInfoType>();
   const router = useRouter();
-  const onShowDetailHandler = () => {
-    router.push(`/commerce/1`);
+  const onShowDetailHandler = async () => {
+    const itemSeq = await fetchItemSeq(Number(similarItemInfo?.plantSeq));
+
+    router.push(`/commerce/product/${itemSeq}`);
   };
   useEffect(() => {
     const getInitialData = async () => {
       const getSimilaritem = await fetchSimilarItem(potSerial!);
       setSimilarItemInfo(getSimilaritem);
-      console.log(getSimilaritem);
     };
 
     getInitialData();

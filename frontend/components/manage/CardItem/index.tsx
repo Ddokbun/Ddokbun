@@ -31,7 +31,6 @@ const CardItem: FC<Props> = ({ potSerial }) => {
   const openModal = () => {
     setModalOpen(true);
   };
-  const store = useStore();
   const onShowDetailHandler = () => {
     router.push({
       pathname: `/manage/myplant/${potSerial}`,
