@@ -10,7 +10,6 @@ export const checkAuthentication = async (
   res: ServerResponse<IncomingMessage>,
 ) => {
   const token = getCookie("token", { req, res }) as string;
-
   const currentUserSeq = await getUserSeq(token);
 
   if (currentUserSeq !== Number(query.userseq)) {

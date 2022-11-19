@@ -48,6 +48,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
 }) => {
   const isAuthenticated = await checkAuthentication(query, req, res);
+
   if (isAuthenticated) {
     return {
       props: {},
