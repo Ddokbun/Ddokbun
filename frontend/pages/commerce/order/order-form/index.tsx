@@ -13,6 +13,7 @@ import { useSelect } from "@react-three/drei";
 import { useSelector } from "react-redux";
 import { context } from "@react-three/fiber";
 import { AppContext } from "next/dist/pages/_app";
+import Swal from "sweetalert2";
 
 const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
   const [name, setName] = useState("");
@@ -78,10 +79,18 @@ const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
       if (payType === 1) {
         postKakaoPay(res.orderSeq, total_amount, item_name, isMobile);
       } else {
-        alert("네이버준비중");
+        Swal.fire({
+          icon: "info",
+          titleText: "개발 진행중입니다.",
+          text: "카카오페이를 이용해주세요.",
+        });
       }
     } catch (error) {
-      alert("주문실패");
+      Swal.fire({
+        icon: "error",
+        titleText: "주문이 실패했습니다",
+        text: "서비스를 다시 시도해주세요",
+      });
     }
   };
   /** 폼 유효성 검사 */
@@ -90,14 +99,20 @@ const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
       const reg = /[\s\{\}\[\]\/?.,;:|\)*~`!^\-_+<>@\#$%&\\\=\(\'\"]/g;
       if (name.length > 20 || reg.test(name) === true) {
         setNameError("특수문자를 제거해주세요");
-        alert("주문 정보를 확인해주세요");
+        Swal.fire({
+          icon: "warning",
+          titleText: "주문정보를 확인해주세요",
+        });
         return;
       } else {
         setNameError("");
       }
     } else {
       setNameError("이름을 입력해주세요");
-      alert("주문 정보를 확인해주세요");
+      Swal.fire({
+        icon: "warning",
+        titleText: "주문정보를 확인해주세요",
+      });
       return;
     }
 
@@ -106,7 +121,10 @@ const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
       const reg = /^[0-9]+$/;
       if (fullPhone.length > 12 || reg.test(fullPhone) !== true) {
         setPhoneError("올바른 전화번호를 입력해주세요");
-        alert("주문 정보를 확인해주세요");
+        Swal.fire({
+          icon: "warning",
+          titleText: "주문정보를 확인해주세요",
+        });
         return;
       }
 
@@ -114,7 +132,10 @@ const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
     } else {
       setPhoneError("전화번호를 입력해주세요");
       setFlag(1);
-      alert("주문 정보를 확인해주세요");
+      Swal.fire({
+        icon: "warning",
+        titleText: "주문정보를 확인해주세요",
+      });
       return;
     }
 
@@ -127,13 +148,19 @@ const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
       } else {
         setMailError("올바른 이메일을 입력해주세요");
 
-        alert("주문 정보를 확인해주세요");
+        Swal.fire({
+          icon: "warning",
+          titleText: "주문정보를 확인해주세요",
+        });
         return;
       }
     } else {
       setMailError("올바른 이메일을 입력해주세요");
 
-      alert("주문 정보를 확인해주세요");
+      Swal.fire({
+        icon: "warning",
+        titleText: "주문정보를 확인해주세요",
+      });
       return;
     }
 
@@ -141,17 +168,26 @@ const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
       setPostError("");
     } else {
       setPostError("상세 주소를 입력해주세요");
-      alert("주문 정보를 확인해주세요");
+      Swal.fire({
+        icon: "warning",
+        titleText: "주문정보를 확인해주세요",
+      });
       return;
     }
 
     if (!payType) {
-      alert("결제 수단을 선택해주세요");
+      Swal.fire({
+        icon: "warning",
+        titleText: "결제수단을 입력해주세요",
+      });
     } else {
       try {
         postOrder();
       } catch {
-        alert("뭔가 잘못됐습니다");
+        Swal.fire({
+          icon: "warning",
+          titleText: "주문정보를 확인해주세요",
+        });
       }
     }
   };

@@ -71,7 +71,7 @@ export const Wrapper = styled(motion.div)`
 
   @media screen and (max-width: 600px) {
     padding: 0px 10px;
-
+    margin-bottom: 5px;
     h1 {
       font-size: 30px;
       margin-bottom: 20px;
