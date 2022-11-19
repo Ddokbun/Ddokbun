@@ -7,6 +7,8 @@ import { PlantArray } from "../../types/search/recommend.interface";
 import { fetchTodayPlant } from "../../apis/search";
 import { fetchAllPlantsList } from "../../apis/manage";
 import { PlantListArray } from "../../types/search/searchbar.interface";
+import { motion } from "framer-motion";
+import { WrapperVar } from "../../styles/animations/animation";
 
 export const getStaticProps: GetStaticProps = async context => {
   const data = await fetchTodayPlant();
@@ -25,9 +27,16 @@ const Search: NextPage<{ data: PlantArray; plants: PlantListArray }> = ({
 }) => {
   return (
     <Wrapper>
-      <SearchBar plants={plants}></SearchBar>
-      <SearchButton></SearchButton>
-      <RecommendPlant data={data.content[0]}></RecommendPlant>
+      <motion.div
+        variants={WrapperVar}
+        initial={"start"}
+        animate={"end"}
+        className="contents-box"
+      >
+        <SearchBar plants={plants}></SearchBar>
+        <SearchButton></SearchButton>
+        <RecommendPlant data={data.content[0]}></RecommendPlant>
+      </motion.div>
     </Wrapper>
   );
 };
