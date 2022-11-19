@@ -61,7 +61,7 @@ const ProductLists: NextPage<{ data: ListArray; banner: Ibanner }> = ({
           ) : null}
         </div>
       </div>
-      <ProductList data={data} />;
+      <ProductList data={data} />
     </Wrapper>
   );
 };
