@@ -6,7 +6,7 @@ export const Wrapper = styled.div`
   ul li {
     font-family: ${props => props.theme.font.TextFont2};
     margin: 0px 0px;
-    font-size: min(1.5vw, 25px);
+    font-size: min(1.5vw, 20px);
     word-break: keep-all;
     font-weight: 500;
     li:nth-child(0) {

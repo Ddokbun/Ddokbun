@@ -5,11 +5,18 @@ import ProductSellCard from "../../../../common/Cards/ProductSellCard";
 import { Wrapper } from "../../../../styles/commerce/products/pot/styles";
 import Light from "../../../../assets/icon/light.png";
 import Image from "next/image";
+import { motion } from "framer-motion";
+import { EleVar, WrapperVar } from "../../../../styles/animations/animation";
 
 const Pot: NextPage = data => {
   return (
     <Wrapper>
-      <div className="contents-box">
+      <motion.div
+        variants={WrapperVar}
+        initial={"start"}
+        animate={"end"}
+        className="contents-box"
+      >
         <ProductSellCard
           itemName="똑분"
           itemEnName="Premium Smart Pot"
@@ -20,7 +27,7 @@ const Pot: NextPage = data => {
           flag={true}
         />
 
-        <div className="description">
+        <motion.div variants={EleVar} className="description">
           <h1>스마트 화분</h1>
 
           <div className="plant-growth">
@@ -61,8 +68,8 @@ const Pot: NextPage = data => {
               </div>
             </div>
           </div>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </Wrapper>
   );
 };

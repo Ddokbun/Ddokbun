@@ -60,7 +60,7 @@ const CartItem: React.FC<{
 
       case "-":
         if ((item.quantity as number) <= 1) {
-          alert("삭제구현안됨 ㅋㄷ");
+          alert("최소 상품 수량입니다.");
           return;
         }
         await putCartItemCount(

@@ -6,6 +6,7 @@ import ProductLabel from "../../Labels/ProductsLabel";
 import { BuyButton, BuyListButton } from "../../Button";
 import { ItemObject } from "../../../types/commerce/detail.interface";
 import ProductSummary from "../../../components/commerce/products/[product-id]/ProductSummary";
+import { EleVar } from "../../../styles/animations/animation";
 
 interface SellItemObject extends ItemObject {
   tags?: string[];
@@ -28,7 +29,7 @@ const ProductSellCard: React.FC<SellItemObject> = props => {
   console.log(props.flag);
 
   return (
-    <Wrapper>
+    <Wrapper variants={EleVar}>
       <div className="img-wrap">
         <Image
           objectFit="contain"
