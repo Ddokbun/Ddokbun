@@ -9,7 +9,7 @@ export const Wrapper = styled(motion.ul)`
 
   .swiper {
     width: 100%;
-    height: 500px;
+    height: 520px;
     overflow-x: hidden !important;
     display: flex;
     justify-content: center;

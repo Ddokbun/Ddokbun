@@ -1,7 +1,6 @@
 import { FC, useEffect, useState } from "react";
 import { Wrapper } from "./styles";
 import Image from "next/image";
-import { PlantListType } from "../../../pages/manage/[userseq]";
 import { useRouter } from "next/router";
 import { fetchCurrentStatus } from "../../../apis/manage";
 import { PlantStatusType } from "../../../pages/manage/myplant/[potseq]";
@@ -12,11 +11,8 @@ import {
   faSun,
   faTemperature0,
 } from "@fortawesome/free-solid-svg-icons";
-import { useDispatch } from "react-redux";
-import { manageActions } from "../../../store/manage";
 import Modal from "../../../common/Modal";
 import { useStore } from "react-redux";
-import { fetchSimilarItem } from "../../../apis/commerce";
 import SimilarItem from "../SimilarItem";
 
 interface Props {
@@ -28,7 +24,6 @@ const CardItem: FC<Props> = ({ potSerial }) => {
   const [plantStatus, setPlantStatus] = useState<PlantStatusType>();
   const [waterToBeSupplied, setWaterToBeSupplied] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
-  const dispatch = useDispatch();
   const closeModal = () => {
     setModalOpen(false);
   };

@@ -45,9 +45,7 @@ const MyPage: NextPage = () => {
   return (
     <Wrapper variants={ManageHomeAni} initial="out" animate="in" exit="out">
       <DeliveryTable />
-      <section>
         <Manage />
-      </section>
     </Wrapper>
   );
 };
