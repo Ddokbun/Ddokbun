@@ -16,7 +16,8 @@ import { wrapper } from "../../../store";
 import { setRelatedItemList } from "../../../store/commerce";
 import { useRouter } from "next/router";
 import { useSelector } from "react-redux";
-
+import { EleVar, WrapperVar } from "../../../styles/animations/animation";
+import { motion } from "framer-motion";
 interface IParams {
   productid: number;
 }
@@ -35,7 +36,12 @@ const Product: NextPage<{ data: ItemObject }> = ({ data }) => {
 
   return (
     <Wrapper>
-      <div className="contents-box">
+      <motion.div
+        className="contents-box"
+        variants={WrapperVar}
+        initial={"start"}
+        animate={"end"}
+      >
         <ProductSellCard
           itemSeq={data.itemSeq}
           itemName={data.itemName}
@@ -59,7 +65,7 @@ const Product: NextPage<{ data: ItemObject }> = ({ data }) => {
           lightInfo={data.plant?.lightInfo}
         />
         <RelatedProducts />
-      </div>
+      </motion.div>
     </Wrapper>
   );
 };
