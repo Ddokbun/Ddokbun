@@ -37,6 +37,17 @@ export const Wrapper = styled(motion.section)`
     text-align: center;
   }
 
+  .logout {
+    position: absolute;
+    right: 0px;
+    color: #cccccc;
+    font-size: 14px;
+    font-family: ${props => props.theme.font.TextFont2};
+    :hover {
+      color: ${props => props.theme.color.mainGreen};
+    }
+  }
+
   @media screen and (max-width: 600px) {
     .card-container {
       grid-template-columns: repeat(1, 80%);
@@ -63,11 +74,17 @@ export const Wrapper = styled(motion.section)`
       :nth-child(3) {
         width: 25%;
       }
+      :nth-child(4) {
+        width: 10%;
+      }
     }
     .info {
       text-align: left;
       word-break: keep-all;
       padding-left: 5%;
+      height: 130px;
+      /* align-items: center; */
+      justify-content: center;
     }
   }
 `;

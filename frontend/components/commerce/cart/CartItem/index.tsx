@@ -9,6 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import { deleteCartList } from "../../../../store/commerce";
 import { useRouter } from "next/dist/client/router";
+import Swal from "sweetalert2";
 
 interface CartProps extends ListObjectItem {
   quantity: number;
@@ -33,16 +34,22 @@ const CartItem: React.FC<{
 
   const onDeleteHandler = async (itemSeq: number) => {
     const data = await deleteCart(itemSeq);
-    console.log(data);
 
     switch (data?.code) {
       case 200:
         dispatch(deleteCartList(itemSeq));
-        alert("성공적으로 삭제됐습니다");
+        Swal.fire({
+          icon: "success",
+          titleText: "성공적으로 삭제됐습니다",
+        });
         return;
 
       default:
-        alert("삭제에 실패했습니다");
+        Swal.fire({
+          icon: "error",
+          titleText: "삭제에 실패했습니다",
+          text: "다시 시도해주세요",
+        });
     }
   };
   const onCountHandler = async (event: React.MouseEvent<HTMLElement>) => {
@@ -60,7 +67,11 @@ const CartItem: React.FC<{
 
       case "-":
         if ((item.quantity as number) <= 1) {
-          alert("최소 상품 수량입니다.");
+          Swal.fire({
+            icon: "error",
+            titleText: "수량변경에 실패했습니다",
+            text: "삭제를 원하시면 X를 눌러주세요",
+          });
           return;
         }
         await putCartItemCount(

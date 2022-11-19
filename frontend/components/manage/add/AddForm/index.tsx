@@ -26,6 +26,7 @@ const AddForm = () => {
   const router = useRouter();
   const plantSeq = useSelector((state: RootState) => state.manage.plantSeq);
   const name = useSelector((state: RootState) => state.manage.plantName);
+  const userSeq = useSelector((state: RootState) => state.authSlice.userSeq);
 
   const inputValues: React.MutableRefObject<RegisterType> = useRef({
     potSerial: "",
@@ -82,11 +83,9 @@ const AddForm = () => {
       Swal.fire("마지막으로 물 준 일자를 확인해주세요.");
     }
 
-    console.log(inputValues.current);
-
     const res = await fetchRegisterPot(inputValues.current);
-    if (res?.status === 201) {
-      router.push(`/manage/${res.potSeq}`);
+    router.push(`/manage/${userSeq}`);
+    if (res?.code === 200) {
     } else {
       Swal.fire("혹시 화분을 아직 구매하지 않으셨나요?");
     }
