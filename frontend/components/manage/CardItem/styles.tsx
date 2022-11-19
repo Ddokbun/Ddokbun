@@ -19,6 +19,10 @@ export const Wrapper = styled(motion.li)`
   :hover {
     transform: scale(1.15);
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.6);
+    @media screen and (max-width: 600px) {
+      transform: none;
+      box-shadow: none;
+    }
   }
 
   .card-image {

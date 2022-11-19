@@ -476,3 +476,15 @@ export const fetchDeliveries = async () => {
     return res.data.content;
   } catch (error) {}
 };
+
+export const fetchSimilarItem = async (potSerial: string) => {
+  const url = `AI/find-plant/${potSerial}`;
+  try {
+    const res = await AXIOS({
+      url,
+      method: "get",
+    });
+
+    return res.data.content;
+  } catch (error) {}
+};

@@ -58,13 +58,7 @@ export const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
   }
-  /* section > footer button {
-    padding: 6px 12px;
-    color: #fff;
-    background-color: #6c757d;
-    border-radius: 5px;
-    font-size: 13px;
-  } */
+
   .modal.openModal {
     display: flex;
     align-items: center;
@@ -95,6 +89,15 @@ export const Wrapper = styled.div`
     }
     to {
       opacity: 1;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    section {
+      width: 80%;
+    }
+    section > header {
+      font-size: 14px;
+      word-break: keep-all;
     }
   }
 `;

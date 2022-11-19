@@ -16,6 +16,8 @@ import { useDispatch } from "react-redux";
 import { manageActions } from "../../../store/manage";
 import Modal from "../../../common/Modal";
 import { useStore } from "react-redux";
+import { fetchSimilarItem } from "../../../apis/commerce";
+import SimilarItem from "../SimilarItem";
 
 interface Props {
   potSerial?: string;
@@ -39,9 +41,7 @@ const CardItem: FC<Props> = ({ potSerial }) => {
       pathname: `/manage/myplant/${potSerial}`,
     });
   };
-  const modalContents = () => {
-    return <>모달콘텐츠</>;
-  };
+
   useEffect(() => {
     if (!potSerial) {
       return;
@@ -60,8 +60,11 @@ const CardItem: FC<Props> = ({ potSerial }) => {
   return (
     <Wrapper>
       {modalOpen && (
-        <Modal onClose={closeModal} title="화분 환경 기반 추천">
-          {modalContents()}
+        <Modal
+          onClose={closeModal}
+          title={`${plantStatus?.plantNickname}랑 비슷한 환경에 적합한 식물이예요`}
+        >
+          <SimilarItem potSerial={potSerial!} />
         </Modal>
       )}
       <Image
