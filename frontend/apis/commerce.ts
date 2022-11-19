@@ -95,7 +95,7 @@ export const putCart = async (id: number) => {
       url,
       data,
     });
-    alert("id를 장바구니에 넣었습니다");
+    alert("상품을 장바구니에 담았습니다");
 
     return res.data;
   } catch (error) {

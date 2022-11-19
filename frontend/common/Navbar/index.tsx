@@ -25,10 +25,11 @@ import { RootState } from "../../store";
 const Navbar = () => {
   const ref = useRef<HTMLDivElement>(null);
   const userseq = useSelector((state: RootState) => state.authSlice.userSeq);
-
+  const carts = useSelector((state: RootState) => state.cartList);
   const [slider, setSlider] = useState(false);
   const [shopCate, setShopCate] = useState(false);
   const [shopHover, setShopHover] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
 
   const toggleButton = () => {
     if (ref.current?.classList.contains("open")) {
@@ -61,7 +62,17 @@ const Navbar = () => {
       setSlider(false);
       setShopCate(false);
     }
+    setShopHover(false);
   }, [route]);
+
+  useEffect(() => {
+    setCartCount(0);
+    carts.forEach(item => {
+      if (item) {
+        setCartCount(val => val + 1);
+      }
+    });
+  }, [carts]);
 
   const shopHoverAni = {
     hover: {
@@ -90,11 +101,10 @@ const Navbar = () => {
             <Link href={`/manage/${userseq}`}>
               <a>IoT</a>
             </Link>
-            <Link href={"/commerce"}>
-              <a onMouseEnter={handleShopEnter} onMouseLeave={handleShopLeave}>
-                Shopping ▾{" "}
-              </a>
-            </Link>
+
+            <div onMouseEnter={handleShopEnter} onMouseLeave={handleShopLeave}>
+              Shopping ▾{" "}
+            </div>
           </div>
 
           <div className="img-wrap">
@@ -103,7 +113,10 @@ const Navbar = () => {
             </Link>
 
             <Link href={"/commerce/cart"}>
-              <Bag />
+              <div className="bag-wrap">
+                {cartCount ? <span>{cartCount}</span> : null}
+                <Bag />
+              </div>
             </Link>
 
             <Link href={`/mypage/${userseq}`}>
@@ -126,46 +139,48 @@ const Navbar = () => {
                 당신의 가드닝을 도와줄 <br />
                 스마트 화분을 만나보세요
               </p>
-              <div className="button">
-                <a>보러가기</a>
-              </div>
+              <Link href={"/commerce"}>
+                <div className="button">
+                  <a>보러가기</a>
+                </div>
+              </Link>
             </div>
-            <div className="grid-col">
-              <Link href={"/commerce/list/초보집사"}>
+            <Link href={"/commerce/list/초보집사"}>
+              <div className="grid-col">
                 <NavCard
                   source={Starter}
                   title="Beginer"
                   content="초보 집사들을 위한 최선의 선택"
                 />
-              </Link>
-            </div>
-            <div className="grid-col">
-              <Link href={"/commerce/list/집꾸미기"}>
+              </div>
+            </Link>
+            <Link href={"/commerce/list/집꾸미기"}>
+              <div className="grid-col">
                 <NavCard
                   source={Home}
                   title="Home Decoration"
                   content="똑분과 함께 플랜테리어"
                 />
-              </Link>
-            </div>
-            <div className="grid-col">
-              <Link href={"/commerce/list/반려동물"}>
+              </div>
+            </Link>
+            <Link href={"/commerce/list/반려동물"}>
+              <div className="grid-col">
                 <NavCard
                   source={Pet}
                   title="Gardening with Pets"
                   content="반려동물과 함께하는 가드닝"
                 />
-              </Link>
-            </div>
-            <div className="grid-col">
-              <Link href={"/commerce/list/공기정화"}>
+              </div>
+            </Link>
+            <Link href={"/commerce/list/공기정화"}>
+              <div className="grid-col">
                 <NavCard
                   source={Air}
                   title="Air Purifying Plants"
                   content="공기정화에 도움되는 식물들"
                 />
-              </Link>
-            </div>
+              </div>
+            </Link>
             <Link href={"/commerce/survey"}>
               <div className="grid-bottom">
                 <Image src={Survey} layout="fill" objectFit="cover" />

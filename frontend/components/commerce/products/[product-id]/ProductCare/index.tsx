@@ -7,6 +7,7 @@ import Sun from "../../../../../assets/icon/sun.png";
 import Tem from "../../../../../assets/icon/thermometer.png";
 import Water from "../../../../../assets/icon/water.png";
 import Image from "next/image";
+import { EleVar } from "../../../../../styles/animations/animation";
 
 const ProductCare: React.FC<{
   itemInfo?: string;
@@ -28,7 +29,7 @@ const ProductCare: React.FC<{
   lightInfo,
 }) => {
   return (
-    <Wrapper>
+    <Wrapper variants={EleVar}>
       <h1>식물정보</h1>
       <p>{itemInfo}</p>
       {/* <SimpleGraph

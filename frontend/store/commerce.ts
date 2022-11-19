@@ -49,7 +49,7 @@ export const CartListSlice = createSlice({
 
     putCartItem: (state, action) => {
       const temp = current(state).map((item: ListObjectItem) => {
-        if (item.itemSeq === parseInt(action.payload.itemSeq)) {
+        if (item && item.itemSeq === parseInt(action.payload.itemSeq)) {
           return {
             ...item,
             quantity: action.payload.quantity,
@@ -73,7 +73,7 @@ export const OrderListSlice = createSlice({
 
     deleteOrderList: (state, action) => {
       const temp = current(state).map((item: ListObjectItem) => {
-        if (item && item.itemSeq !== parseInt(action.payload)) {
+        if (item && item?.itemSeq !== parseInt(action.payload)) {
           return item;
         }
       });
