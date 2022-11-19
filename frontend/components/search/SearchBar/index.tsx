@@ -10,6 +10,7 @@ import { SearchBtn } from "../../../common/Button";
 import { Theme } from "../../../styles/theme";
 import { fetchItemSeq, postPicture } from "../../../apis/search";
 import router from "next/router";
+import Swal from "sweetalert2";
 
 const SearchBar: React.FC<{ plants: PlantListArray }> = ({ plants }) => {
   const [searchInput, setSearchInput] = useState("");
@@ -21,8 +22,12 @@ const SearchBar: React.FC<{ plants: PlantListArray }> = ({ plants }) => {
     const res = fetchItemSeq(await data);
     const plantSeq = await res;
     if (plantSeq === undefined) {
-      alert("해당하는 값을 찾지 못했습니다. 다시 검색을 시도해주세요.");
-      window.location.replace("/search/camera");
+      Swal.fire({
+        title: "해당하는 값을 찾지 못했습니다.",
+        text: "다시 검색을 시도해주세요.",
+      }).then(() => {
+        window.location.replace("/search/camera");
+      });
     } else {
       router.push(`/commerce/product/${plantSeq}`);
     }

@@ -1,5 +1,6 @@
 import AXIOS from "./index";
 import router from "next/router";
+import Swal from "sweetalert2";
 
 // 유저 리스트 조회
 export const getAdminUserList = async (page?: number) => {
@@ -25,7 +26,7 @@ export const fetchAdminRole = async (userSeq: number) => {
     });
     return res.data;
   } catch (error) {
-    alert("마스터 계정만 권한 변경이 가능합니다.");
+    Swal.fire("마스터 계정만 권한 변경이 가능합니다.");
     console.log(error);
   }
 };
@@ -40,8 +41,9 @@ export const getOrderCount = async () => {
     });
     return res.data;
   } catch (error) {
-    alert("어드민 접근 권한이 없습니다");
-    router.push("/welcome");
+    Swal.fire({ title: "어드민 접근 권한이 없습니다." }).then(() => {
+      router.push("/welcome");
+    });
     console.log(error);
   }
 };
