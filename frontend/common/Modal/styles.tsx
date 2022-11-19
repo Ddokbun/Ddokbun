@@ -1,11 +1,13 @@
 import styled from "styled-components";
-
-export const Wrapper = styled.div`
+interface Props {
+  mypage?: boolean;
+}
+export const Wrapper = styled.div<Props>`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 200vh;
+  height: ${props => (props.mypage ? "150vh" : "100vh")};
   display: flex;
   justify-content: center;
   align-items: center;

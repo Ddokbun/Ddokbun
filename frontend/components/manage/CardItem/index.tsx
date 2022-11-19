@@ -21,6 +21,7 @@ interface Props {
 
 const CardItem: FC<Props> = ({ potSerial }) => {
   const router = useRouter();
+  const isMypage = router.route.includes("mypage");
   const [plantStatus, setPlantStatus] = useState<PlantStatusType>();
   const [waterToBeSupplied, setWaterToBeSupplied] = useState(0);
   const [modalOpen, setModalOpen] = useState(false);
@@ -58,6 +59,7 @@ const CardItem: FC<Props> = ({ potSerial }) => {
         <Modal
           onClose={closeModal}
           title={`${plantStatus?.plantNickname}랑 비슷한 환경에 적합한 식물이예요`}
+          mypage={isMypage}
         >
           <SimilarItem potSerial={potSerial!} />
         </Modal>
