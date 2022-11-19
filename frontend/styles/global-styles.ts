@@ -52,6 +52,12 @@ const GlobalStyle = createGlobalStyle`
     padding: 0;
     font-family: 'DM Serif Display', serif;
   }
+
+  .swal2-title {
+    font-size: 1.6rem !important;
+    font-family: ${props => props.theme.font.TextFont2};
+    color: ${props => props.theme.color.black} !important;
+  }
 `;
 
 export default GlobalStyle;

@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { SearchInput } from "../../../../common/Input";
 import SearchCardList from "../../../../components/manage/add/search/SearchCardList";
 import { Wrapper } from "../../../../styles/manage/add/search/styles";
 import { StaticImageData } from "next/image";
 import { fetchAllPlantsList } from "../../../../apis/manage";
 import { NextPage } from "next";
-import { ManageHomeAni, WrapperVar } from "../../../../styles/animations/animation";
+import { ManageHomeAni } from "../../../../styles/animations/animation";
 
 export interface SearchPlantType {
   image: StaticImageData;
@@ -18,7 +18,7 @@ export async function getStaticProps() {
   return {
     props: {
       plants,
-    }, // will be passed to the page component as props
+    },
   };
 }
 

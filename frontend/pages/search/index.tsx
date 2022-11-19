@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { GetStaticPaths, GetStaticProps, NextPage } from "next";
+import { GetStaticProps, NextPage } from "next";
 import { Wrapper } from "../../styles/search/styles";
 import RecommendPlant from "../../components/search/RecommendPlant";
 import SearchBar from "../../components/search/SearchBar";
