@@ -1,15 +1,18 @@
 import styled from "styled-components";
-
-export const Wrapper = styled.div`
+interface Props {
+  mypage?: boolean;
+}
+export const Wrapper = styled.div<Props>`
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100%;
+  height: ${props => (props.mypage ? "150vh" : "100vh")};
   display: flex;
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
   button {
     outline: none;
     cursor: pointer;
@@ -57,13 +60,7 @@ export const Wrapper = styled.div`
     justify-content: center;
     align-items: center;
   }
-  /* section > footer button {
-    padding: 6px 12px;
-    color: #fff;
-    background-color: #6c757d;
-    border-radius: 5px;
-    font-size: 13px;
-  } */
+
   .modal.openModal {
     display: flex;
     align-items: center;
@@ -94,6 +91,15 @@ export const Wrapper = styled.div`
     }
     to {
       opacity: 1;
+    }
+  }
+  @media screen and (max-width: 600px) {
+    section {
+      width: 80%;
+    }
+    section > header {
+      font-size: 14px;
+      word-break: keep-all;
     }
   }
 `;

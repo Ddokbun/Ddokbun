@@ -161,12 +161,22 @@ export const RightSection = styled(motion.section)`
       color: ${props => props.theme.color.black};
       padding-left: 4%;
     }
+    .line {
+      font-size: 14px;
+    }
 
     .status-image-container {
       max-width: 50px;
     }
     .info {
       width: 75%;
+    }
+    .pointer-container {
+      display: flex;
+      flex-direction: column;
+      word-break: keep-all;
+      font-size: 12px;
+      justify-content: center;
     }
   }
 `;
