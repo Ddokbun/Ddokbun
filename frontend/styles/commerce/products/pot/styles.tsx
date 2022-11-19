@@ -78,28 +78,60 @@ export const Wrapper = styled.div`
         }
       }
     }
+  }
 
-    @media screen and (max-width: 600px) {
-      padding: 0px 10px;
+  @media screen and (max-width: 600px) {
+    width: 100%;
+
+    .contents-box {
+      padding: 0px 20px;
+    }
+
+    .description {
+      margin: 50px 0px 30px;
+      padding: 0px 0px;
 
       h1 {
         font-size: 30px;
         margin-bottom: 20px;
       }
-      p {
-        font-size: 16px;
-      }
 
       .plant-growth {
-        padding: 50px 30px;
+        padding: 50px 15px;
         width: 100%;
+        margin: 50px auto;
+        h3 {
+          font-family: ${props => props.theme.font.TitleFont};
+          font-size: 18px;
+        }
+        p {
+          font-family: ${props => props.theme.font.TextFont2};
+          font-size: 14px;
+          word-break: keep-all;
+        }
+
         .plant-grid {
-          display: grid;
-          grid-gap: 30px;
           grid-template-columns: 1fr;
           grid-template-rows: 1fr 1fr 1fr 1fr;
+
           .col {
+            display: grid;
+            grid-template-columns: 50px 1fr;
+            grid-template-rows: 1fr;
             grid-gap: 20px;
+            width: 100%;
+            height: 100%;
+
+            .content {
+              display: grid;
+              grid-template-columns: 1fr;
+              grid-template-rows: 35px;
+              grid-auto: row;
+            }
+
+            .imgwrap {
+              position: relative;
+            }
           }
         }
       }
