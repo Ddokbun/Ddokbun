@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Wrapper } from "./styles";
 import Temper from "../../../../assets/icon/thermometer.png";
 import Water from "../../../../assets/icon/water.png";

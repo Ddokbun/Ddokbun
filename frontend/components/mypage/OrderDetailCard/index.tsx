@@ -15,9 +15,13 @@ const OrderDetailCard: FC<Props> = ({ data }) => {
       <div className="info">
         <p className="kr-name">{data.itemName}</p>
         <p className="en-name">{data.itemEnName}</p>
-        <p>{data.itemPrice}원</p>
+        <p>
+          {data.itemPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}원
+        </p>
       </div>
-      <Link className="link" href={`/commerce/product/${data.itemSeq}`}>식물 상세 보기</Link>
+      <Link className="link" href={`/commerce/product/${data.itemSeq}`}>
+        식물 상세 보기
+      </Link>
     </Wrapper>
   );
 };

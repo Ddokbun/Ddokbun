@@ -31,8 +31,8 @@ const SearchItem = () => {
           </div>
         </div>
         <div className="title">
-          <h2>Plant Search</h2>
-          <h3>AI로 더 정확하고 간편하게, 식물 검색 </h3>
+          <h2>Ddokbun's Smart Plant Pot</h2>
+          <h3>똑분만의 스마트화분을 지금 만나보세요</h3>
         </div>
       </div>
     </Wrapper>

@@ -5,6 +5,7 @@ import { setCookie, CookieValueTypes } from "cookies-next";
 import { AppDispatch } from "../store";
 import { ListObjectItem } from "../types/commerce/list.interface";
 import { putCartItem, setCartLists } from "../store/commerce";
+import Swal from "sweetalert2";
 
 // 인기식물 조회
 export const fetchHotPlant = async () => {
@@ -95,20 +96,29 @@ export const putCart = async (id: number) => {
       url,
       data,
     });
-    alert("id를 장바구니에 넣었습니다");
+    Swal.fire({
+      icon: "success",
+      text: "상품을 장바구니에 담았습니다",
+    });
 
     return res.data;
   } catch (error) {
     const { response } = error as any | AxiosError;
-    console.log(response);
 
     switch (response.status) {
       case 400:
-        alert("이미 등록된 상품입니다");
+        Swal.fire({
+          icon: "warning",
+          text: "이미 등록된 상품입니다",
+        });
+
         break;
 
       default:
-        alert("로그인 해라 이자슥아");
+        Swal.fire({
+          icon: "warning",
+          text: "로그인이 필요한 기능입니다",
+        });
         break;
     }
     return 400;
@@ -281,10 +291,15 @@ export const putCartItemCount = async (
       },
     });
     dispatch(putCartItem({ itemSeq, quantity }));
-    alert("수량이 변경됐습니다");
+    Swal.fire({
+      icon: "success",
+      text: "상품 수량이 변경됐습니다",
+    });
   } catch (error) {
-    console.log(error);
-    alert("뭔가가 잘못됐습니다!");
+    Swal.fire({
+      icon: "error",
+      text: "다시 시도해주세요",
+    });
   }
 };
 
@@ -473,6 +488,18 @@ export const fetchDeliveries = async () => {
       url,
       method: "get",
     });
+    return res.data.content;
+  } catch (error) {}
+};
+
+export const fetchSimilarItem = async (potSerial: string) => {
+  const url = `AI/find-plant/${potSerial}`;
+  try {
+    const res = await AXIOS({
+      url,
+      method: "get",
+    });
+
     return res.data.content;
   } catch (error) {}
 };

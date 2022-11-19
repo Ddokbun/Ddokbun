@@ -1,4 +1,4 @@
-import React, { Suspense, useEffect, useState } from "react";
+import { Suspense, useEffect, useState } from "react";
 import { StatusButton } from "../../../common/Button";
 import { Wrapper } from "./styles";
 import temperature from "../../../assets/icon/thermometer.png";
@@ -57,6 +57,7 @@ const PlantStatus = () => {
     setActiveIndex(code);
     setLogTitle(plantStatus[code].logTitle);
   };
+
   useEffect(() => {
     if (!potseq) {
       return;
@@ -89,6 +90,7 @@ const PlantStatus = () => {
       />
     );
   });
+  
   return (
     <Wrapper>
       <ul>{statusButtons}</ul>

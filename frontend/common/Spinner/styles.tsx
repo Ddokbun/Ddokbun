@@ -1,13 +1,19 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-export const Wrapper = styled(motion.div)`
+
+interface Props {
+  left?: string;
+  top?: string;
+}
+
+export const Wrapper = styled(motion.div)<Props>`
   margin: 0;
   min-height: 100vh;
   /* display: grid; */
   /* place-content: center; */
   position: absolute;
-  left: 45%;
-  top: 45%;
+  left: ${props => (props.left ? props.left : "50%")};
+  top: ${props => (props.top ? props.top : "50%")};
 
   .loader {
     /* the colors */

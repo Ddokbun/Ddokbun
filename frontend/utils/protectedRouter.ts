@@ -25,10 +25,14 @@ export const checkMyPot = async (
   res: ServerResponse<IncomingMessage>,
 ) => {
   const token = getCookie("token", { req, res }) as string;
-  const MyPotStatusOrReturnFalse = await fetchCurrentStatus(query.potseq, token);
-  if (MyPotStatusOrReturnFalse === 404) {
-    return false;
-  } else {
+  const MyPotStatusOrReturnFalse = await fetchCurrentStatus(
+    query.potseq,
+    token,
+  );
+
+  if (MyPotStatusOrReturnFalse?.plantSeq) {
     return MyPotStatusOrReturnFalse;
+  } else {
+    return false;
   }
 };

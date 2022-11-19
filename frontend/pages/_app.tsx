@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import React, { FC, useEffect } from "react";
+import { useEffect } from "react";
 import { Provider } from "react-redux";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
@@ -39,6 +39,7 @@ const MyApp = ({ Component, ...rest }: AppProps) => {
       if (request === "granted") {
         const token = await getToken();
         await setToken(token);
+
         // const messaging = firebase.messaging();
 
         // messaging.onMessage((payload: any) => {
@@ -55,10 +56,9 @@ const MyApp = ({ Component, ...rest }: AppProps) => {
         //     notificationOptions,
         //   );
         // });
-        console.log(token, "토큰토큰");
       }
     };
-    // getMessageToken();
+    getMessageToken();
   }, []);
 
   const { store, props } = wrapper.useWrappedStore(rest);
@@ -66,6 +66,7 @@ const MyApp = ({ Component, ...rest }: AppProps) => {
   const router = useRouter();
   const isOnboarding = router.route.includes("welcome");
   const isAdmin = router.route.includes("admin");
+  const isMyPlant = router.route.includes("myplant");
 
   return (
     <>
@@ -83,7 +84,7 @@ const MyApp = ({ Component, ...rest }: AppProps) => {
             {!isOnboarding && !isAdmin && <Navbar />}
             <GlobalStyle />
             <Component {...props.pageProps} />
-            <Footer />
+            {!isMyPlant && !isAdmin && <Footer />}
           </ThemeProvider>
         </PersistGate>
       </Provider>

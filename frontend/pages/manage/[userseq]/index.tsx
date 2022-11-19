@@ -1,25 +1,13 @@
-import { getCookies } from "cookies-next";
-import { motion } from "framer-motion";
 import { GetServerSideProps, NextPage } from "next";
 import React, { useEffect, useState } from "react";
 import { fetchCartList } from "../../../apis/commerce";
 import { fetchPlantsList } from "../../../apis/manage";
 import PageTitle from "../../../common/PageTitle";
-import CardList from "../../../components/manage/CardList";
-import { wrapper } from "../../../store";
 import { setAllCartLists } from "../../../store/commerce";
-import {
-  EleVar,
-  ManageHomeAni,
-  WrapperVar,
-} from "../../../styles/animations/animation";
+import { ManageHomeAni } from "../../../styles/animations/animation";
 import { Wrapper } from "../../../styles/manage/styles";
 import dynamic from "next/dynamic";
-import Link from "next/link";
 import { useDispatch } from "react-redux";
-import { useSelect } from "@react-three/drei";
-import { useSelector } from "react-redux";
-import Spinner from "../../../common/Spinner";
 import { checkAuthentication } from "../../../utils/protectedRouter";
 
 const DynamicCardlist = dynamic(
@@ -45,6 +33,7 @@ const Manage: NextPage = () => {
         fetchPlantsList(),
         fetchCartList(),
       ]);
+
       setPlantsList(plantsListData);
       dispatch(setAllCartLists(cartListData));
     };
@@ -56,19 +45,7 @@ const Manage: NextPage = () => {
       <PageTitle isLink mypage={false}>
         <h1>My Plants</h1>
       </PageTitle>
-      {plantsList ? (
-        <>
-          <h2>관리 원하시는 화분을 클릭해주세요</h2>
-          <DynamicCardlist plantsList={plantsList} />
-        </>
-      ) : (
-        <>
-          <h2>화분이 아직 없으신가요?</h2>
-          <Link href={"/manage/add"}>
-            <h3>화분 추가하기</h3>
-          </Link>
-        </>
-      )}
+      <DynamicCardlist plantsList={plantsList!} />
     </Wrapper>
   );
 };
@@ -81,17 +58,16 @@ export const getServerSideProps: GetServerSideProps = async ({
   res,
 }) => {
   const isAuthenticated = await checkAuthentication(query, req, res);
-  console.log(isAuthenticated);
 
-  if (isAuthenticated) {
-    return {
-      props: {},
-    };
-  } else {
+  if (!isAuthenticated) {
     return {
       redirect: {
         destination: "/commerce",
       },
+      props: {},
+    };
+  } else {
+    return {
       props: {},
     };
   }

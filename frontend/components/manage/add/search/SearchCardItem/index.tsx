@@ -1,18 +1,18 @@
 import Image from "next/image";
 import { useRouter } from "next/router";
-import React, { useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { fetchItemSeq } from "../../../../../apis/search";
 import { Plants } from "../../../../../pages/manage/add/search";
 import { manageActions } from "../../../../../store/manage";
-import { EleVar, ManageHomeAni } from "../../../../../styles/animations/animation";
+import { ManageHomeAni } from "../../../../../styles/animations/animation";
 import { Wrapper } from "./styles";
 
 interface Props extends Plants {
   isDelivery: boolean;
 }
 
-const SearchCardItem: React.FC<Props> = ({
+const SearchCardItem: FC<Props> = ({
   plantName,
   plantNeName,
   plantSeq,
@@ -34,10 +34,8 @@ const SearchCardItem: React.FC<Props> = ({
   const onFetchPlantSeqHandler = () => {
     if (router.query.path === "search") {
       router.push(`/commerce/product/${item}`);
-      console.log(router.query);
       return;
     }
-    console.log(router.query);
 
     dispatch(manageActions.setPlantInfo({ plantSeq, plantName }));
     router.back();

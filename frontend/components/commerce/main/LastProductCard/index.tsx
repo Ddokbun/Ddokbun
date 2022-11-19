@@ -7,7 +7,7 @@ import LastProduct from "./LastProduct";
 const LastProductCard: React.FC<{ data: MainPlant }> = ({ data }) => {
   return (
     <Wrapper>
-      <h2>For Beginner</h2>
+      <h2>Editor's Pick</h2>
       <div className="item-wrapper">
         {data.map(item => {
           return <LastProduct key={item.itemSeq} data={item}></LastProduct>;

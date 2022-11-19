@@ -8,20 +8,15 @@ import {
   RightSection,
   Wrapper,
 } from "../../../../styles/manage/[posteq]/styles";
-import { useDispatch } from "react-redux";
-import { manageActions } from "../../../../store/manage";
-import Swal from "sweetalert2";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../../store";
-import Image from "next/image";
 import { checkMyPot } from "../../../../utils/protectedRouter";
-import TabContents from "../../../../components/manage/TabContents";
+import TabHeader from "../../../../components/manage/TabHeader";
+import Swal from "sweetalert2";
 
 export interface LogsType {
   [name: string]: string;
 }
 
-export interface currentStatus {
+export interface PlantStatusType {
   plantNickname: string;
   plantEnName: string;
   plantName: string;
@@ -41,18 +36,12 @@ export interface currentStatus {
 }
 
 interface Props {
-  data: currentStatus;
+  data: PlantStatusType;
 }
 
 const PlantCare: NextPage<Props> = ({ data }) => {
   const { potseq } = useRouter().query;
-  const [tab, setTab] = useState(0);
-  console.log(data);
 
-  // const plantNickname = useSelector(
-  //   (state: RootState) => state.manage.plantNickname,
-  // );
-  const dispatch = useDispatch();
   const [plantStatus, setPlantStatus] = useState(data);
   const onWateringHandler = async () => {
     const res = await watering(potseq!);
@@ -64,17 +53,12 @@ const PlantCare: NextPage<Props> = ({ data }) => {
     }
   };
 
-  const onChangeTabHandler = (index: number) => {
-    setTab(index);
-  };
-
   useEffect(() => {
     const getInitialData = async () => {
       const request = await Notification.requestPermission();
       if (!request) {
-        alert("물 주기 알림을 받으시려면 알림 설정을 허용해주세요");
+        Swal.fire("물 주기 알림을 받으시려면 알림 설정을 허용해주세요");
       }
-      dispatch(manageActions.setPlantInfo(data));
     };
     getInitialData();
   }, [potseq]);
@@ -82,40 +66,14 @@ const PlantCare: NextPage<Props> = ({ data }) => {
   return (
     <Wrapper>
       <LeftSection>
-        <h2>{plantStatus.plantNickname}</h2>
+        <h2>{plantStatus?.plantNickname}</h2>
         <DigitalTwin
           light={plantStatus?.light}
           onWateringHandler={onWateringHandler}
         />
       </LeftSection>
       <RightSection>
-        <div className="image-container">
-          <Image
-            src={`https://ddokbun.com/api/resources/s3?plantSeq=${plantStatus.plantSeq}`}
-            alt="식물 이미지"
-            width={"100%"}
-            height={"100%"}
-          />
-          <div className="text-container">
-            <h3>{plantStatus.plantName}</h3>
-            <p>{plantStatus.plantEnName}</p>
-          </div>
-          <div className="pointer-container">
-            <p
-              className={!tab ? "selected" : ""}
-              onClick={() => onChangeTabHandler(0)}
-            >
-              정보 보기
-            </p>
-            <p
-              className={tab ? "selected" : ""}
-              onClick={() => onChangeTabHandler(1)}
-            >
-              기록 보기
-            </p>
-          </div>
-        </div>
-        <TabContents tab={tab} plantStatus={plantStatus} />
+        <TabHeader plantStatus={plantStatus} />
       </RightSection>
     </Wrapper>
   );
@@ -130,14 +88,16 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const plantStatusOrNotMyPot = await checkMyPot(query, req, res);
 
-  if (plantStatusOrNotMyPot) {
+  if (!plantStatusOrNotMyPot) {
     return {
-      props: { data: plantStatusOrNotMyPot },
+      redirect: {
+        destination: "/commerce",
+      },
+      props: {},
     };
   } else {
     return {
-      redirect: "/commerce",
-      props: {},
+      props: { data: plantStatusOrNotMyPot },
     };
   }
 };
