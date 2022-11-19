@@ -71,18 +71,22 @@ const SearchBar: React.FC<{ plants: PlantListArray }> = ({ plants }) => {
         <h2>어떤 식물을 찾고 계신가요?</h2>
       </div>
       <div className="search">
-        <SearchInput
-          placeholder="찾는 식물 이름을 검색해주세요."
-          disabled={false}
-          setSearchInput={setSearchInput}
-          value={searchInput}
-          path={"search"}
-        ></SearchInput>
+        <div className="search-flex">
+          <SearchInput
+            placeholder="식물 이름을 검색해주세요."
+            disabled={false}
+            setSearchInput={setSearchInput}
+            value={searchInput}
+            path={"search"}
+          ></SearchInput>
+        </div>
 
         <button onClick={openModal}>
-          <div className="camera">
-            <FontAwesomeIcon icon={faCamera} size="2x"></FontAwesomeIcon>
-            <h3>사진으로 검색하기</h3>
+          <div className="search-flex">
+            <div className="camera">
+              <FontAwesomeIcon icon={faCamera} size="2x"></FontAwesomeIcon>
+              <h3>사진으로 검색하기</h3>
+            </div>
           </div>
         </button>
         <Modal
