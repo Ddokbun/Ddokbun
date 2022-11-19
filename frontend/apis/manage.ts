@@ -25,9 +25,8 @@ export const fetchRegisterPot = async (data: RegisterType) => {
       url,
       data,
     });
-    console.log(res.data);
 
-    return res.data.status;
+    return res.data;
   } catch (error) {
     const err = error as AxiosError;
     console.log(err.response);
@@ -136,7 +135,7 @@ export const watering = async (potSeq: string | string[]) => {
       method: "post",
       url,
       params: {
-        value: 30,  
+        value: 30,
       },
     });
     console.log(res);

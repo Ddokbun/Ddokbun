@@ -48,29 +48,29 @@ const PlantInfo: FC<Props> = ({ plantStatus }) => {
     let humid;
     let soilhumid;
     const light =
-      plantStatus.lightType - plantStatus.light >= 0
+      plantStatus?.lightType - plantStatus?.light >= 0
         ? "좋아요.😊"
         : "약해요.😥 위치 조정이 필요해요.";
-    if (plantStatus.temperature > plantStatus.maxTemperature) {
+    if (plantStatus?.temperature > plantStatus?.maxTemperature) {
       temp = "높아요 😥";
-    } else if (plantStatus.temperature < plantStatus.minTemperature) {
+    } else if (plantStatus?.temperature < plantStatus?.minTemperature) {
       temp = "추워요 😥";
     } else {
       temp = "좋아요😊";
     }
 
-    if (plantStatus.humidity > Number(plantStatus.growHumid.slice(5, 7))) {
+    if (plantStatus?.humidity > Number(plantStatus?.growHumid?.slice(5, 7))) {
       humid = "습해요 😥";
     } else if (
-      plantStatus.humidity < Number(plantStatus.growHumid.slice(0, 2))
+      plantStatus?.humidity < Number(plantStatus?.growHumid?.slice(0, 2))
     ) {
       humid = "건조해요 😥";
     } else {
       humid = "좋아요😊";
     }
 
-    const waterSupply = plantStatus.waterSupply.join("-");
-    const wateringDateDiff = getDateDiff(waterSupply) - plantStatus.waterCycle;
+    const waterSupply = plantStatus?.waterSupply?.join("-");
+    const wateringDateDiff = getDateDiff(waterSupply) - plantStatus?.waterCycle;
 
     if (wateringDateDiff > 0) {
       soilhumid = `물을 줄 시간이 ${wateringDateDiff}일 지났어요.  물을 줘야 할 것 같아요 😥`;
@@ -83,7 +83,7 @@ const PlantInfo: FC<Props> = ({ plantStatus }) => {
     setCurrentStatus({ light, humid, temp, soilhumid });
   }, [plantStatus]);
 
-  const plantInfo = plantInfos.map(item => {
+  const plantInfo = plantInfos?.map(item => {
     return (
       <div className="line" key={item.grow}>
         <div className="status-image-container">

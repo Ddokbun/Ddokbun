@@ -82,10 +82,9 @@ const AddForm = () => {
       Swal.fire("마지막으로 물 준 일자를 확인해주세요.");
     }
 
-    console.log(inputValues.current);
 
     const res = await fetchRegisterPot(inputValues.current);
-    if (res?.status === 201) {
+    if (res?.code === 200) {
       router.push(`/manage/${res.potSeq}`);
     } else {
       Swal.fire("혹시 화분을 아직 구매하지 않으셨나요?");

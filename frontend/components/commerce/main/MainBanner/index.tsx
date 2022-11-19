@@ -20,7 +20,9 @@ const MainBanner = () => {
               <Link href={"commerce/survey"}>
                 <button>Survey</button>
               </Link>
-              <button>View all</button>
+              <Link href={"commerce/product/pot"}>
+                <button>Buy Pot</button>
+              </Link>
             </div>
           </div>
         </div>

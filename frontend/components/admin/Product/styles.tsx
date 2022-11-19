@@ -23,7 +23,8 @@ export const Wrapper = styled.div`
     border-radius: 5px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2);
     :hover {
-      background-color: ${props => props.theme.color.ivory};
+      background-color: ${props => props.theme.color.darkGray};
+      cursor: pointer;
     }
   }
 `;
