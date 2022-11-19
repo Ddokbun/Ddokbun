@@ -10,6 +10,7 @@ import {
 } from "../../../../styles/manage/[posteq]/styles";
 import { checkMyPot } from "../../../../utils/protectedRouter";
 import TabHeader from "../../../../components/manage/TabHeader";
+import Swal from "sweetalert2";
 
 export interface LogsType {
   [name: string]: string;
@@ -47,17 +48,16 @@ const PlantCare: NextPage<Props> = ({ data }) => {
 
     if (res?.status === 200) {
       setTimeout(() => {
-        alert("물 주기가 완료되었어요");
+        Swal.fire("물 주기가 완료되었어요");
       }, 7000);
     }
   };
-
 
   useEffect(() => {
     const getInitialData = async () => {
       const request = await Notification.requestPermission();
       if (!request) {
-        alert("물 주기 알림을 받으시려면 알림 설정을 허용해주세요");
+        Swal.fire("물 주기 알림을 받으시려면 알림 설정을 허용해주세요");
       }
     };
     getInitialData();
