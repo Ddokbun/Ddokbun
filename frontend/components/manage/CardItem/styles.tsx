@@ -5,7 +5,7 @@ export const Wrapper = styled(motion.li)`
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
   display: grid;
   grid-template-columns: 300px;
-  grid-template-rows: 200px 170px 60px;
+  grid-template-rows: 200px 180px 60px;
   grid-template-areas: "image" "text" "stats";
   border-radius: 18px;
   background: ${props => props.theme.color.darkGray};
@@ -87,7 +87,7 @@ export const Wrapper = styled(motion.li)`
     }
   }
 
-  @media screen and (max-width: 600px) {
+  /* @media screen and (max-width: 600px) {
     display: grid;
     grid-template-columns: 160px;
     grid-template-rows: 100px 100px 40px;
@@ -130,5 +130,5 @@ export const Wrapper = styled(motion.li)`
         font-weight: bold;
       }
     }
-  }
+  } */
 `;

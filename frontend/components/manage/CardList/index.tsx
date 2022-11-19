@@ -10,6 +10,7 @@ import { Wrapper } from "./styles";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import Link from "next/link";
 
 interface Props {
   plantsList: PlantListType[];
@@ -36,8 +37,9 @@ const CardList: FC<Props> = ({ plantsList }) => {
           );
         })}
         <SwiperSlide key={"add"}>
-          <button className="plant-add-container">
-          </button>
+          <Link href={"/manage/add"}>
+            <button className="plant-add-container"></button>
+          </Link>
         </SwiperSlide>
       </Swiper>
     </Wrapper>

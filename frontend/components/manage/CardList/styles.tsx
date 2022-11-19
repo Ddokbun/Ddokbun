@@ -37,11 +37,17 @@ export const Wrapper = styled(motion.ul)`
   .swiper-button-next {
     color: ${props => props.theme.color.mainGreen};
     @media screen and (max-width: 600px) {
+      :after {
+        font-size: 12px;
+      }
     }
   }
   .swiper-button-prev {
     color: ${props => props.theme.color.mainGreen};
     @media screen and (max-width: 600px) {
+      :after {
+        font-size: 12px;
+      }
     }
   }
   .swiper-slide img {
