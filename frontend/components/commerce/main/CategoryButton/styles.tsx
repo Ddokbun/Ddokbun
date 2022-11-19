@@ -11,6 +11,9 @@ export const Wrapper = styled.div`
   }
   .img-wrap {
     margin: 3px;
+    :hover {
+      cursor: pointer;
+    }
     width: 100%;
     height: 500px;
     position: relative;

@@ -25,11 +25,11 @@ const CommerceTable: React.FC<{ data: OrderArray[] }> = ({ data }) => {
             <thead>
               <tr className="tr">
                 <th className="">Seq</th>
-                <th className="">Product</th>
-                <th className="">Name</th>
+                <th className="order">Product</th>
+                <th className="name">Name</th>
+                <th className="phone">Phone</th>
+                <th className="address">Address</th>
                 <th className="">Status</th>
-                <th className="">Phone</th>
-                <th className="">Address</th>
               </tr>
             </thead>
             <div className="table-head">

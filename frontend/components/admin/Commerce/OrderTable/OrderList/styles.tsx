@@ -20,9 +20,13 @@ export const Wrapper = styled.div`
     margin: 10px;
     width: 140px;
     border-radius: 5px;
-    background-color: ${props => props.theme.color.brown};
+    background-color: ${props => props.theme.color.whiteGray};
     :hover {
-      background-color: ${props => props.theme.color.brownHover};
+      background-color: ${props => props.theme.color.darkGray};
+    }
+    &.active {
+      background-color: #9b9b9b;
+      border: 1px solid black;
     }
   }
   .confirm-button {
@@ -32,7 +36,7 @@ export const Wrapper = styled.div`
     width: 100px;
     border-radius: 5px;
     :hover {
-      background-color: ${props => props.theme.color.ivoryHover};
+      background-color: ${props => props.theme.color.darkGray};
     }
   }
   .button-confirm {
