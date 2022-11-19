@@ -18,6 +18,7 @@ export interface SetType {}
 const OrderList: React.FC<{ item: ProductArray }> = ({ item }) => {
   const [modalIsOpen, setIsOpen] = useState(false);
   const [answer, setAnswer] = useState<(string | number)[]>([]);
+  const [active, setActive] = useState<string>("");
 
   function openModal() {
     setIsOpen(true);
@@ -52,8 +53,10 @@ const OrderList: React.FC<{ item: ProductArray }> = ({ item }) => {
       <tbody>
         <tr>
           <td>{item.orderSeq}</td>
-          <td>{item.orderName}</td>
-          <td>{item.orderUserName}</td>
+          <td className="order">{item.orderName}</td>
+          <td className="name">{item.orderUserName}</td>
+          <td className="phone">{item.orderPhone}</td>
+          <td className="address">{item.orderAddress}</td>
           <td>
             <button className="confirm-button" onClick={openModal}>
               {item.orderStatus}
@@ -69,28 +72,49 @@ const OrderList: React.FC<{ item: ProductArray }> = ({ item }) => {
                 <div className="button-div">
                   <div>
                     <button
-                      onClick={() => setAnswer([item.orderSeq, "ready"])}
-                      className="button-style"
+                      onClick={() => {
+                        setAnswer([item.orderSeq, "ready"]);
+                        setActive("ready");
+                      }}
+                      className={
+                        "button-style" + (active == "ready" ? " active" : "")
+                      }
                     >
                       ready
                     </button>
                     <button
-                      onClick={() => setAnswer([item.orderSeq, "paycomplete"])}
-                      className="button-style"
+                      onClick={() => {
+                        setAnswer([item.orderSeq, "paycomplete"]);
+                        setActive("paycomplete");
+                      }}
+                      className={
+                        "button-style" +
+                        (active == "paycomplete" ? " active" : "")
+                      }
                     >
                       paycomplete
                     </button>
                   </div>
                   <div>
                     <button
-                      onClick={() => setAnswer([item.orderSeq, "delivery"])}
-                      className="button-style"
+                      onClick={() => {
+                        setAnswer([item.orderSeq, "delivery"]);
+                        setActive("delivery");
+                      }}
+                      className={
+                        "button-style" + (active == "delivery" ? " active" : "")
+                      }
                     >
                       delivery
                     </button>
                     <button
-                      onClick={() => setAnswer([item.orderSeq, "complete"])}
-                      className="button-style"
+                      onClick={() => {
+                        setAnswer([item.orderSeq, "complete"]);
+                        setActive("complete");
+                      }}
+                      className={
+                        "button-style" + (active == "complete" ? " active" : "")
+                      }
                     >
                       complete
                     </button>
@@ -107,8 +131,6 @@ const OrderList: React.FC<{ item: ProductArray }> = ({ item }) => {
               </Wrapper>
             </Modal>
           </td>
-          <td>{item.orderPhone}</td>
-          <td>{item.orderAddress}</td>
         </tr>
       </tbody>
       <div className="table-head">

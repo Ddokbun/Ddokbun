@@ -12,8 +12,20 @@ export const Wrapper = styled.div`
     display: flex;
     flex-direction: column;
   }
+  .flex {
+    display: flex;
+    align-items: center;
+    h2 {
+      margin-left: 13px;
+      font-size: 20px;
+      font-family: ${props => props.theme.font.TextFont2};
+    }
+    :hover {
+      cursor: pointer;
+    }
+  }
   .title {
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     font-size: 22px;
   }
   .link-list {
