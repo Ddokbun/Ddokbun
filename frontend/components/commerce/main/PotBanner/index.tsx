@@ -2,11 +2,12 @@ import { Wrapper } from "./styles";
 import Link from "next/link";
 import Image from "next/image";
 import PotImg from "../../../../assets/smart-pot.jpg";
+import { EleVar } from "../../../../styles/animations/animation";
 
 const PotBanner = () => {
   return (
     <Link href={"/commerce/product/pot"}>
-      <Wrapper>
+      <Wrapper variants={EleVar}>
         <div className="content-wrap">
           <div className="img-wrap">
             <Image
