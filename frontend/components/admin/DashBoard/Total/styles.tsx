@@ -2,15 +2,19 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   margin: 50px 400px;
+  .content-wrapper {
+  }
   .div-flex {
+    width: 990px;
     display: flex;
     justify-content: center;
     align-items: center;
   }
+
   .div-wrapper {
     background-color: #fafafa;
     width: 330px;
-    margin: 10px;
+    margin-right: 10px;
     height: 100%;
     padding: 20px;
     border-radius: 5px;

@@ -33,10 +33,10 @@ const Commerce: NextPage<{ data: MainPlant; hotitem: MainPlant }> = ({
     <Wrapper>
       <MainBanner />
       <PotBanner />
+      <SurveyBanner />
       {/* <SwiperProduct data={data.slice(2, 9)} /> */}
       <SwiperProduct data={hotitem} />
       <MainProductCard data={data.slice(0, 2)} />
-      <SurveyBanner />
       <CategoryButton />
       <LastProductCard data={data.slice(9, 12)} />
     </Wrapper>
