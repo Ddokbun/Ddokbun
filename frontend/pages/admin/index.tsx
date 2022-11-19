@@ -4,16 +4,15 @@ import CommerceTable from "../../components/admin/Commerce";
 import UserTable from "../../components/admin/User";
 import OrderTotal from "../../components/admin/DashBoard/Total";
 import DashChart from "../../components/admin/DashBoard/DashChart";
+import { Wrapper } from "../../styles/admin/styles";
 
 const Admin: NextPage = () => {
   return (
-    <div>
+    <Wrapper>
       <AdminNav></AdminNav>
       <OrderTotal></OrderTotal>
       <DashChart></DashChart>
-      {/* <CommerceTable></CommerceTable>
-      <UserTable></UserTable> */}
-    </div>
+    </Wrapper>
   );
 };
 

@@ -8,7 +8,9 @@ export const Wrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   grid-template-rows: auto;
   grid-gap: 30px;
-
+  .pots {
+    word-break: keep-all;
+  }
   .img-wrap {
     position: relative;
     padding: 20px;

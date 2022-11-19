@@ -223,7 +223,9 @@ public class ItemServiceImple implements ItemService{
         List<Item> products = itemRepository.findAllBy(pageable);
 
         log.info("상품 전체 목록 조회 Success :: ");
-        return products.stream().map(product -> product.getItemSeq()).collect(Collectors.toList());
+        return products.stream()
+                .filter(product -> product.getItemSeq() != 0)
+                .map(product -> product.getItemSeq()).collect(Collectors.toList());
     }
     @Override
     public List<ItemDetailDto> getAdminProductList(Pageable pageable){

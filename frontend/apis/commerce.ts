@@ -108,7 +108,7 @@ export const putCart = async (id: number) => {
         break;
 
       default:
-        alert("로그인 해라 이자슥아");
+        alert("로그인이 필요한 기능입니다");
         break;
     }
     return 400;

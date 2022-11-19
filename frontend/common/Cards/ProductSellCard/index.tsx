@@ -13,6 +13,7 @@ interface SellItemObject extends ItemObject {
   plantZRName?: string;
   growthWidth?: number;
   growthHeight?: number;
+  flag?: boolean;
 }
 
 const ProductSellCard: React.FC<SellItemObject> = props => {
@@ -24,6 +25,8 @@ const ProductSellCard: React.FC<SellItemObject> = props => {
     quantity: 1,
     imageUrl: props.itemPicture,
   };
+  console.log(props.flag);
+
   return (
     <Wrapper>
       <div className="img-wrap">
@@ -47,12 +50,16 @@ const ProductSellCard: React.FC<SellItemObject> = props => {
         <h3>
           ₩ {props.itemPrice.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",")}
         </h3>
-        <ProductSummary
-          originPlace={props.originPlace}
-          plantZRName={props.plantZRName}
-          growthWidth={props.growthWidth}
-          growthHeight={props.growthHeight}
-        />
+        {props.flag === undefined ? (
+          <ProductSummary
+            originPlace={props.originPlace}
+            plantZRName={props.plantZRName}
+            growthWidth={props.growthWidth}
+            growthHeight={props.growthHeight}
+          />
+        ) : (
+          <div className="pots">당신의 가드닝을 도와줄 스마트화분 똑분</div>
+        )}
 
         <div className="button-wrap">
           <BuyButton id={props.itemSeq} data={data} />

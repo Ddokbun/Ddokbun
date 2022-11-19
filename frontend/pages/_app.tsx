@@ -84,7 +84,7 @@ const MyApp = ({ Component, ...rest }: AppProps) => {
             {!isOnboarding && !isAdmin && <Navbar />}
             <GlobalStyle />
             <Component {...props.pageProps} />
-            {!isMyPlant && <Footer />}
+            {!isMyPlant && !isAdmin && <Footer />}
           </ThemeProvider>
         </PersistGate>
       </Provider>
