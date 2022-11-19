@@ -66,6 +66,7 @@ const MyApp = ({ Component, ...rest }: AppProps) => {
   const router = useRouter();
   const isOnboarding = router.route.includes("welcome");
   const isAdmin = router.route.includes("admin");
+  const isMyPlant = router.route.includes("myplant");
 
   return (
     <>
@@ -83,7 +84,7 @@ const MyApp = ({ Component, ...rest }: AppProps) => {
             {!isOnboarding && !isAdmin && <Navbar />}
             <GlobalStyle />
             <Component {...props.pageProps} />
-            <Footer />
+            {!isMyPlant && <Footer />}
           </ThemeProvider>
         </PersistGate>
       </Provider>
