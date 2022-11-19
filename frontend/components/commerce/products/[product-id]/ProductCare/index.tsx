@@ -7,6 +7,7 @@ import Sun from "../../../../../assets/icon/sun.png";
 import Tem from "../../../../../assets/icon/thermometer.png";
 import Water from "../../../../../assets/icon/water.png";
 import Image from "next/image";
+import { EleVar } from "../../../../../styles/animations/animation";
 
 const ProductCare: React.FC<{
   itemInfo?: string;
@@ -27,12 +28,8 @@ const ProductCare: React.FC<{
   light,
   lightInfo,
 }) => {
-  const thisHumid = humid.slice(0, -1).split("~");
-  // const avgHumid =
-  //   (parseInt(thisHumid[0].trim()) + parseInt(thisHumid[1].trim())) / 2;
-
   return (
-    <Wrapper>
+    <Wrapper variants={EleVar}>
       <h1>식물정보</h1>
       <p>{itemInfo}</p>
       {/* <SimpleGraph

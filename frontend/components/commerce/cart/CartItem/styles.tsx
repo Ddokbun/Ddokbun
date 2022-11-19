@@ -42,7 +42,7 @@ export const Wrapper = styled.div`
       font-weight: 600;
       display: flex;
       gap: 8px;
-      .handler {
+      .dhandler {
         cursor: pointer;
       }
     }
@@ -58,6 +58,8 @@ export const Wrapper = styled.div`
       width: 15px;
       height: 15px;
       position: absolute;
+      cursor: pointer;
+
       path {
         fill: ${props => props.theme.color.black};
       }

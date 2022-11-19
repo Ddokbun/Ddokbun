@@ -1,6 +1,7 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const Wrapper = styled.div`
+export const Wrapper = styled(motion.div)`
   margin: 50px 0px 0px;
   padding: 0px 40px;
   width: 100%;
@@ -84,9 +85,9 @@ export const Wrapper = styled.div`
       width: 100%;
       .plant-grid {
         display: grid;
-        grid-gap: 30px;
+        grid-gap: 80px;
         grid-template-columns: 1fr;
-        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-rows: auto auto auto auto;
         .col {
           grid-gap: 20px;
         }

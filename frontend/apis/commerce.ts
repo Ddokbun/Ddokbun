@@ -95,7 +95,7 @@ export const putCart = async (id: number) => {
       url,
       data,
     });
-    alert("id를 장바구니에 넣었습니다");
+    alert("상품을 장바구니에 담았습니다");
 
     return res.data;
   } catch (error) {
@@ -108,7 +108,7 @@ export const putCart = async (id: number) => {
         break;
 
       default:
-        alert("로그인 해라 이자슥아");
+        alert("로그인이 필요한 기능입니다");
         break;
     }
     return 400;
@@ -473,6 +473,18 @@ export const fetchDeliveries = async () => {
       url,
       method: "get",
     });
+    return res.data.content;
+  } catch (error) {}
+};
+
+export const fetchSimilarItem = async (potSerial: string) => {
+  const url = `AI/find-plant/${potSerial}`;
+  try {
+    const res = await AXIOS({
+      url,
+      method: "get",
+    });
+
     return res.data.content;
   } catch (error) {}
 };

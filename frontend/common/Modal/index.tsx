@@ -9,9 +9,16 @@ interface Props {
   children: React.ReactNode;
   title?: string;
   onSubmitHandler?: () => void;
+  mypage?: boolean;
 }
 
-const Modal: FC<Props> = ({ onClose, children, title, onSubmitHandler }) => {
+const Modal: FC<Props> = ({
+  onClose,
+  children,
+  title,
+  onSubmitHandler,
+  mypage,
+}) => {
   const [isMounted, setIsMounted] = useState(false);
 
   console.log(isMounted);
@@ -21,7 +28,7 @@ const Modal: FC<Props> = ({ onClose, children, title, onSubmitHandler }) => {
   }, []);
 
   const modalContent = (
-    <Wrapper>
+    <Wrapper mypage={mypage}>
       <section>
         <div></div>
         {title && <header>{title}</header>}

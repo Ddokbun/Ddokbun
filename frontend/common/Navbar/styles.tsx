@@ -44,6 +44,11 @@ export const Wrapper = styled.div`
       align-items: center;
       height: 100%;
     }
+    div {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
   }
 
   .img-wrap {
@@ -72,6 +77,34 @@ export const Wrapper = styled.div`
       :nth-child(3) {
         width: 20px;
         height: 20px;
+      }
+    }
+    .bag-wrap {
+      position: relative;
+      span {
+        position: absolute;
+        right: 0;
+        top: -10px;
+        background-color: #fbc531;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        border-radius: 9px;
+        justify-content: center;
+        align-items: center;
+        font-family: ${props => props.theme.font.TitleFont};
+        color: ${props => props.theme.color.mainGreen};
+        font-size: 12px;
+      }
+      svg {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        path {
+          fill: transparent;
+          stroke: ${props => props.theme.color.darkGreen};
+          stroke-width: 3;
+        }
       }
     }
 

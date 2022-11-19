@@ -4,7 +4,7 @@ export const Wrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 80px;
+  width: 100px;
   padding: 2px 5px;
   border-radius: 5px;
   color: ${props => props.theme.color.mainGreen};
@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
   }
 
   @media screen and (max-width: 1024px) {
-    width: 60px;
+    width: 80px;
     p {
       font-size: 12px;
     }
