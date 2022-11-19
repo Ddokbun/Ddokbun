@@ -8,14 +8,10 @@ import {
   RightSection,
   Wrapper,
 } from "../../../../styles/manage/[posteq]/styles";
-import { useDispatch } from "react-redux";
-import { manageActions } from "../../../../store/manage";
-import Swal from "sweetalert2";
-import { useSelector } from "react-redux";
-import { RootState } from "../../../../store";
 import Image from "next/image";
 import { checkMyPot } from "../../../../utils/protectedRouter";
 import TabContents from "../../../../components/manage/TabContents";
+import TabHeader from "../../../../components/manage/TabHeader";
 
 export interface LogsType {
   [name: string]: string;
@@ -46,23 +42,18 @@ interface Props {
 
 const PlantCare: NextPage<Props> = ({ data }) => {
   const { potseq } = useRouter().query;
-  const [tab, setTab] = useState(0);
 
-  const dispatch = useDispatch();
   const [plantStatus, setPlantStatus] = useState(data);
   const onWateringHandler = async () => {
     const res = await watering(potseq!);
 
     if (res?.status === 200) {
       setTimeout(() => {
-        Swal.fire("물 주기가 완료되었어요");
+        alert("물 주기가 완료되었어요");
       }, 7000);
     }
   };
 
-  const onChangeTabHandler = (index: number) => {
-    setTab(index);
-  };
 
   useEffect(() => {
     const getInitialData = async () => {
@@ -84,33 +75,7 @@ const PlantCare: NextPage<Props> = ({ data }) => {
         />
       </LeftSection>
       <RightSection>
-        <div className="image-container">
-          <Image
-            src={`https://ddokbun.com/api/resources/s3?plantSeq=${plantStatus.plantSeq}`}
-            alt="식물 이미지"
-            width={"100%"}
-            height={"100%"}
-          />
-          <div className="text-container">
-            <h3>{plantStatus.plantName}</h3>
-            <p>{plantStatus.plantEnName}</p>
-          </div>
-          <div className="pointer-container">
-            <p
-              className={!tab ? "selected" : ""}
-              onClick={() => onChangeTabHandler(0)}
-            >
-              정보 보기
-            </p>
-            <p
-              className={tab ? "selected" : ""}
-              onClick={() => onChangeTabHandler(1)}
-            >
-              기록 보기
-            </p>
-          </div>
-        </div>
-        <TabContents tab={tab} plantStatus={plantStatus} />
+        <TabHeader plantStatus={plantStatus} />
       </RightSection>
     </Wrapper>
   );

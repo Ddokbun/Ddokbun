@@ -55,10 +55,9 @@ const MyApp = ({ Component, ...rest }: AppProps) => {
         //     notificationOptions,
         //   );
         // });
-        console.log(token, "토큰토큰");
       }
     };
-    // getMessageToken();
+    getMessageToken();
   }, []);
 
   const { store, props } = wrapper.useWrappedStore(rest);
