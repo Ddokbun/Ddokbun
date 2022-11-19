@@ -37,6 +37,17 @@ export const Wrapper = styled(motion.section)`
     text-align: center;
   }
 
+  .logout {
+    position: absolute;
+    right: 0px;
+    color: #cccccc;
+    font-size: 14px;
+    font-family: ${props => props.theme.font.TextFont2};
+    :hover {
+      color: ${props => props.theme.color.mainGreen};
+    }
+  }
+
   @media screen and (max-width: 600px) {
     .card-container {
       grid-template-columns: repeat(1, 80%);
