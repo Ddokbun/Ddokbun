@@ -8,9 +8,7 @@ import {
   RightSection,
   Wrapper,
 } from "../../../../styles/manage/[posteq]/styles";
-import Image from "next/image";
 import { checkMyPot } from "../../../../utils/protectedRouter";
-import TabContents from "../../../../components/manage/TabContents";
 import TabHeader from "../../../../components/manage/TabHeader";
 
 export interface LogsType {

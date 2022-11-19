@@ -1,5 +1,5 @@
 import "../styles/globals.css";
-import React, { FC, useEffect } from "react";
+import { useEffect } from "react";
 import { Provider } from "react-redux";
 import { AppProps } from "next/app";
 import { useRouter } from "next/router";
@@ -39,6 +39,7 @@ const MyApp = ({ Component, ...rest }: AppProps) => {
       if (request === "granted") {
         const token = await getToken();
         await setToken(token);
+
         // const messaging = firebase.messaging();
 
         // messaging.onMessage((payload: any) => {

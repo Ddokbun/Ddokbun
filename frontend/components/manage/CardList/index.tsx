@@ -1,6 +1,5 @@
-import { motion } from "framer-motion";
-import { FC, useEffect, useState } from "react";
-import { Mousewheel, Navigation, Pagination } from "swiper";
+import { FC } from "react";
+import { Navigation, Pagination } from "swiper";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { PlantListType } from "../../../pages/manage/[userseq]";
 import CardItem from "../CardItem";

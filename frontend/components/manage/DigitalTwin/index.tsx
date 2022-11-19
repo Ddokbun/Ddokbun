@@ -46,7 +46,7 @@ const DigitalTwin: FC<Props> = ({ light, onWateringHandler }) => {
       </div>
       <div className="twin-background">
         <div className="svg-container tooltip" onClick={onShowAnimationHandler}>
-          <Image src={Watering} />
+          <Image src={Watering} loading="lazy" />
           <p className="tooltip-text">물 주려면 클릭!</p>
         </div>
         {!isMounted ? null : (

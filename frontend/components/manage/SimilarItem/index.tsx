@@ -19,7 +19,6 @@ const SimilarItem: FC<Props> = ({ potSerial }) => {
   const [similarItemInfo, setSimilarItemInfo] = useState<SimilarItemInfoType>();
   const router = useRouter();
   const onShowDetailHandler = () => {
-    // router.push(`/commerce/${potSerial}`);
     router.push(`/commerce/1`);
   };
   useEffect(() => {
