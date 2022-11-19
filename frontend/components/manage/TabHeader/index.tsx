@@ -17,14 +17,14 @@ const TabHeader: FC<Props> = ({ plantStatus }) => {
     <>
       <div className="image-container">
         <Image
-          src={`https://ddokbun.com/api/resources/s3?plantSeq=${plantStatus.plantSeq}`}
+          src={`https://ddokbun.com/api/resources/s3?plantSeq=${plantStatus?.plantSeq}`}
           alt="식물 이미지"
           width={"100%"}
           height={"100%"}
         />
         <div className="text-container">
-          <h3>{plantStatus.plantName}</h3>
-          <p>{plantStatus.plantEnName}</p>
+          <h3>{plantStatus?.plantName}</h3>
+          <p>{plantStatus?.plantEnName}</p>
         </div>
         <div className="pointer-container">
           <p
@@ -41,7 +41,7 @@ const TabHeader: FC<Props> = ({ plantStatus }) => {
           </p>
         </div>
       </div>
-      <TabContents tab={tab!} plantStatus={plantStatus} />
+      {plantStatus && <TabContents tab={tab!} plantStatus={plantStatus} />}
     </>
   );
 };

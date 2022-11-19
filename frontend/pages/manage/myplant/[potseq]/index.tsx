@@ -66,7 +66,7 @@ const PlantCare: NextPage<Props> = ({ data }) => {
   return (
     <Wrapper>
       <LeftSection>
-        <h2>{plantStatus.plantNickname}</h2>
+        <h2>{plantStatus?.plantNickname}</h2>
         <DigitalTwin
           light={plantStatus?.light}
           onWateringHandler={onWateringHandler}
@@ -88,14 +88,16 @@ export const getServerSideProps: GetServerSideProps = async ({
 }) => {
   const plantStatusOrNotMyPot = await checkMyPot(query, req, res);
 
-  if (plantStatusOrNotMyPot) {
+  if (!plantStatusOrNotMyPot) {
     return {
-      props: { data: plantStatusOrNotMyPot },
+      redirect: {
+        destination: "/commerce",
+      },
+      props: {},
     };
   } else {
     return {
-      redirect: "/commerce",
-      props: {},
+      props: { data: plantStatusOrNotMyPot },
     };
   }
 };
