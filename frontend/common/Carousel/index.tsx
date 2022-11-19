@@ -29,10 +29,6 @@ const Carousel: React.FC<{ items: ListObjectItem[] }> = ({ items }) => {
             slidesPerView: 3,
             spaceBetween: 40,
           },
-          1500: {
-            slidesPerView: 5,
-            spaceBetween: 50,
-          },
         }}
         spaceBetween={30}
         className="mySwiper"

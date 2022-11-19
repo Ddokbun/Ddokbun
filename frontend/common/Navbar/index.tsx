@@ -25,10 +25,11 @@ import { RootState } from "../../store";
 const Navbar = () => {
   const ref = useRef<HTMLDivElement>(null);
   const userseq = useSelector((state: RootState) => state.authSlice.userSeq);
-
+  const carts = useSelector((state: RootState) => state.cartList);
   const [slider, setSlider] = useState(false);
   const [shopCate, setShopCate] = useState(false);
   const [shopHover, setShopHover] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
 
   const toggleButton = () => {
     if (ref.current?.classList.contains("open")) {
@@ -62,6 +63,15 @@ const Navbar = () => {
       setShopCate(false);
     }
   }, [route]);
+
+  useEffect(() => {
+    setCartCount(0);
+    carts.forEach(item => {
+      if (item) {
+        setCartCount(val => val + 1);
+      }
+    });
+  }, [carts]);
 
   const shopHoverAni = {
     hover: {
@@ -103,7 +113,10 @@ const Navbar = () => {
             </Link>
 
             <Link href={"/commerce/cart"}>
-              <Bag />
+              <div className="bag-wrap">
+                {cartCount ? <span>{cartCount}</span> : null}
+                <Bag />
+              </div>
             </Link>
 
             <Link href={`/mypage/${userseq}`}>
@@ -126,9 +139,11 @@ const Navbar = () => {
                 당신의 가드닝을 도와줄 <br />
                 스마트 화분을 만나보세요
               </p>
-              <div className="button">
-                <a>보러가기</a>
-              </div>
+              <Link href={"/commerce"}>
+                <div className="button">
+                  <a>보러가기</a>
+                </div>
+              </Link>
             </div>
             <div className="grid-col">
               <Link href={"/commerce/list/초보집사"}>

@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   .swiper {
     width: 100%;
     height: 100%;
-    overflow-x: hidden !important;
+    /* overflow-x: hidden !important; */
   }
 
   .swiper-slide {
@@ -32,6 +32,8 @@ export const Wrapper = styled.div`
 
   .swiper-button-next {
     color: ${props => props.theme.color.mainGreen};
+
+    z-index: 20;
     @media screen and (max-width: 600px) {
       visibility: hidden;
     }

@@ -74,6 +74,34 @@ export const Wrapper = styled.div`
         height: 20px;
       }
     }
+    .bag-wrap {
+      position: relative;
+      span {
+        position: absolute;
+        right: 0;
+        top: -10px;
+        background-color: #fbc531;
+        width: 18px;
+        height: 18px;
+        display: flex;
+        border-radius: 9px;
+        justify-content: center;
+        align-items: center;
+        font-family: ${props => props.theme.font.TitleFont};
+        color: ${props => props.theme.color.mainGreen};
+        font-size: 12px;
+      }
+      svg {
+        width: 30px;
+        height: 30px;
+        cursor: pointer;
+        path {
+          fill: transparent;
+          stroke: ${props => props.theme.color.darkGreen};
+          stroke-width: 3;
+        }
+      }
+    }
 
     .user_svg__user {
       width: 25px;
