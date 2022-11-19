@@ -10,13 +10,11 @@ import { useRef } from "react";
 const Onboarding: NextPage = () => {
   return (
     <Wrapper>
-      <div className="y mandatory-scroll-snapping" dir="rtl">
-        <MainItem></MainItem>
-        <SubItem></SubItem>
-        <CommerceItem></CommerceItem>
-        <SearchItem></SearchItem>
-        <RecommendItem></RecommendItem>
-      </div>
+      <MainItem></MainItem>
+      <RecommendItem></RecommendItem>
+      <CommerceItem></CommerceItem>
+      <SubItem></SubItem>
+      {/* <SearchItem></SearchItem> */}
     </Wrapper>
   );
 };

@@ -14,6 +14,24 @@ export const Wrapper = styled.div`
   }
   th {
     text-align: start;
+    padding-right: 10px;
+  }
+  td {
+    padding-right: 10px;
+  }
+  .order {
+    width: 150px;
+    margin-right: 10px;
+  }
+  .name {
+    width: 90px;
+  }
+  .phone {
+    width: 140px;
+  }
+  .address {
+    width: 320px;
+    padding-right: 30px;
   }
   .modal-name {
     h2 {
@@ -26,7 +44,7 @@ export const Wrapper = styled.div`
     width: 140px;
     border-radius: 5px;
     :hover {
-      background-color: ${props => props.theme.color.ivoryHover};
+      background-color: ${props => props.theme.color.darkGray};
     }
   }
 `;

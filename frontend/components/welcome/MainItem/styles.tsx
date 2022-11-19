@@ -5,6 +5,7 @@ export const Wrapper = styled.div`
   background-color: ${props => props.theme.color.black};
   .banner-wrap {
     position: relative;
+    height: 100vh;
     .fill-img {
       height: 800px;
       position: "relative";
@@ -29,6 +30,7 @@ export const Wrapper = styled.div`
       top: 70%;
       left: 50%;
       transform: translate(-50%, -50%);
+      cursor: pointer;
     }
     .google-button {
       width: 350px;
@@ -44,6 +46,7 @@ export const Wrapper = styled.div`
     color: transparent;
     width: 300px;
     height: 45px;
+    cursor: pointer;
   }
 
   @media screen and (max-width: 600px) {

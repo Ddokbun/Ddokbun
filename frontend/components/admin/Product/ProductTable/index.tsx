@@ -25,8 +25,8 @@ const ProductTable: React.FC<{ data: OrderArray[] }> = ({ data }) => {
                 <th className="">Num</th>
                 <th className="">Name</th>
                 <th className="">Price</th>
-                <th className="">Stock</th>
-                <th className="">Del</th>
+                <th className="stock">Stock</th>
+                <th className="del">Del</th>
               </tr>
             </thead>
             <div className="table-head">
