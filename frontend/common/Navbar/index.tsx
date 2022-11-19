@@ -62,6 +62,7 @@ const Navbar = () => {
       setSlider(false);
       setShopCate(false);
     }
+    setShopHover(false);
   }, [route]);
 
   useEffect(() => {
@@ -100,11 +101,10 @@ const Navbar = () => {
             <Link href={`/manage/${userseq}`}>
               <a>IoT</a>
             </Link>
-            <Link href={"/commerce"}>
-              <a onMouseEnter={handleShopEnter} onMouseLeave={handleShopLeave}>
-                Shopping ▾{" "}
-              </a>
-            </Link>
+
+            <div onMouseEnter={handleShopEnter} onMouseLeave={handleShopLeave}>
+              Shopping ▾{" "}
+            </div>
           </div>
 
           <div className="img-wrap">
@@ -145,42 +145,42 @@ const Navbar = () => {
                 </div>
               </Link>
             </div>
-            <div className="grid-col">
-              <Link href={"/commerce/list/초보집사"}>
+            <Link href={"/commerce/list/초보집사"}>
+              <div className="grid-col">
                 <NavCard
                   source={Starter}
                   title="Beginer"
                   content="초보 집사들을 위한 최선의 선택"
                 />
-              </Link>
-            </div>
-            <div className="grid-col">
-              <Link href={"/commerce/list/집꾸미기"}>
+              </div>
+            </Link>
+            <Link href={"/commerce/list/집꾸미기"}>
+              <div className="grid-col">
                 <NavCard
                   source={Home}
                   title="Home Decoration"
                   content="똑분과 함께 플랜테리어"
                 />
-              </Link>
-            </div>
-            <div className="grid-col">
-              <Link href={"/commerce/list/반려동물"}>
+              </div>
+            </Link>
+            <Link href={"/commerce/list/반려동물"}>
+              <div className="grid-col">
                 <NavCard
                   source={Pet}
                   title="Gardening with Pets"
                   content="반려동물과 함께하는 가드닝"
                 />
-              </Link>
-            </div>
-            <div className="grid-col">
-              <Link href={"/commerce/list/공기정화"}>
+              </div>
+            </Link>
+            <Link href={"/commerce/list/공기정화"}>
+              <div className="grid-col">
                 <NavCard
                   source={Air}
                   title="Air Purifying Plants"
                   content="공기정화에 도움되는 식물들"
                 />
-              </Link>
-            </div>
+              </div>
+            </Link>
             <Link href={"/commerce/survey"}>
               <div className="grid-bottom">
                 <Image src={Survey} layout="fill" objectFit="cover" />

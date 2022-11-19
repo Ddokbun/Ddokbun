@@ -44,6 +44,11 @@ export const Wrapper = styled.div`
       align-items: center;
       height: 100%;
     }
+    div {
+      display: flex;
+      align-items: center;
+      height: 100%;
+    }
   }
 
   .img-wrap {

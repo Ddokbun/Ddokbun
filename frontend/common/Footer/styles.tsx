@@ -56,8 +56,11 @@ export const Wrapper = styled.div`
       }
 
       h2 {
-        margin-bottom: 50px;
-        font-size: 20px;
+        margin-bottom: 10px;
+        font-size: 18px;
+      }
+      p {
+        font-size: 15px;
       }
       .grid-left {
         opacity: 0.6;
