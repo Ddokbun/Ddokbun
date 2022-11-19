@@ -30,12 +30,18 @@ export const Wrapper = styled.tr`
   .info > p {
     font-family: ${props => props.theme.font.TextFont2};
   }
-  @media screen and (${props => props.theme.mobile}) {
+  @media screen and (max-width: 600px) {
     p {
       font-size: 12px;
     }
     button {
       font-size: 8px;
+    }
+    .image-container {
+      grid-template-columns: auto 1fr;
+      grid-gap: 5%;
+      margin: 4%;
+      align-items: center;
     }
   }
 `;

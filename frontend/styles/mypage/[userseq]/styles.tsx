@@ -63,11 +63,17 @@ export const Wrapper = styled(motion.section)`
       :nth-child(3) {
         width: 25%;
       }
+      :nth-child(4) {
+        width: 10%;
+      }
     }
     .info {
       text-align: left;
       word-break: keep-all;
       padding-left: 5%;
+      height: 130px;
+      /* align-items: center; */
+      justify-content: center;
     }
   }
 `;
