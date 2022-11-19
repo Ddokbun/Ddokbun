@@ -1,4 +1,5 @@
 import { GetServerSideProps, NextPage } from "next";
+import Swal from "sweetalert2";
 import DeliveryTable from "../../../components/mypage/DeliveryTable";
 import { ManageHomeAni } from "../../../styles/animations/animation";
 import { Wrapper } from "../../../styles/mypage/[userseq]/styles";
@@ -34,7 +35,7 @@ const MyPage: NextPage = () => {
   return (
     <Wrapper variants={ManageHomeAni} initial="out" animate="in" exit="out">
       <DeliveryTable />
-        <Manage />
+      <Manage />
     </Wrapper>
   );
 };
