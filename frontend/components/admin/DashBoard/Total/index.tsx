@@ -14,13 +14,13 @@ const OrderTotal = () => {
   useEffect(() => {
     async function fetchCount() {
       const data = await getOrderCount();
-      setData(data.content);
+      setData(data?.content);
 
       const user = await getUserCount();
-      setUser(user.content);
+      setUser(user?.content);
 
       const product = await getProductCount();
-      setProduct(product.content);
+      setProduct(product?.content);
     }
     fetchCount();
   }, []);

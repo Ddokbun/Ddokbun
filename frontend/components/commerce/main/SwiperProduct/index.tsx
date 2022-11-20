@@ -7,11 +7,12 @@ import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
 import SwiperItem from "./SwiperItem";
+import { EleVar } from "../../../../styles/animations/animation";
 
 const SwiperProduct: React.FC<{ data: MainPlant }> = ({ data }) => {
   console.log(data);
   return (
-    <Wrapper>
+    <Wrapper variants={EleVar}>
       <h2>Best Sellers</h2>
       <Swiper
         navigation={true}

@@ -1,6 +1,7 @@
 import router from "next/router";
 import React, { useCallback, useEffect, useRef, useState } from "react";
 import Webcam from "react-webcam";
+import Swal from "sweetalert2";
 import { fetchItemSeq, postPicture } from "../../../apis/search";
 import Spinner from "../../../common/Spinner";
 import { Wrapper } from "./styles";
@@ -39,8 +40,12 @@ const CameraCompo = () => {
     const plantSeq = await res;
     setLoading(0);
     if (plantSeq === undefined) {
-      alert("해당하는 값을 찾지 못했습니다. 다시 검색을 시도해주세요.");
-      window.location.replace("/search/camera");
+      Swal.fire({
+        title: "해당하는 값을 찾지 못했습니다.",
+        text: "다시 검색을 시도해주세요.",
+      }).then(() => {
+        window.location.replace("/search/camera");
+      });
     } else {
       router.push(`/commerce/product/${plantSeq}`);
     }
@@ -62,7 +67,7 @@ const CameraCompo = () => {
               facingMode: "environment",
             }}
             onUserMediaError={() =>
-              window.alert("카메라 기기에 접근할 수 없습니다.")
+              Swal.fire("카메라 기기에 접근할 수 없습니다.")
             }
           />
         </div>
@@ -80,7 +85,7 @@ const CameraCompo = () => {
       <div className="capture-button">
         <button onClick={ResetFile}>재촬영하기</button>
         <button onClick={postFile}>전송하기</button>
-        {loading === 1 ? <Spinner /> : ""}
+        {loading === 1 ? <Spinner top="50" left="50" /> : ""}
       </div>
     </Wrapper>
   );
