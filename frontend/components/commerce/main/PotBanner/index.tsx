@@ -1,7 +1,7 @@
 import { Wrapper } from "./styles";
 import Link from "next/link";
 import Image from "next/image";
-import PotImg from "../../../../assets/smart-pot.jpg";
+import PotImg from "../../../../assets/commerce/pot.jpg";
 import { EleVar } from "../../../../styles/animations/animation";
 
 const PotBanner = () => {
@@ -29,7 +29,7 @@ const PotBanner = () => {
             </h3>
             <h3>화분을 키울 곳의 생활 환경에 맞게 관리를 도와드릴게요.</h3>
             <div className="button">
-              <Link href={"/commerce/survey"}>
+              <Link href={"/commerce/product/pot"}>
                 <div className="button-wrap">바로가기</div>
               </Link>
             </div>

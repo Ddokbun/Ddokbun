@@ -47,7 +47,7 @@ export const Wrapper = styled.div`
       gap: 20px;
 
       display: grid;
-      grid-template-columns: 2fr 1fr;
+      grid-template-columns: 5fr 1fr;
       grid-template-rows: 1fr;
       h1 {
         font-weight: 600;

@@ -246,6 +246,11 @@ export const Wrapper = styled.div`
           display: none;
         }
       }
+      .bag-wrap {
+        svg {
+          display: block;
+        }
+      }
     }
     .wrapper {
       padding: 0px 40px;

@@ -414,13 +414,16 @@ export const fetchServeyList = async () => {
  * 주문 후 주문상태 변경 API입니다
  */
 
-export const setOrderInfo = async (orderSeq: string) => {
+export const setOrderInfo = async (orderSeq: string, token: string) => {
   const url = `order/${orderSeq}/pay`;
 
   try {
     const res = await AXIOS({
       url,
       method: "GET",
+      headers: {
+        Authorization: token,
+      },
     });
     // console.log(res);
     return res.data.content;
