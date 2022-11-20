@@ -10,10 +10,11 @@ import { Mousewheel, Navigation, Pagination } from "swiper";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
+import { EleVar } from "../../../../styles/animations/animation";
 
 const CategoryButton = () => {
   return (
-    <Wrapper>
+    <Wrapper variants={EleVar}>
       <h2>Category</h2>
       <div className="card-wrap">
         <Link href={"/commerce/list/초보집사"}>

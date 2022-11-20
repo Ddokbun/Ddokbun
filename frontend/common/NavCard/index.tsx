@@ -20,14 +20,14 @@ const NavCard: React.FC<NavCardProps> = ({ source, title, content }) => {
     setIsHover(false);
   };
   interface Imapping {
-    Beginer: string;
+    Beginner: string;
     "Home Decoration": string;
     "Gardening with Pets": string;
     "Air Purifying Plants": string;
   }
 
   const mapping: Imapping = {
-    Beginer: "/commerce/list/초보집사",
+    Beginner: "/commerce/list/초보집사",
     "Home Decoration": "/commerce/list/집꾸미기",
     "Gardening with Pets": "/commerce/list/반려동물",
     "Air Purifying Plants": "/commerce/list/공기정화",

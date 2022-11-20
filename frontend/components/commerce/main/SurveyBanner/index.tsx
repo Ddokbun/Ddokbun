@@ -2,10 +2,11 @@ import { Wrapper } from "./styles";
 import Link from "next/link";
 import Banner from "../../../../assets/commerce/plants/banner-02.png";
 import Image from "next/image";
+import { EleVar } from "../../../../styles/animations/animation";
 
 const SurveyBanner = () => {
   return (
-    <Wrapper>
+    <Wrapper variants={EleVar}>
       <div className="img-wrap">
         <Image
           src={Banner}

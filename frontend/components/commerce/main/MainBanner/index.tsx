@@ -2,10 +2,11 @@ import { Wrapper } from "./styles";
 import Link from "next/link";
 import Image from "next/image";
 import MainImg from "../../../../assets/commerce/main/main_banner.jpg";
+import { EleVar } from "../../../../styles/animations/animation";
 
 const MainBanner = () => {
   return (
-    <Wrapper>
+    <Wrapper variants={EleVar}>
       <div className="wrap">
         <div className="img-wrap">
           <Image
