@@ -28,6 +28,11 @@ const PotBanner = () => {
               키우는 식물의 온도, 습도, 토양습도, 물 주기까지 한 번에 확인하고,
             </h3>
             <h3>화분을 키울 곳의 생활 환경에 맞게 관리를 도와드릴게요.</h3>
+            <div className="button">
+              <Link href={"/commerce/survey"}>
+                <div className="button-wrap">바로가기</div>
+              </Link>
+            </div>
           </div>
         </div>
       </Wrapper>

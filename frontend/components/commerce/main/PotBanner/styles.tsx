@@ -19,6 +19,7 @@ export const Wrapper = styled(motion.div)`
   }
   .text-wrap {
     display: flex;
+    justify-content: center;
     align-items: center;
     margin-left: 70px;
     width: 60%;
@@ -29,6 +30,27 @@ export const Wrapper = styled(motion.div)`
     h3 {
       font-family: ${props => props.theme.font.TextFont2};
       font-size: 17px;
+    }
+  }
+  .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .button-wrap {
+    margin-top: 40px;
+    font-family: ${props => props.theme.font.TextFont2};
+    border: 1px solid black;
+    color: black;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 200px;
+    height: 50px;
+    border-radius: 5px;
+    :hover {
+      cursor: pointer;
     }
   }
 
@@ -76,6 +98,17 @@ export const Wrapper = styled(motion.div)`
       }
       h3 {
         font-size: 13px;
+      }
+    }
+    .button-wrap {
+      margin-top: 20px;
+      text-align: center;
+      width: 150px;
+      height: 40px;
+      font-size: 13px;
+      border-radius: 3px;
+      :hover {
+        cursor: pointer;
       }
     }
   }
