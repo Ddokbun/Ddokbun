@@ -4,6 +4,7 @@ import { fetchProductDetail } from "../../../../apis/commerce";
 import ProductSellCard from "../../../../common/Cards/ProductSellCard";
 import { Wrapper } from "../../../../styles/commerce/products/pot/styles";
 import Light from "../../../../assets/icon/light.png";
+
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { EleVar, WrapperVar } from "../../../../styles/animations/animation";
@@ -22,8 +23,8 @@ const Pot: NextPage = data => {
           itemEnName="Premium Smart Pot"
           tags={["스마트화분"]}
           itemSeq={0}
-          itemPrice={12000}
-          itemPicture={"https://ddokbun.com/api/resources/s3?plantSeq=123"}
+          itemPrice={140000}
+          itemPicture={"https://ddokbun.com/api/resources/s3?plantSeq=124"}
           flag={true}
         />
 
