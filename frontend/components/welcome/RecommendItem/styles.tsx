@@ -24,7 +24,7 @@ export const Wrapper = styled.div`
       display: flex;
       align-items: flex-end;
       .font-wrap {
-        padding: 30px;
+        padding: 50px;
         h2 {
           font-size: 45px;
           font-family: ${props => props.theme.font.TitleFont};

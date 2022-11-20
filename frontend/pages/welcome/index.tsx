@@ -21,8 +21,8 @@ const Onboarding: NextPage = () => {
       {/* <button onClick={onHomeClick}>버튼</button> */}
       <RecommendItem ref={homeRef}></RecommendItem>
       <CommerceItem></CommerceItem>
-      <SubItem></SubItem>
       <SearchItem></SearchItem>
+      <SubItem></SubItem>
     </Wrapper>
   );
 };
