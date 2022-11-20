@@ -179,7 +179,7 @@ const Navbar = () => {
               <div className="grid-col">
                 <NavCard
                   source={Starter}
-                  title="Beginer"
+                  title="Beginner"
                   content="초보 집사들을 위한 최선의 선택"
                 />
               </div>
