@@ -1,6 +1,6 @@
 import React from "react";
 import { Wrapper } from "./styles";
-import Temp from "../../../assets/smartpot.jpg";
+import Pot from "../../../assets/commerce/pot.jpg";
 import Image from "next/image";
 import { putCart } from "../../../apis/commerce";
 import { setCartLists } from "../../../store/commerce";
@@ -26,7 +26,7 @@ const SmartPotCard: React.FC<SmartPotProps> = ({ price }) => {
         <Image
           layout="fill"
           objectFit="contain"
-          src={Temp}
+          src={Pot}
           alt="임시 스마트화분 이미지입니다"
         />
       </div>

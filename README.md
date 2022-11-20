@@ -137,7 +137,7 @@
   + 모바일 / 웹을 구분하여 디바이스에 적합한 시스템으로 결제
 
 
-     
+​     
 
 ## 🖇️ 아키텍처
 
@@ -366,7 +366,7 @@ iot
 + 똑분 서비스만의 차별점과 사용 방법을 파악할 수 있도록 하였습니다.
 - SEO 타이틀 페이지로서, 처음 유저와의 접점 시 긍정적인 인식을 줄 수 있도록 서비스 이미지에 대한 시각자료를 제공하며, 플랫폼 브랜딩을 기획하였습니다.
 
-<img src="README.assets/onboarding.gif" alt="onboarding" style="zoom:150%;" />
+![commerce_onboarding](README.assets/commerce_onboarding.gif)
 
 
 
@@ -376,9 +376,9 @@ iot
 
 + 배너를 활용하여 커머스의 다양한 기능에 이용자들이 쉽게 접근할 수 있도록 하였습니다.
 + 조회수 기반 인기식물을 보여주어 이용자들이 인기있는 식물을 확인할 수 있도록 하였습니다.
-+ 추천관한 글
++ 카테고리 바로가기 외에도 추천 상품을 보여주며 플랫폼이 유기적으로 연동될 수 있도록 하였습니다.
 
-<img src="README.assets/commerce-home.gif" alt="commerce-home" style="zoom: 150%;" />
+![commerce_home](README.assets/commerce_home.gif)
 
 
 
@@ -427,7 +427,7 @@ iot
 + 사용자가 웹으로 접속했는지, 모바일로 접속했는지 구분하여 모바일일 경우는 카카오페이를 바로 실행할 수 있도록, 웹일 경우 QR / 인증번호 결제를 할 수 있도록 구분하였습니다.
 + 결제를 진행할 때 DB에 결제 대기상태를 올린 후, 결제가 성공적으로 끝나면 결제상태를 결제완료로 변경합니다.
 
-(모바일 GIF 사용 할듯)
+<img src="README.assets/paygif.gif" alt="paygif" style="zoom:50%;" />
 
 
 
@@ -464,10 +464,11 @@ iot
 #### 화분 추가
 
 + 식물 검색기능을 활용하여 내가 가진 식물의 정보를 불러올 수 있도록 하였습니다.
++ 자신만의 식물이름을 지정하여 식물 닉네임기반으로 관리 할 수 있도록 하였습니다.
 
-+ 자신만의 식물이름을 지정하여 식물 닉네임 기반으로 관리 할 수 있도록 하였습니다.
+![iot_create](README.assets/iot_create.gif) 
 
-  
+
 
 #### 화분 관리
 
@@ -477,15 +478,15 @@ iot
    - 물주기 버튼을 활용하여 IoT 식물에게 물을 줄 수 있도록 하였고, 물 주는 동안 애니메이션을 실행하여 사용자에게 물을 주고 있다는 것을 확인할 수 있도록 하였습니다.
    - 자동 물주기 설정 시 DB에 저장되어 있는 식물 정보 바탕으로 물을 주도록 할 수 있고, 또는 사용자가 설정한 날짜에 맞춰 물을 줄 수 있도록 하였습니다.
    
-
-![IoT_twin](README.assets/IoT_twin.gif)
-
-
-
-2. **데이터 시각화**
+   
+   
+1. **데이터 시각화**
+   
    + 내가 키우고 있는 식물의 정보를 보여주어 사용자가 식물을 기를 때 도움이 될 수 있도록 하였습니다.
    + 기록보기를 통해 IoT화분을 통해 언제 물을 주었는지 달력으로 확인할 수 있도록 하였습니다.
    + IoT화분을 활용하여 온도 / 조도 / 습도 / 토양습도에 데이터를 시각화 하였고, 사용자가 볼 수 있도로 하였습니다.
+
+![IoT_twin](README.assets/IoT_twin.gif)
 
 ![iot_chart](README.assets/iot_chart.gif)
 
@@ -510,7 +511,7 @@ iot
 - 결제 상태를 버튼을 활용하여 쉽게 배송상태를 변경 할 수 있도록 하였습니다.
 - 전체 대시 보드 중, 주문 건수에 대한 차트를 제작해 주문량을 한 눈에 볼 수 있습니다.
 
-<img src="README.assets/admin-commerce.gif" alt="admin-commerce" style="zoom:150%;" />
+![admin_commerce](README.assets/admin_commerce.gif)
 
 
 
@@ -519,7 +520,7 @@ iot
 + 유저들의 정보를 테이블로 관리하여, 파악이 용이하도록 하였습니다.
 - 유저별 접근 권한을 다르게 부여하고, 이를 변경할 수 있는 기능을 제공합니다.
 
-<img src="README.assets/admin-user.gif" alt="admin-user" style="zoom:150%;" />
+![admin_user](README.assets/admin_user.gif)
 
 
 
@@ -528,4 +529,7 @@ iot
 - 보유한 상품에 대해 테이블로 관리 할 수 있도록 하였습니다.
 - 상품의 남은 재고를 확인하고, 삭제할 수 있습니다.
 
-<img src="README.assets/admin-commerce-16689328427865.gif" alt="admin-commerce" style="zoom:150%;" />
+![admin_product](README.assets/admin_product.gif)
+
+
+
