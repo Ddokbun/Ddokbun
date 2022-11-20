@@ -1,6 +1,6 @@
 import { Wrapper } from "./styles";
 import Image from "next/image";
-import commerceImg01 from "../../../assets/onboarding/tempRecommend01.jpg";
+import commerceImg01 from "../../../assets/onboarding/recommend-01.png";
 
 const CommerceItem = () => {
   return (

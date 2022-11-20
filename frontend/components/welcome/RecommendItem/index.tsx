@@ -1,6 +1,6 @@
 import { Wrapper } from "./styles";
 import Image from "next/image";
-import adviceImg from "../../../assets/onboarding/tempAdvice01.jpg";
+import adviceImg from "../../../assets/onboarding/recommend-02.png";
 import { forwardRef } from "react";
 
 const RecommendItem = () => {
