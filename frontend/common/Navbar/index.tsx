@@ -1,15 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ShopHoverNav, Slider, Wrapper } from "./styles";
-
 import Bag from "../../assets/commerce/bag.svg";
 import User from "../../assets/commerce/user.svg";
 import Search from "../../assets/icon/search.svg";
 import Dot from "../../assets/icon/dot.svg";
-
 import Image from "next/image";
 import Link from "next/link";
 import Plant1 from "../../assets/commerce/plants/plant1.jpg";
-
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { NabAni, NabCategoryAni } from "../../styles/animations/animation";
@@ -21,22 +18,11 @@ import Air from "../../assets/commerce/plants/air-banner.jpg";
 import Survey from "../../assets/commerce/plants/survey-banner.jpg";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
-import { checkAuthentication } from "../../utils/protectedRouter";
 import { getCookie } from "cookies-next";
-import { IncomingMessage, ServerResponse } from "http";
 import Swal from "sweetalert2";
 
-const Navbar: React.FC<{
-  req: IncomingMessage;
-  res: ServerResponse<IncomingMessage>;
-}> = ({ req, res }) => {
-  const token = getCookie("token", { req, res }) as string;
-  if (!token) {
-    console.log("토큰없음");
-  } else {
-    console.log("토큰있음");
-  }
-
+const Navbar = () => {
+  const token = getCookie("token") as string;
   const ref = useRef<HTMLDivElement>(null);
   const userseq = useSelector((state: RootState) => state.authSlice.userSeq);
   const carts = useSelector((state: RootState) => state.cartList);
