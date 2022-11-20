@@ -137,12 +137,18 @@ const Navbar = () => {
               <Search />
             </Link>
 
-            <Link href={"/commerce/cart"}>
-              <div className="bag-wrap">
-                {cartCount ? <span>{cartCount}</span> : null}
+            {token ? (
+              <Link href={"/commerce/cart"}>
+                <div className="bag-wrap">
+                  {cartCount ? <span>{cartCount}</span> : null}
+                  <Bag />
+                </div>
+              </Link>
+            ) : (
+              <div className="bag-wrap" onClick={click}>
                 <Bag />
               </div>
-            </Link>
+            )}
             {token ? (
               <Link href={`/mypage/${userseq}`}>
                 <User viewBox="0 0 512 512" />

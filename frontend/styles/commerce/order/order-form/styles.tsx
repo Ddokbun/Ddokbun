@@ -65,7 +65,7 @@ export const Wrapper = styled.div`
     }
     .contents {
       display: grid;
-      padding: 30px 10px;
+      padding: 30px 5px;
     }
 
     .pay-grid {

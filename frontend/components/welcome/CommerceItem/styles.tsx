@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  word-break: keep-all;
   background-color: ${props => props.theme.color.black};
   color: white;
   height: 100vh;
