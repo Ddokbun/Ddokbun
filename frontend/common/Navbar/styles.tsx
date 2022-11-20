@@ -345,8 +345,8 @@ export const Slider = styled(motion.div)`
   .title {
     z-index: 2;
     width: 100%;
-    /* height: 40px; */
-    margin: 12px 0px;
+    height: 100%;
+    padding: 12px 0px;
     color: ${props => props.theme.color.darkGreen};
     padding-bottom: 2px;
     border-bottom: 1px solid ${props => props.theme.color.darkGreen};
@@ -367,6 +367,7 @@ export const Slider = styled(motion.div)`
     flex-direction: column;
     gap: 5px;
     p {
+      z-index: 1;
       padding-left: 10px;
       margin: 10px 0px 0px;
       font-size: 18px;
@@ -377,6 +378,7 @@ export const Slider = styled(motion.div)`
     }
 
     span {
+      z-index: 1;
       cursor: pointer;
       padding-left: 20px;
       font-family: ${props => props.theme.font.TextFont2};

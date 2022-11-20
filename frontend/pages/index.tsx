@@ -4,6 +4,8 @@ import Head from "next/head";
 import { NextSeo } from "next-seo";
 
 const Home: NextPage = () => {
+  // const code = new URL(window.location.href).searchParams.get("code");
+
   return (
     <div>
       <Head>
