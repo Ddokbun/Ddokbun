@@ -57,7 +57,7 @@ const Cart: NextPage = () => {
       </div>
 
       <div className="card-wrap">
-        <SmartPotCard price={36000} />
+        <SmartPotCard price={140000} />
       </div>
     </Wrapper>
   );
