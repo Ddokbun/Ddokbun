@@ -345,11 +345,12 @@ export const Slider = styled(motion.div)`
   .title {
     z-index: 2;
     width: 100%;
-    heiggt: 40px;
+    /* height: 40px; */
     margin: 12px 0px;
     color: ${props => props.theme.color.darkGreen};
     padding-bottom: 2px;
     border-bottom: 1px solid ${props => props.theme.color.darkGreen};
+    text-align: start;
     font-size: 24px;
     font-family: ${props => props.theme.font.TextFont2};
     font-weight: 600;
