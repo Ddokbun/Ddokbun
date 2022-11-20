@@ -380,6 +380,8 @@ iot
 
 ![commerce_home](README.assets/commerce_home.gif)
 
+<img src="README.assets/commerce-home.gif" alt="commerce-home" style="zoom: 150%;" />
+
 
 
 #### 상품 목록
