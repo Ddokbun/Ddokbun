@@ -52,23 +52,22 @@ const Manage: NextPage = () => {
 
 export default Manage;
 
-export const getServerSideProps: GetServerSideProps = async ({
-  query,
-  req,
-  res,
-}) => {
-  const isAuthenticated = await checkAuthentication(query, req, res);
-
-  if (!isAuthenticated) {
-    return {
-      redirect: {
-        destination: "/commerce",
-      },
-      props: {},
-    };
-  } else {
-    return {
-      props: {},
-    };
-  }
-};
+// export const getServerSideProps: GetServerSideProps = async ({
+//   query,
+//   req,
+//   res,
+// }) => {
+//   const isAuthenticated = await checkAuthentication(query, req, res);
+//   if (!isAuthenticated) {
+//     return {
+//       redirect: {
+//         destination: "/commerce",
+//       },
+//       props: {},
+//     };
+//   } else {
+//     return {
+//       props: {},
+//     };
+//   }
+// };

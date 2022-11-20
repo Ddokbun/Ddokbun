@@ -1,15 +1,12 @@
 import React, { useEffect, useRef, useState } from "react";
 import { ShopHoverNav, Slider, Wrapper } from "./styles";
-
 import Bag from "../../assets/commerce/bag.svg";
 import User from "../../assets/commerce/user.svg";
 import Search from "../../assets/icon/search.svg";
 import Dot from "../../assets/icon/dot.svg";
-
 import Image from "next/image";
 import Link from "next/link";
 import Plant1 from "../../assets/commerce/plants/plant1.jpg";
-
 import { useRouter } from "next/router";
 import { motion } from "framer-motion";
 import { NabAni, NabCategoryAni } from "../../styles/animations/animation";
@@ -21,8 +18,11 @@ import Air from "../../assets/commerce/plants/air-banner.jpg";
 import Survey from "../../assets/commerce/plants/survey-banner.jpg";
 import { useSelector } from "react-redux";
 import { RootState } from "../../store";
+import { getCookie } from "cookies-next";
+import Swal from "sweetalert2";
 
 const Navbar = () => {
+  const token = getCookie("token") as string;
   const ref = useRef<HTMLDivElement>(null);
   const userseq = useSelector((state: RootState) => state.authSlice.userSeq);
   const carts = useSelector((state: RootState) => state.cartList);
@@ -79,6 +79,25 @@ const Navbar = () => {
       opacity: 1,
     },
   };
+
+  const click = () => {
+    Swal.fire({
+      title: "로그인이 필요한 서비스입니다.",
+      text: "로그인 화면으로 이동할까요?",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "확인",
+      cancelButtonText: "취소",
+    }).then(result => {
+      if (result.isConfirmed) {
+        window.location.replace("/welcome");
+      }
+      if (result.isDismissed) {
+      }
+    });
+  };
+
   return (
     <>
       <Wrapper>
@@ -98,9 +117,15 @@ const Navbar = () => {
             <Link href={"/commerce"}>Ddokbbun</Link>
           </div>
           <div className="menu-wrap">
-            <Link href={`/manage/${userseq}`}>
-              <a>IoT</a>
-            </Link>
+            {token ? (
+              <Link href={`/manage/${userseq}`}>
+                <a>IoT</a>
+              </Link>
+            ) : (
+              <button onClick={click}>
+                <a>IoT</a>
+              </button>
+            )}
 
             <div onMouseEnter={handleShopEnter} onMouseLeave={handleShopLeave}>
               Shopping ▾{" "}
@@ -118,10 +143,15 @@ const Navbar = () => {
                 <Bag />
               </div>
             </Link>
-
-            <Link href={`/mypage/${userseq}`}>
-              <User viewBox="0 0 512 512" />
-            </Link>
+            {token ? (
+              <Link href={`/mypage/${userseq}`}>
+                <User viewBox="0 0 512 512" />
+              </Link>
+            ) : (
+              <button onClick={click}>
+                <User viewBox="0 0 512 512" />
+              </button>
+            )}
           </div>
         </div>
         <ShopHoverNav
@@ -202,9 +232,15 @@ const Navbar = () => {
       >
         {/* <Slider> */}
         <div className="menu">
-          <Link href={`/manage/${userseq}`}>
-            <div className="title">IoT</div>
-          </Link>
+          {token ? (
+            <Link href={`/manage/${userseq}`}>
+              <div className="title">IoT</div>
+            </Link>
+          ) : (
+            <button onClick={click}>
+              <div className="title">IoT</div>
+            </button>
+          )}
 
           <div className="title" onClick={handleShopCate}>
             Shopping
@@ -252,9 +288,23 @@ const Navbar = () => {
             <div className="title">Search</div>
           </Link>
 
-          <Link href={`/mypage/${userseq}`}>
-            <div className="title">MyPage</div>
-          </Link>
+          {token ? (
+            <Link href={`/mypage/${userseq}`}>
+              <div className="title">MyPage</div>
+            </Link>
+          ) : (
+            <button onClick={click}>
+              <div className="title">MyPage</div>
+            </button>
+          )}
+
+          {!token ? (
+            <Link href={`/welcome`}>
+              <div className="title">Login</div>
+            </Link>
+          ) : (
+            <></>
+          )}
         </div>
       </Slider>
     </>

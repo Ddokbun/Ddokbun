@@ -1,8 +1,6 @@
 import { GetStaticProps, NextPage } from "next";
 import { Wrapper } from "../../styles/commerce/styles";
-import MainProduct from "../../components/commerce/main/MainProductCard/MainProduct";
 import SurveyBanner from "../../components/commerce/main/SurveyBanner";
-import IoTSurvey from "../../components/commerce/main/IoTSurvey";
 import { fetchHotPlant, getMainProduct } from "../../apis/commerce";
 import { MainPlant } from "../../types/commerce/home.interface";
 import MainProductCard from "../../components/commerce/main/MainProductCard";
@@ -11,6 +9,8 @@ import PotBanner from "../../components/commerce/main/PotBanner";
 import LastProductCard from "../../components/commerce/main/LastProductCard";
 import SwiperProduct from "../../components/commerce/main/SwiperProduct";
 import CategoryButton from "../../components/commerce/main/CategoryButton";
+import { WrapperVar } from "../../styles/animations/animation";
+import { motion } from "framer-motion";
 
 export const getStaticProps: GetStaticProps = async context => {
   const res = await getMainProduct();
@@ -31,14 +31,20 @@ const Commerce: NextPage<{ data: MainPlant; hotitem: MainPlant }> = ({
 }) => {
   return (
     <Wrapper>
-      <MainBanner />
-      <PotBanner />
-      <SurveyBanner />
-      {/* <SwiperProduct data={data.slice(2, 9)} /> */}
-      <SwiperProduct data={hotitem} />
-      <MainProductCard data={data.slice(0, 2)} />
-      <CategoryButton />
-      <LastProductCard data={data.slice(9, 12)} />
+      <motion.div
+        variants={WrapperVar}
+        initial={"start"}
+        animate={"end"}
+        className="contents-box"
+      >
+        <MainBanner />
+        <PotBanner />
+        <SurveyBanner />
+        <SwiperProduct data={hotitem} />
+        <MainProductCard data={data.slice(0, 2)} />
+        <CategoryButton />
+        <LastProductCard data={data.slice(9, 12)} />
+      </motion.div>
     </Wrapper>
   );
 };

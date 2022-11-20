@@ -1,107 +1,56 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
-  background-color: ${props => props.theme.color.brown};
+  background-color: ${props => props.theme.color.black};
   color: white;
-  padding: 20px;
-  .subcontent-wrap {
+  height: 100vh;
+  .content-wrap {
     width: 100%;
-    .title {
-      padding-bottom: 50px;
-      h2 {
-        text-align: center;
-        font-size: 70px;
-      }
-      h3 {
-        text-align: center;
-        font-size: 25px;
-        font-family: ${props => props.theme.font.TitleFont};
-      }
-    }
+    height: 100%;
     .img {
+      width: 100%;
+      height: 100vh;
+      position: relative;
+    }
+    .background {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(
+        2deg,
+        rgba(25, 25, 25, 1) 0%,
+        rgba(0, 212, 255, 0) 100%
+      );
       display: flex;
-      height: 800px;
-      justify-content: center;
-    }
-    .img-wrap {
-      position: relative;
-    }
-    .back-wrap {
-      position: absolute;
-      top: 30%;
-      left: 90%;
-      transform: translate(-95%, -50%);
-    }
-    .back-img {
-      width: 600px;
-      height: 450px;
-      position: relative;
-      .banner-img {
-        max-height: 100px;
-        opacity: 0.5;
-      }
-    }
-    .front-wrap {
-      position: absolute;
-      top: 60%;
-      left: 80%;
-      transform: translate(-40%, -50%);
-    }
-    .front-img {
-      width: 800px;
-      height: 550px;
-      position: relative;
-      .banner-img {
-        max-height: 100px;
+      justify-content: flex-end;
+      align-items: flex-end;
+      text-align: end;
+      .font-wrap {
+        padding: 50px;
+        h2 {
+          font-size: 45px;
+          font-family: ${props => props.theme.font.TitleFont};
+          padding-bottom: 60px;
+        }
+        h3 {
+          font-size: 22px;
+          font-family: ${props => props.theme.font.TextFont2};
+        }
       }
     }
   }
 
   @media screen and (max-width: 600px) {
-    .subcontent-wrap {
-      width: 100%;
-      .title {
-        h2 {
-          text-align: center;
-          font-size: 30px;
-        }
-        h3 {
-          text-align: center;
-          font-size: 10px;
-        }
-      }
-
-      .img {
-        height: 300px;
-      }
-
-      .back-wrap {
-        position: absolute;
-        top: 30%;
-        left: 90%;
-        transform: translate(-95%, -50%);
-      }
-      .back-img {
-        width: 200px;
-        height: 150px;
-        position: relative;
-        .banner-img {
-          max-height: 100px;
-          opacity: 0.5;
-        }
-      }
-      .front-wrap {
-        position: absolute;
-        top: 60%;
-        left: 80%;
-        transform: translate(-40%, -50%);
-      }
-      .front-img {
-        width: 330px;
-        height: 250px;
-        position: relative;
-        .banner-img {
-          max-height: 100px;
+    .content-wrap {
+      .background {
+        .font-wrap {
+          padding: 50px 10px;
+          h2 {
+            font-size: 25px;
+          }
+          h3 {
+            font-size: 16px;
+          }
         }
       }
     }
