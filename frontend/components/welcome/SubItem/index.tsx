@@ -1,6 +1,6 @@
 import { Wrapper } from "./styles";
 import Image from "next/image";
-import temp01 from "../../../assets/onboarding/tempSmartPot.jpg";
+import temp01 from "../../../assets/onboarding/IoT_twin.gif";
 import temp02 from "../../../assets/onboarding/tempSmartPot02.jpg";
 import temp03 from "../../../assets/onboarding/tempSmartPot03.jpg";
 
@@ -17,12 +17,12 @@ const SubItem = () => {
           <div className="pot-img">
             <div className="img-01">
               등록 내용 GIF 넣기
-              {/* <Image
-                src={temp02}
+              <Image
+                src={temp01}
                 alt="똑분 스마트화분 이미지 1"
                 layout="fill"
                 objectFit="cover"
-              /> */}
+              />
             </div>
             <div className="img-02">
               물주기 GIF 넣기
