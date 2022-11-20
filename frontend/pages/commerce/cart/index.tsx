@@ -22,6 +22,7 @@ const Cart: NextPage = () => {
     router.push("/commerce/order/order-form");
   };
   useEffect(() => {
+    setIsCart(false);
     selector.forEach(item => {
       if (item) {
         setIsCart(true);
