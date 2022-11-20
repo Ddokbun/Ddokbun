@@ -1,6 +1,6 @@
 import { Wrapper } from "./styles";
 import Image from "next/image";
-import tempSearch01 from "../../../assets/onboarding/manage-01.png";
+import tempSearch01 from "../../../assets/onboarding/manage01.png";
 
 const SearchItem = () => {
   return (
