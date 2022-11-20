@@ -10,6 +10,11 @@ export const checkAuthentication = async (
   res: ServerResponse<IncomingMessage>,
 ) => {
   const token = getCookie("token", { req, res }) as string;
+
+  if (!token) {
+    return false;
+  }
+
   const currentUserSeq = await getUserSeq(token);
 
   if (currentUserSeq !== Number(query.userseq)) {
@@ -25,6 +30,11 @@ export const checkMyPot = async (
   res: ServerResponse<IncomingMessage>,
 ) => {
   const token = getCookie("token", { req, res }) as string;
+
+  if (!token) {
+    return false;
+  }
+
   const MyPotStatusOrReturnFalse = await fetchCurrentStatus(
     query.potseq,
     token,

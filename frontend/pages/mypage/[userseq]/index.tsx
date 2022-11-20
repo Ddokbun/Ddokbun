@@ -31,7 +31,7 @@ export interface OrderItemTypes {
   }[];
 }
 
-const MyPage: NextPage = props => {
+const MyPage: NextPage = () => {
   return (
     <Wrapper variants={ManageHomeAni} initial="out" animate="in" exit="out">
       <DeliveryTable />
@@ -42,24 +42,23 @@ const MyPage: NextPage = props => {
 
 export default MyPage;
 
-export const getServerSideProps: GetServerSideProps = async ({
-  query,
-  req,
-  res,
-}) => {
-  const isAuthenticated = await checkAuthentication(query, req, res);
-  console.log(isAuthenticated);
+// export const getServerSideProps: GetServerSideProps = async ({
+//   query,
+//   req,
+//   res,
+// }) => {
+//   const isAuthenticated = await checkAuthentication(query, req, res);
 
-  if (isAuthenticated) {
-    return {
-      props: {},
-    };
-  } else {
-    return {
-      redirect: {
-        destination: "/commerce",
-      },
-      props: {},
-    };
-  }
-};
+//   if (isAuthenticated) {
+//     return {
+//       props: {},
+//     };
+//   } else {
+//     return {
+//       redirect: {
+//         destination: "/commerce",
+//       },
+//       props: {},
+//     };
+//   }
+// };

@@ -20,6 +20,12 @@ export const Wrapper = styled.div`
     width: 60%;
     margin: auto;
     justify-content: center;
+    .search-flex {
+      width: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
   }
   .camera {
     margin-left: 10px;
@@ -47,9 +53,14 @@ export const Wrapper = styled.div`
       button {
         width: 100%;
       }
+      .search-flex {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
       .camera {
         display: flex;
-        width: 100%;
+        width: 90%;
         margin-left: 1px;
         padding: 13px;
         border-radius: 10px;
