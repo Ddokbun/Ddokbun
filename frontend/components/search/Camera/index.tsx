@@ -85,7 +85,7 @@ const CameraCompo = () => {
       <div className="capture-button">
         <button onClick={ResetFile}>재촬영하기</button>
         <button onClick={postFile}>전송하기</button>
-        {loading === 1 ? <Spinner /> : ""}
+        {loading === 1 ? <Spinner top="50" left="50" /> : ""}
       </div>
     </Wrapper>
   );
