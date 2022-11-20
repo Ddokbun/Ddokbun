@@ -3,9 +3,9 @@ import Image from "next/image";
 import adviceImg from "../../../assets/onboarding/tempAdvice01.jpg";
 import { forwardRef } from "react";
 
-const RecommendItem = forwardRef<RefType, PropsType>((props, ref) => {
+const RecommendItem = () => {
   return (
-    <Wrapper ref={ref}>
+    <Wrapper>
       <div className="content-wrap">
         <div className="img">
           <Image
@@ -36,6 +36,6 @@ const RecommendItem = forwardRef<RefType, PropsType>((props, ref) => {
       </div>
     </Wrapper>
   );
-});
+};
 
 export default RecommendItem;

@@ -19,7 +19,7 @@ const Onboarding: NextPage = () => {
     <Wrapper>
       <MainItem></MainItem>
       {/* <button onClick={onHomeClick}>버튼</button> */}
-      <RecommendItem ref={homeRef}></RecommendItem>
+      <RecommendItem></RecommendItem>
       <CommerceItem></CommerceItem>
       <SearchItem></SearchItem>
       <SubItem></SubItem>

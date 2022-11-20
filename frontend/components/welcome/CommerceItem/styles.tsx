@@ -17,11 +17,13 @@ export const Wrapper = styled.div`
       width: 100%;
       height: 100%;
       background: linear-gradient(
-        100deg,
+        200deg,
         rgba(25, 25, 25, 1) 0%,
         rgba(0, 212, 255, 0) 100%
       );
       display: flex;
+      justify-content: flex-end;
+      text-align: end;
       .font-wrap {
         padding: 50px;
         h2 {

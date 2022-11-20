@@ -1,10 +1,6 @@
 import { Wrapper } from "./styles";
 import Image from "next/image";
 import commerceImg01 from "../../../assets/onboarding/tempRecommend01.jpg";
-import commerceImg02 from "../../../assets/onboarding/tempRecommend02.jpg";
-import commerceImg03 from "../../../assets/onboarding/tempRecommend03.jpg";
-import commerceImg04 from "../../../assets/onboarding/tempRecommend04.jpg";
-import { useSelector, useDispatch } from "react-redux";
 
 const CommerceItem = () => {
   return (
@@ -29,7 +25,7 @@ const CommerceItem = () => {
                 똑분만의 설문조사로 내 환경을 알아보는 것은 어떤가요?
                 <br />
                 <br />
-                설문조사를 완료하면, 환경을 분석해 식물을 추천해드릴게요.
+                설문이 완료되면, 환경을 분석해 식물을 추천해드릴게요.
               </h3>
             </div>
           </div>
