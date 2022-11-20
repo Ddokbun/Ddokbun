@@ -99,11 +99,8 @@ const Complete: NextPage<IOrder> = ({ payObj }) => {
 
     dispatch(setAllOrderLists([]));
 
-    console.log(payObj.itemIdx);
-
     getRelatedList();
   }, []);
-  console.log(payObj.itemIdx[0].itemSeq);
 
   return (
     <Wrapper>
