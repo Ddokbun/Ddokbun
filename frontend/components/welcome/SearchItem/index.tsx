@@ -15,7 +15,7 @@ const SearchItem = () => {
           />
           <div className="background">
             <div className="font-wrap">
-              <h2>IoT 기반 식물 추천</h2>
+              <h2>나의 환경에 맞는 식물 추천</h2>
               <h3>
                 이미 똑분의 스마트화분을 가지고 계신가요?
                 <br />

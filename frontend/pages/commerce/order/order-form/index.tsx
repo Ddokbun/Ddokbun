@@ -14,6 +14,7 @@ import { useSelector } from "react-redux";
 import { context } from "@react-three/fiber";
 import { AppContext } from "next/dist/pages/_app";
 import Swal from "sweetalert2";
+import { useRouter } from "next/router";
 
 const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
   const [name, setName] = useState("");
@@ -41,16 +42,22 @@ const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
   const [item_seq, setItemSeq] = useState("");
 
   const orderItems = useSelector((state: StoreState) => state.orderListSlice);
-  console.log("why", orderItems);
+  const router = useRouter();
 
   useEffect(() => {
     const NewOrder = orderItems.filter(item => {
       if (item) return item;
     });
+    if (NewOrder.length < 1) {
+      console.log("hi");
+
+      router.push("/commerce/cart");
+    }
+
     if (NewOrder.length > 1) {
       setItemName(orderItems[0]?.itemName + ` 외 ${NewOrder.length - 1}개`);
     } else {
-      setItemName(NewOrder[0].itemName);
+      setItemName(NewOrder[0]?.itemName);
     }
 
     NewOrder.map(item => {
