@@ -28,7 +28,7 @@ export const Wrapper = styled.div`
     color: ${props => props.theme.color.red};
   }
   .flex-form {
-    padding: 10px 30px;
+    /* padding: 10px 30px; */
 
     width: 100%;
   }
@@ -69,7 +69,7 @@ export const Wrapper = styled.div`
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: 1fr 150px;
+    grid-template-columns: 1fr auto;
     grid-template-rows: 44px 44px 44px;
     grid-gap: 8px;
 
@@ -121,13 +121,23 @@ export const Wrapper = styled.div`
     .address-grid {
       height: 100%;
       display: grid;
-      grid-template-columns: 3fr auto;
+      grid-template-columns: 1fr 1fr;
       grid-template-rows: 44px 44px 44px auto;
-      grid-gap: 8px;
+      grid-row-gap: 8px;
+      grid-column-gap: 0px;
+
+      input:nth-child(3) {
+        grid-column: 1 / 3;
+      }
+      input:nth-child(4) {
+        grid-column: 1 / 3;
+      }
     }
+
     .toggle-button {
-      white-space: nowrap;
-      font-size: 13px;
+      padding: 5px;
+      font-size: 11px;
+      letter-spacing: 0px;
     }
   }
 `;

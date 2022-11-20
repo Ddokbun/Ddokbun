@@ -15,7 +15,7 @@ const CommerceItem = () => {
           />
           <div className="background">
             <div className="font-wrap">
-              <h2>설문조사 기반 식물 추천</h2>
+              <h2>나의 취향에 맞는 식물 추천</h2>
               <h3>
                 '나에게 딱 알맞는 식물'을 찾으신다면,
                 <br />

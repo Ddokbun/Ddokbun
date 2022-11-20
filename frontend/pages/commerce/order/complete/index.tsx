@@ -55,7 +55,7 @@ export const getServerSideProps: GetServerSideProps = async ({
   deleteCookie("tid", { req, res });
   deleteCookie("orderSeq", { req, res });
 
-  const status = await setOrderInfo(orderSeq as string);
+  const status = await setOrderInfo(orderSeq as string, token as string);
   const data = await fetchOrderInfo(orderSeq as string, token as string);
 
   // console.log("hre", status);
@@ -99,11 +99,8 @@ const Complete: NextPage<IOrder> = ({ payObj }) => {
 
     dispatch(setAllOrderLists([]));
 
-    console.log(payObj.itemIdx);
-
     getRelatedList();
   }, []);
-  console.log(payObj.itemIdx[0].itemSeq);
 
   return (
     <Wrapper>
