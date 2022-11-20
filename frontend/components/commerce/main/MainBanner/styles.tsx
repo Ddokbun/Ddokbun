@@ -1,6 +1,6 @@
 import styled from "styled-components";
-
-export const Wrapper = styled.div`
+import { motion } from "framer-motion";
+export const Wrapper = styled(motion.div)`
   margin-bottom: 50px;
   width: 100%;
   .wrap {

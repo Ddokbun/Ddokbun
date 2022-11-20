@@ -1,6 +1,6 @@
 import styled from "styled-components";
-
-export const Wrapper = styled.div`
+import { motion } from "framer-motion";
+export const Wrapper = styled(motion.div)`
   background-color: ${props => props.theme.color.black};
   color: white;
   margin-top: 50px;

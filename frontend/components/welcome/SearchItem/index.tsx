@@ -1,38 +1,34 @@
 import { Wrapper } from "./styles";
 import Image from "next/image";
-import tempSearch01 from "../../../assets/onboarding/tempSearch01.jpg";
-import tempSearch02 from "../../../assets/onboarding/tempSearch02.jpg";
+import tempSearch01 from "../../../assets/onboarding/manage-01.png";
 
 const SearchItem = () => {
   return (
     <Wrapper>
-      <div className="subcontent-wrap">
+      <div className="content-wrap">
         <div className="img">
-          <div className="img-wrap">
-            <div className="back-wrap">
-              <div className="back-img">
-                <Image
-                  src={tempSearch01}
-                  alt="똑분 식물 검색 이미지 1"
-                  className="banner-img"
-                  layout="fill"
-                />
-              </div>
-            </div>
-            <div className="front-wrap">
-              <div className="front-img">
-                <Image
-                  src={tempSearch02}
-                  alt="똑분 식물 검색 이미지 2"
-                  className="banner-img"
-                />
-              </div>
+          <Image
+            layout="fill"
+            objectFit="cover"
+            src={tempSearch01}
+            alt="똑분 식물추천 설명 이미지"
+          />
+          <div className="background">
+            <div className="font-wrap">
+              <h2>IoT 기반 식물 추천</h2>
+              <h3>
+                이미 똑분의 스마트화분을 가지고 계신가요?
+                <br />
+                <br />
+                현재 키우고 있는 식물과 식물이 놓여진 환경 데이터인
+                <br />
+                온도와 습도, 토양습도, 광량등을 분석해서
+                <br />
+                <br />
+                똑분이 있는 환경에서 기르기 좋은 식물을 추천받아보세요.
+              </h3>
             </div>
           </div>
-        </div>
-        <div className="title">
-          <h2>Ddokbun's Smart Plant Pot</h2>
-          <h3>똑분만의 스마트화분을 지금 만나보세요</h3>
         </div>
       </div>
     </Wrapper>
