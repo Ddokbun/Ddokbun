@@ -2,11 +2,12 @@ import { Wrapper } from "./styles";
 import Link from "next/link";
 import Image from "next/image";
 import PotImg from "../../../../assets/smart-pot.jpg";
+import { EleVar } from "../../../../styles/animations/animation";
 
 const PotBanner = () => {
   return (
     <Link href={"/commerce/product/pot"}>
-      <Wrapper>
+      <Wrapper variants={EleVar}>
         <div className="content-wrap">
           <div className="img-wrap">
             <Image
@@ -27,6 +28,11 @@ const PotBanner = () => {
               키우는 식물의 온도, 습도, 토양습도, 물 주기까지 한 번에 확인하고,
             </h3>
             <h3>화분을 키울 곳의 생활 환경에 맞게 관리를 도와드릴게요.</h3>
+            <div className="button">
+              <Link href={"/commerce/survey"}>
+                <div className="button-wrap">바로가기</div>
+              </Link>
+            </div>
           </div>
         </div>
       </Wrapper>

@@ -58,7 +58,7 @@ const MyApp = ({ Component, ...rest }: AppProps) => {
         // });
       }
     };
-    getMessageToken();
+    // getMessageToken();
   }, []);
 
   const { store, props } = wrapper.useWrappedStore(rest);

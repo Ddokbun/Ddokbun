@@ -68,4 +68,17 @@ export const Wrapper = styled.div`
       text-align: center;
     }
   }
+  @media screen and (max-width: 600px) {
+    .grid-top {
+      h1 {
+        font-size: 20px;
+      }
+    }
+    .grid-middle {
+      font-size: 15px;
+      li {
+        font-size: 15px;
+      }
+    }
+  }
 `;
