@@ -11,8 +11,8 @@ import { authActions } from "../../../store/auth";
 const KakaoLogin: NextPage = () => {
   const router = useRouter();
   const login_code = router.query.code;
-  const dispatch = useDispatch()
-  
+  const dispatch = useDispatch();
+
   useEffect(() => {
     const login = async () => {
       const res = await Kakaologin(login_code);
@@ -32,7 +32,7 @@ const KakaoLogin: NextPage = () => {
   return (
     <div>
       <main>
-        <Spinner />
+        <Spinner left="40%" top="10%" />
       </main>
     </div>
   );

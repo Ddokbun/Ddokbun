@@ -50,7 +50,7 @@ const DigitalTwin: FC<Props> = ({ light, onWateringHandler }) => {
           <p className="tooltip-text">물 주려면 클릭!</p>
         </div>
         {!isMounted ? null : (
-          <Suspense fallback={<Spinner left="50%" top="10%" />}>
+          <Suspense fallback={<Spinner left="40%" top="10%" />}>
             {isAnimated && <Rain />}
             <Canvas id="digital-twin">
               <Three isAnimated={isAnimated} />
