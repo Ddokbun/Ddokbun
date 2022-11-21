@@ -1,7 +1,7 @@
 import { Wrapper } from "./styles";
 import Link from "next/link";
 import Image from "next/image";
-import PotImg from "../../../../assets/commerce/pot.jpg";
+import PotImg from "../../../../assets/smart-pot.jpg";
 import { EleVar } from "../../../../styles/animations/animation";
 
 const PotBanner = () => {
