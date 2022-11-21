@@ -1,4 +1,4 @@
-# <img src="README.assets/logo.png" align="left" width="40" height="40"> &nbsp; DDOKBUN - IoT 화분 관리 및 식물 E-커머스 플랫폼
+# <img src="README.assets/logo.png" align="left" width="40" height="40">DDOKBUN - IoT 화분 관리 및 식물 E-커머스 플랫폼
 
 > <h3> 똑똑한 화분, 똑분이
 
