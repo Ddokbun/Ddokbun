@@ -1,6 +1,6 @@
 import { OrbitControls, PerspectiveCamera } from "@react-three/drei";
 import { FC } from "react";
-import Flower from "../../Flower";
+import Flower from "../Flower";
 
 interface Props {
   isAnimated: boolean;
