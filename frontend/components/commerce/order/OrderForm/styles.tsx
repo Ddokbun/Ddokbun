@@ -99,6 +99,9 @@ export const Wrapper = styled.div`
 
   @media screen and (max-width: 600px) {
     width: 100%;
+    input {
+      min-width: 0px;
+    }
 
     .flex-form {
       padding: 10px 0px;
@@ -121,7 +124,7 @@ export const Wrapper = styled.div`
     .address-grid {
       height: 100%;
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 2fr 1fr;
       grid-template-rows: 44px 44px 44px auto;
       grid-row-gap: 8px;
       grid-column-gap: 0px;
