@@ -1,8 +1,8 @@
-# <img src="/uploads/3451fd1b3e4ff74ac5172b7d1b4960c8/image.png" align="left" width="40" height="40"> &nbsp; DDOKBUN - IoT 화분 관리 및 식물 E-커머스 플랫폼
+# <img src="README.assets/logo.png" align="left" width="40" height="40"> &nbsp; DDOKBUN - IoT 화분 관리 및 식물 E-커머스 플랫폼
 
 > <h3> 똑똑한 화분, 똑분이
 
-![image](/uploads/08aa7b6deec8926283301580cf9416c2/image.png)
+![image](README.assets/banner.png)
 
 <br>
 
@@ -15,7 +15,7 @@
 
 ## 🎥 **소개 영상**
 
-- [UCC 바로가기]()
+- [UCC 바로가기](https://youtu.be/28Z-nuiQsM8)
 
 <br>
 
@@ -68,7 +68,7 @@
 ## 🧾 프로젝트 산출물
 
 - [ERD](https://silk-selenium-1b9.notion.site/ERD-11355c7c34ff4ed19d7374e91aa66cd6)
-- [API 명세서](https://silk-selenium-1b9.notion.site/ac6b6d96f08542aeb09ead9907aff737?v=a13dc7c7694d4befb5bc01e7abc08a46)
+- [API 명세서](https://grave-meteorite-abd.notion.site/API-Docs-64402b9101f241aab5899a2985a255be)
 - [와이어프레임](https://www.figma.com/file/Vl0cMi9J0624kZx5BrzAE1/%EB%98%91%EB%B6%84?node-id=0%3A1)
 - [포팅 매뉴얼](https://lab.ssafy.com/s07-final/S07P31D208/-/blob/master/exec/DDOKBUN%20%ED%8F%AC%ED%8C%85%20%EB%A7%A4%EB%89%B4%EC%96%BC.pdf)
 <br>   
@@ -77,7 +77,7 @@
 
  ## ✔️ 주요 기능
 
-#### IoT 스마트 화분
+> **IoT 스마트 화분**
 
 + **스마트 화분(Ddokbun)**
 
@@ -114,9 +114,10 @@
   + Three.js 를 활용하여 이용자의 식물을 디지털 트윈화
   + 물 주는 동작을 애니메이션화하여 식물에게 물을 줄 때 사용자와 상호작용 증가
 
+<br>
   
 
-#### **커머스**
+> **커머스**
 
 + **필터링 / 설문조사 기반 추천**
   + 총 4가지 키워드를 바탕으로 적합한 식물 정보를 제공
@@ -141,13 +142,13 @@
 
 ## &#128215; 아키텍처
 
-<img src="/uploads/055a53f56c83bd6436ed7dd3aa7002bd/Group_247.png"  width="800">
+<img src="README.assets/architecture.png"  width="800">
      
 <br>   <br>
 
 ## &#128216; 기술 스택
 
-<img src="/uploads/e6c2f46f098268cb37eb262d3a12d7b9/Ddokbun_기술스택.png"  width="800">
+<img src="README.assets/tech-stack.png"  width="800">
 
 <br>   <br>
 
