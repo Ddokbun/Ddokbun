@@ -30,12 +30,12 @@
 ## ☃️ **Team**
 <table>
  <tr>
-    <td align="center"><a href="https://github.com/Jaehwany"><img src="https://avatars.githubusercontent.com/Jaehwany" width="80px;" alt=""></td>
-    <td align="center"><a href="https://github.com/Jaehwany"><img src="https://avatars.githubusercontent.com/Jaehwany" width="80px;" alt=""></td>
-    <td align="center"><a href="https://github.com/Jaehwany"><img src="https://avatars.githubusercontent.com/Jaehwany" width="80px;" alt=""></td>
-    <td align="center"><a href="https://github.com/Jaehwany"><img src="https://avatars.githubusercontent.com/Jaehwany" width="80px;" alt=""></td>
-    <td align="center"><a href="https://github.com/Jaehwany"><img src="https://avatars.githubusercontent.com/Jaehwany" width="80px;" alt=""></td>
-    <td align="center"><a href="https://github.com/Jaehwany"><img src="https://avatars.githubusercontent.com/Jaehwany" width="80px;" alt=""></td>
+    <td align="center"><a href="https://github.com/HeyWon22"><img src="README.assets/shin.png" width="80px;" alt=""></td>
+    <td align="center"><a href="https://github.com/cherry2250"><img src="README.assets/kim.jpg" width="80px;" alt=""></td>
+    <td align="center"><a href="https://github.com/heogeon0"><img src="README.assets/heo.jpg" width="80px;" alt=""></td>
+    <td align="center"><a href="https://github.com/RealShinyHand"><img src="README.assets/son.jpg" width="80px;" alt=""></td>
+    <td align="center"><a href="https://github.com/bigleaderman"><img src="README.assets/dong.jpg" width="80px;" alt=""></td>
+    <td align="center"><a href="https://github.com/Jaehwany"><img src="README.assets/jae.jpg" width="80px;" alt=""></td>
   </tr>
   <tr>
     <td align="center">팀장, Frontend</td>
@@ -511,7 +511,7 @@ iot
 
 
 
-#### 검색(모바일)
+#### 검색
 
 + 태그별 식물 검색이 가능하도록 하였습니다.
 + 검색어 필터링을 활용하여 현재 검색어와 유사한 상품이 결과창에 나올 수 있도록 하였습니다
