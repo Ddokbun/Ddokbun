@@ -61,7 +61,8 @@
 
 - **[중간 발표 PPT](https://drive.google.com/drive/folders/1466oUMDaw_4WQ-Wv6SZYcCaTtWurnE1J)**
 - **[최종 발표 PPT](https://drive.google.com/drive/folders/1466oUMDaw_4WQ-Wv6SZYcCaTtWurnE1J)**
-  <br>
+  
+<br>
 
 ## 🧾 프로젝트 산출물
 
@@ -69,7 +70,8 @@
 - [API 명세서](https://grave-meteorite-abd.notion.site/API-Docs-64402b9101f241aab5899a2985a255be)
 - [와이어프레임](https://www.figma.com/file/Vl0cMi9J0624kZx5BrzAE1/%EB%98%91%EB%B6%84?node-id=0%3A1)
 - [포팅 매뉴얼](https://lab.ssafy.com/s07-final/S07P31D208/-/blob/master/exec/DDOKBUN%20%ED%8F%AC%ED%8C%85%20%EB%A7%A4%EB%89%B4%EC%96%BC.pdf)
-  <br>
+
+<br>
 
 ## ✔️ 주요 기능
 
