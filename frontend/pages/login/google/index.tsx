@@ -32,7 +32,7 @@ const Home: NextPage = () => {
   return (
     <div>
       <main>
-        <Spinner />
+        <Spinner left="40%" top="10%" />
       </main>
     </div>
   );
