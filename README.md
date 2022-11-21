@@ -494,7 +494,7 @@ iot
 + 사용자가 웹으로 접속했는지, 모바일로 접속했는지 구분하여 모바일일 경우는 카카오페이를 바로 실행할 수 있도록, 웹일 경우 QR / 인증번호 결제를 할 수 있도록 구분하였습니다.
 + 결제를 진행할 때 DB에 결제 대기상태를 기록 한 후, 결제가 성공적으로 끝나면 결제상태를 결제완료로 변경합니다.
 
-<img src="C:\Users\multicampus\Desktop\temp\paygif.gif" alt="paygif" style="zoom:50%;" />
+<img src="README.assets/paygif.gif" alt="admin_commerce" style="zoom:50%;" />
 
 ------
 
@@ -517,7 +517,7 @@ iot
 + 검색어 필터링을 활용하여 현재 검색어와 유사한 상품이 결과창에 나올 수 있도록 하였습니다
 + AI 딥러닝을 활용하여 이미지 검색을 할 수 있도록 하였습니다. 사용자가 카메라나 이미지 파일을 활용하여 식물 사진을 검색한다면 그와 가장 유사한 식물이 결과값으로 나오도록 하였습니다
 
-<img src="README.assets/commerce_search.gif" alt="commerce_search" style="zoom:50%;" />
+<img src="README.assets/commerce_search.gif" alt="admin_commerce" style="zoom:50%;" />
 
 ------
 
