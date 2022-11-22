@@ -42,8 +42,8 @@ const LineGraph: FC<Props> = ({ labels, data, label }) => {
         label,
         data,
         fill: true,
-        backgroundColor: `${Theme.color.black}`,
-        borderColor: `${Theme.color.black}`,
+        backgroundColor: '#395144',
+        borderColor: '#395144',
       },
     ],
   };
