@@ -15,6 +15,9 @@ import { context } from "@react-three/fiber";
 import { AppContext } from "next/dist/pages/_app";
 import Swal from "sweetalert2";
 import { useRouter } from "next/router";
+import NaverPay from "../../../../assets/naverpay.png";
+import KakaoPay from "../../../../assets/kakaopay.png";
+import Image from "next/image";
 
 const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
   const [name, setName] = useState("");
@@ -28,7 +31,7 @@ const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
   const [detailPost, setDetailPost] = useState("");
   const [additionalPost, setAdditionalPost] = useState("");
 
-  const [payType, setPayType] = useState(0);
+  const [payType, setPayType] = useState(1);
 
   const [flag, setFlag] = useState(0);
 
@@ -239,8 +242,11 @@ const OrderForm: NextPage<{ isMobile: boolean }> = ({ isMobile }) => {
           <div className="row">
             <h1 className="sub-title">Payment Method</h1>
             <PayFormComponent setPayType={setPayType} />
+            {/* <div className="button" onClick={onSubmitHandler}>
+              <Image src={NaverPay} objectFit="contain" layout="fill" />
+            </div> */}
             <div className="button" onClick={onSubmitHandler}>
-              PAYMENT
+              <Image src={KakaoPay} objectFit="cover" layout="fill" />
             </div>
           </div>
         </div>

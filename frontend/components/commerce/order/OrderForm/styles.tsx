@@ -69,7 +69,7 @@ export const Wrapper = styled.div`
     width: 100%;
     height: 100%;
     display: grid;
-    grid-template-columns: 1fr auto;
+    grid-template-columns: 1fr 150px;
     grid-template-rows: 44px 44px 44px;
     grid-gap: 8px;
 
@@ -127,7 +127,7 @@ export const Wrapper = styled.div`
       grid-template-columns: 2fr 1fr;
       grid-template-rows: 44px 44px 44px auto;
       grid-row-gap: 8px;
-      grid-column-gap: 0px;
+      grid-column-gap: 5px;
 
       input:nth-child(3) {
         grid-column: 1 / 3;
@@ -138,9 +138,9 @@ export const Wrapper = styled.div`
     }
 
     .toggle-button {
-      padding: 5px;
-      font-size: 11px;
-      letter-spacing: 0px;
+      padding: 5px 2px;
+      font-size: 15px;
+      letter-spacing: 1px;
     }
   }
 `;
