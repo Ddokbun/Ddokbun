@@ -59,6 +59,14 @@ const LineGraph: FC<Props> = ({ labels, data, label }) => {
         },
       },
     },
+    scales: {
+      x: {
+        type: "time" as const,
+        time: {
+          unit: "day" as const,
+        },
+      },
+    },
     interaction: {
       mode: "index" as const,
       axis: "y" as const,
