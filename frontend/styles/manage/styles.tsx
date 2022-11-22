@@ -18,3 +18,17 @@ export const Wrapper = styled(motion.section)`
     margin-top: 5%;
   }
 `;
+
+export const ModalWrapper = styled.div`
+  font-family: ${props => props.theme.font.TextFont2};
+  .img-wrapper {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin: auto;
+    padding-bottom: 10px;
+  }
+  .text-wrapper {
+    margin-top: 10px;
+  }
+`;
