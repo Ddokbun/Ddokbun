@@ -1,4 +1,4 @@
-import { Suspense, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { StatusButton } from "../../../common/Button";
 import { Wrapper } from "./styles";
 import temperature from "../../../assets/icon/thermometer.png";
@@ -90,19 +90,15 @@ const PlantStatus = () => {
       />
     );
   });
-  
+
   return (
     <Wrapper>
       <ul>{statusButtons}</ul>
-      <Suspense>
-        {createdTime && logs && (
-          <LineGraph
-            labels={createdTime}
-            data={logs}
-            label={plantStatus[activeIndex].title}
-          />
-        )}
-      </Suspense>
+      <LineGraph
+        labels={createdTime!}
+        data={logs!}
+        label={plantStatus[activeIndex].title}
+      />
     </Wrapper>
   );
 };

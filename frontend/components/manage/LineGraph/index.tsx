@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import { FC } from "react";
 import { Wrapper } from "./styles";
 import { Line } from "react-chartjs-2";
 import {
@@ -12,7 +12,6 @@ import {
   TimeScale,
 } from "chart.js";
 import "chartjs-adapter-date-fns";
-import { Theme } from "../../../styles/theme";
 
 export interface LogsType {
   [name: string]: string;
@@ -42,8 +41,8 @@ const LineGraph: FC<Props> = ({ labels, data, label }) => {
         label,
         data,
         fill: true,
-        backgroundColor: '#395144',
-        borderColor: '#395144',
+        backgroundColor: "#395144",
+        borderColor: "#395144",
       },
     ],
   };
@@ -51,26 +50,12 @@ const LineGraph: FC<Props> = ({ labels, data, label }) => {
   const options = {
     plugins: {
       tooltip: {
-        callbacks: {
-          // label: (tooltipItem, data) => {
-          //   console.log(tooltipItem);
-          // },
-        },
-        // backgroundColor: "#fff",
+        backgroundColor: "#fff",
       },
       indexAxis: "y" as const,
       plugins: {
         legend: {
           position: "top" as const,
-        },
-      },
-    },
-    scales: {
-      x: {
-        type: "time" as const,
-        time: {
-          unit: "day" as const,
-          parser: "yy:mm:dd" as const,
         },
       },
     },
