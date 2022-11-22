@@ -1,13 +1,14 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  padding-top: 20px;
   width: 100%;
   .button-wrap {
     width: 100%;
     display: grid;
     grid-template-columns: 1fr 1fr;
     grid-template-rows: 40px;
-    padding: 45px 5px;
+    padding: 40px 5px;
     grid-gap: 50px;
     margin-bottom: 30px;
 
@@ -32,7 +33,11 @@ export const Wrapper = styled.div`
     }
   }
   p {
-    font-size: 15px;
+    font-size: 18px;
+    word-break: keep-all;
+    margin: 4px;
+    margin-bottom: 6px;
+
     font-family: ${props => props.theme.font.TextFont2};
   }
 
@@ -45,6 +50,19 @@ export const Wrapper = styled.div`
     text-decoration: none;
     font-size: 15px;
     font-family: ${props => props.theme.font.TextFont2};
+  }
+
+  article {
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid ${props => props.theme.color.darkGray};
+  }
+
+  .span {
+    font-family: ${props => props.theme.font.TextFont2};
+    font-size: 12px;
+    padding-left: 5px;
+    word-break: keep-all;
   }
 
   .flex {

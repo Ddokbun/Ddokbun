@@ -23,7 +23,9 @@ export const Wrapper = styled.div`
 
     :nth-child(2) {
       display: flex;
+
       flex-direction: column;
+      /* justify-content: space-between; */
     }
   }
 
@@ -36,16 +38,22 @@ export const Wrapper = styled.div`
     width: 100%;
     padding: 50px 50px 50px;
     display: grid;
+    grid-gap: 20px;
     margin: auto;
     grid-template-columns: 1.5fr 1fr;
     grid-template-rows: auto;
   }
 
   .button {
-    margin-top: auto;
-    margin-bottom: 50px;
+    margin: 40px auto;
+    max-width: 400px;
+    position: relative;
+    /* margin-top: auto; */
+    /* margin-bottom: 40px; */
+
     width: 100%;
-    padding: 8px 0px;
+    height: 60px;
+    padding: 8px 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -54,7 +62,7 @@ export const Wrapper = styled.div`
     font-size: 20px;
     cursor: pointer;
     color: ${props => props.theme.color.whiteGray};
-    background-color: ${props => props.theme.color.darkGreen};
+    /* background-color: ${props => props.theme.color.darkGreen}; */
   }
 
   @media screen and (max-width: 900px) {
@@ -69,6 +77,7 @@ export const Wrapper = styled.div`
     }
 
     .pay-grid {
+      grid-gap: 0px;
       width: 100%;
       padding: 50px 10px 50px;
       grid-template-columns: 1fr;
@@ -88,7 +97,6 @@ export const Wrapper = styled.div`
       font-size: 20px;
       cursor: pointer;
       color: ${props => props.theme.color.whiteGray};
-      background-color: ${props => props.theme.color.darkGreen};
     }
   }
 `;
