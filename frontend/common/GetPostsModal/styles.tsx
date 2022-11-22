@@ -13,6 +13,7 @@ export const Wrapper = styled.div`
   background-color: #fafafa;
   box-shadow: 2px 2px 4px 5px rgba(0, 0, 0, 0.2);
   height: 550px;
+  z-index: 1;
 
   div:nth-child(2) {
     height: 100% !important;
