@@ -53,6 +53,13 @@ export const Wrapper = styled.div`
     cursor: pointer;
   }
 
+  .dotted {
+    p {
+      color: ${props => props.theme.color.mainGreen};
+      border-bottom: 2px dashed #007aff;
+    }
+  }
+
   @media screen and (max-width: 600px) {
     width: 70%;
     margin: auto;
