@@ -3,7 +3,7 @@ interface Props {
   mypage?: boolean;
 }
 export const Wrapper = styled.div<Props>`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
