@@ -12,6 +12,9 @@ import {
 import { Wrapper } from "./styles";
 import { fetchWateringLogs } from "../../../../apis/manage";
 import { useRouter } from "next/router";
+import PickerHeader from "./PickerHeader";
+import PickerDays from "./PickerDays";
+import PickerCells from "./PickerCells";
 
 interface Props {
   setWateringLogs: Dispatch<SetStateAction<string>>;
@@ -22,6 +25,10 @@ const WeekPicker: FC<Props> = ({ setWateringLogs }) => {
   const [currentWeek, setCurrentWeek] = useState(getWeek(currentMonth));
   const [selectedDate, setSelectedDate] = useState(new Date());
   const { potseq } = useRouter().query;
+
+  const onDateClickHandle = (day: Date) => {
+    setSelectedDate(day);
+  };
 
   useEffect(() => {
     if (!selectedDate || !potseq) {
@@ -35,6 +42,7 @@ const WeekPicker: FC<Props> = ({ setWateringLogs }) => {
       const logs = dataList.filter(
         item => item[0] === year && item[1] === month && item[2] === date,
       );
+      console.log(logs);
 
       if (logs.length) {
         setWateringLogs(`${year}년 ${month}월 ${date}일에 물을 주었네요`);
@@ -56,81 +64,20 @@ const WeekPicker: FC<Props> = ({ setWateringLogs }) => {
     }
   };
 
-  const onDateClickHandle = (day: Date) => {
-    setSelectedDate(day);
-  };
-
-  const renderHeader = () => {
-    const dateFormat = "MMMM yyyy";
-    return (
-      <div className="month-container">
-        <div className="">
-          <span>{format(currentMonth, dateFormat)}</span>
-        </div>
-        <div className="button-conatiner">
-          <span className="button" onClick={() => changeWeekHandle("prev")}>
-            prev
-          </span>
-          <span className="button" onClick={() => changeWeekHandle("next")}>
-            next
-          </span>
-        </div>
-      </div>
-    );
-  };
-  const renderDays = () => {
-    const dateFormat = "eeeee";
-    const days = [];
-    const startDate = startOfWeek(currentMonth, { weekStartsOn: 1 });
-    for (let i = 0; i < 7; i++) {
-      days.push(
-        <p className="week" key={i}>
-          {format(addDays(startDate, i), dateFormat)}
-        </p>,
-      );
-    }
-
-    return <div className="week-container">{days}</div>;
-  };
-  const renderCells = () => {
-    const startDate = startOfWeek(currentMonth, { weekStartsOn: 1 });
-    const endDate = lastDayOfWeek(currentMonth, { weekStartsOn: 1 });
-    const dateFormat = "d";
-    const rows = [];
-    let days = [];
-    let day = startDate;
-    let formattedDate = "";
-    while (day <= endDate) {
-      for (let i = 0; i < 7; i++) {
-        formattedDate = format(day, dateFormat);
-        const cloneDay = day;
-        days.push(
-          <div
-            key={day.toString() + "1"}
-            className={`day ${isSameDay(day, selectedDate) ? "selected" : ""}`}
-            onClick={() => {
-              onDateClickHandle(cloneDay);
-            }}
-          >
-            <p className="day">{formattedDate}</p>
-          </div>,
-        );
-        day = addDays(day, 1);
-      }
-
-      rows.push(<div className="day-container">{days}</div>);
-      days = [];
-    }
-
-    return <>{rows}</>;
-  };
-
   return (
     <Wrapper>
       <div className="calander">
-        {renderHeader()}
-        {renderDays()}
-        {renderCells()}
+        <PickerHeader
+          currentMonth={currentMonth}
+          changeWeekHandle={changeWeekHandle}
+        />
+        <PickerDays currentMonth={currentMonth} />
+        <PickerCells
+          currentMonth={currentMonth}
+          selectedDate={selectedDate}
+          potseq={potseq!}
+          onDateClickHandle={onDateClickHandle}
+        />
       </div>
     </Wrapper>
   );
