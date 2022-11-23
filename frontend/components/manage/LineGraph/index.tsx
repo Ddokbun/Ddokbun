@@ -49,9 +49,7 @@ const LineGraph: FC<Props> = ({ labels, data, label }) => {
 
   const options = {
     plugins: {
-      tooltip: {
-        backgroundColor: "#fff",
-      },
+      tooltip: {},
       indexAxis: "y" as const,
       plugins: {
         legend: {
@@ -64,7 +62,14 @@ const LineGraph: FC<Props> = ({ labels, data, label }) => {
         type: "time" as const,
         time: {
           unit: "day" as const,
+          parser: "yyyyMMdd",
+          displayFormats: {
+            day: "MM월 dd일",
+          },
         },
+      },
+      y: {
+        beginAtZero: true,
       },
     },
     interaction: {
